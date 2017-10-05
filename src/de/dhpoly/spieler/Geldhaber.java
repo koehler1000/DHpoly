@@ -2,13 +2,12 @@ package de.dhpoly.spieler;
 
 public class Geldhaber
 {
+	private int bargeld;
+	
 	public Geldhaber(int bargeld)
 	{
-		super();
 		this.bargeld = bargeld;
 	}
-
-	private int bargeld;
 
 	public int getBargeld()
 	{
