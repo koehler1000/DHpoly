@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
-import de.monopoly.kartenstapel.model.GeldTransfer;
-import de.monopoly.kartenstapel.model.Karte;
-import de.monopoly.spieler.Geldhaber;
+import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenstapel.model.Karte;
+import de.dhpoly.spieler.Geldhaber;
 
 public class KartenverbucherImplTest
 {

@@ -3,8 +3,8 @@ package de.dhpoly.kartenstapel.control;
 import java.util.List;
 
 import de.dhpoly.kartenstapel.Kartenverbucher;
-import de.monopoly.kartenstapel.model.Karte;
-import de.monopoly.spieler.Geldhaber;
+import de.dhpoly.kartenstapel.model.Karte;
+import de.dhpoly.spieler.Geldhaber;
 
 public class KartenverbucherImpl implements Kartenverbucher
 {

@@ -2,8 +2,8 @@ package de.dhpoly.kartenstapel;
 
 import java.util.List;
 
-import de.monopoly.kartenstapel.model.Karte;
-import de.monopoly.spieler.Geldhaber;
+import de.dhpoly.kartenstapel.model.Karte;
+import de.dhpoly.spieler.Geldhaber;
 
 public interface Kartenverbucher
 {

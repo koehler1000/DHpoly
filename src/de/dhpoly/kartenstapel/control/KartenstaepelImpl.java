@@ -3,7 +3,7 @@ package de.dhpoly.kartenstapel.control;
 import java.util.List;
 
 import de.dhpoly.kartenstapel.Kartenstaepel;
-import de.monopoly.kartenstapel.model.Karte;
+import de.dhpoly.kartenstapel.model.Karte;
 
 public class KartenstaepelImpl implements Kartenstaepel
 {

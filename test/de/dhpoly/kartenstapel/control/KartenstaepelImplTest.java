@@ -11,8 +11,8 @@ import org.junit.Test;
 
 import de.dhpoly.kartenstapel.Kartenstaepel;
 import de.dhpoly.kartenstapel.control.KartenstaepelImpl;
-import de.monopoly.kartenstapel.model.GeldTransfer;
-import de.monopoly.kartenstapel.model.Karte;
+import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenstapel.model.Karte;
 
 public class KartenstaepelImplTest
 {

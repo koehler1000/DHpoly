@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import de.monopoly.kartenstapel.model.Karte;
+import de.dhpoly.kartenstapel.model.Karte;
 
 public class Kartenstapel
 {

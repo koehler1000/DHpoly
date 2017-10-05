@@ -1,4 +1,4 @@
-package de.monopoly.kartenstapel.model;
+package de.dhpoly.kartenstapel.model;
 
 public class Karte
 {

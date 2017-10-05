@@ -1,6 +1,6 @@
 package de.dhpoly.kartenstapel;
 
-import de.monopoly.kartenstapel.model.Karte;
+import de.dhpoly.kartenstapel.model.Karte;
 
 public interface Kartenstaepel
 {

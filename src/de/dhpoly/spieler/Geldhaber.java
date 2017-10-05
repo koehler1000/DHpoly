@@ -1,4 +1,4 @@
-package de.monopoly.spieler;
+package de.dhpoly.spieler;
 
 public class Geldhaber
 {
