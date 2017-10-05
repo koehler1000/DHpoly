@@ -1,4 +1,4 @@
-package de.monopoly.kartenstapel.control;
+package de.dhpoly.kartenstapel.control;
 
 import static org.junit.Assert.assertThat;
 
@@ -8,7 +8,8 @@ import java.util.List;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.monopoly.kartenstapel.Kartenverbucher;
+import de.dhpoly.kartenstapel.Kartenverbucher;
+import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
 import de.monopoly.kartenstapel.model.GeldTransfer;
 import de.monopoly.kartenstapel.model.Karte;
 import de.monopoly.spieler.Geldhaber;

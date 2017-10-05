@@ -1,8 +1,8 @@
-package de.monopoly.kartenstapel.control;
+package de.dhpoly.kartenstapel.control;
 
 import java.util.List;
 
-import de.monopoly.kartenstapel.Kartenstaepel;
+import de.dhpoly.kartenstapel.Kartenstaepel;
 import de.monopoly.kartenstapel.model.Karte;
 
 public class KartenstaepelImpl implements Kartenstaepel

@@ -1,4 +1,4 @@
-package de.monopoly.kartenstapel.control;
+package de.dhpoly.kartenstapel.control;
 
 import static org.junit.Assert.assertThat;
 
@@ -9,7 +9,8 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.monopoly.kartenstapel.Kartenstaepel;
+import de.dhpoly.kartenstapel.Kartenstaepel;
+import de.dhpoly.kartenstapel.control.KartenstaepelImpl;
 import de.monopoly.kartenstapel.model.GeldTransfer;
 import de.monopoly.kartenstapel.model.Karte;
 

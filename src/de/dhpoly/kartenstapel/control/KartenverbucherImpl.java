@@ -1,8 +1,8 @@
-package de.monopoly.kartenstapel.control;
+package de.dhpoly.kartenstapel.control;
 
 import java.util.List;
 
-import de.monopoly.kartenstapel.Kartenverbucher;
+import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.monopoly.kartenstapel.model.Karte;
 import de.monopoly.spieler.Geldhaber;
 

@@ -1,4 +1,4 @@
-package de.monopoly.kartenstapel;
+package de.dhpoly.kartenstapel;
 
 import java.util.List;
 
