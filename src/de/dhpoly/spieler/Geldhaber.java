@@ -24,6 +24,12 @@ public class Geldhaber
 		bargeld -= betrag;
 	}
 	
+	public void ueberweiseGeld(int betrag, Geldhaber empfaenger)
+	{
+		empfaenger.einzahlen(betrag);
+		this.auszahlen(betrag);
+	}
+	
 	public boolean isNegative()
 	{
 		return bargeld >= 0;
