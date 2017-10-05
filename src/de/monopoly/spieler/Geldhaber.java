@@ -24,5 +24,10 @@ public class Geldhaber
 	{
 		bargeld -= betrag;
 	}
+	
+	public boolean isNegative()
+	{
+		return bargeld >= 0;
+	}
 
 }
