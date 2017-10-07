@@ -24,7 +24,7 @@ public class Spiel
 	{
 		int feldNrSoll = spieler.getFeldNr() + augensumme;
 
-		if (felder.size() >= feldNrSoll)
+		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size();
 		}
