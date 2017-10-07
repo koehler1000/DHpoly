@@ -30,5 +30,6 @@ public class Spiel
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
+		spieler.setFeldNr(feldNrSoll);
 	}
 }

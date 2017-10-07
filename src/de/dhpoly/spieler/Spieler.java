@@ -27,4 +27,9 @@ public class Spieler
 		return kasse;
 	}
 
+	public void setFeldNr(int feldNrSoll)
+	{
+		this.feldNr = feldNrSoll;
+	}
+
 }
