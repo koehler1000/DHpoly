@@ -1,10 +1,11 @@
-package de.dhpoly.strasse;
+package de.dhpoly.feld;
 
 import java.util.Optional;
 
 import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.spieler.Spieler;
 
-public class Strasse
+public class Strasse extends Feld
 {
 	private Optional<Geldhaber> eigentuemer = Optional.ofNullable(null);
 	private int haueser = 0;
@@ -15,9 +16,9 @@ public class Strasse
 	private String name;
 	private int kaufpreis;
 
-	private Strassenverwaltung strassenverwaltung;
+	private Felderverwaltung strassenverwaltung;
 
-	public Strasse(Strassenverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe,
+	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe,
 			String name)
 	{
 		this.strassenverwaltung = strassenverwaltung;
@@ -41,7 +42,7 @@ public class Strasse
 			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
 		}
 	}
-	
+
 	public void kaufe(Geldhaber potentiellerKaeufer, int betrag)
 	{
 		if (isKaufbar())
@@ -51,9 +52,9 @@ public class Strasse
 		}
 	}
 
-	public void spielerBetrittFeld(Geldhaber spieler)
+	public void spielerBetrittFeld(Geldhaber kasse)
 	{
-		eigentuemer.ifPresent(eigentuemer -> zahle(spieler));
+		eigentuemer.ifPresent(eigentuemer -> zahle(kasse));
 	}
 
 	private void zahle(Geldhaber zahlender)
@@ -116,9 +117,15 @@ public class Strasse
 		return kaufpreis;
 	}
 
-	public Strassenverwaltung getStrassenverwaltung()
+	public Felderverwaltung getStrassenverwaltung()
 	{
 		return strassenverwaltung;
+	}
+
+	@Override
+	public void betreteFeld(Spieler spieler, int augensumme)
+	{
+		spielerBetrittFeld(spieler.getKasse());
 	}
 
 }
