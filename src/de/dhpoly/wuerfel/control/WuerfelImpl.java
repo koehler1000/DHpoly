@@ -12,4 +12,11 @@ public class WuerfelImpl implements Wuerfel
 		return 0;
 	}
 
+	@Override
+	public boolean isPasch(int zahl1, int zahl2)
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
