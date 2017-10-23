@@ -13,13 +13,14 @@ import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenstapel.model.Karte;
 import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class KartenverbucherImplTest
 {
 	@Test
 	public void geldVonBank()
 	{
-		GeldhaberImpl spieler = new GeldhaberImpl(500);
+		Geldhaber spieler = new GeldhaberImpl(500);
 		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
@@ -31,9 +32,8 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnFreiparken()
 	{
-		GeldhaberImpl spieler = new GeldhaberImpl(500);
-
-		GeldhaberImpl freiparken = new GeldhaberImpl(0);
+		Geldhaber spieler = new GeldhaberImpl(500);
+		Geldhaber freiparken = new GeldhaberImpl(0);
 
 		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, 50);
 
@@ -47,9 +47,9 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldVonAnderenSpielern()
 	{
-		GeldhaberImpl ziehenderSpieler = new GeldhaberImpl(500);
+		Geldhaber ziehenderSpieler = new GeldhaberImpl(500);
 
-		List<GeldhaberImpl> spieler = new ArrayList<>();
+		List<Geldhaber> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
 		spieler.add(new GeldhaberImpl(100));
 		spieler.add(new GeldhaberImpl(100));
@@ -70,7 +70,7 @@ public class KartenverbucherImplTest
 	{
 		GeldhaberImpl ziehenderSpieler = new GeldhaberImpl(500);
 
-		List<GeldhaberImpl> spieler = new ArrayList<>();
+		List<Geldhaber> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
 		spieler.add(new GeldhaberImpl(100));
 		spieler.add(new GeldhaberImpl(100));
