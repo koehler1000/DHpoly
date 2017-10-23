@@ -5,7 +5,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>588</x>
-      <y>60</y>
+      <y>180</y>
       <w>120</w>
       <h>132</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>660</x>
-      <y>336</y>
+      <y>456</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>480</x>
-      <y>336</y>
+      <y>456</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -38,7 +38,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>996</x>
-      <y>60</y>
+      <y>180</y>
       <w>120</w>
       <h>132</h>
     </coordinates>
@@ -49,7 +49,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>1068</x>
-      <y>48</y>
+      <y>168</y>
       <w>72</w>
       <h>132</h>
     </coordinates>
@@ -60,7 +60,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>960</x>
-      <y>48</y>
+      <y>168</y>
       <w>72</w>
       <h>132</h>
     </coordinates>
@@ -71,7 +71,7 @@
     <id>UMLUseCase</id>
     <coordinates>
       <x>984</x>
-      <y>336</y>
+      <y>456</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -82,7 +82,7 @@
     <id>Relation</id>
     <coordinates>
       <x>636</x>
-      <y>180</y>
+      <y>300</y>
       <w>120</w>
       <h>180</h>
     </coordinates>
@@ -93,7 +93,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>408</x>
-      <y>216</y>
+      <y>336</y>
       <w>888</w>
       <h>576</h>
     </coordinates>
@@ -105,7 +105,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1044</x>
-      <y>180</y>
+      <y>300</y>
       <w>36</w>
       <h>180</h>
     </coordinates>
@@ -116,7 +116,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>540</x>
-      <y>180</y>
+      <y>300</y>
       <w>132</w>
       <h>180</h>
     </coordinates>
@@ -127,7 +127,7 @@ layer=-1</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>456</x>
-      <y>264</y>
+      <y>384</y>
       <w>384</w>
       <h>156</h>
     </coordinates>
@@ -140,7 +140,7 @@ bg=orange</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>864</x>
-      <y>264</y>
+      <y>384</y>
       <w>384</w>
       <h>156</h>
     </coordinates>
@@ -153,7 +153,7 @@ bg=green</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>456</x>
-      <y>468</y>
+      <y>588</y>
       <w>384</w>
       <h>288</h>
     </coordinates>
@@ -167,7 +167,7 @@ layer=-1</panel_attributes>
     <id>UMLActor</id>
     <coordinates>
       <x>156</x>
-      <y>564</y>
+      <y>684</y>
       <w>216</w>
       <h>132</h>
     </coordinates>
@@ -178,7 +178,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>480</x>
-      <y>516</y>
+      <y>636</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -189,7 +189,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>660</x>
-      <y>540</y>
+      <y>660</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -200,7 +200,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>480</x>
-      <y>600</y>
+      <y>720</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -211,7 +211,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>660</x>
-      <y>660</y>
+      <y>780</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -222,7 +222,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>480</x>
-      <y>684</y>
+      <y>804</y>
       <w>144</w>
       <h>48</h>
     </coordinates>
@@ -233,7 +233,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>336</x>
-      <y>612</y>
+      <y>732</y>
       <w>180</w>
       <h>108</h>
     </coordinates>
@@ -244,7 +244,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>336</x>
-      <y>612</y>
+      <y>732</y>
       <w>168</w>
       <h>36</h>
     </coordinates>
@@ -255,7 +255,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>336</x>
-      <y>540</y>
+      <y>660</y>
       <w>180</w>
       <h>108</h>
     </coordinates>
@@ -266,7 +266,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>336</x>
-      <y>612</y>
+      <y>732</y>
       <w>348</w>
       <h>96</h>
     </coordinates>
@@ -277,7 +277,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>336</x>
-      <y>552</y>
+      <y>672</y>
       <w>348</w>
       <h>96</h>
     </coordinates>
@@ -288,7 +288,7 @@ layer=-1</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>864</x>
-      <y>468</y>
+      <y>588</y>
       <w>384</w>
       <h>288</h>
     </coordinates>
@@ -302,7 +302,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>888</x>
-      <y>540</y>
+      <y>660</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -313,7 +313,7 @@ layer=-1</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>888</x>
-      <y>660</y>
+      <y>780</y>
       <w>216</w>
       <h>48</h>
     </coordinates>
@@ -324,7 +324,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1068</x>
-      <y>564</y>
+      <y>684</y>
       <w>108</w>
       <h>84</h>
     </coordinates>
@@ -335,7 +335,7 @@ layer=-1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1080</x>
-      <y>612</y>
+      <y>732</y>
       <w>96</w>
       <h>84</h>
     </coordinates>
@@ -346,7 +346,7 @@ layer=-1</panel_attributes>
     <id>UMLTimer</id>
     <coordinates>
       <x>1152</x>
-      <y>588</y>
+      <y>708</y>
       <w>72</w>
       <h>96</h>
     </coordinates>
