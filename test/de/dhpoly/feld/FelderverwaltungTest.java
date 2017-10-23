@@ -11,6 +11,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.Strasse;
 import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class FelderverwaltungTest
 {
@@ -25,7 +26,7 @@ public class FelderverwaltungTest
 
 		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
 
-		Geldhaber spieler = new Geldhaber(500);
+		Geldhaber spieler = new GeldhaberImpl(500);
 		felder.get(0).kaufe(spieler);
 
 		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
@@ -42,7 +43,7 @@ public class FelderverwaltungTest
 		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
 		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
 
-		Geldhaber spieler = new Geldhaber(500);
+		Geldhaber spieler = new GeldhaberImpl(500);
 		felder.get(0).kaufe(spieler);
 
 		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));

@@ -8,6 +8,7 @@ import org.junit.Test;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.Strasse;
 import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class StrasseTest
 {
@@ -17,7 +18,7 @@ public class StrasseTest
 	{
 		Strasse strasse = new Strasse(new Felderverwaltung(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Geldhaber spieler = new Geldhaber(500);
+		Geldhaber spieler = new GeldhaberImpl(500);
 
 		assertThat(strasse.isKaufbar(), Is.is(true));
 
@@ -33,7 +34,7 @@ public class StrasseTest
 	{
 		Strasse strasse = new Strasse(new Felderverwaltung(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Geldhaber spieler = new Geldhaber(500);
+		Geldhaber spieler = new GeldhaberImpl(500);
 		strasse.kaufe(spieler);
 
 		assertThat(spieler.getBargeld(), Is.is(500 - 50));

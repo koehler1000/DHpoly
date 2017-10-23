@@ -11,8 +11,8 @@ public class GeldhaberTest
 	@Test
 	public void ueberweiseGeld()
 	{
-		Geldhaber empfaenger = new Geldhaber(100);
-		Geldhaber sender = new Geldhaber(100);
+		GeldhaberImpl empfaenger = new GeldhaberImpl(100);
+		GeldhaberImpl sender = new GeldhaberImpl(100);
 
 		sender.ueberweiseGeld(50, empfaenger);
 

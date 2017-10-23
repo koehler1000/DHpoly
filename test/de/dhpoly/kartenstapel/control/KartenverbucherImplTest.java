@@ -19,7 +19,7 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldVonBank()
 	{
-		Geldhaber spieler = new Geldhaber(500);
+		GeldhaberImpl spieler = new GeldhaberImpl(500);
 		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
@@ -31,9 +31,9 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnFreiparken()
 	{
-		Geldhaber spieler = new Geldhaber(500);
+		GeldhaberImpl spieler = new GeldhaberImpl(500);
 
-		Geldhaber freiparken = new Geldhaber(0);
+		GeldhaberImpl freiparken = new GeldhaberImpl(0);
 
 		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, 50);
 
@@ -47,12 +47,12 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldVonAnderenSpielern()
 	{
-		Geldhaber ziehenderSpieler = new Geldhaber(500);
+		GeldhaberImpl ziehenderSpieler = new GeldhaberImpl(500);
 
-		List<Geldhaber> spieler = new ArrayList<>();
+		List<GeldhaberImpl> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(new Geldhaber(100));
-		spieler.add(new Geldhaber(100));
+		spieler.add(new GeldhaberImpl(100));
+		spieler.add(new GeldhaberImpl(100));
 
 		Karte karte = new Karte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 50);
 
@@ -68,12 +68,12 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnAndereSpielern()
 	{
-		Geldhaber ziehenderSpieler = new Geldhaber(500);
+		GeldhaberImpl ziehenderSpieler = new GeldhaberImpl(500);
 
-		List<Geldhaber> spieler = new ArrayList<>();
+		List<GeldhaberImpl> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(new Geldhaber(100));
-		spieler.add(new Geldhaber(100));
+		spieler.add(new GeldhaberImpl(100));
+		spieler.add(new GeldhaberImpl(100));
 
 		Karte karte = new Karte("bla", GeldTransfer.SPIELER_ANDERESPIELER, 50);
 
