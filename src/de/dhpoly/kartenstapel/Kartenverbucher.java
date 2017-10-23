@@ -7,6 +7,5 @@ import de.dhpoly.spieler.Geldhaber;
 
 public interface Kartenverbucher
 {
-	public void bewegeGeld(Karte karte, List<Geldhaber> spieler, Geldhaber ziehenderSpieler,
-			Geldhaber freiparken);
+	public void bewegeGeld(Karte karte, List<Geldhaber> spieler, Geldhaber ziehenderSpieler, Geldhaber freiparken);
 }

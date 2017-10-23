@@ -1,10 +1,12 @@
-package de.dhpoly.spieler;
+package de.dhpoly.spieler.model;
 
-public class Geldhaber
+import de.dhpoly.spieler.Geldhaber;
+
+public class GeldhaberImpl implements Geldhaber
 {
 	private int bargeld;
-	
-	public Geldhaber(int bargeld)
+
+	public GeldhaberImpl(int bargeld)
 	{
 		this.bargeld = bargeld;
 	}
@@ -23,16 +25,15 @@ public class Geldhaber
 	{
 		bargeld -= betrag;
 	}
-	
+
 	public void ueberweiseGeld(int betrag, Geldhaber empfaenger)
 	{
 		empfaenger.einzahlen(betrag);
 		this.auszahlen(betrag);
 	}
-	
+
 	public boolean isNegative()
 	{
 		return bargeld >= 0;
 	}
-
 }

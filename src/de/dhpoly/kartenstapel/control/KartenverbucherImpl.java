@@ -30,20 +30,20 @@ public class KartenverbucherImpl implements Kartenverbucher
 
 		}
 	}
-	
+
 	private static void umbuchen(List<Geldhaber> sender, Geldhaber empfaenger, int betrag)
 	{
-		for (Geldhaber send : sender )
+		for (Geldhaber send : sender)
 		{
-			umbuchen (send, empfaenger, betrag);
+			umbuchen(send, empfaenger, betrag);
 		}
 	}
-	
+
 	private static void umbuchen(Geldhaber sender, List<Geldhaber> empfaenger, int betrag)
 	{
-		for (Geldhaber empf : empfaenger )
+		for (Geldhaber empf : empfaenger)
 		{
-			umbuchen (sender, empf, betrag);
+			umbuchen(sender, empf, betrag);
 		}
 	}
 

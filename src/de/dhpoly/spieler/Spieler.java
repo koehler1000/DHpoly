@@ -1,15 +1,17 @@
 package de.dhpoly.spieler;
 
+import de.dhpoly.spieler.model.GeldhaberImpl;
+
 public class Spieler
 {
 	private int feldNr = 0;
 	private String name;
-	private Geldhaber kasse;
+	private GeldhaberImpl kasse;
 
 	public Spieler(String name, int startguthaben)
 	{
 		this.name = name;
-		kasse = new Geldhaber(startguthaben);
+		kasse = new GeldhaberImpl(startguthaben);
 	}
 
 	public int getFeldNr()
@@ -22,7 +24,7 @@ public class Spieler
 		return name;
 	}
 
-	public Geldhaber getKasse()
+	public GeldhaberImpl getKasse()
 	{
 		return kasse;
 	}

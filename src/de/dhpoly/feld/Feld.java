@@ -2,8 +2,8 @@ package de.dhpoly.feld;
 
 import java.util.Optional;
 
-import de.dhpoly.spieler.Geldhaber;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.Geldhaber;
 
 public abstract class Feld
 {

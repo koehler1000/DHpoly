@@ -18,8 +18,7 @@ public class Strasse extends Feld
 
 	private Felderverwaltung strassenverwaltung;
 
-	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe,
-			String name)
+	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe, String name)
 	{
 		this.strassenverwaltung = strassenverwaltung;
 		this.miete = miete;
