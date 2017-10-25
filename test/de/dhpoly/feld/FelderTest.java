@@ -7,6 +7,8 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.sun.crypto.provider.AESParameters;
+
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spielfeld.Spiel;
 
@@ -37,9 +39,11 @@ public class FelderTest
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 
-		Spiel spiel = new Spiel(felder);
-
 		Spieler sp1 = new Spieler("Sp1", 100);
+		List<Spieler> spieler = new ArrayList<>();
+		spieler.add(sp1);
+
+		Spiel spiel = new Spiel(felder, spieler);
 
 		spiel.ruecke(sp1, 2);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
@@ -57,10 +61,11 @@ public class FelderTest
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 
-		Spiel spiel = new Spiel(felder);
-
 		Spieler sp1 = new Spieler("Sp1", 100);
+		List<Spieler> spieler = new ArrayList<>();
+		spieler.add(sp1);
 
+		Spiel spiel = new Spiel(felder, spieler);
 		spiel.ruecke(sp1, 4);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
