@@ -29,7 +29,7 @@ public class Spiel
 
 		if (feldNrSoll >= felder.size())
 		{
-			feldNrSoll = feldNrSoll - felder.size();
+			feldNrSoll = feldNrSoll - felder.size(); //test
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
