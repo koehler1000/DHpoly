@@ -3,13 +3,13 @@ package de.dhpoly.feld;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.player.Geldhaber;
+import de.dhpoly.spieler.Spieler;
 
 public class Felderverwaltung
 {
 	public List<Feld> felder = new ArrayList<>();
 
-	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Geldhaber eigentuemer)
+	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
 	{
 		for (Feld feld : felder)
 		{
@@ -23,7 +23,7 @@ public class Felderverwaltung
 		return true;
 	}
 
-	private boolean isEigentuemer(Feld feld, Geldhaber moeglicherEigentuemer)
+	private boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
 	{
 		return (feld.getEigentuemer().isPresent() && feld.getEigentuemer().get() == moeglicherEigentuemer);
 	}

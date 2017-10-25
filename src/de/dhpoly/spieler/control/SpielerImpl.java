@@ -1,8 +1,6 @@
 package de.dhpoly.spieler.control;
 
-import de.dhpoly.player.Geldhaber;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class SpielerImpl implements Spieler
 {
@@ -46,7 +44,7 @@ public class SpielerImpl implements Spieler
 		bargeld -= betrag;
 	}
 
-	public void ueberweiseGeld(int betrag, Geldhaber empfaenger)
+	public void ueberweiseGeld(int betrag, Spieler empfaenger)
 	{
 		empfaenger.einzahlen(betrag);
 		this.auszahlen(betrag);

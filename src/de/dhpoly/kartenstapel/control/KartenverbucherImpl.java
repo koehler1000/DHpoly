@@ -4,12 +4,12 @@ import java.util.List;
 
 import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.dhpoly.kartenstapel.model.Karte;
-import de.dhpoly.player.Geldhaber;
+import de.dhpoly.spieler.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher
 {
 
-	public void bewegeGeld(Karte karte, List<Geldhaber> alleSpieler, Geldhaber ziehenderSpieler, Geldhaber freiparken)
+	public void bewegeGeld(Karte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler, Spieler freiparken)
 	{
 		switch (karte.getTransfer())
 		{
@@ -31,23 +31,23 @@ public class KartenverbucherImpl implements Kartenverbucher
 		}
 	}
 
-	private static void umbuchen(List<Geldhaber> sender, Geldhaber empfaenger, int betrag)
+	private static void umbuchen(List<Spieler> sender, Spieler empfaenger, int betrag)
 	{
-		for (Geldhaber send : sender)
+		for (Spieler send : sender)
 		{
 			umbuchen(send, empfaenger, betrag);
 		}
 	}
 
-	private static void umbuchen(Geldhaber sender, List<Geldhaber> empfaenger, int betrag)
+	private static void umbuchen(Spieler sender, List<Spieler> empfaenger, int betrag)
 	{
-		for (Geldhaber empf : empfaenger)
+		for (Spieler empf : empfaenger)
 		{
 			umbuchen(sender, empf, betrag);
 		}
 	}
 
-	private static void umbuchen(Geldhaber sender, Geldhaber empfaenger, int betrag)
+	private static void umbuchen(Spieler sender, Spieler empfaenger, int betrag)
 	{
 		if (sender != empfaenger)
 		{

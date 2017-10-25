@@ -1,6 +1,6 @@
 package de.dhpoly.spielfeld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,26 +8,33 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dhpoly.player.Player;
+import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 
-public class SpielTest {
+public class SpielTest
+{
 
 	private Spiel spiel;
+
 	@Before
-	public void vorbereitung(){
-		List<Player> spieler = new ArrayList<Player>();
-		spieler.add(new Player("Test1", 200));
-		spieler.add(new Player("Test2", 300));
+	public void vorbereitung()
+	{
+		List<Spieler> spieler = new ArrayList<Spieler>();
+		spieler.add(new SpielerImpl("Test1", 200));
+		spieler.add(new SpielerImpl("Test2", 300));
 		spiel = new Spiel(null, spieler);
 	}
+
 	@Test
-	public void testaktuellerSpieler() {
+	public void testaktuellerSpieler()
+	{
 		spiel.getAktuellerSpieler();
 		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
 	}
-	
+
 	@Test
-	public void testnaechsterSpieler(){
+	public void testnaechsterSpieler()
+	{
 		spiel.naechsterSpieler();
 		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
 	}

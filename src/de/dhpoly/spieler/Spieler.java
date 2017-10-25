@@ -1,7 +1,5 @@
 package de.dhpoly.spieler;
 
-import de.dhpoly.player.Geldhaber;
-
 public interface Spieler
 {
 	public int getBargeld();
@@ -10,7 +8,7 @@ public interface Spieler
 
 	public void auszahlen(int betrag);
 
-	public void ueberweiseGeld(int betrag, Geldhaber empfaenger);
+	public void ueberweiseGeld(int betrag, Spieler empfaenger);
 
 	public boolean isNegative();
 

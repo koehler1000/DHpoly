@@ -2,12 +2,11 @@ package de.dhpoly.feld;
 
 import java.util.Optional;
 
-import de.dhpoly.player.Geldhaber;
-import de.dhpoly.player.Player;
+import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends Feld
 {
-	private Optional<Geldhaber> eigentuemer = Optional.ofNullable(null);
+	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int haueser = 0;
 	private boolean hypothek = false;
 	private int[] miete = new int[6];
@@ -33,7 +32,7 @@ public class Strasse extends Feld
 		return !eigentuemer.isPresent();
 	}
 
-	public void kaufe(Geldhaber potentiellerKaeufer)
+	public void kaufe(Spieler potentiellerKaeufer)
 	{
 		if (isKaufbar())
 		{
@@ -42,7 +41,7 @@ public class Strasse extends Feld
 		}
 	}
 
-	public void kaufe(Geldhaber potentiellerKaeufer, int betrag)
+	public void kaufe(Spieler potentiellerKaeufer, int betrag)
 	{
 		if (isKaufbar())
 		{
@@ -51,12 +50,12 @@ public class Strasse extends Feld
 		}
 	}
 
-	public void spielerBetrittFeld(Geldhaber kasse)
+	public void spielerBetrittFeld(Spieler kasse)
 	{
 		eigentuemer.ifPresent(eigentuemer -> zahle(kasse));
 	}
 
-	private void zahle(Geldhaber zahlender)
+	private void zahle(Spieler zahlender)
 	{
 		if (!hypothek)
 		{
@@ -76,7 +75,7 @@ public class Strasse extends Feld
 		}
 	}
 
-	public Optional<Geldhaber> getEigentuemer()
+	public Optional<Spieler> getEigentuemer()
 	{
 		return eigentuemer;
 	}
@@ -122,9 +121,9 @@ public class Strasse extends Feld
 	}
 
 	@Override
-	public void betreteFeld(Player spieler, int augensumme)
+	public void betreteFeld(Spieler spieler, int augensumme)
 	{
-		spielerBetrittFeld(spieler.getKasse());
+		spielerBetrittFeld(spieler);
 	}
 
 }

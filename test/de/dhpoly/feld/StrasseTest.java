@@ -5,10 +5,8 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.feld.Strasse;
-import de.dhpoly.player.Geldhaber;
-import de.dhpoly.spieler.model.GeldhaberImpl;
+import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 
 public class StrasseTest
 {
@@ -18,7 +16,7 @@ public class StrasseTest
 	{
 		Strasse strasse = new Strasse(new Felderverwaltung(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Geldhaber spieler = new GeldhaberImpl(500);
+		Spieler spieler = new SpielerImpl("bar", 500);
 
 		assertThat(strasse.isKaufbar(), Is.is(true));
 
@@ -34,7 +32,7 @@ public class StrasseTest
 	{
 		Strasse strasse = new Strasse(new Felderverwaltung(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Geldhaber spieler = new GeldhaberImpl(500);
+		Spieler spieler = new SpielerImpl("foo", 500);
 		strasse.kaufe(spieler);
 
 		assertThat(spieler.getBargeld(), Is.is(500 - 50));

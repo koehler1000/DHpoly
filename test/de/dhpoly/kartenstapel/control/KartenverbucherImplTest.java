@@ -9,18 +9,17 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.kartenstapel.Kartenverbucher;
-import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenstapel.model.Karte;
-import de.dhpoly.player.Geldhaber;
-import de.dhpoly.spieler.model.GeldhaberImpl;
+import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 
 public class KartenverbucherImplTest
 {
 	@Test
 	public void geldVonBank()
 	{
-		Geldhaber spieler = new GeldhaberImpl(500);
+		Spieler spieler = new SpielerImpl("foo", 500);
 		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
@@ -32,8 +31,8 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnFreiparken()
 	{
-		Geldhaber spieler = new GeldhaberImpl(500);
-		Geldhaber freiparken = new GeldhaberImpl(0);
+		Spieler spieler = new SpielerImpl("foo", 500);
+		Spieler freiparken = new SpielerImpl("bar", 0);
 
 		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, 50);
 
@@ -47,12 +46,12 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldVonAnderenSpielern()
 	{
-		Geldhaber ziehenderSpieler = new GeldhaberImpl(500);
+		Spieler ziehenderSpieler = new SpielerImpl("foo", 500);
 
-		List<Geldhaber> spieler = new ArrayList<>();
+		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(new GeldhaberImpl(100));
-		spieler.add(new GeldhaberImpl(100));
+		spieler.add(new SpielerImpl("bar", 100));
+		spieler.add(new SpielerImpl("ich", 100));
 
 		Karte karte = new Karte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 50);
 
@@ -68,12 +67,12 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnAndereSpielern()
 	{
-		GeldhaberImpl ziehenderSpieler = new GeldhaberImpl(500);
+		SpielerImpl ziehenderSpieler = new SpielerImpl("me", 500);
 
-		List<Geldhaber> spieler = new ArrayList<>();
+		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(new GeldhaberImpl(100));
-		spieler.add(new GeldhaberImpl(100));
+		spieler.add(new SpielerImpl("foo", 100));
+		spieler.add(new SpielerImpl("bar", 100));
 
 		Karte karte = new Karte("bla", GeldTransfer.SPIELER_ANDERESPIELER, 50);
 
