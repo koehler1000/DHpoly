@@ -29,7 +29,7 @@ public class Spiel
 
 		if (feldNrSoll >= felder.size())
 		{
-			feldNrSoll = feldNrSoll - felder.size();
+			feldNrSoll = feldNrSoll - felder.size(); //test
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
@@ -37,15 +37,16 @@ public class Spiel
 	}
 	
 	public void naechsterSpieler(){
-		if(spieler.size() - 1 == aktuellerSpieler){
+		if(aktuellerSpieler + 1 >= spieler.size()){
 			aktuellerSpieler = 0;
 		}
 		else{
-			aktuellerSpieler = aktuellerSpieler++;
+			aktuellerSpieler++;
+
 		}
 	}
 
-	public int getAktuellerSpieler() { 
-		return aktuellerSpieler;
+	public Spieler getAktuellerSpieler() { 
+		return spieler.get(aktuellerSpieler);
 	}
 }
