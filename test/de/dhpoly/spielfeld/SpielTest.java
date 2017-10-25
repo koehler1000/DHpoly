@@ -8,16 +8,16 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.player.Player;
 
 public class SpielTest {
 
 	private Spiel spiel;
 	@Before
 	public void vorbereitung(){
-		List<Spieler> spieler = new ArrayList<Spieler>();
-		spieler.add(new Spieler("Test1", 200));
-		spieler.add(new Spieler("Test2", 300));
+		List<Player> spieler = new ArrayList<Player>();
+		spieler.add(new Player("Test1", 200));
+		spieler.add(new Player("Test2", 300));
 		spiel = new Spiel(null, spieler);
 	}
 	@Test
