@@ -1,6 +1,6 @@
 package de.dhpoly.spieler.model;
 
-import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.player.Geldhaber;
 
 public class GeldhaberImpl implements Geldhaber
 {

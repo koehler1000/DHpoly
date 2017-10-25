@@ -2,8 +2,8 @@ package de.dhpoly.feld;
 
 import java.util.Optional;
 
-import de.dhpoly.spieler.Geldhaber;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.player.Geldhaber;
+import de.dhpoly.player.Player;
 
 public class Strasse extends Feld
 {
@@ -122,7 +122,7 @@ public class Strasse extends Feld
 	}
 
 	@Override
-	public void betreteFeld(Spieler spieler, int augensumme)
+	public void betreteFeld(Player spieler, int augensumme)
 	{
 		spielerBetrittFeld(spieler.getKasse());
 	}

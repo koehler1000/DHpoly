@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.sun.crypto.provider.AESParameters;
 
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.player.Player;
 import de.dhpoly.spielfeld.Spiel;
 
 public class FelderTest
@@ -22,7 +22,7 @@ public class FelderTest
 		Felderverwaltung verwaltung = new Felderverwaltung();
 		verwaltung.setFelder(felder);
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
-		Spieler sp1 = new Spieler("Sp1", 100);
+		Player sp1 = new Player("Sp1", 100);
 
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
@@ -39,8 +39,8 @@ public class FelderTest
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 
-		Spieler sp1 = new Spieler("Sp1", 100);
-		List<Spieler> spieler = new ArrayList<>();
+		Player sp1 = new Player("Sp1", 100);
+		List<Player> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
 		Spiel spiel = new Spiel(felder, spieler);
@@ -61,8 +61,8 @@ public class FelderTest
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 
-		Spieler sp1 = new Spieler("Sp1", 100);
-		List<Spieler> spieler = new ArrayList<>();
+		Player sp1 = new Player("Sp1", 100);
+		List<Player> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
 		Spiel spiel = new Spiel(felder, spieler);

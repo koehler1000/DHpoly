@@ -3,7 +3,7 @@ package de.dhpoly.handel.model;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.player.Player;
 
 public class Transaktion
 {
@@ -11,11 +11,11 @@ public class Transaktion
 	private List<Feld> felderGeben;
 	private List<Feld> felderBekommen;
 
-	private Spieler anbietender;
-	private Spieler handelspartner;
+	private Player anbietender;
+	private Player handelspartner;
 
-	public Transaktion(int geldbetrag, List<Feld> felderGeben, List<Feld> felderBekommen, Spieler anbietender,
-			Spieler handelspartner)
+	public Transaktion(int geldbetrag, List<Feld> felderGeben, List<Feld> felderBekommen, Player anbietender,
+			Player handelspartner)
 	{
 		super();
 		this.geldbetrag = geldbetrag;
@@ -40,12 +40,12 @@ public class Transaktion
 		return felderBekommen;
 	}
 
-	public Spieler getAnbietender()
+	public Player getAnbietender()
 	{
 		return anbietender;
 	}
 
-	public Spieler getHandelspartner()
+	public Player getHandelspartner()
 	{
 		return handelspartner;
 	}

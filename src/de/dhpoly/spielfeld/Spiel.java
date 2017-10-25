@@ -3,27 +3,27 @@ package de.dhpoly.spielfeld;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.player.Player;
 
 public class Spiel
 {
 	private List<Feld> felder;
-	private List<Spieler> spieler;
+	private List<Player> spieler;
 	private int aktuellerSpieler;
 
-	public Spiel(List<Feld> felder, List<Spieler> spieler)
+	public Spiel(List<Feld> felder, List<Player> spieler)
 	{
 		this.felder = felder;
 		this.spieler = spieler;
 		aktuellerSpieler = 0;
 	}
 
-	public void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
+	public void ruecke(Player spieler, int augenzahl1, int augenzahl2)
 	{
 		ruecke(spieler, augenzahl1 + augenzahl2);
 	}
 
-	public void ruecke(Spieler spieler, int augensumme)
+	public void ruecke(Player spieler, int augensumme)
 	{
 		int feldNrSoll = spieler.getFeldNr() + augensumme;
 

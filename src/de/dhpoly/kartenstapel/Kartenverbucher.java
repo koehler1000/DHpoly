@@ -3,7 +3,7 @@ package de.dhpoly.kartenstapel;
 import java.util.List;
 
 import de.dhpoly.kartenstapel.model.Karte;
-import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.player.Geldhaber;
 
 public interface Kartenverbucher
 {

@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.Strasse;
-import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.player.Geldhaber;
 import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class StrasseTest

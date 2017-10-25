@@ -3,7 +3,7 @@ package de.dhpoly.feld;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.player.Geldhaber;
 
 public class Felderverwaltung
 {

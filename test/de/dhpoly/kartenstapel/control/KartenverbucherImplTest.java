@@ -12,7 +12,7 @@ import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenstapel.model.Karte;
-import de.dhpoly.spieler.Geldhaber;
+import de.dhpoly.player.Geldhaber;
 import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class KartenverbucherImplTest

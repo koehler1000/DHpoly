@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.player.Geldhaber;
 import de.dhpoly.spieler.model.GeldhaberImpl;
 
 public class GeldhaberTest

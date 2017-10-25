@@ -1,4 +1,4 @@
-package de.dhpoly.spieler;
+package de.dhpoly.player;
 
 public interface Geldhaber
 {
