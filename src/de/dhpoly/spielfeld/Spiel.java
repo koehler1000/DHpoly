@@ -7,12 +7,15 @@ import de.dhpoly.spieler.Spieler;
 
 public class Spiel
 {
-	List<Feld> felder;
-	List<Spieler> spieler;
+	private List<Feld> felder;
+	private List<Spieler> spieler;
+	private int aktuellerSpieler;
 
-	public Spiel(List<Feld> felder)
+	public Spiel(List<Feld> felder, List<Spieler> spieler)
 	{
 		this.felder = felder;
+		this.spieler = spieler;
+		aktuellerSpieler = 0;
 	}
 
 	public void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
@@ -31,5 +34,14 @@ public class Spiel
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
 		spieler.setFeldNr(feldNrSoll);
+	}
+	
+	public void naechsterSpieler(){
+		if(spieler.size() - 1 == aktuellerSpieler){
+			aktuellerSpieler = 0;
+		}
+		else{
+			aktuellerSpieler = aktuellerSpieler++;
+		}
 	}
 }
