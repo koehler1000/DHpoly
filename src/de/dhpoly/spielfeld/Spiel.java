@@ -44,4 +44,8 @@ public class Spiel
 			aktuellerSpieler = aktuellerSpieler++;
 		}
 	}
+
+	public int getAktuellerSpieler() {
+		return aktuellerSpieler;
+	}
 }
