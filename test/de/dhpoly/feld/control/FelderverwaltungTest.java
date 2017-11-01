@@ -20,7 +20,7 @@ public class FelderverwaltungTest
 	@Test
 	public void nichtEigentuemerAllerStrassenWennStrassenNochNichtVerkauft()
 	{
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 
 		List<Feld> felder = new ArrayList<>();
 		verwaltung.setFelder(felder);
@@ -36,7 +36,7 @@ public class FelderverwaltungTest
 	@Test
 	public void spielerBesitztNichtAlleStrassen()
 	{
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 
 		List<Feld> felder = new ArrayList<>();
 		verwaltung.setFelder(felder);

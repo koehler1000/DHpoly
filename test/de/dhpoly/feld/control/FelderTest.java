@@ -22,7 +22,7 @@ public class FelderTest
 	public void spielerStartetAufFeld0()
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		verwaltung.setFelder(felder);
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
 		Spieler sp1 = new SpielerImpl("Sp1", 100);
@@ -34,7 +34,7 @@ public class FelderTest
 	public void spielerKann2FelderLaufen()
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		verwaltung.setFelder(felder);
 
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));
@@ -56,7 +56,7 @@ public class FelderTest
 	public void spielerKannUeberrunden()
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		verwaltung.setFelder(felder);
 
 		felder.add(new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test"));

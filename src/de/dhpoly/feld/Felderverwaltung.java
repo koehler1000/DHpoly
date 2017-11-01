@@ -1,35 +1,16 @@
 package de.dhpoly.feld;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.spieler.Spieler;
 
-public class Felderverwaltung
+public interface Felderverwaltung
 {
-	public List<Feld> felder = new ArrayList<>();
 
-	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
-	{
-		for (Feld feld : felder)
-		{
-			if (feld.getGruppe() == strassengruppe && !isEigentuemer(feld, eigentuemer))
-			{
-				return false;
-			}
-		}
+	void setFelder(List<Feld> felder);
 
-		// keine Straße der Gruppe gefunden, deren Eigentümer ein anderer ist
-		return true;
-	}
+	boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer);
 
-	private boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
-	{
-		return (feld.getEigentuemer().isPresent() && feld.getEigentuemer().get() == moeglicherEigentuemer);
-	}
+	boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer);
 
-	public void setFelder(List<Feld> felder)
-	{
-		this.felder = felder;
-	}
 }

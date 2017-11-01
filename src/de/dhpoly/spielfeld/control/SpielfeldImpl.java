@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spielfeld.Spielfeld;
 
@@ -14,7 +15,7 @@ public class SpielfeldImpl implements Spielfeld
 	@Override
 	public List<Feld> getStandardSpielfeld()
 	{
-		Felderverwaltung verwaltung = new Felderverwaltung();
+		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(new Strasse(verwaltung, 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3, "Badstrasse"));
