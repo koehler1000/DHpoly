@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
@@ -22,7 +23,7 @@ public class SpielTest
 		List<Spieler> spieler = new ArrayList<Spieler>();
 		spieler.add(new SpielerImpl("Test1", 200));
 		spieler.add(new SpielerImpl("Test2", 300));
-		spiel = new Spiel(null, spieler);
+		spiel = new SpielImpl(null, spieler);
 	}
 
 	@Test

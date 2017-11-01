@@ -10,7 +10,8 @@ import org.junit.Test;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.spiel.control.Spiel;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
@@ -45,7 +46,7 @@ public class FelderTest
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
-		Spiel spiel = new Spiel(felder, spieler);
+		Spiel spiel = new SpielImpl(felder, spieler);
 
 		spiel.ruecke(sp1, 2);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
@@ -67,7 +68,7 @@ public class FelderTest
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
-		Spiel spiel = new Spiel(felder, spieler);
+		Spiel spiel = new SpielImpl(felder, spieler);
 		spiel.ruecke(sp1, 4);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
