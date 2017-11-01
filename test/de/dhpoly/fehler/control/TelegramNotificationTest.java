@@ -1,14 +1,15 @@
 package de.dhpoly.fehler.control;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TelegramNotificationTest
 {
-
+	@Ignore
 	@Test
 	public void test()
 	{
