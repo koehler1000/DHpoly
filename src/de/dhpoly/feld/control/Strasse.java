@@ -1,7 +1,9 @@
-package de.dhpoly.feld;
+package de.dhpoly.feld.control;
 
 import java.util.Optional;
 
+import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spieler.Spieler;
 
 public class Strasse implements Feld

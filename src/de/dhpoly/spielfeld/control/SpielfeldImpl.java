@@ -5,7 +5,7 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.feld.Strasse;
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spielfeld.Spielfeld;
 
 public class SpielfeldImpl implements Spielfeld

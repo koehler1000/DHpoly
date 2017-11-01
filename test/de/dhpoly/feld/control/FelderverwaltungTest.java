@@ -1,4 +1,4 @@
-package de.dhpoly.feld;
+package de.dhpoly.feld.control;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
