@@ -1,13 +1,13 @@
-package de.dhpoly.spieler;
+package de.dhpoly.spieler.control;
 
 import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.Spieler;
 
-public class SpielerTest
+public class SpielerImplTest
 {
 
 	@Test

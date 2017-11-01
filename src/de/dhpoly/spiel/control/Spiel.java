@@ -1,4 +1,4 @@
-package de.dhpoly.spielfeld;
+package de.dhpoly.spiel.control;
 
 import java.util.List;
 
