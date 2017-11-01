@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Komponentenersteller
 {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception
 	{
 		System.out.println("Klassenname eingeben:");
