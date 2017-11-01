@@ -4,15 +4,15 @@ import java.util.Optional;
 
 import de.dhpoly.spieler.Spieler;
 
-public abstract class Feld
+public interface Feld
 {
-	public abstract void betreteFeld(Spieler spieler, int augensumme);
+	public void betreteFeld(Spieler spieler, int augensumme);
 
-	public abstract void kaufe(Spieler potentiellerKaeufer, int betrag);
+	public void kaufe(Spieler potentiellerKaeufer, int betrag);
 
-	public abstract void kaufe(Spieler potentiellerKaeufer);
+	public void kaufe(Spieler potentiellerKaeufer);
 
-	public abstract Optional<Spieler> getEigentuemer();
+	public Optional<Spieler> getEigentuemer();
 
-	public abstract int getGruppe();
+	public int getGruppe();
 }

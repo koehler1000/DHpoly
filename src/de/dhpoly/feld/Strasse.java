@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import de.dhpoly.spieler.Spieler;
 
-public class Strasse extends Feld
+public class Strasse implements Feld
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int haueser = 0;
