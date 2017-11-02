@@ -26,12 +26,12 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>660</x>
+      <x>640</x>
       <y>180</y>
-      <w>100</w>
+      <w>140</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Abbuchung Kasse
+    <panel_attributes>Withdraw Money
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -51,22 +51,22 @@ bg=red</panel_attributes>
     <coordinates>
       <x>700</x>
       <y>290</y>
-      <w>60</w>
-      <h>70</h>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Pleite</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+Money &lt; 0</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>660</x>
-      <y>340</y>
-      <w>100</w>
+      <x>640</x>
+      <y>350</y>
+      <w>150</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Spieler verkauft Straße oder Haus
+    <panel_attributes>Player Sells Property
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -91,7 +91,7 @@ type=decision</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-Geld &gt;0</panel_attributes>
+Money &gt;= 0€</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -114,6 +114,6 @@ Geld &gt;0</panel_attributes>
       <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0;10.0;140.0;100.0;140.0;100.0;110.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0;10.0;140.0;100.0;140.0;100.0;120.0</additional_attributes>
   </element>
 </diagram>
