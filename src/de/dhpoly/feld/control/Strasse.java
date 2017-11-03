@@ -1,12 +1,13 @@
 package de.dhpoly.feld.control;
 
+import java.util.Observable;
 import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spieler.Spieler;
 
-public class Strasse implements Feld
+public class Strasse extends Observable implements Feld
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int haueser = 0;
@@ -36,11 +37,7 @@ public class Strasse implements Feld
 
 	public void kaufe(Spieler potentiellerKaeufer)
 	{
-		if (isKaufbar())
-		{
-			potentiellerKaeufer.auszahlen(kaufpreis);
-			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
-		}
+		kaufe(potentiellerKaeufer, kaufpreis);
 	}
 
 	public void kaufe(Spieler potentiellerKaeufer, int betrag)
@@ -49,6 +46,9 @@ public class Strasse implements Feld
 		{
 			potentiellerKaeufer.auszahlen(betrag);
 			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
+
+			setChanged();
+			notifyObservers();
 		}
 	}
 

@@ -45,4 +45,19 @@ public class StrasseTest
 		strasse.spielerBetrittFeld(spieler); // eigentümer
 		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
 	}
+
+	public static Strasse getDefaultStrasse()
+	{
+		return getDefaultStrasse("test");
+	}
+
+	public static Strasse getDefaultStrasse(String name)
+	{
+		return getDefaultStrasse(name, 0);
+	}
+
+	public static Strasse getDefaultStrasse(String name, int preis)
+	{
+		return new Strasse(null, preis, new int[1], 1, 1, name);
+	}
 }
