@@ -16,9 +16,13 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	{
 		for (Feld feld : felder)
 		{
-			if (feld.getGruppe() == strassengruppe && !isEigentuemer(feld, eigentuemer))
+			if (feld instanceof Strasse)
 			{
-				return false;
+				Strasse strasse = (Strasse) feld;
+				if (strasse.getGruppe() == strassengruppe && !isEigentuemer(strasse, eigentuemer))
+				{
+					return false;
+				}
 			}
 		}
 
@@ -29,7 +33,13 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	@Override
 	public boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
 	{
-		return (feld.getEigentuemer().isPresent() && feld.getEigentuemer().get() == moeglicherEigentuemer);
+		if (feld instanceof Strasse)
+		{
+			Strasse strasse = (Strasse) feld;
+			return (strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get() == moeglicherEigentuemer);
+		}
+
+		return false;
 	}
 
 	@Override

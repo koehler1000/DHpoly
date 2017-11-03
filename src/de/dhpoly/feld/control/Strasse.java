@@ -128,10 +128,15 @@ public class Strasse extends Observable implements Feld
 		spielerBetrittFeld(spieler);
 	}
 
-	@Override
 	public void setEigentuemer(Spieler anbietender)
 	{
 		eigentuemer = Optional.ofNullable(anbietender);
+	}
+
+	@Override
+	public String getBeschriftung()
+	{
+		return name;
 	}
 
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -59,5 +60,12 @@ public class StrasseTest
 	public static Strasse getDefaultStrasse(String name, int preis)
 	{
 		return new Strasse(null, preis, new int[1], 1, 1, name);
+	}
+
+	public static Strasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
+	{
+		Strasse strasse = new Strasse(verwaltung, 0, new int[1], 1, 1, "Strasse");
+		strasse.setEigentuemer(s1);
+		return strasse;
 	}
 }

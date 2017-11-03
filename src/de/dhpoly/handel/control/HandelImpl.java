@@ -1,8 +1,12 @@
 package de.dhpoly.handel.control;
 
+import java.util.List;
+
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.spieler.Spieler;
 
 public class HandelImpl implements Handel
 {
@@ -17,18 +21,24 @@ public class HandelImpl implements Handel
 	public void vorschlagAnnehmen(Transaktion transaktion)
 	{
 		// Felder erhalten
-		for (Feld feld : transaktion.getFelderBekommen())
-		{
-			feld.setEigentuemer(transaktion.getAnbietender());
-		}
+		EigentumUebertragen(transaktion.getFelderGeben(), transaktion.getHandelspartner());
 
 		// Felder abgeben
-		for (Feld feld : transaktion.getFelderGeben())
-		{
-			feld.setEigentuemer(transaktion.getHandelspartner());
-		}
+		EigentumUebertragen(transaktion.getFelderBekommen(), transaktion.getAnbietender());
 
 		// Geld transferieren
 		transaktion.getAnbietender().ueberweiseGeld(transaktion.getGeldbetrag(), transaktion.getHandelspartner());
+	}
+
+	private void EigentumUebertragen(List<Feld> felder, Spieler neuerEigentuemer)
+	{
+		for (Feld feld : felder)
+		{
+			if (feld instanceof Strasse)
+			{
+				Strasse strasse = (Strasse) feld;
+				strasse.setEigentuemer(neuerEigentuemer);
+			}
+		}
 	}
 }

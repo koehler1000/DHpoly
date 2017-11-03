@@ -77,14 +77,6 @@ public class FelderTest
 		return getDefaultFeld(verwaltung, 0);
 	}
 
-	public static Feld getDefaultFeld(Felderverwaltung verwaltung, Spieler spieler)
-	{
-		Feld feld = getDefaultFeld(verwaltung);
-		feld.setEigentuemer(spieler);
-
-		return feld;
-	}
-
 	public static Feld getDefaultFeld(Felderverwaltung verwaltung, int strassenGruppe)
 	{
 		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, strassenGruppe, "test");

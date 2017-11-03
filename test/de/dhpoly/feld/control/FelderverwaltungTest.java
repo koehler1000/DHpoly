@@ -25,7 +25,9 @@ public class FelderverwaltungTest
 		felder.add(FelderTest.getDefaultFeld(verwaltung, 1));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
-		felder.get(0).kaufe(spieler);
+
+		Strasse strasse = (Strasse) felder.get(0);
+		strasse.kaufe(spieler);
 
 		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
 	}
@@ -40,7 +42,8 @@ public class FelderverwaltungTest
 		felder.add(FelderTest.getDefaultFeld(verwaltung, 1));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
-		felder.get(0).kaufe(spieler);
+		Strasse strasse = (Strasse) felder.get(0);
+		strasse.kaufe(spieler);
 
 		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
 	}
