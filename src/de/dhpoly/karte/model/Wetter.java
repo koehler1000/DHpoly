@@ -1,4 +1,4 @@
-package de.dhpoly.event.model;
+package de.dhpoly.karte.model;
 
 public enum Wetter
 {
