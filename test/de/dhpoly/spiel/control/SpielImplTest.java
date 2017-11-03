@@ -17,7 +17,7 @@ import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
-public class SpielTest
+public class SpielImplTest
 {
 
 	private Spiel spiel;
@@ -57,7 +57,7 @@ public class SpielTest
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 
-		assertThat(spiel.getAktuellerSpieler().getBargeld(), Is.is(geldVorDemLaufen + Balancing.UEBER_LOS.getWert()));
+		assertThat(spiel.getAktuellerSpieler().getBargeld(), Is.is(geldVorDemLaufen + Balancing.UEBER_LOS));
 	}
 
 }

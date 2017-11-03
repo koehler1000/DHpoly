@@ -34,7 +34,7 @@ public class SpielImpl implements Spiel
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
-			spieler.einzahlen(Balancing.UEBER_LOS.getWert());
+			spieler.einzahlen(Balancing.UEBER_LOS);
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
