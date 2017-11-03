@@ -1,14 +1,15 @@
 package de.dhpoly.wuerfel.view;
 
-import org.junit.Test;
+import javax.swing.JFrame;
 
 public class WuerfelAnzeigeTest
 {
-
-	@Test
-	public void test()
+	public static void main(String[] args)
 	{
-		new WuerfelAnzeige(1, 5);
+		JFrame frame = new JFrame("Würfel");
+		frame.setSize(100, 100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(new WuerfelUI(1, 5));
+		frame.setVisible(true);
 	}
-
 }
