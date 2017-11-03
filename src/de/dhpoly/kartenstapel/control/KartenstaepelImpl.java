@@ -2,28 +2,28 @@ package de.dhpoly.kartenstapel.control;
 
 import java.util.List;
 
+import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenstaepel;
-import de.dhpoly.kartenstapel.model.Karte;
 
 public class KartenstaepelImpl implements Kartenstaepel
 {
 	private Kartenstapel ereigniskarten;
 	private Kartenstapel gemeinschaftskarten;
 
-	public KartenstaepelImpl(List<Karte> ereigniskarten, List<Karte> gemeinschaftskarten)
+	public KartenstaepelImpl(List<BezahlKarte> ereigniskarten, List<BezahlKarte> gemeinschaftskarten)
 	{
 		this.ereigniskarten = new Kartenstapel(ereigniskarten);
 		this.gemeinschaftskarten = new Kartenstapel(gemeinschaftskarten);
 	}
 
 	@Override
-	public Karte zieheEreigniskarte()
+	public BezahlKarte zieheEreigniskarte()
 	{
 		return ereigniskarten.ziehen();
 	}
 
 	@Override
-	public Karte zieheGemeinschaftskarte()
+	public BezahlKarte zieheGemeinschaftskarte()
 	{
 		return gemeinschaftskarten.ziehen();
 	}

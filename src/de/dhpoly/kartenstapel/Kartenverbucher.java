@@ -2,10 +2,10 @@ package de.dhpoly.kartenstapel;
 
 import java.util.List;
 
-import de.dhpoly.kartenstapel.model.Karte;
+import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.spieler.Spieler;
 
 public interface Kartenverbucher
 {
-	public void bewegeGeld(Karte karte, List<Spieler> spieler, Spieler ziehenderSpieler, Spieler freiparken);
+	public void bewegeGeld(BezahlKarte karte, List<Spieler> spieler, Spieler ziehenderSpieler, Spieler freiparken);
 }

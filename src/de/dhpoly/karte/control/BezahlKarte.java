@@ -1,12 +1,15 @@
-package de.dhpoly.kartenstapel.model;
+package de.dhpoly.karte.control;
 
-public class Karte
+import de.dhpoly.karte.Karte;
+import de.dhpoly.kartenstapel.model.GeldTransfer;
+
+public class BezahlKarte implements Karte
 {
 	private String beschreibung;
 	private GeldTransfer transfer;
 	private int geldBetrag;
 
-	public Karte(String beschreibung, GeldTransfer transfer, int geldBetrag)
+	public BezahlKarte(String beschreibung, GeldTransfer transfer, int geldBetrag)
 	{
 		super();
 		this.beschreibung = beschreibung;
@@ -27,6 +30,12 @@ public class Karte
 	public int getGeldBetrag()
 	{
 		return geldBetrag;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Bezahlkarte";
 	}
 
 }

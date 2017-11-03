@@ -8,9 +8,9 @@ import java.util.List;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
-import de.dhpoly.kartenstapel.model.Karte;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -24,7 +24,7 @@ public class KartenverbucherImplTest
 		final int transferbetrag = 50;
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startgeld);
-		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, transferbetrag);
+		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.BANK_SPIELER, transferbetrag);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler, null);
@@ -41,7 +41,7 @@ public class KartenverbucherImplTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startguthaben);
 		Spieler freiparken = SpielerImplTest.getDefaultSpieler(startguthaben);
 
-		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, kostenKarte);
+		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_FREIPARKEN, kostenKarte);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler, freiparken);
@@ -60,7 +60,7 @@ public class KartenverbucherImplTest
 		spieler.add(new SpielerImpl("bar", 100));
 		spieler.add(new SpielerImpl("ich", 100));
 
-		Karte karte = new Karte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 50);
+		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler, null);
@@ -81,7 +81,7 @@ public class KartenverbucherImplTest
 		spieler.add(new SpielerImpl("foo", 100));
 		spieler.add(new SpielerImpl("bar", 100));
 
-		Karte karte = new Karte("bla", GeldTransfer.SPIELER_ANDERESPIELER, 50);
+		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_ANDERESPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler, null);

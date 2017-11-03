@@ -9,10 +9,10 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenstaepel;
 import de.dhpoly.kartenstapel.control.KartenstaepelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
-import de.dhpoly.kartenstapel.model.Karte;
 
 public class KartenstaepelImplTest
 {
@@ -21,8 +21,8 @@ public class KartenstaepelImplTest
 	@Before
 	public void setUp()
 	{
-		List<Karte> beispielkarten = new ArrayList<>();
-		beispielkarten.add(new Karte("Du erhältst DM 50", GeldTransfer.BANK_SPIELER, 50));
+		List<BezahlKarte> beispielkarten = new ArrayList<>();
+		beispielkarten.add(new BezahlKarte("Du erhältst DM 50", GeldTransfer.BANK_SPIELER, 50));
 
 		kartenstaepel = new KartenstaepelImpl(beispielkarten, beispielkarten);
 	}
@@ -30,13 +30,13 @@ public class KartenstaepelImplTest
 	@Test
 	public void zieheGemeinschaftskarteGibtKartenobjektZurueck()
 	{
-		assertThat(kartenstaepel.zieheGemeinschaftskarte(), Is.isA(Karte.class));
+		assertThat(kartenstaepel.zieheGemeinschaftskarte(), Is.isA(BezahlKarte.class));
 	}
 
 	@Test
 	public void zieheEreigniskarteGibtKartenobjektZurueck()
 	{
-		assertThat(kartenstaepel.zieheEreigniskarte(), Is.isA(Karte.class));
+		assertThat(kartenstaepel.zieheEreigniskarte(), Is.isA(BezahlKarte.class));
 	}
 
 }

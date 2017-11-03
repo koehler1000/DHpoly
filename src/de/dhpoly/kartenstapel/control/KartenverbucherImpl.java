@@ -2,14 +2,14 @@ package de.dhpoly.kartenstapel.control;
 
 import java.util.List;
 
+import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenverbucher;
-import de.dhpoly.kartenstapel.model.Karte;
 import de.dhpoly.spieler.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher
 {
 
-	public void bewegeGeld(Karte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler, Spieler freiparken)
+	public void bewegeGeld(BezahlKarte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler, Spieler freiparken)
 	{
 		switch (karte.getTransfer())
 		{

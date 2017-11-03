@@ -1,10 +1,10 @@
 package de.dhpoly.kartenstapel;
 
-import de.dhpoly.kartenstapel.model.Karte;
+import de.dhpoly.karte.control.BezahlKarte;
 
 public interface Kartenstaepel
 {
-	public Karte zieheEreigniskarte();
+	public BezahlKarte zieheEreigniskarte();
 
-	public Karte zieheGemeinschaftskarte();
+	public BezahlKarte zieheGemeinschaftskarte();
 }

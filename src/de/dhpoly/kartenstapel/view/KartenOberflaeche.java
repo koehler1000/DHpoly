@@ -1,11 +1,12 @@
 package de.dhpoly.kartenstapel.view;
 
 import javax.swing.JOptionPane;
-import de.dhpoly.kartenstapel.model.Karte;
+
+import de.dhpoly.karte.control.BezahlKarte;
 
 public class KartenOberflaeche
 {
-	public KartenOberflaeche(Karte karte)
+	public KartenOberflaeche(BezahlKarte karte)
 	{
 		JOptionPane.showMessageDialog(null, karte.getBeschreibung());
 	}
