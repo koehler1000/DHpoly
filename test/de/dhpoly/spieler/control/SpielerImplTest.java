@@ -31,4 +31,9 @@ public class SpielerImplTest
 	{
 		return new SpielerImpl("me", geld);
 	}
+
+	public static Spieler getDefaultSpieler(String name, int geld)
+	{
+		return new SpielerImpl(name, geld);
+	}
 }

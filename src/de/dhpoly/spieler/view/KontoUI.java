@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
-public class Konto extends JPanel implements Observer
+public class KontoUI extends JPanel implements Observer
 {
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,7 @@ public class Konto extends JPanel implements Observer
 	private JTextArea txtKontostand;
 	private JTextArea txtName;
 
-	public Konto(Spieler spieler)
+	public KontoUI(Spieler spieler)
 	{
 		this.spieler = spieler;
 
@@ -36,6 +36,8 @@ public class Konto extends JPanel implements Observer
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
 		txtName.setBackground(backcolor);
 
+		update();
+
 		this.add(txtName);
 		this.add(txtKontostand);
 
@@ -48,6 +50,11 @@ public class Konto extends JPanel implements Observer
 
 	@Override
 	public void update(Observable o, Object arg)
+	{
+		update();
+	}
+
+	private void update()
 	{
 		txtKontostand.setText(spieler.getBargeld() + "€");
 

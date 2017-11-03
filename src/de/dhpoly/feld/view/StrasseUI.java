@@ -48,8 +48,8 @@ public class StrasseUI extends JPanel implements Observer
 		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
 		txtBesitzer.setBackground(backcolor);
 
-		this.add(txtName);
 		this.add(txtBesitzer);
+		this.add(txtName);
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
