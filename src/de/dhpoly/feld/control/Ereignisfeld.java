@@ -1,16 +1,15 @@
 package de.dhpoly.feld.control;
 
-import java.util.List;
-
 import de.dhpoly.feld.Feld;
-import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.Karte;
+import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.spieler.Spieler;
 
 public class Ereignisfeld implements Feld
 {
-	private List<BezahlKarte> kartenstapel;
+	private Kartenstapel kartenstapel;
 
-	public Ereignisfeld(List<BezahlKarte> kartenstapel)
+	public Ereignisfeld(Kartenstapel kartenstapel)
 	{
 		this.kartenstapel = kartenstapel;
 	}
@@ -24,6 +23,7 @@ public class Ereignisfeld implements Feld
 	@Override
 	public void betreteFeld(Spieler spieler, int augensumme)
 	{
+		Karte karte = kartenstapel.ziehen();
 		// TODO Auto-generated method stub
 
 	}
