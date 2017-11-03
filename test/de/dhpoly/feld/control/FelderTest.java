@@ -74,7 +74,7 @@ public class FelderTest
 
 	public static Feld getDefaultStrasse(Felderverwaltung verwaltung)
 	{
-		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test");
+		return getDefaultStrasse(verwaltung, 0);
 	}
 
 	public static Feld getDefaultStrasse(Felderverwaltung verwaltung, Spieler spieler)
@@ -83,6 +83,11 @@ public class FelderTest
 		feld.setEigentuemer(spieler);
 
 		return feld;
+	}
+
+	public static Feld getDefaultStrasse(Felderverwaltung verwaltung, int strassenGruppe)
+	{
+		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, strassenGruppe, "test");
 	}
 
 }

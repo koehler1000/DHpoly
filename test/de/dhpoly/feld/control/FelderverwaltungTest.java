@@ -11,7 +11,7 @@ import org.junit.Test;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class FelderverwaltungTest
 {
@@ -19,14 +19,12 @@ public class FelderverwaltungTest
 	@Test
 	public void nichtEigentuemerAllerStrassenWennStrassenNochNichtVerkauft()
 	{
-		Felderverwaltung verwaltung = new FelderverwaltungImpl();
-
 		List<Feld> felder = new ArrayList<>();
-		verwaltung.setFelder(felder);
+		Felderverwaltung verwaltung = getDefaultFelderverwaltung(felder);
 
-		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
+		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
 
-		Spieler spieler = new SpielerImpl("ich", 500);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 		felder.get(0).kaufe(spieler);
 
 		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
@@ -35,15 +33,13 @@ public class FelderverwaltungTest
 	@Test
 	public void spielerBesitztNichtAlleStrassen()
 	{
-		Felderverwaltung verwaltung = new FelderverwaltungImpl();
-
 		List<Feld> felder = new ArrayList<>();
-		verwaltung.setFelder(felder);
+		Felderverwaltung verwaltung = getDefaultFelderverwaltung(felder);
 
-		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
-		felder.add(new Strasse(verwaltung, 0, new int[] { 0, 0, 0, 0, 0, 0 }, 1, 1, "Badstraﬂe"));
+		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
+		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
 
-		Spieler spieler = new SpielerImpl("foo", 500);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 		felder.get(0).kaufe(spieler);
 
 		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
