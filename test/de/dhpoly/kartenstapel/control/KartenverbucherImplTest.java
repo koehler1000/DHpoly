@@ -13,34 +13,41 @@ import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenstapel.model.Karte;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class KartenverbucherImplTest
 {
 	@Test
 	public void geldVonBank()
 	{
-		Spieler spieler = new SpielerImpl("foo", 500);
-		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, 50);
+		final int startgeld = 500;
+		final int transferbetrag = 50;
+
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(startgeld);
+		Karte karte = new Karte("bla", GeldTransfer.BANK_SPIELER, transferbetrag);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler, null);
 
-		assertThat(spieler.getBargeld(), Is.is(550));
+		assertThat(spieler.getBargeld(), Is.is(startgeld + transferbetrag));
 	}
 
 	@Test
 	public void geldAnFreiparken()
 	{
-		Spieler spieler = new SpielerImpl("foo", 500);
-		Spieler freiparken = new SpielerImpl("bar", 0);
+		final int startguthaben = 500;
+		final int kostenKarte = 50;
 
-		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, 50);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(startguthaben);
+		Spieler freiparken = SpielerImplTest.getDefaultSpieler(startguthaben);
+
+		Karte karte = new Karte("bla", GeldTransfer.SPIELER_FREIPARKEN, kostenKarte);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler, freiparken);
 
-		assertThat(spieler.getBargeld(), Is.is(450));
-		assertThat(freiparken.getBargeld(), Is.is(50));
+		assertThat(spieler.getBargeld(), Is.is(startguthaben - kostenKarte));
+		assertThat(freiparken.getBargeld(), Is.is(startguthaben + kostenKarte));
 	}
 
 	@Test
