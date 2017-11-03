@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
@@ -50,4 +49,8 @@ public class FelderverwaltungTest
 		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
 	}
 
+	public static Felderverwaltung getDefaultFelderverwaltung()
+	{
+		return new FelderverwaltungImpl();
+	}
 }

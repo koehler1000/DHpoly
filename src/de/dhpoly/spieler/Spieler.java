@@ -1,5 +1,7 @@
 package de.dhpoly.spieler;
 
+import de.dhpoly.handel.model.Transaktion;
+
 public interface Spieler
 {
 	public int getBargeld();
@@ -17,4 +19,6 @@ public interface Spieler
 	public String getName();
 
 	public void setFeldNr(int feldNrSoll);
+
+	public void zeigeTransaktionsvorschlag(Transaktion transaktion);
 }

@@ -15,4 +15,6 @@ public interface Feld
 	public Optional<Spieler> getEigentuemer();
 
 	public int getGruppe();
+
+	public void setEigentuemer(Spieler anbietender);
 }

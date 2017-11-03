@@ -128,4 +128,10 @@ public class Strasse implements Feld
 		spielerBetrittFeld(spieler);
 	}
 
+	@Override
+	public void setEigentuemer(Spieler anbietender)
+	{
+		eigentuemer = Optional.ofNullable(anbietender);
+	}
+
 }

@@ -22,4 +22,13 @@ public class SpielerImplTest
 		assertThat(empfaenger.getBargeld(), Is.is(150));
 	}
 
+	public static Spieler getDefaultSpieler()
+	{
+		return new SpielerImpl("me", 100);
+	}
+
+	public static Spieler getDefaultSpieler(int geld)
+	{
+		return new SpielerImpl("me", geld);
+	}
 }

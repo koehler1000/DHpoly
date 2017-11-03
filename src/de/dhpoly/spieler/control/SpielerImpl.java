@@ -1,5 +1,6 @@
 package de.dhpoly.spieler.control;
 
+import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerImpl implements Spieler
@@ -53,5 +54,12 @@ public class SpielerImpl implements Spieler
 	public boolean isNegative()
 	{
 		return bargeld >= 0;
+	}
+
+	@Override
+	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
 	}
 }

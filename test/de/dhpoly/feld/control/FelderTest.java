@@ -73,4 +73,17 @@ public class FelderTest
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
+	public static Feld getDefaultStrasse(Felderverwaltung verwaltung)
+	{
+		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, 1, "test");
+	}
+
+	public static Feld getDefaultStrasse(Felderverwaltung verwaltung, Spieler spieler)
+	{
+		Feld feld = getDefaultStrasse(verwaltung);
+		feld.setEigentuemer(spieler);
+
+		return feld;
+	}
+
 }
