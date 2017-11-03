@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielImpl implements Spiel
@@ -33,6 +34,7 @@ public class SpielImpl implements Spiel
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
+			spieler.einzahlen(Balancing.UEBER_LOS.getWert());
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
