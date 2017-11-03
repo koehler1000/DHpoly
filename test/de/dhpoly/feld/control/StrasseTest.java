@@ -6,7 +6,7 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class StrasseTest
 {
@@ -14,9 +14,12 @@ public class StrasseTest
 	@Test
 	public void spielerKauftStrasse()
 	{
-		Strasse strasse = new Strasse(new FelderverwaltungImpl(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
+		final int startbetrag = 500;
+		final int kosten = 50;
+
+		Strasse strasse = new Strasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Spieler spieler = new SpielerImpl("bar", 500);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 
 		assertThat(strasse.isKaufbar(), Is.is(true));
 
@@ -24,20 +27,22 @@ public class StrasseTest
 
 		assertThat(strasse.isKaufbar(), Is.is(false));
 		assertThat(strasse.getEigentuemer().get(), Is.is(spieler));
-		assertThat(spieler.getBargeld(), Is.is(500 - 50));
+		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
 	}
 
 	@Test
 	public void spielerGeldAendertSichNichtWennErAufDieEigeneStrasseKommt()
 	{
-		Strasse strasse = new Strasse(new FelderverwaltungImpl(), 50, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
+		final int startbetrag = 500;
+		final int kosten = 50;
+
+		Strasse strasse = new Strasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 }, 1, 3,
 				"Badstrasse");
-		Spieler spieler = new SpielerImpl("foo", 500);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 		strasse.kaufe(spieler);
 
-		assertThat(spieler.getBargeld(), Is.is(500 - 50));
+		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
 		strasse.spielerBetrittFeld(spieler); // eigentümer
-		assertThat(spieler.getBargeld(), Is.is(450));
+		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
 	}
-
 }
