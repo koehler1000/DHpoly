@@ -22,7 +22,7 @@ public class FelderverwaltungTest
 		List<Feld> felder = new ArrayList<>();
 		Felderverwaltung verwaltung = getDefaultFelderverwaltung(felder);
 
-		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
+		felder.add(FelderTest.getDefaultFeld(verwaltung, 1));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 		felder.get(0).kaufe(spieler);
@@ -36,8 +36,8 @@ public class FelderverwaltungTest
 		List<Feld> felder = new ArrayList<>();
 		Felderverwaltung verwaltung = getDefaultFelderverwaltung(felder);
 
-		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
-		felder.add(FelderTest.getDefaultStrasse(verwaltung, 1));
+		felder.add(FelderTest.getDefaultFeld(verwaltung, 1));
+		felder.add(FelderTest.getDefaultFeld(verwaltung, 1));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 		felder.get(0).kaufe(spieler);

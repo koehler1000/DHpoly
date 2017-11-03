@@ -29,7 +29,7 @@ public class HandelImplTest
 		Spieler s1 = SpielerImplTest.getDefaultSpieler();
 		Spieler s2 = SpielerImplTest.getDefaultSpieler();
 
-		Feld feld = FelderTest.getDefaultStrasse(verwaltung, s1);
+		Feld feld = FelderTest.getDefaultFeld(verwaltung, s1);
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(feld);
@@ -49,7 +49,7 @@ public class HandelImplTest
 		Spieler s1 = SpielerImplTest.getDefaultSpieler();
 		Spieler s2 = SpielerImplTest.getDefaultSpieler();
 
-		Feld feld = FelderTest.getDefaultStrasse(verwaltung, s1);
+		Feld feld = FelderTest.getDefaultFeld(verwaltung, s1);
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(feld);

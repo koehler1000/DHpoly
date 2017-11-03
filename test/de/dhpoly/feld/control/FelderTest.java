@@ -23,7 +23,7 @@ public class FelderTest
 		List<Feld> felder = new ArrayList<>();
 		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung(felder);
 
-		felder.add(getDefaultStrasse(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
@@ -36,10 +36,10 @@ public class FelderTest
 		List<Feld> felder = new ArrayList<>();
 		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung(felder);
 
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 		List<Spieler> spieler = new ArrayList<>();
@@ -58,10 +58,10 @@ public class FelderTest
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		verwaltung.setFelder(felder);
 
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
-		felder.add(getDefaultStrasse(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld(verwaltung));
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 		List<Spieler> spieler = new ArrayList<>();
@@ -72,20 +72,20 @@ public class FelderTest
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
-	public static Feld getDefaultStrasse(Felderverwaltung verwaltung)
+	public static Feld getDefaultFeld(Felderverwaltung verwaltung)
 	{
-		return getDefaultStrasse(verwaltung, 0);
+		return getDefaultFeld(verwaltung, 0);
 	}
 
-	public static Feld getDefaultStrasse(Felderverwaltung verwaltung, Spieler spieler)
+	public static Feld getDefaultFeld(Felderverwaltung verwaltung, Spieler spieler)
 	{
-		Feld feld = getDefaultStrasse(verwaltung);
+		Feld feld = getDefaultFeld(verwaltung);
 		feld.setEigentuemer(spieler);
 
 		return feld;
 	}
 
-	public static Feld getDefaultStrasse(Felderverwaltung verwaltung, int strassenGruppe)
+	public static Feld getDefaultFeld(Felderverwaltung verwaltung, int strassenGruppe)
 	{
 		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, 1, strassenGruppe, "test");
 	}
