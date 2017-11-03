@@ -52,9 +52,16 @@ public class Strasse extends Observable implements Feld
 		}
 	}
 
-	public void spielerBetrittFeld(Spieler kasse)
+	public void spielerBetrittFeld(Spieler spieler)
 	{
-		eigentuemer.ifPresent(eigentuemer -> zahle(kasse));
+		if (eigentuemer.isPresent())
+		{
+			zahle(spieler);
+		}
+		else
+		{
+			spieler.zeigeKaufmoeglichkeit(this);
+		}
 	}
 
 	private void zahle(Spieler zahlender)

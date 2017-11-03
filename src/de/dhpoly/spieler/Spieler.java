@@ -1,5 +1,6 @@
 package de.dhpoly.spieler;
 
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 
 public interface Spieler
@@ -21,4 +22,6 @@ public interface Spieler
 	public void setFeldNr(int feldNrSoll);
 
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion);
+
+	public void zeigeKaufmoeglichkeit(Strasse strasse);
 }

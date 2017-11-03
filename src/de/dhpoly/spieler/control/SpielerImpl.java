@@ -2,6 +2,7 @@ package de.dhpoly.spieler.control;
 
 import java.util.Observable;
 
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spieler.Spieler;
 
@@ -64,6 +65,13 @@ public class SpielerImpl extends Observable implements Spieler
 
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
 		// TODO Auto-generated method stub
 
