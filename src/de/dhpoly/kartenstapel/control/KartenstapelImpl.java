@@ -4,20 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.kartenstapel.Kartenstapel;
 
-public class Kartenstapel
+public class KartenstapelImpl implements Kartenstapel
 {
 	private List<BezahlKarte> karten;
 	private int kartenGezogen;
-	
-	public Kartenstapel(List<BezahlKarte> karten)
+
+	public KartenstapelImpl(List<BezahlKarte> karten)
 	{
 		this.karten = karten;
 		this.kartenGezogen = 0;
 	}
 
-	public BezahlKarte ziehen()
+	@Override
+	public Karte ziehen()
 	{
 		BezahlKarte zuZiehen = karten.get(kartenGezogen);
 		kartenGezogen++;
@@ -31,7 +34,7 @@ public class Kartenstapel
 
 		return zuZiehen;
 	}
-	
+
 	private static List<BezahlKarte> mische(List<BezahlKarte> karten)
 	{
 		List<BezahlKarte> kartenGemischt = new ArrayList<>();
