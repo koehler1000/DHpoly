@@ -53,4 +53,11 @@ public class FelderverwaltungTest
 	{
 		return new FelderverwaltungImpl();
 	}
+
+	public static Felderverwaltung getDefaultFelderverwaltung(List<Feld> felder)
+	{
+		Felderverwaltung verwaltung = getDefaultFelderverwaltung();
+		verwaltung.setFelder(felder);
+		return verwaltung;
+	}
 }
