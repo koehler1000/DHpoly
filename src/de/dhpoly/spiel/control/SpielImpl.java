@@ -3,6 +3,11 @@ package de.dhpoly.spiel.control;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.control.RueckenKarte;
+import de.dhpoly.karte.control.WetterKarte;
+import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
@@ -59,5 +64,37 @@ public class SpielImpl implements Spiel
 	public Spieler getAktuellerSpieler()
 	{
 		return spieler.get(aktuellerSpieler);
+	}
+
+	@Override
+	public void verarbeiteKarte(Karte karte)
+	{
+		if (karte instanceof BezahlKarte)
+		{
+			verarbeiteKarte((BezahlKarte) karte);
+		}
+		else if (karte instanceof RueckenKarte)
+		{
+			verarbeiteKarte((RueckenKarte) karte);
+		}
+		else if (karte instanceof WetterKarte)
+		{
+			verarbeiteKarte((WetterKarte) karte);
+		}
+	}
+
+	private void verarbeiteKarte(BezahlKarte karte)
+	{
+		new KartenverbucherImpl().bewegeGeld(karte, spieler, spieler.get(aktuellerSpieler));
+	}
+
+	private void verarbeiteKarte(RueckenKarte karte)
+	{
+		// TODO Auto-generated method stub
+	}
+
+	private void verarbeiteKarte(WetterKarte karte)
+	{
+		// TODO Auto-generated method stub
 	}
 }

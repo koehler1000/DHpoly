@@ -27,27 +27,9 @@ public class KartenverbucherImplTest
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.BANK_SPIELER, transferbetrag);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
-		verbucher.bewegeGeld(karte, null, spieler, null);
+		verbucher.bewegeGeld(karte, null, spieler);
 
 		assertThat(spieler.getBargeld(), Is.is(startgeld + transferbetrag));
-	}
-
-	@Test
-	public void geldAnFreiparken()
-	{
-		final int startguthaben = 500;
-		final int kostenKarte = 50;
-
-		Spieler spieler = SpielerImplTest.getDefaultSpieler(startguthaben);
-		Spieler freiparken = SpielerImplTest.getDefaultSpieler(startguthaben);
-
-		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_FREIPARKEN, kostenKarte);
-
-		Kartenverbucher verbucher = new KartenverbucherImpl();
-		verbucher.bewegeGeld(karte, null, spieler, freiparken);
-
-		assertThat(spieler.getBargeld(), Is.is(startguthaben - kostenKarte));
-		assertThat(freiparken.getBargeld(), Is.is(startguthaben + kostenKarte));
 	}
 
 	@Test
@@ -63,7 +45,7 @@ public class KartenverbucherImplTest
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
-		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler, null);
+		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);
 
 		assertThat(ziehenderSpieler.getBargeld(), Is.is(600));
 
@@ -84,7 +66,7 @@ public class KartenverbucherImplTest
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_ANDERESPIELER, 50);
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
-		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler, null);
+		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);
 
 		assertThat(ziehenderSpieler.getBargeld(), Is.is(400));
 

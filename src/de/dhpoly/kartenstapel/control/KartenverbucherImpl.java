@@ -9,7 +9,7 @@ import de.dhpoly.spieler.Spieler;
 public class KartenverbucherImpl implements Kartenverbucher
 {
 
-	public void bewegeGeld(BezahlKarte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler, Spieler freiparken)
+	public void bewegeGeld(BezahlKarte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler)
 	{
 		switch (karte.getTransfer())
 		{
@@ -21,9 +21,6 @@ public class KartenverbucherImpl implements Kartenverbucher
 				break;
 			case SPIELER_ANDERESPIELER:
 				umbuchen(ziehenderSpieler, alleSpieler, karte.getGeldBetrag());
-				break;
-			case SPIELER_FREIPARKEN:
-				umbuchen(ziehenderSpieler, freiparken, karte.getGeldBetrag());
 				break;
 			default:
 				break;
