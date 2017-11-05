@@ -1,6 +1,5 @@
 package de.dhpoly.spielfeld.view;
 
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +13,12 @@ public class SpielfeldUITest
 	public static void main(String[] args)
 	{
 		JFrame frame = new JFrame("Test");
-		frame.setLayout(new GridLayout(2, 1));
 
 		List<Feld> felder = new ArrayList<>();
 
 		for (int i = 0; i < 40; i++)
 		{
-			felder.add(StrasseTest.getDefaultStrasse());
+			felder.add(StrasseTest.getDefaultStrasse("Test " + i));
 		}
 
 		frame.add(new SpielfeldUI(felder));

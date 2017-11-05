@@ -1,7 +1,7 @@
 package de.dhpoly.spielfeld.view;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -14,23 +14,71 @@ public class SpielfeldUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
+	private int felderProSeite;
+
 	public SpielfeldUI(List<Feld> spielfelder)
 	{
-		this.setLayout(new GridBagLayout());
+		felderProSeite = spielfelder.size() / 4;
 
-		GridBagConstraints c = new GridBagConstraints();
+		this.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1));
 
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 0;
-
-		for (Feld feld : spielfelder)
+		Component[][] felder = new Component[felderProSeite + 1][felderProSeite + 1];
+		for (int i = 0; i < felderProSeite + 1; i++)
 		{
-			JPanel panel = new StrasseUI((Strasse) feld);
-			this.add(panel, c);
-
-			c.gridx++;
+			for (int j = 0; j < felderProSeite + 1; j++)
+			{
+				felder[i][j] = new JPanel();
+			}
 		}
 
+		// Seite 1
+		for (int i = 0; i < felderProSeite; i++)
+		{
+			Feld feld = spielfelder.get(i);
+			felder[0][i] = getFeldUI(feld);
+		}
+
+		// Seite 2
+		for (int i = 0; i < felderProSeite; i++)
+		{
+			Feld feld = spielfelder.get(i + felderProSeite);
+			felder[i][felderProSeite] = getFeldUI(feld);
+		}
+
+		// Seite 3
+		for (int i = 0; i < felderProSeite; i++)
+		{
+			Feld feld = spielfelder.get(i + felderProSeite * 2);
+			felder[felderProSeite][felderProSeite - i] = getFeldUI(feld);
+		}
+
+		// Seite 4
+		for (int i = 0; i < felderProSeite; i++)
+		{
+			Feld feld = spielfelder.get(i + felderProSeite * 3);
+			felder[felderProSeite - i][0] = getFeldUI(feld);
+		}
+
+		// auf Panel malen
+		for (int i = felderProSeite; i >= 0; i--)
+		{
+			for (int j = felderProSeite; j >= 0; j--)
+			{
+				System.out.println(felder[i][j] + " - " + i + " - " + j);
+				this.add(felder[i][j]);
+			}
+		}
+	}
+
+	private Component getFeldUI(Feld feld)
+	{
+		if (feld instanceof Strasse)
+		{
+			return new StrasseUI((Strasse) feld);
+		}
+		else
+		{
+			return new JPanel();
+		}
 	}
 }
