@@ -7,7 +7,13 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Ereignisfeld;
+import de.dhpoly.feld.control.Losfeld;
+import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.view.EreignisfeldUI;
+import de.dhpoly.feld.view.LosfeldUI;
+import de.dhpoly.feld.view.RessourcenfeldUI;
 import de.dhpoly.feld.view.StrasseUI;
 
 public class SpielfeldUI extends JPanel
@@ -75,6 +81,18 @@ public class SpielfeldUI extends JPanel
 		if (feld instanceof Strasse)
 		{
 			return new StrasseUI((Strasse) feld);
+		}
+		else if (feld instanceof Ereignisfeld)
+		{
+			return new EreignisfeldUI((Ereignisfeld) feld);
+		}
+		else if (feld instanceof Ressourcenfeld)
+		{
+			return new RessourcenfeldUI((Ressourcenfeld) feld);
+		}
+		else if (feld instanceof Losfeld)
+		{
+			return new LosfeldUI((Losfeld) feld);
 		}
 		else
 		{
