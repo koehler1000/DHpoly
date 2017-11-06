@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerImplTest
@@ -35,5 +36,10 @@ public class SpielerImplTest
 	public static Spieler getDefaultSpieler(String name, int geld)
 	{
 		return new SpielerImpl(name, geld, null);
+	}
+
+	public static Spieler getDefaultSpieler(int geld, Spiel spiel)
+	{
+		return new SpielerImpl("me", geld, spiel);
 	}
 }
