@@ -11,5 +11,6 @@ public class WuerfelAnzeigeTest
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new WuerfelUI(1, 5));
 		frame.setVisible(true);
+		frame.pack();
 	}
 }

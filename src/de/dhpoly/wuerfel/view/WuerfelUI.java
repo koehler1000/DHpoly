@@ -1,11 +1,15 @@
 package de.dhpoly.wuerfel.view;
 
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class WuerfelUI extends JPanel
 {
@@ -21,10 +25,19 @@ public class WuerfelUI extends JPanel
 
 	private Component getWuerfel(int nummer)
 	{
-		JTextArea wuerfel = new JTextArea();
-		wuerfel.setFont(new Font("arial", Font.BOLD, 30));
-		wuerfel.setEditable(false);
-		wuerfel.setText("" + nummer);
+		
+		String wuerfelpfad = "wuerfel_"+nummer+".png";
+		BufferedImage wuerfel_pic = null;
+		System.out.println(wuerfelpfad);
+		try {
+			wuerfel_pic = ImageIO.read(new File(wuerfelpfad));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		JLabel wuerfel = new JLabel(new ImageIcon(wuerfel_pic));
+		
+		
 		return wuerfel;
 	}
 }
