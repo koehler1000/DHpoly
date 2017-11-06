@@ -5,7 +5,6 @@ import de.dhpoly.spieler.Spieler;
 
 public interface Spiel
 {
-
 	Spieler getAktuellerSpieler();
 
 	void naechsterSpieler();
@@ -15,5 +14,4 @@ public interface Spiel
 	void ruecke(Spieler spieler, int augenzahl1, int augenzahl2);
 
 	void verarbeiteKarte(Karte karte);
-
 }

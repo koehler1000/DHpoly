@@ -24,8 +24,7 @@ public class Ereignisfeld implements Feld
 	public void betreteFeld(Spieler spieler, int augensumme)
 	{
 		Karte karte = kartenstapel.ziehen();
-		// TODO Auto-generated method stub
-
+		spieler.zeigeKarte(karte);
 	}
 
 }

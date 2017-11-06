@@ -13,8 +13,8 @@ public class SpielerImplTest
 	@Test
 	public void ueberweiseGeld()
 	{
-		Spieler empfaenger = new SpielerImpl("me", 100);
-		Spieler sender = new SpielerImpl("ich", 100);
+		Spieler empfaenger = new SpielerImpl("me", 100, null);
+		Spieler sender = new SpielerImpl("ich", 100, null);
 
 		sender.ueberweiseGeld(50, empfaenger);
 
@@ -24,16 +24,16 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerImpl("me", 100);
+		return new SpielerImpl("me", 100, null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)
 	{
-		return new SpielerImpl("me", geld);
+		return new SpielerImpl("me", geld, null);
 	}
 
 	public static Spieler getDefaultSpieler(String name, int geld)
 	{
-		return new SpielerImpl(name, geld);
+		return new SpielerImpl(name, geld, null);
 	}
 }

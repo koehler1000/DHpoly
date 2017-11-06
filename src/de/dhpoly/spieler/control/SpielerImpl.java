@@ -4,6 +4,8 @@ import java.util.Observable;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.karte.Karte;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerImpl extends Observable implements Spieler
@@ -11,10 +13,12 @@ public class SpielerImpl extends Observable implements Spieler
 	private int feldNr = 0;
 	private String name;
 	private int bargeld;
+	private Spiel spiel;
 
-	public SpielerImpl(String name, int startguthaben)
+	public SpielerImpl(String name, int startguthaben, Spiel spiel)
 	{
 		this.name = name;
+		this.spiel = spiel;
 		bargeld = startguthaben;
 	}
 
@@ -75,5 +79,11 @@ public class SpielerImpl extends Observable implements Spieler
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void zeigeKarte(Karte karte)
+	{
+		spiel.verarbeiteKarte(karte);
 	}
 }

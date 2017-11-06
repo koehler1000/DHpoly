@@ -15,7 +15,7 @@ import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class SpielImplTest
 {
@@ -26,8 +26,8 @@ public class SpielImplTest
 	public void vorbereitung()
 	{
 		List<Spieler> spieler = new ArrayList<Spieler>();
-		spieler.add(new SpielerImpl("Test1", 200));
-		spieler.add(new SpielerImpl("Test2", 300));
+		spieler.add(SpielerImplTest.getDefaultSpieler());
+		spieler.add(SpielerImplTest.getDefaultSpieler());
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());

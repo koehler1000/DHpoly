@@ -2,6 +2,7 @@ package de.dhpoly.spieler;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.karte.Karte;
 
 public interface Spieler
 {
@@ -24,4 +25,6 @@ public interface Spieler
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion);
 
 	public void zeigeKaufmoeglichkeit(Strasse strasse);
+
+	public void zeigeKarte(Karte karte);
 }
