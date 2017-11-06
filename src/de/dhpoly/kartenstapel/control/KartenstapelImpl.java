@@ -5,24 +5,23 @@ import java.util.List;
 import java.util.Random;
 
 import de.dhpoly.karte.Karte;
-import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenstapel;
 
 public class KartenstapelImpl implements Kartenstapel
 {
-	private List<BezahlKarte> karten;
+	private List<Karte> karten;
 	private int kartenGezogen;
 
-	public KartenstapelImpl(List<BezahlKarte> karten)
+	public KartenstapelImpl(List<Karte> kartenstapel)
 	{
-		this.karten = karten;
+		this.karten = kartenstapel;
 		this.kartenGezogen = 0;
 	}
 
 	@Override
 	public Karte ziehen()
 	{
-		BezahlKarte zuZiehen = karten.get(kartenGezogen);
+		Karte zuZiehen = karten.get(kartenGezogen);
 		kartenGezogen++;
 
 		// muss gemischt werden (wenn alle Karten aufgebraucht)
@@ -35,14 +34,14 @@ public class KartenstapelImpl implements Kartenstapel
 		return zuZiehen;
 	}
 
-	private static List<BezahlKarte> mische(List<BezahlKarte> karten)
+	private static List<Karte> mische(List<Karte> karten)
 	{
-		List<BezahlKarte> kartenGemischt = new ArrayList<>();
+		List<Karte> kartenGemischt = new ArrayList<>();
 		Random r = new Random();
 
 		while (karten.size() > 0)
 		{
-			BezahlKarte inNeuenStapel = karten.get(r.nextInt(karten.size()));
+			Karte inNeuenStapel = karten.get(r.nextInt(karten.size()));
 			kartenGemischt.add(inNeuenStapel);
 			karten.remove(inNeuenStapel);
 		}
