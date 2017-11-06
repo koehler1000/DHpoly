@@ -27,6 +27,8 @@ public class LosfeldUI extends JPanel implements Observer
 
 		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 		update();
+
+		feld.addObserver(this);
 	}
 
 	@Override

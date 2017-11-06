@@ -39,6 +39,8 @@ public class SpielImpl implements Spiel
 	@Override
 	public void ruecke(Spieler spieler, int augensumme)
 	{
+		felder.get(spieler.getFeldNr()).verlasseFeld(spieler);
+
 		int feldNrSoll = spieler.getFeldNr() + augensumme;
 
 		if (feldNrSoll >= felder.size())

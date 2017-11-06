@@ -23,22 +23,6 @@ public class Standardspielfeld
 {
 	public List<Feld> getStandardSpielfeld()
 	{
-		Einstellungen einstellungen = new EinstellungenImpl();
-
-		Felderverwaltung verwaltung = new FelderverwaltungImpl();
-
-		// List<Feld> standardfeld = new ArrayList<>();
-
-		// for (int i = 0; i < 10; i++)
-		// {
-		// standardfeld.add(new Strasse(verwaltung, 1000, new int[] { 10, 20, 30 }, 1,
-		// 1, "Test"));
-		// standardfeld.add(new Losfeld(einstellungen));
-		// standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
-		// standardfeld.add(new Ressourcenfeld(Ressource.STEIN));
-		// // standardfeld.add(new Ereignisfeld(kartenstapel));
-		// }
-		//
 		List<Feld> standardfeld = new ArrayList<>();
 
 		standardfeld.add(LosfeldTest.getDefaultFeld());
@@ -48,9 +32,9 @@ public class Standardspielfeld
 			standardfeld.add(StrasseTest.getDefaultStrasse("Test " + i));
 		}
 
-		// return standardfeld;
+		return standardfeld;
 
-		return getAlexSpielfeld();
+		// return getAlexSpielfeld();
 	}
 
 	private List<Feld> getAlexSpielfeld()
@@ -100,7 +84,6 @@ public class Standardspielfeld
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 
 		standardfeld.add(new Strasse(verwaltung, 100, new int[] { 10, 11, 13, 15, 20, 30 }, 1, 1, "Dümmer"));
-
 
 		standardfeld.add(new Strasse(verwaltung, 150, new int[] { 15, 16, 19, 24, 30, 45 }, 1, 2, "Busenbach"));
 

@@ -41,6 +41,7 @@ public class Losfeld extends Observable implements Feld
 	public void verlasseFeld(Spieler spieler)
 	{
 		this.spieler.remove(spieler);
+		System.out.println("Los verlassen");
 		setChanged();
 		notifyObservers();
 	}

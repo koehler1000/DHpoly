@@ -28,6 +28,8 @@ public class RessourcenfeldUI extends JPanel implements Observer
 		this.setBorder(new LineBorder(Color.BLACK));
 
 		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
+
+		feld.addObserver(this);
 	}
 
 	@Override
