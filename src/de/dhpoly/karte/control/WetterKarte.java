@@ -24,4 +24,9 @@ public class WetterKarte implements Karte
 		return "Wetterumschwung";
 	}
 
+	public Wetter getWetter()
+	{
+		return wetter;
+	}
+
 }

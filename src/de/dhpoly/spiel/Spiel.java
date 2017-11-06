@@ -14,4 +14,6 @@ public interface Spiel
 	void ruecke(Spieler spieler, int augenzahl1, int augenzahl2);
 
 	void verarbeiteKarte(Karte karte);
+
+	int getFaktorMiete();
 }

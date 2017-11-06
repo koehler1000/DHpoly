@@ -7,6 +7,7 @@ import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.Balancing;
@@ -17,6 +18,7 @@ public class SpielImpl implements Spiel
 	private List<Feld> felder;
 	private List<Spieler> spieler;
 	private int aktuellerSpieler;
+	private Wetter wetter = Wetter.BEWOELKT;
 
 	public SpielImpl(List<Feld> felder, List<Spieler> spieler)
 	{
@@ -90,11 +92,17 @@ public class SpielImpl implements Spiel
 
 	private void verarbeiteKarte(RueckenKarte karte)
 	{
-		// TODO Auto-generated method stub
+		new KartenverbucherImpl().bewegeSpieler(karte, spieler.get(aktuellerSpieler));
 	}
 
 	private void verarbeiteKarte(WetterKarte karte)
 	{
-		// TODO Auto-generated method stub
+		this.wetter = karte.getWetter();
+	}
+
+	@Override
+	public int getFaktorMiete()
+	{
+		return wetter.getMietbeeinflussung();
 	}
 }
