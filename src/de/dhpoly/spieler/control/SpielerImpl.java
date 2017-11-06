@@ -121,7 +121,6 @@ public class SpielerImpl extends Observable implements Spieler
 	public void setAkutellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
-		System.out.println(this.getName() + " - " + isAktuell);
 		setChanged();
 		notifyObservers();
 	}
