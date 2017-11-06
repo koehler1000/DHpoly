@@ -1,6 +1,7 @@
 package de.dhpoly.feld.control;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
 public class Ressourcenfeld implements Feld
@@ -13,7 +14,7 @@ public class Ressourcenfeld implements Feld
 	}
 
 	@Override
-	public void betreteFeld(Spieler spieler, int augensumme)
+	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
 		// TODO Auto-generated method stub
 

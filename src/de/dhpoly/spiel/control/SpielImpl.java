@@ -44,7 +44,7 @@ public class SpielImpl implements Spiel
 			spieler.einzahlen(Balancing.UEBER_LOS);
 		}
 
-		felder.get(feldNrSoll).betreteFeld(spieler, augensumme);
+		felder.get(feldNrSoll).betreteFeld(spieler, augensumme, wetter);
 		spieler.setFeldNr(feldNrSoll);
 	}
 
@@ -92,7 +92,7 @@ public class SpielImpl implements Spiel
 
 	private void verarbeiteKarte(RueckenKarte karte)
 	{
-		new KartenverbucherImpl().bewegeSpieler(karte, spieler.get(aktuellerSpieler));
+		new KartenverbucherImpl().bewegeSpieler(karte, spieler.get(aktuellerSpieler), wetter);
 	}
 
 	private void verarbeiteKarte(WetterKarte karte)

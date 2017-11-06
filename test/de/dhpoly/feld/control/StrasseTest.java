@@ -6,6 +6,7 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -43,7 +44,7 @@ public class StrasseTest
 		strasse.kaufe(spieler);
 
 		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
-		strasse.spielerBetrittFeld(spieler); // eigentümer
+		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
 		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
 	}
 

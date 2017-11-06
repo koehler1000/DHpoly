@@ -26,8 +26,8 @@ public class SpielImplTest
 	public void vorbereitung()
 	{
 		List<Spieler> spieler = new ArrayList<Spieler>();
-		spieler.add(SpielerImplTest.getDefaultSpieler());
-		spieler.add(SpielerImplTest.getDefaultSpieler());
+		spieler.add(SpielerImplTest.getDefaultSpieler("Test1", spiel));
+		spieler.add(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());

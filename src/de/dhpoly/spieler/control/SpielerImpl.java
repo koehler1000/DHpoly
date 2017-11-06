@@ -56,12 +56,6 @@ public class SpielerImpl extends Observable implements Spieler
 		notifyObservers();
 	}
 
-	public void ueberweiseGeld(int betrag, Spieler empfaenger)
-	{
-		empfaenger.einzahlen(betrag);
-		this.auszahlen(betrag);
-	}
-
 	public boolean isNegative()
 	{
 		return bargeld >= 0;
@@ -85,5 +79,12 @@ public class SpielerImpl extends Observable implements Spieler
 	public void zeigeKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
+	}
+
+	@Override
+	public void ueberweiseGeld(int betrag, Spieler empfaenger)
+	{
+		empfaenger.einzahlen(betrag);
+		this.auszahlen(betrag);
 	}
 }

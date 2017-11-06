@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends Observable implements Feld
@@ -52,11 +53,11 @@ public class Strasse extends Observable implements Feld
 		}
 	}
 
-	public void spielerBetrittFeld(Spieler spieler)
+	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
 	{
 		if (eigentuemer.isPresent())
 		{
-			zahle(spieler);
+			zahle(spieler, wetter);
 		}
 		else
 		{
@@ -64,11 +65,12 @@ public class Strasse extends Observable implements Feld
 		}
 	}
 
-	private void zahle(Spieler zahlender)
+	private void zahle(Spieler zahlender, Wetter wetter)
 	{
 		if (!hypothek)
 		{
-			zahlender.ueberweiseGeld(getMietkosten(), eigentuemer.get());
+			int wert = (int) (getMietkosten() * 1.0 / 100 * wetter.getMietbeeinflussung());
+			zahlender.ueberweiseGeld(wert, eigentuemer.get());
 		}
 	}
 
@@ -130,9 +132,9 @@ public class Strasse extends Observable implements Feld
 	}
 
 	@Override
-	public void betreteFeld(Spieler spieler, int augensumme)
+	public void betreteFeld(Spieler spieler, int augensumme, Wetter wetter)
 	{
-		spielerBetrittFeld(spieler);
+		spielerBetrittFeld(spieler, wetter);
 	}
 
 	public void setEigentuemer(Spieler anbietender)

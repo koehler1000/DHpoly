@@ -2,6 +2,7 @@ package de.dhpoly.feld.control;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
 public class Losfeld implements Feld
@@ -20,7 +21,7 @@ public class Losfeld implements Feld
 	}
 
 	@Override
-	public void betreteFeld(Spieler spieler, int augensumme)
+	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
 		spieler.einzahlen(einstellungen.getBetragBetretenLos());
 	}

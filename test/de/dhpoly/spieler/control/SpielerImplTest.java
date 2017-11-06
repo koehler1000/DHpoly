@@ -42,4 +42,9 @@ public class SpielerImplTest
 	{
 		return new SpielerImpl("me", geld, spiel);
 	}
+
+	public static Spieler getDefaultSpieler(String name, Spiel spiel)
+	{
+		return new SpielerImpl(name, 1000, spiel);
+	}
 }

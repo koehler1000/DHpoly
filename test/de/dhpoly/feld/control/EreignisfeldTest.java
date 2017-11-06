@@ -11,6 +11,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.spieler.Spieler;
@@ -108,7 +109,7 @@ public class EreignisfeldTest
 		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 1000));
 
 		Feld ereignisfeld = new Ereignisfeld(new KartenstapelImpl(kartenstapel));
-		ereignisfeld.betreteFeld(spieler, 2);
+		ereignisfeld.betreteFeld(spieler, 2, Wetter.BEWOELKT);
 
 		assertTrue(ereigniskarteGezeigt);
 	}
