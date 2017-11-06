@@ -61,4 +61,18 @@ public class SpielImplTest
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
 	}
 
+	@Test
+	public void ressourcenJedeRunde()
+	{
+		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getHolzVorrat();
+		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getSteinVorrat();
+
+		spiel.naechsterSpieler();
+		spiel.naechsterSpieler();
+
+		assertThat(spiel.getAktuellerSpieler().getHolzVorrat(),
+				Is.is(holzVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
+		assertThat(spiel.getAktuellerSpieler().getSteinVorrat(),
+				Is.is(steinVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
+	}
 }

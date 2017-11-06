@@ -13,6 +13,8 @@ public class SpielerImpl extends Observable implements Spieler
 	private int feldNr = 0;
 	private String name;
 	private int bargeld;
+	private int holzVorrat = 0;
+	private int steinVorrat = 0;
 	private Spiel spiel;
 
 	public SpielerImpl(String name, int startguthaben, Spiel spiel)
@@ -86,5 +88,17 @@ public class SpielerImpl extends Observable implements Spieler
 	{
 		empfaenger.einzahlen(betrag);
 		this.auszahlen(betrag);
+	}
+
+	@Override
+	public int getSteinVorrat()
+	{
+		return steinVorrat;
+	}
+
+	@Override
+	public int getHolzVorrat()
+	{
+		return holzVorrat;
 	}
 }

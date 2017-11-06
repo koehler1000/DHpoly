@@ -27,4 +27,8 @@ public interface Spieler
 	public void zeigeKaufmoeglichkeit(Strasse strasse);
 
 	public void zeigeKarte(Karte karte);
+
+	public int getSteinVorrat();
+
+	public int getHolzVorrat();
 }

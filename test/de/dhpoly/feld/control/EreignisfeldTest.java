@@ -103,6 +103,20 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 
 			}
+
+			@Override
+			public int getSteinVorrat()
+			{
+				// TODO Auto-generated method stub
+				return 0;
+			}
+
+			@Override
+			public int getHolzVorrat()
+			{
+				// TODO Auto-generated method stub
+				return 0;
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
