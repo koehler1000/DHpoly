@@ -26,9 +26,9 @@ public class SpielUITest
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), spieler, einstellungen);
 
-		spieler.add(new SpielerImpl("Rico", einstellungen.getStartguthaben(), spiel));
-		spieler.add(new SpielerImpl("Sven", einstellungen.getStartguthaben(), spiel));
-		spieler.add(new SpielerImpl("Alex", einstellungen.getStartguthaben(), spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen.getStartguthaben(), spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen.getStartguthaben(), spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen.getStartguthaben(), spiel));
 
 		frame.add(new SpielUI(spiel));
 		frame.setSize(1000, 1000);

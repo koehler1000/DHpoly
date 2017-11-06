@@ -29,4 +29,6 @@ public interface Spiel
 	List<Feld> getFelder();
 
 	int getFaktorMiete();
+
+	void fuegeSpielerHinzu(Spieler spieler);
 }

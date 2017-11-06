@@ -28,6 +28,11 @@ public class SpielImpl implements Spiel
 		this.spieler = spieler;
 		this.einstellungen = einstellungen;
 		aktuellerSpieler = 0;
+
+		for (Spieler spieler2 : spieler)
+		{
+			felder.get(0).betreteFeld(spieler2, 0, wetter);
+		}
 	}
 
 	@Override
@@ -141,5 +146,12 @@ public class SpielImpl implements Spiel
 	public Einstellungen getEinstellungen()
 	{
 		return einstellungen;
+	}
+
+	@Override
+	public void fuegeSpielerHinzu(Spieler spieler)
+	{
+		this.spieler.add(spieler);
+		felder.get(0).betreteFeld(spieler, 0, wetter);
 	}
 }

@@ -1,6 +1,8 @@
 package de.dhpoly.feld.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Observable;
@@ -22,13 +24,15 @@ public class StrasseUI extends JPanel implements Observer
 	private JTextPane txtName = new JTextPane();
 	private JTextPane txtBesitzer = new JTextPane();
 
+	private Component pnlSpieler = new JPanel();
+
 	public StrasseUI(Strasse strasse)
 	{
 		this.strasse = strasse;
 		txtName.setText(strasse.getName());
 		update();
 
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new GridLayout(3, 1));
 
 		strasse.addObserver(this);
 
@@ -72,5 +76,9 @@ public class StrasseUI extends JPanel implements Observer
 			txtBesitzer.setText("Zu kaufen für " + strasse.getKaufpreis() + "€");
 			txtBesitzer.setBackground(Color.WHITE);
 		}
+
+		this.remove(pnlSpieler);
+		pnlSpieler = new FeldUI().getSpieler(strasse.getSpielerAufFeld());
+		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 }

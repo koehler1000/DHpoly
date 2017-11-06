@@ -1,5 +1,7 @@
 package de.dhpoly.feld.control;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Optional;
 
@@ -20,6 +22,7 @@ public class Strasse extends Observable implements Feld
 	private int kaufpreis;
 
 	private Felderverwaltung strassenverwaltung;
+	private List<Spieler> spieler = new ArrayList<>();
 
 	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe, String name)
 	{
@@ -135,6 +138,9 @@ public class Strasse extends Observable implements Feld
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter wetter)
 	{
 		spielerBetrittFeld(spieler, wetter);
+		this.spieler.add(spieler);
+		setChanged();
+		notifyObservers();
 	}
 
 	public void setEigentuemer(Spieler anbietender)
@@ -149,10 +155,17 @@ public class Strasse extends Observable implements Feld
 	}
 
 	@Override
-	public void verlasseFeld()
+	public void verlasseFeld(Spieler spieler)
 	{
-		// TODO Auto-generated method stub
+		this.spieler.remove(spieler);
+		setChanged();
+		notifyObservers();
+	}
 
+	@Override
+	public List<Spieler> getSpielerAufFeld()
+	{
+		return spieler;
 	}
 
 }
