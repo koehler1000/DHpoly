@@ -148,4 +148,11 @@ public class Strasse extends Observable implements Feld
 		return name;
 	}
 
+	@Override
+	public void verlasseFeld()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
 }

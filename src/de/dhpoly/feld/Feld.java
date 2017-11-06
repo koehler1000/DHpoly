@@ -8,4 +8,6 @@ public interface Feld
 	public String getBeschriftung();
 
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter);
+
+	public void verlasseFeld();
 }

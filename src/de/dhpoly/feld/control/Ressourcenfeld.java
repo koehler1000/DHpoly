@@ -31,4 +31,11 @@ public class Ressourcenfeld implements Feld
 	{
 		return ressource;
 	}
+
+	@Override
+	public void verlasseFeld()
+	{
+		// TODO Auto-generated method stub
+
+	}
 }

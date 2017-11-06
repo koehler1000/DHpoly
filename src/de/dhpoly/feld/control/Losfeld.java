@@ -26,4 +26,11 @@ public class Losfeld implements Feld
 		spieler.einzahlen(einstellungen.getBetragBetretenLos());
 	}
 
+	@Override
+	public void verlasseFeld()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
 }

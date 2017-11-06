@@ -28,4 +28,11 @@ public class Ereignisfeld implements Feld
 		spieler.zeigeKarte(karte);
 	}
 
+	@Override
+	public void verlasseFeld()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
 }
