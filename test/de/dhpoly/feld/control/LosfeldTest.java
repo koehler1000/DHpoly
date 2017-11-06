@@ -15,13 +15,15 @@ public class LosfeldTest
 {
 
 	@Test
-	public void test()
+	public void spielerBetrittLosUndErhaeltEingestelltesGeld()
 	{
-		Spieler s1 = SpielerImplTest.getDefaultSpieler(100);
+		int startgeld = 100;
+
+		Spieler s1 = SpielerImplTest.getDefaultSpieler(startgeld);
 		Losfeld los = new Losfeld(new EinstellungenImpl());
 		los.betreteFeld(s1, 2, Wetter.BEWOELKT);
 
-		assertThat(s1.getBargeld(), Is.is(2100));
+		assertThat(s1.getBargeld(), Is.is(new EinstellungenImpl().getBetragBetretenLos() + startgeld));
 	}
 
 	public static Feld getDefaultFeld()
