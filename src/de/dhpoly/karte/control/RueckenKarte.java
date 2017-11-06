@@ -24,4 +24,9 @@ public class RueckenKarte implements Karte
 		return "Sie werden verschoben...";
 	}
 
+	public Feld getZiel()
+	{
+		return zielFeld;
+	}
+
 }

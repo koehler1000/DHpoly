@@ -3,6 +3,7 @@ package de.dhpoly.kartenverbucher.control;
 import java.util.List;
 
 import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.spieler.Spieler;
 
@@ -50,5 +51,11 @@ public class KartenverbucherImpl implements Kartenverbucher
 			sender.auszahlen(betrag);
 			empfaenger.einzahlen(betrag);
 		}
+	}
+
+	@Override
+	public void bewegeSpieler(RueckenKarte karte, Spieler spieler)
+	{
+		karte.getZiel().betreteFeld(spieler, 0);
 	}
 }
