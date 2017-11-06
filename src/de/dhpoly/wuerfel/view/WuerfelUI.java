@@ -36,15 +36,7 @@ public class WuerfelUI extends JPanel
 	{
 		String wuerfelpfad = "wuerfel_" + nummer + ".png";
 		BufferedImage wuerfel_pic = null;
-		try
-		{
-			wuerfel_pic = ImageIO.read(new File(wuerfelpfad));
-		}
-		catch (IOException e)
-		{
-
-			e.printStackTrace();
-		}
+		wuerfel_pic = ImageIO.read(new File(wuerfelpfad));
 		JLabel wuerfel = new JLabel(new ImageIcon(wuerfel_pic));
 
 		return wuerfel;
