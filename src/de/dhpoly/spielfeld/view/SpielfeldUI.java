@@ -70,7 +70,6 @@ public class SpielfeldUI extends JPanel
 		{
 			for (int j = felderProSeite; j >= 0; j--)
 			{
-				System.out.println(felder[i][j] + " - " + i + " - " + j);
 				this.add(felder[i][j]);
 			}
 		}
