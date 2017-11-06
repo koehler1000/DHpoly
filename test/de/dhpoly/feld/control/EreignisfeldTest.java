@@ -117,6 +117,13 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 				return 0;
 			}
+
+			@Override
+			public int getSpielerNr()
+			{
+				// TODO Auto-generated method stub
+				return 0;
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
@@ -127,5 +134,4 @@ public class EreignisfeldTest
 
 		assertTrue(ereigniskarteGezeigt);
 	}
-
 }

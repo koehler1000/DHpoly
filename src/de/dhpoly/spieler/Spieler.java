@@ -31,4 +31,6 @@ public interface Spieler
 	public int getSteinVorrat();
 
 	public int getHolzVorrat();
+
+	int getSpielerNr();
 }

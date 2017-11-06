@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.view.KontoUI;
+import de.dhpoly.spieler.view.SpielerUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
@@ -25,7 +25,7 @@ public class SpielUI extends JPanel
 
 		for (Spieler spieler : spiel.getSpieler())
 		{
-			pnlKassen.add(new KontoUI(spieler));
+			pnlKassen.add(new SpielerUI(spieler));
 		}
 
 		this.add(pnlKassen, BorderLayout.EAST);

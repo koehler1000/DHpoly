@@ -2,6 +2,7 @@ package de.dhpoly.spieler.control;
 
 import java.util.Observable;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
@@ -22,6 +23,19 @@ public class SpielerImpl extends Observable implements Spieler
 		this.name = name;
 		this.spiel = spiel;
 		bargeld = startguthaben;
+	}
+
+	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
+	{
+		this.name = name;
+		this.spiel = spiel;
+		bargeld = einstellungen.getStartguthaben();
+	}
+
+	@Override
+	public int getSpielerNr()
+	{
+		return spiel.getSpieler().indexOf(this);
 	}
 
 	public int getFeldNr()

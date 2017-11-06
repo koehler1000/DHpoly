@@ -17,8 +17,8 @@ public class KontoUITest
 		JFrame frame = new JFrame("Test");
 		frame.setLayout(new GridLayout(2, 1));
 
-		frame.add(new KontoUI(spieler));
-		frame.add(new KontoUI(spieler2));
+		frame.add(new SpielerUI(spieler));
+		frame.add(new SpielerUI(spieler2));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 150);
 		frame.setVisible(true);

@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
-public class KontoUI extends JPanel implements Observer
+public class SpielerUI extends JPanel implements Observer
 {
 	private static final long serialVersionUID = 1L;
 
@@ -20,11 +20,11 @@ public class KontoUI extends JPanel implements Observer
 	private JTextArea txtKontostand;
 	private JTextArea txtName;
 
-	public KontoUI(Spieler spieler)
+	public SpielerUI(Spieler spieler)
 	{
 		this.spieler = spieler;
 
-		Color backcolor = Color.LIGHT_GRAY;
+		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
 		txtKontostand = new JTextArea(spieler.getBargeld() + "€");
 		txtKontostand.setEditable(false);
