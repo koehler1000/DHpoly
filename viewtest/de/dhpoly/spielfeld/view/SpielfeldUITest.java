@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.StrasseTest;
 
 public class SpielfeldUITest
@@ -16,7 +17,9 @@ public class SpielfeldUITest
 
 		List<Feld> felder = new ArrayList<>();
 
-		for (int i = 0; i < 40; i++)
+		felder.add(LosfeldTest.getDefaultFeld());
+
+		for (int i = 0; i < 39; i++)
 		{
 			felder.add(StrasseTest.getDefaultStrasse("Test " + i));
 		}

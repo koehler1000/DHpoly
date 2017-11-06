@@ -1,6 +1,10 @@
 package de.dhpoly.feld.view;
 
+import java.awt.Color;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Losfeld;
 
@@ -10,7 +14,10 @@ public class LosfeldUI extends JPanel
 
 	public LosfeldUI(Losfeld feld)
 	{
-		// TODO Auto-generated constructor stub
+		this.setBorder(new LineBorder(Color.BLACK));
+		this.setBackground(Color.WHITE);
+		JLabel lblLosBeschriftung = new JLabel(feld.getBeschriftung());
+		this.add(lblLosBeschriftung);
 	}
 
 }
