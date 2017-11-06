@@ -1,4 +1,4 @@
-package de.dhpoly.kartenstapel.control;
+package de.dhpoly.kartenverbucher.control;
 
 import static org.junit.Assert.assertThat;
 
@@ -9,8 +9,8 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.karte.control.BezahlKarte;
-import de.dhpoly.kartenstapel.Kartenverbucher;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;

@@ -7,7 +7,7 @@ import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
-import de.dhpoly.kartenstapel.control.KartenverbucherImpl;
+import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
