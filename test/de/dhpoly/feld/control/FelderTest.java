@@ -7,6 +7,7 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spiel.Spiel;
@@ -45,7 +46,7 @@ public class FelderTest
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
-		Spiel spiel = new SpielImpl(felder, spieler);
+		Spiel spiel = new SpielImpl(felder, spieler, new EinstellungenImpl());
 
 		spiel.ruecke(sp1, 2);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
@@ -67,7 +68,7 @@ public class FelderTest
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(sp1);
 
-		Spiel spiel = new SpielImpl(felder, spieler);
+		Spiel spiel = new SpielImpl(felder, spieler, new EinstellungenImpl());
 		spiel.ruecke(sp1, 4);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}

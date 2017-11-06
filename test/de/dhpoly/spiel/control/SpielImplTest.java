@@ -10,10 +10,10 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -33,7 +33,7 @@ public class SpielImplTest
 		felder.add(StrasseTest.getDefaultStrasse());
 		felder.add(StrasseTest.getDefaultStrasse());
 
-		spiel = new SpielImpl(felder, spieler);
+		spiel = new SpielImpl(felder, spieler, new EinstellungenImpl());
 	}
 
 	@Test
@@ -57,7 +57,8 @@ public class SpielImplTest
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 
-		assertThat(spiel.getAktuellerSpieler().getBargeld(), Is.is(geldVorDemLaufen + Balancing.UEBER_LOS));
+		assertThat(spiel.getAktuellerSpieler().getBargeld(),
+				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
 	}
 
 }

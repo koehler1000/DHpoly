@@ -2,6 +2,7 @@ package de.dhpoly.spiel.control;
 
 import java.util.List;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
@@ -10,7 +11,6 @@ import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.model.Balancing;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielImpl implements Spiel
@@ -19,11 +19,13 @@ public class SpielImpl implements Spiel
 	private List<Spieler> spieler;
 	private int aktuellerSpieler;
 	private Wetter wetter = Wetter.BEWOELKT;
+	private Einstellungen einstellungen;
 
-	public SpielImpl(List<Feld> felder, List<Spieler> spieler)
+	public SpielImpl(List<Feld> felder, List<Spieler> spieler, Einstellungen einstellungen)
 	{
 		this.felder = felder;
 		this.spieler = spieler;
+		this.einstellungen = einstellungen;
 		aktuellerSpieler = 0;
 	}
 
@@ -41,7 +43,7 @@ public class SpielImpl implements Spiel
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
-			spieler.einzahlen(Balancing.UEBER_LOS);
+			spieler.einzahlen(einstellungen.getBetragPassierenLos());
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme, wetter);
