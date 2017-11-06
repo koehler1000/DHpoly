@@ -8,7 +8,6 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
 
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
@@ -37,13 +36,13 @@ public class SpielerUI extends JPanel implements Observer
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
 		txtName.setBackground(backcolor);
 
-		update();
-
 		this.add(txtName);
 		this.add(txtKontostand);
 
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+		update();
 
 		SpielerImpl spielerImpl = (SpielerImpl) spieler;
 		spielerImpl.addObserver(this);
@@ -70,11 +69,12 @@ public class SpielerUI extends JPanel implements Observer
 
 		if (spieler.isAktuellerSpieler())
 		{
-			this.setBorder(new LineBorder(Color.WHITE));
+			System.out.println("aktuell: " + spieler.getName());
+			this.setBorder(BorderFactory.createLineBorder(Color.PINK));
 		}
 		else
 		{
-			this.setBorder(new LineBorder(Color.BLACK));
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 20));
 		}
 	}
 }

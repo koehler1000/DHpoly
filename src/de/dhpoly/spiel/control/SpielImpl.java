@@ -149,6 +149,8 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
+		spieler.setAkutellerSpieler(this.spieler.isEmpty());
+
 		this.spieler.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 	}
