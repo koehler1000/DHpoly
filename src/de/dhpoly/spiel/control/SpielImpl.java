@@ -1,5 +1,6 @@
 package de.dhpoly.spiel.control;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
@@ -17,22 +18,16 @@ import de.dhpoly.spieler.Spieler;
 public class SpielImpl implements Spiel
 {
 	private List<Feld> felder;
-	private List<Spieler> spieler;
+	private List<Spieler> spieler = new ArrayList<>();
 	private int aktuellerSpieler;
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
 
-	public SpielImpl(List<Feld> felder, List<Spieler> spieler, Einstellungen einstellungen)
+	public SpielImpl(List<Feld> felder, Einstellungen einstellungen)
 	{
 		this.felder = felder;
-		this.spieler = spieler;
 		this.einstellungen = einstellungen;
 		aktuellerSpieler = 0;
-
-		for (Spieler spieler2 : spieler)
-		{
-			felder.get(0).betreteFeld(spieler2, 0, wetter);
-		}
 	}
 
 	@Override

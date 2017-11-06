@@ -43,10 +43,9 @@ public class FelderTest
 		felder.add(getDefaultFeld(verwaltung));
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
-		List<Spieler> spieler = new ArrayList<>();
-		spieler.add(sp1);
 
-		Spiel spiel = new SpielImpl(felder, spieler, new EinstellungenImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl());
+		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 2);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
@@ -65,10 +64,10 @@ public class FelderTest
 		felder.add(getDefaultFeld(verwaltung));
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
-		List<Spieler> spieler = new ArrayList<>();
-		spieler.add(sp1);
 
-		Spiel spiel = new SpielImpl(felder, spieler, new EinstellungenImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl());
+		spiel.fuegeSpielerHinzu(sp1);
+
 		spiel.ruecke(sp1, 4);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}

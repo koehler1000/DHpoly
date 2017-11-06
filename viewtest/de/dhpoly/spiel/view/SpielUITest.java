@@ -24,7 +24,7 @@ public class SpielUITest
 		List<Spieler> spieler = new ArrayList<>();
 
 		Einstellungen einstellungen = new EinstellungenImpl();
-		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), spieler, einstellungen);
+		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen);
 
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen.getStartguthaben(), spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen.getStartguthaben(), spiel));
