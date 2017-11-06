@@ -81,6 +81,11 @@ public class SpielImplTest
 		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getHolzVorrat();
 		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getSteinVorrat();
 
+		for (int i = 0; i < spieler.size() + 1; i++)
+		{
+			spiel.naechsterSpieler();
+		}
+
 		assertThat(spiel.getAktuellerSpieler().getHolzVorrat(),
 				Is.is(holzVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
 		assertThat(spiel.getAktuellerSpieler().getSteinVorrat(),
