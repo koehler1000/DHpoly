@@ -24,9 +24,8 @@ public class LosfeldUI extends JPanel implements Observer
 		this.feld = feld;
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
-		this.setBackground(Color.WHITE);
-		JLabel lblLosBeschriftung = new JLabel(feld.getBeschriftung());
-		this.add(lblLosBeschriftung);
+
+		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 		update();
 	}
 

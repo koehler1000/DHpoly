@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,7 +31,7 @@ public class StrasseUI extends JPanel implements Observer
 		txtName.setText(strasse.getName());
 		update();
 
-		this.setLayout(new GridLayout(3, 1));
+		this.setLayout(new BorderLayout());
 
 		strasse.addObserver(this);
 
@@ -52,8 +51,8 @@ public class StrasseUI extends JPanel implements Observer
 		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
 		txtBesitzer.setBackground(backcolor);
 
-		this.add(txtBesitzer);
-		this.add(txtName);
+		this.add(txtBesitzer, BorderLayout.CENTER);
+		this.add(txtName, BorderLayout.NORTH);
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
