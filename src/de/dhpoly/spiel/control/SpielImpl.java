@@ -119,21 +119,25 @@ public class SpielImpl implements Spiel
 		return wetter.getMietbeeinflussung();
 	}
 
+	@Override
 	public List<Feld> getFelder()
 	{
 		return felder;
 	}
 
+	@Override
 	public List<Spieler> getSpieler()
 	{
 		return spieler;
 	}
 
+	@Override
 	public Wetter getWetter()
 	{
 		return wetter;
 	}
 
+	@Override
 	public Einstellungen getEinstellungen()
 	{
 		return einstellungen;
