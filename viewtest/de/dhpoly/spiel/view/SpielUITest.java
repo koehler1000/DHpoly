@@ -37,9 +37,18 @@ public class SpielUITest
 			{
 				while (true)
 				{
-					spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 					try
 					{
+						spiel.ruecke(spiel.getAktuellerSpieler(), 2);
+						spiel.naechsterSpieler();
+						Thread.sleep(1000);
+
+						spiel.ruecke(spiel.getAktuellerSpieler(), 3);
+						spiel.naechsterSpieler();
+						Thread.sleep(1000);
+
+						spiel.ruecke(spiel.getAktuellerSpieler(), 7);
+						spiel.naechsterSpieler();
 						Thread.sleep(1000);
 					}
 					catch (InterruptedException ex)
