@@ -59,6 +59,8 @@ public class SpielImpl implements Spiel
 	@Override
 	public void naechsterSpieler()
 	{
+		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
+
 		if (aktuellerSpieler + 1 >= spieler.size())
 		{
 			aktuellerSpieler = 0;
@@ -67,8 +69,9 @@ public class SpielImpl implements Spiel
 		else
 		{
 			aktuellerSpieler++;
-
 		}
+
+		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
 	}
 
 	private void vergebeRessourcen()

@@ -17,6 +17,7 @@ public class SpielerImpl extends Observable implements Spieler
 	private int holzVorrat = 0;
 	private int steinVorrat = 0;
 	private Spiel spiel;
+	private boolean aktuellerSpieler = false;
 
 	public SpielerImpl(String name, int startguthaben, Spiel spiel)
 	{
@@ -114,5 +115,19 @@ public class SpielerImpl extends Observable implements Spieler
 	public int getHolzVorrat()
 	{
 		return holzVorrat;
+	}
+
+	@Override
+	public void setAkutellerSpieler(boolean isAktuell)
+	{
+		aktuellerSpieler = isAktuell;
+		setChanged();
+		notifyObservers();
+	}
+
+	@Override
+	public boolean isAktuellerSpieler()
+	{
+		return aktuellerSpieler;
 	}
 }

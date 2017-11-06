@@ -6,31 +6,35 @@ import de.dhpoly.karte.Karte;
 
 public interface Spieler
 {
-	public int getBargeld();
+	int getBargeld();
 
-	public void einzahlen(int betrag);
+	void einzahlen(int betrag);
 
-	public void auszahlen(int betrag);
+	void auszahlen(int betrag);
 
-	public void ueberweiseGeld(int betrag, Spieler empfaenger);
+	void ueberweiseGeld(int betrag, Spieler empfaenger);
 
-	public boolean isNegative();
+	boolean isNegative();
 
-	public int getFeldNr();
+	int getFeldNr();
 
-	public String getName();
+	String getName();
 
-	public void setFeldNr(int feldNrSoll);
+	void setFeldNr(int feldNrSoll);
 
-	public void zeigeTransaktionsvorschlag(Transaktion transaktion);
+	void zeigeTransaktionsvorschlag(Transaktion transaktion);
 
-	public void zeigeKaufmoeglichkeit(Strasse strasse);
+	void zeigeKaufmoeglichkeit(Strasse strasse);
 
-	public void zeigeKarte(Karte karte);
+	void zeigeKarte(Karte karte);
 
-	public int getSteinVorrat();
+	int getSteinVorrat();
 
-	public int getHolzVorrat();
+	int getHolzVorrat();
 
 	int getSpielerNr();
+
+	void setAkutellerSpieler(boolean isAktuell);
+
+	boolean isAktuellerSpieler();
 }

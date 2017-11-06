@@ -8,6 +8,7 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
@@ -65,6 +66,15 @@ public class SpielerUI extends JPanel implements Observer
 		else
 		{
 			txtKontostand.setForeground(Color.RED);
+		}
+
+		if (spieler.isAktuellerSpieler())
+		{
+			this.setBorder(new LineBorder(Color.WHITE));
+		}
+		else
+		{
+			this.setBorder(new LineBorder(Color.BLACK));
 		}
 	}
 }

@@ -124,6 +124,20 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 				return 0;
 			}
+
+			@Override
+			public void setAkutellerSpieler(boolean isAktuell)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public boolean isAktuellerSpieler()
+			{
+				// TODO Auto-generated method stub
+				return false;
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
