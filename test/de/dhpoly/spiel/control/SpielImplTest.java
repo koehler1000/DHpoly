@@ -81,7 +81,7 @@ public class SpielImplTest
 		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getHolzVorrat();
 		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getSteinVorrat();
 
-		for (int i = 0; i < spieler.size() + 1; i++)
+		for (int i = 0; i < spieler.size(); i++)
 		{
 			spiel.naechsterSpieler();
 		}
