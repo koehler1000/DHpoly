@@ -2,7 +2,11 @@ package de.dhpoly.wuerfel;
 
 public interface Wuerfel
 {
-	public int wuerfeln();
+	void wuerfeln();
 
-	public boolean isPasch(int zahl1, int zahl2);
+	int getWuerfelErgebnisSumme();
+
+	int getWuerfelErgebnis2();
+
+	int getWuerfelErgebnis1();
 }

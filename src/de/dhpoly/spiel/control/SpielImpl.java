@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.fehler.control.FehlerImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
@@ -76,8 +75,8 @@ public class SpielImpl implements Spiel
 		// TODO Auto-generated method stub
 		// jeder der Holz oder Stein-Ressourcenquellen hat, soll je nach Einstellung
 		// Ressourcen erhalten
-		FehlerImpl.fehlerAufgetreten(
-				"SpielImpl teilt nicht die entsprechenden Ressourcen zu (siehe 'vergebeRessourcen();'");
+		// FehlerImpl.fehlerAufgetreten(
+		//		"SpielImpl teilt nicht die entsprechenden Ressourcen zu (siehe 'vergebeRessourcen();'");
 	}
 
 	@Override

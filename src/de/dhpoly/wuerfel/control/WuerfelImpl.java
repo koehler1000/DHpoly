@@ -1,14 +1,26 @@
 package de.dhpoly.wuerfel.control;
 
+import java.util.Observable;
 import java.util.Random;
 
 import de.dhpoly.wuerfel.Wuerfel;
 
-public class WuerfelImpl implements Wuerfel
+public class WuerfelImpl extends Observable implements Wuerfel
 {
+	private int wuerfelErgebnis1 = 1;
+	private int wuerfelErgebnis2 = 1;
 
 	@Override
-	public int wuerfeln()
+	public void wuerfeln()
+	{
+		wuerfelErgebnis1 = getWuerfelZufall();
+		wuerfelErgebnis2 = getWuerfelZufall();
+
+		setChanged();
+		notifyObservers();
+	}
+
+	public int getWuerfelZufall()
 	{
 		Random r = new Random();
 		int erg = 1 + r.nextInt(6);
@@ -16,14 +28,20 @@ public class WuerfelImpl implements Wuerfel
 	}
 
 	@Override
-	public boolean isPasch(int zahl1, int zahl2)
+	public int getWuerfelErgebnis1()
 	{
-		if(zahl1 == zahl2){
-			return true;
-		}
-		else{
-			return false;
-		}
+		return wuerfelErgebnis1;
 	}
 
+	@Override
+	public int getWuerfelErgebnis2()
+	{
+		return wuerfelErgebnis2;
+	}
+
+	@Override
+	public int getWuerfelErgebnisSumme()
+	{
+		return wuerfelErgebnis1 + wuerfelErgebnis2;
+	}
 }
