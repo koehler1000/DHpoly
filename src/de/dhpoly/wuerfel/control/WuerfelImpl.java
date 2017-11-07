@@ -30,7 +30,6 @@ public class WuerfelImpl extends Observable implements Wuerfel
 	@Override
 	public int getWuerfelErgebnis1()
 	{
-		System.out.println(wuerfelErgebnis1);
 		return wuerfelErgebnis1;
 	}
 
