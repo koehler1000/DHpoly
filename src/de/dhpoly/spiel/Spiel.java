@@ -15,6 +15,8 @@ public interface Spiel
 
 	void naechsterSpieler();
 
+	void ruecke();
+
 	void ruecke(Spieler spieler, int augensumme);
 
 	void ruecke(Spieler spieler, int augenzahl1, int augenzahl2);
