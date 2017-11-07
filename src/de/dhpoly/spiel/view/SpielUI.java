@@ -31,6 +31,9 @@ public class SpielUI extends JPanel
 
 		this.add(pnlKassen, BorderLayout.EAST);
 
-		this.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1), BorderLayout.SOUTH);
+		JPanel pnlWuerfel = new JPanel();
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
+		this.add(pnlWuerfel, BorderLayout.SOUTH);
 	}
 }

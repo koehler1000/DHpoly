@@ -40,15 +40,15 @@ public class SpielUITest
 				{
 					try
 					{
-						spiel.ruecke(spiel.getAktuellerSpieler(), 2);
+						spiel.ruecke();
 						spiel.naechsterSpieler();
 						Thread.sleep(1000);
 
-						spiel.ruecke(spiel.getAktuellerSpieler(), 3);
+						spiel.ruecke();
 						spiel.naechsterSpieler();
 						Thread.sleep(1000);
 
-						spiel.ruecke(spiel.getAktuellerSpieler(), 7);
+						spiel.ruecke();
 						spiel.naechsterSpieler();
 						Thread.sleep(1000);
 					}
