@@ -8,6 +8,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
+import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class SpielUITest
 {
@@ -18,7 +19,7 @@ public class SpielUITest
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Einstellungen einstellungen = new EinstellungenImpl();
-		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen);
+		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelImpl());
 
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen.getStartguthaben(), spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen.getStartguthaben(), spiel));

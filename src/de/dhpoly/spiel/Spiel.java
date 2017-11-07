@@ -7,6 +7,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.wuerfel.Wuerfel;
 
 public interface Spiel
 {
@@ -31,4 +32,6 @@ public interface Spiel
 	int getFaktorMiete();
 
 	void fuegeSpielerHinzu(Spieler spieler);
+
+	Wuerfel getWuerfel();
 }

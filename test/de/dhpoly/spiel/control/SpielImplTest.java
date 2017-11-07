@@ -17,6 +17,7 @@ import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class SpielImplTest
 {
@@ -29,7 +30,7 @@ public class SpielImplTest
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
 		felder.add(StrasseTest.getDefaultStrasse());
-		spiel = new SpielImpl(felder, new EinstellungenImpl());
+		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 	}
@@ -69,7 +70,7 @@ public class SpielImplTest
 		felder.add(feld);
 		Ressourcenfeld feld2 = new Ressourcenfeld(Ressource.STEIN);
 		felder.add(feld2);
-		spiel = new SpielImpl(felder, new EinstellungenImpl());
+		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 

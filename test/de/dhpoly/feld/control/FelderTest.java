@@ -14,6 +14,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class FelderTest
 {
@@ -44,7 +45,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 2);
@@ -65,7 +66,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 4);

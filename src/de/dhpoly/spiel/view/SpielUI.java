@@ -9,6 +9,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
+import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class SpielUI extends JPanel
@@ -21,7 +22,7 @@ public class SpielUI extends JPanel
 		this.add(new SpielfeldUI(spiel.getFelder()));
 
 		JPanel pnlKassen = new JPanel();
-		pnlKassen.setLayout(new GridLayout(spiel.getSpieler().size(),1));
+		pnlKassen.setLayout(new GridLayout(spiel.getSpieler().size(), 1));
 
 		for (Spieler spieler : spiel.getSpieler())
 		{
@@ -30,6 +31,6 @@ public class SpielUI extends JPanel
 
 		this.add(pnlKassen, BorderLayout.EAST);
 
-		this.add(new WuerfelUI(2, 3), BorderLayout.SOUTH);
+		this.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1), BorderLayout.SOUTH);
 	}
 }

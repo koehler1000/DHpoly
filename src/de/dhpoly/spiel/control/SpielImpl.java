@@ -13,6 +13,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.wuerfel.Wuerfel;
 
 public class SpielImpl implements Spiel
 {
@@ -21,12 +22,14 @@ public class SpielImpl implements Spiel
 	private int aktuellerSpieler;
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
+	private Wuerfel wuerfel;
 
-	public SpielImpl(List<Feld> felder, Einstellungen einstellungen)
+	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
 	{
 		this.felder = felder;
 		this.einstellungen = einstellungen;
 		aktuellerSpieler = 0;
+		this.wuerfel = wuerfel;
 	}
 
 	@Override
@@ -76,7 +79,8 @@ public class SpielImpl implements Spiel
 		// jeder der Holz oder Stein-Ressourcenquellen hat, soll je nach Einstellung
 		// Ressourcen erhalten
 		// FehlerImpl.fehlerAufgetreten(
-		//		"SpielImpl teilt nicht die entsprechenden Ressourcen zu (siehe 'vergebeRessourcen();'");
+		// "SpielImpl teilt nicht die entsprechenden Ressourcen zu (siehe
+		// 'vergebeRessourcen();'");
 	}
 
 	@Override
@@ -154,5 +158,11 @@ public class SpielImpl implements Spiel
 
 		this.spieler.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
+	}
+
+	@Override
+	public Wuerfel getWuerfel()
+	{
+		return wuerfel;
 	}
 }
