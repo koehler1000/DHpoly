@@ -1,6 +1,5 @@
 package de.dhpoly.wuerfel.view;
 
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class WuerfelUI extends JPanel implements Observer
 {
 	private static final long serialVersionUID = 1L;
 
-	private Component component = new JPanel();
+	private JLabel lblWuerfelBild = new JLabel();
 
 	private int wuerfelNr = 0;
 
@@ -32,17 +31,17 @@ public class WuerfelUI extends JPanel implements Observer
 		this.wuerfelNr = wuerfelNr;
 		wuerfel.addObserver(this);
 
+		this.add(lblWuerfelBild);
+
 		update();
 	}
 
-	private Component getWuerfel(int nummer) throws IOException
+	private ImageIcon getWuerfelBild(int nummer) throws IOException
 	{
 		String wuerfelpfad = "wuerfel_" + nummer + ".png";
 		BufferedImage wuerfel_pic = null;
 		wuerfel_pic = ImageIO.read(new File(wuerfelpfad));
-		JLabel wuerfel = new JLabel(new ImageIcon(wuerfel_pic));
-
-		return wuerfel;
+		return new ImageIcon(wuerfel_pic);
 	}
 
 	@Override
@@ -53,17 +52,15 @@ public class WuerfelUI extends JPanel implements Observer
 
 	private void update()
 	{
-		this.remove(component);
-
 		try
 		{
 			switch (wuerfelNr)
 			{
 				case 1:
-					component = getWuerfel(wuerfel.getWuerfelErgebnis1());
+					lblWuerfelBild.setIcon(getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
 					break;
 				case 2:
-					component = getWuerfel(wuerfel.getWuerfelErgebnis2());
+					lblWuerfelBild.setIcon(getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
 					break;
 			}
 		}
@@ -71,7 +68,5 @@ public class WuerfelUI extends JPanel implements Observer
 		{
 			FehlerImpl.fehlerAufgetreten(ex);
 		}
-
-		this.add(component);
 	}
 }
