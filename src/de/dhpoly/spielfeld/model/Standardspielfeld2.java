@@ -41,33 +41,33 @@ public class Standardspielfeld
 
 		standardfeld.add(new Losfeld(einstellungen));
 
-		standardfeld.add(new Strasse(verwaltung, 100, new int[] { 10, 11, 13, 15, 20, 30 }, 1, 1, "Ort2"));
+		standardfeld.add(new Strasse(verwaltung, 100, new int[] { 10, 11, 13, 15, 20, 30 }, 1, 1, "Dümmer"));
 
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 
 		standardfeld.add(new Ressourcenfeld(Ressource.STEIN));
 
-		standardfeld.add(new Strasse(verwaltung, 110, new int[] { 11, 12, 14, 16, 22, 33 }, 1, 1, "Ort2"));
+		standardfeld.add(new Strasse(verwaltung, 110, new int[] { 11, 12, 14, 16, 22, 33 }, 1, 1, "Wankendorf"));
 
 		standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
 
-		standardfeld.add(new Strasse(verwaltung, 150, new int[] { 15, 16, 19, 24, 30, 45 }, 1, 2, "Ort3"));
+		standardfeld.add(new Strasse(verwaltung, 150, new int[] { 15, 16, 19, 24, 30, 45 }, 1, 2, "Busenbach"));
 
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 
-		standardfeld.add(new Strasse(verwaltung, 160, new int[] { 16, 17, 20, 25, 32, 48 }, 1, 2, "Ort4"));
+		standardfeld.add(new Strasse(verwaltung, 160, new int[] { 16, 17, 20, 25, 32, 48 }, 1, 2, "Busendorf"));
 
-		standardfeld.add(new Strasse(verwaltung, 170, new int[] { 17, 18, 21, 25, 34, 51 }, 1, 2, "Ort5"));
+		standardfeld.add(new Strasse(verwaltung, 170, new int[] { 17, 18, 21, 25, 34, 51 }, 1, 2, "Fickmühlen"));
 
 		standardfeld.add(new Ereignisfeld(kartenstapelSuperevents));
 
-		standardfeld.add(new Strasse(verwaltung, 200, new int[] { 20, 22, 25, 30, 40, 60 }, 2, 3, "Ort6"));
+		standardfeld.add(new Strasse(verwaltung, 200, new int[] { 20, 22, 25, 30, 40, 60 }, 2, 3, "Sexau"));
 
-		standardfeld.add(new Strasse(verwaltung, 210, new int[] { 21, 22, 26, 31, 42, 63 }, 2, 3, "Ort7"));
+		standardfeld.add(new Strasse(verwaltung, 210, new int[] { 21, 22, 26, 31, 42, 63 }, 2, 3, "Todendorf"));
 
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 
-		standardfeld.add(new Strasse(verwaltung, 220, new int[] { 22, 24, 28, 33, 44, 66 }, 2, 3, "Ort8"));
+		standardfeld.add(new Strasse(verwaltung, 220, new int[] { 22, 24, 28, 33, 44, 66 }, 2, 3, "Rimsting"));
 
 		standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
 
