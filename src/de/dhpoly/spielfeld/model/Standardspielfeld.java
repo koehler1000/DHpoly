@@ -10,10 +10,8 @@ import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.Ereignisfeld;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.Losfeld;
-import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.kartenstapel.Kartenstapel;
@@ -22,22 +20,6 @@ import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 public class Standardspielfeld
 {
 	public List<Feld> getStandardSpielfeld()
-	{
-		List<Feld> standardfeld = new ArrayList<>();
-
-		standardfeld.add(LosfeldTest.getDefaultFeld());
-
-		for (int i = 0; i < 39; i++)
-		{
-			standardfeld.add(StrasseTest.getDefaultStrasse("Test " + i));
-		}
-
-		return standardfeld;
-
-		// return getAlexSpielfeld();
-	}
-
-	private List<Feld> getAlexSpielfeld()
 	{
 		List<Karte> karten = new ArrayList<>();
 
