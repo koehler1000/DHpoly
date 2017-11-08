@@ -80,7 +80,7 @@ public class SpielImpl implements Spiel
 
 	private void vergebeRessourcen()
 	{
-		// TODO Auto-generated method stub
+		// TODO Implementation
 		// jeder der Holz oder Stein-Ressourcenquellen hat, soll je nach Einstellung
 		// Ressourcen erhalten
 		// FehlerImpl.fehlerAufgetreten(

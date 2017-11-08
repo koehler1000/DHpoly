@@ -28,7 +28,8 @@ public class Ressourcenfeld extends Observable implements Feld
 	@Override
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		// TODO Auto-generated method stub
+		// TODO Was passiert, wenn Ressourcenfelder betreten werden?
+		
 		this.spieler.add(spieler);
 		setChanged();
 		notifyObservers();

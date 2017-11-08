@@ -30,112 +30,81 @@ public class EreignisfeldTest
 
 			@Override
 			public void zeigeTransaktionsvorschlag(Transaktion transaktion)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void zeigeKaufmoeglichkeit(Strasse strasse)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void zeigeKarte(Karte karte)
-			{
-				ereigniskarteGezeigt = true;
-			}
+			{}
 
 			@Override
 			public void ueberweiseGeld(int betrag, Spieler empfaenger)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void setFeldNr(int feldNrSoll)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public boolean isNegative()
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 
 			@Override
 			public String getName()
 			{
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			public int getFeldNr()
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public int getBargeld()
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public void einzahlen(int betrag)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void auszahlen(int betrag)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public int getSteinVorrat()
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public int getHolzVorrat()
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public int getSpielerNr()
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public void setAkutellerSpieler(boolean isAktuell)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public boolean isAktuellerSpieler()
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 		};
