@@ -13,15 +13,11 @@ public interface Spiel
 {
 	Spieler getAktuellerSpieler();
 
-	void naechsterSpieler();
-
-	void ruecke();
-
-	void verarbeiteKarte(Karte karte);
-
 	Einstellungen getEinstellungen();
 
 	Wetter getWetter();
+
+	Wuerfel getWuerfel();
 
 	List<Spieler> getSpieler();
 
@@ -29,7 +25,11 @@ public interface Spiel
 
 	int getFaktorMiete();
 
-	void fuegeSpielerHinzu(Spieler spieler);
+	void naechsterSpieler();
 
-	Wuerfel getWuerfel();
+	void ruecke();
+
+	void verarbeiteKarte(Karte karte);
+
+	void fuegeSpielerHinzu(Spieler spieler);
 }

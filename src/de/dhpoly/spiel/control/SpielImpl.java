@@ -32,6 +32,13 @@ public class SpielImpl implements Spiel
 		this.wuerfel = wuerfel;
 	}
 
+	@Override
+	public void ruecke()
+	{
+		wuerfel.wuerfeln();
+		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
+	}
+
 	protected void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
 	{
 		ruecke(spieler, augenzahl1 + augenzahl2);
@@ -164,10 +171,4 @@ public class SpielImpl implements Spiel
 		return wuerfel;
 	}
 
-	@Override
-	public void ruecke()
-	{
-		wuerfel.wuerfeln();
-		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
-	}
 }
