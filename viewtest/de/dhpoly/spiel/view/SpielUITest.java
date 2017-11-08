@@ -54,7 +54,6 @@ public class SpielUITest
 					}
 					catch (InterruptedException ex)
 					{
-						// TODO Auto-generated catch block
 						ex.printStackTrace();
 					}
 				}

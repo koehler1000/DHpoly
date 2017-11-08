@@ -33,7 +33,6 @@ public class WuerfelAnzeigeTest
 					}
 					catch (InterruptedException ex)
 					{
-						// TODO Auto-generated catch block
 						ex.printStackTrace();
 					}
 				}

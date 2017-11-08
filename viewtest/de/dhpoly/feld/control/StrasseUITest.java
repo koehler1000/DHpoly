@@ -35,7 +35,6 @@ public class StrasseUITest
 				}
 				catch (InterruptedException ex)
 				{
-					// TODO Auto-generated catch block
 					ex.printStackTrace();
 				}
 				if (strasse.isKaufbar())
