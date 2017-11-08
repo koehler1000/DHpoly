@@ -16,7 +16,7 @@ public class RessourcenfeldUI extends JPanel implements Observer
 {
 	private static final long serialVersionUID = 1L;
 
-	private Component pnlSpieler;
+	private Component pnlSpieler = new JPanel();
 
 	private Ressourcenfeld feld;
 

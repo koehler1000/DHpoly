@@ -15,14 +15,12 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.feld.model.Ressource;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class SpielImplTest
 {
-
-	private Spiel spiel;
+	private SpielImpl spiel;
 
 	@Before
 	public void vorbereitung()

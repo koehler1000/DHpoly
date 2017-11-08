@@ -10,7 +10,6 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -45,7 +44,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		SpielImpl spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 2);
@@ -66,7 +65,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		SpielImpl spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 4);

@@ -32,13 +32,11 @@ public class SpielImpl implements Spiel
 		this.wuerfel = wuerfel;
 	}
 
-	@Override
-	public void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
+	protected void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
 	{
 		ruecke(spieler, augenzahl1 + augenzahl2);
 	}
 
-	@Override
 	public void ruecke(Spieler spieler, int augensumme)
 	{
 		felder.get(spieler.getFeldNr()).verlasseFeld(spieler);
