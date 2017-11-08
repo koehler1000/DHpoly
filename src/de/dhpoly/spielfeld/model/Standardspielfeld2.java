@@ -19,7 +19,7 @@ import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 
-public class Standardspielfeld
+public class Standardspielfeld2
 {
 	public List<Feld> getStandardSpielfeld()
 	{
