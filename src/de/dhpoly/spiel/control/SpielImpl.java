@@ -28,8 +28,8 @@ public class SpielImpl implements Spiel
 	{
 		this.felder = felder;
 		this.einstellungen = einstellungen;
-		aktuellerSpieler = 0;
 		this.wuerfel = wuerfel;
+		this.aktuellerSpieler = 0;
 	}
 
 	@Override
@@ -39,17 +39,11 @@ public class SpielImpl implements Spiel
 		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
 	}
 
-	protected void ruecke(Spieler spieler, int augenzahl1, int augenzahl2)
-	{
-		ruecke(spieler, augenzahl1 + augenzahl2);
-	}
-
 	public void ruecke(Spieler spieler, int augensumme)
 	{
 		felder.get(spieler.getFeldNr()).verlasseFeld(spieler);
 
 		int feldNrSoll = spieler.getFeldNr() + augensumme;
-
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
@@ -170,5 +164,4 @@ public class SpielImpl implements Spiel
 	{
 		return wuerfel;
 	}
-
 }
