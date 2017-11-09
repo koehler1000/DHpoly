@@ -69,11 +69,11 @@ public class SpielerUI extends JPanel implements Observer
 
 		if (spieler.isAktuellerSpieler())
 		{
-			this.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 10));
 		}
 		else
 		{
-			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 20));
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 		}
 	}
 }
