@@ -43,5 +43,4 @@ public class EreignisfeldUI extends JPanel implements Observer
 		pnlSpieler = new FeldUI().getSpieler(feld.getSpielerAufFeld());
 		this.add(pnlSpieler);
 	}
-
 }
