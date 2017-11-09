@@ -14,7 +14,6 @@ public class FeldUI
 	public Component getSpieler(List<Spieler> spielerAufFeld)
 	{
 		JPanel pnlSpieler = new JPanel();
-
 		for (Spieler spieler : spielerAufFeld)
 		{
 			JLabel lblSp = new JLabel(spieler.getName());
@@ -23,7 +22,6 @@ public class FeldUI
 			pnlSp.add(lblSp);
 			pnlSpieler.add(pnlSp);
 		}
-
 		return pnlSpieler;
 	}
 }
