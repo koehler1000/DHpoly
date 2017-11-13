@@ -3,7 +3,7 @@ As a player
 I want trade with another player
 
   Scenario: successful trade
-  	Given It is my turn
+    Given It is my turn
     When I choose a player
     And I choose a street
     And I choose the ressources
@@ -13,7 +13,7 @@ I want trade with another player
     Then The ownerships should have transfered
     
   Scenario: unsuccessful trade
-  	Given It is my turn
+    Given It is my turn
     When I choose a player
     And I choose a street
     And I choose the ressources
