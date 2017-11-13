@@ -24,7 +24,6 @@ public class EreignisfeldUI extends JPanel implements Observer
 		pnlSpieler = new JPanel();
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
-
 		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 
 		update();
