@@ -1,15 +1,15 @@
 package de.dhpoly.spieler.control;
 
-import java.util.Observable;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
+import observerpattern.Beobachtbarer;
+import observerpattern.Beobachter;
 
-public class SpielerImpl extends Observable implements Spieler
+public class SpielerImpl extends Beobachtbarer implements Spieler
 {
 	private int feldNr = 0;
 	private String name;
@@ -70,15 +70,13 @@ public class SpielerImpl extends Observable implements Spieler
 	public void einzahlen(int betrag)
 	{
 		bargeld += betrag;
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	public void auszahlen(int betrag)
 	{
 		bargeld -= betrag;
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	public boolean isNegative()
@@ -129,8 +127,7 @@ public class SpielerImpl extends Observable implements Spieler
 	public void setAkutellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	@Override
@@ -138,4 +135,11 @@ public class SpielerImpl extends Observable implements Spieler
 	{
 		return aktuellerSpieler;
 	}
+
+	@Override
+	public void addBeobachterHinzu(Beobachter beobachter)
+	{
+		addBeobachter(beobachter);
+	}
+
 }

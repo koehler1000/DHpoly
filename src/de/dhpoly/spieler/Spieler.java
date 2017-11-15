@@ -3,6 +3,7 @@ package de.dhpoly.spieler;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import observerpattern.Beobachter;
 
 public interface Spieler
 {
@@ -37,4 +38,6 @@ public interface Spieler
 	void setAkutellerSpieler(boolean isAktuell);
 
 	boolean isAktuellerSpieler();
+
+	void addBeobachterHinzu(Beobachter beobachter);
 }

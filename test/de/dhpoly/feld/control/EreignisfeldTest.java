@@ -15,6 +15,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.spieler.Spieler;
+import observerpattern.Beobachter;
 
 public class EreignisfeldTest
 {
@@ -110,6 +111,10 @@ public class EreignisfeldTest
 			{
 				return false;
 			}
+
+			@Override
+			public void addBeobachterHinzu(Beobachter beobachter)
+			{}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
