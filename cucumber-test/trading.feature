@@ -4,7 +4,7 @@ I want trade with another player
 
   Scenario: successful trade
   	Given It is my turn
-   And The other player will accept my trading offer
+    And The other player will accept my trading offer
     Given It is my turn
     When I choose a player
     And I choose a street
@@ -16,7 +16,7 @@ I want trade with another player
     
   Scenario: unsuccessful trade
   	Given It is my turn
-   And The other player will deny my trading offer
+    And The other player will deny my trading offer
     Given It is my turn
     When I choose a player
     And I choose a street
