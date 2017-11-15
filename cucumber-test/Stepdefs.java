@@ -4,7 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class Stepdefs {
+public class Stepdefs { 
     
     @Given("^It is my turn$")
     public void it_is_my_turn() throws Throwable {
@@ -109,4 +109,15 @@ public class Stepdefs {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+    
+    @And("^The other player will deny my trading offer$")
+    public void the_other_player_will_deny_my_trading_offer() throws Throwable {
+        throw new PendingException();
+    }
+
+    @And("^The other player will accept my trading offer$")
+    public void the_other_player_will_accept_my_trading_offer() throws Throwable {
+        throw new PendingException();
+    }
+
 }
