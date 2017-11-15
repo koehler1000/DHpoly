@@ -14,4 +14,14 @@ public interface Feld
 	public void verlasseFeld(Spieler spieler);
 
 	public List<Spieler> getSpielerAufFeld();
+
+	public default boolean gehoertSpieler(Spieler spieler)
+	{
+		return false;
+	}
+
+	public default boolean isKaufbar()
+	{
+		return false;
+	}
 }
