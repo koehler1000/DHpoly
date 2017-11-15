@@ -15,15 +15,5 @@
 	<classpathentry kind="src" path="cucumber"/>
 	<classpathentry kind="src" path="cucumber-test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cobertura-2.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cucumber-core-1.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cucumber-java-1.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cucumber-junit-1.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cucumber-jvm-deps-1.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/cucumber-reporting-0.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/gherkin-2.12.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/drive-download-20171112T142023Z-001/mockito-all-2.0.2-beta.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Sven/Downloads/selenium-server-standalone-3.7.1.jar"/>
 	<classpathentry kind="output" path="DHpoly/bin"/>
 </classpath>
