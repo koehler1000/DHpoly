@@ -73,8 +73,8 @@ public class StrasseUI extends JPanel implements Observer
 		if (strasse.getEigentuemer().isPresent())
 		{
 			txtBesitzer.setText(strasse.getEigentuemer().get().getName());
-			// txtBesitzer.setBackground(Color.GREEN);
 			Color farbe = SpielerFarben.getSpielerfarbe(strasse.getEigentuemer().get().getSpielerNr());
+			txtBesitzer.setBackground(farbe);
 			txtName.setBorder(new LineBorder(farbe));
 		}
 		else
