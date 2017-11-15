@@ -169,4 +169,9 @@ public class Strasse extends Observable implements Feld
 	{
 		return kaufpreis;
 	}
+
+	public boolean gehoertSpieler(Spieler spieler)
+	{
+		return (isVerkauft() && eigentuemer.get() == spieler);
+	}
 }
