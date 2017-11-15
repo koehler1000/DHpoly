@@ -80,7 +80,7 @@ public class RessourcenfeldUI extends JPanel implements Observer
 		
 		try
 		{
-			return new ImageIcon(ImageIO.read(new File(res.toString() + ".png")));
+			return new ImageIcon(ImageIO.read(new File(".\\src\\de\\dhpoly\\feld\\view\\ressourcen\\"+res.toString() + ".png")));
 		}
 		catch (IOException ex)
 		{
