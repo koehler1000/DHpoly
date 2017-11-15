@@ -17,7 +17,7 @@ public class Strasse extends Observable implements Feld
 
 	private int haueser = 0;
 	private boolean hypothek = false;
-	private int seite;
+	private int kostenHaus;
 	private int gruppe;
 	private String name;
 	private int kaufpreis;
@@ -25,11 +25,12 @@ public class Strasse extends Observable implements Feld
 	private Felderverwaltung strassenverwaltung;
 	private List<Spieler> spieler = new ArrayList<>();
 
-	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int seite, int gruppe, String name)
+	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int kostenHaus, int gruppe,
+			String name)
 	{
 		this.strassenverwaltung = strassenverwaltung;
 		this.miete = miete;
-		this.seite = seite;
+		this.kostenHaus = kostenHaus;
 		this.gruppe = gruppe;
 		this.name = name;
 		this.kaufpreis = kaufpreis;
@@ -151,7 +152,7 @@ public class Strasse extends Observable implements Feld
 
 	public int getSeite()
 	{
-		return seite;
+		return kostenHaus;
 	}
 
 	public int getGruppe()
