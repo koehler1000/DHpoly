@@ -33,18 +33,28 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	@Override
 	public boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
 	{
-		if (feld instanceof Strasse)
-		{
-			Strasse strasse = (Strasse) feld;
-			return (strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get() == moeglicherEigentuemer);
-		}
-
-		return false;
+		return feld.gehoertSpieler(moeglicherEigentuemer);
 	}
 
 	@Override
 	public void setFelder(List<Feld> felder)
 	{
 		this.felder = felder;
+	}
+
+	@Override
+	public List<Feld> getFelder(Spieler spieler)
+	{
+		List<Feld> felderVonSpieler = new ArrayList<>();
+
+		for (Feld feld : felder)
+		{
+			if (isEigentuemer(feld, spieler))
+			{
+				felderVonSpieler.add(feld);
+			}
+		}
+
+		return felderVonSpieler;
 	}
 }
