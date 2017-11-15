@@ -11,6 +11,8 @@ import de.dhpoly.spieler.Spieler;
 
 public class StrasseKaufenUI extends JFrame
 {
+	private static final long serialVersionUID = 1L;
+
 	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
 	{
 		this.setLayout(new GridLayout(1, 2));
