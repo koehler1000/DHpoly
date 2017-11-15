@@ -13,9 +13,10 @@ import de.dhpoly.spieler.Spieler;
 public class Strasse extends Observable implements Feld
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
+	private int[] miete = new int[6];
+
 	private int haueser = 0;
 	private boolean hypothek = false;
-	private int[] miete = new int[6];
 	private int seite;
 	private int gruppe;
 	private String name;
@@ -34,7 +35,28 @@ public class Strasse extends Observable implements Feld
 		this.kaufpreis = kaufpreis;
 	}
 
-	public boolean isKaufbar()
+	@Override
+	public void betreteFeld(Spieler spieler, int augensumme, Wetter wetter)
+	{
+		spielerBetrittFeld(spieler, wetter);
+		this.spieler.add(spieler);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
+	{
+		if (isVerkauft())
+		{
+			zahle(spieler, wetter);
+		}
+		else
+		{
+			spieler.zeigeKaufmoeglichkeit(this);
+		}
+	}
+
+	boolean isKaufbar()
 	{
 		return !isVerkauft();
 	}
@@ -61,18 +83,6 @@ public class Strasse extends Observable implements Feld
 		}
 	}
 
-	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
-	{
-		if (eigentuemer.isPresent())
-		{
-			zahle(spieler, wetter);
-		}
-		else
-		{
-			spieler.zeigeKaufmoeglichkeit(this);
-		}
-	}
-
 	private void zahle(Spieler zahlender, Wetter wetter)
 	{
 		if (!hypothek)
@@ -92,6 +102,31 @@ public class Strasse extends Observable implements Feld
 		{
 			return miete[haueser];
 		}
+	}
+
+	public void setEigentuemer(Spieler anbietender)
+	{
+		eigentuemer = Optional.ofNullable(anbietender);
+	}
+
+	@Override
+	public void verlasseFeld(Spieler spieler)
+	{
+		this.spieler.remove(spieler);
+		setChanged();
+		notifyObservers();
+	}
+
+	@Override
+	public String getBeschriftung()
+	{
+		return name;
+	}
+
+	@Override
+	public List<Spieler> getSpielerAufFeld()
+	{
+		return spieler;
 	}
 
 	public Optional<Spieler> getEigentuemer()
@@ -133,44 +168,4 @@ public class Strasse extends Observable implements Feld
 	{
 		return kaufpreis;
 	}
-
-	public Felderverwaltung getStrassenverwaltung()
-	{
-		return strassenverwaltung;
-	}
-
-	@Override
-	public void betreteFeld(Spieler spieler, int augensumme, Wetter wetter)
-	{
-		spielerBetrittFeld(spieler, wetter);
-		this.spieler.add(spieler);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setEigentuemer(Spieler anbietender)
-	{
-		eigentuemer = Optional.ofNullable(anbietender);
-	}
-
-	@Override
-	public String getBeschriftung()
-	{
-		return name;
-	}
-
-	@Override
-	public void verlasseFeld(Spieler spieler)
-	{
-		this.spieler.remove(spieler);
-		setChanged();
-		notifyObservers();
-	}
-
-	@Override
-	public List<Spieler> getSpielerAufFeld()
-	{
-		return spieler;
-	}
-
 }
