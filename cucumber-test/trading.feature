@@ -3,7 +3,7 @@ As a player
 I want trade with another player
 
   Scenario: successful trade
-  Given It is my turn
+    Given It is my turn
     And The other player will accept my trading offer
     Given It is my turn
     When I choose a player
@@ -15,7 +15,7 @@ I want trade with another player
     Then The ownerships should have transfered
     
   Scenario: unsuccessful trade
-  Given It is my turn
+    Given It is my turn
     And The other player will deny my trading offer
     Given It is my turn
     When I choose a player
