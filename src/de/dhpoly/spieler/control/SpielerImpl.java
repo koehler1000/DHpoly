@@ -2,6 +2,7 @@ package de.dhpoly.spieler.control;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.spiel.Spiel;
@@ -94,8 +95,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
-		// TODO Auto-generated method stub
-
+		new StrasseKaufenUI(strasse, this);
 	}
 
 	@Override
