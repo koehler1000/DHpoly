@@ -36,7 +36,12 @@ public class Strasse extends Observable implements Feld
 
 	public boolean isKaufbar()
 	{
-		return !eigentuemer.isPresent();
+		return !isVerkauft();
+	}
+
+	public boolean isVerkauft()
+	{
+		return eigentuemer.isPresent();
 	}
 
 	public void kaufe(Spieler potentiellerKaeufer)
