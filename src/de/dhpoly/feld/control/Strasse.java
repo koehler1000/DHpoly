@@ -56,7 +56,7 @@ public class Strasse extends Observable implements Feld
 		}
 	}
 
-	boolean isKaufbar()
+	public boolean isKaufbar()
 	{
 		return !isVerkauft();
 	}

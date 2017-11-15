@@ -10,10 +10,12 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.border.LineBorder;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.spieler.view.SpielerFarben;
 
 public class StrasseUI extends JPanel implements Observer
 {
@@ -55,6 +57,9 @@ public class StrasseUI extends JPanel implements Observer
 		this.add(txtName, BorderLayout.NORTH);
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+		// TODO setColor to black if not bought, else set Color to PlayerColor
+
 	}
 
 	@Override
@@ -74,6 +79,16 @@ public class StrasseUI extends JPanel implements Observer
 		{
 			txtBesitzer.setText("Zu kaufen für " + strasse.getKaufpreis() + "€");
 			txtBesitzer.setBackground(Color.WHITE);
+		}
+
+		if (strasse.getEigentuemer().isPresent() == false)
+		{
+			txtName.setBorder(new LineBorder(Color.black, 1));
+		}
+		else
+		{
+			Color farbe = SpielerFarben.getSpielerfarbe(strasse.getEigentuemer().get().getSpielerNr());
+			txtName.setBorder(new LineBorder(farbe));
 		}
 
 		this.remove(pnlSpieler);

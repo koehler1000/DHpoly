@@ -36,7 +36,15 @@ public class SpielerImpl extends Observable implements Spieler
 	@Override
 	public int getSpielerNr()
 	{
-		return spiel.getSpieler().indexOf(this);
+		if (spiel != null)
+		{
+			return spiel.getSpieler().indexOf(this);
+		}
+		else
+		{
+			// für Testzwecke
+			return 0;
+		}
 	}
 
 	public int getFeldNr()

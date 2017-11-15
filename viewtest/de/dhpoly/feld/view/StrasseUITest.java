@@ -1,10 +1,11 @@
-package de.dhpoly.feld.control;
+package de.dhpoly.feld.view;
 
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
-import de.dhpoly.feld.view.StrasseUI;
+import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class StrasseUITest
