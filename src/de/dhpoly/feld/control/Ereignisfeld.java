@@ -49,5 +49,4 @@ public class Ereignisfeld extends Observable implements Feld
 	{
 		return spieler;
 	}
-
 }
