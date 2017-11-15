@@ -28,10 +28,7 @@ public class Losfeld extends Observable implements Feld
 	@Override
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		if (augensumme > 2)
-		{
-			spieler.einzahlen(einstellungen.getBetragBetretenLos());
-		}
+		spieler.einzahlen(einstellungen.getBetragBetretenLos());
 		this.spieler.add(spieler);
 		setChanged();
 		notifyObservers();
