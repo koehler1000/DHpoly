@@ -38,7 +38,10 @@ public class EreignisfeldTest
 
 			@Override
 			public void zeigeKarte(Karte karte)
-			{}
+			{
+				ereigniskarteGezeigt = true;
+
+			}
 
 			@Override
 			public void ueberweiseGeld(int betrag, Spieler empfaenger)
