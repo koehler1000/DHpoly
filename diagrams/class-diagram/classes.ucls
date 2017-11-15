@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="de.dhpoly.spielfeld.model.Standardspielfeld2" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/model/Standardspielfeld2.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="186" x="212" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="de.dhpoly.feld.control.FelderverwaltungImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control/FelderverwaltungImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="268" x="7902" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="3" language="java" name="de.dhpoly.spieler.view" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="147" x="438" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="de.dhpoly.spielfeld.model.Standardspielfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/model/Standardspielfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="186" x="625" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="5" language="java" name="de.dhpoly.kartenstapel.model.GeldTransfer" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/model/GeldTransfer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="223" x="7287" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="6" language="java" name="de.dhpoly.karte.control.RueckenKarte" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/control/RueckenKarte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="147" x="7715" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="7" language="java" name="de.dhpoly.spielfeld" project="DHpoly" file="/DHpoly/src/de/dhpoly/spielfeld" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="128" x="851" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="de.dhpoly.spiel.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spiel/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="150" x="1019" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="9" language="java" name="de.dhpoly.feld.view" project="DHpoly" file="/DHpoly/src/de/dhpoly/feld/view" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="130" x="1209" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="10" language="java" name="de.dhpoly.spielfeld.Spielfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/Spielfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="186" x="11444" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="11" language="java" name="de.dhpoly.feld.view.ressourcen" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/ressourcen" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="199" x="1379" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="12" language="java" name="de.dhpoly.feld.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="144" x="1618" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="13" language="java" name="de.dhpoly.spielfeld.view.SpielfeldUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/view/SpielfeldUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="155" x="1802" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="14" language="java" name="de.dhpoly.feld.Feld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/Feld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="192" x="9434" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="15" language="java" name="de.dhpoly.kartenverbucher.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenverbucher/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="217" x="1997" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="16" language="java" name="de.dhpoly.fehler" project="DHpoly" file="/DHpoly/src/de/dhpoly/fehler" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="113" x="2254" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="17" language="java" name="de.dhpoly.kartenstapel.view" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="181" x="2407" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="18" language="java" name="de.dhpoly.kartenstapel.model" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="190" x="2628" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="19" language="java" name="de.dhpoly.spieler.view.SpielerUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/view/SpielerUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="148" x="9246" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="de.dhpoly.Main" project="DHpoly" file="/DHpoly/src/de/dhpoly/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="2858" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="de.dhpoly.feld.control.Strasse" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control/Strasse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="603" width="250" x="8956" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="de.dhpoly.feld.view.StrasseUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/StrasseUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="180" x="9214" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="de.dhpoly.einstellungen.control.EinstellungenImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/einstellungen/control/EinstellungenImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="181" x="8735" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="de.dhpoly.spiel.Spiel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spiel/Spiel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="178" x="10234" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="25" language="java" name="de.dhpoly.feld.model" project="DHpoly" file="/DHpoly/src/de/dhpoly/feld/model" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="139" x="3011" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <enumeration id="26" language="java" name="de.dhpoly.karte.model.Wetter" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/model/Wetter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="150" x="8505" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="27" language="java" name="de.dhpoly.kartenstapel.model.BezahlZiel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/model/BezahlZiel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="169" x="3190" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="28" language="java" name="de.dhpoly.kartenstapel.control.KartenstapelImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/control/KartenstapelImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="181" x="8210" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="de.dhpoly.handel.model.Transaktion" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/handel/model/Transaktion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="276" x="9666" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="30" language="java" name="de.dhpoly.karte.Karte" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/Karte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="147" x="7685" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="31" language="java" name="de.dhpoly.fehler.control.TelegramNotification" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/fehler/control/TelegramNotification.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="227" x="3399" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="32" language="java" name="de.dhpoly.einstellungen.Einstellungen" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/einstellungen/Einstellungen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="181" x="9213" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="33" language="java" name="de.dhpoly.wuerfel" project="DHpoly" file="/DHpoly/src/de/dhpoly/wuerfel" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="123" x="3666" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="34" language="java" name="observerpattern.Beobachtbarer" project="DHpoly" 
+    file="/DHpoly/src/observerpattern/Beobachtbarer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="187" x="9654" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="35" language="java" name="de.dhpoly.wuerfel.Wuerfel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/wuerfel/Wuerfel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="178" x="11006" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="36" language="java" name="observerpattern.Beobachter" project="DHpoly" 
+    file="/DHpoly/src/observerpattern/Beobachter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="105" x="8695" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="37" language="java" name="de.dhpoly.feld.Felderverwaltung" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/Felderverwaltung.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="268" x="8197" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="38" language="java" name="de.dhpoly.spielfeld.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="171" x="3829" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="39" language="java" name="de.dhpoly.feld.control.Losfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control/Losfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="192" x="9434" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="de.dhpoly.spiel.control.SpielImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spiel/control/SpielImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="387" width="231" x="9982" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="41" language="java" name="de.dhpoly.kartenstapel.Kartenstapel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/Kartenstapel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="104" x="9666" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="42" language="java" name="de.dhpoly.handel.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/handel/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="161" x="4040" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="43" language="java" name="de.dhpoly.karte.control.BezahlKarte" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/control/BezahlKarte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="201" x="7287" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="44" language="java" name="de.dhpoly.spieler.Spieler" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/Spieler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="249" x="9810" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="45" language="java" name="de.dhpoly.feld.control.Ressourcenfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control/Ressourcenfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="192" x="10774" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="46" language="java" name="de.dhpoly.karte.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="153" x="4241" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="47" language="java" name="de.dhpoly.spieler.view.SpielerFarben" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/view/SpielerFarben.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="147" x="4434" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="48" language="java" name="de.dhpoly.fehler.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/fehler/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="155" x="4621" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="49" language="java" name="de.dhpoly.kartenverbucher" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenverbucher" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="175" x="4816" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="50" language="java" name="de.dhpoly.karte.model" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="148" x="5031" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="51" language="java" name="de.dhpoly.spieler.control.SpielerImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/control/SpielerImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="249" x="10485" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="de.dhpoly.wuerfel.control.WuerfelImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/wuerfel/control/WuerfelImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="178" x="11006" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="de.dhpoly.wuerfel.view.WuerfelUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/wuerfel/view/WuerfelUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="180" x="11224" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="54" language="java" name="observerpattern" project="DHpoly" file="/DHpoly/src/observerpattern" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="116" x="5219" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="55" language="java" name="de.dhpoly.kartenstapel.view.KartenOberflaeche" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/view/KartenOberflaeche.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="185" x="5375" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="de.dhpoly.spieler.view.StrassenbesitzeUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/view/StrassenbesitzeUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="243" x="8431" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="de.dhpoly.feld.view.LosfeldUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/LosfeldUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="180" x="9434" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="58" language="java" name="de.dhpoly.kartenstapel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="152" x="5600" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="59" language="java" name="de.dhpoly.spielfeld.model" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="166" x="5792" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="60" language="java" name="de.dhpoly.karte" project="DHpoly" file="/DHpoly/src/de/dhpoly/karte" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="110" x="5998" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="61" language="java" name="de.dhpoly.spiel.view" project="DHpoly" file="/DHpoly/src/de/dhpoly/spiel/view" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="136" x="6148" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="62" language="java" name="de.dhpoly.handel" project="DHpoly" file="/DHpoly/src/de/dhpoly/handel" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="118" x="6324" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="63" language="java" name="de.dhpoly.kartenverbucher.Kartenverbucher" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenverbucher/Kartenverbucher.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="279" x="11670" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="64" language="java" name="de.dhpoly.spielfeld.control.SpielfeldImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/control/SpielfeldImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="186" x="11444" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="de.dhpoly.spielfeld.model.Strassenspielfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/model/Strassenspielfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="186" x="6482" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="66" language="java" name="de.dhpoly.handel.model" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/handel/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="156" x="6708" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="67" language="java" name="de.dhpoly.feld.view.StrasseInfoUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/StrasseInfoUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="150" x="6904" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="de.dhpoly.feld.view.EreignisfeldUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/EreignisfeldUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="180" x="10253" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="69" language="java" name="de.dhpoly.wuerfel.view" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/wuerfel/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="152" x="7094" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="70" language="java" name="de.dhpoly.feld.view.FeldUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/FeldUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="7286" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="de.dhpoly.kartenverbucher.control.KartenverbucherImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenverbucher/control/KartenverbucherImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="279" x="11670" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="72" language="java" name="de.dhpoly.wuerfel.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/wuerfel/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="166" x="7527" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <enumeration id="73" language="java" name="de.dhpoly.feld.model.Ressource" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/model/Ressource.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="119" x="10774" y="1053"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="74" language="java" name="de.dhpoly.feld.view.StrasseKaufenUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/StrasseKaufenUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="190" x="7733" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="de.dhpoly.handel.control.HandelImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/handel/control/HandelImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="245" x="11989" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="76" language="java" name="de.dhpoly.spieler" project="DHpoly" file="/DHpoly/src/de/dhpoly/spieler" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="119" x="7963" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="77" language="java" name="de.dhpoly.fehler.Fehler" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/fehler/Fehler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="190" x="12274" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="78" language="java" name="de.dhpoly.spieler.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spieler/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="161" x="8122" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="79" language="java" name="de.dhpoly.handel.Handel" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/handel/Handel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="213" x="11989" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="80" language="java" name="de.dhpoly.spiel" project="DHpoly" file="/DHpoly/src/de/dhpoly/spiel" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="107" x="8323" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="81" language="java" name="de.dhpoly.feld" project="DHpoly" file="/DHpoly/src/de/dhpoly/feld" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="101" x="8470" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="82" language="java" name="de.dhpoly.fehler.control.FehlerImpl" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/fehler/control/FehlerImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="190" x="12274" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="83" language="java" name="de.dhpoly.kartenstapel.control" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/kartenstapel/control" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="195" x="8611" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="84" language="java" name="de.dhpoly.feld.control.Ereignisfeld" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/control/Ereignisfeld.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="192" x="10253" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="de.dhpoly.spiel.view.SpielUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spiel/view/SpielUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="131" x="8846" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="86" language="java" name="de.dhpoly.spielfeld.view" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/spielfeld/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="157" x="9017" y="163"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="87" language="java" name="de.dhpoly.karte.control.WetterKarte" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/karte/control/WetterKarte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="147" x="7528" y="410"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="88" language="java" name="de.dhpoly.feld.view.RessourcenfeldUI" project="DHpoly" 
+    file="/DHpoly/src/de/dhpoly/feld/view/RessourcenfeldUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="229" x="10774" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="89">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="90" name="spieler"/>      
+      <multiplicity id="91" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="93" name="spieler"/>      
+      <multiplicity id="94" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="95">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="30"/>  
+  </realization>  
+  <realization id="96">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="97">    
+    <bendpoint x="8704" y="410"/>    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="98" name="beobachter"/>      
+      <multiplicity id="99" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="101" name="spieler"/>      
+      <multiplicity id="102" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="103">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="41"/>  
+  </realization>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="34"/>  
+  </generalization>  
+  <association id="105">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="106" name="felder"/>      
+      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="108">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="109">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="110" name="einstellungen"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="112">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <association id="113">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="114" name="handelspartner"/>      
+      <multiplicity id="115" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="117" name="spieler"/>      
+      <multiplicity id="118" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="119">    
+    <end type="SOURCE" refId="71"/>    
+    <end type="TARGET" refId="63"/>  
+  </realization>  
+  <association id="120">    
+    <end type="SOURCE" refId="87" navigable="false">      
+      <attribute id="121" name="wetter"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="124" name="spiel"/>      
+      <multiplicity id="125" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="126">    
+    <end type="SOURCE" refId="84"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="127">    
+    <end type="SOURCE" refId="88" navigable="false">      
+      <attribute id="128" name="feld"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="131" name="felderverwaltung"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="134" name="ressource"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="73" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="136">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="44"/>  
+  </realization>  
+  <association id="137">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="138" name="felderBekommen"/>      
+      <multiplicity id="139" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="141" name="transfer"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="144" name="feld"/>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="146">    
+    <end type="SOURCE" refId="82"/>    
+    <end type="TARGET" refId="77"/>  
+  </realization>  
+  <association id="147">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="148" name="zielFeld"/>      
+      <multiplicity id="149" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="150">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="151">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="152" name="spieler"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="155" name="strasse"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="157">    
+    <end type="SOURCE" refId="52"/>    
+    <end type="TARGET" refId="35"/>  
+  </realization>  
+  <association id="158">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="159" name="wuerfel"/>      
+      <multiplicity id="160" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="161">    
+    <end type="SOURCE" refId="87"/>    
+    <end type="TARGET" refId="30"/>  
+  </realization>  
+  <realization id="162">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="79"/>  
+  </realization>  
+  <realization id="163">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="164">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="165" name="strassenverwaltung"/>      
+      <multiplicity id="166" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="167">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <realization id="168">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <realization id="169">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="30"/>  
+  </realization>  
+  <realization id="170">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="171">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="172" name="wetter"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="174">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="175" name="wuerfel"/>      
+      <multiplicity id="176" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="177">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="178" name="felder"/>      
+      <multiplicity id="179" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="180">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="181">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="182" name="einstellungen"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="185" name="anbietender"/>      
+      <multiplicity id="186" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="187">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="188" name="karten"/>      
+      <multiplicity id="189" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="191" name="spieler"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="194" name="felderGeben"/>      
+      <multiplicity id="195" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="197" name="kartenstapel"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="199">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="200" name="feld"/>      
+      <multiplicity id="201" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="84" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="202">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="203" name="spieler"/>      
+      <multiplicity id="204" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
