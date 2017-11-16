@@ -32,12 +32,15 @@ public class SpielUI extends JPanel
 
 		this.add(pnlKassen, BorderLayout.EAST);
 
-		JPanel pnlWuerfel = new JPanel();
+		JPanel pnlWuerfel = new JPanel(new GridLayout(1, 10));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
 
 		JButton butWeiter = new JButton("Weiter");
-		butWeiter.addActionListener(e -> spiel.naechsterSpieler());
+		butWeiter.addActionListener(e -> {
+			spiel.naechsterSpieler();
+			spiel.ruecke();
+		});
 
 		pnlWuerfel.add(butWeiter);
 		this.add(pnlWuerfel, BorderLayout.SOUTH);
