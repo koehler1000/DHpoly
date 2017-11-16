@@ -2,15 +2,15 @@ package de.dhpoly.feld.control;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
+import observerpattern.Beobachtbarer;
 
-public class Strasse extends Observable implements Feld
+public class Strasse extends Beobachtbarer implements Feld
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int[] miete = new int[6];
@@ -41,8 +41,7 @@ public class Strasse extends Observable implements Feld
 	{
 		spielerBetrittFeld(spieler, wetter);
 		this.spieler.add(spieler);
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
@@ -79,8 +78,7 @@ public class Strasse extends Observable implements Feld
 			potentiellerKaeufer.auszahlen(betrag);
 			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
 
-			setChanged();
-			notifyObservers();
+			informiereBeobachter();
 		}
 	}
 
@@ -114,8 +112,8 @@ public class Strasse extends Observable implements Feld
 	public void verlasseFeld(Spieler spieler)
 	{
 		this.spieler.remove(spieler);
-		setChanged();
-		notifyObservers();
+
+		informiereBeobachter();
 	}
 
 	@Override

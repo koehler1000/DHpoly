@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -16,8 +14,9 @@ import javax.swing.text.StyleContext;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.view.SpielerFarben;
+import observerpattern.Beobachter;
 
-public class StrasseUI extends JPanel implements Observer
+public class StrasseUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -31,11 +30,7 @@ public class StrasseUI extends JPanel implements Observer
 	{
 		this.strasse = strasse;
 		txtName.setText(strasse.getName());
-		update();
-
 		this.setLayout(new BorderLayout());
-
-		strasse.addObserver(this);
 
 		Color backcolor = Color.WHITE;
 
@@ -58,17 +53,12 @@ public class StrasseUI extends JPanel implements Observer
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		// TODO setColor to black if not bought, else set Color to PlayerColor
-
+		informiere();
+		strasse.addBeobachter(this);
 	}
 
 	@Override
-	public void update(Observable o, Object arg)
-	{
-		update();
-	}
-
-	private void update()
+	public void informiere()
 	{
 		if (strasse.getEigentuemer().isPresent())
 		{
