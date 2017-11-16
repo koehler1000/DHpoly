@@ -29,13 +29,13 @@ public abstract class Feld extends Beobachtbarer
 		informiereBeobachter();
 	}
 
-	private void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
+	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
 		// leer in der Standardimplementierung, kann in Implementierung überschrieben
 		// werden
 	}
 
-	private void spielerVerlaesstFeld(Spieler spieler)
+	protected void spielerVerlaesstFeld(Spieler spieler)
 	{
 		// leer in der Standardimplementierung, kann in Implementierung überschrieben
 		// werden
