@@ -16,7 +16,7 @@ public class Beobachtbarer
 	{
 		for (Beobachter einzelnerBeobachter : beobachter)
 		{
-			einzelnerBeobachter.informiere();
+			einzelnerBeobachter.update();
 		}
 	}
 }

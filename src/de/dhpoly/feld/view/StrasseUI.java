@@ -53,12 +53,12 @@ public class StrasseUI extends JPanel implements Beobachter
 
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		informiere();
+		update();
 		strasse.addBeobachter(this);
 	}
 
 	@Override
-	public void informiere()
+	public void update()
 	{
 		if (strasse.getEigentuemer().isPresent())
 		{

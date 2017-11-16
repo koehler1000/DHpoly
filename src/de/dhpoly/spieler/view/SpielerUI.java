@@ -47,13 +47,8 @@ public class SpielerUI extends JPanel implements Beobachter
 		spielerImpl.addBeobachter(this);
 	}
 
-	private void update()
-	{
-
-	}
-
 	@Override
-	public void informiere()
+	public void update()
 	{
 		txtKontostand.setText(spieler.getBargeld() + "€");
 

@@ -8,9 +8,8 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
-import observerpattern.Beobachtbarer;
 
-public class Strasse extends Beobachtbarer implements Feld
+public class Strasse extends Feld
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int[] miete = new int[6];

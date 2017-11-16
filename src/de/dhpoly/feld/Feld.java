@@ -4,23 +4,24 @@ import java.util.List;
 
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
+import observerpattern.Beobachtbarer;
 
-public interface Feld
+public abstract class Feld extends Beobachtbarer
 {
-	public String getBeschriftung();
+	public abstract String getBeschriftung();
 
-	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter);
+	public abstract void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter);
 
-	public void verlasseFeld(Spieler spieler);
+	public abstract void verlasseFeld(Spieler spieler);
 
-	public List<Spieler> getSpielerAufFeld();
+	public abstract List<Spieler> getSpielerAufFeld();
 
-	public default boolean gehoertSpieler(Spieler spieler)
+	public boolean gehoertSpieler(Spieler spieler)
 	{
 		return false;
 	}
 
-	public default boolean isKaufbar()
+	public boolean isKaufbar()
 	{
 		return false;
 	}

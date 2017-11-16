@@ -2,5 +2,5 @@ package observerpattern;
 
 public interface Beobachter
 {
-	public void informiere();
+	public void update();
 }

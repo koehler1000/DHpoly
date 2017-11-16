@@ -24,11 +24,11 @@ public class StrassenbesitzeUI extends JPanel implements Beobachter
 		this.felderverwaltung = felderverwaltung;
 
 		spieler.addBeobachterHinzu(this);
-		informiere();
+		update();
 	}
 
 	@Override
-	public void informiere()
+	public void update()
 	{
 		List<Feld> felderDesSpielers = felderverwaltung.getFelder(spieler);
 

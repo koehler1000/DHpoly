@@ -2,14 +2,13 @@ package de.dhpoly.feld.control;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
-public class Losfeld extends Observable implements Feld
+public class Losfeld extends Feld
 {
 	private Einstellungen einstellungen;
 	private List<Spieler> spieler = new ArrayList<>();
@@ -30,16 +29,14 @@ public class Losfeld extends Observable implements Feld
 	{
 		spieler.einzahlen(einstellungen.getBetragBetretenLos());
 		this.spieler.add(spieler);
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	@Override
 	public void verlasseFeld(Spieler spieler)
 	{
 		this.spieler.remove(spieler);
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	@Override
