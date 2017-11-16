@@ -37,7 +37,7 @@ public class StrasseKaufenUI extends JFrame
 
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
-		strasse.setEigentuemer(spieler);
+		strasse.kaufe(spieler);
 		this.setVisible(false);
 	}
 
