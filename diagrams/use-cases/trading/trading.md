@@ -26,4 +26,4 @@ After this Use-Case has finished, there are two possible endings. One is that th
 
 ## 5. Visual Output
 
-!(https://raw.githubusercontent.com/koehler1000/DHpoly/master/diagrams/use-cases/trading/trading1.png)[]
+![](https://raw.githubusercontent.com/koehler1000/DHpoly/master/diagrams/use-cases/trading/trading1.png)
