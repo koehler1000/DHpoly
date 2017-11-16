@@ -1,7 +1,5 @@
 package de.dhpoly.feld.control;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
@@ -22,7 +20,6 @@ public class Strasse extends Feld
 	private int kaufpreis;
 
 	private Felderverwaltung strassenverwaltung;
-	private List<Spieler> spieler = new ArrayList<>();
 
 	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int kostenHaus, int gruppe,
 			String name)
@@ -36,11 +33,9 @@ public class Strasse extends Feld
 	}
 
 	@Override
-	public void betreteFeld(Spieler spieler, int augensumme, Wetter wetter)
+	public void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter wetter)
 	{
 		spielerBetrittFeld(spieler, wetter);
-		this.spieler.add(spieler);
-		informiereBeobachter();
 	}
 
 	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
@@ -108,23 +103,9 @@ public class Strasse extends Feld
 	}
 
 	@Override
-	public void verlasseFeld(Spieler spieler)
-	{
-		this.spieler.remove(spieler);
-
-		informiereBeobachter();
-	}
-
-	@Override
 	public String getBeschriftung()
 	{
 		return name;
-	}
-
-	@Override
-	public List<Spieler> getSpielerAufFeld()
-	{
-		return spieler;
 	}
 
 	public Optional<Spieler> getEigentuemer()
