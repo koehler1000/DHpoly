@@ -28,6 +28,6 @@ public class SpielUITest
 		frame.add(new SpielUI(spiel));
 		frame.setSize(1000, 1000);
 
-		frame.setVisible(true);
+		frame.setVisible(true); 
 	}
 }
