@@ -29,37 +29,5 @@ public class SpielUITest
 		frame.setSize(1000, 1000);
 
 		frame.setVisible(true);
-
-		Thread thread = new Thread(new Runnable()
-		{
-
-			@Override
-			public void run()
-			{
-				while (true)
-				{
-					try
-					{
-						spiel.ruecke();
-						spiel.naechsterSpieler();
-						Thread.sleep(1000);
-
-						spiel.ruecke();
-						spiel.naechsterSpieler();
-						Thread.sleep(1000);
-
-						spiel.ruecke();
-						spiel.naechsterSpieler();
-						Thread.sleep(1000);
-					}
-					catch (InterruptedException ex)
-					{
-						ex.printStackTrace();
-					}
-				}
-			}
-		});
-
-		thread.start();
 	}
 }

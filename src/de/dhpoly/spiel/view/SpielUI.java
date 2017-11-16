@@ -3,6 +3,7 @@ package de.dhpoly.spiel.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.spiel.Spiel;
@@ -34,6 +35,11 @@ public class SpielUI extends JPanel
 		JPanel pnlWuerfel = new JPanel();
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
+
+		JButton butWeiter = new JButton("Weiter");
+		butWeiter.addActionListener(e -> spiel.naechsterSpieler());
+
+		pnlWuerfel.add(butWeiter);
 		this.add(pnlWuerfel, BorderLayout.SOUTH);
 	}
 }
