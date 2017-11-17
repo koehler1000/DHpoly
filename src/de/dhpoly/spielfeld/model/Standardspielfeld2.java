@@ -12,12 +12,12 @@ import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.Losfeld;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.ressource.model.Ressource;
 
 public class Standardspielfeld2
 {

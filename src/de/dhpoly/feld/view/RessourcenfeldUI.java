@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.fehler.control.FehlerImpl;
 import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.feld.model.Ressource;
+import de.dhpoly.ressource.model.Ressource;
 import observerpattern.Beobachter;
 
 public class RessourcenfeldUI extends JPanel implements Beobachter

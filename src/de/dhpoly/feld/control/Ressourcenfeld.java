@@ -1,7 +1,7 @@
 package de.dhpoly.feld.control;
 
-import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
 public class Ressourcenfeld extends FeldImpl
