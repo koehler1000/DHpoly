@@ -1,7 +1,6 @@
 package de.dhpoly.feld.control;
 
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
@@ -13,12 +12,6 @@ public class Losfeld extends FeldImpl
 	{
 		super("Los");
 		this.einstellungen = einstellungenImpl;
-	}
-
-	@Override
-	public String getBeschriftung()
-	{
-		return "Los";
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package de.dhpoly.feld.control;
 
-import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
@@ -13,12 +12,6 @@ public class Ressourcenfeld extends FeldImpl
 	{
 		super("Ressource");
 		this.ressource = ressourcentyp;
-	}
-
-	@Override
-	public String getBeschriftung()
-	{
-		return "Ressource";
 	}
 
 	@Override

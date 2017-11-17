@@ -102,12 +102,6 @@ public class Strasse extends FeldImpl
 		eigentuemer = Optional.ofNullable(anbietender);
 	}
 
-	@Override
-	public String getBeschriftung()
-	{
-		return name;
-	}
-
 	public Optional<Spieler> getEigentuemer()
 	{
 		return eigentuemer;

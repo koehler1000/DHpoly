@@ -13,7 +13,10 @@ public abstract class FeldImpl extends Beobachtbarer implements Feld
 	private String beschriftung;
 	private List<Spieler> spielerAufFeld = new ArrayList<>();
 
-	public abstract String getBeschriftung();
+	public String getBeschriftung()
+	{
+		return beschriftung;
+	}
 
 	public FeldImpl(String beschriftung)
 	{
