@@ -1,6 +1,12 @@
 package de.dhpoly.einstellungen.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 
 public class EinstellungenImpl implements Einstellungen
 {
@@ -98,5 +104,15 @@ public class EinstellungenImpl implements Einstellungen
 	public void setKostenHausHolz(int kostenHausHolz)
 	{
 		this.kostenHausHolz = kostenHausHolz;
+	}
+
+	@Override
+	public List<RessourcenDatensatz> getHauskosten(int seite)
+	{
+		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, 100 * seite));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, 100 * seite));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, 100 * seite));
+		return ressourcenDatensaetze;
 	}
 }

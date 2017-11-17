@@ -1,5 +1,9 @@
 package de.dhpoly.einstellungen;
 
+import java.util.List;
+
+import de.dhpoly.ressource.RessourcenDatensatz;
+
 public interface Einstellungen
 {
 	void setKostenHausHolz(int kostenHausHolz);
@@ -29,4 +33,6 @@ public interface Einstellungen
 	int getBetragBetretenLos();
 
 	void setBetragBetretenLos(int betragBetretenLos);
+
+	List<RessourcenDatensatz> getHauskosten(int seite);
 }
