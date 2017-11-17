@@ -2,12 +2,11 @@ package de.dhpoly.feld.control;
 
 import java.util.Optional;
 
-import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
-public class Strasse extends Feld
+public class Strasse extends FeldImpl
 {
 	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
 	private int[] miete = new int[6];
@@ -24,6 +23,7 @@ public class Strasse extends Feld
 	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int kostenHaus, int gruppe,
 			String name)
 	{
+		super(name);
 		this.strassenverwaltung = strassenverwaltung;
 		this.miete = miete;
 		this.kostenHaus = kostenHaus;

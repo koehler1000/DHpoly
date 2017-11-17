@@ -1,58 +1,21 @@
 package de.dhpoly.feld;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
-import observerpattern.Beobachtbarer;
 
-public abstract class Feld extends Beobachtbarer
+public interface Feld
 {
-	private List<Spieler> spielerAufFeld = new ArrayList<>();
+	public String getBeschriftung();
 
-	public abstract String getBeschriftung();
+	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter);
 
-	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
-	{
-		spielerAufFeld.add(spieler);
-		spielerBetrittFeld(spieler, augensumme, aktuellesWetter);
+	public void verlasseFeld(Spieler spieler);
 
-		informiereBeobachter();
-	}
+	public List<Spieler> getSpielerAufFeld();
 
-	public void verlasseFeld(Spieler spieler)
-	{
-		spielerAufFeld.remove(spieler);
-		spielerVerlaesstFeld(spieler);
+	public boolean gehoertSpieler(Spieler spieler);
 
-		informiereBeobachter();
-	}
-
-	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
-	{
-		// leer in der Standardimplementierung, kann in Implementierung überschrieben
-		// werden
-	}
-
-	protected void spielerVerlaesstFeld(Spieler spieler)
-	{
-		// leer in der Standardimplementierung, kann in Implementierung überschrieben
-		// werden
-	}
-
-	public List<Spieler> getSpielerAufFeld()
-	{
-		return spielerAufFeld;
-	}
-
-	public boolean gehoertSpieler(Spieler spieler)
-	{
-		return false;
-	}
-
-	public boolean isKaufbar()
-	{
-		return false;
-	}
+	public boolean isKaufbar();
 }

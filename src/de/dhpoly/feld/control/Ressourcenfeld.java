@@ -5,12 +5,13 @@ import de.dhpoly.feld.model.Ressource;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
-public class Ressourcenfeld extends Feld
+public class Ressourcenfeld extends FeldImpl
 {
 	private Ressource ressource;
 
 	public Ressourcenfeld(Ressource ressourcentyp)
 	{
+		super("Ressource");
 		this.ressource = ressourcentyp;
 	}
 

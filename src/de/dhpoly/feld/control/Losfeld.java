@@ -5,12 +5,13 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
-public class Losfeld extends Feld
+public class Losfeld extends FeldImpl
 {
 	private Einstellungen einstellungen;
 
 	public Losfeld(Einstellungen einstellungenImpl)
 	{
+		super("Los");
 		this.einstellungen = einstellungenImpl;
 	}
 
