@@ -1,9 +1,12 @@
 package de.dhpoly.feld.control;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends FeldImpl
@@ -13,19 +16,35 @@ public class Strasse extends FeldImpl
 
 	private int haueser = 0;
 	private boolean hypothek = false;
-	private int kostenHaus;
+	private int kostenHausGeld;
+	private List<RessourcenDatensatz> kostenHaus;
 	private int gruppe;
 	private String name;
 	private int kaufpreis;
 
 	private Felderverwaltung strassenverwaltung;
 
+	@Deprecated
 	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete, int kostenHaus, int gruppe,
 			String name)
 	{
 		super(name);
 		this.strassenverwaltung = strassenverwaltung;
 		this.miete = miete;
+		this.kostenHausGeld = kostenHaus;
+		this.kostenHaus = new ArrayList<>();
+		this.gruppe = gruppe;
+		this.name = name;
+		this.kaufpreis = kaufpreis;
+	}
+
+	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete,
+			List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
+	{
+		super(name);
+		this.strassenverwaltung = strassenverwaltung;
+		this.miete = miete;
+		this.kostenHausGeld = 0;
 		this.kostenHaus = kostenHaus;
 		this.gruppe = gruppe;
 		this.name = name;
@@ -124,7 +143,7 @@ public class Strasse extends FeldImpl
 
 	public int getSeite()
 	{
-		return kostenHaus;
+		return kostenHausGeld;
 	}
 
 	public int getGruppe()
@@ -140,6 +159,11 @@ public class Strasse extends FeldImpl
 	public int getKaufpreis()
 	{
 		return kaufpreis;
+	}
+
+	public List<RessourcenDatensatz> getKostenHaus()
+	{
+		return kostenHaus;
 	}
 
 	public boolean gehoertSpieler(Spieler spieler)
