@@ -20,19 +20,19 @@ public class StrasseUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Strasse strasse;
+	private Strasse feld;
 	private JTextPane txtName = new JTextPane();
 	private JTextPane txtBesitzer = new JTextPane();
 
 	private Component pnlSpieler = new JPanel();
 
-	public StrasseUI(Strasse strasse)
+	public StrasseUI(Strasse feld)
 	{
-		this.strasse = strasse;
-		txtName.setText(strasse.getName());
+		this.feld = feld;
+		txtName.setText(feld.getName());
 		this.setLayout(new BorderLayout());
 
-		Color backcolor = new Strassengruppe().getColor(strasse.getGruppe());
+		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
 		txtName.setEditable(false);
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
@@ -54,28 +54,30 @@ public class StrasseUI extends JPanel implements Beobachter
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		update();
-		strasse.addBeobachter(this);
+		feld.addBeobachter(this);
 	}
 
 	@Override
 	public void update()
 	{
-		if (strasse.getEigentuemer().isPresent())
+		if (feld.getEigentuemer().isPresent())
 		{
-			txtBesitzer.setText(strasse.getEigentuemer().get().getName());
-			Color farbe = SpielerFarben.getSpielerfarbe(strasse.getEigentuemer().get().getSpielerNr());
+			txtBesitzer.setText(feld.getEigentuemer().get().getName());
+			Color farbe = SpielerFarben.getSpielerfarbe(feld.getEigentuemer().get().getSpielerNr());
 			txtBesitzer.setBackground(farbe);
+			this.setBackground(farbe);
 			txtName.setBorder(new LineBorder(farbe, 3));
 		}
 		else
 		{
-			txtBesitzer.setText("Zu kaufen für " + strasse.getKaufpreis() + "€");
-			// txtBesitzer.setBackground(Color.WHITE);
+			txtBesitzer.setText("Zu kaufen für " + feld.getKaufpreis() + "€");
+			txtBesitzer.setBackground(Color.WHITE);
+			this.setBackground(Color.WHITE);
 			txtName.setBorder(new LineBorder(Color.black, 3));
 		}
 
 		this.remove(pnlSpieler);
-		pnlSpieler = new FeldUI().getSpieler(strasse.getSpielerAufFeld());
+		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 }

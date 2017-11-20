@@ -23,6 +23,7 @@ public class LosfeldUI extends JPanel implements Beobachter
 		this.feld = feld;
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
+		this.setBackground(Color.WHITE);
 
 		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 		update();
@@ -33,7 +34,7 @@ public class LosfeldUI extends JPanel implements Beobachter
 	public void update()
 	{
 		this.remove(pnlSpieler);
-		pnlSpieler = new FeldUI().getSpieler(feld.getSpielerAufFeld());
+		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 }
