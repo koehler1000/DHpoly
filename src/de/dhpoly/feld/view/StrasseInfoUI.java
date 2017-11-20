@@ -1,11 +1,15 @@
 package de.dhpoly.feld.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.Font;
 
-import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.Spieler;
@@ -15,17 +19,38 @@ public class StrasseInfoUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	public StrasseInfoUI(Strasse strasse)
+	private JTextPane txtName = new JTextPane();
+	private JTextPane txtBesitzer = new JTextPane();
+
+	public StrasseInfoUI(Strasse feld)
 	{
-		strasse.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
+		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
 
-		this.setLayout(new GridLayout(3, 1));
+		this.setLayout(new BorderLayout());
 
-		JLabel lblName = new JLabel(strasse.getName());
-		// TODO Farbe der Gruppe
-		this.add(lblName);
+		this.add(new JTextArea(getMietenText(feld.getMiete())), BorderLayout.CENTER);
 
-		this.add(new JTextArea(getMietenText(strasse.getMiete())));
+		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
+
+		txtName.setText(feld.getBeschriftung());
+		txtName.setEditable(false);
+		txtName.setFont(new Font("arial", Font.BOLD, 30));
+		txtName.setBackground(backcolor);
+
+		txtBesitzer.setEditable(false);
+		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
+		txtBesitzer.setBackground(Color.WHITE);
+
+		StyleContext.NamedStyle centerStyle = StyleContext.getDefaultStyleContext().new NamedStyle();
+		StyleConstants.setAlignment(centerStyle, StyleConstants.ALIGN_CENTER);
+		txtName.setLogicalStyle(centerStyle);
+		txtBesitzer.setLogicalStyle(centerStyle);
+
+		this.add(txtBesitzer, BorderLayout.SOUTH);
+		this.add(txtName, BorderLayout.NORTH);
+
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
 	}
 
 	private String getMietenText(int[] miete)
