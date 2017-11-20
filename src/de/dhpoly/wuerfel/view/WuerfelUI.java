@@ -39,7 +39,7 @@ public class WuerfelUI extends JPanel implements Observer
 	{
 		try
 		{
-			return new ImageIcon(ImageIO.read(new File(".\\src\\de\\dhpoly\\wuerfel\\view\\wuerfel_" + nummer + ".png")));
+			return new ImageIcon(ImageIO.read(new File(".\\pics\\default\\wuerfel\\wuerfel_" + nummer + ".png")));
 		}
 		catch (IOException ex)
 		{

@@ -44,7 +44,7 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 	{
 		try
 		{
-			return new ImageIcon(ImageIO.read(new File(".\\src\\de\\dhpoly\\karte\\view\\ereigniskarte.jpg")));
+			return new ImageIcon(ImageIO.read(new File(".\\pics\\default\\karte\\ereigniskarte.jpg")));
 		}
 		catch (IOException ex)
 		{
