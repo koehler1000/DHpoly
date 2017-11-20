@@ -25,7 +25,7 @@ public class SpielfeldUI extends JPanel
 	public SpielfeldUI(List<Feld> spielfelder)
 	{
 		felderProSeite = spielfelder.size() / 4;
-
+		
 		this.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1));
 
 		Component[][] felder = new Component[felderProSeite + 1][felderProSeite + 1];
