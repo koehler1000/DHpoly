@@ -4,12 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.Spieler;
@@ -19,12 +17,11 @@ public class StrasseInfoUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private JTextPane txtName = new JTextPane();
-	private JTextPane txtBesitzer = new JTextPane();
+	private JButton butName = new JButton();
+	private JButton butBesitzer = new JButton();
 
 	public StrasseInfoUI(Strasse feld)
 	{
-		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
 
 		this.setLayout(new BorderLayout());
 
@@ -32,25 +29,19 @@ public class StrasseInfoUI extends JPanel
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		txtName.setText(feld.getBeschriftung());
-		txtName.setEditable(false);
-		txtName.setFont(new Font("arial", Font.BOLD, 30));
-		txtName.setBackground(backcolor);
+		butName.setText(feld.getBeschriftung());
+		butName.setFont(new Font("arial", Font.BOLD, 30));
+		butName.setBackground(backcolor);
 
-		txtBesitzer.setEditable(false);
-		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
-		txtBesitzer.setBackground(Color.WHITE);
+		butBesitzer.setFont(new Font("arial", Font.BOLD, 30));
+		butBesitzer.setBackground(Color.WHITE);
 
-		StyleContext.NamedStyle centerStyle = StyleContext.getDefaultStyleContext().new NamedStyle();
-		StyleConstants.setAlignment(centerStyle, StyleConstants.ALIGN_CENTER);
-		txtName.setLogicalStyle(centerStyle);
-		txtBesitzer.setLogicalStyle(centerStyle);
+		this.add(butBesitzer, BorderLayout.SOUTH);
+		this.add(butName, BorderLayout.NORTH);
 
-		this.add(txtBesitzer, BorderLayout.SOUTH);
-		this.add(txtName, BorderLayout.NORTH);
+		butName.addActionListener(e -> this.setVisible(false));
 
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
 	}
 
 	private String getMietenText(int[] miete)
@@ -69,6 +60,6 @@ public class StrasseInfoUI extends JPanel
 	{
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBackground(farbe);
+		this.setBorder(new LineBorder(farbe, 10));
 	}
-
 }
