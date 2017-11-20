@@ -66,14 +66,14 @@ public class StrasseUI extends JPanel implements Beobachter
 			Color farbe = SpielerFarben.getSpielerfarbe(feld.getEigentuemer().get().getSpielerNr());
 			txtBesitzer.setBackground(farbe);
 			this.setBackground(farbe);
-			txtName.setBorder(new LineBorder(farbe, 3));
+			txtName.setBorder(new LineBorder(Color.BLACK));
 		}
 		else
 		{
 			txtBesitzer.setText("Zu kaufen für " + feld.getKaufpreis() + "€");
 			txtBesitzer.setBackground(Color.WHITE);
 			this.setBackground(Color.WHITE);
-			txtName.setBorder(new LineBorder(Color.black, 3));
+			txtName.setBorder(new LineBorder(Color.BLACK));
 		}
 
 		this.remove(pnlSpieler);
