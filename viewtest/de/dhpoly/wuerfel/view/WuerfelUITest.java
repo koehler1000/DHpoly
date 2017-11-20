@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class WuerfelAnzeigeTest
+public class WuerfelUITest
 {
 	public static void main(String[] args)
 	{
