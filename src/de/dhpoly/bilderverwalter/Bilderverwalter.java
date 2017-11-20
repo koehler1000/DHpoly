@@ -1,10 +1,30 @@
 package de.dhpoly.bilderverwalter;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public interface Bilderverwalter
-{
-	public ImageIcon getBild(String ordnername, String bildname);
+import de.dhpoly.fehler.control.FehlerImpl;
 
-	public ImageIcon getBild(String pfad);
+public class Bilderverwalter
+{
+	public static ImageIcon getBild(String ordnername, String bildnameMitDateiendung)
+	{
+		return getBild(ordnername + "\\" + bildnameMitDateiendung);
+	}
+
+	public static ImageIcon getBild(String pfad)
+	{
+		try
+		{
+			return new ImageIcon(ImageIO.read(new File(".\\pics\\default\\" + pfad)));
+		}
+		catch (IOException ex)
+		{
+			FehlerImpl.fehlerAufgetreten(ex);
+			return new ImageIcon();
+		}
+	}
 }

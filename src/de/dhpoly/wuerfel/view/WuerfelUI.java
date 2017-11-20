@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.dhpoly.bilderverwalter.control.BilderverwalterImpl;
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
@@ -34,7 +34,7 @@ public class WuerfelUI extends JPanel implements Observer
 
 	private ImageIcon getWuerfelBild(int nummer)
 	{
-		return new BilderverwalterImpl().getBild("wuerfel", "wuerfel_" + nummer + ".png");
+		return Bilderverwalter.getBild("wuerfel", "wuerfel_" + nummer + ".png");
 	}
 
 	@Override
