@@ -11,6 +11,14 @@ public class Strassengruppe
 	public Strassengruppe()
 	{
 		farbenZuordnungen.add(Color.BLACK);
+		farbenZuordnungen.add(Color.GRAY);
+		farbenZuordnungen.add(Color.YELLOW);
+		farbenZuordnungen.add(Color.CYAN);
+		farbenZuordnungen.add(Color.BLUE);
+		farbenZuordnungen.add(Color.RED);
+		farbenZuordnungen.add(Color.PINK);
+		farbenZuordnungen.add(Color.GREEN);
+		farbenZuordnungen.add(Color.BLUE);
 	}
 
 	public Color getColor(int strassengruppe)
