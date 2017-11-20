@@ -32,7 +32,7 @@ public class StrasseUI extends JPanel implements Beobachter
 		txtName.setText(strasse.getName());
 		this.setLayout(new BorderLayout());
 
-		Color backcolor = Color.WHITE;
+		Color backcolor = Color.RED;
 
 		txtName.setEditable(false);
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
@@ -46,7 +46,7 @@ public class StrasseUI extends JPanel implements Beobachter
 
 		txtBesitzer.setEditable(false);
 		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
-		txtBesitzer.setBackground(backcolor);
+		txtBesitzer.setBackground(Color.WHITE);
 
 		this.add(txtBesitzer, BorderLayout.CENTER);
 		this.add(txtName, BorderLayout.NORTH);
