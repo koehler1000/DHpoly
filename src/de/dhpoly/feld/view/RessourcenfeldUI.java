@@ -4,16 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.fehler.control.FehlerImpl;
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.ressource.model.Ressource;
 import observerpattern.Beobachter;
@@ -72,17 +69,6 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 
 	private ImageIcon getRessourcenBild(Ressource res)
 	{
-
-		try
-		{
-			return new ImageIcon(
-					ImageIO.read(new File(".\\src\\de\\dhpoly\\feld\\view\\ressourcen\\" + res.toString() + ".png")));
-		}
-		catch (IOException ex)
-		{
-			FehlerImpl.fehlerAufgetreten(ex);
-			return new ImageIcon();
-		}
+		return Bilderverwalter.getBild("ressourcen", res.toString() + ".png");
 	}
-
 }
