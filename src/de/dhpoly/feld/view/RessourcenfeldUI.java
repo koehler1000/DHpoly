@@ -60,7 +60,7 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 				pnlSpieler2.setBackground(Color.getHSBColor(33, 94, 78));
 				break;
 			case STEIN:
-				pnlSpieler2.setBackground(Color.GRAY);
+				pnlSpieler2.setBackground(new Color(220, 220, 220));
 
 			default:
 				break;
