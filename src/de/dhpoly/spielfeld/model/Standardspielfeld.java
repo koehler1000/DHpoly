@@ -93,17 +93,24 @@ public class Standardspielfeld
 				"Potsdam"));
 
 		seite = 4;
-		standardfeld.add(new Strasse(verwaltung, 370, new int[] { 37, 41, 47, 56, 74, 111 }, getHauskosten(seite), 6, "Stuttgart"));
+		standardfeld.add(new Strasse(verwaltung, 370, new int[] { 37, 41, 47, 56, 74, 111 }, getHauskosten(seite), 6,
+				"Stuttgart"));
 		standardfeld.add(new Ereignisfeld(kartenstapelSuperevents));
-		standardfeld.add(new Strasse(verwaltung, 400, new int[] { 40, 44, 50, 60, 80, 120 }, getHauskosten(seite), 7, "Saarbrücken"));
+		standardfeld.add(new Strasse(verwaltung, 400, new int[] { 40, 44, 50, 60, 80, 120 }, getHauskosten(seite), 7,
+				"Saarbrücken"));
 		standardfeld.add(new Ereignisfeld(kartenstapel));
-		standardfeld.add(new Strasse(verwaltung, 410, new int[] { 41, 45, 51, 61, 82, 123 }, getHauskosten(seite), 7, "Karlsruhe"));
-		standardfeld.add(new Strasse(verwaltung, 420, new int[] { 42, 46, 53, 63, 84, 126 }, getHauskosten(seite), 7, "Dresden"));
+		standardfeld.add(new Strasse(verwaltung, 410, new int[] { 41, 45, 51, 61, 82, 123 }, getHauskosten(seite), 7,
+				"Karlsruhe"));
+		standardfeld.add(new Strasse(verwaltung, 420, new int[] { 42, 46, 53, 63, 84, 126 }, getHauskosten(seite), 7,
+				"Dresden"));
 		standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
-		standardfeld.add(new Strasse(verwaltung, 500, new int[] { 50, 55, 61, 76, 100, 150 }, getHauskosten(seite), 8, "Berlin"));
+		standardfeld.add(new Strasse(verwaltung, 500, new int[] { 50, 55, 61, 76, 100, 150 }, getHauskosten(seite), 8,
+				"Berlin"));
 		standardfeld.add(new Ereignisfeld(kartenstapel));
-		standardfeld.add(new Strasse(verwaltung, 510, new int[] { 51, 56, 62, 77, 102, 153 }, getHauskosten(seite), 8, "Hamburg"));
-		standardfeld.add(new Strasse(verwaltung, 520, new int[] { 52, 57, 63, 78, 104, 156 }, getHauskosten(seite), 8, "München"));
+		standardfeld.add(new Strasse(verwaltung, 510, new int[] { 51, 56, 62, 77, 102, 153 }, getHauskosten(seite), 8,
+				"Hamburg"));
+		standardfeld.add(new Strasse(verwaltung, 520, new int[] { 52, 57, 63, 78, 104, 156 }, getHauskosten(seite), 8,
+				"München"));
 
 		return standardfeld;
 	}
