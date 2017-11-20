@@ -1,16 +1,13 @@
 package de.dhpoly.wuerfel.view;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.dhpoly.fehler.control.FehlerImpl;
+import de.dhpoly.bilderverwalter.control.BilderverwalterImpl;
 import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
@@ -37,15 +34,7 @@ public class WuerfelUI extends JPanel implements Observer
 
 	private ImageIcon getWuerfelBild(int nummer)
 	{
-		try
-		{
-			return new ImageIcon(ImageIO.read(new File(".\\pics\\default\\wuerfel\\wuerfel_" + nummer + ".png")));
-		}
-		catch (IOException ex)
-		{
-			FehlerImpl.fehlerAufgetreten(ex);
-			return new ImageIcon();
-		}
+		return new BilderverwalterImpl().getBild("wuerfel", "wuerfel_" + nummer + ".png");
 	}
 
 	@Override
