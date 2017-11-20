@@ -6,55 +6,57 @@ import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
-public class StrasseUI extends JPanel implements Beobachter
+public class StrasseUI extends JButton implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
 	private Strasse feld;
-	private JTextPane txtName = new JTextPane();
-	private JTextPane txtBesitzer = new JTextPane();
+	private JButton butName = new JButton();
+	private JButton butBesitzer = new JButton();
 
 	private Component pnlSpieler = new JPanel();
 
 	public StrasseUI(Strasse feld)
 	{
 		this.feld = feld;
-		txtName.setText(feld.getName());
+		butName.setText(feld.getName());
 		this.setLayout(new BorderLayout());
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		txtName.setEditable(false);
-		txtName.setFont(new Font("arial", Font.BOLD, 30));
-		txtName.setBackground(backcolor);
+		butName.setFont(new Font("arial", Font.BOLD, 15));
+		butName.setBackground(backcolor);
+		this.add(butName, BorderLayout.NORTH);
 
-		StyleContext.NamedStyle centerStyle = StyleContext.getDefaultStyleContext().new NamedStyle();
-		StyleConstants.setAlignment(centerStyle, StyleConstants.ALIGN_CENTER);
+		butBesitzer.setFont(new Font("arial", Font.PLAIN, 12));
+		butBesitzer.setBackground(Color.WHITE);
+		this.add(butBesitzer, BorderLayout.CENTER);
 
-		txtName.setLogicalStyle(centerStyle);
-		txtBesitzer.setLogicalStyle(centerStyle);
-
-		txtBesitzer.setEditable(false);
-		txtBesitzer.setFont(new Font("arial", Font.BOLD, 30));
-		txtBesitzer.setBackground(Color.WHITE);
-
-		this.add(txtBesitzer, BorderLayout.CENTER);
-		this.add(txtName, BorderLayout.NORTH);
-
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		butBesitzer.addActionListener(e -> zeigeDetails());
+		butName.addActionListener(e -> zeigeDetails());
+		this.addActionListener(e -> zeigeDetails());
 
 		update();
 		feld.addBeobachter(this);
+	}
+
+	private void zeigeDetails()
+	{
+		StrasseInfoUI infoUI = new StrasseInfoUI(feld);
+		JFrame frame = new JFrame(feld.getBeschriftung());
+		frame.add(infoUI);
+		frame.setSize(1000, 1000);
+		frame.setVisible(true);
 	}
 
 	@Override
@@ -62,18 +64,18 @@ public class StrasseUI extends JPanel implements Beobachter
 	{
 		if (feld.getEigentuemer().isPresent())
 		{
-			txtBesitzer.setText(feld.getEigentuemer().get().getName());
+			butBesitzer.setText(feld.getEigentuemer().get().getName());
 			Color farbe = SpielerFarben.getSpielerfarbe(feld.getEigentuemer().get().getSpielerNr());
-			txtBesitzer.setBackground(farbe);
+			butBesitzer.setBackground(farbe);
 			this.setBackground(farbe);
-			txtName.setBorder(new LineBorder(Color.BLACK));
+			butName.setBorder(new LineBorder(Color.BLACK));
 		}
 		else
 		{
-			txtBesitzer.setText("Zu kaufen für " + feld.getKaufpreis() + "€");
-			txtBesitzer.setBackground(Color.WHITE);
+			butBesitzer.setText("Zu kaufen für " + feld.getKaufpreis() + "€");
+			butBesitzer.setBackground(Color.WHITE);
 			this.setBackground(Color.WHITE);
-			txtName.setBorder(new LineBorder(Color.BLACK));
+			butName.setBorder(new LineBorder(Color.BLACK));
 		}
 
 		this.remove(pnlSpieler);
