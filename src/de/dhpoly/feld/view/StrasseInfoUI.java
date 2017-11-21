@@ -3,6 +3,7 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -10,6 +11,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
@@ -22,7 +25,6 @@ public class StrasseInfoUI extends JPanel
 
 	public StrasseInfoUI(Strasse feld)
 	{
-
 		this.setLayout(new BorderLayout());
 
 		this.add(new JTextArea(getMietenText(feld.getMiete())), BorderLayout.CENTER);
@@ -47,12 +49,10 @@ public class StrasseInfoUI extends JPanel
 	private String getMietenText(int[] miete)
 	{
 		StringBuilder sb = new StringBuilder();
-
 		for (int i : miete)
 		{
 			sb.append(i + System.lineSeparator());
 		}
-
 		return sb.toString();
 	}
 
@@ -61,5 +61,28 @@ public class StrasseInfoUI extends JPanel
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBackground(farbe);
 		this.setBorder(new LineBorder(farbe, 10));
+	}
+
+	private int getKostenHaus(Strasse strasse, Ressource ressource)
+	{
+		int anzahl = 0;
+		for (RessourcenDatensatz datensatz : getKostenHaus(strasse))
+		{
+			if (datensatz.getRessource() == ressource)
+			{
+				anzahl += datensatz.getAnzahl();
+			}
+		}
+		return anzahl;
+	}
+
+	private List<RessourcenDatensatz> getKostenHaus(Strasse strasse)
+	{
+		return strasse.getKostenHaus();
+	}
+
+	private int[] getMiete(Strasse strasse)
+	{
+		return strasse.getMiete();
 	}
 }
