@@ -21,7 +21,7 @@ public enum Ressource
 		}
 		else
 		{
-			return "" + anzahl + mehrzahl;
+			return "" + anzahl + " " + mehrzahl;
 		}
 	}
 
