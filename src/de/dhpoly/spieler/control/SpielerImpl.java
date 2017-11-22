@@ -79,7 +79,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
-		new StrasseKaufenUI(strasse, this);
+		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
+		{
+			new StrasseKaufenUI(strasse, this);
+		}
 	}
 
 	@Override
