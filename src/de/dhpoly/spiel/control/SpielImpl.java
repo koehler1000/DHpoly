@@ -11,6 +11,8 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
@@ -47,7 +49,7 @@ public class SpielImpl implements Spiel
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
-			spieler.einzahlen(einstellungen.getBetragPassierenLos());
+			spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos()));
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme, wetter);

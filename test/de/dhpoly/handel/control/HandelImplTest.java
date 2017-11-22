@@ -16,6 +16,7 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -71,7 +72,7 @@ public class HandelImplTest
 		Handel handel = new HandelImpl();
 		handel.vorschlagAnnehmen(new Transaktion(50, new ArrayList<>(), new ArrayList<>(), s2, s1));
 
-		assertThat(s1.getBargeld(), Is.is(200));
-		assertThat(s2.getBargeld(), Is.is(200));
+		assertThat(s1.getRessourcenWerte(Ressource.GELD), Is.is(200));
+		assertThat(s2.getRessourcenWerte(Ressource.GELD), Is.is(200));
 	}
 }
