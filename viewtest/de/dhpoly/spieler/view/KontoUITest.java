@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -30,8 +32,8 @@ public class KontoUITest
 			{
 				for (int i = 50; i > -50; i--)
 				{
-					spieler.auszahlen(1);
-					spieler2.einzahlen(5);
+					spieler.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, 1));
+					spieler2.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, 5));
 					try
 					{
 						Thread.sleep(100);

@@ -20,7 +20,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 {
 	private int feldNr = 0;
 	private String name;
-	private int bargeld;
 	private Spiel spiel;
 	private boolean aktuellerSpieler = false;
 	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
@@ -37,7 +36,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		this.name = name;
 		this.spiel = spiel;
-		bargeld = einstellungen.getStartguthaben();
 
 		for (RessourcenDatensatz ressourcenDatensatz : verlauf)
 		{
@@ -94,7 +92,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 
 	public boolean isNegative()
 	{
-		return bargeld >= 0;
+		return getRessourcenWerte(Ressource.GELD) >= 0;
 	}
 
 	@Override
@@ -116,6 +114,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		spiel.verarbeiteKarte(karte);
 	}
 
+	@Deprecated
 	@Override
 	public void ueberweiseGeld(int betrag, Spieler empfaenger)
 	{
@@ -170,7 +169,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger)
+	public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
 	{
 		auszahlen(datensatz);
 		empfaenger.einzahlen(datensatz);
