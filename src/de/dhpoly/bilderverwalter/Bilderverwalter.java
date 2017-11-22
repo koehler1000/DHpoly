@@ -23,7 +23,7 @@ public class Bilderverwalter
 		}
 		catch (IOException ex)
 		{
-			FehlerImpl.fehlerAufgetreten(ex);
+			FehlerImpl.fehlerAufgetreten(ex + " (" + pfad + ")");
 			return new ImageIcon();
 		}
 	}
