@@ -10,7 +10,7 @@ This Use-Case called "Trading" describes the trading process between two players
 
 ### 2.1 Basic Flow
 
-![Trading Use-Case-Diagram](https://raw.githubusercontent.com/koehler1000/DHpoly/master/diagrams/use-cases/Trading_UCD.png)
+![Trading Use-Case-Diagram](https://raw.githubusercontent.com/koehler1000/DHpoly/master/documentation/use-cases/trading/Trading_UCD.png)
 
 .feature File: [Link]( https://github.com/koehler1000/DHpoly/blob/master/cucumber-test/trading.feature)
 
@@ -26,4 +26,4 @@ After this Use-Case has finished, there are two possible endings. One is that th
 
 ## 5. Visual Output
 
-![](https://raw.githubusercontent.com/koehler1000/DHpoly/master/diagrams/use-cases/trading/trading1.png)
+![](https://raw.githubusercontent.com/koehler1000/DHpoly/master/documentation/use-cases/trading/trading1.png)
