@@ -31,9 +31,11 @@ public class Standardspielfeld
 		Kartenstapel kartenstapel = new KartenstapelImpl(karten);
 		Kartenstapel kartenstapelSuperevents = new KartenstapelImpl(superevent);
 
-		karten.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 100));
+		karten.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
+				new RessourcenDatensatzImpl(Ressource.GELD, 100)));
 
-		superevent.add(new BezahlKarte("foo", GeldTransfer.ANDERESPIELER_SPIELER, 150));
+		superevent.add(new BezahlKarte("foo", GeldTransfer.ANDERESPIELER_SPIELER,
+				new RessourcenDatensatzImpl(Ressource.GELD, 150)));
 
 		Einstellungen einstellungen = new EinstellungenImpl();
 
