@@ -48,10 +48,6 @@ public class EreignisfeldTest
 			}
 
 			@Override
-			public void ueberweiseGeld(int betrag, Spieler empfaenger)
-			{}
-
-			@Override
 			public void setFeldNr(int feldNrSoll)
 			{}
 
@@ -69,32 +65,6 @@ public class EreignisfeldTest
 
 			@Override
 			public int getFeldNr()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getBargeld()
-			{
-				return 0;
-			}
-
-			@Override
-			public void einzahlen(int betrag)
-			{}
-
-			@Override
-			public void auszahlen(int betrag)
-			{}
-
-			@Override
-			public int getSteinVorrat()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getHolzVorrat()
 			{
 				return 0;
 			}

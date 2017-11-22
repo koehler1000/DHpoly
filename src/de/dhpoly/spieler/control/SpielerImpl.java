@@ -24,14 +24,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private boolean aktuellerSpieler = false;
 	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
 
-	@Deprecated
-	public SpielerImpl(String name, int startguthaben, Spiel spiel)
-	{
-		this.name = name;
-		this.spiel = spiel;
-		einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, startguthaben));
-	}
-
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
 	{
 		this.name = name;
@@ -72,24 +64,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		this.feldNr = feldNrSoll;
 	}
 
-	@Deprecated
-	public int getBargeld()
-	{
-		return getRessourcenWerte(Ressource.GELD);
-	}
-
-	@Deprecated
-	public void einzahlen(int betrag)
-	{
-		einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
-	}
-
-	@Deprecated
-	public void auszahlen(int betrag)
-	{
-		auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
-	}
-
 	public boolean isNegative()
 	{
 		return getRessourcenWerte(Ressource.GELD) >= 0;
@@ -112,26 +86,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-	}
-
-	@Deprecated
-	@Override
-	public void ueberweiseGeld(int betrag, Spieler empfaenger)
-	{
-		empfaenger.einzahlen(betrag);
-		this.auszahlen(betrag);
-	}
-
-	@Override
-	public int getSteinVorrat()
-	{
-		return getRessourcenWerte(Ressource.STEIN);
-	}
-
-	@Override
-	public int getHolzVorrat()
-	{
-		return getRessourcenWerte(Ressource.HOLZ);
 	}
 
 	@Override
