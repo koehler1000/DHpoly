@@ -193,4 +193,22 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		}
 		return i;
 	}
+
+	@Override
+	public void einzahlen(List<RessourcenDatensatz> datensaetze)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
+		{
+			einzahlen(ressourcenDatensatz);
+		}
+	}
+
+	@Override
+	public void auszahlen(List<RessourcenDatensatz> datensaetze)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
+		{
+			auszahlen(ressourcenDatensatz);
+		}
+	}
 }

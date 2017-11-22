@@ -153,6 +153,20 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 				return 0;
 			}
+
+			@Override
+			public void einzahlen(List<RessourcenDatensatz> datensaetze)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void auszahlen(List<RessourcenDatensatz> datensaetze)
+			{
+				// TODO Auto-generated method stub
+
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
