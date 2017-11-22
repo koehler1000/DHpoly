@@ -91,7 +91,7 @@ public class Strasse extends FeldImpl
 
 	public int getAkuelleMiete()
 	{
-		return (int) (getMietkosten() * 1.0 / 100);
+		return getMietkosten();
 	}
 
 	public int getAkuelleMiete(Wetter wetter)
