@@ -72,7 +72,7 @@ public class StrasseUI extends JButton implements Beobachter
 		}
 		else
 		{
-			butBesitzer.setText("Zu kaufen für " + feld.getKaufpreis() + "€");
+			butBesitzer.setText(feld.getKaufpreis() + "€");
 			butBesitzer.setBackground(Color.WHITE);
 			this.setBackground(Color.WHITE);
 			butName.setBorder(new LineBorder(Color.BLACK));
