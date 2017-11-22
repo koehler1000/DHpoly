@@ -8,12 +8,12 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class LosfeldTest
 {
-
 	@Test
 	public void spielerBetrittLosUndErhaeltEingestelltesGeld()
 	{
@@ -23,7 +23,8 @@ public class LosfeldTest
 		Losfeld los = new Losfeld(new EinstellungenImpl());
 		los.betreteFeld(s1, 2, Wetter.BEWOELKT);
 
-		assertThat(s1.getBargeld(), Is.is(new EinstellungenImpl().getBetragBetretenLos() + startgeld));
+		assertThat(s1.getRessourcenWerte(Ressource.GELD),
+				Is.is(new EinstellungenImpl().getBetragBetretenLos() + startgeld));
 	}
 
 	public static Feld getDefaultFeld()

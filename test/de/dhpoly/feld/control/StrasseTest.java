@@ -8,6 +8,7 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -30,7 +31,7 @@ public class StrasseTest
 
 		assertThat(strasse.isKaufbar(), Is.is(false));
 		assertThat(strasse.getEigentuemer().get(), Is.is(spieler));
-		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
 	@Test
@@ -44,9 +45,9 @@ public class StrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 		strasse.kaufe(spieler);
 
-		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
-		assertThat(spieler.getBargeld(), Is.is(startbetrag - kosten));
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
 	public static Strasse getDefaultStrasse()

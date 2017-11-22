@@ -50,11 +50,11 @@ public class SpielImplTest
 	@Test
 	public void geldBeiUeberLos()
 	{
-		int geldVorDemLaufen = spiel.getAktuellerSpieler().getBargeld();
+		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD);
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 
-		assertThat(spiel.getAktuellerSpieler().getBargeld(),
+		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
 	}
 
@@ -72,17 +72,17 @@ public class SpielImplTest
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 
-		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getHolzVorrat();
-		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getSteinVorrat();
+		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.HOLZ);
+		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.STEIN);
 
 		for (int i = 0; i < spiel.getSpieler().size(); i++)
 		{
 			spiel.naechsterSpieler();
 		}
 
-		assertThat(spiel.getAktuellerSpieler().getHolzVorrat(),
+		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.HOLZ),
 				Is.is(holzVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
-		assertThat(spiel.getAktuellerSpieler().getSteinVorrat(),
+		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.STEIN),
 				Is.is(steinVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
 	}
 }

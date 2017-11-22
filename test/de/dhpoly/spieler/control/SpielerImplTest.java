@@ -5,22 +5,23 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerImplTest
 {
-
 	@Test
 	public void ueberweiseGeld()
 	{
 		Spieler empfaenger = getDefaultSpieler(100);
 		Spieler sender = getDefaultSpieler(100);
 
-		sender.ueberweiseGeld(50, empfaenger);
+		sender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, 50), empfaenger);
 
-		assertThat(sender.getBargeld(), Is.is(50));
-		assertThat(empfaenger.getBargeld(), Is.is(150));
+		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));
+		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));
 	}
 
 	public static Spieler getDefaultSpieler()

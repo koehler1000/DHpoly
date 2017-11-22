@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import observerpattern.Beobachter;
@@ -25,7 +26,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
-		txtKontostand = new JTextArea(spieler.getBargeld() + "€");
+		txtKontostand = new JTextArea(spieler.getRessourcenWerte(Ressource.GELD) + "€");
 		txtKontostand.setEditable(false);
 		txtKontostand.setFont(new Font("arial", Font.BOLD, 30));
 		txtKontostand.setBackground(backcolor);
@@ -50,9 +51,9 @@ public class SpielerUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		txtKontostand.setText(spieler.getBargeld() + "€");
+		txtKontostand.setText(spieler.getRessourcenWerte(Ressource.GELD) + "€");
 
-		if (spieler.getBargeld() >= 0)
+		if (spieler.getRessourcenWerte(Ressource.GELD) >= 0)
 		{
 			txtKontostand.setForeground(Color.BLACK);
 		}
