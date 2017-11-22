@@ -120,9 +120,9 @@ public class EinstellungenImpl implements Einstellungen
 	public List<RessourcenDatensatz> getSpielerStartVorraete()
 	{
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, 1000));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, 5));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, 5));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
 		return ressourcenDatensaetze;
 	}
 }

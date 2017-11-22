@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
@@ -32,6 +33,8 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler(int geld)
 	{
+		Einstellungen einstellungen = new EinstellungenImpl();
+		einstellungen.setKostenHausGeld(geld);
 		return new SpielerImpl("me", geld, null);
 	}
 

@@ -101,14 +101,18 @@ public class Strasse extends FeldImpl
 
 	private int getMietkosten()
 	{
-		if (strassenverwaltung.isNutzerBesitzerAllerStrassen(gruppe, eigentuemer.get()) && haueser == 0)
+		if (eigentuemer.isPresent())
 		{
-			return miete[0] * 2;
+			if (strassenverwaltung.isNutzerBesitzerAllerStrassen(gruppe, eigentuemer.get()) && haueser == 0)
+			{
+				return miete[0] * 2;
+			}
+			else
+			{
+				return miete[haueser];
+			}
 		}
-		else
-		{
-			return miete[haueser];
-		}
+		return 0;
 	}
 
 	public void setEigentuemer(Spieler anbietender)
