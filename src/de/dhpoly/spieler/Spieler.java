@@ -11,19 +11,23 @@ import observerpattern.Beobachter;
 
 public interface Spieler
 {
+	@Deprecated
 	int getBargeld();
 
+	@Deprecated
 	void einzahlen(int betrag);
 
 	void einzahlen(RessourcenDatensatz datensatz);
 
+	@Deprecated
 	void auszahlen(int betrag);
 
 	void auszahlen(RessourcenDatensatz datensatz);
 
+	@Deprecated
 	void ueberweiseGeld(int betrag, Spieler empfaenger);
 
-	void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger);
+	void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger);
 
 	boolean isNegative();
 
@@ -39,8 +43,10 @@ public interface Spieler
 
 	void zeigeKarte(Karte karte);
 
+	@Deprecated
 	int getSteinVorrat();
 
+	@Deprecated
 	int getHolzVorrat();
 
 	int getSpielerNr();

@@ -134,7 +134,7 @@ public class EreignisfeldTest
 			}
 
 			@Override
-			public void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger)
+			public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
 			{
 				// TODO Auto-generated method stub
 
