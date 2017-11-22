@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -139,13 +138,6 @@ public class EreignisfeldTest
 			{
 				// TODO Auto-generated method stub
 
-			}
-
-			@Override
-			public Set<RessourcenDatensatz> getAktuelleVorraete()
-			{
-				// TODO Auto-generated method stub
-				return null;
 			}
 
 			@Override

@@ -1,7 +1,6 @@
 package de.dhpoly.spieler;
 
 import java.util.List;
-import java.util.Set;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
@@ -51,8 +50,6 @@ public interface Spieler
 	boolean isAktuellerSpieler();
 
 	void addBeobachterHinzu(Beobachter beobachter);
-
-	Set<RessourcenDatensatz> getAktuelleVorraete();
 
 	List<RessourcenDatensatz> getRessourcenTransaktionen();
 

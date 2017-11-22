@@ -2,7 +2,6 @@ package de.dhpoly.spieler.control;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
@@ -22,18 +21,16 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private int feldNr = 0;
 	private String name;
 	private int bargeld;
-	private int holzVorrat = 0;
-	private int steinVorrat = 0;
 	private Spiel spiel;
 	private boolean aktuellerSpieler = false;
-	private List<RessourcenDatensatz> vorraete = new ArrayList<RessourcenDatensatz>();
+	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
 
 	@Deprecated
 	public SpielerImpl(String name, int startguthaben, Spiel spiel)
 	{
 		this.name = name;
 		this.spiel = spiel;
-		bargeld = startguthaben;
+		einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, startguthaben));
 	}
 
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
@@ -41,7 +38,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		this.name = name;
 		this.spiel = spiel;
 		bargeld = einstellungen.getStartguthaben();
-		vorraete.addAll(einstellungen.getSpielerStartVorraete());
+
+		for (RessourcenDatensatz ressourcenDatensatz : verlauf)
+		{
+			einzahlen(ressourcenDatensatz);
+		}
 	}
 
 	@Override
@@ -73,21 +74,22 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		this.feldNr = feldNrSoll;
 	}
 
+	@Deprecated
 	public int getBargeld()
 	{
-		return bargeld;
+		return getRessourcenWerte(Ressource.GELD);
 	}
 
+	@Deprecated
 	public void einzahlen(int betrag)
 	{
-		bargeld += betrag;
-		informiereBeobachter();
+		einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
 	}
 
+	@Deprecated
 	public void auszahlen(int betrag)
 	{
-		bargeld -= betrag;
-		informiereBeobachter();
+		auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
 	}
 
 	public boolean isNegative()
@@ -124,13 +126,13 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public int getSteinVorrat()
 	{
-		return steinVorrat;
+		return getRessourcenWerte(Ressource.STEIN);
 	}
 
 	@Override
 	public int getHolzVorrat()
 	{
-		return holzVorrat;
+		return getRessourcenWerte(Ressource.HOLZ);
 	}
 
 	@Override
@@ -155,24 +157,16 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void einzahlen(RessourcenDatensatz datensatz)
 	{
-		auszahlen(new RessourcenDatensatzImpl(datensatz.getRessource(), -datensatz.getAnzahl()));
+		verlauf.add(datensatz);
+		informiereBeobachter();
 	}
 
 	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{
-		switch (datensatz.getRessource())
-		{
-			case GELD:
-				bargeld -= datensatz.getAnzahl();
-				break;
-			case HOLZ:
-				holzVorrat -= datensatz.getAnzahl();
-				break;
-			case STEIN:
-				steinVorrat -= datensatz.getAnzahl();
-				break;
-		}
+		RessourcenDatensatz satz = new RessourcenDatensatzImpl(datensatz.getRessource(), 0 - datensatz.getAnzahl());
+		verlauf.add(satz);
+		informiereBeobachter();
 	}
 
 	@Override
@@ -183,24 +177,21 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public Set<RessourcenDatensatz> getAktuelleVorraete()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<RessourcenDatensatz> getRessourcenTransaktionen()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return verlauf;
 	}
 
-	@Override
 	public int getRessourcenWerte(Ressource ressource)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int i = 0;
+		for (RessourcenDatensatz ressourcenDatensatz : verlauf)
+		{
+			if (ressourcenDatensatz.getRessource() == ressource)
+			{
+				i += ressourcenDatensatz.getAnzahl();
+			}
+		}
+		return i;
 	}
-
 }
