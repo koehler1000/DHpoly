@@ -23,9 +23,9 @@ public enum Wetter
 		return beschreibung;
 	}
 
-	public int getMietbeeinflussung()
+	public double getMietbeeinflussung()
 	{
 		// mehr Miete bei besserem Wetter, weniger bei Unwetter
-		return mietbeeinflussung;
+		return 1 + (mietbeeinflussung / 100.0);
 	}
 }

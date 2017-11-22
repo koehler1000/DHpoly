@@ -96,7 +96,7 @@ public class Strasse extends FeldImpl
 
 	public int getAkuelleMiete(Wetter wetter)
 	{
-		return (int) (getMietkosten() * 1.0 / 100) * wetter.getMietbeeinflussung();
+		return (int) (getMietkosten() * wetter.getMietbeeinflussung());
 	}
 
 	private int getMietkosten()

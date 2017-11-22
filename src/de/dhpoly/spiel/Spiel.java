@@ -23,7 +23,7 @@ public interface Spiel
 
 	List<Feld> getFelder();
 
-	int getFaktorMiete();
+	double getFaktorMiete();
 
 	void naechsterSpieler();
 

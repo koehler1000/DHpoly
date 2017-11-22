@@ -123,7 +123,7 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	public int getFaktorMiete()
+	public double getFaktorMiete()
 	{
 		return wetter.getMietbeeinflussung();
 	}
