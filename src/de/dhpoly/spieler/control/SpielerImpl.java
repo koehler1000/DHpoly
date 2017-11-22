@@ -37,7 +37,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		this.name = name;
 		this.spiel = spiel;
 
-		for (RessourcenDatensatz ressourcenDatensatz : verlauf)
+		for (RessourcenDatensatz ressourcenDatensatz : einstellungen.getSpielerStartVorraete())
 		{
 			einzahlen(ressourcenDatensatz);
 		}

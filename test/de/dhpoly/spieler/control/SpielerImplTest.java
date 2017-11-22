@@ -33,23 +33,28 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler(int geld)
 	{
-		Einstellungen einstellungen = new EinstellungenImpl();
-		einstellungen.setKostenHausGeld(geld);
-		return new SpielerImpl("me", geld, null);
+		return getDefaultSpieler("me", geld);
 	}
 
 	public static Spieler getDefaultSpieler(String name, int geld)
 	{
-		return new SpielerImpl(name, geld, null);
+		return getDefaultSpieler(name, geld, null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld, Spiel spiel)
 	{
-		return new SpielerImpl("me", geld, spiel);
+		return getDefaultSpieler("me", geld, spiel);
 	}
 
 	public static Spieler getDefaultSpieler(String name, Spiel spiel)
 	{
-		return new SpielerImpl(name, 1000, spiel);
+		return getDefaultSpieler(name, 1000, spiel);
+	}
+
+	public static Spieler getDefaultSpieler(String name, int geld, Spiel spiel)
+	{
+		Einstellungen einstellungen = new EinstellungenImpl();
+		einstellungen.setStartguthaben(geld);
+		return new SpielerImpl(name, einstellungen, spiel);
 	}
 }
