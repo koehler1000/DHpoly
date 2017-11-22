@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.spieler.Spieler;
 
@@ -18,6 +19,8 @@ public class StrasseKaufenUI extends JFrame
 		this.setLayout(new GridLayout(1, 2));
 
 		this.add(new StrasseInfoUI(strasse));
+		
+		this.setIconImage(Bilderverwalter.getBild("spiel", "logo.png").getImage());
 
 		JButton butKaufen = new JButton("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
