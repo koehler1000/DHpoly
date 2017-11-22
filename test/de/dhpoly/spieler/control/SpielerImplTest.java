@@ -14,8 +14,8 @@ public class SpielerImplTest
 	@Test
 	public void ueberweiseGeld()
 	{
-		Spieler empfaenger = new SpielerImpl("me", 100, null);
-		Spieler sender = new SpielerImpl("ich", 100, null);
+		Spieler empfaenger = getDefaultSpieler(100);
+		Spieler sender = getDefaultSpieler(100);
 
 		sender.ueberweiseGeld(50, empfaenger);
 

@@ -115,4 +115,14 @@ public class EinstellungenImpl implements Einstellungen
 		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, 100 * seite));
 		return ressourcenDatensaetze;
 	}
+
+	@Override
+	public List<RessourcenDatensatz> getSpielerStartVorraete()
+	{
+		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, 1000));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, 5));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, 5));
+		return ressourcenDatensaetze;
+	}
 }

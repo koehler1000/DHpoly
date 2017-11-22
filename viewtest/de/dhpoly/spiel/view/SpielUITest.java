@@ -21,13 +21,13 @@ public class SpielUITest
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelImpl());
 
-		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen.getStartguthaben(), spiel));
-		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen.getStartguthaben(), spiel));
-		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen.getStartguthaben(), spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen, spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
 		frame.add(new SpielUI(spiel));
 		frame.setSize(1000, 1000);
 
-		frame.setVisible(true); 
+		frame.setVisible(true);
 	}
 }

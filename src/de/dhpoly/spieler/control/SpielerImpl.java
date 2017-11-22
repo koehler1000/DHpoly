@@ -1,5 +1,8 @@
 package de.dhpoly.spieler.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
@@ -21,7 +24,9 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private int steinVorrat = 0;
 	private Spiel spiel;
 	private boolean aktuellerSpieler = false;
+	private List<RessourcenDatensatz> vorraete = new ArrayList<RessourcenDatensatz>();
 
+	@Deprecated
 	public SpielerImpl(String name, int startguthaben, Spiel spiel)
 	{
 		this.name = name;
@@ -34,6 +39,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		this.name = name;
 		this.spiel = spiel;
 		bargeld = einstellungen.getStartguthaben();
+		vorraete.addAll(einstellungen.getSpielerStartVorraete());
 	}
 
 	@Override

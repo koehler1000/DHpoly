@@ -35,4 +35,6 @@ public interface Einstellungen
 	void setBetragBetretenLos(int betragBetretenLos);
 
 	List<RessourcenDatensatz> getHauskosten(int seite);
+
+	List<RessourcenDatensatz> getSpielerStartVorraete();
 }
