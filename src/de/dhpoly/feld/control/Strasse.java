@@ -82,9 +82,18 @@ public class Strasse extends FeldImpl
 	{
 		if (!hypothek)
 		{
-			int wert = (int) (getMietkosten() * 1.0 / 100 * wetter.getMietbeeinflussung());
-			zahlender.ueberweiseGeld(wert, eigentuemer.get());
+			zahlender.ueberweiseGeld(getAkuelleMiete(wetter), eigentuemer.get());
 		}
+	}
+
+	public int getAkuelleMiete()
+	{
+		return (int) (getMietkosten() * 1.0 / 100);
+	}
+
+	public int getAkuelleMiete(Wetter wetter)
+	{
+		return (int) (getMietkosten() * 1.0 / 100) * wetter.getMietbeeinflussung();
 	}
 
 	private int getMietkosten()
