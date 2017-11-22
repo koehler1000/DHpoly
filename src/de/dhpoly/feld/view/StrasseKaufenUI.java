@@ -19,8 +19,8 @@ public class StrasseKaufenUI extends JFrame
 		this.setLayout(new GridLayout(1, 2));
 
 		this.add(new StrasseInfoUI(strasse));
-		
-		this.setIconImage(Bilderverwalter.getBild("spiel", "logo.png").getImage());
+
+		this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 
 		JButton butKaufen = new JButton("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));

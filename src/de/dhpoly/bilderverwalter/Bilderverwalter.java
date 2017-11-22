@@ -10,6 +10,8 @@ import de.dhpoly.fehler.control.FehlerImpl;
 
 public class Bilderverwalter
 {
+	public static final String LOGO = "spiel\\logo.png";
+
 	public static ImageIcon getBild(String ordnername, String bildnameMitDateiendung)
 	{
 		return getBild(ordnername + "\\" + bildnameMitDateiendung);
