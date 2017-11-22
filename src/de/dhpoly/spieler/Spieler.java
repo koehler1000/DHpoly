@@ -19,10 +19,14 @@ public interface Spieler
 
 	void einzahlen(RessourcenDatensatz datensatz);
 
+	void einzahlen(List<RessourcenDatensatz> datensaetze);
+
 	@Deprecated
 	void auszahlen(int betrag);
 
 	void auszahlen(RessourcenDatensatz datensatz);
+
+	void auszahlen(List<RessourcenDatensatz> datensaetze);
 
 	@Deprecated
 	void ueberweiseGeld(int betrag, Spieler empfaenger);

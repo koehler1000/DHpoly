@@ -6,6 +6,8 @@ import java.util.Optional;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends FeldImpl
@@ -71,7 +73,7 @@ public class Strasse extends FeldImpl
 	{
 		if (isKaufbar())
 		{
-			potentiellerKaeufer.auszahlen(betrag);
+			potentiellerKaeufer.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
 			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
 
 			informiereBeobachter();
@@ -82,7 +84,8 @@ public class Strasse extends FeldImpl
 	{
 		if (!hypothek)
 		{
-			zahlender.ueberweiseGeld(getAkuelleMiete(wetter), eigentuemer.get());
+			zahlender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, getAkuelleMiete(wetter)),
+					eigentuemer.get());
 		}
 	}
 
