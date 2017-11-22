@@ -69,6 +69,6 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 
 	private ImageIcon getRessourcenBild(Ressource res)
 	{
-		return Bilderverwalter.getBild("ressourcen", res.toString() + ".png");
+		return Bilderverwalter.getBild(res);
 	}
 }

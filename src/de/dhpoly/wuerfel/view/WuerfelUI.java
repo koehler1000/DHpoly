@@ -3,7 +3,6 @@ package de.dhpoly.wuerfel.view;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -32,11 +31,6 @@ public class WuerfelUI extends JPanel implements Observer
 		update();
 	}
 
-	private ImageIcon getWuerfelBild(int nummer)
-	{
-		return Bilderverwalter.getBild("wuerfel", "wuerfel_" + nummer + ".png");
-	}
-
 	@Override
 	public void update(Observable o, Object arg)
 	{
@@ -47,11 +41,11 @@ public class WuerfelUI extends JPanel implements Observer
 	{
 		if (wuerfelNr == 1)
 		{
-			lblWuerfelBild.setIcon(getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
+			lblWuerfelBild.setIcon(Bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
 		}
 		else
 		{
-			lblWuerfelBild.setIcon(getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
+			lblWuerfelBild.setIcon(Bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
 		}
 	}
 }
