@@ -20,15 +20,6 @@ public class BezahlKarte implements Karte
 		this.ressourcenDatensatz = ressourcenDatensatz;
 	}
 
-	@Deprecated
-	public BezahlKarte(String beschreibung, GeldTransfer transfer, int geldbetrag)
-	{
-		super();
-		this.beschreibung = beschreibung;
-		this.transfer = transfer;
-		this.ressourcenDatensatz = new RessourcenDatensatzImpl(Ressource.GELD, geldbetrag);
-	}
-
 	public String getBeschreibung()
 	{
 		return beschreibung;
