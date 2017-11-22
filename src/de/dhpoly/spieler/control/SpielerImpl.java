@@ -2,6 +2,7 @@ package de.dhpoly.spieler.control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
@@ -10,6 +11,7 @@ import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
@@ -178,6 +180,27 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		auszahlen(datensatz);
 		empfaenger.einzahlen(datensatz);
+	}
+
+	@Override
+	public Set<RessourcenDatensatz> getAktuelleVorraete()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RessourcenDatensatz> getRessourcenTransaktionen()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getRessourcenWerte(Ressource ressource)
+	{
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

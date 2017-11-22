@@ -1,9 +1,13 @@
 package de.dhpoly.spieler;
 
+import java.util.List;
+import java.util.Set;
+
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.Ressource;
 import observerpattern.Beobachter;
 
 public interface Spieler
@@ -48,4 +52,9 @@ public interface Spieler
 
 	void addBeobachterHinzu(Beobachter beobachter);
 
+	Set<RessourcenDatensatz> getAktuelleVorraete();
+
+	List<RessourcenDatensatz> getRessourcenTransaktionen();
+
+	int getRessourcenWerte(Ressource ressource);
 }

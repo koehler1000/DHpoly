@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -123,21 +124,42 @@ public class EreignisfeldTest
 			public void einzahlen(RessourcenDatensatz datensatz)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void auszahlen(RessourcenDatensatz datensatz)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger)
 			{
 				// TODO Auto-generated method stub
-				
+
+			}
+
+			@Override
+			public Set<RessourcenDatensatz> getAktuelleVorraete()
+			{
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<RessourcenDatensatz> getRessourcenTransaktionen()
+			{
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public int getRessourcenWerte(Ressource ressource)
+			{
+				// TODO Auto-generated method stub
+				return 0;
 			}
 		};
 
