@@ -38,7 +38,6 @@ public class Standardspielfeld
 				new RessourcenDatensatzImpl(Ressource.GELD, 150)));
 
 		Einstellungen einstellungen = new EinstellungenImpl();
-
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 
 		int seite = 1;
@@ -114,6 +113,7 @@ public class Standardspielfeld
 		standardfeld.add(new Strasse(verwaltung, 520, new int[] { 52, 57, 63, 78, 104, 156 }, getHauskosten(seite), 8,
 				"München"));
 
+		verwaltung.setFelder(standardfeld);
 		return standardfeld;
 	}
 
