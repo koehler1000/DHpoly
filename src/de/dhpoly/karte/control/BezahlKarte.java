@@ -2,19 +2,31 @@ package de.dhpoly.karte.control;
 
 import de.dhpoly.karte.Karte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 
 public class BezahlKarte implements Karte
 {
 	private String beschreibung;
 	private GeldTransfer transfer;
-	private int geldBetrag;
+	private RessourcenDatensatz ressourcenDatensatz;
 
-	public BezahlKarte(String beschreibung, GeldTransfer transfer, int geldBetrag)
+	public BezahlKarte(String beschreibung, GeldTransfer transfer, RessourcenDatensatz ressourcenDatensatz)
 	{
 		super();
 		this.beschreibung = beschreibung;
 		this.transfer = transfer;
-		this.geldBetrag = geldBetrag;
+		this.ressourcenDatensatz = ressourcenDatensatz;
+	}
+
+	@Deprecated
+	public BezahlKarte(String beschreibung, GeldTransfer transfer, int geldbetrag)
+	{
+		super();
+		this.beschreibung = beschreibung;
+		this.transfer = transfer;
+		this.ressourcenDatensatz = new RessourcenDatensatzImpl(Ressource.GELD, geldbetrag);
 	}
 
 	public String getBeschreibung()
@@ -27,9 +39,9 @@ public class BezahlKarte implements Karte
 		return transfer;
 	}
 
-	public int getGeldBetrag()
+	public RessourcenDatensatz getRessourcenDatensatz()
 	{
-		return geldBetrag;
+		return ressourcenDatensatz;
 	}
 
 	@Override

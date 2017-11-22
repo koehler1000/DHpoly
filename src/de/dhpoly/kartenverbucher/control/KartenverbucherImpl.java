@@ -6,6 +6,7 @@ import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
+import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher
@@ -15,13 +16,13 @@ public class KartenverbucherImpl implements Kartenverbucher
 		switch (karte.getTransfer())
 		{
 			case ANDERESPIELER_SPIELER:
-				umbuchen(alleSpieler, ziehenderSpieler, karte.getGeldBetrag());
+				umbuchen(alleSpieler, ziehenderSpieler, karte.getRessourcenDatensatz());
 				break;
 			case BANK_SPIELER:
-				ziehenderSpieler.einzahlen(karte.getGeldBetrag());
+				ziehenderSpieler.einzahlen(karte.getRessourcenDatensatz());
 				break;
 			case SPIELER_ANDERESPIELER:
-				umbuchen(ziehenderSpieler, alleSpieler, karte.getGeldBetrag());
+				umbuchen(ziehenderSpieler, alleSpieler, karte.getRessourcenDatensatz());
 				break;
 			default:
 				break;
@@ -29,28 +30,37 @@ public class KartenverbucherImpl implements Kartenverbucher
 		}
 	}
 
-	private static void umbuchen(List<Spieler> sender, Spieler empfaenger, int betrag)
+	private void umbuchen(Spieler ziehenderSpieler, List<Spieler> alleSpieler, RessourcenDatensatz ressourcenDatensatz)
+	{
+		for (Spieler empf : alleSpieler)
+		{
+			umbuchen(ziehenderSpieler, empf, ressourcenDatensatz);
+		}
+	}
+
+	private static void umbuchen(List<Spieler> sender, Spieler empfaenger, RessourcenDatensatz datensatz)
 	{
 		for (Spieler send : sender)
 		{
-			umbuchen(send, empfaenger, betrag);
+			umbuchen(send, empfaenger, datensatz);
 		}
 	}
 
-	private static void umbuchen(Spieler sender, List<Spieler> empfaenger, int betrag)
-	{
-		for (Spieler empf : empfaenger)
-		{
-			umbuchen(sender, empf, betrag);
-		}
-	}
+	// private static void umbuchen(Spieler sender, List<Spieler> empfaenger, int
+	// betrag)
+	// {
+	// for (Spieler empf : empfaenger)
+	// {
+	// umbuchen(sender, empf, betrag);
+	// }
+	// }
 
-	private static void umbuchen(Spieler sender, Spieler empfaenger, int betrag)
+	private static void umbuchen(Spieler sender, Spieler empfaenger, RessourcenDatensatz datensatz)
 	{
 		if (sender != empfaenger)
 		{
-			sender.auszahlen(betrag);
-			empfaenger.einzahlen(betrag);
+			sender.auszahlen(datensatz);
+			empfaenger.einzahlen(datensatz);
 		}
 	}
 

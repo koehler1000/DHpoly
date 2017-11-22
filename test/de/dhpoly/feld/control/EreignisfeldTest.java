@@ -14,6 +14,9 @@ import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
@@ -115,10 +118,32 @@ public class EreignisfeldTest
 			@Override
 			public void addBeobachterHinzu(Beobachter beobachter)
 			{}
+
+			@Override
+			public void einzahlen(RessourcenDatensatz datensatz)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void auszahlen(RessourcenDatensatz datensatz)
+			{
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger)
+			{
+				// TODO Auto-generated method stub
+				
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
-		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER, 1000));
+		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
+				new RessourcenDatensatzImpl(Ressource.GELD, 1000)));
 
 		Feld ereignisfeld = new Ereignisfeld(new KartenstapelImpl(kartenstapel));
 		ereignisfeld.betreteFeld(spieler, 2, Wetter.BEWOELKT);

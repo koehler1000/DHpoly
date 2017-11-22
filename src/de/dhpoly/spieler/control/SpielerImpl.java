@@ -5,6 +5,8 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
@@ -140,6 +142,36 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void addBeobachterHinzu(Beobachter beobachter)
 	{
 		addBeobachter(beobachter);
+	}
+
+	@Override
+	public void einzahlen(RessourcenDatensatz datensatz)
+	{
+		auszahlen(new RessourcenDatensatzImpl(datensatz.getRessource(), -datensatz.getAnzahl()));
+	}
+
+	@Override
+	public void auszahlen(RessourcenDatensatz datensatz)
+	{
+		switch (datensatz.getRessource())
+		{
+			case GELD:
+				bargeld -= datensatz.getAnzahl();
+				break;
+			case HOLZ:
+				holzVorrat -= datensatz.getAnzahl();
+				break;
+			case STEIN:
+				steinVorrat -= datensatz.getAnzahl();
+				break;
+		}
+	}
+
+	@Override
+	public void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger)
+	{
+		auszahlen(datensatz);
+		empfaenger.einzahlen(datensatz);
 	}
 
 }

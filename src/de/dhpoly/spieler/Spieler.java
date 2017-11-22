@@ -3,6 +3,7 @@ package de.dhpoly.spieler;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.ressource.RessourcenDatensatz;
 import observerpattern.Beobachter;
 
 public interface Spieler
@@ -11,9 +12,15 @@ public interface Spieler
 
 	void einzahlen(int betrag);
 
+	void einzahlen(RessourcenDatensatz datensatz);
+
 	void auszahlen(int betrag);
 
+	void auszahlen(RessourcenDatensatz datensatz);
+
 	void ueberweiseGeld(int betrag, Spieler empfaenger);
+
+	void ueberweiseGeld(RessourcenDatensatz datensatz, Spieler empfaenger);
 
 	boolean isNegative();
 
@@ -40,4 +47,5 @@ public interface Spieler
 	boolean isAktuellerSpieler();
 
 	void addBeobachterHinzu(Beobachter beobachter);
+
 }
