@@ -59,6 +59,9 @@ public class SpielImpl implements Spiel
 	@Override
 	public void naechsterSpieler()
 	{
+		Spieler spielerAktuell = spieler.get(aktuellerSpieler);
+		pruefeVerloren(spielerAktuell);
+
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
 
 		if (aktuellerSpieler + 1 >= spieler.size())
@@ -72,6 +75,20 @@ public class SpielImpl implements Spiel
 		}
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
+	}
+
+	private void pruefeVerloren(Spieler spielerAktuell)
+	{
+		if (spielerAktuell.isNegative())
+		{
+			spieler.remove(spielerAktuell);
+			spielerAktuell.zeigeNachrichtVerloren();
+
+			if (spieler.size() == 1)
+			{
+				spieler.get(0).zeigeNachrichtGewonnen();
+			}
+		}
 	}
 
 	private void vergebeRessourcen()

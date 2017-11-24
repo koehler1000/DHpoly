@@ -144,6 +144,20 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 				return false;
 			}
+
+			@Override
+			public void zeigeNachrichtVerloren()
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void zeigeNachrichtGewonnen()
+			{
+				// TODO Auto-generated method stub
+
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();

@@ -48,4 +48,8 @@ public interface Spieler
 	int getRessourcenWerte(Ressource ressource);
 
 	boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus);
+
+	void zeigeNachrichtVerloren();
+
+	void zeigeNachrichtGewonnen();
 }

@@ -181,4 +181,18 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		}
 		return true;
 	}
+
+	@Override
+	public void zeigeNachrichtVerloren()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void zeigeNachrichtGewonnen()
+	{
+		// TODO Auto-generated method stub
+
+	}
 }
