@@ -168,4 +168,17 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 			auszahlen(ressourcenDatensatz);
 		}
 	}
+
+	@Override
+	public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
+		{
+			if (getRessourcenWerte(ressourcenDatensatz.getRessource()) < ressourcenDatensatz.getAnzahl())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }

@@ -167,7 +167,7 @@ public class Strasse extends FeldImpl
 
 	public void hausBauen()
 	{
-		if (haueser < miete.length - 1 && eigentuemer.isPresent())
+		if (haueser < miete.length - 1 && eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus))
 		{
 			eigentuemer.get().auszahlen(kostenHaus);
 			haueser++;

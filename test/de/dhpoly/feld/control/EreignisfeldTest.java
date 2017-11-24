@@ -137,6 +137,13 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 
 			}
+
+			@Override
+			public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
+			{
+				// TODO Auto-generated method stub
+				return false;
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();

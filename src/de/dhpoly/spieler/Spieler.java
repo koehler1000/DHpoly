@@ -46,4 +46,6 @@ public interface Spieler
 	List<RessourcenDatensatz> getRessourcenTransaktionen();
 
 	int getRessourcenWerte(Ressource ressource);
+
+	boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus);
 }
