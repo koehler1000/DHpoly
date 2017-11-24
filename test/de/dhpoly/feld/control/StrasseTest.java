@@ -2,12 +2,17 @@ package de.dhpoly.feld.control;
 
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -48,6 +53,36 @@ public class StrasseTest
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
+	}
+
+	@Test
+	public void hausBauenKostetRessourcen()
+	{
+		final int kostenHausGeld = 100;
+		final int kostenHausHolz = 100;
+		final int kostenHausStein = 100;
+
+		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
+		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+
+		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		strasse.kaufe(spieler);
+
+		strasse.hausBauen();
+
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(0));
+		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(0));
+	}
+
+	private static Strasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
+	{
+		return new Strasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
 	}
 
 	public static Strasse getDefaultStrasse()

@@ -164,4 +164,30 @@ public class Strasse extends FeldImpl
 	{
 		return (isVerkauft() && eigentuemer.get() == spieler);
 	}
+
+	public void hausBauen()
+	{
+		if (haueser < miete.length - 1 && eigentuemer.isPresent())
+		{
+			eigentuemer.get().auszahlen(kostenHaus);
+			haueser++;
+		}
+	}
+
+	public void hausVerkaufen()
+	{
+		if (haueser > 0 && eigentuemer.isPresent())
+		{
+			eigentuemer.get().einzahlen(kostenHaus);
+			hausZerstoeren();
+		}
+	}
+
+	public void hausZerstoeren()
+	{
+		if (haueser > 0)
+		{
+			haueser--;
+		}
+	}
 }
