@@ -128,6 +128,32 @@ public class StrasseTest
 		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(0));
 	}
 
+	@Test
+	public void hausVerkaufenBringtRessourcenZurueck()
+	{
+		final int kostenHausGeld = 100;
+		final int kostenHausHolz = 100;
+		final int kostenHausStein = 100;
+
+		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
+		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+
+		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		strasse.kaufe(spieler);
+
+		strasse.hausBauen();
+		strasse.hausVerkaufen();
+
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(100));
+		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(100));
+	}
+
 	private static Strasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
 	{
 		return new Strasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");

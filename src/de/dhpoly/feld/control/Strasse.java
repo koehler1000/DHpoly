@@ -178,7 +178,13 @@ public class Strasse extends FeldImpl
 	{
 		if (haueser > 0 && eigentuemer.isPresent())
 		{
-			eigentuemer.get().einzahlen(kostenHaus);
+			for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
+			{
+				if (ressourcenDatensatz.getRessource() != Ressource.GELD)
+				{
+					eigentuemer.get().einzahlen(ressourcenDatensatz);
+				}
+			}
 			hausZerstoeren();
 		}
 	}
