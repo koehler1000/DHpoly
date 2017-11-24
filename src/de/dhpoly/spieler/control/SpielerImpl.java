@@ -68,7 +68,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 
 	public boolean isNegative()
 	{
-		return getRessourcenWerte(Ressource.GELD) >= 0;
+		return getRessourcenWerte(Ressource.GELD) < 0;
 	}
 
 	@Override
