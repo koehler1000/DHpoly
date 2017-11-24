@@ -3,6 +3,8 @@ package de.dhpoly.spieler.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
@@ -185,14 +187,12 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachrichtVerloren()
 	{
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, name + " hat verloren");
 	}
 
 	@Override
 	public void zeigeNachrichtGewonnen()
 	{
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, name + " hat gewonnen");
 	}
 }
