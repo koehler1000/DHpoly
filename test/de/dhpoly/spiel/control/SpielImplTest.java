@@ -13,10 +13,17 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.control.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Ressourcenfeld;
+import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.karte.Karte;
+import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
+import observerpattern.Beobachter;
 
 public class SpielImplTest
 {
@@ -84,5 +91,150 @@ public class SpielImplTest
 				Is.is(holzVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.STEIN),
 				Is.is(steinVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
+	}
+
+	boolean hatVerloren = false;
+
+	@Test
+	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat()
+	{
+		List<Feld> felder = new ArrayList<>();
+		felder.add(StrasseTest.getDefaultStrasse());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), null);
+
+		spiel.fuegeSpielerHinzu(getSpieler(false));
+		spiel.fuegeSpielerHinzu(getSpieler(true));
+
+		assertThat(hatVerloren, Is.is(false));
+		spiel.naechsterSpieler();
+
+		assertThat(hatVerloren, Is.is(true));
+	}
+
+	boolean hatGewonnen = false;
+
+	@Test
+	public void spielerGewinntWennAlleAnderenVerlorenHaben()
+	{
+		List<Feld> felder = new ArrayList<>();
+		felder.add(StrasseTest.getDefaultStrasse());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), null);
+		spiel.fuegeSpielerHinzu(getSpieler(false));
+		spiel.fuegeSpielerHinzu(getSpieler(true));
+
+		spiel.naechsterSpieler();
+
+		assertThat(hatGewonnen, Is.is(true));
+	}
+
+	private Spieler getSpieler(boolean gewinntImmer)
+	{
+		return new Spieler()
+		{
+
+			@Override
+			public void zeigeTransaktionsvorschlag(Transaktion transaktion)
+			{}
+
+			@Override
+			public void zeigeNachrichtVerloren()
+			{
+				hatGewonnen = true;
+			}
+
+			@Override
+			public void zeigeNachrichtGewonnen()
+			{
+				hatVerloren = true;
+			}
+
+			@Override
+			public void zeigeKaufmoeglichkeit(Strasse strasse)
+			{}
+
+			@Override
+			public void zeigeKarte(Karte karte)
+			{}
+
+			@Override
+			public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
+			{}
+
+			@Override
+			public void setFeldNr(int feldNrSoll)
+			{}
+
+			@Override
+			public void setAkutellerSpieler(boolean isAktuell)
+			{}
+
+			@Override
+			public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
+			{
+				return false;
+			}
+
+			@Override
+			public boolean isNegative()
+			{
+				return !gewinntImmer;
+			}
+
+			@Override
+			public boolean isAktuellerSpieler()
+			{
+				return false;
+			}
+
+			@Override
+			public int getSpielerNr()
+			{
+				return 0;
+			}
+
+			@Override
+			public int getRessourcenWerte(Ressource ressource)
+			{
+				return 0;
+			}
+
+			@Override
+			public List<RessourcenDatensatz> getRessourcenTransaktionen()
+			{
+				return null;
+			}
+
+			@Override
+			public String getName()
+			{
+				return null;
+			}
+
+			@Override
+			public int getFeldNr()
+			{
+				return 0;
+			}
+
+			@Override
+			public void einzahlen(List<RessourcenDatensatz> datensaetze)
+			{}
+
+			@Override
+			public void einzahlen(RessourcenDatensatz datensatz)
+			{}
+
+			@Override
+			public void auszahlen(List<RessourcenDatensatz> datensaetze)
+			{}
+
+			@Override
+			public void auszahlen(RessourcenDatensatz datensatz)
+			{}
+
+			@Override
+			public void addBeobachterHinzu(Beobachter beobachter)
+			{}
+		};
 	}
 }

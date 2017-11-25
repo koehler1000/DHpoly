@@ -60,9 +60,8 @@ public class SpielImpl implements Spiel
 	public void naechsterSpieler()
 	{
 		Spieler spielerAktuell = spieler.get(aktuellerSpieler);
-		pruefeVerloren(spielerAktuell);
-
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
+		pruefeVerloren(spielerAktuell);
 
 		if (aktuellerSpieler + 1 >= spieler.size())
 		{
