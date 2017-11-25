@@ -38,5 +38,4 @@ public class BezahlKarte implements Karte
 	{
 		return "Bezahlkarte";
 	}
-
 }
