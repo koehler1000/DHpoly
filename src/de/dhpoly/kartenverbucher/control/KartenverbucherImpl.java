@@ -16,17 +16,35 @@ public class KartenverbucherImpl implements Kartenverbucher
 		switch (karte.getTransfer())
 		{
 			case ANDERESPIELER_SPIELER:
-				umbuchen(alleSpieler, ziehenderSpieler, karte.getRessourcenDatensatz());
+				umbuchen(alleSpieler, ziehenderSpieler, karte.getRessourcenDatensaetze());
 				break;
 			case BANK_SPIELER:
-				ziehenderSpieler.einzahlen(karte.getRessourcenDatensatz());
+				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
 				break;
 			case SPIELER_ANDERESPIELER:
-				umbuchen(ziehenderSpieler, alleSpieler, karte.getRessourcenDatensatz());
+				umbuchen(ziehenderSpieler, alleSpieler, karte.getRessourcenDatensaetze());
 				break;
 			default:
 				break;
 
+		}
+	}
+
+	private void umbuchen(Spieler ziehenderSpieler, List<Spieler> alleSpieler,
+			List<RessourcenDatensatz> ressourcenDatensaetze)
+	{
+		for (RessourcenDatensatz datensatz : ressourcenDatensaetze)
+		{
+			umbuchen(ziehenderSpieler, alleSpieler, datensatz);
+		}
+	}
+
+	private void umbuchen(List<Spieler> alleSpieler, Spieler ziehenderSpieler,
+			List<RessourcenDatensatz> ressourcenDatensaetze)
+	{
+		for (RessourcenDatensatz datensatz : ressourcenDatensaetze)
+		{
+			umbuchen(alleSpieler, ziehenderSpieler, datensatz);
 		}
 	}
 

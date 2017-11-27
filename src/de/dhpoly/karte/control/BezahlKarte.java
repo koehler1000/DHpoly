@@ -1,5 +1,8 @@
 package de.dhpoly.karte.control;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.karte.Karte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.ressource.RessourcenDatensatz;
@@ -8,14 +11,23 @@ public class BezahlKarte implements Karte
 {
 	private String beschreibung;
 	private GeldTransfer transfer;
-	private RessourcenDatensatz ressourcenDatensatz;
+	private List<RessourcenDatensatz> ressourcenDatensaetze;
 
-	public BezahlKarte(String beschreibung, GeldTransfer transfer, RessourcenDatensatz ressourcenDatensatz)
+	public BezahlKarte(String beschreibung, GeldTransfer transfer, List<RessourcenDatensatz> ressourcenDatensaetze)
 	{
 		super();
 		this.beschreibung = beschreibung;
 		this.transfer = transfer;
-		this.ressourcenDatensatz = ressourcenDatensatz;
+		this.ressourcenDatensaetze = ressourcenDatensaetze;
+	}
+
+	public BezahlKarte(String beschreibung, GeldTransfer transfer, RessourcenDatensatz datensatz)
+	{
+		super();
+		this.beschreibung = beschreibung;
+		this.transfer = transfer;
+		this.ressourcenDatensaetze = new ArrayList<>();
+		ressourcenDatensaetze.add(datensatz);
 	}
 
 	public String getBeschreibung()
@@ -28,9 +40,9 @@ public class BezahlKarte implements Karte
 		return transfer;
 	}
 
-	public RessourcenDatensatz getRessourcenDatensatz()
+	public List<RessourcenDatensatz> getRessourcenDatensaetze()
 	{
-		return ressourcenDatensatz;
+		return ressourcenDatensaetze;
 	}
 
 	@Override
