@@ -2,6 +2,7 @@ package de.dhpoly.spieler;
 
 import java.util.List;
 
+import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
@@ -52,4 +53,10 @@ public interface Spieler
 	void zeigeNachrichtVerloren();
 
 	void zeigeNachrichtGewonnen();
+
+	List<Feld> getFelder();
+
+	void feldHinzu(Feld feld);
+
+	void feldWeg(Feld feld);
 }

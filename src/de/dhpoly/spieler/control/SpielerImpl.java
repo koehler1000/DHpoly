@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
@@ -25,6 +26,14 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private Spiel spiel;
 	private boolean aktuellerSpieler = false;
 	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
+	private List<Feld> felder = new ArrayList<>();
+
+	// mit vorverkauften Strassen
+	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
+	{
+		this(name, einstellungen, spiel);
+		this.felder = felder;
+	}
 
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
 	{
@@ -194,5 +203,24 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeNachrichtGewonnen()
 	{
 		JOptionPane.showMessageDialog(null, name + " hat gewonnen");
+	}
+
+	@Override
+	public void feldHinzu(Feld feld)
+	{
+		felder.add(feld);
+	}
+
+	@Override
+	public void feldWeg(Feld feld)
+	{
+		felder.remove(feld);
+	}
+
+	@Override
+	public List<Feld> getFelder()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

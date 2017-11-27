@@ -235,6 +235,27 @@ public class SpielImplTest
 			@Override
 			public void addBeobachterHinzu(Beobachter beobachter)
 			{}
+
+			@Override
+			public List<Feld> getFelder()
+			{
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void feldHinzu(Feld feld)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void feldWeg(Feld feld)
+			{
+				// TODO Auto-generated method stub
+
+			}
 		};
 	}
 }

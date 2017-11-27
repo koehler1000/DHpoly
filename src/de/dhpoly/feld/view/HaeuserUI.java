@@ -5,16 +5,23 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Strasse;
+
 public class HaeuserUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	public HaeuserUI(List<HausUI> UIs)
+	public HaeuserUI(List<Feld> felder)
 	{
 		this.setLayout(new GridLayout(1, 1, 10, 10));
-		for (HausUI hausUI : UIs)
+
+		for (Feld feld : felder)
 		{
-			this.add(hausUI);
+			if (feld instanceof Strasse)
+			{
+				this.add(new HausUI((Strasse) feld));
+			}
 		}
 	}
 }
