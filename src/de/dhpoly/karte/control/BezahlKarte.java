@@ -23,10 +23,7 @@ public class BezahlKarte implements Karte
 
 	public BezahlKarte(String beschreibung, GeldTransfer transfer, RessourcenDatensatz datensatz)
 	{
-		super();
-		this.beschreibung = beschreibung;
-		this.transfer = transfer;
-		this.ressourcenDatensaetze = new ArrayList<>();
+		this(beschreibung, transfer, new ArrayList<>());
 		ressourcenDatensaetze.add(datensatz);
 	}
 
