@@ -1,9 +1,11 @@
 package de.dhpoly.spieler.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -36,8 +38,13 @@ public class SpielerUI extends JPanel implements Beobachter
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
 		txtName.setBackground(backcolor);
 
-		this.add(txtName);
-		this.add(txtKontostand);
+		JButton butHausBau = new JButton("Häuser verwalten");
+		butHausBau.addActionListener(e -> oeffneHausbauFenster());
+
+		this.setLayout(new BorderLayout());
+		this.add(txtName, BorderLayout.NORTH);
+		this.add(txtKontostand, BorderLayout.CENTER);
+		this.add(butHausBau, BorderLayout.SOUTH);
 
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -46,6 +53,13 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		SpielerImpl spielerImpl = (SpielerImpl) spieler;
 		spielerImpl.addBeobachter(this);
+	}
+
+	private void oeffneHausbauFenster()
+	{
+		// TODO Auto-generated method stub
+		// zeige Hausbau UI
+		// HaeuserUI pnlHaeuser = new HaeuserUI(felder);
 	}
 
 	@Override

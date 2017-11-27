@@ -50,11 +50,11 @@ public class HaeuserUITest
 		Strasse strasse = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
 		Strasse strasse2 = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
 
-		List<HausUI> UIs = new ArrayList<>();
-		UIs.add(new HausUI(strasse));
-		UIs.add(new HausUI(strasse2));
+		List<Feld> felder = new ArrayList<>();
+		felder.add(strasse);
+		felder.add(strasse2);
 
-		frame.add(new HaeuserUI(UIs));
+		frame.add(new HaeuserUI(felder));
 
 		List<RessourcenDatensatz> ressourcen = new ArrayList<>();
 		ressourcen.add(new RessourcenDatensatzImpl(Ressource.GELD, 100000));
