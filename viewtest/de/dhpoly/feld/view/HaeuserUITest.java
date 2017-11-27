@@ -15,7 +15,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class HausUITest
+public class HaeuserUITest
 {
 	public static void main(String[] args)
 	{
@@ -48,7 +48,13 @@ public class HausUITest
 		};
 
 		Strasse strasse = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
-		frame.add(new HausUI(strasse));
+		Strasse strasse2 = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
+
+		List<HausUI> UIs = new ArrayList<>();
+		UIs.add(new HausUI(strasse));
+		UIs.add(new HausUI(strasse2));
+
+		frame.add(new HaeuserUI(UIs));
 
 		List<RessourcenDatensatz> ressourcen = new ArrayList<>();
 		ressourcen.add(new RessourcenDatensatzImpl(Ressource.GELD, 100000));
@@ -59,6 +65,7 @@ public class HausUITest
 		spieler.einzahlen(ressourcen);
 
 		strasse.kaufe(spieler);
+		strasse2.kaufe(spieler);
 
 		frame.setSize(1000, 1000);
 		frame.setVisible(true);

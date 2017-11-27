@@ -11,7 +11,7 @@ public class HaeuserUI extends JPanel
 
 	public HaeuserUI(List<HausUI> UIs)
 	{
-		this.setLayout(new GridLayout(0, 0, 10, 10));
+		this.setLayout(new GridLayout(1, 1, 10, 10));
 		for (HausUI hausUI : UIs)
 		{
 			this.add(hausUI);
