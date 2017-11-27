@@ -74,6 +74,7 @@ public class Strasse extends FeldImpl
 		if (isKaufbar())
 		{
 			potentiellerKaeufer.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
+
 			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
 
 			informiereBeobachter();
@@ -117,7 +118,9 @@ public class Strasse extends FeldImpl
 
 	public void setEigentuemer(Spieler anbietender)
 	{
+		eigentuemer.ifPresent(eigentuemer -> eigentuemer.feldWeg(this));
 		eigentuemer = Optional.ofNullable(anbietender);
+		eigentuemer.ifPresent(eigentuemer -> eigentuemer.feldHinzu(this));
 	}
 
 	public Optional<Spieler> getEigentuemer()
