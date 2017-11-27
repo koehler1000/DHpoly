@@ -171,6 +171,7 @@ public class Strasse extends FeldImpl
 		{
 			eigentuemer.get().auszahlen(kostenHaus);
 			haueser++;
+			informiereBeobachter();
 		}
 	}
 
@@ -194,6 +195,7 @@ public class Strasse extends FeldImpl
 		if (haueser > 0)
 		{
 			haueser--;
+			informiereBeobachter();
 		}
 	}
 }

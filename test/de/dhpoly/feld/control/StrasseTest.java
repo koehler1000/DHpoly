@@ -171,7 +171,12 @@ public class StrasseTest
 
 	public static Strasse getDefaultStrasse(String name, int preis)
 	{
-		return new Strasse(null, preis, new int[1], new EinstellungenImpl().getHauskosten(1), 1, name);
+		return getDefaultStrasse(name, preis, new int[1]);
+	}
+
+	public static Strasse getDefaultStrasse(String name, int preis, int[] mieten)
+	{
+		return new Strasse(null, preis, mieten, new EinstellungenImpl().getHauskosten(1), 1, name);
 	}
 
 	public static Strasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
@@ -180,5 +185,15 @@ public class StrasseTest
 				"Strasse");
 		strasse.setEigentuemer(s1);
 		return strasse;
+	}
+
+	public static Strasse getDefaultStrasse(int[] miete)
+	{
+		return getDefaultStrasse("Teststrasse", 1000, miete);
+	}
+
+	public static Strasse getDefaultStrasse(int[] miete, Felderverwaltung verwaltung)
+	{
+		return new Strasse(verwaltung, 1000, miete, new EinstellungenImpl().getHauskosten(1), 1, "Teststrasse");
 	}
 }
