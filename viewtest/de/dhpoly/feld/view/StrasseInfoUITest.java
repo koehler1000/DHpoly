@@ -2,7 +2,7 @@ package de.dhpoly.feld.view;
 
 import javax.swing.JFrame;
 
-import de.dhpoly.einstellungen.control.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.control.Strasse;
 
 public class StrasseInfoUITest

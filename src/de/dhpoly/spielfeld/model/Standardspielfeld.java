@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.einstellungen.control.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.Ereignisfeld;

@@ -1,4 +1,4 @@
-package de.dhpoly.einstellungen.control;
+package de.dhpoly.einstellungen.model;
 
 import java.util.ArrayList;
 import java.util.List;

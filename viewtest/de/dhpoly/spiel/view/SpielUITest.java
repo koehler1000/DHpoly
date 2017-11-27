@@ -3,7 +3,7 @@ package de.dhpoly.spiel.view;
 import javax.swing.JFrame;
 
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.einstellungen.control.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImpl;
