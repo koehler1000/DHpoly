@@ -6,6 +6,11 @@
 
 This document provides a comprehensive architectural overview of the system, using a number of different architectural views to depict different aspects of the system. It is intended to capture and convey the significant architectural decisions which have been made on the system.
 
+### 1.2 Scope
+
+The information stated in this document applies to the tools used in the project DHPoly.
+The tools that are used in the software architecture allow to work more efficient and fullfill tasks that could not be done without them.
+
 ## 2. Architectural Representation
 
 ## 3. Architectural Goals and Constraints
