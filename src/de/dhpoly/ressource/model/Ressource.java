@@ -2,7 +2,7 @@ package de.dhpoly.ressource.model;
 
 public enum Ressource
 {
-	HOLZ("Holz", "Hölzer"), STEIN("Stein", "Steine"), GELD("Euro", "€");
+	HOLZ("Holz", "Hölzer"), STEIN("Stein", "Steine"), GELD("€", "€");
 
 	private String einzahl;
 	private String mehrzahl;
