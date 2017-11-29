@@ -15,8 +15,8 @@ public class HandelUITest
 {
 	public static void main(String[] args)
 	{
-		Spieler s1 = SpielerImplTest.getDefaultSpieler();
-		Spieler s2 = SpielerImplTest.getDefaultSpieler();
+		Spieler s1 = SpielerImplTest.getDefaultSpieler("s1", 0);
+		Spieler s2 = SpielerImplTest.getDefaultSpieler("s2", 0);
 
 		List<RessourcenDatensatz> datensaetze = new ArrayList<>();
 		datensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, 10000));
