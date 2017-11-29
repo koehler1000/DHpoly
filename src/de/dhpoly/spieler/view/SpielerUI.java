@@ -21,6 +21,7 @@ public class SpielerUI extends JPanel implements Beobachter
 	private Spieler spieler;
 	private JTextArea txtKontostand;
 	private JTextArea txtName;
+	private JButton butHausBau;
 
 	public SpielerUI(Spieler spieler)
 	{
@@ -38,7 +39,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
 		txtName.setBackground(backcolor);
 
-		JButton butHausBau = new JButton("Häuser verwalten");
+		butHausBau = new JButton("Häuser verwalten");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
 
 		this.setLayout(new BorderLayout());
@@ -84,5 +85,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		{
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 		}
+
+		butHausBau.setVisible(spieler.isAktuellerSpieler());
 	}
 }
