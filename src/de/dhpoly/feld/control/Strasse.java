@@ -74,8 +74,7 @@ public class Strasse extends FeldImpl
 		if (isKaufbar())
 		{
 			potentiellerKaeufer.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
-
-			eigentuemer = Optional.ofNullable(potentiellerKaeufer);
+			setEigentuemer(potentiellerKaeufer);
 
 			informiereBeobachter();
 		}
