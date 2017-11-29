@@ -220,7 +220,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public List<Feld> getFelder()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return felder;
 	}
 }

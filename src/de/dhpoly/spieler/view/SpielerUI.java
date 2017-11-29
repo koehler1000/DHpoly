@@ -6,9 +6,11 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
@@ -58,9 +60,12 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneHausbauFenster()
 	{
-		// TODO Auto-generated method stub
-		// zeige Hausbau UI
-		// HaeuserUI pnlHaeuser = new HaeuserUI(felder);
+		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
+		JFrame frameHaueser = new JFrame();
+		frameHaueser.add(pnlHaeuser);
+		frameHaueser.setTitle("Häuser von " + spieler.getName());
+		frameHaueser.setSize(1000, 1000);
+		frameHaueser.setVisible(true);
 	}
 
 	@Override
