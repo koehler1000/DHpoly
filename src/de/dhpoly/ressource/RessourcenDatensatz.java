@@ -9,4 +9,6 @@ public interface RessourcenDatensatz
 	public int getAnzahl();
 
 	public String getString();
+
+	public String getBeschreibung();
 }
