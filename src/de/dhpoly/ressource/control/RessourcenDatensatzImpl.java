@@ -42,6 +42,10 @@ public class RessourcenDatensatzImpl implements RessourcenDatensatz
 	@Override
 	public String getBeschreibung()
 	{
+		if (beschreibung == null)
+		{
+			return "";
+		}
 		return beschreibung;
 	}
 }
