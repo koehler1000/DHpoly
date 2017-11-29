@@ -44,10 +44,14 @@ public class SpielerUI extends JPanel implements Beobachter
 		butHausBau = new JButton("Häuser verwalten");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
 
+		JButton butKontoauszug = new JButton("Details anzeigen");
+		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
+
 		this.setLayout(new BorderLayout());
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(txtKontostand, BorderLayout.CENTER);
 		this.add(butHausBau, BorderLayout.SOUTH);
+		this.add(butKontoauszug, BorderLayout.SOUTH);
 
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -56,6 +60,16 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		SpielerImpl spielerImpl = (SpielerImpl) spieler;
 		spielerImpl.addBeobachter(this);
+	}
+
+	private void oeffneKontoauszugFenster()
+	{
+		KontoauszugUI pnlKonto = new KontoauszugUI(spieler);
+		JFrame frameHaueser = new JFrame();
+		frameHaueser.add(pnlKonto);
+		frameHaueser.setTitle("Häuser von " + spieler.getName());
+		frameHaueser.setSize(1000, 1000);
+		frameHaueser.setVisible(true);
 	}
 
 	private void oeffneHausbauFenster()
