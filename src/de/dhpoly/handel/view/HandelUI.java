@@ -1,10 +1,14 @@
 package de.dhpoly.handel.view;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.RessourcenDatensatz;
@@ -16,8 +20,8 @@ public class HandelUI extends JPanel
 	private static final long serialVersionUID = 1L;
 	private List<RessourceAnbietenUI> ressourcenGeben = new ArrayList<>();
 	private List<RessourceAnbietenUI> ressourcenBekommen = new ArrayList<>();
-	private StrasseAnbietenUI felderBekommen;
-	private StrasseAnbietenUI felderGeben;
+	private StrassenAnbietenUI felderBekommen;
+	private StrassenAnbietenUI felderGeben;
 	private Spieler handelAnbieter;
 	private Spieler handelPartner;
 
@@ -26,26 +30,38 @@ public class HandelUI extends JPanel
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
 
+		Color hintergrund = Color.LIGHT_GRAY;
+
+		this.setLayout(new BorderLayout(10, 10));
+		this.setBorder(new LineBorder(hintergrund, 10));
+		this.setBackground(hintergrund);
+
+		JPanel pnlRessourcen = new JPanel(new GridLayout(Ressource.values().length, 2, 10, 10));
+		pnlRessourcen.setBackground(hintergrund);
 		for (Ressource res : Ressource.values())
 		{
 			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res);
 			ressourcenBekommen.add(resAnbieten);
-			this.add(resAnbieten);
+			pnlRessourcen.add(resAnbieten);
 
 			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res);
 			ressourcenBekommen.add(resBekommen);
-			this.add(resBekommen);
+			pnlRessourcen.add(resBekommen);
 		}
+		this.add(pnlRessourcen, BorderLayout.NORTH);
 
-		felderBekommen = new StrasseAnbietenUI(spieler);
-		this.add(felderBekommen);
+		JPanel pnlStrassen = new JPanel(new GridLayout(1, 2, 10, 10));
+		pnlStrassen.setBackground(hintergrund);
+		felderBekommen = new StrassenAnbietenUI(spieler);
+		pnlStrassen.add(felderBekommen);
+		felderGeben = new StrassenAnbietenUI(handelsPartner);
+		pnlStrassen.add(felderGeben);
 
-		felderGeben = new StrasseAnbietenUI(spieler);
-		this.add(felderGeben);
+		this.add(pnlStrassen, BorderLayout.CENTER);
 
 		JButton butFertig = new JButton("Anbieten");
 		butFertig.addActionListener(e -> handelAnbieten());
-		this.add(butFertig);
+		this.add(butFertig, BorderLayout.SOUTH);
 	}
 
 	private void handelAnbieten()
