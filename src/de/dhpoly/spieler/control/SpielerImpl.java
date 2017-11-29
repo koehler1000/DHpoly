@@ -84,7 +84,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
 		// TODO Auto-generated method stub
-
+		System.out.println("Transaktionsvorschlag könnte angezeigt werden");
 	}
 
 	@Override
