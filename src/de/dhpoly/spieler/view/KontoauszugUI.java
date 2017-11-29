@@ -26,7 +26,7 @@ public class KontoauszugUI extends JPanel
 				beschreibung = "(" + transaktion.getBeschreibung() + ") ";
 			}
 			txtTransaktionen.setText(
-					beschreibung + txtTransaktionen.getText() + transaktion.getString() + System.lineSeparator());
+					txtTransaktionen.getText() + beschreibung + transaktion.getString() + System.lineSeparator());
 		}
 		this.add(new JScrollPane(txtTransaktionen));
 	}
