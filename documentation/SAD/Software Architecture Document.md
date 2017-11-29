@@ -13,6 +13,8 @@ The tools that are used in the software architecture allow to work more efficien
 
 ## 2. Architectural Representation
 
+We are using our own MVC-Pattern.
+
 ## 3. Architectural Goals and Constraints
 
 We are using our own MVC-Pattern.
