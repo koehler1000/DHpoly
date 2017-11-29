@@ -1,25 +1,54 @@
 package de.dhpoly.handel.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.Feld;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.view.StrasseVorschauUI;
 
 public class StrasseAnbietenUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
+	private Color hintergrund = Color.WHITE;
+	private Color hintergrundAusgewaehlt = Color.RED;
+	private StrassenAnbietenUI ui;
+	private JButton butAnbieten = new JButton("Anbieten");
+	private boolean angeboten = false;
+	private Strasse strasse;
 
-	public StrasseAnbietenUI(Spieler spieler)
+	public StrasseAnbietenUI(Strasse strasse, StrassenAnbietenUI ui)
 	{
-		// TODO Auto-generated constructor stub
+		this.ui = ui;
+		this.strasse = strasse;
+
+		this.setLayout(new BorderLayout(10, 10));
+		this.setBorder(new LineBorder(hintergrund));
+		this.add(new StrasseVorschauUI(strasse));
+
+		this.setBackground(hintergrund);
+
+		butAnbieten.addActionListener(e -> anbieten());
+		this.add(butAnbieten, BorderLayout.SOUTH);
 	}
 
-	public List<Feld> getStrassen()
+	private void anbieten()
 	{
-		// TODO Auto-generated method stub
-		return new ArrayList<>();
+		angeboten = !angeboten;
+		if (angeboten)
+		{
+			this.setBackground(hintergrundAusgewaehlt);
+			butAnbieten.setText("Angebot zurückziehen");
+			ui.feldAuswaehlenRueckgaengig(strasse);
+		}
+		else
+		{
+			this.setBackground(hintergrund);
+			butAnbieten.setText("Anbieten");
+			ui.feldAuswaehlen(strasse);
+		}
 	}
 }
