@@ -73,7 +73,8 @@ public class Strasse extends FeldImpl
 	{
 		if (isKaufbar())
 		{
-			potentiellerKaeufer.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag));
+			potentiellerKaeufer
+					.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag, "Kauf: " + this.getName()));
 			setEigentuemer(potentiellerKaeufer);
 
 			informiereBeobachter();
@@ -84,7 +85,7 @@ public class Strasse extends FeldImpl
 	{
 		if (!hypothek)
 		{
-			zahlender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, getAkuelleMiete(wetter)),
+			zahlender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, getAkuelleMiete(wetter), "Miete"),
 					eigentuemer.get());
 		}
 	}

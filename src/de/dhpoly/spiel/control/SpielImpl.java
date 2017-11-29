@@ -49,7 +49,8 @@ public class SpielImpl implements Spiel
 		if (feldNrSoll >= felder.size())
 		{
 			feldNrSoll = feldNrSoll - felder.size(); // test
-			spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos()));
+			spieler.einzahlen(
+					new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
 		}
 
 		felder.get(feldNrSoll).betreteFeld(spieler, augensumme, wetter);

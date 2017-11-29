@@ -32,10 +32,10 @@ public class Standardspielfeld
 		Kartenstapel kartenstapelSuperevents = new KartenstapelImpl(superevent);
 
 		karten.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 100)));
+				new RessourcenDatensatzImpl(Ressource.GELD, 100, "bla")));
 
 		superevent.add(new BezahlKarte("foo", GeldTransfer.ANDERESPIELER_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 150)));
+				new RessourcenDatensatzImpl(Ressource.GELD, 150, "foo")));
 
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
@@ -119,10 +119,7 @@ public class Standardspielfeld
 
 	private List<RessourcenDatensatz> getHauskosten(int seite)
 	{
-		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, 100 * seite));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, 100 * seite));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, 100 * seite));
-		return ressourcenDatensaetze;
+		Einstellungen einstellungen = new EinstellungenImpl();
+		return einstellungen.getHauskosten(seite);
 	}
 }

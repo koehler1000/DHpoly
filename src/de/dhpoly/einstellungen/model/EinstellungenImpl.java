@@ -110,9 +110,9 @@ public class EinstellungenImpl implements Einstellungen
 	public List<RessourcenDatensatz> getHauskosten(int seite)
 	{
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld * seite));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz * seite));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein * seite));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld * seite, "Hauskosten"));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz * seite, "Hausbau"));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein * seite, "Hausbau"));
 		return ressourcenDatensaetze;
 	}
 
@@ -120,7 +120,7 @@ public class EinstellungenImpl implements Einstellungen
 	public List<RessourcenDatensatz> getSpielerStartVorraete()
 	{
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, startguthaben));
+		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, startguthaben, "Startguthaben"));
 		return ressourcenDatensaetze;
 	}
 }

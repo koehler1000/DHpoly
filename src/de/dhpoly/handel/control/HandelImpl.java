@@ -30,7 +30,8 @@ public class HandelImpl implements Handel
 
 		// Geld transferieren
 		transaktion.getAnbietender().ueberweise(
-				new RessourcenDatensatzImpl(Ressource.GELD, transaktion.getGeldbetrag()),
+				new RessourcenDatensatzImpl(Ressource.GELD, transaktion.getGeldbetrag(),
+						"Handel zwischen " + transaktion.getAnbietender() + " und " + transaktion.getHandelspartner()),
 				transaktion.getHandelspartner());
 	}
 

@@ -20,7 +20,13 @@ public class KontoauszugUI extends JPanel
 		JTextArea txtTransaktionen = new JTextArea();
 		for (RessourcenDatensatz transaktion : spieler.getRessourcenTransaktionen())
 		{
-			txtTransaktionen.setText(txtTransaktionen.getText() + transaktion.getString() + System.lineSeparator());
+			String beschreibung = "";
+			if (!transaktion.getBeschreibung().isEmpty())
+			{
+				beschreibung = "(" + transaktion.getBeschreibung() + ") ";
+			}
+			txtTransaktionen.setText(
+					beschreibung + txtTransaktionen.getText() + transaktion.getString() + System.lineSeparator());
 		}
 		this.add(new JScrollPane(txtTransaktionen));
 	}

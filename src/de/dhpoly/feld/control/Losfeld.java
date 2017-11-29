@@ -19,6 +19,6 @@ public class Losfeld extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragBetretenLos()));
+		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
 	}
 }

@@ -131,7 +131,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{
-		RessourcenDatensatz satz = new RessourcenDatensatzImpl(datensatz.getRessource(), 0 - datensatz.getAnzahl());
+		RessourcenDatensatz satz = new RessourcenDatensatzImpl(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
+				datensatz.getBeschreibung());
 		verlauf.add(satz);
 		informiereBeobachter();
 	}
