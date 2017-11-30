@@ -3,13 +3,16 @@ package de.dhpoly.spieler.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
+import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
@@ -29,7 +32,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private List<Feld> felder = new ArrayList<>();
 
 	// mit vorverkauften Strassen
-	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
+	public SpielerImpl(Handel handel, String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
 	{
 		this(name, einstellungen, spiel);
 		this.felder = felder;
@@ -83,8 +86,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
-		// TODO Auto-generated method stub
-		System.out.println("Transaktionsvorschlag könnte angezeigt werden");
+		JFrame frame = new JFrame("Handelsangebot");
+		frame.add(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion));
+		frame.setSize(1000, 1000);
+		frame.setVisible(true);
 	}
 
 	@Override
