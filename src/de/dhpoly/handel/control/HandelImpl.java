@@ -21,10 +21,10 @@ public class HandelImpl implements Handel
 	public void vorschlagAnnehmen(Transaktion transaktion)
 	{
 		// Felder erhalten
-		EigentumUebertragen(transaktion.getFelderGeben(), transaktion.getHandelspartner());
+		eigentumUebertragen(transaktion.getFelderGeben(), transaktion.getHandelspartner());
 
 		// Felder abgeben
-		EigentumUebertragen(transaktion.getFelderBekommen(), transaktion.getAnbietender());
+		eigentumUebertragen(transaktion.getFelderBekommen(), transaktion.getAnbietender());
 
 		// Geld transferieren
 		transaktion.getAnbietender().einzahlen(transaktion.getRessourcenBekommen());
@@ -34,7 +34,7 @@ public class HandelImpl implements Handel
 		transaktion.getHandelspartner().auszahlen(transaktion.getRessourcenBekommen());
 	}
 
-	private void EigentumUebertragen(List<Feld> felder, Spieler neuerEigentuemer)
+	private void eigentumUebertragen(List<Feld> felder, Spieler neuerEigentuemer)
 	{
 		for (Feld feld : felder)
 		{
