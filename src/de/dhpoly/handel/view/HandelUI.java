@@ -100,11 +100,11 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
+			System.out.println("Handel angenommen");
 		}
 		else
 		{
 			handel.vorschlagAnbieten(transaktion);
-			// handelPartner.zeigeTransaktionsvorschlag(transaktion);
 		}
 	}
 

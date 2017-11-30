@@ -100,7 +100,50 @@ public class Transaktion
 
 	public boolean isGleich(Transaktion transaktion)
 	{
-		// TODO
-		return false;
+		// alle Ressourcen müssen beim Geben und Nehmen gleich sein
+		for (Ressource res : Ressource.values())
+		{
+			if (this.getWertBekommen(res) != transaktion.getWertBekommen(res))
+			{
+				return false;
+			}
+			if (this.getWertGeben(res) != transaktion.getWertGeben(res))
+			{
+				return false;
+			}
+		}
+
+		// alle Strassen müssen gleich sein
+		for (Feld feld : felderBekommen)
+		{
+			if (!transaktion.getFelderBekommen().contains(feld))
+			{
+				return false;
+			}
+		}
+		for (Feld feld : felderGeben)
+		{
+			if (!transaktion.getFelderGeben().contains(feld))
+			{
+				return false;
+			}
+		}
+
+		for (Feld feld : transaktion.getFelderBekommen())
+		{
+			if (!getFelderBekommen().contains(feld))
+			{
+				return false;
+			}
+		}
+		for (Feld feld : transaktion.getFelderGeben())
+		{
+			if (!getFelderGeben().contains(feld))
+			{
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
