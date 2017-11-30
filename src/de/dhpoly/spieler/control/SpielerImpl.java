@@ -10,7 +10,6 @@ import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
-import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
@@ -32,7 +31,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private List<Feld> felder = new ArrayList<>();
 
 	// mit vorverkauften Strassen
-	public SpielerImpl(Handel handel, String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
+	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
 	{
 		this(name, einstellungen, spiel);
 		this.felder = felder;

@@ -18,8 +18,10 @@ public class StrassenAnbietenUI extends JPanel
 
 	private List<Feld> ausgewaehlteStrassen = new ArrayList<>();
 
-	public StrassenAnbietenUI(Spieler spieler)
+	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
 	{
+		this.ausgewaehlteStrassen = ausgewaehlte;
+
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe));
 
@@ -27,7 +29,7 @@ public class StrassenAnbietenUI extends JPanel
 		{
 			if (feld instanceof Strasse)
 			{
-				this.add(new StrasseAnbietenUI((Strasse) feld, this));
+				this.add(new StrasseAnbietenUI((Strasse) feld, this, ausgewaehlteStrassen.contains(feld)));
 			}
 		}
 	}
@@ -35,6 +37,7 @@ public class StrassenAnbietenUI extends JPanel
 	void feldAuswaehlen(Feld feld)
 	{
 		ausgewaehlteStrassen.add(feld);
+		System.out.println(ausgewaehlteStrassen.size());
 	}
 
 	void feldAuswaehlenRueckgaengig(Feld feld)

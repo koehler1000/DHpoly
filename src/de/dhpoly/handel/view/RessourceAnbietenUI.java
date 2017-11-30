@@ -25,6 +25,11 @@ public class RessourceAnbietenUI extends JPanel
 
 	public RessourceAnbietenUI(Spieler spieler, Ressource ressource)
 	{
+		this(spieler, ressource, 0);
+	}
+
+	public RessourceAnbietenUI(Spieler spieler, Ressource ressource, int auswahl)
+	{
 		this.ressource = ressource;
 
 		Color hintergrund = Color.WHITE;
@@ -49,7 +54,8 @@ public class RessourceAnbietenUI extends JPanel
 
 		numAnzahl = new JSlider();
 		numAnzahl.setMaximum(max);
-		numAnzahl.setValue(min);
+		numAnzahl.setMinimum(min);
+		numAnzahl.setValue(auswahl);
 		numAnzahl.addChangeListener(e -> lblAktualisieren());
 		numAnzahl.setBackground(hintergrund);
 		numAnzahl.setBorder(rand);

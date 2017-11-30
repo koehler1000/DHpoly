@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.handel.Handel;
+import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
@@ -24,13 +26,21 @@ public class HandelUI extends JPanel
 	private StrassenAnbietenUI felderGeben;
 	private Spieler handelAnbieter;
 	private Spieler handelPartner;
+	private Transaktion vorgeschlagen;
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner)
+	private Color hintergrund = Color.LIGHT_GRAY;
+	private Handel handel = new HandelImpl();
+
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen)
 	{
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
-
-		Color hintergrund = Color.LIGHT_GRAY;
+		if (vorgeschlagen == null)
+		{
+			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
+					spieler, handelsPartner);
+		}
+		this.vorgeschlagen = vorgeschlagen;
 
 		this.setLayout(new BorderLayout(10, 10));
 		this.setBorder(new LineBorder(hintergrund, 10));
@@ -40,11 +50,11 @@ public class HandelUI extends JPanel
 		pnlRessourcen.setBackground(hintergrund);
 		for (Ressource res : Ressource.values())
 		{
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res);
-			ressourcenBekommen.add(resAnbieten);
+			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res, getWertGeben(res));
+			ressourcenGeben.add(resAnbieten);
 			pnlRessourcen.add(resAnbieten);
 
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res);
+			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res, getWertBekommen(res));
 			ressourcenBekommen.add(resBekommen);
 			pnlRessourcen.add(resBekommen);
 		}
@@ -52,9 +62,9 @@ public class HandelUI extends JPanel
 
 		JPanel pnlStrassen = new JPanel(new GridLayout(1, 2, 10, 10));
 		pnlStrassen.setBackground(hintergrund);
-		felderBekommen = new StrassenAnbietenUI(spieler);
+		felderBekommen = new StrassenAnbietenUI(spieler, vorgeschlagen.getFelderBekommen());
 		pnlStrassen.add(felderBekommen);
-		felderGeben = new StrassenAnbietenUI(handelsPartner);
+		felderGeben = new StrassenAnbietenUI(handelsPartner, vorgeschlagen.getFelderGeben()); // hier
 		pnlStrassen.add(felderGeben);
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
@@ -62,6 +72,11 @@ public class HandelUI extends JPanel
 		JButton butFertig = new JButton("Anbieten");
 		butFertig.addActionListener(e -> handelAnbieten());
 		this.add(butFertig, BorderLayout.SOUTH);
+	}
+
+	public HandelUI(Spieler spieler, Spieler handelsPartner)
+	{
+		this(spieler, handelsPartner, null);
 	}
 
 	private void handelAnbieten()
@@ -82,6 +97,24 @@ public class HandelUI extends JPanel
 		Transaktion transaktion = new Transaktion(felderGeben.getStrassen(), felderBekommen.getStrassen(),
 				datensaetzeGeben, datensaetzeBekommen, handelAnbieter, handelPartner);
 
-		handelPartner.zeigeTransaktionsvorschlag(transaktion);
+		if (transaktion.isGleich(vorgeschlagen))
+		{
+			handel.vorschlagAnnehmen(transaktion);
+		}
+		else
+		{
+			handel.vorschlagAnbieten(transaktion);
+			// handelPartner.zeigeTransaktionsvorschlag(transaktion);
+		}
+	}
+
+	private int getWertBekommen(Ressource ressource)
+	{
+		return vorgeschlagen.getWertBekommen(ressource);
+	}
+
+	private int getWertGeben(Ressource ressource)
+	{
+		return vorgeschlagen.getWertGeben(ressource);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
 public class Transaktion
@@ -59,4 +60,47 @@ public class Transaktion
 		return handelspartner;
 	}
 
+	public boolean isFeldInBekommen(Feld feld)
+	{
+		return felderBekommen.contains(feld);
+	}
+
+	public boolean isFeldInGeben(Feld feld)
+	{
+		return felderGeben.contains(feld);
+	}
+
+	public int getWertBekommen(Ressource ressource)
+	{
+		int anz = 0;
+		for (RessourcenDatensatz daten : ressourcenBekommen)
+		{
+			if (daten.getRessource() == ressource)
+			{
+				anz += daten.getAnzahl();
+			}
+		}
+
+		return anz;
+	}
+
+	public int getWertGeben(Ressource ressource)
+	{
+		int anz = 0;
+		for (RessourcenDatensatz daten : ressourcenGeben)
+		{
+			if (daten.getRessource() == ressource)
+			{
+				anz += daten.getAnzahl();
+			}
+		}
+
+		return anz;
+	}
+
+	public boolean isGleich(Transaktion transaktion)
+	{
+		// TODO
+		return false;
+	}
 }

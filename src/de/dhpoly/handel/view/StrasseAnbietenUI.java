@@ -20,10 +20,11 @@ public class StrasseAnbietenUI extends JPanel
 	private boolean angeboten = false;
 	private Strasse strasse;
 
-	public StrasseAnbietenUI(Strasse strasse, StrassenAnbietenUI ui)
+	public StrasseAnbietenUI(Strasse strasse, StrassenAnbietenUI ui, boolean ausgewaehlt)
 	{
 		this.ui = ui;
 		this.strasse = strasse;
+		this.angeboten = ausgewaehlt;
 
 		this.setLayout(new BorderLayout(10, 10));
 		this.setBorder(new LineBorder(hintergrund));
@@ -33,6 +34,8 @@ public class StrasseAnbietenUI extends JPanel
 
 		butAnbieten.addActionListener(e -> anbieten());
 		this.add(butAnbieten, BorderLayout.SOUTH);
+
+		aktualisiereWerte();
 	}
 
 	private void anbieten()
@@ -40,15 +43,24 @@ public class StrasseAnbietenUI extends JPanel
 		angeboten = !angeboten;
 		if (angeboten)
 		{
-			this.setBackground(hintergrundAusgewaehlt);
-			butAnbieten.setText("Angebot zurückziehen");
+			ui.feldAuswaehlen(strasse);
+		}
+		else
+		{
 			ui.feldAuswaehlenRueckgaengig(strasse);
+		}
+		aktualisiereWerte();
+	}
+
+	private void aktualisiereWerte()
+	{
+		if (angeboten)
+		{
+			this.setBackground(hintergrundAusgewaehlt);
 		}
 		else
 		{
 			this.setBackground(hintergrund);
-			butAnbieten.setText("Anbieten");
-			ui.feldAuswaehlen(strasse);
 		}
 	}
 }
