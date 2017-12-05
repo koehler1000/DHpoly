@@ -57,10 +57,12 @@ public class StrasseAnbietenUI extends JPanel
 		if (angeboten)
 		{
 			this.setBackground(hintergrundAusgewaehlt);
+			butAnbieten.setText("Angebot zurückziehen");
 		}
 		else
 		{
 			this.setBackground(hintergrund);
+			butAnbieten.setText("Anbieten");
 		}
 	}
 }

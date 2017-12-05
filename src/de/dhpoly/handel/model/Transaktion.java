@@ -1,5 +1,6 @@
 package de.dhpoly.handel.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
@@ -9,8 +10,8 @@ import de.dhpoly.spieler.Spieler;
 
 public class Transaktion
 {
-	private List<Feld> felderGeben;
-	private List<Feld> felderBekommen;
+	private List<Feld> felderGeben = new ArrayList<>();
+	private List<Feld> felderBekommen = new ArrayList<>();
 
 	private List<RessourcenDatensatz> ressourcenGeben;
 	private List<RessourcenDatensatz> ressourcenBekommen;
@@ -22,8 +23,8 @@ public class Transaktion
 			List<RessourcenDatensatz> ressourcenBekommen, Spieler anbietender, Spieler handelspartner)
 	{
 		super();
-		this.felderGeben = felderGeben;
-		this.felderBekommen = felderBekommen;
+		this.felderGeben.addAll(felderGeben);
+		this.felderBekommen.addAll(felderBekommen);
 		this.ressourcenGeben = ressourcenGeben;
 		this.ressourcenBekommen = ressourcenBekommen;
 		this.anbietender = anbietender;
@@ -128,6 +129,9 @@ public class Transaktion
 				return false;
 			}
 		}
+
+		System.out.println(transaktion.getFelderBekommen().size() + "|" + getFelderBekommen().size());
+		System.out.println(transaktion.getFelderGeben().size() + "|" + getFelderGeben().size());
 
 		for (Feld feld : transaktion.getFelderBekommen())
 		{

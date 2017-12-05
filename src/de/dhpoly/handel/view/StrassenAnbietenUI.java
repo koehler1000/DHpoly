@@ -37,7 +37,6 @@ public class StrassenAnbietenUI extends JPanel
 	void feldAuswaehlen(Feld feld)
 	{
 		ausgewaehlteStrassen.add(feld);
-		System.out.println(ausgewaehlteStrassen.size());
 	}
 
 	void feldAuswaehlenRueckgaengig(Feld feld)
