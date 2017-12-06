@@ -131,7 +131,7 @@ public class SpielerUI extends JPanel implements Beobachter
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 		}
 
-		butHausBau.setEnabled(spieler.isAktuellerSpieler());
+		butHausBau.setEnabled(spieler.isAktuellerSpieler() && spieler.getFelder().size() > 0);
 		butHandel.setEnabled(!spieler.isAktuellerSpieler());
 	}
 }
