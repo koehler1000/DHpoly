@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
@@ -34,9 +34,9 @@ public class HandelUI extends JPanel
 	private Color hintergrund = Color.LIGHT_GRAY;
 	private Handel handel = new HandelImpl();
 
-	private JFrame fenster;
+	private Fenster fenster;
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, JFrame fenster)
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, Fenster fenster)
 	{
 		this.fenster = fenster;
 		this.handelPartner = handelsPartner;
@@ -80,7 +80,7 @@ public class HandelUI extends JPanel
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner, JFrame fenster)
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Fenster fenster)
 	{
 		this(spieler, handelsPartner, null, fenster);
 	}
@@ -118,7 +118,7 @@ public class HandelUI extends JPanel
 			handel.vorschlagAnbieten(transaktion);
 		}
 
-		fenster.setVisible(false);
+		fenster.schliessen();
 	}
 
 	private int getWertBekommen(Ressource ressource)

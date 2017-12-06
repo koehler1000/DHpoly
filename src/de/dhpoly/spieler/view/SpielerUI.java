@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.view.HaeuserUI;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
@@ -97,21 +98,15 @@ public class SpielerUI extends JPanel implements Beobachter
 	private void oeffneHausbauFenster()
 	{
 		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
-		JFrame frameHaueser = new JFrame();
-		frameHaueser.add(pnlHaeuser);
-		frameHaueser.setTitle("Häuser von " + spieler.getName());
-		frameHaueser.setSize(1000, 1000);
-		frameHaueser.setVisible(true);
+		new Fenster(pnlHaeuser, "Häuser von " + spieler.getName());
 	}
 
 	private void oeffneHandelFenster()
 	{
-		JFrame frame = new JFrame();
-		HandelUI pnlHandel = new HandelUI(spiel.getAktuellerSpieler(), spieler, frame);
-		frame.add(pnlHandel);
-		frame.setTitle("Handel mit " + spieler.getName());
-		frame.setSize(1000, 1000);
-		frame.setVisible(true);
+		// TODO
+		Fenster fenster = new Fenster();
+		fenster.setInhalt(new HandelUI(spiel.getAktuellerSpieler(), spieler, fenster),
+				"Handel mit " + spieler.getName());
 	}
 
 	@Override

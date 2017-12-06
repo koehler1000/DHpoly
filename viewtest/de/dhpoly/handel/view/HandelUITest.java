@@ -3,12 +3,11 @@ package de.dhpoly.handel.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
@@ -38,11 +37,8 @@ public class HandelUITest
 		s1.einzahlen(datensaetze);
 		s2.einzahlen(datensaetze);
 
-		JFrame frame = new JFrame("HandelUITest");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new HandelUI(s1, s2, frame));
-		frame.setSize(1000, 1000);
-		frame.setVisible(true);
+		Fenster fenster = new Fenster();
+		fenster.setInhalt(new HandelUI(s1, s2, fenster), "HandelUITest");
 	}
 
 }

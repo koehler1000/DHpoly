@@ -7,11 +7,11 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
@@ -53,10 +53,7 @@ public class StrasseUI extends JButton implements Beobachter
 	private void zeigeDetails()
 	{
 		StrasseInfoUI infoUI = new StrasseInfoUI(feld);
-		JFrame frame = new JFrame(feld.getBeschriftung());
-		frame.add(infoUI);
-		frame.setSize(1000, 1000);
-		frame.setVisible(true);
+		new Fenster(infoUI);
 	}
 
 	@Override

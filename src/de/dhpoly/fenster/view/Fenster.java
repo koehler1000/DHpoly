@@ -15,6 +15,7 @@ public class Fenster extends JFrame
 		this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		this.add(pnlInhalt);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setSize(500, 500);
 		this.setVisible(true);
 	}
 
@@ -28,6 +29,25 @@ public class Fenster extends JFrame
 			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
+	}
+
+	public Fenster(JPanel pnlInhalt, String string)
+	{
+		this(pnlInhalt);
+		this.setTitle(string);
+	}
+
+	public Fenster()
+	{
+		this(new JPanel());
+		this.setVisible(false);
+	}
+
+	public void setInhalt(JPanel pnl, String string)
+	{
+		this.add(pnl);
+		this.setTitle(string);
+		this.setVisible(true);
 	}
 
 	public void schliessen()

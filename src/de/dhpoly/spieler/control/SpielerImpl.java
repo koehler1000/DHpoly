@@ -3,13 +3,13 @@ package de.dhpoly.spieler.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
@@ -85,10 +85,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
-		JFrame frame = new JFrame("Handelsangebot");
-		frame.add(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion, frame));
-		frame.setSize(1000, 1000);
-		frame.setVisible(true);
+		Fenster fenster = new Fenster();
+		fenster.setInhalt(
+				new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion, fenster),
+				"Handelsangebot");
 	}
 
 	@Override
