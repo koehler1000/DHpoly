@@ -30,6 +30,25 @@ public class Fenster extends JFrame
 		}
 	}
 
+	public Fenster(JPanel pnlInhalt, String string)
+	{
+		this(pnlInhalt);
+		this.setTitle(string);
+	}
+
+	public Fenster()
+	{
+		this(new JPanel());
+		this.setVisible(false);
+	}
+
+	public void setInhalt(JPanel pnl, String string)
+	{
+		this.add(pnl);
+		this.setTitle(string);
+		this.setVisible(true);
+	}
+
 	public void schliessen()
 	{
 		this.setVisible(false);
