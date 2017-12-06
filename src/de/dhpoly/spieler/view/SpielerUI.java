@@ -26,7 +26,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private Spieler spieler;
 	private Spiel spiel;
-	private JTextArea txtKontostand;
+	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
 	private JButton butHausBau;
 	private JButton butHandel;
@@ -117,7 +117,7 @@ public class SpielerUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		txtKontostand = new JTextArea();
+		txtKontostand.setText("");
 		for (Ressource res : Ressource.values())
 		{
 			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
