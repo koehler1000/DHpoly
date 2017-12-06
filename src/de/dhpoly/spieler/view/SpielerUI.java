@@ -52,22 +52,27 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		txtName = new JTextArea(spieler.getName() + ": ");
 		txtName.setEditable(false);
-		txtName.setFont(new Font("arial", Font.BOLD, 30));
+		txtName.setFont(Fenster.getUeberschriftFont());
 		txtName.setBackground(backcolor);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
 		JPanel pnlSueden = new JPanel(new GridLayout(1, 2));
 
-		butHausBau = new JButton("Häuser verwalten");
+		butHausBau = erzeugeButton("Häuser" + System.lineSeparator() + "anzeigen");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
+		butHausBau.setFont(Fenster.getStandardFont());
+		// butHausBau.setBackground(backcolor);
+		// butHausBau.setForeground(Color.BLACK);
 		pnlSueden.add(butHausBau);
 
-		JButton butKontoauszug = new JButton("Details anzeigen");
+		JButton butKontoauszug = erzeugeButton("Konto" + System.lineSeparator() + "anzeigen");
 		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
+		butKontoauszug.setFont(Fenster.getStandardFont());
 		pnlSueden.add(butKontoauszug);
 
-		butHandel = new JButton("Handeln");
+		butHandel = erzeugeButton("Handeln");
 		butHandel.addActionListener(e -> oeffneHandelFenster());
+		butHandel.setFont(Fenster.getStandardFont());
 		pnlSueden.add(butHandel);
 
 		this.setLayout(new BorderLayout());
@@ -82,6 +87,12 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		SpielerImpl spielerImpl = (SpielerImpl) spieler;
 		spielerImpl.addBeobachter(this);
+	}
+
+	private JButton erzeugeButton(String text)
+	{
+		return new JButton("<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>")
+				+ "</p></html>");
 	}
 
 	private void oeffneKontoauszugFenster()
