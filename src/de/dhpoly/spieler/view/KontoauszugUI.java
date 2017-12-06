@@ -17,17 +17,20 @@ public class KontoauszugUI extends JPanel
 	{
 		this.setLayout(new GridLayout(1, 1));
 
-		JTextArea txtTransaktionen = new JTextArea();
+		JTextArea txtText = new JTextArea();
+		JTextArea txtWert = new JTextArea();
+
 		for (RessourcenDatensatz transaktion : spieler.getRessourcenTransaktionen())
 		{
-			String beschreibung = "";
-			if (!transaktion.getBeschreibung().isEmpty())
-			{
-				beschreibung = "(" + transaktion.getBeschreibung() + ") ";
-			}
-			txtTransaktionen.setText(
-					txtTransaktionen.getText() + beschreibung + transaktion.getString() + System.lineSeparator());
+			txtText.setText(txtText.getText() + transaktion.getBeschreibung() + System.lineSeparator());
+			txtWert.setText(txtWert.getText() + transaktion.getString() + System.lineSeparator());
 		}
-		this.add(new JScrollPane(txtTransaktionen));
+
+		JPanel pnlWerte = new JPanel();
+		pnlWerte.setLayout(new GridLayout(1, 1));
+		pnlWerte.add(txtText);
+		pnlWerte.add(txtWert);
+
+		this.add(new JScrollPane(pnlWerte));
 	}
 }
