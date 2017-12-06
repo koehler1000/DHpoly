@@ -1,6 +1,8 @@
 package de.dhpoly.fenster.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,7 +21,10 @@ public class Fenster extends JFrame
 		this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		this.setLayout(new BorderLayout());
 		setInhalt(pnlInhalt);
-		this.setLocationRelativeTo(null);
+
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
 		this.setSize(500, 500);
 		this.setVisible(true);
 	}
