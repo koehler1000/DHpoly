@@ -3,7 +3,6 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -34,11 +33,11 @@ public class StrasseUI extends JButton implements Beobachter
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		butName.setFont(new Font("arial", Font.BOLD, 15));
+		butName.setFont(Fenster.getSpielfeldStrassennameFont());
 		butName.setBackground(backcolor);
 		this.add(butName, BorderLayout.NORTH);
 
-		butBesitzer.setFont(new Font("arial", Font.PLAIN, 12));
+		butBesitzer.setFont(Fenster.getSpielfeldBesitzerFont());
 		butBesitzer.setBackground(Color.WHITE);
 		this.add(butBesitzer, BorderLayout.CENTER);
 

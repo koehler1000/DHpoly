@@ -2,6 +2,7 @@ package de.dhpoly.fenster.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -73,5 +74,25 @@ public class Fenster extends JFrame
 	public void schliessen()
 	{
 		this.setVisible(false);
+	}
+
+	public static Font getStandardFont()
+	{
+		return new Font("arial", Font.PLAIN, 20);
+	}
+
+	public static Font getUeberschriftFont()
+	{
+		return new Font("arial", Font.BOLD, 30);
+	}
+
+	public static Font getSpielfeldStrassennameFont()
+	{
+		return new Font("arial", Font.BOLD, 15);
+	}
+
+	public static Font getSpielfeldBesitzerFont()
+	{
+		return new Font("arial", Font.PLAIN, 12);
 	}
 }
