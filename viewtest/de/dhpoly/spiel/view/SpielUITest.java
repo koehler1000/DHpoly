@@ -1,9 +1,8 @@
 package de.dhpoly.spiel.view;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImpl;
@@ -14,9 +13,6 @@ public class SpielUITest
 {
 	public static void main(String[] args)
 	{
-		JFrame frame = new JFrame("DHPoly");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelImpl());
 
@@ -24,9 +20,6 @@ public class SpielUITest
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
-		frame.add(new SpielUI(spiel));
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-		frame.setVisible(true);
+		new Fenster(new SpielUI(spiel), true);
 	}
 }
