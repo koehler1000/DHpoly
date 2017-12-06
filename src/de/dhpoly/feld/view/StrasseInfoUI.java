@@ -2,7 +2,6 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Optional;
 
@@ -32,8 +31,6 @@ public class StrasseInfoUI extends JPanel
 		JPanel frameMieten = new JPanel();
 		frameMieten.setLayout(new GridLayout(2, 1));
 
-		Font font = new Font("arial", Font.PLAIN, 20);
-
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktuelle Miete: " + feld.getAkuelleMiete() + System.lineSeparator());
 		sb.append("Ein Haus kostet: " + System.lineSeparator());
@@ -43,11 +40,11 @@ public class StrasseInfoUI extends JPanel
 		}
 
 		JTextArea txtMiete = new JTextArea(sb.toString());
-		txtMiete.setFont(font);
+		txtMiete.setFont(Fenster.getStandardFont());
 		frameMieten.add(txtMiete);
 
 		JTextArea txtMieten = new JTextArea(getMietenText(feld.getMiete()));
-		txtMieten.setFont(font);
+		txtMieten.setFont(Fenster.getStandardFont());
 		frameMieten.add(txtMieten);
 
 		this.add(frameMieten, BorderLayout.CENTER);
@@ -55,11 +52,11 @@ public class StrasseInfoUI extends JPanel
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
 		butName.setText(feld.getBeschriftung());
-		butName.setFont(new Font("arial", Font.BOLD, 30));
+		butName.setFont(Fenster.getUeberschriftFont());
 		butName.setBackground(backcolor);
 
 		butBesitzer.setText(getEigentuemerString(feld));
-		butBesitzer.setFont(new Font("arial", Font.BOLD, 30));
+		butBesitzer.setFont(Fenster.getUeberschriftFont());
 		butBesitzer.setBackground(Color.WHITE);
 
 		this.add(butBesitzer, BorderLayout.SOUTH);
