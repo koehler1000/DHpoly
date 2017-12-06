@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,7 +12,9 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
@@ -22,14 +25,14 @@ public class StrasseInfoUI extends JPanel
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseInfoUI(Strasse feld)
+	public StrasseInfoUI(Strasse feld, Fenster fenster)
 	{
 		this.setLayout(new BorderLayout());
 
 		JPanel frameMieten = new JPanel();
-		frameMieten.setLayout(new GridLayout(3, 1));
+		frameMieten.setLayout(new GridLayout(2, 1));
 
-		Font font = new Font("arial", Font.PLAIN, 30);
+		Font font = new Font("arial", Font.PLAIN, 20);
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktuelle Miete: " + feld.getAkuelleMiete() + System.lineSeparator());
@@ -39,13 +42,13 @@ public class StrasseInfoUI extends JPanel
 			sb.append(datensatz.getString() + System.lineSeparator());
 		}
 
-		JTextArea texMiete = new JTextArea(sb.toString());
-		texMiete.setFont(font);
-		frameMieten.add(texMiete);
+		JTextArea txtMiete = new JTextArea(sb.toString());
+		txtMiete.setFont(font);
+		frameMieten.add(txtMiete);
 
-		JTextArea texMieten = new JTextArea(getMietenText(feld.getMiete()));
-		texMieten.setFont(font);
-		frameMieten.add(texMieten);
+		JTextArea txtMieten = new JTextArea(getMietenText(feld.getMiete()));
+		txtMieten.setFont(font);
+		frameMieten.add(txtMieten);
 
 		this.add(frameMieten, BorderLayout.CENTER);
 
@@ -55,15 +58,26 @@ public class StrasseInfoUI extends JPanel
 		butName.setFont(new Font("arial", Font.BOLD, 30));
 		butName.setBackground(backcolor);
 
+		butBesitzer.setText(getEigentuemerString(feld));
 		butBesitzer.setFont(new Font("arial", Font.BOLD, 30));
 		butBesitzer.setBackground(Color.WHITE);
 
 		this.add(butBesitzer, BorderLayout.SOUTH);
 		this.add(butName, BorderLayout.NORTH);
 
-		butName.addActionListener(e -> this.setVisible(false));
+		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
 
+		this.setBorder(new LineBorder(Color.WHITE, 10));
 		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
+	}
+
+	private String getEigentuemerString(Strasse feld)
+	{
+		if (feld.getEigentuemer().isPresent())
+		{
+			return feld.getEigentuemer().get().getName();
+		}
+		return "Zu kaufen";
 	}
 
 	private String getMietenText(int[] miete)
@@ -81,7 +95,7 @@ public class StrasseInfoUI extends JPanel
 			{
 				text = "Miete mit einem Haus: ";
 			}
-			sb.append(text + i + System.lineSeparator());
+			sb.append(text + Ressource.GELD.getString(i) + System.lineSeparator());
 			z++;
 		}
 		return sb.toString();

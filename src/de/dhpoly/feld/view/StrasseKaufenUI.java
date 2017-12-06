@@ -13,13 +13,13 @@ public class StrasseKaufenUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private Fenster fenster;
+	private Fenster fenster = new Fenster();
 
 	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
 	{
 		this.setLayout(new GridLayout(1, 2));
 
-		this.add(new StrasseInfoUI(strasse));
+		this.add(new StrasseInfoUI(strasse, fenster));
 
 		JButton butKaufen = new JButton("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
@@ -36,7 +36,7 @@ public class StrasseKaufenUI extends JPanel
 		this.setSize(1000, 1000);
 		this.setVisible(true);
 
-		fenster = new Fenster(this);
+		fenster.setInhalt(this, "Straﬂe kaufen");
 	}
 
 	private void kaufen(Strasse strasse, Spieler spieler)
