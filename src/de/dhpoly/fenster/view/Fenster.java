@@ -1,5 +1,7 @@
 package de.dhpoly.fenster.view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -9,12 +11,15 @@ public class Fenster extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 
+	private JPanel inhalt;
+
 	public Fenster(JPanel pnlInhalt)
 	{
 		this.setTitle("");
 		this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
-		this.add(pnlInhalt);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setLayout(new BorderLayout());
+		setInhalt(pnlInhalt);
+		this.setLocationRelativeTo(null);
 		this.setSize(500, 500);
 		this.setVisible(true);
 	}
@@ -45,9 +50,19 @@ public class Fenster extends JFrame
 
 	public void setInhalt(JPanel pnl, String string)
 	{
-		this.add(pnl);
+		setInhalt(pnl);
 		this.setTitle(string);
 		this.setVisible(true);
+	}
+
+	private void setInhalt(JPanel pnl)
+	{
+		if (inhalt != null)
+		{
+			this.remove(inhalt);
+		}
+		inhalt = pnl;
+		this.add(pnl);
 	}
 
 	public void schliessen()
