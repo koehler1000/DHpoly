@@ -8,7 +8,7 @@ public class SpielerFarben
 
 	public static Color getSpielerfarbe(int spielerID)
 	{
-		if (farben.length > spielerID)
+		if (farben.length > spielerID && spielerID >= 0)
 		{
 			return farben[spielerID];
 		}
