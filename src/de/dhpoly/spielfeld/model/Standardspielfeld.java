@@ -31,11 +31,13 @@ public class Standardspielfeld
 		Kartenstapel kartenstapel = new KartenstapelImpl(karten);
 		Kartenstapel kartenstapelSuperevents = new KartenstapelImpl(superevent);
 
-		karten.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 100, "bla")));
+		karten.add(new BezahlKarte("Zahle Geld an deine Mitspieler", GeldTransfer.SPIELER_ANDERESPIELER,
+				new RessourcenDatensatzImpl(Ressource.GELD, 100, "Ereigniskarte")));
 
-		superevent.add(new BezahlKarte("foo", GeldTransfer.ANDERESPIELER_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 150, "foo")));
+		superevent.add(new BezahlKarte("Du erhältst supermäßige 150 € von deinen Mitspielern",
+				GeldTransfer.ANDERESPIELER_SPIELER, new RessourcenDatensatzImpl(Ressource.GELD, 150, "Superevent")));
+		superevent.add(new BezahlKarte("Ein Holz-LKW verunglückt auf deinem Gebiet. Du erhältst 100 Holz.",
+				GeldTransfer.BANK_SPIELER, new RessourcenDatensatzImpl(Ressource.HOLZ, 100, "Holz-LKW")));
 
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
