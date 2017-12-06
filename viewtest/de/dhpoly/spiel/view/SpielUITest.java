@@ -12,7 +12,6 @@ import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class SpielUITest
 {
-
 	public static void main(String[] args)
 	{
 		JFrame frame = new JFrame("DHPoly");

@@ -38,8 +38,7 @@ public class HandelImplTest
 		felder.add(feld);
 
 		Handel handel = new HandelImpl();
-		handel.vorschlagAnnehmen(
-				new Transaktion(felder, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), s1, s2));
+		handel.vorschlagAnnehmen(new Transaktion(felder, new ArrayList<>(), new ArrayList<>(), s1, s2));
 
 		assertTrue(feld.getEigentuemer().isPresent());
 		assertThat(feld.getEigentuemer().get(), Is.is(s2));
@@ -63,8 +62,7 @@ public class HandelImplTest
 		datensaetze.add(datensatz);
 
 		Handel handel = new HandelImpl();
-		handel.vorschlagAnnehmen(
-				new Transaktion(new ArrayList<>(), felder, new ArrayList<>(), new ArrayList<>(), s1, s2));
+		handel.vorschlagAnnehmen(new Transaktion(felder, new ArrayList<>(), new ArrayList<>(), s1, s2));
 
 		assertTrue(feld.getEigentuemer().isPresent());
 		assertThat(feld.getEigentuemer().get(), Is.is(s1));
@@ -81,8 +79,7 @@ public class HandelImplTest
 		datensaetze.add(datensatz);
 
 		Handel handel = new HandelImpl();
-		handel.vorschlagAnnehmen(
-				new Transaktion(new ArrayList<>(), new ArrayList<>(), datensaetze, new ArrayList<>(), s2, s1));
+		handel.vorschlagAnnehmen(new Transaktion(new ArrayList<>(), datensaetze, new ArrayList<>(), s2, s1));
 
 		assertThat(s1.getRessourcenWerte(Ressource.GELD), Is.is(200));
 		assertThat(s2.getRessourcenWerte(Ressource.GELD), Is.is(200));

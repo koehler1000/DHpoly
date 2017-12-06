@@ -20,13 +20,11 @@ public class HandelImpl implements Handel
 	@Override
 	public void vorschlagAnnehmen(Transaktion transaktion)
 	{
-		// Felder erhalten
-		eigentumUebertragen(transaktion.getFelderGeben(), transaktion.getHandelspartner());
+		// Felder Eigentum übertragen
+		eigentumUebertragen(transaktion.getFelderEigentumswechsel(), transaktion.getAnbietender(),
+				transaktion.getHandelspartner());
 
-		// Felder abgeben
-		eigentumUebertragen(transaktion.getFelderBekommen(), transaktion.getAnbietender());
-
-		// Geld transferieren
+		// Ressourcen transferieren
 		transaktion.getAnbietender().einzahlen(transaktion.getRessourcenBekommen());
 		transaktion.getAnbietender().auszahlen(transaktion.getRessourcenGeben());
 
@@ -34,14 +32,27 @@ public class HandelImpl implements Handel
 		transaktion.getHandelspartner().auszahlen(transaktion.getRessourcenBekommen());
 	}
 
-	private void eigentumUebertragen(List<Feld> felder, Spieler neuerEigentuemer)
+	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler anbietender, Spieler handelspartner)
 	{
-		for (Feld feld : felder)
+		for (Feld feld : felderEigentumswechsel)
 		{
-			if (feld instanceof Strasse)
+			eigentumUebertragen(feld, anbietender, handelspartner);
+		}
+	}
+
+	private void eigentumUebertragen(Feld feld, Spieler anbietender, Spieler handelspartner)
+	{
+		if (feld instanceof Strasse)
+		{
+			Strasse strasse = (Strasse) feld;
+
+			if (strasse.gehoertSpieler(anbietender))
 			{
-				Strasse strasse = (Strasse) feld;
-				strasse.setEigentuemer(neuerEigentuemer);
+				strasse.setEigentuemer(handelspartner);
+			}
+			else
+			{
+				strasse.setEigentuemer(anbietender);
 			}
 		}
 	}
