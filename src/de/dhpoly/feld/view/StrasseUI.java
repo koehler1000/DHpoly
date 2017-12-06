@@ -52,8 +52,8 @@ public class StrasseUI extends JButton implements Beobachter
 
 	private void zeigeDetails()
 	{
-		StrasseInfoUI infoUI = new StrasseInfoUI(feld, null);
-		new Fenster(infoUI);
+		Fenster fenster = new Fenster();
+		fenster.setInhalt(new StrasseInfoUI(feld, fenster), "Details zu " + feld.getBeschriftung());
 	}
 
 	@Override
