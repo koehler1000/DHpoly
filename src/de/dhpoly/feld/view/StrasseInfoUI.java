@@ -69,11 +69,15 @@ public class StrasseInfoUI extends JPanel
 	private String getMietenText(int[] miete)
 	{
 		StringBuilder sb = new StringBuilder();
-		int z = 1;
+		int z = 0;
 		for (int i : miete)
 		{
 			String text = "Miete mit " + z + " Häusern: ";
-			if (z == 1)
+			if (z == 0)
+			{
+				text = "Miete ohne Häuser: ";
+			}
+			else if (z == 1)
 			{
 				text = "Miete mit einem Haus: ";
 			}
