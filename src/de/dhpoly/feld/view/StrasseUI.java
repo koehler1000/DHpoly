@@ -58,6 +58,7 @@ public class StrasseUI extends JButton implements Beobachter
 	@Override
 	public void update()
 	{
+		butBesitzer.setBorder(null);
 		if (feld.getEigentuemer().isPresent())
 		{
 			butBesitzer.setText(feld.getEigentuemer().get().getName());
