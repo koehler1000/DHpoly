@@ -25,7 +25,7 @@ public class SpielUITest
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
 		frame.add(new SpielUI(spiel));
-		frame.setSize(1000, 1000);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		frame.setVisible(true);
 	}

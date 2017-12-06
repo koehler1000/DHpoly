@@ -1,10 +1,12 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -17,8 +19,12 @@ public class SpielUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
+	private static Color HINTERGRUNDFARBE = Color.YELLOW;
+	private static Color HINTERGRUNDFARBE_SPIELFELD = Color.YELLOW;
+
 	public SpielUI(Spiel spiel)
 	{
+
 		this.setLayout(new BorderLayout());
 		this.add(new SpielfeldUI(spiel.getFelder()));
 
@@ -33,8 +39,10 @@ public class SpielUI extends JPanel
 		this.add(pnlKassen, BorderLayout.EAST);
 
 		JPanel pnlWuerfel = new JPanel(new GridLayout(1, 10));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1, HINTERGRUNDFARBE));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2, HINTERGRUNDFARBE));
+		pnlWuerfel.setBorder(new LineBorder(HINTERGRUNDFARBE, 10));
+		pnlWuerfel.setBackground(HINTERGRUNDFARBE);
 
 		JButton butWeiter = new JButton("Weiter");
 		butWeiter.addActionListener(e -> {

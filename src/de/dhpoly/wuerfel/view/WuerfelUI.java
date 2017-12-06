@@ -1,5 +1,6 @@
 package de.dhpoly.wuerfel.view;
 
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -29,6 +30,12 @@ public class WuerfelUI extends JPanel implements Observer
 
 		wuerfel.addObserver(this);
 		update();
+	}
+
+	public WuerfelUI(WuerfelImpl wuerfel, int i, Color hintergrundfarbe)
+	{
+		this(wuerfel, i);
+		this.setBackground(hintergrundfarbe);
 	}
 
 	@Override
