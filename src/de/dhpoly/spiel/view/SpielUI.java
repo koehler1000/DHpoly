@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
@@ -45,6 +46,7 @@ public class SpielUI extends JPanel
 		pnlWuerfel.setBackground(HINTERGRUNDFARBE);
 
 		JButton butWeiter = new JButton("Weiter");
+		butWeiter.setFont(Fenster.getUeberschriftFont());
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSpieler();
 			spiel.ruecke();
