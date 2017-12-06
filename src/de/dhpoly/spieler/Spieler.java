@@ -31,7 +31,7 @@ public interface Spieler
 	void setFeldNr(int feldNrSoll);
 
 	void zeigeTransaktionsvorschlag(Transaktion transaktion);
-	
+
 	void zeigeKaufmoeglichkeit(Strasse strasse);
 
 	void zeigeKarte(Karte karte);
@@ -59,4 +59,6 @@ public interface Spieler
 	void feldHinzu(Feld feld);
 
 	void feldWeg(Feld feld);
+
+	void setSpielerNr(int nr);
 }

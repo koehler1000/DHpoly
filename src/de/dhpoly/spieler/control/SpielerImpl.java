@@ -29,6 +29,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private boolean aktuellerSpieler = false;
 	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
 	private List<Feld> felder = new ArrayList<>();
+	private int spielerNr;
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -51,15 +52,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public int getSpielerNr()
 	{
-		if (spiel != null)
-		{
-			return spiel.getSpieler().indexOf(this);
-		}
-		else
-		{
-			// für Testzwecke
-			return 0;
-		}
+		return spielerNr;
 	}
 
 	public int getFeldNr()
@@ -201,7 +194,21 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachrichtVerloren()
 	{
+		strassenZurueckgeben();
 		JOptionPane.showMessageDialog(null, name + " hat verloren");
+	}
+
+	private void strassenZurueckgeben()
+	{
+		while (felder.size() > 0)
+		{
+			Feld feld = felder.get(0);
+			if (feld instanceof Strasse)
+			{
+				Strasse strasse = (Strasse) feld;
+				strasse.setEigentuemer(null);
+			}
+		}
 	}
 
 	@Override
@@ -226,5 +233,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public List<Feld> getFelder()
 	{
 		return felder;
+	}
+
+	@Override
+	public void setSpielerNr(int nr)
+	{
+		spielerNr = nr;
 	}
 }

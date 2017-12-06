@@ -174,6 +174,7 @@ public class SpielImpl implements Spiel
 	{
 		spieler.setAkutellerSpieler(this.spieler.isEmpty());
 
+		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 	}

@@ -179,6 +179,13 @@ public class EreignisfeldTest
 				// TODO Auto-generated method stub
 
 			}
+
+			@Override
+			public void setSpielerNr(int nr)
+			{
+				// TODO Auto-generated method stub
+				
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
