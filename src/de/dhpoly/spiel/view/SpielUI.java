@@ -27,7 +27,7 @@ public class SpielUI extends JPanel
 
 		for (Spieler spieler : spiel.getSpieler())
 		{
-			pnlKassen.add(new SpielerUI(spieler));
+			pnlKassen.add(new SpielerUI(spieler, spiel));
 		}
 
 		this.add(pnlKassen, BorderLayout.EAST);

@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import de.dhpoly.feld.view.HaeuserUI;
+import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import observerpattern.Beobachter;
@@ -22,13 +24,16 @@ public class SpielerUI extends JPanel implements Beobachter
 	private static final long serialVersionUID = 1L;
 
 	private Spieler spieler;
+	private Spiel spiel;
 	private JTextArea txtKontostand;
 	private JTextArea txtName;
 	private JButton butHausBau;
+	private JButton butHandel;
 
-	public SpielerUI(Spieler spieler)
+	public SpielerUI(Spieler spieler, Spiel spiel)
 	{
 		this.spieler = spieler;
+		this.spiel = spiel;
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
@@ -51,6 +56,10 @@ public class SpielerUI extends JPanel implements Beobachter
 		JButton butKontoauszug = new JButton("Details anzeigen");
 		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
 		pnlSueden.add(butKontoauszug);
+
+		butHandel = new JButton("Handeln");
+		butHandel.addActionListener(e -> oeffneHandelFenster());
+		pnlSueden.add(butHandel);
 
 		this.setLayout(new BorderLayout());
 		this.add(txtName, BorderLayout.NORTH);
@@ -86,6 +95,16 @@ public class SpielerUI extends JPanel implements Beobachter
 		frameHaueser.setVisible(true);
 	}
 
+	private void oeffneHandelFenster()
+	{
+		HandelUI pnlHandel = new HandelUI(spiel.getAktuellerSpieler(), spieler);
+		JFrame frame = new JFrame();
+		frame.add(pnlHandel);
+		frame.setTitle("Handel mit " + spieler.getName());
+		frame.setSize(1000, 1000);
+		frame.setVisible(true);
+	}
+
 	@Override
 	public void update()
 	{
@@ -109,6 +128,7 @@ public class SpielerUI extends JPanel implements Beobachter
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 		}
 
-		butHausBau.setVisible(spieler.isAktuellerSpieler());
+		butHausBau.setEnabled(spieler.isAktuellerSpieler());
+		butHandel.setEnabled(!spieler.isAktuellerSpieler());
 	}
 }
