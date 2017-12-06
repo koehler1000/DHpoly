@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.handel.view.HandelUI;
@@ -37,15 +38,23 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
-		txtKontostand = new JTextArea(spieler.getRessourcenWerte(Ressource.GELD) + "€");
+		txtKontostand = new JTextArea();
+		for (Ressource res : Ressource.values())
+		{
+			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
+					+ System.lineSeparator());
+		}
+
 		txtKontostand.setEditable(false);
-		txtKontostand.setFont(new Font("arial", Font.BOLD, 30));
+		txtKontostand.setFont(new Font("arial", Font.PLAIN, 20));
 		txtKontostand.setBackground(backcolor);
+		txtKontostand.setBorder(new LineBorder(backcolor, 10));
 
 		txtName = new JTextArea(spieler.getName() + ": ");
 		txtName.setEditable(false);
 		txtName.setFont(new Font("arial", Font.BOLD, 30));
 		txtName.setBackground(backcolor);
+		txtName.setBorder(new LineBorder(backcolor, 10));
 
 		JPanel pnlSueden = new JPanel(new GridLayout(1, 2));
 
@@ -108,7 +117,12 @@ public class SpielerUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		txtKontostand.setText(spieler.getRessourcenWerte(Ressource.GELD) + "€");
+		txtKontostand = new JTextArea();
+		for (Ressource res : Ressource.values())
+		{
+			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
+					+ System.lineSeparator());
+		}
 
 		if (spieler.getRessourcenWerte(Ressource.GELD) >= 0)
 		{
