@@ -25,7 +25,8 @@ public class HausUI extends JPanel implements Beobachter
 		this.strasse = strasse;
 		this.setLayout(new BorderLayout());
 
-		//hier werden alle Komponenten hinzugefügt, die sich in der Laufzeit NICHT ändern können
+		// hier werden alle Komponenten hinzugefügt, die sich in der Laufzeit NICHT
+		// ändern können
 		lblName = new JLabel(strasse.getBeschriftung());
 		numAnzahl = new JSpinner();
 		lblAktuelleMiete = new JLabel("Aktuelle Miete: " + strasse.getAkuelleMiete());
@@ -43,15 +44,15 @@ public class HausUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		//Zu ändernde Komponenten entfernen
+		// Zu ändernde Komponenten entfernen
 		this.remove(numAnzahl);
 
-		//Komponenten bearbeiten
+		// Komponenten bearbeiten
 		SpinnerModel model = new SpinnerNumberModel(strasse.getHaueser(), 0, strasse.getMiete().length, 1);
 		numAnzahl = new JSpinner(model);
 		numAnzahl.addChangeListener(e -> haeuserAendern());
 
-		//Komponenten wieder hinzufügen
+		// Komponenten wieder hinzufügen
 		this.add(numAnzahl, BorderLayout.CENTER);
 		lblAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete());
 	}
@@ -63,12 +64,10 @@ public class HausUI extends JPanel implements Beobachter
 		if ((int) numAnzahl.getValue() > strasse.getHaueser())
 		{
 			strasse.hausBauen();
-			System.out.println("Haus gebaut (Anzahl: " + strasse.getHaueser() + ")");
 		}
 		else if ((int) numAnzahl.getValue() < strasse.getHaueser())
 		{
 			strasse.hausVerkaufen();
-			System.out.println("Haus verkauft");
 		}
 	}
 }

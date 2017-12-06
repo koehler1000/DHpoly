@@ -86,7 +86,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
 		JFrame frame = new JFrame("Handelsangebot");
-		frame.add(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion));
+		frame.add(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion, frame));
 		frame.setSize(1000, 1000);
 		frame.setVisible(true);
 	}

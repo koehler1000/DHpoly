@@ -97,8 +97,8 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneHandelFenster()
 	{
-		HandelUI pnlHandel = new HandelUI(spiel.getAktuellerSpieler(), spieler);
 		JFrame frame = new JFrame();
+		HandelUI pnlHandel = new HandelUI(spiel.getAktuellerSpieler(), spieler, frame);
 		frame.add(pnlHandel);
 		frame.setTitle("Handel mit " + spieler.getName());
 		frame.setSize(1000, 1000);
