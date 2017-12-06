@@ -1,10 +1,12 @@
 package de.dhpoly.spieler.view;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
@@ -22,9 +24,13 @@ public class KontoauszugUI extends JPanel
 		JTextArea txtWert = new JTextArea();
 
 		txtText.setEditable(false);
-		txtText.setFont(Fenster.getStandardFont());
 		txtWert.setEditable(false);
+
+		txtText.setFont(Fenster.getStandardFont());
 		txtWert.setFont(Fenster.getStandardFont());
+
+		txtText.setBorder(new LineBorder(Color.WHITE, 10));
+		txtWert.setBorder(new LineBorder(Color.WHITE, 10));
 
 		for (RessourcenDatensatz transaktion : spieler.getRessourcenTransaktionen())
 		{
