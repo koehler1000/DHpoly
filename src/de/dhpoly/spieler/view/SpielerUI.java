@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -88,11 +87,7 @@ public class SpielerUI extends JPanel implements Beobachter
 	private void oeffneKontoauszugFenster()
 	{
 		KontoauszugUI pnlKonto = new KontoauszugUI(spieler);
-		JFrame frameHaueser = new JFrame();
-		frameHaueser.add(pnlKonto);
-		frameHaueser.setTitle("Häuser von " + spieler.getName());
-		frameHaueser.setSize(1000, 1000);
-		frameHaueser.setVisible(true);
+		new Fenster(pnlKonto, "Häuser von " + spieler.getName());
 	}
 
 	private void oeffneHausbauFenster()
@@ -103,7 +98,6 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneHandelFenster()
 	{
-		// TODO
 		Fenster fenster = new Fenster();
 		fenster.setInhalt(new HandelUI(spiel.getAktuellerSpieler(), spieler, fenster),
 				"Handel mit " + spieler.getName());
