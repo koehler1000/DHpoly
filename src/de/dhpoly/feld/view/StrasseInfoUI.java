@@ -66,6 +66,7 @@ public class StrasseInfoUI extends JPanel
 		this.add(butName, BorderLayout.NORTH);
 
 		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
+		butBesitzer.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
 
 		this.setBorder(new LineBorder(Color.WHITE, 10));
 		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
