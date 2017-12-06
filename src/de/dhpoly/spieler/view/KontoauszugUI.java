@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
@@ -19,6 +20,11 @@ public class KontoauszugUI extends JPanel
 
 		JTextArea txtText = new JTextArea();
 		JTextArea txtWert = new JTextArea();
+
+		txtText.setEditable(false);
+		txtText.setFont(Fenster.getStandardFont());
+		txtWert.setEditable(false);
+		txtWert.setFont(Fenster.getStandardFont());
 
 		for (RessourcenDatensatz transaktion : spieler.getRessourcenTransaktionen())
 		{
