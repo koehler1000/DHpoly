@@ -40,7 +40,7 @@ public class HandelUITest
 
 		JFrame frame = new JFrame("HandelUITest");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new HandelUI(s1, s2));
+		frame.add(new HandelUI(s1, s2, frame));
 		frame.setSize(1000, 1000);
 		frame.setVisible(true);
 	}

@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
@@ -31,14 +34,17 @@ public class HandelUI extends JPanel
 	private Color hintergrund = Color.LIGHT_GRAY;
 	private Handel handel = new HandelImpl();
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen)
+	private JFrame fenster;
+
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, JFrame fenster)
 	{
+		this.fenster = fenster;
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
 		if (vorgeschlagen == null)
 		{
-			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(),
-					spieler, handelsPartner);
+			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), spieler,
+					handelsPartner);
 		}
 		this.vorgeschlagen = vorgeschlagen;
 
@@ -62,9 +68,9 @@ public class HandelUI extends JPanel
 
 		JPanel pnlStrassen = new JPanel(new GridLayout(1, 2, 10, 10));
 		pnlStrassen.setBackground(hintergrund);
-		felderBekommen = new StrassenAnbietenUI(spieler, vorgeschlagen.getFelderBekommen());
+		felderBekommen = new StrassenAnbietenUI(spieler, vorgeschlagen.getFelderEigentumswechsel());
 		pnlStrassen.add(felderBekommen);
-		felderGeben = new StrassenAnbietenUI(handelsPartner, vorgeschlagen.getFelderGeben()); // hier
+		felderGeben = new StrassenAnbietenUI(handelsPartner, vorgeschlagen.getFelderEigentumswechsel()); // hier
 		pnlStrassen.add(felderGeben);
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
@@ -74,9 +80,9 @@ public class HandelUI extends JPanel
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner)
+	public HandelUI(Spieler spieler, Spieler handelsPartner, JFrame fenster)
 	{
-		this(spieler, handelsPartner, null);
+		this(spieler, handelsPartner, null, fenster);
 	}
 
 	private void handelAnbieten()
@@ -94,18 +100,25 @@ public class HandelUI extends JPanel
 			datensaetzeGeben.add(handelAngebot.getDatensatz());
 		}
 
-		Transaktion transaktion = new Transaktion(felderGeben.getStrassen(), felderBekommen.getStrassen(),
-				datensaetzeGeben, datensaetzeBekommen, handelAnbieter, handelPartner);
+		List<Feld> felderEigentumswechsel = new ArrayList<>();
+		felderEigentumswechsel.addAll(felderGeben.getStrassen());
+		felderEigentumswechsel.addAll(felderBekommen.getStrassen());
+
+		Transaktion transaktion = new Transaktion(felderEigentumswechsel, datensaetzeGeben, datensaetzeBekommen,
+				handelAnbieter, handelPartner);
 
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-			System.out.println("Handel angenommen");
+
+			JOptionPane.showMessageDialog(null, "Handel angenommen");
 		}
 		else
 		{
 			handel.vorschlagAnbieten(transaktion);
 		}
+
+		fenster.setVisible(false);
 	}
 
 	private int getWertBekommen(Ressource ressource)

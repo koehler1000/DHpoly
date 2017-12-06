@@ -10,8 +10,7 @@ import de.dhpoly.spieler.Spieler;
 
 public class Transaktion
 {
-	private List<Feld> felderGeben = new ArrayList<>();
-	private List<Feld> felderBekommen = new ArrayList<>();
+	private List<Feld> felderEigentumswechsel = new ArrayList<>();
 
 	private List<RessourcenDatensatz> ressourcenGeben;
 	private List<RessourcenDatensatz> ressourcenBekommen;
@@ -19,12 +18,10 @@ public class Transaktion
 	private Spieler anbietender;
 	private Spieler handelspartner;
 
-	public Transaktion(List<Feld> felderGeben, List<Feld> felderBekommen, List<RessourcenDatensatz> ressourcenGeben,
+	public Transaktion(List<Feld> felderEigentumswechsel, List<RessourcenDatensatz> ressourcenGeben,
 			List<RessourcenDatensatz> ressourcenBekommen, Spieler anbietender, Spieler handelspartner)
 	{
-		super();
-		this.felderGeben.addAll(felderGeben);
-		this.felderBekommen.addAll(felderBekommen);
+		this.felderEigentumswechsel.addAll(felderEigentumswechsel);
 		this.ressourcenGeben = ressourcenGeben;
 		this.ressourcenBekommen = ressourcenBekommen;
 		this.anbietender = anbietender;
@@ -41,14 +38,9 @@ public class Transaktion
 		return ressourcenBekommen;
 	}
 
-	public List<Feld> getFelderGeben()
+	public List<Feld> getFelderEigentumswechsel()
 	{
-		return felderGeben;
-	}
-
-	public List<Feld> getFelderBekommen()
-	{
-		return felderBekommen;
+		return felderEigentumswechsel;
 	}
 
 	public Spieler getAnbietender()
@@ -61,14 +53,9 @@ public class Transaktion
 		return handelspartner;
 	}
 
-	public boolean isFeldInBekommen(Feld feld)
+	public boolean isFeldInEigentumswechsel(Feld feld)
 	{
-		return felderBekommen.contains(feld);
-	}
-
-	public boolean isFeldInGeben(Feld feld)
-	{
-		return felderGeben.contains(feld);
+		return felderEigentumswechsel.contains(feld);
 	}
 
 	public int getWertBekommen(Ressource ressource)
@@ -115,34 +102,16 @@ public class Transaktion
 		}
 
 		// alle Strassen müssen gleich sein
-		for (Feld feld : felderBekommen)
+		for (Feld feld : felderEigentumswechsel)
 		{
-			if (!transaktion.getFelderBekommen().contains(feld))
+			if (!transaktion.getFelderEigentumswechsel().contains(feld))
 			{
 				return false;
 			}
 		}
-		for (Feld feld : felderGeben)
+		for (Feld feld : transaktion.getFelderEigentumswechsel())
 		{
-			if (!transaktion.getFelderGeben().contains(feld))
-			{
-				return false;
-			}
-		}
-
-		System.out.println(transaktion.getFelderBekommen().size() + "|" + getFelderBekommen().size());
-		System.out.println(transaktion.getFelderGeben().size() + "|" + getFelderGeben().size());
-
-		for (Feld feld : transaktion.getFelderBekommen())
-		{
-			if (!getFelderBekommen().contains(feld))
-			{
-				return false;
-			}
-		}
-		for (Feld feld : transaktion.getFelderGeben())
-		{
-			if (!getFelderGeben().contains(feld))
+			if (!getFelderEigentumswechsel().contains(feld))
 			{
 				return false;
 			}

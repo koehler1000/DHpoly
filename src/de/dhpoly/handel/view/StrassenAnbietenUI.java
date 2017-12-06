@@ -20,7 +20,17 @@ public class StrassenAnbietenUI extends JPanel
 
 	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
 	{
-		this.ausgewaehlteStrassen = ausgewaehlte;
+		for (Feld feld : ausgewaehlte)
+		{
+			if (feld instanceof Strasse)
+			{
+				Strasse strasse = (Strasse) feld;
+				if (strasse.gehoertSpieler(spieler))
+				{
+					ausgewaehlteStrassen.add(strasse);
+				}
+			}
+		}
 
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe));
