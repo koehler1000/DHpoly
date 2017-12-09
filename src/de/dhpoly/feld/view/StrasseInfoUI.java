@@ -27,9 +27,11 @@ public class StrasseInfoUI extends JPanel
 	public StrasseInfoUI(Strasse feld, Fenster fenster)
 	{
 		this.setLayout(new BorderLayout());
+		this.setBackground(Fenster.getDesignfarbe());
 
 		JPanel frameMieten = new JPanel();
 		frameMieten.setLayout(new GridLayout(2, 1));
+		frameMieten.setBackground(Fenster.getDesignfarbe());
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktuelle Miete: " + feld.getAkuelleMiete() + System.lineSeparator());
@@ -39,33 +41,25 @@ public class StrasseInfoUI extends JPanel
 			sb.append(datensatz.getString() + System.lineSeparator());
 		}
 
-		JTextArea txtMiete = new JTextArea(sb.toString());
-		txtMiete.setFont(Fenster.getStandardFont());
+		JTextArea txtMiete = Fenster.getTextFeld(sb.toString(), false);
 		frameMieten.add(txtMiete);
 
-		JTextArea txtMieten = new JTextArea(getMietenText(feld.getMiete()));
-		txtMieten.setFont(Fenster.getStandardFont());
+		JTextArea txtMieten = Fenster.getTextFeld(getMietenText(feld.getMiete()), false);
 		frameMieten.add(txtMieten);
 
 		this.add(frameMieten, BorderLayout.CENTER);
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		butName.setText(feld.getBeschriftung());
-		butName.setFont(Fenster.getUeberschriftFont());
-		butName.setBackground(backcolor);
-
-		butBesitzer.setText(getEigentuemerString(feld));
-		butBesitzer.setFont(Fenster.getUeberschriftFont());
-		butBesitzer.setBackground(Color.WHITE);
-
-		this.add(butBesitzer, BorderLayout.SOUTH);
+		butName = Fenster.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
+		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
 		this.add(butName, BorderLayout.NORTH);
 
-		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
+		butBesitzer = Fenster.getButtonUeberschrift(getEigentuemerString(feld));
 		butBesitzer.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
+		this.add(butBesitzer, BorderLayout.SOUTH);
 
-		this.setBorder(new LineBorder(Color.WHITE, 10));
+		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
 	}
 
@@ -102,7 +96,6 @@ public class StrasseInfoUI extends JPanel
 	private void farbeSetzen(Spieler spieler)
 	{
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
-		this.setBackground(farbe);
 		this.setBorder(new LineBorder(farbe, 10));
 	}
 }

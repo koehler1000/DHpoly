@@ -145,4 +145,12 @@ public class Fenster extends JFrame
 	{
 		return Color.BLUE;
 	}
+
+	public static JButton getButtonUeberschrift(String beschriftung, Color backcolor)
+	{
+		JButton but = getButtonUeberschrift(beschriftung);
+		but.setBackground(backcolor);
+		but.setBorder(new LineBorder(backcolor, 10));
+		return but;
+	}
 }
