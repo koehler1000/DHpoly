@@ -18,16 +18,18 @@ public class StrasseKaufenUI extends JPanel
 	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
 	{
 		this.setLayout(new GridLayout(1, 2));
+		this.setBackground(Fenster.getDesignfarbe());
 
 		this.add(new StrasseInfoUI(strasse, fenster));
 
-		JButton butKaufen = new JButton("Kaufen");
+		JButton butKaufen = Fenster.getButtonUeberschrift("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
 
-		JButton butAbbrechen = new JButton("Abbrechen");
+		JButton butAbbrechen = Fenster.getButtonUeberschrift("Abbrechen");
 		butAbbrechen.addActionListener(e -> abbrechen());
 
 		JPanel pnlOptionen = new JPanel(new GridLayout(2, 1, 10, 10));
+		pnlOptionen.setBackground(Fenster.getDesignfarbe());
 		pnlOptionen.add(butKaufen);
 		pnlOptionen.add(butAbbrechen);
 
