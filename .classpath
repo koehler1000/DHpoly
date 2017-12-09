@@ -10,7 +10,6 @@
 	<classpathentry kind="src" path="tools"/>
 	<classpathentry kind="src" path="viewtest"/>
 	<classpathentry kind="src" path="fakes"/>
-	<classpathentry kind="src" path="features"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="DHpoly/bin"/>
 </classpath>
