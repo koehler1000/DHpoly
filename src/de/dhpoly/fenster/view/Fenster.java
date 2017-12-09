@@ -1,6 +1,7 @@
 package de.dhpoly.fenster.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -94,5 +95,10 @@ public class Fenster extends JFrame
 	public static Font getSpielfeldBesitzerFont()
 	{
 		return new Font("arial", Font.PLAIN, 12);
+	}
+
+	public static Color getDesignfarbe()
+	{
+		return Color.YELLOW;
 	}
 }

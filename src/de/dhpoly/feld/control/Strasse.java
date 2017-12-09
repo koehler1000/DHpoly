@@ -205,6 +205,6 @@ public class Strasse extends FeldImpl
 
 	public boolean isHausbauMoeglich()
 	{
-		return eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus);
+		return eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus) && haueser < miete.length - 1;
 	}
 }
