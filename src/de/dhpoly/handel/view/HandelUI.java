@@ -31,7 +31,6 @@ public class HandelUI extends JPanel
 	private Spieler handelPartner;
 	private Transaktion vorgeschlagen;
 
-	private Color hintergrund = Color.LIGHT_GRAY;
 	private Handel handel = new HandelImpl();
 
 	private Fenster fenster;
@@ -47,6 +46,8 @@ public class HandelUI extends JPanel
 					handelsPartner);
 		}
 		this.vorgeschlagen = vorgeschlagen;
+
+		Color hintergrund = Fenster.getDesignfarbe();
 
 		this.setLayout(new BorderLayout(10, 10));
 		this.setBorder(new LineBorder(hintergrund, 10));
@@ -75,7 +76,7 @@ public class HandelUI extends JPanel
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
 
-		JButton butFertig = new JButton("Anbieten");
+		JButton butFertig = Fenster.getButtonUeberschrift("Anbieten");
 		butFertig.addActionListener(e -> handelAnbieten());
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
