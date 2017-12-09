@@ -45,7 +45,7 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 	{
 		this.remove(pnlSpieler);
 		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
-		this.add(pnlSpieler);
+		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 
 	private void hintergrundfarbeSetzen()
