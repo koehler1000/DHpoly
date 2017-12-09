@@ -129,7 +129,7 @@ public class Strasse extends FeldImpl
 		return eigentuemer;
 	}
 
-	public int getHaueser()
+	public int getHaeuser()
 	{
 		return haueser;
 	}
@@ -203,12 +203,8 @@ public class Strasse extends FeldImpl
 		}
 	}
 
-	public int getMaximalHaeuser()
+	public boolean isHausbauMoeglich()
 	{
-		if (eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus))
-		{
-			return miete.length;
-		}
-		return haueser;
+		return eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus);
 	}
 }

@@ -99,7 +99,7 @@ public class StrasseTest
 		strasse.kaufe(spieler);
 		strasse.hausBauen();
 
-		assertThat(strasse.getHaueser(), Is.is(1));
+		assertThat(strasse.getHaeuser(), Is.is(1));
 	}
 
 	@Test
