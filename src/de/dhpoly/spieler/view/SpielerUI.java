@@ -2,7 +2,6 @@ package de.dhpoly.spieler.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -38,31 +37,27 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
-		txtKontostand = new JTextArea();
+		txtKontostand = Fenster.getTextFeld("", false);
 		for (Ressource res : Ressource.values())
 		{
 			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
 					+ System.lineSeparator());
 		}
-
-		txtKontostand.setEditable(false);
-		txtKontostand.setFont(new Font("arial", Font.PLAIN, 20));
 		txtKontostand.setBackground(backcolor);
 		txtKontostand.setBorder(new LineBorder(backcolor, 10));
 
-		txtName = new JTextArea(spieler.getName() + ": ");
-		txtName.setEditable(false);
-		txtName.setFont(Fenster.getUeberschriftFont());
+		txtName = Fenster.getTextFeldUeberschrift(spieler.getName() + ": ");
 		txtName.setBackground(backcolor);
+		txtName.setForeground(Color.BLACK);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
-		JPanel pnlSueden = new JPanel(new GridLayout(1, 2));
+		JPanel pnlSueden = new JPanel(new GridLayout(1, 2, 10, 10));
+		pnlSueden.setBackground(Fenster.getDesignfarbe());
+		pnlSueden.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 
 		butHausBau = erzeugeButton("Häuser" + System.lineSeparator() + "anzeigen");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
 		butHausBau.setFont(Fenster.getStandardFont());
-		// butHausBau.setBackground(backcolor);
-		// butHausBau.setForeground(Color.BLACK);
 		pnlSueden.add(butHausBau);
 
 		JButton butKontoauszug = erzeugeButton("Konto" + System.lineSeparator() + "anzeigen");
@@ -91,7 +86,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private JButton erzeugeButton(String text)
 	{
-		return new JButton("<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>")
+		return Fenster.getButton("<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>")
 				+ "</p></html>");
 	}
 
