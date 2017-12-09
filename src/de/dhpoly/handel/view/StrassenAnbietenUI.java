@@ -20,6 +20,8 @@ public class StrassenAnbietenUI extends JPanel
 
 	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
 	{
+		this.setBackground(Color.WHITE);
+
 		for (Feld feld : ausgewaehlte)
 		{
 			if (feld instanceof Strasse)
