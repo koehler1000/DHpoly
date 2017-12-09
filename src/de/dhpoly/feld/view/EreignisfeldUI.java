@@ -3,16 +3,14 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
+import java.awt.Image;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.fehler.control.FehlerImpl;
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ereignisfeld;
 import observerpattern.Beobachter;
 
@@ -31,27 +29,17 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 		this.setBackground(Color.WHITE);
 		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 
-		JLabel lblBild = new JLabel();
-		lblBild.setIcon(getBild());
-		this.add(lblBild, BorderLayout.CENTER);
+		ImageIcon ico = new ImageIcon("/home/webs/bild.jpg");
+		ico.setImage(ico.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 
-		this.add(pnlSpieler);
+		ImageIcon bild = Bilderverwalter.getBild("spielfeld\\ereignis.png");
+
+		JLabel lblBild = new JLabel(bild);
+		this.add(lblBild, BorderLayout.CENTER);
+		this.add(pnlSpieler, BorderLayout.SOUTH);
 
 		update();
 		feld.addBeobachter(this);
-	}
-
-	private ImageIcon getBild()
-	{
-		try
-		{
-			return new ImageIcon(ImageIO.read(new File(".\\pics\\default\\karte\\ereigniskarte.jpg")));
-		}
-		catch (IOException ex)
-		{
-			FehlerImpl.fehlerAufgetreten(ex);
-			return new ImageIcon();
-		}
 	}
 
 	@Override
@@ -59,6 +47,6 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 	{
 		this.remove(pnlSpieler);
 		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
-		this.add(pnlSpieler);
+		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 }
