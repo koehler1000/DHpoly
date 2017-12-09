@@ -6,8 +6,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 
@@ -77,6 +80,28 @@ public class Fenster extends JFrame
 		this.setVisible(false);
 	}
 
+	public static JTextArea getTextFeld(String text, boolean aenderbar)
+	{
+		JTextArea txtArea = new JTextArea(text);
+		txtArea.setEditable(aenderbar);
+		txtArea.setFont(getStandardFont());
+		txtArea.setBackground(getDesignfarbe());
+		txtArea.setBorder(new LineBorder(getDesignfarbe(), 10));
+		txtArea.setLineWrap(true);
+		txtArea.setForeground(getKontrastfarbe());
+		return txtArea;
+	}
+
+	public static JButton getButton(String text)
+	{
+		JButton butButton = new JButton(text);
+		butButton.setBorder(new LineBorder(getDesignfarbe(), 10));
+		butButton.setFont(getStandardFont());
+		butButton.setBackground(getKontrastfarbe());
+		butButton.setForeground(getDesignfarbe());
+		return butButton;
+	}
+
 	public static Font getStandardFont()
 	{
 		return new Font("arial", Font.PLAIN, 20);
@@ -100,5 +125,10 @@ public class Fenster extends JFrame
 	public static Color getDesignfarbe()
 	{
 		return Color.YELLOW;
+	}
+
+	public static Color getKontrastfarbe()
+	{
+		return Color.BLUE;
 	}
 }
