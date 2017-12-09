@@ -80,6 +80,13 @@ public class Fenster extends JFrame
 		this.setVisible(false);
 	}
 
+	public static JTextArea getTextFeldUeberschrift(String text)
+	{
+		JTextArea txtArea = getTextFeld(text, false);
+		txtArea.setFont(getUeberschriftFont());
+		return txtArea;
+	}
+
 	public static JTextArea getTextFeld(String text, boolean aenderbar)
 	{
 		JTextArea txtArea = new JTextArea(text);
@@ -95,10 +102,17 @@ public class Fenster extends JFrame
 	public static JButton getButton(String text)
 	{
 		JButton butButton = new JButton(text);
-		butButton.setBorder(new LineBorder(getDesignfarbe(), 10));
+		butButton.setBorder(new LineBorder(getKontrastfarbe(), 10));
 		butButton.setFont(getStandardFont());
 		butButton.setBackground(getKontrastfarbe());
 		butButton.setForeground(getDesignfarbe());
+		return butButton;
+	}
+
+	public static JButton getButtonUeberschrift(String text)
+	{
+		JButton butButton = getButton(text);
+		butButton.setFont(getUeberschriftFont());
 		return butButton;
 	}
 
