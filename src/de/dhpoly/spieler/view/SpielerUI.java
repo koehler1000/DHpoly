@@ -121,7 +121,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		if (spieler.getRessourcenWerte(Ressource.GELD) >= 0)
 		{
-			txtKontostand.setForeground(Color.BLACK);
+			txtKontostand.setForeground(Fenster.getDesignfarbe());
 		}
 		else
 		{
@@ -130,11 +130,11 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		if (spieler.isAktuellerSpieler())
 		{
-			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 10));
+			this.setBorder(BorderFactory.createLineBorder(Fenster.getDesignfarbe(), 10));
 		}
 		else
 		{
-			this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
+			this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
 		}
 
 		butHausBau.setEnabled(spieler.isAktuellerSpieler() && spieler.getFelder().size() > 0);
