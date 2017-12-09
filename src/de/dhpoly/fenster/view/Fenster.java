@@ -16,6 +16,18 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 
 public class Fenster extends JFrame
 {
+	private static final Color FARBE_DESIGN = new Color(250, 250, 150);
+
+	private static final Color FARBE_KONTRAST = new Color(100, 100, 100);
+
+	private static final Font SCHRIFT_NORMAL = new Font("arial", Font.PLAIN, 20);
+
+	private static final Font SCHRIFT_UEBERSCHRIFT = new Font("arial", Font.BOLD, 30);
+
+	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font("arial", Font.BOLD, 15);
+
+	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font("arial", Font.PLAIN, 12);
+
 	private static final long serialVersionUID = 1L;
 
 	private JPanel inhalt;
@@ -118,32 +130,32 @@ public class Fenster extends JFrame
 
 	public static Font getStandardFont()
 	{
-		return new Font("arial", Font.PLAIN, 20);
+		return SCHRIFT_NORMAL;
 	}
 
 	public static Font getUeberschriftFont()
 	{
-		return new Font("arial", Font.BOLD, 30);
+		return SCHRIFT_UEBERSCHRIFT;
 	}
 
 	public static Font getSpielfeldStrassennameFont()
 	{
-		return new Font("arial", Font.BOLD, 15);
+		return SCHRIFT_SPIELFELD_STRASSENNAME;
 	}
 
 	public static Font getSpielfeldBesitzerFont()
 	{
-		return new Font("arial", Font.PLAIN, 12);
+		return SCHRIFT_SPIELFELD_BESITZER;
 	}
 
 	public static Color getDesignfarbe()
 	{
-		return Color.YELLOW;
+		return FARBE_DESIGN;
 	}
 
 	public static Color getKontrastfarbe()
 	{
-		return Color.BLUE;
+		return FARBE_KONTRAST;
 	}
 
 	public static JButton getButtonUeberschrift(String beschriftung, Color backcolor)
