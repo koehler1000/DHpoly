@@ -21,6 +21,8 @@ public class SpielUI extends JPanel
 
 	public SpielUI(Spiel spiel)
 	{
+		this.setBackground(Fenster.getDesignfarbe());
+
 		this.setLayout(new BorderLayout(10, 10));
 		this.add(new SpielfeldUI(spiel.getFelder()));
 		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
