@@ -21,9 +21,9 @@ public class SpielUI extends JPanel
 
 	public SpielUI(Spiel spiel)
 	{
-
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout(10, 10));
 		this.add(new SpielfeldUI(spiel.getFelder()));
+		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 
 		JPanel pnlKassen = new JPanel();
 		pnlKassen.setLayout(new GridLayout(spiel.getSpieler().size(), 1));
@@ -41,8 +41,7 @@ public class SpielUI extends JPanel
 		pnlWuerfel.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 		pnlWuerfel.setBackground(Fenster.getDesignfarbe());
 
-		JButton butWeiter = new JButton("Weiter");
-		butWeiter.setFont(Fenster.getUeberschriftFont());
+		JButton butWeiter = Fenster.getButtonUeberschrift("Weiter");
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSpieler();
 			spiel.ruecke();
