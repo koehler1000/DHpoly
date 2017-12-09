@@ -23,7 +23,7 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 
 	private Ressourcenfeld feld;
 
-	private JLabel ressourcenbild = new JLabel();
+	private JLabel ressourcenbild;
 
 	public RessourcenfeldUI(Ressourcenfeld feld)
 	{
@@ -32,16 +32,13 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 
-		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
-
-		this.add(ressourcenbild);
-		ressourcenbild.setIcon(new ImageIcon(
-				getRessourcenBild(feld.getRessource()).getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT)));
 		// aktuell werden die pngs immer auf 60*60 gesized
+		ressourcenbild = new JLabel(new ImageIcon(
+				getRessourcenBild(feld.getRessource()).getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT)));
 
-		hintergrundfarbeSetzen(this);
-
+		this.add(ressourcenbild, BorderLayout.CENTER);
 		feld.addBeobachter(this);
+		hintergrundfarbeSetzen();
 	}
 
 	public void update()
@@ -49,19 +46,17 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 		this.remove(pnlSpieler);
 		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
 		this.add(pnlSpieler);
-		hintergrundfarbeSetzen(pnlSpieler);
 	}
 
-	private void hintergrundfarbeSetzen(Component pnlSpieler2)
+	private void hintergrundfarbeSetzen()
 	{
 		switch (feld.getRessource())
 		{
 			case HOLZ:
-				pnlSpieler2.setBackground(Color.getHSBColor(33, 94, 78));
+				this.setBackground(Color.getHSBColor(33, 94, 78));
 				break;
 			case STEIN:
-				pnlSpieler2.setBackground(new Color(220, 220, 220));
-
+				this.setBackground(new Color(220, 220, 220));
 			default:
 				break;
 		}
