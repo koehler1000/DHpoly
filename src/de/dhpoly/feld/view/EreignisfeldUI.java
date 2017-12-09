@@ -27,7 +27,6 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
-		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
 
 		ImageIcon ico = new ImageIcon("/home/webs/bild.jpg");
 		ico.setImage(ico.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
@@ -46,7 +45,10 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 	public void update()
 	{
 		this.remove(pnlSpieler);
-		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
-		this.add(pnlSpieler, BorderLayout.SOUTH);
+		if (feld.getSpielerAufFeld().size() > 0)
+		{
+			pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
+			this.add(pnlSpieler, BorderLayout.SOUTH);
+		}
 	}
 }
