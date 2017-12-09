@@ -1,7 +1,6 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -20,9 +19,6 @@ public class SpielUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private static Color HINTERGRUNDFARBE = Color.YELLOW;
-	private static Color HINTERGRUNDFARBE_SPIELFELD = Color.YELLOW;
-
 	public SpielUI(Spiel spiel)
 	{
 
@@ -40,10 +36,10 @@ public class SpielUI extends JPanel
 		this.add(pnlKassen, BorderLayout.EAST);
 
 		JPanel pnlWuerfel = new JPanel(new GridLayout(1, 10));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1, HINTERGRUNDFARBE));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2, HINTERGRUNDFARBE));
-		pnlWuerfel.setBorder(new LineBorder(HINTERGRUNDFARBE, 10));
-		pnlWuerfel.setBackground(HINTERGRUNDFARBE);
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
+		pnlWuerfel.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
+		pnlWuerfel.setBackground(Fenster.getDesignfarbe());
 
 		JButton butWeiter = new JButton("Weiter");
 		butWeiter.setFont(Fenster.getUeberschriftFont());
