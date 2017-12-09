@@ -202,4 +202,13 @@ public class Strasse extends FeldImpl
 			informiereBeobachter();
 		}
 	}
+
+	public int getMaximalHaeuser()
+	{
+		if (eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus))
+		{
+			return miete.length;
+		}
+		return haueser;
+	}
 }

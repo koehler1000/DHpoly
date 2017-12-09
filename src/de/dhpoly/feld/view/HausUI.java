@@ -48,7 +48,8 @@ public class HausUI extends JPanel implements Beobachter
 		this.remove(numAnzahl);
 
 		// Komponenten bearbeiten
-		SpinnerModel model = new SpinnerNumberModel(strasse.getHaueser(), 0, strasse.getMiete().length, 1);
+		int max = strasse.getMaximalHaeuser();
+		SpinnerModel model = new SpinnerNumberModel(strasse.getHaueser(), 0, max, 1);
 		numAnzahl = new JSpinner(model);
 		numAnzahl.addChangeListener(e -> haeuserAendern());
 
