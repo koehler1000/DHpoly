@@ -3,11 +3,11 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.fenster.view.Fenster;
 
 public class StrasseVorschauUI extends JPanel
 {
@@ -17,12 +17,8 @@ public class StrasseVorschauUI extends JPanel
 	{
 		this.setLayout(new BorderLayout());
 
-		JLabel lblName = new JLabel(strasse.getName());
 		Color farbe = new Strassengruppe().getColor(strasse.getGruppe());
-		lblName.setBorder(new LineBorder(farbe, 10));
-		lblName.setBackground(farbe);
-		this.setBackground(farbe);
-
+		JButton lblName = Fenster.getButtonUeberschrift(strasse.getBeschriftung(), farbe);
 		this.add(lblName);
 	}
 }

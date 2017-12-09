@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseVorschauUI;
+import de.dhpoly.fenster.view.Fenster;
 
 public class StrasseAnbietenUI extends JPanel
 {
@@ -16,7 +17,7 @@ public class StrasseAnbietenUI extends JPanel
 	private Color hintergrund = Color.WHITE;
 	private Color hintergrundAusgewaehlt = Color.RED;
 	private StrassenAnbietenUI ui;
-	private JButton butAnbieten = new JButton("Anbieten");
+	private JButton butAnbieten;
 	private boolean angeboten = false;
 	private Strasse strasse;
 
@@ -25,6 +26,9 @@ public class StrasseAnbietenUI extends JPanel
 		this.ui = ui;
 		this.strasse = strasse;
 		this.angeboten = ausgewaehlt;
+
+		butAnbieten = Fenster.getButton("Anbieten");
+		hintergrund = Fenster.getDesignfarbe();
 
 		this.setLayout(new BorderLayout(10, 10));
 		this.setBorder(new LineBorder(hintergrund));
