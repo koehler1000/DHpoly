@@ -1,11 +1,26 @@
 package de.dhpoly;
 
+import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spiel.view.SpielUI;
+import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spielfeld.control.SpielfeldImpl;
+import de.dhpoly.wuerfel.control.WuerfelImpl;
+
 public class Main
 {
 	public static void main(String[] args)
 	{
-		// Spieler s1 = new SpielerImpl("Tester1", 1000);
-		// Spieler s2 = new SpielerImpl("Tester2", 1000);
-		// TODO ergänzen
+		Einstellungen einstellungen = new EinstellungenImpl();
+		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelImpl());
+
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen, spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
+		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
+
+		new Fenster(new SpielUI(spiel), true);
 	}
 }
