@@ -51,22 +51,25 @@ public class SpielerUI extends JPanel implements Beobachter
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
 		JPanel pnlSueden = new JPanel(new GridLayout(1, 2, 10, 10));
-		pnlSueden.setBackground(Fenster.getDesignfarbe());
-		pnlSueden.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
+		pnlSueden.setBackground(backcolor);
+		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
 		butHausBau = erzeugeButton("Häuser" + System.lineSeparator() + "anzeigen");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
 		butHausBau.setFont(Fenster.getStandardFont());
+		butHausBau.setForeground(backcolor);
 		pnlSueden.add(butHausBau);
 
 		JButton butKontoauszug = erzeugeButton("Konto" + System.lineSeparator() + "anzeigen");
 		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
 		butKontoauszug.setFont(Fenster.getStandardFont());
+		butKontoauszug.setForeground(backcolor);
 		pnlSueden.add(butKontoauszug);
 
 		butHandel = erzeugeButton("Handeln");
 		butHandel.addActionListener(e -> oeffneHandelFenster());
 		butHandel.setFont(Fenster.getStandardFont());
+		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);
 
 		this.setLayout(new BorderLayout());
@@ -136,7 +139,7 @@ public class SpielerUI extends JPanel implements Beobachter
 			this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
 		}
 
-		butHausBau.setEnabled(spieler.isAktuellerSpieler() && spieler.getFelder().size() > 0);
-		butHandel.setEnabled(!spieler.isAktuellerSpieler());
+		butHausBau.setVisible((spieler.isAktuellerSpieler() && spieler.getFelder().size() > 0));
+		butHandel.setVisible(!spieler.isAktuellerSpieler());
 	}
 }
