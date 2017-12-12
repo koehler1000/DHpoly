@@ -48,7 +48,6 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		txtName = Fenster.getTextFeldUeberschrift(spieler.getName() + ": ");
 		txtName.setBackground(backcolor);
-		txtName.setForeground(Color.BLACK);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
 		JPanel pnlSueden = new JPanel(new GridLayout(1, 2, 10, 10));
@@ -121,11 +120,11 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		if (spieler.getRessourcenWerte(Ressource.GELD) >= 0)
 		{
-			txtKontostand.setForeground(Fenster.getDesignfarbe());
+			txtKontostand.setForeground(Fenster.getKontrastfarbe());
 		}
 		else
 		{
-			txtKontostand.setForeground(Color.RED);
+			txtKontostand.setForeground(Fenster.getDesignfarbe());
 		}
 
 		if (spieler.isAktuellerSpieler())
