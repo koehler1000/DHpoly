@@ -23,7 +23,7 @@ public class Fenster extends JFrame
 	private static final Font SCHRIFT_NORMAL = new Font("arial", Font.PLAIN, 20);
 
 	private static final Font SCHRIFT_UEBERSCHRIFT = new Font("arial", Font.BOLD, 30);
-
+kjk
 	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font("arial", Font.BOLD, 15);
 
 	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font("arial", Font.PLAIN, 12);
