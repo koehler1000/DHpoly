@@ -18,7 +18,8 @@ public class StrasseVorschauUI extends JPanel
 		this.setLayout(new BorderLayout());
 
 		Color farbe = new Strassengruppe().getColor(strasse.getGruppe());
-		JButton lblName = Fenster.getButtonUeberschrift(strasse.getBeschriftung(), farbe);
-		this.add(lblName);
+		JButton butName = Fenster.getButtonUeberschrift(strasse.getBeschriftung(), farbe);
+		butName.setForeground(Fenster.getKontrastfarbe());
+		this.add(butName);
 	}
 }
