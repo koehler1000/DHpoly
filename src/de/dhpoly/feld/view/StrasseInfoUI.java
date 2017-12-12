@@ -52,6 +52,7 @@ public class StrasseInfoUI extends JPanel
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
 		butName = Fenster.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
+		butName.setForeground(Fenster.getKontrastfarbe());
 		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
 		this.add(butName, BorderLayout.NORTH);
 
