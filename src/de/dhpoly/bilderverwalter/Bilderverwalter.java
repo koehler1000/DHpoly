@@ -13,9 +13,9 @@ public class Bilderverwalter
 {
 	public static final String LOGO = "spiel\\logo.png";
 
-	public static final String RESSOURCE_STEIN = "ressourcen//stein.png";
-	public static final String RESSOURCE_HOLZ = "ressourcen//holz.png";
-	public static final String RESSOURCE_GELD = "ressourcen//geld.png";
+	public static final String RESSOURCE_STEIN = "ressourcen\\stein.png";
+	public static final String RESSOURCE_HOLZ = "ressourcen\\holz.png";
+	public static final String RESSOURCE_GELD = "ressourcen\\geld.png";
 
 	private static final String WUERFEL = "wuerfel//wuerfel_%.png"; // % wird zu Nummer des Würfels
 
