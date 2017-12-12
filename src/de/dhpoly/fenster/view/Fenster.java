@@ -16,7 +16,7 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 
 public class Fenster extends JFrame
 {
-	private static final Color FARBE_DESIGN = new Color(250, 250, 150);
+	private static final Color FARBE_DESIGN = new Color(225, 225, 225);
 
 	private static final Color FARBE_KONTRAST = new Color(100, 100, 100);
 
