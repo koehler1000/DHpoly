@@ -3,16 +3,13 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.ressource.model.Ressource;
 import observerpattern.Beobachter;
 
 public class RessourcenfeldUI extends JPanel implements Beobachter
@@ -23,8 +20,6 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 
 	private Ressourcenfeld feld;
 
-	private JLabel ressourcenbild;
-
 	public RessourcenfeldUI(Ressourcenfeld feld)
 	{
 		this.feld = feld;
@@ -32,11 +27,7 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 
-		// aktuell werden die pngs immer auf 60*60 gesized
-		ressourcenbild = new JLabel(new ImageIcon(
-				getRessourcenBild(feld.getRessource()).getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT)));
-
-		this.add(ressourcenbild, BorderLayout.CENTER);
+		this.add(new JLabel(Bilderverwalter.getBild(feld.getRessource())), BorderLayout.CENTER);
 		feld.addBeobachter(this);
 		hintergrundfarbeSetzen();
 	}
@@ -60,10 +51,5 @@ public class RessourcenfeldUI extends JPanel implements Beobachter
 			default:
 				break;
 		}
-	}
-
-	private ImageIcon getRessourcenBild(Ressource res)
-	{
-		return Bilderverwalter.getBild(res);
 	}
 }
