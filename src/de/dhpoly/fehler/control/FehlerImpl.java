@@ -8,19 +8,9 @@ import de.dhpoly.fehler.Fehler;
 
 public class FehlerImpl implements Fehler
 {
-
 	public static void fehlerAufgetreten(String nachricht)
 	{
-		try
-		{
-			TelegramNotification.sendTelegramMessage("Fehler", nachricht);
-		}
-		catch (IOException ex)
-		{
-			// ignore
-			// TODO was passiert, wenn Fehler beim Senden auftreten?
-		}
-
+		stillerFehler(nachricht);
 		JOptionPane.showMessageDialog(null, nachricht, "Fehler", JOptionPane.ERROR_MESSAGE);
 	}
 
@@ -29,4 +19,15 @@ public class FehlerImpl implements Fehler
 		fehlerAufgetreten(ex.getMessage());
 	}
 
+	public static void stillerFehler(String nachricht)
+	{
+		try
+		{
+			TelegramNotification.sendTelegramMessage("Fehler", nachricht);
+		}
+		catch (IOException ex)
+		{
+			// ignore
+		}
+	}
 }
