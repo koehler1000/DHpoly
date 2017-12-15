@@ -29,6 +29,7 @@ public class Bild extends JPanel
 	public void paint(Graphics g)
 	{
 		super.paint(g);
+
 		Image image = bilderverwalter.getBild(bildPfad).getImage();
 
 		int hoehe = this.getHeight() - 20;
