@@ -23,28 +23,28 @@ public class Bilderverwalter
 
 	private static Map<String, ImageIcon> bilder = new HashMap<>();
 
-	public static ImageIcon getBild(Ressource ressource)
+	public String getPfad(Ressource ressource)
 	{
 		switch (ressource)
 		{
 			case GELD:
-				return getBild(RESSOURCE_GELD);
+				return RESSOURCE_GELD;
 			case HOLZ:
-				return getBild(RESSOURCE_HOLZ);
+				return RESSOURCE_HOLZ;
 			case STEIN:
-				return getBild(RESSOURCE_STEIN);
+				return RESSOURCE_STEIN;
 			default:
-				return new ImageIcon();
+				return "";
 		}
 	}
 
-	public static ImageIcon getWuerfelBild(int nummer)
+	public ImageIcon getWuerfelBild(int nummer)
 	{
 		String pfad = WUERFEL.replace("%", "" + nummer);
-		return Bilderverwalter.getBild(pfad);
+		return getBild(pfad);
 	}
 
-	public static ImageIcon getBild(String pfad)
+	public ImageIcon getBild(String pfad)
 	{
 		if (bilder.containsKey(pfad))
 		{
@@ -64,5 +64,10 @@ public class Bilderverwalter
 			bilder.put(pfad, icon);
 			return icon;
 		}
+	}
+
+	public String getWuerfelPfad(int i)
+	{
+		return WUERFEL.replace("%", "" + i);
 	}
 }

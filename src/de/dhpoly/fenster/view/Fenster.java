@@ -2,17 +2,20 @@ package de.dhpoly.fenster.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.ressource.model.Ressource;
 
 public class Fenster extends JFrame
 {
@@ -30,12 +33,14 @@ public class Fenster extends JFrame
 
 	private static final long serialVersionUID = 1L;
 
+	private static Bilderverwalter bilderverwalter = new Bilderverwalter();
+
 	private JPanel inhalt;
 
 	public Fenster(JPanel pnlInhalt)
 	{
 		this.setTitle("");
-		this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
+		this.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		this.setLayout(new BorderLayout());
 		setInhalt(pnlInhalt);
 
@@ -52,7 +57,7 @@ public class Fenster extends JFrame
 		if (hauptfenster)
 		{
 			this.setTitle("DHPoly");
-			this.setIconImage(Bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
+			this.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 			this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
@@ -164,5 +169,38 @@ public class Fenster extends JFrame
 		but.setBackground(backcolor);
 		but.setBorder(new LineBorder(backcolor, 10));
 		return but;
+	}
+
+	public static Component getBild(String pfad, Color hintergrundfarbe)
+	{
+		Component bild = getBild(pfad);
+		bild.setBackground(hintergrundfarbe);
+		return bild;
+	}
+
+	public static Bild getBild(String pfad)
+	{
+		return new Bild(pfad, bilderverwalter);
+	}
+
+	public static Bild getBild(Ressource ressource)
+	{
+		return getBild(bilderverwalter.getPfad(ressource));
+	}
+
+	@Deprecated
+	public static void setWuerfelBild(JLabel lbl, int zahl)
+	{
+		lbl.setIcon(bilderverwalter.getWuerfelBild(zahl));
+	}
+
+	public static Bild getBild(int i)
+	{
+		return getBild(bilderverwalter.getWuerfelPfad(i));
+	}
+
+	public static void setWuerfelBildPfad(Bild bild, int wuerfelErgebnis)
+	{
+		bild.setBildPfad(bilderverwalter.getWuerfelPfad(wuerfelErgebnis));
 	}
 }

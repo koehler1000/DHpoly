@@ -6,12 +6,11 @@ import java.awt.Component;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ereignisfeld;
+import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
 public class EreignisfeldUI extends JPanel implements Beobachter
@@ -31,10 +30,7 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 		ImageIcon ico = new ImageIcon("/home/webs/bild.jpg");
 		ico.setImage(ico.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 
-		ImageIcon bild = Bilderverwalter.getBild("spielfeld\\ereignis.png");
-
-		JLabel lblBild = new JLabel(bild);
-		this.add(lblBild, BorderLayout.CENTER);
+		this.add(Fenster.getBild("spielfeld\\ereignis.png"), BorderLayout.CENTER);
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 
 		update();

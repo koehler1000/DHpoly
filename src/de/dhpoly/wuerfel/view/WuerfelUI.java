@@ -21,6 +21,8 @@ public class WuerfelUI extends JPanel implements Observer
 
 	private Wuerfel wuerfel;
 
+	private Bilderverwalter bilderverwalter = new Bilderverwalter();
+
 	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr)
 	{
 		this.wuerfel = wuerfel;
@@ -43,11 +45,11 @@ public class WuerfelUI extends JPanel implements Observer
 	{
 		if (wuerfelNr == 1)
 		{
-			lblWuerfelBild.setIcon(Bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
+			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
 		}
 		else
 		{
-			lblWuerfelBild.setIcon(Bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
+			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
 		}
 	}
 }
