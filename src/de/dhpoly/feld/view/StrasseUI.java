@@ -2,11 +2,9 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
@@ -14,7 +12,7 @@ import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
-public class StrasseUI extends JButton implements Beobachter
+public class StrasseUI extends FeldUI implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -22,10 +20,9 @@ public class StrasseUI extends JButton implements Beobachter
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	private Component pnlSpieler = new JPanel();
-
 	public StrasseUI(Strasse feld)
 	{
+		super(feld);
 		this.feld = feld;
 		butName.setText(feld.getName());
 		this.setLayout(new BorderLayout());
@@ -43,7 +40,6 @@ public class StrasseUI extends JButton implements Beobachter
 
 		butBesitzer.addActionListener(e -> zeigeDetails());
 		butName.addActionListener(e -> zeigeDetails());
-		this.addActionListener(e -> zeigeDetails());
 
 		update();
 		feld.addBeobachter(this);
@@ -75,8 +71,6 @@ public class StrasseUI extends JButton implements Beobachter
 			butName.setBorder(new LineBorder(Color.BLACK));
 		}
 
-		this.remove(pnlSpieler);
-		pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
-		this.add(pnlSpieler, BorderLayout.SOUTH);
+		super.update();
 	}
 }

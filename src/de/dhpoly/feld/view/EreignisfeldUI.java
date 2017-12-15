@@ -12,15 +12,14 @@ import de.dhpoly.feld.control.Ereignisfeld;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class EreignisfeldUI extends JPanel implements Beobachter
+public class EreignisfeldUI extends FeldUI implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
-	private Ereignisfeld feld;
 	private Component pnlSpieler = new JPanel();
 
 	public EreignisfeldUI(Ereignisfeld feld)
 	{
-		this.feld = feld;
+		super(feld);
 		pnlSpieler = new JPanel();
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
@@ -33,14 +32,14 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 		feld.addBeobachter(this);
 	}
 
-	@Override
-	public void update()
-	{
-		this.remove(pnlSpieler);
-		if (feld.getSpielerAufFeld().size() > 0)
-		{
-			pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
-			this.add(pnlSpieler, BorderLayout.SOUTH);
-		}
-	}
+	// @Override
+	// public void update()
+	// {
+	// this.remove(pnlSpieler);
+	// if (feld.getSpielerAufFeld().size() > 0)
+	// {
+	// pnlSpieler = new FeldUI(feld.getSpielerAufFeld(), this.getBackground());
+	// this.add(pnlSpieler, BorderLayout.SOUTH);
+	// }
+	// }
 }
