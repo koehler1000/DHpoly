@@ -3,17 +3,17 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ereignisfeld;
+import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class EreignisfeldUI extends JPanel implements Beobachter
+public class EreignisfeldUI extends Bild implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 	private Ereignisfeld feld;
@@ -21,16 +21,13 @@ public class EreignisfeldUI extends JPanel implements Beobachter
 
 	public EreignisfeldUI(Ereignisfeld feld)
 	{
+		super(Bilderverwalter.EREIGNISFELD, Fenster.getBilderverwalter());
 		this.feld = feld;
 		pnlSpieler = new JPanel();
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
 
-		ImageIcon ico = new ImageIcon("/home/webs/bild.jpg");
-		ico.setImage(ico.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-
-		this.add(Fenster.getBild("spielfeld\\ereignis.png"), BorderLayout.CENTER);
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 
 		update();
