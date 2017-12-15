@@ -9,11 +9,10 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ereignisfeld;
-import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class EreignisfeldUI extends Bild implements Beobachter
+public class EreignisfeldUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 	private Ereignisfeld feld;
@@ -21,13 +20,13 @@ public class EreignisfeldUI extends Bild implements Beobachter
 
 	public EreignisfeldUI(Ereignisfeld feld)
 	{
-		super(Bilderverwalter.EREIGNISFELD, Fenster.getBilderverwalter());
 		this.feld = feld;
 		pnlSpieler = new JPanel();
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
 
+		this.add(Fenster.getBild(Bilderverwalter.EREIGNISFELD, Color.WHITE));
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 
 		update();
