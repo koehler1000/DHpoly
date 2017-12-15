@@ -21,6 +21,8 @@ public class Bilderverwalter
 
 	private static final String WUERFEL = "wuerfel//wuerfel_%.png"; // % wird zu Nummer des Würfels
 
+	public static final String LOSFELD = "spielfeld\\los.png";
+
 	private static Map<String, ImageIcon> bilder = new HashMap<>();
 
 	public String getPfad(Ressource ressource)

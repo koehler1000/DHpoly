@@ -4,11 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Losfeld;
+import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
 public class LosfeldUI extends JPanel implements Beobachter
@@ -25,7 +26,8 @@ public class LosfeldUI extends JPanel implements Beobachter
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
 
-		this.add(new JLabel(feld.getBeschriftung()), BorderLayout.NORTH);
+		this.add(Fenster.getBild(Bilderverwalter.LOSFELD, Fenster.getDesignfarbe()));
+
 		update();
 
 		feld.addBeobachter(this);
