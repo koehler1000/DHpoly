@@ -7,13 +7,12 @@ import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class RessourcenfeldUI extends Bild implements Beobachter
+public class RessourcenfeldUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,14 +22,17 @@ public class RessourcenfeldUI extends Bild implements Beobachter
 
 	public RessourcenfeldUI(Ressourcenfeld feld)
 	{
-		super(Bilderverwalter.getPfad(feld.getRessource()), Fenster.getBilderverwalter());
 		this.feld = feld;
 
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 
-		feld.addBeobachter(this);
 		hintergrundfarbeSetzen();
+		Bild bild = Fenster.getBild(feld.getRessource());
+		bild.setBackground(this.getBackground());
+		this.add(bild, BorderLayout.CENTER);
+
+		feld.addBeobachter(this);
 	}
 
 	public void update()
