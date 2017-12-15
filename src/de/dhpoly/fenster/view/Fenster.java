@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -185,13 +184,7 @@ public class Fenster extends JFrame
 
 	public static Bild getBild(Ressource ressource)
 	{
-		return getBild(bilderverwalter.getPfad(ressource));
-	}
-
-	@Deprecated
-	public static void setWuerfelBild(JLabel lbl, int zahl)
-	{
-		lbl.setIcon(bilderverwalter.getWuerfelBild(zahl));
+		return getBild(Bilderverwalter.getPfad(ressource));
 	}
 
 	public static Bild getBild(int i)
@@ -202,5 +195,10 @@ public class Fenster extends JFrame
 	public static void setWuerfelBildPfad(Bild bild, int wuerfelErgebnis)
 	{
 		bild.setBildPfad(bilderverwalter.getWuerfelPfad(wuerfelErgebnis));
+	}
+
+	public static Bilderverwalter getBilderverwalter()
+	{
+		return bilderverwalter;
 	}
 }
