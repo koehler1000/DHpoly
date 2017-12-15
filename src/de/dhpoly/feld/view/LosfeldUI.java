@@ -9,10 +9,11 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Losfeld;
+import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class LosfeldUI extends JPanel implements Beobachter
+public class LosfeldUI extends Bild implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -21,12 +22,11 @@ public class LosfeldUI extends JPanel implements Beobachter
 
 	public LosfeldUI(Losfeld feld)
 	{
+		super(Bilderverwalter.LOSFELD, Fenster.getBilderverwalter());
 		this.feld = feld;
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
-
-		this.add(Fenster.getBild(Bilderverwalter.LOSFELD, Fenster.getDesignfarbe()));
 
 		update();
 
