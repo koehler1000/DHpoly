@@ -22,10 +22,11 @@ public class Bilderverwalter
 	private static final String WUERFEL = "wuerfel//wuerfel_%.png"; // % wird zu Nummer des Würfels
 
 	public static final String LOSFELD = "spielfeld\\los.png";
+	public static final String EREIGNISFELD = "spielfeld\\ereignis.png";
 
 	private static Map<String, ImageIcon> bilder = new HashMap<>();
 
-	public String getPfad(Ressource ressource)
+	public static String getPfad(Ressource ressource)
 	{
 		switch (ressource)
 		{
