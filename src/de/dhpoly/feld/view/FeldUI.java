@@ -42,6 +42,9 @@ public class FeldUI extends JPanel implements Beobachter
 			pnlSpieler.add(pnlSp);
 		}
 
-		this.add(pnlSpieler, BorderLayout.SOUTH);
+		if (feld.getSpielerAufFeld().size() > 0)
+		{
+			this.add(pnlSpieler, BorderLayout.SOUTH);
+		}
 	}
 }
