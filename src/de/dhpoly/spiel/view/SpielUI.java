@@ -30,7 +30,6 @@ public class SpielUI extends JPanel
 		JPanel pnlKassen = new JPanel();
 		pnlKassen.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
 		pnlKassen.setBackground(Fenster.getDesignfarbe());
-		pnlKassen.setBorder(new LineBorder(Fenster.getKontrastfarbe()));
 
 		for (Spieler spieler : spiel.getSpieler())
 		{
