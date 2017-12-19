@@ -132,7 +132,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		if (spieler.isAktuellerSpieler())
 		{
-			this.setBorder(BorderFactory.createLineBorder(Fenster.getDesignfarbe(), 10));
+			this.setBorder(BorderFactory.createLineBorder(this.getBackground(), 10));
 		}
 		else
 		{
