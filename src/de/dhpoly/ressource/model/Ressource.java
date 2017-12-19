@@ -15,14 +15,7 @@ public enum Ressource
 
 	public String getString(int anzahl)
 	{
-		if (anzahl == 1)
-		{
-			return "1 " + einzahl;
-		}
-		else
-		{
-			return "" + anzahl + " " + mehrzahl;
-		}
+		return "" + anzahl + ((anzahl == 1 || anzahl == -1) ? einzahl : mehrzahl);
 	}
 
 	public static String getString(Ressource ressource, int anzahl)
