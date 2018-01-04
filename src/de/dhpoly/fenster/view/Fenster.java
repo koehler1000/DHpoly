@@ -3,9 +3,7 @@ package de.dhpoly.fenster.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -124,7 +122,7 @@ public class Fenster extends JFrame
 
 	private static String getButtonText(String text)
 	{
-		return "<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>") + "</p></html>";
+		return "<html><body style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>") + "</body></html>";
 	}
 
 	public static JButton getButtonUeberschrift(String text)
