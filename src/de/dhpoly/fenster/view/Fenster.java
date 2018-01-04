@@ -122,7 +122,8 @@ public class Fenster extends JFrame
 
 	private static String getButtonText(String text)
 	{
-		return "<html><body style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>") + "</body></html>";
+		return "<html><body style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>")
+				+ "</body></html>";
 	}
 
 	public static JButton getButtonUeberschrift(String text)
@@ -190,6 +191,22 @@ public class Fenster extends JFrame
 	public static Bild getBild(int i)
 	{
 		return getBild(bilderverwalter.getWuerfelPfad(i));
+	}
+
+	public static JButton getButtonBild(String pfad)
+	{
+		JButton butBild = getButton("");
+		butBild.setText(getHTMLBild(pfad));
+		return butBild;
+	}
+
+	private static String getHTMLBild(String pfad)
+	{
+		char anfuehrungszeichen = '"';
+		return "<html><img src=" + // html
+				anfuehrungszeichen + pfad + anfuehrungszeichen + // src
+				" alt = " + anfuehrungszeichen + pfad + anfuehrungszeichen + // alternative Anzeige
+				" width=" + anfuehrungszeichen + "50px" + anfuehrungszeichen + " /></html>";
 	}
 
 	public static void setWuerfelBildPfad(Bild bild, int wuerfelErgebnis)
