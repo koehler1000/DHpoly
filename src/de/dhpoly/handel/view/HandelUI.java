@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -111,8 +110,7 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-
-			JOptionPane.showMessageDialog(null, "Handel angenommen");
+			Fenster.zeigeInfo("Info", "Handel angenommen");
 		}
 		else
 		{
