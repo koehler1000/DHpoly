@@ -117,7 +117,7 @@ public class Fenster extends JFrame
 
 	public static JButton getButton(String text)
 	{
-		JButton butButton = new JButton(text);
+		JButton butButton = new JButton(getButtonText(text));
 		butButton.setBorder(new LineBorder(getKontrastfarbe(), 10));
 		butButton.setFont(getStandardFont());
 		butButton.setBackground(getKontrastfarbe());
@@ -125,9 +125,14 @@ public class Fenster extends JFrame
 		return butButton;
 	}
 
+	private static String getButtonText(String text)
+	{
+		return "<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>") + "</p></html>";
+	}
+
 	public static JButton getButtonUeberschrift(String text)
 	{
-		JButton butButton = getButton(text);
+		JButton butButton = getButton(getButtonText(text));
 		butButton.setFont(getUeberschriftFont());
 		return butButton;
 	}
@@ -200,5 +205,45 @@ public class Fenster extends JFrame
 	public static Bilderverwalter getBilderverwalter()
 	{
 		return bilderverwalter;
+	}
+
+	public static void zeigeInfo(String titel, String string)
+	{
+		String erweiterung = System.lineSeparator() + System.lineSeparator()
+				+ "Das Fenster schließt in Kürze automatisch.";
+
+		JPanel pnlInhalt = new JPanel(new BorderLayout(10, 10));
+		pnlInhalt.setBorder(new LineBorder(getDesignfarbe(), 10));
+		pnlInhalt.setBackground(getDesignfarbe());
+		JButton butUeberschrift = getButtonUeberschrift(titel);
+		JButton butText = getButton(string + erweiterung);
+
+		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
+		pnlInhalt.add(butText);
+
+		Fenster fenster = new Fenster(pnlInhalt);
+		butUeberschrift.addActionListener(e -> fenster.schliessen());
+		butText.addActionListener(e -> fenster.schliessen());
+
+		fenster.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+		Thread thread = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				try
+				{
+					Thread.sleep(3000);
+				}
+				catch (InterruptedException ex)
+				{
+					// ignorieren
+				}
+				fenster.schliessen();
+			}
+		});
+		thread.start();
 	}
 }
