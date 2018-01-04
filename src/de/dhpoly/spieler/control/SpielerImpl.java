@@ -97,7 +97,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-		JOptionPane.showMessageDialog(null, karte.getBeschreibung());
+		Fenster.zeigeInfo("Ereigniskarte", karte.getBeschreibung());
 	}
 
 	@Override
