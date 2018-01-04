@@ -38,10 +38,11 @@ public class SpielUI extends JPanel
 
 		this.add(pnlKassen, BorderLayout.EAST);
 
-		JPanel pnlSueden = new JPanel(new GridLayout(3, 1));
+		JPanel pnlWest = new JPanel(new BorderLayout(10, 10));
+		pnlWest.setBackground(Fenster.getKontrastfarbe());
 
 		JButton butImpressum = Fenster.getButtonUeberschrift("DHpoly");
-		pnlSueden.add(butImpressum);
+		pnlWest.add(butImpressum, BorderLayout.NORTH);
 
 		JPanel pnlWuerfel = new JPanel(new GridLayout(1, 1));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
@@ -49,15 +50,15 @@ public class SpielUI extends JPanel
 		pnlWuerfel.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 		pnlWuerfel.setBackground(Fenster.getDesignfarbe());
 
-		pnlSueden.add(pnlWuerfel);
+		pnlWest.add(pnlWuerfel);
 
-		JButton butWeiter = Fenster.getButtonUeberschrift("Weiter");
+		JButton butWeiter = Fenster.getButtonUeberschrift(System.lineSeparator() + "Weiter" + System.lineSeparator() + "&lt;");
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSpieler();
 			spiel.ruecke();
 		});
 
-		pnlSueden.add(butWeiter);
-		this.add(pnlSueden, BorderLayout.WEST);
+		pnlWest.add(butWeiter, BorderLayout.SOUTH);
+		this.add(pnlWest, BorderLayout.WEST);
 	}
 }
