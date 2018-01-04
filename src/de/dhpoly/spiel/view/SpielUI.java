@@ -1,12 +1,10 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.fenster.view.Fenster;
@@ -41,7 +39,7 @@ public class SpielUI extends JPanel
 		this.add(pnlKassen, BorderLayout.EAST);
 
 		JPanel pnlSueden = new JPanel(new GridLayout(1, 1));
-		
+
 		JButton butImpressum = Fenster.getButtonUeberschrift("DHpoly");
 		pnlSueden.add(butImpressum);
 
