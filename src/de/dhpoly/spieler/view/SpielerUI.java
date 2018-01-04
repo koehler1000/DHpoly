@@ -54,19 +54,19 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.setBackground(backcolor);
 		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
-		butHausBau = erzeugeButton("Häuser" + System.lineSeparator() + "anzeigen");
+		butHausBau = Fenster.getButton("Häuser" + System.lineSeparator() + "anzeigen");
 		butHausBau.addActionListener(e -> oeffneHausbauFenster());
 		butHausBau.setFont(Fenster.getStandardFont());
 		butHausBau.setForeground(backcolor);
 		pnlSueden.add(butHausBau);
 
-		JButton butKontoauszug = erzeugeButton("Konto" + System.lineSeparator() + "anzeigen");
+		JButton butKontoauszug = Fenster.getButton("Konto" + System.lineSeparator() + "anzeigen");
 		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
 		butKontoauszug.setFont(Fenster.getStandardFont());
 		butKontoauszug.setForeground(backcolor);
 		pnlSueden.add(butKontoauszug);
 
-		butHandel = erzeugeButton("Handeln");
+		butHandel = Fenster.getButton("Handeln");
 		butHandel.addActionListener(e -> oeffneHandelFenster());
 		butHandel.setFont(Fenster.getStandardFont());
 		butHandel.setForeground(backcolor);
@@ -84,12 +84,6 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		SpielerImpl spielerImpl = (SpielerImpl) spieler;
 		spielerImpl.addBeobachter(this);
-	}
-
-	private JButton erzeugeButton(String text)
-	{
-		return Fenster.getButton("<html><p style='text-align:center'>" + text.replaceAll(System.lineSeparator(), "<br>")
-				+ "</p></html>");
 	}
 
 	private void oeffneKontoauszugFenster()
