@@ -38,7 +38,7 @@ public class SpielUI extends JPanel
 
 		this.add(pnlKassen, BorderLayout.EAST);
 
-		JPanel pnlSueden = new JPanel(new GridLayout(1, 1));
+		JPanel pnlSueden = new JPanel(new GridLayout(3, 1));
 
 		JButton butImpressum = Fenster.getButtonUeberschrift("DHpoly");
 		pnlSueden.add(butImpressum);
@@ -58,6 +58,6 @@ public class SpielUI extends JPanel
 		});
 
 		pnlSueden.add(butWeiter);
-		this.add(pnlSueden, BorderLayout.SOUTH);
+		this.add(pnlSueden, BorderLayout.WEST);
 	}
 }
