@@ -3,8 +3,6 @@ package de.dhpoly.spieler.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -196,7 +194,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeNachrichtVerloren()
 	{
 		strassenZurueckgeben();
-		JOptionPane.showMessageDialog(null, name + " hat verloren");
+		Fenster.zeigeInfo("VERLOREN", name + " hat verloren");
 	}
 
 	private void strassenZurueckgeben()
@@ -215,7 +213,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachrichtGewonnen()
 	{
-		JOptionPane.showMessageDialog(null, name + " hat gewonnen");
+		Fenster.zeigeInfo("SIEG", name + " hat GEWONNEN");
 	}
 
 	@Override
