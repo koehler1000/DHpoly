@@ -38,7 +38,7 @@ public class HandelUITest
 		s2.einzahlen(datensaetze);
 
 		Fenster fenster = new Fenster();
-		fenster.setInhalt(new HandelUI(s1, s2, fenster), "HandelUITest");
+		fenster.setInhalt(new HandelUI(s1, s2), "HandelUITest");
 	}
 
 }

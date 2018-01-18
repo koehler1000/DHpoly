@@ -77,8 +77,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
 		Fenster fenster = new Fenster();
-		fenster.setInhalt(
-				new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion, fenster),
+		fenster.setInhalt(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion),
 				"Handelsangebot");
 	}
 

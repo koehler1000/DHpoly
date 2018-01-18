@@ -32,11 +32,8 @@ public class HandelUI extends JPanel
 
 	private Handel handel = new HandelImpl();
 
-	private Fenster fenster;
-
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, Fenster fenster)
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen)
 	{
-		this.fenster = fenster;
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
 		if (vorgeschlagen == null)
@@ -80,9 +77,9 @@ public class HandelUI extends JPanel
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Fenster fenster)
+	public HandelUI(Spieler spieler, Spieler handelsPartner)
 	{
-		this(spieler, handelsPartner, null, fenster);
+		this(spieler, handelsPartner, null);
 	}
 
 	private void handelAnbieten()
@@ -117,7 +114,7 @@ public class HandelUI extends JPanel
 			handel.vorschlagAnbieten(transaktion);
 		}
 
-		fenster.schliessen();
+		this.setVisible(false);
 	}
 
 	private int getWertBekommen(Ressource ressource)
