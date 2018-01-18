@@ -1,6 +1,7 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -51,6 +52,8 @@ public class SpielUI extends JPanel
 		pnlWuerfel.setBackground(Fenster.getDesignfarbe());
 
 		pnlWest.add(pnlWuerfel);
+
+		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
 		JButton butWeiter = Fenster.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
