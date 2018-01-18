@@ -24,6 +24,10 @@ public class SpielUI extends JPanel implements Beobachter
 
 	public SpielUI(Spiel spiel)
 	{
+		pnlLeer.setBackground(Fenster.getDesignfarbe());
+		Spiel.setPanel(pnlLeer);
+		Spiel.getPanel().setBackground(Fenster.getDesignfarbe());
+
 		this.setBackground(Fenster.getDesignfarbe());
 
 		this.setLayout(new BorderLayout(10, 10));

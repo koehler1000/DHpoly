@@ -234,14 +234,10 @@ public class Fenster extends JFrame
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);
 
-		Fenster fenster = new Fenster(pnlInhalt);
-
 		Spiel.setPanel(pnlInhalt);
 
-		// butUeberschrift.addActionListener(e -> fenster.schliessen());
-		// butText.addActionListener(e -> fenster.schliessen());
-
-		// fenster.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
+		butText.addActionListener(e -> pnlInhalt.setVisible(false));
 
 		Thread thread = new Thread(new Runnable()
 		{
@@ -257,7 +253,7 @@ public class Fenster extends JFrame
 				{
 					// ignorieren
 				}
-				// fenster.schliessen();
+				pnlInhalt.setVisible(false);
 			}
 		});
 		thread.start();
