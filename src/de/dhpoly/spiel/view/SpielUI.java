@@ -52,10 +52,10 @@ public class SpielUI extends JPanel
 
 		pnlWest.add(pnlWuerfel);
 
-		JButton butWeiter = Fenster.getButtonUeberschrift(System.lineSeparator() + "Weiter" + System.lineSeparator() + "&lt;");
+		JButton butWeiter = Fenster.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
-			spiel.naechsterSpieler();
-			spiel.ruecke();
+			spiel.naechsterSchritt();
+			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
 		});
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);

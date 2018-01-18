@@ -32,4 +32,8 @@ public interface Spiel
 	void verarbeiteKarte(Karte karte);
 
 	void fuegeSpielerHinzu(Spieler spieler);
+
+	void naechsterSchritt();
+
+	String getBeschreibungNaechsterSchritt();
 }

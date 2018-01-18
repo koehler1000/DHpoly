@@ -184,4 +184,35 @@ public class SpielImpl implements Spiel
 	{
 		return wuerfel;
 	}
+
+	private int aktuellerSchritt = -1;
+	private String beschreibungNaechsterSchritt = "Spiel beginnen";
+
+	@Override
+	public void naechsterSchritt()
+	{
+		aktuellerSchritt++;
+
+		switch (aktuellerSchritt)
+		{
+			case 0:
+				beschreibungNaechsterSchritt = "Würfeln";
+				break;
+			case 1:
+				ruecke();
+				beschreibungNaechsterSchritt = "Würfel weitergeben";
+				break;
+			case 2:
+				naechsterSpieler();
+				aktuellerSchritt = 0;
+				beschreibungNaechsterSchritt = "Würfeln";
+				break;
+		}
+	}
+
+	@Override
+	public String getBeschreibungNaechsterSchritt()
+	{
+		return beschreibungNaechsterSchritt;
+	}
 }
