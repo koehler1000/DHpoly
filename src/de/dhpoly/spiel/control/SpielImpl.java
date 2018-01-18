@@ -218,15 +218,15 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		return beschreibungNaechsterSchritt;
 	}
-
-	private JPanel pnlInhalt;
-
-	@Override
-	public void setPanel(JPanel pnl)
-	{
-		pnlInhalt = pnl;
-		informiereBeobachter();
-	}
+	//
+	// private JPanel pnlInhalt;
+	//
+	// @Override
+	// public static void setPanel(JPanel pnl)
+	// {
+	// pnlInhalt = pnl;
+	// informiereBeobachter();
+	// }
 
 	public JPanel getPanel()
 	{

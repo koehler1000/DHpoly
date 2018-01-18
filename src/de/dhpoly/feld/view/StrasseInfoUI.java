@@ -3,7 +3,6 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -24,7 +23,7 @@ public class StrasseInfoUI extends JPanel
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseInfoUI(Strasse feld, Fenster fenster)
+	public StrasseInfoUI(Strasse feld)
 	{
 		this.setLayout(new BorderLayout());
 		this.setBackground(Fenster.getDesignfarbe());
@@ -53,11 +52,11 @@ public class StrasseInfoUI extends JPanel
 
 		butName = Fenster.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
 		butName.setForeground(Fenster.getKontrastfarbe());
-		butName.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
+		butName.addActionListener(e -> this.setVisible(false));
 		this.add(butName, BorderLayout.NORTH);
 
 		butBesitzer = Fenster.getButtonUeberschrift(getEigentuemerString(feld));
-		butBesitzer.addActionListener(e -> Optional.ofNullable(fenster).ifPresent(f -> f.schliessen()));
+		butBesitzer.addActionListener(e -> this.setVisible(false));
 		this.add(butBesitzer, BorderLayout.SOUTH);
 
 		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));

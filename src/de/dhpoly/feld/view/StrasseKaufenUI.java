@@ -21,7 +21,7 @@ public class StrasseKaufenUI extends JPanel
 		this.setLayout(new GridLayout(1, 2, 10, 10));
 		this.setBackground(Fenster.getDesignfarbe());
 
-		this.add(new StrasseInfoUI(strasse, fenster));
+		this.add(new StrasseInfoUI(strasse));
 
 		JButton butKaufen = Fenster.getButtonUeberschrift("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));

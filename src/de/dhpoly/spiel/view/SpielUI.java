@@ -59,7 +59,7 @@ public class SpielUI extends JPanel implements Beobachter
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
-		pnlWest.add(pnlContent);
+		pnlWest.add(Spiel.getPanel());
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
@@ -67,7 +67,7 @@ public class SpielUI extends JPanel implements Beobachter
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSchritt();
 			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
-			spiel.setPanel(pnlLeer);
+			Spiel.setPanel(pnlLeer);
 		});
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
@@ -79,9 +79,16 @@ public class SpielUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		pnlContent.removeAll();
-		pnlContent.add(spiel.getPanel());
+		// TODO Auto-generated method stub
 
-		pnlContent.revalidate();
 	}
+
+	// @Override
+	// public void update()
+	// {
+	// pnlContent.removeAll();
+	// pnlContent.add(spiel.getPanel());
+	//
+	// pnlContent.revalidate();
+	// }
 }

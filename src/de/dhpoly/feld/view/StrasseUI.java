@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
@@ -47,8 +48,7 @@ public class StrasseUI extends FeldUI implements Beobachter
 
 	private void zeigeDetails()
 	{
-		Fenster fenster = new Fenster();
-		fenster.setInhalt(new StrasseInfoUI(feld, fenster), "Details zu " + feld.getBeschriftung());
+		Spiel.setPanel(new StrasseInfoUI(feld));
 	}
 
 	@Override

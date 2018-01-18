@@ -1,5 +1,6 @@
 package de.dhpoly.spiel;
 
+import java.awt.GridLayout;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -14,6 +15,21 @@ import observerpattern.Beobachter;
 
 public interface Spiel
 {
+	static JPanel pnlInhalt = new JPanel(new GridLayout(1, 1));
+
+	public static void setPanel(JPanel pnl)
+	{
+		pnlInhalt.removeAll();
+		pnlInhalt.add(pnl);
+
+		pnlInhalt.revalidate();
+	}
+
+	public static JPanel getPanel()
+	{
+		return pnlInhalt;
+	}
+
 	Spieler getAktuellerSpieler();
 
 	Einstellungen getEinstellungen();
@@ -39,10 +55,6 @@ public interface Spiel
 	void naechsterSchritt();
 
 	String getBeschreibungNaechsterSchritt();
-
-	void setPanel(JPanel pnl);
-	
-	JPanel getPanel();
 
 	void addBeobachter(Beobachter beobachter);
 }
