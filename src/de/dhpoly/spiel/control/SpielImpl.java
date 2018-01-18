@@ -3,6 +3,8 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
@@ -16,8 +18,9 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
+import observerpattern.Beobachtbarer;
 
-public class SpielImpl implements Spiel
+public class SpielImpl extends Beobachtbarer implements Spiel
 {
 	private List<Feld> felder;
 	private List<Spieler> spieler = new ArrayList<>();
@@ -214,5 +217,19 @@ public class SpielImpl implements Spiel
 	public String getBeschreibungNaechsterSchritt()
 	{
 		return beschreibungNaechsterSchritt;
+	}
+
+	private JPanel pnlInhalt;
+
+	@Override
+	public void setPanel(JPanel pnl)
+	{
+		pnlInhalt = pnl;
+		informiereBeobachter();
+	}
+
+	public JPanel getPanel()
+	{
+		return pnlInhalt;
 	}
 }

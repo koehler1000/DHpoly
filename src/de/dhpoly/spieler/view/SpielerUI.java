@@ -88,8 +88,10 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneKontoauszugFenster()
 	{
-		KontoauszugUI pnlKonto = new KontoauszugUI(spieler);
-		new Fenster(pnlKonto, "Häuser von " + spieler.getName());
+		spiel.setPanel(new KontoauszugUI(spieler));
+		
+//		KontoauszugUI pnlKonto = new KontoauszugUI(spieler);
+//		new Fenster(pnlKonto, "Häuser von " + spieler.getName());
 	}
 
 	private void oeffneHausbauFenster()
