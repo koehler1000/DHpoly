@@ -14,8 +14,6 @@ public class StrasseKaufenUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private Fenster fenster = new Fenster();
-
 	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
 	{
 		this.setLayout(new GridLayout(1, 2, 10, 10));
@@ -36,21 +34,16 @@ public class StrasseKaufenUI extends JPanel
 		pnlOptionen.add(butAbbrechen);
 
 		this.add(pnlOptionen);
-
-		this.setSize(1000, 1000);
-		this.setVisible(true);
-
-		fenster.setInhalt(this, "Straﬂe kaufen");
 	}
 
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
 		strasse.kaufe(spieler);
-		fenster.schliessen();
+		this.setVisible(false);
 	}
 
 	private void abbrechen()
 	{
-		fenster.schliessen();
+		this.setVisible(false);
 	}
 }

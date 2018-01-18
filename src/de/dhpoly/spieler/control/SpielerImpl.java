@@ -76,9 +76,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
-		Fenster fenster = new Fenster();
-		fenster.setInhalt(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion),
-				"Handelsangebot");
+		Spiel.setPanel(new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion));
 	}
 
 	@Override
@@ -86,7 +84,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
 		{
-			new StrasseKaufenUI(strasse, this);
+			Spiel.setPanel(new StrasseKaufenUI(strasse, this));
 		}
 	}
 

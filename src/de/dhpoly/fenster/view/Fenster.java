@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.spiel.Spiel;
 
 public class Fenster extends JFrame
 {
@@ -234,10 +235,13 @@ public class Fenster extends JFrame
 		pnlInhalt.add(butText);
 
 		Fenster fenster = new Fenster(pnlInhalt);
-		butUeberschrift.addActionListener(e -> fenster.schliessen());
-		butText.addActionListener(e -> fenster.schliessen());
 
-		fenster.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		Spiel.setPanel(pnlInhalt);
+
+		// butUeberschrift.addActionListener(e -> fenster.schliessen());
+		// butText.addActionListener(e -> fenster.schliessen());
+
+		// fenster.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		Thread thread = new Thread(new Runnable()
 		{
@@ -253,7 +257,7 @@ public class Fenster extends JFrame
 				{
 					// ignorieren
 				}
-				fenster.schliessen();
+				// fenster.schliessen();
 			}
 		});
 		thread.start();

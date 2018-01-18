@@ -3,8 +3,6 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
@@ -227,9 +225,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	// pnlInhalt = pnl;
 	// informiereBeobachter();
 	// }
-
-	public JPanel getPanel()
-	{
-		return pnlInhalt;
-	}
+	//
+	// public JPanel getPanel()
+	// {
+	// return pnlInhalt;
+	// }
 }

@@ -20,14 +20,10 @@ import observerpattern.Beobachter;
 public class SpielUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
-	private JPanel pnlContent = new JPanel(new GridLayout(1, 1));
-	private Spiel spiel;
 	private JPanel pnlLeer = new JPanel();
 
 	public SpielUI(Spiel spiel)
 	{
-		this.spiel = spiel;
-
 		this.setBackground(Fenster.getDesignfarbe());
 
 		this.setLayout(new BorderLayout(10, 10));
@@ -65,9 +61,9 @@ public class SpielUI extends JPanel implements Beobachter
 
 		JButton butWeiter = Fenster.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
+			Spiel.setPanel(pnlLeer);
 			spiel.naechsterSchritt();
 			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
-			Spiel.setPanel(pnlLeer);
 		});
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
