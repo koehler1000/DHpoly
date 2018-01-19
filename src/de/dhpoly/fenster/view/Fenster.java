@@ -204,14 +204,11 @@ public class Fenster extends JFrame
 
 	public static void zeigeInfo(String titel, String string)
 	{
-		String erweiterung = System.lineSeparator() + System.lineSeparator()
-				+ "Das Fenster schließt in Kürze automatisch.";
-
 		JPanel pnlInhalt = new JPanel(new BorderLayout(10, 10));
 		pnlInhalt.setBorder(new LineBorder(getDesignfarbe(), 10));
 		pnlInhalt.setBackground(getDesignfarbe());
 		JButton butUeberschrift = getButtonUeberschrift(titel);
-		JButton butText = getButton(string + erweiterung);
+		JButton butText = getButton(string);
 
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);
@@ -220,24 +217,5 @@ public class Fenster extends JFrame
 
 		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
 		butText.addActionListener(e -> pnlInhalt.setVisible(false));
-
-		Thread thread = new Thread(new Runnable()
-		{
-
-			@Override
-			public void run()
-			{
-				try
-				{
-					Thread.sleep(3000);
-				}
-				catch (InterruptedException ex)
-				{
-					// ignorieren
-				}
-				pnlInhalt.setVisible(false);
-			}
-		});
-		thread.start();
 	}
 }

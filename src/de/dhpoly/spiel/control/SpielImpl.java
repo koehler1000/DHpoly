@@ -102,7 +102,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void naechsterSpieler()
 	{
 		Spieler spielerAktuell = spieler.get(aktuellerSpieler);
-		Spiel.setPanel(pnlLeer);
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
 		pruefeVerloren(spielerAktuell);
@@ -118,6 +117,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
+		Spiel.setPanel(pnlLeer);
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -247,6 +247,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				break;
 			case 2:
 				naechsterSpieler();
+				Spiel.setPanel(pnlLeer);
 				aktuellerSchritt = 0;
 				beschreibungNaechsterSchritt = "Würfeln";
 				break;
@@ -258,18 +259,4 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		return beschreibungNaechsterSchritt;
 	}
-	//
-	// private JPanel pnlInhalt;
-	//
-	// @Override
-	// public static void setPanel(JPanel pnl)
-	// {
-	// pnlInhalt = pnl;
-	// informiereBeobachter();
-	// }
-	//
-	// public JPanel getPanel()
-	// {
-	// return pnlInhalt;
-	// }
 }
