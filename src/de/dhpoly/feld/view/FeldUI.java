@@ -31,36 +31,10 @@ public class FeldUI extends JPanel implements Beobachter
 		this.setLayout(new BorderLayout());
 
 		pnlSpieler.setLayout(new GridLayout(1, 1));
+		pnlSpieler.setBorder(new LineBorder(this.getBackground(), 5));
 
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
-
-	// private void zeige(Spieler spieler)
-	// {
-	// if (spielerMap.containsKey(spieler))
-	// {
-	// pnlSpieler.add(spielerMap.get(spieler));
-	// }
-	// else
-	// {
-	// JLabel lblSp = new JLabel(spieler.getName());
-	// JPanel pnlSp = new JPanel();
-	// pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
-	// pnlSp.add(lblSp);
-	// pnlSp.setBorder(new LineBorder(Color.BLACK));
-	// pnlSpieler.add(pnlSp);
-	//
-	// spielerMap.put(spieler, pnlSpieler);
-	// }
-	// }
-	//
-	// private void verstecke(Spieler spieler)
-	// {
-	// if (spielerMap.containsKey(spieler))
-	// {
-	// spielerMap.get(spieler).setVisible(false);
-	// }
-	// }
 
 	private JPanel getPanel(Spieler spieler)
 	{
@@ -98,5 +72,7 @@ public class FeldUI extends JPanel implements Beobachter
 
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 		this.revalidate();
+
+		pnlSpieler.setBorder(new LineBorder(this.getBackground(), 5));
 	}
 }
