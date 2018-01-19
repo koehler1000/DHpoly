@@ -8,7 +8,7 @@ import observerpattern.Beobachtbarer;
 public class WuerfelImpl extends Beobachtbarer implements Wuerfel
 {
 	private int wuerfelErgebnis1 = 1;
-	private int wuerfelErgebnis2 = 1;
+	private int wuerfelErgebnis2 = 4;
 
 	@Override
 	public void wuerfeln()
