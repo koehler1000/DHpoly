@@ -57,7 +57,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 						aktuellesFeld.verlasseFeld(spieler);
 						aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 						aktuellesFeld.laufeUeberFeld(spieler);
-						Thread.sleep(500);
+						Thread.sleep(200);
 					}
 					catch (InterruptedException ex)
 					{
