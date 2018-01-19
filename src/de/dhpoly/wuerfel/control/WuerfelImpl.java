@@ -19,6 +19,7 @@ public class WuerfelImpl extends Beobachtbarer implements Wuerfel
 		informiereBeobachter();
 	}
 
+	@Override
 	public int getWuerfelZufall()
 	{
 		Random r = new Random();

@@ -9,4 +9,6 @@ public interface Wuerfel
 	int getWuerfelErgebnis2();
 
 	int getWuerfelErgebnis1();
+
+	int getWuerfelZufall();
 }
