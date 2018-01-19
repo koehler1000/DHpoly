@@ -2,6 +2,9 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,21 +21,54 @@ public class FeldUI extends JPanel implements Beobachter
 
 	private Feld feld;
 	private JPanel pnlSpieler = new JPanel();
+	private Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
 	public FeldUI(Feld feld)
 	{
 		this.feld = feld;
 		feld.addBeobachter(this);
+
+		this.setLayout(new BorderLayout());
+
+		pnlSpieler.setLayout(new GridLayout(1, 1));
+
+		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
 
-	@Override
-	public void update()
-	{
-		this.remove(pnlSpieler);
-		pnlSpieler = new JPanel();
-		pnlSpieler.setBackground(this.getBackground());
+	// private void zeige(Spieler spieler)
+	// {
+	// if (spielerMap.containsKey(spieler))
+	// {
+	// pnlSpieler.add(spielerMap.get(spieler));
+	// }
+	// else
+	// {
+	// JLabel lblSp = new JLabel(spieler.getName());
+	// JPanel pnlSp = new JPanel();
+	// pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
+	// pnlSp.add(lblSp);
+	// pnlSp.setBorder(new LineBorder(Color.BLACK));
+	// pnlSpieler.add(pnlSp);
+	//
+	// spielerMap.put(spieler, pnlSpieler);
+	// }
+	// }
+	//
+	// private void verstecke(Spieler spieler)
+	// {
+	// if (spielerMap.containsKey(spieler))
+	// {
+	// spielerMap.get(spieler).setVisible(false);
+	// }
+	// }
 
-		for (Spieler spieler : feld.getSpielerAufFeld())
+	private JPanel getPanel(Spieler spieler)
+	{
+		if (spielerMap.containsKey(spieler))
+		{
+			return spielerMap.get(spieler);
+		}
+		else
 		{
 			JLabel lblSp = new JLabel(spieler.getName());
 			JPanel pnlSp = new JPanel();
@@ -40,11 +76,27 @@ public class FeldUI extends JPanel implements Beobachter
 			pnlSp.add(lblSp);
 			pnlSp.setBorder(new LineBorder(Color.BLACK));
 			pnlSpieler.add(pnlSp);
+
+			spielerMap.put(spieler, pnlSp);
+
+			return getPanel(spieler);
+		}
+	}
+
+	@Override
+	public void update()
+	{
+		for (Spieler spieler : spielerMap.keySet())
+		{
+			pnlSpieler.remove(getPanel(spieler));
 		}
 
-		if (feld.getSpielerAufFeld().size() > 0)
+		for (Spieler spieler : feld.getSpielerAufFeld())
 		{
-			this.add(pnlSpieler, BorderLayout.SOUTH);
+			pnlSpieler.add(getPanel(spieler));
 		}
+
+		this.add(pnlSpieler, BorderLayout.SOUTH);
+		this.revalidate();
 	}
 }
