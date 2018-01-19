@@ -64,11 +64,11 @@ public class Fenster extends JFrame
 		this.setTitle(string);
 	}
 
-	public Fenster()
-	{
-		this(new JPanel());
-		this.setVisible(false);
-	}
+	// public Fenster()
+	// {
+	// this(new JPanel());
+	// this.setVisible(false);
+	// }
 
 	public void setInhalt(JPanel pnl, String string)
 	{
