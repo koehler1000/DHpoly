@@ -242,6 +242,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			case 0:
 				beschreibungNaechsterSchritt = "Würfeln";
+				Spiel.setPanel(pnlLeer);
 				break;
 			case 1:
 				ruecke();
