@@ -57,4 +57,5 @@ public interface Spiel
 	String getBeschreibungNaechsterSchritt();
 
 	void addBeobachter(Beobachter beobachter);
+
 }

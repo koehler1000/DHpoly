@@ -65,7 +65,6 @@ public class SpielUI extends JPanel implements Beobachter
 
 		JButton butWeiter = Fenster.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
-			Spiel.setPanel(pnlLeer);
 			spiel.naechsterSchritt();
 			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
 		});

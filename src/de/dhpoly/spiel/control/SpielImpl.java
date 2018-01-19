@@ -37,7 +37,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.wuerfel = wuerfel;
 		this.aktuellerSpieler = 0;
 
-		pnlLeer.setBackground(Fenster.getKontrastfarbe());
+		pnlLeer.setBackground(Fenster.getDesignfarbe());
 	}
 
 	@Override
@@ -102,6 +102,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void naechsterSpieler()
 	{
 		Spieler spielerAktuell = spieler.get(aktuellerSpieler);
+		Spiel.setPanel(pnlLeer);
+
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
 		pruefeVerloren(spielerAktuell);
 
@@ -247,7 +249,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				naechsterSpieler();
 				aktuellerSchritt = 0;
 				beschreibungNaechsterSchritt = "Würfeln";
-				Spiel.setPanel(pnlLeer);
 				break;
 		}
 	}
