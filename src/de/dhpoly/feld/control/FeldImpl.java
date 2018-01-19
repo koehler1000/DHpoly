@@ -65,4 +65,32 @@ public abstract class FeldImpl extends Beobachtbarer implements Feld
 	{
 		return false;
 	}
+
+	public void laufeUeberFeld(Spieler spieler)
+	{
+		Thread thread = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				spielerAufFeld.add(spieler);
+				informiereBeobachter();
+
+				try
+				{
+					Thread.sleep(100);
+				}
+				catch (InterruptedException ex)
+				{
+					// ignorieren
+				}
+
+				spielerAufFeld.remove(spieler);
+				informiereBeobachter();
+			}
+		});
+
+		thread.start();
+	}
 }

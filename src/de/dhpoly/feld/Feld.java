@@ -12,6 +12,8 @@ public interface Feld
 
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter);
 
+	public void laufeUeberFeld(Spieler spieler);
+
 	public void verlasseFeld(Spieler spieler);
 
 	public List<Spieler> getSpielerAufFeld();
