@@ -21,4 +21,11 @@ public class Losfeld extends FeldImpl
 	{
 		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
 	}
+
+	@Override
+	public void laufeUeberFeld(Spieler spieler)
+	{
+		super.laufeUeberFeld(spieler);
+		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
+	}
 }

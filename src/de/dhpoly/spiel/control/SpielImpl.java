@@ -11,8 +11,6 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
-import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
@@ -44,18 +42,53 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	public void ruecke(Spieler spieler, int augensumme)
 	{
-		felder.get(spieler.getFeldNr()).verlasseFeld(spieler);
-
-		int feldNrSoll = spieler.getFeldNr() + augensumme;
-		if (feldNrSoll >= felder.size())
+		Thread thread = new Thread(new Runnable()
 		{
-			feldNrSoll = feldNrSoll - felder.size(); // test
-			spieler.einzahlen(
-					new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
-		}
 
-		felder.get(feldNrSoll).betreteFeld(spieler, augensumme, wetter);
-		spieler.setFeldNr(feldNrSoll);
+			@Override
+			public void run()
+			{
+				Feld aktuellesFeld = felder.get(spieler.getFeldNr());
+
+				for (int i = 0; i < augensumme; i++)
+				{
+					try
+					{
+						aktuellesFeld.verlasseFeld(spieler);
+						aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+						aktuellesFeld.laufeUeberFeld(spieler);
+						Thread.sleep(1000);
+					}
+					catch (InterruptedException ex)
+					{
+						// ignorieren
+					}
+				}
+
+				aktuellesFeld.verlasseFeld(spieler);
+				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+				aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
+				spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+			}
+		});
+
+		thread.start();
+	}
+
+	private Feld getNaechstesFeld(Feld feld)
+	{
+		int feldNr = felder.indexOf(feld);
+
+		feldNr++;
+
+		if (feldNr >= felder.size())
+		{
+			return felder.get(0);
+		}
+		else
+		{
+			return felder.get(feldNr);
+		}
 	}
 
 	@Override
