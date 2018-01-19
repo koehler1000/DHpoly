@@ -32,7 +32,7 @@ public class FelderTest
 	}
 
 	@Test
-	public void spielerKann2FelderLaufen()
+	public void spielerKann2FelderLaufen() throws InterruptedException
 	{
 		List<Feld> felder = new ArrayList<>();
 		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung(felder);
@@ -48,6 +48,9 @@ public class FelderTest
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 2);
+
+		Thread.sleep(5000);
+
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
 	}
 

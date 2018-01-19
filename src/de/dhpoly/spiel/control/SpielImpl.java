@@ -50,14 +50,14 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			{
 				Feld aktuellesFeld = felder.get(spieler.getFeldNr());
 
-				for (int i = 0; i < augensumme; i++)
+				for (int i = 0; i < augensumme - 1; i++)
 				{
 					try
 					{
 						aktuellesFeld.verlasseFeld(spieler);
 						aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 						aktuellesFeld.laufeUeberFeld(spieler);
-						Thread.sleep(1000);
+						Thread.sleep(500);
 					}
 					catch (InterruptedException ex)
 					{
