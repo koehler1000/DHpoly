@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
@@ -33,7 +34,7 @@ public class SpielImplTest
 	public void vorbereitung()
 	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(StrasseTest.getDefaultStrasse());
+		felder.add(LosfeldTest.getDefaultFeld());
 		felder.add(StrasseTest.getDefaultStrasse());
 		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
@@ -55,11 +56,13 @@ public class SpielImplTest
 	}
 
 	@Test
-	public void geldBeiUeberLos()
+	public void geldBeiUeberLos() throws InterruptedException
 	{
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD);
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
+
+		Thread.sleep(5000);
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
@@ -261,7 +264,7 @@ public class SpielImplTest
 			public void setSpielerNr(int nr)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 		};
 	}
