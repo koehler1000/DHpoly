@@ -3,8 +3,11 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
@@ -25,12 +28,16 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfel wuerfel;
 
+	private JPanel pnlLeer = new JPanel();
+
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
 	{
 		this.felder = felder;
 		this.einstellungen = einstellungen;
 		this.wuerfel = wuerfel;
 		this.aktuellerSpieler = 0;
+
+		pnlLeer.setBackground(Fenster.getKontrastfarbe());
 	}
 
 	@Override
@@ -240,6 +247,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				naechsterSpieler();
 				aktuellerSchritt = 0;
 				beschreibungNaechsterSchritt = "Würfeln";
+				Spiel.setPanel(pnlLeer);
 				break;
 		}
 	}
