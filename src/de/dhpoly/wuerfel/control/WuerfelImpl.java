@@ -1,11 +1,11 @@
 package de.dhpoly.wuerfel.control;
 
-import java.util.Observable;
 import java.util.Random;
 
 import de.dhpoly.wuerfel.Wuerfel;
+import observerpattern.Beobachtbarer;
 
-public class WuerfelImpl extends Observable implements Wuerfel
+public class WuerfelImpl extends Beobachtbarer implements Wuerfel
 {
 	private int wuerfelErgebnis1 = 1;
 	private int wuerfelErgebnis2 = 1;
@@ -16,8 +16,7 @@ public class WuerfelImpl extends Observable implements Wuerfel
 		wuerfelErgebnis1 = getWuerfelZufall();
 		wuerfelErgebnis2 = getWuerfelZufall();
 
-		setChanged();
-		notifyObservers();
+		informiereBeobachter();
 	}
 
 	public int getWuerfelZufall()

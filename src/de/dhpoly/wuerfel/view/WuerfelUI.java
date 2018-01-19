@@ -1,8 +1,5 @@
 package de.dhpoly.wuerfel.view;
 
-import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -10,8 +7,9 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
+import observerpattern.Beobachter;
 
-public class WuerfelUI extends JPanel implements Observer
+public class WuerfelUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -31,17 +29,12 @@ public class WuerfelUI extends JPanel implements Observer
 		this.setBackground(Fenster.getDesignfarbe());
 		this.add(lblWuerfelBild);
 
-		wuerfel.addObserver(this);
+		wuerfel.addBeobachter(this);
 		update();
 	}
 
 	@Override
-	public void update(Observable o, Object arg)
-	{
-		update();
-	}
-
-	private void update()
+	public void update()
 	{
 		if (wuerfelNr == 1)
 		{
