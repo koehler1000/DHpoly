@@ -38,6 +38,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.aktuellerSpieler = 0;
 
 		pnlLeer.setBackground(Fenster.getDesignfarbe());
+
+		// pnlLeer = Fenster.getBild(Bilderverwalter.LOGO);
 	}
 
 	@Override
