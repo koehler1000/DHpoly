@@ -64,19 +64,6 @@ public class Fenster extends JFrame
 		this.setTitle(string);
 	}
 
-	// public Fenster()
-	// {
-	// this(new JPanel());
-	// this.setVisible(false);
-	// }
-
-	public void setInhalt(JPanel pnl, String string)
-	{
-		setInhalt(pnl);
-		this.setTitle(string);
-		this.setVisible(true);
-	}
-
 	private void setInhalt(JPanel pnl)
 	{
 		if (inhalt != null)
@@ -85,11 +72,6 @@ public class Fenster extends JFrame
 		}
 		inhalt = pnl;
 		this.add(pnl);
-	}
-
-	public void schliessen()
-	{
-		this.setVisible(false);
 	}
 
 	public static JTextArea getTextFeldUeberschrift(String text)
