@@ -3,11 +3,8 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JPanel;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
@@ -28,18 +25,12 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfel wuerfel;
 
-	private JPanel pnlLeer = new JPanel();
-
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
 	{
 		this.felder = felder;
 		this.einstellungen = einstellungen;
 		this.wuerfel = wuerfel;
 		this.aktuellerSpieler = 0;
-
-		pnlLeer.setBackground(Fenster.getDesignfarbe());
-
-		// pnlLeer = Fenster.getBild(Bilderverwalter.LOGO);
 	}
 
 	@Override
@@ -119,7 +110,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
-		Spiel.setPanel("DHPoly", pnlLeer);
+		Spiel.leerePanel();
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -242,7 +233,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			case 0:
 				beschreibungNaechsterSchritt = "Würfeln";
-				Spiel.setPanel("Bitte warten", pnlLeer);
+				Spiel.leerePanel();
 				break;
 			case 1:
 				ruecke();
@@ -250,7 +241,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				break;
 			case 2:
 				naechsterSpieler();
-				Spiel.setPanel("DHPoly", pnlLeer);
+				Spiel.leerePanel();
 				aktuellerSchritt = 0;
 				beschreibungNaechsterSchritt = "Würfeln";
 				break;
