@@ -17,11 +17,17 @@ import observerpattern.Beobachter;
 public interface Spiel
 {
 	static JTabbedPane pnlInhalt = new JTabbedPane();
+	static JPanel pnlLeer = new JPanel();
 
 	public static void setPanel(String beschreibung, JPanel pnl)
 	{
 		pnlInhalt.removeAll();
 		pnlInhalt.addTab(beschreibung, pnl);
+	}
+
+	public static void leerePanel()
+	{
+		pnlInhalt.removeAll();
 	}
 
 	public static Component getPanel()
