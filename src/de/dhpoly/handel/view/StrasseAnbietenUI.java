@@ -28,10 +28,9 @@ public class StrasseAnbietenUI extends JPanel
 		this.angeboten = ausgewaehlt;
 
 		butAnbieten = Fenster.getButton("Anbieten");
-		hintergrund = Fenster.getDesignfarbe();
 
 		this.setLayout(new BorderLayout(10, 10));
-		this.setBorder(new LineBorder(hintergrund));
+		this.setBorder(new LineBorder(hintergrund, 10));
 		this.add(new StrasseVorschauUI(strasse));
 
 		this.setBackground(hintergrund);
@@ -61,12 +60,13 @@ public class StrasseAnbietenUI extends JPanel
 		if (angeboten)
 		{
 			this.setBackground(hintergrundAusgewaehlt);
-			butAnbieten.setText("Angebot zurückziehen");
+			butAnbieten.setText("Behalten");
 		}
 		else
 		{
 			this.setBackground(hintergrund);
 			butAnbieten.setText("Anbieten");
 		}
+		this.setBorder(new LineBorder(getBackground(), 10));
 	}
 }

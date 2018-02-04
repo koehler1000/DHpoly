@@ -1,10 +1,12 @@
 package de.dhpoly.handel.view;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
@@ -21,6 +23,7 @@ public class StrassenAnbietenUI extends JPanel
 	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
 	{
 		this.setBackground(Color.WHITE);
+		this.setLayout(new GridLayout());
 
 		for (Feld feld : ausgewaehlte)
 		{
@@ -37,13 +40,18 @@ public class StrassenAnbietenUI extends JPanel
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe));
 
+		JPanel pnlStrassen = new JPanel(new GridLayout(ausgewaehlteStrassen.size(), 1));
+		pnlStrassen.setBackground(Color.WHITE);
+
 		for (Feld feld : spieler.getFelder())
 		{
 			if (feld instanceof Strasse)
 			{
-				this.add(new StrasseAnbietenUI((Strasse) feld, this, ausgewaehlteStrassen.contains(feld)));
+				pnlStrassen.add(new StrasseAnbietenUI((Strasse) feld, this, ausgewaehlteStrassen.contains(feld)));
 			}
 		}
+
+		this.add(new JScrollPane(pnlStrassen));
 	}
 
 	void feldAuswaehlen(Feld feld)
