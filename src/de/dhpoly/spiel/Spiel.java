@@ -1,6 +1,5 @@
 package de.dhpoly.spiel;
 
-import java.awt.Component;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -17,7 +16,6 @@ import observerpattern.Beobachter;
 public interface Spiel
 {
 	static JTabbedPane pnlInhalt = new JTabbedPane();
-	static JPanel pnlLeer = new JPanel();
 
 	public static void setPanel(String beschreibung, JPanel pnl)
 	{
@@ -28,11 +26,6 @@ public interface Spiel
 	public static void leerePanel()
 	{
 		pnlInhalt.removeAll();
-	}
-
-	public static Component getPanel()
-	{
-		return pnlInhalt;
 	}
 
 	Spieler getAktuellerSpieler();

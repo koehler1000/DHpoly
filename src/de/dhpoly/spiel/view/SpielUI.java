@@ -24,7 +24,7 @@ public class SpielUI extends JPanel implements Beobachter
 	public SpielUI(Spiel spiel)
 	{
 		Spiel.leerePanel();
-		Spiel.getPanel().setBackground(Fenster.getDesignfarbe());
+		Spiel.pnlInhalt.setBackground(Fenster.getDesignfarbe());
 
 		this.setBackground(Fenster.getDesignfarbe());
 
@@ -44,7 +44,7 @@ public class SpielUI extends JPanel implements Beobachter
 		this.add(pnlKassen, BorderLayout.EAST);
 
 		JPanel pnlWest = new JPanel(new BorderLayout(10, 10));
-		pnlWest.setBackground(Fenster.getKontrastfarbe());
+		pnlWest.setBackground(Fenster.getDesignfarbe());
 
 		JButton butImpressum = Fenster.getButtonUeberschrift("DHpoly");
 		pnlWest.add(butImpressum, BorderLayout.CENTER);
@@ -57,7 +57,7 @@ public class SpielUI extends JPanel implements Beobachter
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
-		pnlWest.add(Spiel.getPanel());
+		pnlWest.add(Spiel.pnlInhalt);
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
