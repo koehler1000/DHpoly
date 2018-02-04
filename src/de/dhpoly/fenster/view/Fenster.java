@@ -213,7 +213,7 @@ public class Fenster extends JFrame
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);
 
-		Spiel.setPanel(pnlInhalt);
+		Spiel.setPanel("Info", pnlInhalt);
 
 		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
 		butText.addActionListener(e -> pnlInhalt.setVisible(false));

@@ -1,9 +1,10 @@
 package de.dhpoly.spiel;
 
-import java.awt.GridLayout;
+import java.awt.Component;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
@@ -15,17 +16,15 @@ import observerpattern.Beobachter;
 
 public interface Spiel
 {
-	static JPanel pnlInhalt = new JPanel(new GridLayout(1, 1));
+	static JTabbedPane pnlInhalt = new JTabbedPane();
 
-	public static void setPanel(JPanel pnl)
+	public static void setPanel(String beschreibung, JPanel pnl)
 	{
 		pnlInhalt.removeAll();
-		pnlInhalt.add(pnl);
-
-		pnlInhalt.revalidate();
+		pnlInhalt.addTab(beschreibung, pnl);
 	}
 
-	public static JPanel getPanel()
+	public static Component getPanel()
 	{
 		return pnlInhalt;
 	}

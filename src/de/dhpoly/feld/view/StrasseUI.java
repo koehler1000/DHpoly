@@ -48,7 +48,7 @@ public class StrasseUI extends FeldUI implements Beobachter
 
 	private void zeigeDetails()
 	{
-		Spiel.setPanel(new StrasseInfoUI(feld));
+		Spiel.setPanel("Straﬂe", new StrasseInfoUI(feld));
 	}
 
 	@Override

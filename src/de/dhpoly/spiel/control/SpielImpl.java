@@ -119,7 +119,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
-		Spiel.setPanel(pnlLeer);
+		Spiel.setPanel("DHPoly", pnlLeer);
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -242,7 +242,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			case 0:
 				beschreibungNaechsterSchritt = "Würfeln";
-				Spiel.setPanel(pnlLeer);
+				Spiel.setPanel("Bitte warten", pnlLeer);
 				break;
 			case 1:
 				ruecke();
@@ -250,7 +250,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				break;
 			case 2:
 				naechsterSpieler();
-				Spiel.setPanel(pnlLeer);
+				Spiel.setPanel("DHPoly", pnlLeer);
 				aktuellerSchritt = 0;
 				beschreibungNaechsterSchritt = "Würfeln";
 				break;

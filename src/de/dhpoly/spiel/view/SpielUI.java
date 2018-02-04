@@ -20,12 +20,14 @@ import observerpattern.Beobachter;
 public class SpielUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
-	private JPanel pnlLeer = new JPanel();
+	private JPanel pnlLeer = new JPanel(new GridLayout());
 
 	public SpielUI(Spiel spiel)
 	{
 		pnlLeer.setBackground(Fenster.getDesignfarbe());
-		Spiel.setPanel(pnlLeer);
+		pnlLeer.add(Fenster.getTextFeldUeberschrift("DHPoly"));
+
+		Spiel.setPanel("DHPoly", pnlLeer);
 		Spiel.getPanel().setBackground(Fenster.getDesignfarbe());
 
 		this.setBackground(Fenster.getDesignfarbe());
