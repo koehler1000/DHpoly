@@ -15,9 +15,8 @@ import de.dhpoly.spieler.view.SpielerUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
-import observerpattern.Beobachter;
 
-public class SpielUI extends JPanel implements Beobachter
+public class SpielUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -69,7 +68,5 @@ public class SpielUI extends JPanel implements Beobachter
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
 		this.add(pnlWest, BorderLayout.WEST);
-
-		spiel.addBeobachter(this);
 	}
 }
