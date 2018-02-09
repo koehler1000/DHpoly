@@ -91,101 +91,67 @@ public class EreignisfeldTest
 
 			@Override
 			public void einzahlen(RessourcenDatensatz datensatz)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void auszahlen(RessourcenDatensatz datensatz)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public List<RessourcenDatensatz> getRessourcenTransaktionen()
 			{
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			public int getRessourcenWerte(Ressource ressource)
 			{
-				// TODO Auto-generated method stub
 				return 0;
 			}
 
 			@Override
 			public void einzahlen(List<RessourcenDatensatz> datensaetze)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void auszahlen(List<RessourcenDatensatz> datensaetze)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 
 			@Override
 			public void zeigeNachrichtVerloren()
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void zeigeNachrichtGewonnen()
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public List<Feld> getFelder()
 			{
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			public void feldHinzu(Feld feld)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void feldWeg(Feld feld)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void setSpielerNr(int nr)
-			{
-				// TODO Auto-generated method stub
-				
-			}
+			{}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
