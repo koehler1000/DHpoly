@@ -14,7 +14,7 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Ressourcenfeld feld;
+	private transient Ressourcenfeld feld;
 
 	public RessourcenfeldUI(Ressourcenfeld feld)
 	{
@@ -41,6 +41,7 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter
 				break;
 			case STEIN:
 				this.setBackground(new Color(220, 220, 220));
+				break;
 			default:
 				break;
 		}

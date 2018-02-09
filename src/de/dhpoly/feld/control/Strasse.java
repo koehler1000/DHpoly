@@ -54,6 +54,7 @@ public class Strasse extends FeldImpl
 		}
 	}
 
+	@Override
 	public boolean isKaufbar()
 	{
 		return !isVerkauft();
@@ -164,9 +165,14 @@ public class Strasse extends FeldImpl
 		return kostenHaus;
 	}
 
+	@Override
 	public boolean gehoertSpieler(Spieler spieler)
 	{
-		return (isVerkauft() && eigentuemer.get() == spieler);
+		if (eigentuemer.isPresent())
+		{
+			return (isVerkauft() && eigentuemer.get() == spieler);
+		}
+		return false;
 	}
 
 	public void hausBauen()

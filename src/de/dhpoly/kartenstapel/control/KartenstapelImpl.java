@@ -39,7 +39,7 @@ public class KartenstapelImpl implements Kartenstapel
 		List<Karte> kartenGemischt = new ArrayList<>();
 		Random r = new Random();
 
-		while (karten.size() > 0)
+		while (!karten.isEmpty())
 		{
 			Karte inNeuenStapel = karten.get(r.nextInt(karten.size()));
 			kartenGemischt.add(inNeuenStapel);

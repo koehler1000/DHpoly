@@ -23,8 +23,8 @@ public class SpielerUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Spieler spieler;
-	private Spiel spiel;
+	private transient Spieler spieler;
+	private transient Spiel spiel;
 	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
 	private JButton butHausBau;
@@ -130,7 +130,7 @@ public class SpielerUI extends JPanel implements Beobachter
 			this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
 		}
 
-		butHausBau.setEnabled(spieler.isAktuellerSpieler() && spieler.getFelder().size() > 0);
+		butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
 		butHandel.setEnabled(!spieler.isAktuellerSpieler());
 	}
 }

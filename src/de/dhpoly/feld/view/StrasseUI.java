@@ -17,7 +17,7 @@ public class StrasseUI extends FeldUI implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Strasse feld;
+	private transient Strasse feld;
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 

@@ -23,8 +23,7 @@ public class WuerfelImpl extends Beobachtbarer implements Wuerfel
 	public int getWuerfelZufall()
 	{
 		Random r = new Random();
-		int erg = 1 + r.nextInt(6);
-		return erg;
+		return 1 + r.nextInt(6);
 	}
 
 	@Override

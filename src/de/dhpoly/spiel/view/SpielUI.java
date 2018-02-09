@@ -72,11 +72,4 @@ public class SpielUI extends JPanel implements Beobachter
 
 		spiel.addBeobachter(this);
 	}
-
-	@Override
-	public void update()
-	{
-		// TODO Auto-generated method stub
-
-	}
 }

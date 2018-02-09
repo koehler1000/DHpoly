@@ -7,14 +7,15 @@ import de.dhpoly.fehler.view.FehlerUI;
 
 public class FehlerImpl implements Fehler
 {
+	private FehlerImpl()
+	{
+		// keine Instanzen
+	}
+
 	public static void fehlerAufgetreten(String nachricht)
 	{
 		stillerFehler(nachricht);
-
 		new FehlerUI(nachricht);
-
-		// JOptionPane.showMessageDialog(null, nachricht, "Fehler",
-		// JOptionPane.ERROR_MESSAGE);
 	}
 
 	public static void fehlerAufgetreten(Exception ex)

@@ -9,7 +9,7 @@ import de.dhpoly.spieler.Spieler;
 
 public class FelderverwaltungImpl implements Felderverwaltung
 {
-	public List<Feld> felder = new ArrayList<>();
+	private List<Feld> felder = new ArrayList<>();
 
 	@Override
 	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)

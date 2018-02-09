@@ -15,8 +15,8 @@ public class StrassenbesitzeUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Felderverwaltung felderverwaltung;
-	private Spieler spieler;
+	private transient Felderverwaltung felderverwaltung;
+	private transient Spieler spieler;
 
 	public StrassenbesitzeUI(Felderverwaltung felderverwaltung, Spieler spieler)
 	{

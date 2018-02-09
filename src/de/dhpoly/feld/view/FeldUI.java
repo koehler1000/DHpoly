@@ -19,9 +19,9 @@ public class FeldUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Feld feld;
+	private transient Feld feld;
 	private JPanel pnlSpieler = new JPanel();
-	private Map<Spieler, JPanel> spielerMap = new HashMap<>();
+	private transient Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
 	public FeldUI(Feld feld)
 	{

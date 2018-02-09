@@ -17,17 +17,19 @@ import de.dhpoly.spiel.Spiel;
 
 public class Fenster extends JFrame
 {
+	private static final String ARIAL = "arial";
+
 	private static final Color FARBE_DESIGN = new Color(225, 225, 225);
 
 	private static final Color FARBE_KONTRAST = new Color(100, 100, 100);
 
-	private static final Font SCHRIFT_NORMAL = new Font("arial", Font.PLAIN, 20);
+	private static final Font SCHRIFT_NORMAL = new Font(ARIAL, Font.PLAIN, 20);
 
-	private static final Font SCHRIFT_UEBERSCHRIFT = new Font("arial", Font.BOLD, 30);
+	private static final Font SCHRIFT_UEBERSCHRIFT = new Font(ARIAL, Font.BOLD, 30);
 
-	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font("arial", Font.BOLD, 15);
+	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font(ARIAL, Font.BOLD, 15);
 
-	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font("arial", Font.PLAIN, 12);
+	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font(ARIAL, Font.PLAIN, 12);
 
 	private static final long serialVersionUID = 1L;
 

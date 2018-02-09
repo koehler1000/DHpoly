@@ -17,9 +17,9 @@ public class WuerfelUI extends JPanel implements Beobachter
 
 	private int wuerfelNr = 0;
 
-	private Wuerfel wuerfel;
+	private transient Wuerfel wuerfel;
 
-	private Bilderverwalter bilderverwalter = new Bilderverwalter();
+	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
 	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr)
 	{

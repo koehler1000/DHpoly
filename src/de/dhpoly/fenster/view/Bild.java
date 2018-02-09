@@ -11,7 +11,7 @@ public class Bild extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	private String bildPfad;
-	private Bilderverwalter bilderverwalter;
+	private transient Bilderverwalter bilderverwalter;
 
 	public Bild(String pfad, Bilderverwalter bilderverwalter)
 	{

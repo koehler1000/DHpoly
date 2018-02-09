@@ -26,11 +26,11 @@ public class HandelUI extends JPanel
 	private List<RessourceAnbietenUI> ressourcenBekommen = new ArrayList<>();
 	private StrassenAnbietenUI felderBekommen;
 	private StrassenAnbietenUI felderGeben;
-	private Spieler handelAnbieter;
-	private Spieler handelPartner;
-	private Transaktion vorgeschlagen;
+	private transient Spieler handelAnbieter;
+	private transient Spieler handelPartner;
+	private transient Transaktion vorgeschlagen;
 
-	private Handel handel = new HandelImpl();
+	private transient Handel handel = new HandelImpl();
 
 	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen)
 	{

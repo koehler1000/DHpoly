@@ -18,7 +18,7 @@ public class StrassenAnbietenUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private List<Feld> ausgewaehlteStrassen = new ArrayList<>();
+	private transient List<Feld> ausgewaehlteStrassen = new ArrayList<>();
 
 	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
 	{

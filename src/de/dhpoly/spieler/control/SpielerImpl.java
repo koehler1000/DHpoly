@@ -25,7 +25,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private String name;
 	private Spiel spiel;
 	private boolean aktuellerSpieler = false;
-	private List<RessourcenDatensatz> verlauf = new ArrayList<RessourcenDatensatz>();
+	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
 	private List<Feld> felder = new ArrayList<>();
 	private int spielerNr;
 
@@ -197,7 +197,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 
 	private void strassenZurueckgeben()
 	{
-		while (felder.size() > 0)
+		while (!felder.isEmpty())
 		{
 			Feld feld = felder.get(0);
 			if (feld instanceof Strasse)

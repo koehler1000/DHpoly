@@ -15,7 +15,7 @@ public class HausUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private Strasse strasse;
+	private transient Strasse strasse;
 	private JTextArea txtName;
 	private JTextArea txtAktuelleMiete;
 
