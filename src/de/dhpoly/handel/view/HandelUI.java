@@ -41,6 +41,11 @@ public class HandelUI extends JPanel
 			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), spieler,
 					handelsPartner);
 		}
+		else
+		{
+			// FIXME Text "Vorschlag annehmen" auf UI, bis irgendein Wert verändert wird,
+			// dann "Gegenvorschlag senden" als Text
+		}
 		this.vorgeschlagen = vorgeschlagen;
 
 		Color hintergrund = Fenster.getDesignfarbe();
