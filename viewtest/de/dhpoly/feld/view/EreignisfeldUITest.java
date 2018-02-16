@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import de.dhpoly.feld.control.Ereignisfeld;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 
-public class EreignisfeldUITest
+public class EreignisfeldUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

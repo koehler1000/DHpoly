@@ -11,7 +11,7 @@ public class TelegramNotificationTest
 {
 	@Ignore
 	@Test
-	public void test()
+	public void test()  //NOSONAR
 	{
 		try
 		{

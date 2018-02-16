@@ -4,7 +4,7 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.fenster.view.Fenster;
 
-public class StrasseInfoUITest
+public class StrasseInfoUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

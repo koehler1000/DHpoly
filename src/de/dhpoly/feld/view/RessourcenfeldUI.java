@@ -10,7 +10,7 @@ import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.fenster.view.Fenster;
 import observerpattern.Beobachter;
 
-public class RessourcenfeldUI extends FeldUI implements Beobachter
+public class RessourcenfeldUI extends FeldUI implements Beobachter //NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

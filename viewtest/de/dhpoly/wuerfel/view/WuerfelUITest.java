@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class WuerfelUITest
+public class WuerfelUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{

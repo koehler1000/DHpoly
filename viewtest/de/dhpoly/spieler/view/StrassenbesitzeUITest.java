@@ -14,9 +14,8 @@ import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 
-public class StrassenbesitzeUITest
+public class StrassenbesitzeUITest //NOSONAR
 {
-
 	public static void main(String[] args)
 	{
 		JFrame frame = new JFrame("StrassenbesitzeUITest");

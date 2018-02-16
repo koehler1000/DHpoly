@@ -15,7 +15,7 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 
-public class Fenster extends JFrame
+public class Fenster extends JFrame //NOSONAR
 {
 	private static final String ARIAL = "arial";
 

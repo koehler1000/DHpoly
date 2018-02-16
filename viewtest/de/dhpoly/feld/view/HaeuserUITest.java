@@ -15,7 +15,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class HaeuserUITest
+public class HaeuserUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

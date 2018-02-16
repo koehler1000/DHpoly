@@ -8,7 +8,7 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class StrasseUITest
+public class StrasseUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

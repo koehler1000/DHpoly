@@ -9,7 +9,7 @@ import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class SpielUITest
+public class SpielUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

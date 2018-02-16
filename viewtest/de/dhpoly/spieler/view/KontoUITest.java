@@ -13,7 +13,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class KontoUITest
+public class KontoUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{

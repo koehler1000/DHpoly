@@ -9,7 +9,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.StrasseTest;
 
-public class SpielfeldUITest
+public class SpielfeldUITest //NOSONAR
 {
 	public static void main(String[] args)
 	{
