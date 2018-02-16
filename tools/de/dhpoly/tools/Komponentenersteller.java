@@ -2,15 +2,15 @@ package de.dhpoly.tools;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Komponentenersteller
 {
-
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception
 	{
-		System.out.println("Klassenname eingeben:");
+		log("Klassenname eingeben:");
 		Scanner scanner = new Scanner(System.in);
 		String name = scanner.nextLine();
 
@@ -18,32 +18,30 @@ public class Komponentenersteller
 		erstellePackages(startDir + "\\src\\de\\dhpoly\\", name, "de.dhpoly." + name.toLowerCase());
 	}
 
-	private static void erstellePackages(String pfad, String name, String strPackage) throws Exception
+	private static void erstellePackages(String pfad, String name, String strPackage) throws IOException
 	{
 		File filePackage = new File(pfad + name.toLowerCase());
 		filePackage.mkdirs();
 
-		System.out.println("Package " + name + " erstellt");
+		log("Package " + name + " erstellt");
 
 		// Interface erstellen
-		File fileInterface = new File(pfad + name.toLowerCase() + "\\" + name + ".java");
+		File fileInterface = new File(pfad + name.toLowerCase() + File.separatorChar + name + ".java");
 		if (fileInterface.exists())
 		{
-			throw new Exception("Datei schon vorhanden");
+			throw new IOException("Datei schon vorhanden");
 		}
-		else
+		else if (fileInterface.createNewFile())
 		{
-			fileInterface.createNewFile();
+			try (FileWriter writer = new FileWriter(fileInterface))
+			{
+				writer.write("package " + strPackage + ";\n");
+				writer.write("public interface " + name + " \n");
+				writer.write("{" + "\n\n");
+				writer.write("}" + "\n");
 
-			FileWriter writer = new FileWriter(fileInterface);
-			writer.write("package " + strPackage + ";\n");
-			writer.write("public interface " + name + " \n");
-			writer.write("{" + "\n\n");
-			writer.write("}" + "\n");
-
-			writer.close();
-
-			System.out.println("Interface " + name + " erstellt");
+				log("Interface " + name + " erstellt");
+			}
 		}
 
 		// Implementierung erstellen
@@ -53,22 +51,25 @@ public class Komponentenersteller
 		File fileImpl = new File(pfad + name.toLowerCase() + "\\control\\" + name + "Impl.java");
 		if (fileImpl.exists())
 		{
-			throw new Exception("Datei schon vorhanden");
+			throw new IOException("Datei schon vorhanden");
 		}
-		else
+		else if (fileImpl.createNewFile())
 		{
-			fileImpl.createNewFile();
+			try (FileWriter writer = new FileWriter(fileImpl))
+			{
+				writer.write("package " + strPackage + ".control;\n");
+				writer.write("import " + strPackage + "." + name + ";\n");
+				writer.write("public class " + name + "Impl implements " + name + "\n");
+				writer.write("{" + "\n\n");
+				writer.write("}" + "\n");
 
-			FileWriter writer = new FileWriter(fileImpl);
-			writer.write("package " + strPackage + ".control;\n");
-			writer.write("import " + strPackage + "." + name + ";\n");
-			writer.write("public class " + name + "Impl implements " + name + "\n");
-			writer.write("{" + "\n\n");
-			writer.write("}" + "\n");
-
-			writer.close();
-
-			System.out.println("Implementierungsklasse " + name + "Impl erstellt");
+				log("Implementierungsklasse " + name + "Impl erstellt");
+			}
 		}
+	}
+
+	private static void log(String text)
+	{
+		System.out.println(text); // NOSONAR
 	}
 }
