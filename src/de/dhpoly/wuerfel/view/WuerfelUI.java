@@ -36,35 +36,13 @@ public class WuerfelUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		Thread thread = new Thread(new Runnable()
+		if (wuerfelNr == 1)
 		{
-			@Override
-			public void run()
-			{
-				for (int i = 0; i < 10; i++)
-				{
-					try
-					{
-						lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelZufall()));
-						Thread.sleep(100);
-					}
-					catch (InterruptedException ex)
-					{
-						// ignorieren
-					}
-				}
-
-				if (wuerfelNr == 1)
-				{
-					lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
-				}
-				else
-				{
-					lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
-				}
-			}
-		});
-
-		thread.start();
+			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
+		}
+		else
+		{
+			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
+		}
 	}
 }
