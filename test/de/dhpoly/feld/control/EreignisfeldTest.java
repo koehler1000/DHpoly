@@ -152,6 +152,12 @@ public class EreignisfeldTest
 			@Override
 			public void setSpielerNr(int nr)
 			{}
+
+			@Override
+			public boolean hatVerloren()
+			{
+				return false;
+			}
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();

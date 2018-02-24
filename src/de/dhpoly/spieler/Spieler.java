@@ -61,4 +61,6 @@ public interface Spieler
 	void feldWeg(Feld feld);
 
 	void setSpielerNr(int nr);
+	
+	boolean hatVerloren();
 }

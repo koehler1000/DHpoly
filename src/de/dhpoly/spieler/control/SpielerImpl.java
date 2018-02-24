@@ -28,6 +28,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
 	private List<Feld> felder = new ArrayList<>();
 	private int spielerNr;
+	private boolean verloren = false;
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -193,6 +194,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		strassenZurueckgeben();
 		Fenster.zeigeInfo("VERLOREN", name + " hat verloren");
+		verloren = true;
+		informiereBeobachter();
 	}
 
 	private void strassenZurueckgeben()
@@ -236,5 +239,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void setSpielerNr(int nr)
 	{
 		spielerNr = nr;
+	}
+
+	public boolean hatVerloren()
+	{
+		return verloren;
 	}
 }

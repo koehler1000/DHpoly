@@ -266,6 +266,12 @@ public class SpielImplTest
 				// TODO Auto-generated method stub
 
 			}
+
+			@Override
+			public boolean hatVerloren()
+			{
+				return false;
+			}
 		};
 	}
 }

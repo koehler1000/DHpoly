@@ -106,31 +106,28 @@ public class SpielerUI extends JPanel implements Beobachter
 	public void update()
 	{
 		txtKontostand.setText("");
-		for (Ressource res : Ressource.values())
-		{
-			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
-					+ System.lineSeparator());
-		}
 
-		if (spieler.getRessourcenWerte(Ressource.GELD) >= 0)
+		if (!spieler.hatVerloren())
 		{
+			for (Ressource res : Ressource.values())
+			{
+				txtKontostand.setText(txtKontostand.getText()
+						+ Ressource.getString(res, spieler.getRessourcenWerte(res)) + System.lineSeparator());
+			}
+
 			txtKontostand.setForeground(Fenster.getKontrastfarbe());
-		}
-		else
-		{
-			txtKontostand.setForeground(Fenster.getDesignfarbe());
-		}
 
-		if (spieler.isAktuellerSpieler())
-		{
-			this.setBorder(BorderFactory.createLineBorder(this.getBackground(), 10));
-		}
-		else
-		{
-			this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
-		}
+			if (spieler.isAktuellerSpieler())
+			{
+				this.setBorder(BorderFactory.createLineBorder(this.getBackground(), 10));
+			}
+			else
+			{
+				this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
+			}
 
-		butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
-		butHandel.setEnabled(!spieler.isAktuellerSpieler());
+			butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
+			butHandel.setEnabled(!spieler.isAktuellerSpieler());
+		}
 	}
 }
