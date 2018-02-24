@@ -10,8 +10,6 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.view.SpielerUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
@@ -31,16 +29,7 @@ public class SpielUI extends JPanel
 		this.add(new SpielfeldUI(spiel.getFelder()));
 		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 
-		JPanel pnlKassen = new JPanel();
-		pnlKassen.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
-		pnlKassen.setBackground(Fenster.getDesignfarbe());
-
-		for (Spieler spieler : spiel.getSpieler())
-		{
-			pnlKassen.add(new SpielerUI(spieler, spiel));
-		}
-
-		this.add(pnlKassen, BorderLayout.EAST);
+		this.add(new SpielerUebersichtUI(spiel), BorderLayout.EAST);
 
 		JPanel pnlWest = new JPanel(new BorderLayout(10, 10));
 		pnlWest.setBackground(Fenster.getDesignfarbe());

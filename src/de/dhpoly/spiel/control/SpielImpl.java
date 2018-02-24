@@ -141,6 +141,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			{
 				spieler.get(0).zeigeNachrichtGewonnen();
 			}
+
+			informiereBeobachter();
 		}
 	}
 
