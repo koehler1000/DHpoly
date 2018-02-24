@@ -36,7 +36,24 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void ruecke()
 	{
-		wuerfel.wuerfeln();
+		new Thread(this::rueckeAsync).start();
+	}
+
+	private void rueckeAsync()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			wuerfel.wuerfeln();
+			try
+			{
+				Thread.sleep(100);
+			}
+			catch (InterruptedException ex) // NOSONAR
+			{
+				// ignorieren()
+			}
+		}
+
 		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
 	}
 
