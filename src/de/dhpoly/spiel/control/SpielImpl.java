@@ -60,27 +60,21 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	public void ruecke(Spieler spieler, int augensumme)
 	{
-		Thread thread = new Thread(new Runnable()
-		{
+		Thread thread = new Thread(() -> {
+			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
 
-			@Override
-			public void run()
+			for (int i = 0; i < augensumme - 1; i++)
 			{
-				Feld aktuellesFeld = felder.get(spieler.getFeldNr());
-
-				for (int i = 0; i < augensumme - 1; i++)
-				{
-					aktuellesFeld.verlasseFeld(spieler);
-					aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-					aktuellesFeld.laufeUeberFeld(spieler);
-					Pause.pause(200);
-				}
-
 				aktuellesFeld.verlasseFeld(spieler);
 				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-				aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
-				spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+				aktuellesFeld.laufeUeberFeld(spieler);
+				Pause.pause(200);
 			}
+
+			aktuellesFeld.verlasseFeld(spieler);
+			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+			aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
+			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
 		});
 
 		thread.start();
