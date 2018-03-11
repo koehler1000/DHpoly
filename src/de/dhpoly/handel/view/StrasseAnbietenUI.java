@@ -16,14 +16,14 @@ public class StrasseAnbietenUI extends JPanel
 	private static final long serialVersionUID = 1L;
 	private Color hintergrund = Color.WHITE;
 	private Color hintergrundAusgewaehlt = Color.RED;
-	private StrassenAnbietenUI strasseAnbietenUi;
+	private StrassenAnbietenUI strassenAnbietenUi;
 	private JButton butAnbieten;
 	private boolean angeboten = false;
 	private transient Strasse strasse;
 
 	public StrasseAnbietenUI(Strasse strasse, StrassenAnbietenUI ui, boolean ausgewaehlt)
 	{
-		this.strasseAnbietenUi = ui;
+		this.strassenAnbietenUi = ui;
 		this.strasse = strasse;
 		this.angeboten = ausgewaehlt;
 
@@ -46,11 +46,11 @@ public class StrasseAnbietenUI extends JPanel
 		angeboten = !angeboten;
 		if (angeboten)
 		{
-			strasseAnbietenUi.feldAuswaehlen(strasse);
+			strassenAnbietenUi.feldAuswaehlen(strasse);
 		}
 		else
 		{
-			strasseAnbietenUi.feldAuswaehlenRueckgaengig(strasse);
+			strassenAnbietenUi.feldAuswaehlenRueckgaengig(strasse);
 		}
 		aktualisiereWerte();
 	}
