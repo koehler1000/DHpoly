@@ -236,22 +236,22 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		// TODO Refactoring
 
-		aktuellerSchritt++;
-
 		switch (aktuellerSchritt)
 		{
 			case 0: // nur Spielstart
 				beschreibungNaechsterSchritt = "Würfeln";
 				Spiel.leerePanel();
+				aktuellerSchritt = 1;
 				break;
 			case 1:
 				ruecke();
 				beschreibungNaechsterSchritt = "Würfel weitergeben";
+				aktuellerSchritt = 2;
 				break;
 			case 2:
 				naechsterSpieler();
 				Spiel.leerePanel();
-				aktuellerSchritt = 0;
+				aktuellerSchritt = 1;
 				beschreibungNaechsterSchritt = "Würfeln";
 				break;
 		}
