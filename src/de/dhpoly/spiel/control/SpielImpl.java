@@ -11,6 +11,7 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
+import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
@@ -69,17 +70,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 				for (int i = 0; i < augensumme - 1; i++)
 				{
-					try
-					{
-						aktuellesFeld.verlasseFeld(spieler);
-						aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-						aktuellesFeld.laufeUeberFeld(spieler);
-						Thread.sleep(200);
-					}
-					catch (InterruptedException ex)
-					{
-						// ignorieren
-					}
+					aktuellesFeld.verlasseFeld(spieler);
+					aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+					aktuellesFeld.laufeUeberFeld(spieler);
+					Pause.pause(200);
 				}
 
 				aktuellesFeld.verlasseFeld(spieler);
@@ -246,11 +240,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void naechsterSchritt()
 	{
+		// TODO Refactoring
+
 		aktuellerSchritt++;
 
 		switch (aktuellerSchritt)
 		{
-			case 0:
+			case 0: // nur Spielstart
 				beschreibungNaechsterSchritt = "Würfeln";
 				Spiel.leerePanel();
 				break;
