@@ -3,6 +3,7 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -60,16 +61,13 @@ public class StrasseInfoUI extends JPanel
 		this.add(butBesitzer, BorderLayout.SOUTH);
 
 		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
-		feld.getEigentuemer().ifPresent(spieler -> farbeSetzen(spieler));
+		feld.getEigentuemer().ifPresent(this::farbeSetzen);
 	}
 
 	private String getEigentuemerString(Strasse feld)
 	{
-		if (feld.getEigentuemer().isPresent())
-		{
-			return feld.getEigentuemer().get().getName();
-		}
-		return "Zu kaufen";
+		Optional<Spieler> eigentuemer = feld.getEigentuemer();
+		return eigentuemer.isPresent() ? eigentuemer.get().getName() : "Zu kaufen";
 	}
 
 	private String getMietenText(int[] miete)
