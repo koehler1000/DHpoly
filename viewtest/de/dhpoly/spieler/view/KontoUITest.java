@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.pause.Pause;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.control.SpielImpl;
@@ -13,7 +14,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class KontoUITest //NOSONAR
+public class KontoUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -39,14 +40,7 @@ public class KontoUITest //NOSONAR
 				{
 					spieler.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, 1));
 					spieler2.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, 5));
-					try
-					{
-						Thread.sleep(100);
-					}
-					catch (InterruptedException ex)
-					{
-						ex.printStackTrace();
-					}
+					Pause.pause(100);
 				}
 			}
 		});
