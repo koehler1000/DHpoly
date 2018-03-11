@@ -10,6 +10,7 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -49,7 +50,7 @@ public class FelderTest
 
 		spiel.ruecke(sp1, 2);
 
-		Thread.sleep(5000);
+		Pause.pause(5000);
 
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
 	}
@@ -85,5 +86,4 @@ public class FelderTest
 		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe,
 				"test");
 	}
-
 }

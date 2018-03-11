@@ -5,7 +5,7 @@ public class Pause
 	private Pause()
 	{}
 
-	public void pause(int millis)
+	public static void pause(int millis)
 	{
 		if (true) // FIXME: Nur, wenn in Einstellungen Animationen animiert
 		{
