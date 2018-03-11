@@ -6,7 +6,7 @@ import java.net.URLConnection;
 
 public class TelegramNotification
 {
-	private static final String chatId = "-1001131918455";
+	private static final String CHAT_ID = "-1001131918455";
 
 	private TelegramNotification()
 	{}
@@ -15,7 +15,7 @@ public class TelegramNotification
 	{
 		String toSend = thema + " - " + nachricht;
 		String command = "https://api.telegram.org/bot444829640:AAEZSHnTqmqtRkLualeRH4JmvkV95t5o8b8/sendmessage?chat_id="
-				+ chatId + "&text=";
+				+ CHAT_ID + "&text=";
 		command += toSend;
 
 		URL url = new URL(command);
