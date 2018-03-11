@@ -84,11 +84,18 @@ public class Strasse extends FeldImpl
 
 	private void zahle(Spieler zahlender, Wetter wetter)
 	{
-		if (!hypothek)
-		{
-			zahlender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, getAkuelleMiete(wetter), "Miete"),
-					eigentuemer.get());
-		}
+		eigentuemer.ifPresent(besitzer -> {
+			if (!hypothek)
+			{
+				zahlender.ueberweise(getMietDatensatz(wetter), besitzer);
+			}
+		});
+	}
+
+	private RessourcenDatensatz getMietDatensatz(Wetter wetter)
+	{
+		int aktuelleMiete = getAkuelleMiete(wetter);
+		return new RessourcenDatensatzImpl(Ressource.GELD, aktuelleMiete, "Miete");
 	}
 
 	public int getAkuelleMiete()
@@ -168,11 +175,7 @@ public class Strasse extends FeldImpl
 	@Override
 	public boolean gehoertSpieler(Spieler spieler)
 	{
-		if (eigentuemer.isPresent())
-		{
-			return (isVerkauft() && eigentuemer.get() == spieler);
-		}
-		return false;
+		return eigentuemer.isPresent() && eigentuemer.get() == spieler;
 	}
 
 	public void hausBauen()
