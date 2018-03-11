@@ -2,6 +2,7 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Optional;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -10,10 +11,11 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
-public class StrasseUI extends FeldUI implements Beobachter
+public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -33,6 +35,7 @@ public class StrasseUI extends FeldUI implements Beobachter
 
 		butName.setFont(Fenster.getSpielfeldStrassennameFont());
 		butName.setBackground(backcolor);
+		butName.setBorder(new LineBorder(Color.BLACK));
 		this.add(butName, BorderLayout.NORTH);
 
 		butBesitzer.setFont(Fenster.getSpielfeldBesitzerFont());
@@ -51,26 +54,24 @@ public class StrasseUI extends FeldUI implements Beobachter
 		Spiel.setPanel("Straﬂe", new StrasseInfoUI(feld));
 	}
 
+	private void setFarbe(Color farbe)
+	{
+		butBesitzer.setBackground(farbe);
+		this.setBackground(farbe);
+	}
+
+	private void setBeschriftung(Optional<Spieler> text)
+	{
+		butBesitzer.setText(text.isPresent() ? text.get().getName() : feld.getKaufpreis() + "Ä");
+	}
+
 	@Override
 	public void update()
 	{
-		butBesitzer.setBorder(null);
-		if (feld.getEigentuemer().isPresent())
-		{
-			butBesitzer.setText(feld.getEigentuemer().get().getName());
-			Color farbe = SpielerFarben.getSpielerfarbe(feld.getEigentuemer().get().getSpielerNr());
-			butBesitzer.setBackground(farbe);
-			this.setBackground(farbe);
-			butName.setBorder(new LineBorder(Color.BLACK));
-		}
-		else
-		{
-			butBesitzer.setText(feld.getKaufpreis() + "Ä");
-			butBesitzer.setBackground(Color.WHITE);
-			this.setBackground(Color.WHITE);
-			butName.setBorder(new LineBorder(Color.BLACK));
-		}
+		setFarbe(SpielerFarben.getSpielerfarbe(feld.getEigentuemer()));
+		setBeschriftung(feld.getEigentuemer());
 
 		super.update();
 	}
+
 }
