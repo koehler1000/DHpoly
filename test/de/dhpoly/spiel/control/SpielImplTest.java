@@ -18,6 +18,7 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.pause.Pause;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
@@ -56,13 +57,13 @@ public class SpielImplTest
 	}
 
 	@Test
-	public void geldBeiUeberLos() throws InterruptedException
+	public void geldBeiUeberLos()
 	{
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD);
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 
-		Thread.sleep(5000);
+		Pause.pause(5000);
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
@@ -242,30 +243,20 @@ public class SpielImplTest
 			@Override
 			public List<Feld> getFelder()
 			{
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			public void feldHinzu(Feld feld)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void feldWeg(Feld feld)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public void setSpielerNr(int nr)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			{}
 
 			@Override
 			public boolean hatVerloren()
