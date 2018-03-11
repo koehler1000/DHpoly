@@ -6,9 +6,10 @@ import javax.swing.JFrame;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.pause.Pause;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class StrasseUITest //NOSONAR
+public class StrasseUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -30,14 +31,7 @@ public class StrasseUITest //NOSONAR
 			@Override
 			public void run()
 			{
-				try
-				{
-					Thread.sleep(3000);
-				}
-				catch (InterruptedException ex)
-				{
-					ex.printStackTrace();
-				}
+				Pause.pause(3000);
 				if (strasse.isKaufbar())
 				{
 					strasse.kaufe(SpielerImplTest.getDefaultSpieler());
