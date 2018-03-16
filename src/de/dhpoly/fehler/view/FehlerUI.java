@@ -7,6 +7,6 @@ public class FehlerUI
 {
 	public FehlerUI(String fehler)
 	{
-		Oberflaeche.getInstance().zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("Fehler", fehler));
+		Oberflaeche.getInstance().zeigeKomplettesFenster(ElementFactory.getNachrichtPanel("Fehler", fehler));
 	}
 }

@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
@@ -15,17 +14,23 @@ public class OberflaecheUI
 	private JFrame frame = new JFrame("");
 	private JTabbedPane pnlInhalt;
 
+	private JTabbedPane pnlMitte;
+
 	public OberflaecheUI(Bilderverwalter bilderverwalter)
 	{
-		frame.setTitle("");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(1000, 1000);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setTitle("DHPoly");
+
 		frame.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		frame.setLayout(new BorderLayout());
 
 		pnlInhalt = ElementFactory.getTabbedPane();
+		pnlMitte = ElementFactory.getTabbedPane();
 
-		frame.add(new JLabel("Bitte warten..."));
+		frame.add(pnlMitte);
 
-		frame.setSize(500, 750);
 		frame.setVisible(true);
 	}
 
@@ -37,7 +42,7 @@ public class OberflaecheUI
 
 	public void zeigeKomplettesFenster(Component component)
 	{
-		frame.add(component);
+		pnlMitte.addTab("", component);
 	}
 
 	public void leereRand()

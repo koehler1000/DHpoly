@@ -107,8 +107,7 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-			Oberflaeche.getInstance()
-					.zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("Info", "Handel angenommen"));
+			Oberflaeche.getInstance().zeigeNachricht("Handel angenommen");
 		}
 		else
 		{

@@ -130,7 +130,7 @@ public class ElementFactory
 		return bilderverwalter;
 	}
 
-	public static Component getTextInfoPanel(String titel, String string)
+	public static Component getNachrichtPanel(String titel, String string)
 	{
 		JPanel pnlInhalt = new JPanel(new BorderLayout(10, 10));
 		pnlInhalt.setBorder(new LineBorder(FARBE_DESIGN, 10));

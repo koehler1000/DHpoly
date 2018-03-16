@@ -34,4 +34,9 @@ public class Oberflaeche
 	{
 		return ui.getRand();
 	}
+
+	public void zeigeNachricht(String nachricht)
+	{
+		zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht));
+	}
 }
