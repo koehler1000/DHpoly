@@ -7,10 +7,10 @@ import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseKaufenUI;
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
@@ -95,7 +95,9 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-		Fenster.zeigeInfo("Ereigniskarte", karte.getBeschreibung());
+
+		Oberflaeche.getInstance()
+				.zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("Ereigniskarte", karte.getBeschreibung()));
 	}
 
 	@Override
@@ -194,7 +196,9 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeNachrichtVerloren()
 	{
 		strassenZurueckgeben();
-		Fenster.zeigeInfo("VERLOREN", name + " hat verloren");
+
+		Oberflaeche.getInstance()
+				.zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("VERLOREN", name + " hat verloren"));
 		verloren = true;
 		informiereBeobachter();
 	}
@@ -215,7 +219,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachrichtGewonnen()
 	{
-		Fenster.zeigeInfo("SIEG", name + " hat GEWONNEN");
+		Oberflaeche.getInstance()
+				.zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("SIEG", name + " hat GEWONNEN"));
 	}
 
 	@Override

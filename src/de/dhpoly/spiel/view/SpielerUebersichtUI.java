@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
@@ -31,8 +31,8 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 
 		if (!spiel.getSpieler().isEmpty())
 		{
-			JPanel pnlAlleSpieler = new JPanel(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
-			pnlAlleSpieler.setBackground(Fenster.getDesignfarbe());
+			JPanel pnlAlleSpieler = ElementFactory.erzeugePanel();
+			pnlAlleSpieler.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
 
 			this.addTab("Alle Spieler", pnlAlleSpieler);
 			for (Spieler spieler : spiel.getSpieler())

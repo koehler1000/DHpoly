@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class HaeuserUI extends JPanel
 {
@@ -15,8 +15,8 @@ public class HaeuserUI extends JPanel
 
 	public HaeuserUI(List<Feld> felder)
 	{
+		ElementFactory.bearbeitePanel(this);
 		this.setLayout(new GridLayout(1, 1, 10, 10));
-		this.setBackground(Fenster.getDesignfarbe());
 
 		for (Feld feld : felder)
 		{

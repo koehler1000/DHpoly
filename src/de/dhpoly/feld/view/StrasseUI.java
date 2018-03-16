@@ -2,6 +2,7 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Optional;
 
 import javax.swing.BorderFactory;
@@ -9,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
@@ -18,6 +18,10 @@ import observerpattern.Beobachter;
 public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
+
+	private static final String ARIAL = "arial";
+	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font(ARIAL, Font.BOLD, 15);
+	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font(ARIAL, Font.PLAIN, 12);
 
 	private transient Strasse feld;
 	private JButton butName = new JButton();
@@ -33,12 +37,12 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		butName.setFont(Fenster.getSpielfeldStrassennameFont());
+		butName.setFont(SCHRIFT_SPIELFELD_STRASSENNAME);
 		butName.setBackground(backcolor);
 		butName.setBorder(new LineBorder(Color.BLACK));
 		this.add(butName, BorderLayout.NORTH);
 
-		butBesitzer.setFont(Fenster.getSpielfeldBesitzerFont());
+		butBesitzer.setFont(SCHRIFT_SPIELFELD_BESITZER);
 		butBesitzer.setBackground(Color.WHITE);
 		this.add(butBesitzer, BorderLayout.CENTER);
 

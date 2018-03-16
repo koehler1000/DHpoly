@@ -15,7 +15,7 @@ import de.dhpoly.feld.view.EreignisfeldUI;
 import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
 import de.dhpoly.feld.view.StrasseUI;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class SpielfeldUI extends JPanel
 {
@@ -25,7 +25,7 @@ public class SpielfeldUI extends JPanel
 
 	public SpielfeldUI(List<Feld> spielfelder)
 	{
-		this.setBackground(Fenster.getDesignfarbe());
+		ElementFactory.bearbeitePanel(this);
 
 		felderProSeite = spielfelder.size() / 4;
 
@@ -36,8 +36,7 @@ public class SpielfeldUI extends JPanel
 		{
 			for (int j = 0; j < felderProSeite + 1; j++)
 			{
-				JPanel pnlLeer = new JPanel();
-				pnlLeer.setBackground(Fenster.getDesignfarbe());
+				JPanel pnlLeer = ElementFactory.erzeugePanel();
 				felder[i][j] = pnlLeer;
 			}
 		}
@@ -100,9 +99,7 @@ public class SpielfeldUI extends JPanel
 		}
 		else
 		{
-			JPanel pnlInhalt = new JPanel();
-			pnlInhalt.setBackground(Fenster.getDesignfarbe());
-			return pnlInhalt;
+			return ElementFactory.erzeugePanel();
 		}
 	}
 }

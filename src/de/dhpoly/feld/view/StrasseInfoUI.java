@@ -11,7 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
@@ -26,12 +26,10 @@ public class StrasseInfoUI extends JPanel
 
 	public StrasseInfoUI(Strasse feld)
 	{
-		this.setLayout(new BorderLayout());
-		this.setBackground(Fenster.getDesignfarbe());
+		ElementFactory.bearbeitePanel(this);
 
-		JPanel frameMieten = new JPanel();
+		JPanel frameMieten = ElementFactory.erzeugePanel();
 		frameMieten.setLayout(new GridLayout(2, 1));
-		frameMieten.setBackground(Fenster.getDesignfarbe());
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktuelle Miete: " + feld.getAkuelleMiete() + System.lineSeparator());
@@ -41,26 +39,24 @@ public class StrasseInfoUI extends JPanel
 			sb.append(datensatz.getString() + System.lineSeparator());
 		}
 
-		JTextArea txtMiete = Fenster.getTextFeld(sb.toString(), false);
+		JTextArea txtMiete = ElementFactory.getTextFeld(sb.toString(), false);
 		frameMieten.add(txtMiete);
 
-		JTextArea txtMieten = Fenster.getTextFeld(getMietenText(feld.getMiete()), false);
+		JTextArea txtMieten = ElementFactory.getTextFeld(getMietenText(feld.getMiete()), false);
 		frameMieten.add(txtMieten);
 
 		this.add(frameMieten, BorderLayout.CENTER);
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		butName = Fenster.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
-		butName.setForeground(Fenster.getKontrastfarbe());
+		butName = ElementFactory.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
 		butName.addActionListener(e -> this.setVisible(false));
 		this.add(butName, BorderLayout.NORTH);
 
-		butBesitzer = Fenster.getButtonUeberschrift(getEigentuemerString(feld));
+		butBesitzer = ElementFactory.getButtonUeberschrift(getEigentuemerString(feld));
 		butBesitzer.addActionListener(e -> this.setVisible(false));
 		this.add(butBesitzer, BorderLayout.SOUTH);
 
-		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 		feld.getEigentuemer().ifPresent(this::farbeSetzen);
 	}
 

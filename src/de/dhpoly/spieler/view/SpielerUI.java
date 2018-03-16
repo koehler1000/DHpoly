@@ -11,8 +11,8 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.view.HaeuserUI;
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.view.HandelUI;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
@@ -38,7 +38,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
-		txtKontostand = Fenster.getTextFeld("", false);
+		txtKontostand = ElementFactory.getTextFeld("", false);
 		for (Ressource res : Ressource.values())
 		{
 			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
@@ -47,7 +47,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		txtKontostand.setBackground(backcolor);
 		txtKontostand.setBorder(new LineBorder(backcolor, 10));
 
-		txtName = Fenster.getTextFeldUeberschrift(spieler.getName() + ": ");
+		txtName = ElementFactory.getTextFeldUeberschrift(spieler.getName() + ": ");
 		txtName.setBackground(backcolor);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
@@ -55,21 +55,18 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.setBackground(backcolor);
 		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
-		butHausBau = Fenster.getButton("Häuser" + System.lineSeparator() + "anzeigen");
-		butHausBau.addActionListener(e -> oeffneHausbauFenster());
-		butHausBau.setFont(Fenster.getStandardFont());
+		butHausBau = ElementFactory.getButton("Häuser" + System.lineSeparator() + "anzeigen");
+		butHausBau.addActionListener(e -> oeffneHausbauElementFactory());
 		butHausBau.setForeground(backcolor);
 		pnlSueden.add(butHausBau);
 
-		JButton butKontoauszug = Fenster.getButton("Konto" + System.lineSeparator() + "anzeigen");
-		butKontoauszug.addActionListener(e -> oeffneKontoauszugFenster());
-		butKontoauszug.setFont(Fenster.getStandardFont());
+		JButton butKontoauszug = ElementFactory.getButton("Konto" + System.lineSeparator() + "anzeigen");
+		butKontoauszug.addActionListener(e -> oeffneKontoauszugElementFactory());
 		butKontoauszug.setForeground(backcolor);
 		pnlSueden.add(butKontoauszug);
 
-		butHandel = Fenster.getButton("Handeln");
-		butHandel.addActionListener(e -> oeffneHandelFenster());
-		butHandel.setFont(Fenster.getStandardFont());
+		butHandel = ElementFactory.getButton("Handeln");
+		butHandel.addActionListener(e -> oeffneHandelElementFactory());
 		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);
 
@@ -87,18 +84,18 @@ public class SpielerUI extends JPanel implements Beobachter
 		spielerImpl.addBeobachter(this);
 	}
 
-	private void oeffneKontoauszugFenster()
+	private void oeffneKontoauszugElementFactory()
 	{
 		Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler));
 	}
 
-	private void oeffneHausbauFenster()
+	private void oeffneHausbauElementFactory()
 	{
 		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
 		Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser);
 	}
 
-	private void oeffneHandelFenster()
+	private void oeffneHandelElementFactory()
 	{
 		Oberflaeche.getInstance().zeigeAufRand("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
 	}
@@ -116,15 +113,15 @@ public class SpielerUI extends JPanel implements Beobachter
 						+ Ressource.getString(res, spieler.getRessourcenWerte(res)) + System.lineSeparator());
 			}
 
-			txtKontostand.setForeground(Fenster.getKontrastfarbe());
-
 			if (spieler.isAktuellerSpieler())
 			{
 				this.setBorder(BorderFactory.createLineBorder(this.getBackground(), 10));
 			}
 			else
 			{
-				this.setBorder(BorderFactory.createLineBorder(Fenster.getKontrastfarbe(), 10));
+				// TODO prüfen, ob Farbe setzen nötig ist.
+				// this.setBorder(BorderFactory.createLineBorder(ElementFactory.getKontrastfarbe(),
+				// 10));
 			}
 
 			butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());

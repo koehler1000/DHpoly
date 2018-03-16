@@ -8,12 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class OberflaecheUI
 {
 	private JFrame frame = new JFrame("");
-	private JTabbedPane pnlInhalt = new JTabbedPane();
+	private JTabbedPane pnlInhalt;
 
 	public OberflaecheUI(Bilderverwalter bilderverwalter)
 	{
@@ -21,7 +21,7 @@ public class OberflaecheUI
 		frame.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		frame.setLayout(new BorderLayout());
 
-		pnlInhalt.setBackground(Fenster.getDesignfarbe());
+		pnlInhalt = ElementFactory.getTabbedPane();
 
 		frame.add(new JLabel("Bitte warten..."));
 

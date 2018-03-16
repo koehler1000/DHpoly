@@ -1,11 +1,12 @@
 package de.dhpoly.fehler.view;
 
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.Oberflaeche;
 
 public class FehlerUI
 {
 	public FehlerUI(String fehler)
 	{
-		Fenster.zeigeInfo("Fehler", fehler);
+		Oberflaeche.getInstance().zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("Fehler", fehler));
 	}
 }

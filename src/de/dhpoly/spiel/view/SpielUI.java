@@ -6,9 +6,8 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
@@ -21,25 +20,21 @@ public class SpielUI extends JPanel
 
 	public SpielUI(Spiel spiel)
 	{
-		this.setBackground(Fenster.getDesignfarbe());
+		ElementFactory.bearbeitePanel(this);
 
-		this.setLayout(new BorderLayout(10, 10));
 		this.add(new SpielfeldUI(spiel.getFelder()));
-		this.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
 
 		this.add(new SpielerUebersichtUI(spiel), BorderLayout.EAST);
 
-		JPanel pnlWest = new JPanel(new BorderLayout(10, 10));
-		pnlWest.setBackground(Fenster.getDesignfarbe());
+		JPanel pnlWest = ElementFactory.erzeugePanel();
 
-		JButton butImpressum = Fenster.getButtonUeberschrift("DHpoly");
+		JButton butImpressum = ElementFactory.getButtonUeberschrift("DHpoly");
 		pnlWest.add(butImpressum, BorderLayout.CENTER);
 
-		JPanel pnlWuerfel = new JPanel(new GridLayout(1, 1));
+		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
+		pnlWuerfel.setLayout(new GridLayout(1, 1));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
 		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
-		pnlWuerfel.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
-		pnlWuerfel.setBackground(Fenster.getDesignfarbe());
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
@@ -47,7 +42,7 @@ public class SpielUI extends JPanel
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
-		JButton butWeiter = Fenster.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
+		JButton butWeiter = ElementFactory.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSchritt();
 			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());

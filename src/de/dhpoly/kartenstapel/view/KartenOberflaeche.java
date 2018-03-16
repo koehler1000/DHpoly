@@ -1,12 +1,14 @@
 package de.dhpoly.kartenstapel.view;
 
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.Oberflaeche;
 
 public class KartenOberflaeche
 {
 	public KartenOberflaeche(BezahlKarte karte)
 	{
-		Fenster.zeigeInfo("Ereigniskarte", karte.getBeschreibung());
+		Oberflaeche.getInstance().zeigeAufRand("Ereigniskarte",
+				ElementFactory.getTextInfoPanel("Ereigniskarte", karte.getBeschreibung()));
 	}
 }

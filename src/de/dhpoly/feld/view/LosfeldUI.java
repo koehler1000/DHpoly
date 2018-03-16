@@ -7,7 +7,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.control.Losfeld;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import observerpattern.Beobachter;
 
 public class LosfeldUI extends FeldUI implements Beobachter //NOSONAR
@@ -21,7 +21,7 @@ public class LosfeldUI extends FeldUI implements Beobachter //NOSONAR
 		this.setBorder(new LineBorder(Color.BLACK));
 		this.setBackground(Color.WHITE);
 
-		this.add(Fenster.getBild(Bilderverwalter.LOSFELD, Color.WHITE));
+		this.add(ElementFactory.getBild(Bilderverwalter.LOSFELD, Color.WHITE));
 
 		update();
 

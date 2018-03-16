@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import observerpattern.Beobachter;
 
 public class HausUI extends JPanel implements Beobachter
@@ -26,22 +26,19 @@ public class HausUI extends JPanel implements Beobachter
 	public HausUI(Strasse strasse)
 	{
 		this.strasse = strasse;
-		this.setLayout(new BorderLayout());
+		ElementFactory.bearbeitePanel(this);
 
-		this.setBackground(Fenster.getDesignfarbe());
+		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getBeschriftung());
+		txtAktuelleMiete = ElementFactory.getTextFeld("", false);
 
-		txtName = Fenster.getTextFeldUeberschrift(strasse.getBeschriftung());
-		txtAktuelleMiete = Fenster.getTextFeld("", false);
-
-		JPanel pnlHaeuser = new JPanel();
+		JPanel pnlHaeuser = ElementFactory.erzeugePanel();
 		pnlHaeuser.setLayout(new GridLayout(1, 1, 10, 10));
-		pnlHaeuser.setBackground(Fenster.getDesignfarbe());
 
-		butHausBauen = Fenster.getButtonUeberschrift("+");
+		butHausBauen = ElementFactory.getButtonUeberschrift("+");
 		butHausBauen.addActionListener(e -> strasse.hausBauen());
 		pnlHaeuser.add(butHausBauen);
 
-		butHausVerkaufen = Fenster.getButtonUeberschrift("-");
+		butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
 		butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen());
 		pnlHaeuser.add(butHausVerkaufen);
 

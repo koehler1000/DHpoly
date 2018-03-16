@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import observerpattern.Beobachter;
@@ -23,10 +23,11 @@ public class WuerfelUI extends JPanel implements Beobachter
 
 	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr)
 	{
+		ElementFactory.bearbeitePanel(this);
+
 		this.wuerfel = wuerfel;
 		this.wuerfelNr = wuerfelNr;
 
-		this.setBackground(Fenster.getDesignfarbe());
 		this.add(lblWuerfelBild);
 
 		wuerfel.addBeobachter(this);

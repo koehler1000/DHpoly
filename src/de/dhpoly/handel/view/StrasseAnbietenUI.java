@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.StrasseVorschauUI;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class StrasseAnbietenUI extends JPanel
 {
@@ -27,7 +27,7 @@ public class StrasseAnbietenUI extends JPanel
 		this.strasse = strasse;
 		this.angeboten = ausgewaehlt;
 
-		butAnbieten = Fenster.getButton("Anbieten");
+		butAnbieten = ElementFactory.getButton("Anbieten");
 
 		this.setLayout(new BorderLayout(10, 10));
 		this.setBorder(new LineBorder(hintergrund, 10));

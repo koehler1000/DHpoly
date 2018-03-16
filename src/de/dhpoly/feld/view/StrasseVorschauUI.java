@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class StrasseVorschauUI extends JPanel
 {
@@ -18,8 +18,7 @@ public class StrasseVorschauUI extends JPanel
 		this.setLayout(new BorderLayout());
 
 		Color farbe = new Strassengruppe().getColor(strasse.getGruppe());
-		JButton butName = Fenster.getButtonUeberschrift(strasse.getBeschriftung(), farbe);
-		butName.setForeground(Fenster.getKontrastfarbe());
+		JButton butName = ElementFactory.getButtonUeberschrift(strasse.getBeschriftung(), farbe);
 		this.add(butName);
 	}
 }

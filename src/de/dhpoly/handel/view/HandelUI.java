@@ -1,20 +1,19 @@
 package de.dhpoly.handel.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
@@ -48,14 +47,10 @@ public class HandelUI extends JPanel
 		}
 		this.vorgeschlagen = vorgeschlagen;
 
-		Color hintergrund = Fenster.getDesignfarbe();
+		ElementFactory.bearbeitePanel(this);
 
-		this.setLayout(new BorderLayout(10, 10));
-		this.setBorder(new LineBorder(hintergrund, 10));
-		this.setBackground(hintergrund);
-
-		JPanel pnlRessourcen = new JPanel(new GridLayout(Ressource.values().length, 2, 10, 10));
-		pnlRessourcen.setBackground(hintergrund);
+		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
+		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
 		for (Ressource res : Ressource.values())
 		{
 			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res, getWertGeben(res));
@@ -68,8 +63,8 @@ public class HandelUI extends JPanel
 		}
 		this.add(pnlRessourcen, BorderLayout.NORTH);
 
-		JPanel pnlStrassen = new JPanel(new GridLayout(1, 2, 10, 10));
-		pnlStrassen.setBackground(hintergrund);
+		JPanel pnlStrassen = ElementFactory.erzeugePanel();
+		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
 		felderBekommen = new StrassenAnbietenUI(spieler, vorgeschlagen.getFelderEigentumswechsel());
 		pnlStrassen.add(felderBekommen);
 		felderGeben = new StrassenAnbietenUI(handelsPartner, vorgeschlagen.getFelderEigentumswechsel()); // hier
@@ -77,7 +72,7 @@ public class HandelUI extends JPanel
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
 
-		JButton butFertig = Fenster.getButtonUeberschrift("Anbieten");
+		JButton butFertig = ElementFactory.getButtonUeberschrift("Anbieten");
 		butFertig.addActionListener(e -> handelAnbieten());
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
@@ -112,7 +107,8 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-			Fenster.zeigeInfo("Info", "Handel angenommen");
+			Oberflaeche.getInstance()
+					.zeigeKomplettesFenster(ElementFactory.getTextInfoPanel("Info", "Handel angenommen"));
 		}
 		else
 		{

@@ -4,10 +4,9 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spieler.Spieler;
 
@@ -17,20 +16,19 @@ public class StrasseKaufenUI extends JPanel
 
 	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
 	{
+		ElementFactory.bearbeitePanel(this);
 		this.setLayout(new GridLayout(1, 2, 10, 10));
-		this.setBackground(Fenster.getDesignfarbe());
 
 		this.add(new StrasseInfoUI(strasse));
 
-		JButton butKaufen = Fenster.getButtonUeberschrift("Kaufen");
+		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
 
-		JButton butAbbrechen = Fenster.getButtonUeberschrift("Abbrechen");
+		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
 		butAbbrechen.addActionListener(e -> abbrechen());
 
-		JPanel pnlOptionen = new JPanel(new GridLayout(2, 1, 10, 10));
-		pnlOptionen.setBorder(new LineBorder(Fenster.getDesignfarbe(), 10));
-		pnlOptionen.setBackground(Fenster.getDesignfarbe());
+		JPanel pnlOptionen = ElementFactory.erzeugePanel();
+		pnlOptionen.setLayout(new GridLayout(2, 1, 10, 10));
 		pnlOptionen.add(butKaufen);
 		pnlOptionen.add(butAbbrechen);
 
