@@ -11,6 +11,7 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -115,7 +116,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
-		Spiel.leerePanel();
+
+		Oberflaeche.getInstance().leereRand();
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -228,7 +230,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		return wuerfel;
 	}
 
-	private int aktuellerSchritt = -1;
+	private int aktuellerSchritt = 0;
 	private String beschreibungNaechsterSchritt = "Spiel beginnen";
 
 	@Override
@@ -240,7 +242,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			case 0: // nur Spielstart
 				beschreibungNaechsterSchritt = "Würfeln";
-				Spiel.leerePanel();
+				Oberflaeche.getInstance().leereRand();
 				aktuellerSchritt = 1;
 				break;
 			case 1:
@@ -250,7 +252,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				break;
 			case 2:
 				naechsterSpieler();
-				Spiel.leerePanel();
+				Oberflaeche.getInstance().leereRand();
 				aktuellerSchritt = 1;
 				beschreibungNaechsterSchritt = "Würfeln";
 				break;

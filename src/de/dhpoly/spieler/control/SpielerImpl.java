@@ -11,6 +11,7 @@ import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
@@ -77,7 +78,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
-		Spiel.setPanel("Handel",
+		Oberflaeche.getInstance().zeigeAufRand("Handel",
 				new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion));
 	}
 
@@ -86,7 +87,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
 		{
-			Spiel.setPanel("Kaufen", new StrasseKaufenUI(strasse, this));
+			Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse, this));
 		}
 	}
 

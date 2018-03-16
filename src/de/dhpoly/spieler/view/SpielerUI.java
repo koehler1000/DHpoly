@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.fenster.view.Fenster;
 import de.dhpoly.handel.view.HandelUI;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -88,18 +89,18 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneKontoauszugFenster()
 	{
-		Spiel.setPanel("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler));
+		Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler));
 	}
 
 	private void oeffneHausbauFenster()
 	{
 		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
-		Spiel.setPanel("Häuser", pnlHaeuser);
+		Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser);
 	}
 
 	private void oeffneHandelFenster()
 	{
-		Spiel.setPanel("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
+		Oberflaeche.getInstance().zeigeAufRand("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
 	}
 
 	@Override

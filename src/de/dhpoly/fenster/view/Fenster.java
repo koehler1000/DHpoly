@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 
@@ -215,7 +216,7 @@ public class Fenster extends JFrame //NOSONAR
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);
 
-		Spiel.setPanel("Info", pnlInhalt);
+		Oberflaeche.getInstance().zeigeAufRand("Info", pnlInhalt);
 
 		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
 		butText.addActionListener(e -> pnlInhalt.setVisible(false));

@@ -2,9 +2,6 @@ package de.dhpoly.spiel;
 
 import java.util.List;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
@@ -15,19 +12,6 @@ import observerpattern.Beobachter;
 
 public interface Spiel
 {
-	static JTabbedPane pnlInhalt = new JTabbedPane();
-
-	public static void setPanel(String beschreibung, JPanel pnl)
-	{
-		pnlInhalt.removeAll();
-		pnlInhalt.addTab(beschreibung, pnl);
-	}
-
-	public static void leerePanel()
-	{
-		pnlInhalt.removeAll();
-	}
-
 	Spieler getAktuellerSpieler();
 
 	Einstellungen getEinstellungen();

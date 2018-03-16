@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
@@ -20,9 +21,6 @@ public class SpielUI extends JPanel
 
 	public SpielUI(Spiel spiel)
 	{
-		Spiel.leerePanel();
-		Spiel.pnlInhalt.setBackground(Fenster.getDesignfarbe());
-
 		this.setBackground(Fenster.getDesignfarbe());
 
 		this.setLayout(new BorderLayout(10, 10));
@@ -45,7 +43,7 @@ public class SpielUI extends JPanel
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
-		pnlWest.add(Spiel.pnlInhalt);
+		pnlWest.add(Oberflaeche.getInstance().getRand());
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
