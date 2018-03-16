@@ -9,7 +9,7 @@ public class Oberflaeche
 {
 	private static Oberflaeche oberflaeche = new Oberflaeche();
 	private OberflaecheUI ui = new OberflaecheUI(new Bilderverwalter());
-	private boolean animationen = false;
+	private boolean animationen = true;
 
 	public static Oberflaeche getInstance()
 	{
