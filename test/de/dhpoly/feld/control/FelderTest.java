@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.hamcrest.core.Is;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.pause.Pause;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -18,6 +19,12 @@ import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class FelderTest
 {
+
+	@Before
+	public void setUp()
+	{
+		Oberflaeche.getInstance().setAnimationen(false);
+	}
 
 	@Test
 	public void spielerStartetAufFeld0()
@@ -48,9 +55,9 @@ public class FelderTest
 		SpielImpl spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(sp1);
 
-		spiel.ruecke(sp1, 2);
-
-		Pause.pause(5000);
+		Thread thread = spiel.rueckeThread(sp1, 2);
+		thread.start();
+		thread.join();
 
 		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
 	}

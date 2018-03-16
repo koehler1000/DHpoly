@@ -18,7 +18,6 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
-import de.dhpoly.pause.Pause;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
@@ -57,13 +56,13 @@ public class SpielImplTest
 	}
 
 	@Test
-	public void geldBeiUeberLos()
+	public void geldBeiUeberLos() throws InterruptedException
 	{
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD);
 
-		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
-
-		Pause.pause(5000);
+		Thread thread = spiel.rueckeThread(spiel.getAktuellerSpieler(), 2);
+		thread.start();
+		thread.join();
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
