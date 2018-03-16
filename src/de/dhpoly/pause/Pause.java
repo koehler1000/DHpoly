@@ -1,5 +1,7 @@
 package de.dhpoly.pause;
 
+import de.dhpoly.oberflaeche.Oberflaeche;
+
 public class Pause
 {
 	private Pause()
@@ -7,7 +9,7 @@ public class Pause
 
 	public static void pause(int millis)
 	{
-		if (true) // FIXME: Nur, wenn in Einstellungen Animationen animiert
+		if (Oberflaeche.getInstance().sollAnimiertAnzeigen()) // FIXME: Nur, wenn in Einstellungen Animationen animiert
 		{
 			try
 			{

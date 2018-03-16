@@ -9,10 +9,16 @@ public class Oberflaeche
 {
 	private static Oberflaeche oberflaeche = new Oberflaeche();
 	private OberflaecheUI ui = new OberflaecheUI(new Bilderverwalter());
+	private boolean animationen = false;
 
 	public static Oberflaeche getInstance()
 	{
 		return oberflaeche;
+	}
+
+	public void setAnimationen(boolean value)
+	{
+		animationen = value;
 	}
 
 	public void zeigeAufRand(String beschreibung, Component component)
@@ -38,5 +44,10 @@ public class Oberflaeche
 	public void zeigeNachricht(String nachricht)
 	{
 		zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht));
+	}
+
+	public boolean sollAnimiertAnzeigen()
+	{
+		return animationen;
 	}
 }

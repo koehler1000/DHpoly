@@ -46,14 +46,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		for (int i = 0; i < 10; i++)
 		{
 			wuerfel.wuerfeln();
-			try
-			{
-				Thread.sleep(100);
-			}
-			catch (InterruptedException ex) // NOSONAR
-			{
-				// ignorieren()
-			}
+			Pause.pause(100);
 		}
 
 		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
