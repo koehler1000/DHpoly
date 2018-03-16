@@ -10,24 +10,23 @@ import javax.swing.JTabbedPane;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fenster.view.Fenster;
 
-public class OberflaecheUI extends JFrame
+public class OberflaecheUI
 {
+	private JFrame frame = new JFrame("");
 	private JTabbedPane pnlInhalt = new JTabbedPane();
 
 	public OberflaecheUI(Bilderverwalter bilderverwalter)
 	{
-		this.setTitle("");
-		this.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
-		this.setLayout(new BorderLayout());
+		frame.setTitle("");
+		frame.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
+		frame.setLayout(new BorderLayout());
 
 		pnlInhalt.setBackground(Fenster.getDesignfarbe());
 
-		this.add(new JLabel("Bitte warten..."));
+		frame.add(new JLabel("Bitte warten..."));
 
-		// this.add(pnlInhalt, BorderLayout.WEST);
-
-		this.setSize(500, 750);
-		this.setVisible(true);
+		frame.setSize(500, 750);
+		frame.setVisible(true);
 	}
 
 	public void zeigeAufRand(String beschreibung, Component component)
@@ -38,7 +37,7 @@ public class OberflaecheUI extends JFrame
 
 	public void zeigeKomplettesFenster(Component component)
 	{
-		this.add(component);
+		frame.add(component);
 	}
 
 	public void leereRand()

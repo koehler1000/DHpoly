@@ -14,9 +14,8 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spiel.Spiel;
 
-public class Fenster extends JFrame //NOSONAR
+public class Fenster extends JFrame // NOSONAR
 {
 	private static final String ARIAL = "arial";
 
