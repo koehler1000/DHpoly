@@ -3,7 +3,7 @@ package de.dhpoly;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.view.SpielUI;
@@ -22,6 +22,6 @@ public class Main
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
-		new Fenster(new SpielUI(spiel), true);
+		Oberflaeche.getInstance().zeigeKomplettesFenster(new SpielUI(spiel));
 	}
 }

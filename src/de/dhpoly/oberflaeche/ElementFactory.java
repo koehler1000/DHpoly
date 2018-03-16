@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.fenster.view.Bild;
+import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.ressource.model.Ressource;
 
 public class ElementFactory
@@ -29,8 +29,6 @@ public class ElementFactory
 	private static final Font SCHRIFT_NORMAL = new Font(ARIAL, Font.PLAIN, 20);
 
 	private static final Font SCHRIFT_UEBERSCHRIFT = new Font(ARIAL, Font.BOLD, 30);
-
-	private static final long serialVersionUID = 1L;
 
 	private static Bilderverwalter bilderverwalter = new Bilderverwalter();
 

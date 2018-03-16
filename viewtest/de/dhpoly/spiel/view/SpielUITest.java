@@ -2,14 +2,14 @@ package de.dhpoly.spiel.view;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
-public class SpielUITest //NOSONAR
+public class SpielUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -20,6 +20,6 @@ public class SpielUITest //NOSONAR
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
-		new Fenster(new SpielUI(spiel), true);
+		Oberflaeche.getInstance().zeigeKomplettesFenster(new SpielUI(spiel));
 	}
 }

@@ -5,8 +5,8 @@ import java.awt.Color;
 
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.fenster.view.Bild;
 import de.dhpoly.oberflaeche.ElementFactory;
 import observerpattern.Beobachter;
 

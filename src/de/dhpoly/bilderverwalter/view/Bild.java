@@ -1,4 +1,4 @@
-package de.dhpoly.fenster.view;
+package de.dhpoly.bilderverwalter.view;
 
 import java.awt.Graphics;
 import java.awt.Image;

@@ -7,14 +7,14 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.StrasseTest;
-import de.dhpoly.fenster.view.Fenster;
+import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class HandelUITest //NOSONAR
+public class HandelUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -37,7 +37,6 @@ public class HandelUITest //NOSONAR
 		s1.einzahlen(datensaetze);
 		s2.einzahlen(datensaetze);
 
-		new Fenster(new HandelUI(s1, s2), "HandelUITest");
+		Oberflaeche.getInstance().zeigeKomplettesFenster(new HandelUI(s1, s2));
 	}
-
 }
