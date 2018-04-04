@@ -227,32 +227,33 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		return wuerfel;
 	}
 
-	private int aktuellerSchritt = 0;
+	private static final int CONST_START = 0;
+	private static final int CONST_WUERFELN = 1;
+	private static final int CONST_NAECHSTER_SPIELER = 2;
+
+	private int aktuellerSchritt = CONST_START;
 	private String beschreibungNaechsterSchritt = "Spiel beginnen";
 
 	@Override
 	public void naechsterSchritt()
 	{
-		// TODO Refactoring
-
-		switch (aktuellerSchritt)
+		if (aktuellerSchritt == CONST_START)
 		{
-			case 0: // nur Spielstart
-				beschreibungNaechsterSchritt = "Würfeln";
-				Oberflaeche.getInstance().leereRand();
-				aktuellerSchritt = 1;
-				break;
-			case 1:
-				ruecke();
-				beschreibungNaechsterSchritt = "Würfel weitergeben";
-				aktuellerSchritt = 2;
-				break;
-			case 2:
-				naechsterSpieler();
-				Oberflaeche.getInstance().leereRand();
-				aktuellerSchritt = 1;
-				beschreibungNaechsterSchritt = "Würfeln";
-				break;
+			Oberflaeche.getInstance().leereRand();
+			beschreibungNaechsterSchritt = "Würfeln";
+			aktuellerSchritt = CONST_WUERFELN;
+		}
+		else if (aktuellerSchritt == CONST_WUERFELN)
+		{
+			ruecke();
+			beschreibungNaechsterSchritt = "Würfel weitergeben";
+			aktuellerSchritt = CONST_NAECHSTER_SPIELER;
+		}
+		else if (aktuellerSchritt == CONST_NAECHSTER_SPIELER)
+		{
+			naechsterSpieler();
+			aktuellerSchritt = CONST_START;
+			naechsterSchritt();
 		}
 	}
 
