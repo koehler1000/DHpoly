@@ -32,7 +32,9 @@ public class HausUI extends JPanel implements Beobachter
 		txtAktuelleMiete = ElementFactory.getTextFeld("", false);
 
 		JPanel pnlHaeuser = ElementFactory.erzeugePanel();
-		pnlHaeuser.setLayout(new GridLayout(1, 1, 10, 10));
+		pnlHaeuser.setLayout(new GridLayout(1, 3, 10, 10));
+
+		pnlHaeuser.add(txtAktuelleMiete);
 
 		butHausBauen = ElementFactory.getButtonUeberschrift("+");
 		butHausBauen.addActionListener(e -> strasse.hausBauen());
@@ -44,7 +46,6 @@ public class HausUI extends JPanel implements Beobachter
 
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(pnlHaeuser, BorderLayout.CENTER);
-		this.add(txtAktuelleMiete, BorderLayout.SOUTH);
 		update();
 
 		strasse.addBeobachter(this);

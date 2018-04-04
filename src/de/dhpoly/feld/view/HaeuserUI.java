@@ -16,7 +16,7 @@ public class HaeuserUI extends JPanel
 	public HaeuserUI(List<Feld> felder)
 	{
 		ElementFactory.bearbeitePanel(this);
-		this.setLayout(new GridLayout(1, 1, 10, 10));
+		this.setLayout(new GridLayout(felder.size(), 1, 10, 10));
 
 		for (Feld feld : felder)
 		{
