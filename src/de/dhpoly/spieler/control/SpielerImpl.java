@@ -199,7 +199,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void zeigeNachrichtVerloren()
+	public void verloren()
 	{
 		strassenZurueckgeben();
 
@@ -223,10 +223,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void zeigeNachrichtGewonnen()
+	public void gewonnen()
 	{
 		// FIXME
-		// Oberflaeche.getInstance().zeigeNachricht(name + " hat GEWONNEN");
+		// Oberflaeche.getInstance().zeigeNachricht();
 	}
 
 	@Override

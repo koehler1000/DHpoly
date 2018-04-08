@@ -50,9 +50,9 @@ public interface Spieler
 
 	boolean kannBezahlen(List<RessourcenDatensatz> kosten);
 
-	void zeigeNachrichtVerloren();
+	void verloren();
 
-	void zeigeNachrichtGewonnen();
+	void gewonnen();
 
 	List<Feld> getFelder();
 
@@ -61,6 +61,6 @@ public interface Spieler
 	void feldWeg(Feld feld);
 
 	void setSpielerNr(int nr);
-	
+
 	boolean hatVerloren();
 }

@@ -140,13 +140,13 @@ public class SpielImplTest
 			{}
 
 			@Override
-			public void zeigeNachrichtVerloren()
+			public void verloren()
 			{
 				hatGewonnen = true;
 			}
 
 			@Override
-			public void zeigeNachrichtGewonnen()
+			public void gewonnen()
 			{
 				hatVerloren = true;
 			}

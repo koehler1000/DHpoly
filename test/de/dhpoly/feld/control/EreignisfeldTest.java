@@ -128,11 +128,11 @@ public class EreignisfeldTest
 			}
 
 			@Override
-			public void zeigeNachrichtVerloren()
+			public void verloren()
 			{}
 
 			@Override
-			public void zeigeNachrichtGewonnen()
+			public void gewonnen()
 			{}
 
 			@Override
