@@ -280,6 +280,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	public void setAnimationen(boolean b)
 	{
-		uiVerwalter.setAnimationen(false);
+		uiVerwalter.setAnimationen(b);
 	}
 }
