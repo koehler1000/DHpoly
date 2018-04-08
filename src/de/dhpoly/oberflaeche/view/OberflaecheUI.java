@@ -9,14 +9,13 @@ import javax.swing.JTabbedPane;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 
-public class SpielansichtUI
+public class OberflaecheUI
 {
 	private JFrame frame = new JFrame("");
 	private JTabbedPane pnlInhalt;
-
 	private JTabbedPane pnlMitte;
 
-	public SpielansichtUI(Bilderverwalter bilderverwalter, String spielername)
+	public OberflaecheUI(Bilderverwalter bilderverwalter, String spielername)
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1000, 1000);
@@ -53,5 +52,10 @@ public class SpielansichtUI
 	public Component getRand()
 	{
 		return pnlInhalt;
+	}
+
+	public void setNichtAnDerReihe()
+	{
+		// TODO Oberfläche teilweise sperren
 	}
 }
