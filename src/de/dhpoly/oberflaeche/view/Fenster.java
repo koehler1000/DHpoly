@@ -1,6 +1,7 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -33,5 +34,10 @@ public class Fenster
 	public void zeigeSpielansicht(SpielfeldAnsicht ansicht, String titel)
 	{
 		spielansichten.addTab(titel, ansicht);
+	}
+
+	public void zeigeComponente(Component componente)
+	{
+		frame.add(componente);
 	}
 }
