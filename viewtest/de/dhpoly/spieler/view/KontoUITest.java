@@ -10,6 +10,7 @@ import de.dhpoly.pause.Pause;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
@@ -40,7 +41,7 @@ public class KontoUITest // NOSONAR
 				{
 					spieler.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, 1));
 					spieler2.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, 5));
-					Pause.pause(100);
+					Pause.pause(100, new SpielUIVerwalter());
 				}
 			}
 		});

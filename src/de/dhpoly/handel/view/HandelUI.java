@@ -13,7 +13,6 @@ import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
@@ -107,7 +106,8 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-			Oberflaeche.getInstance().zeigeNachricht("Handel angenommen");
+
+			// TODO Vorschlag angenommen -> Informieren
 		}
 		else
 		{

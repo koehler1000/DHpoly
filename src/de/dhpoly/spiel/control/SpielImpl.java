@@ -12,9 +12,9 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
 import observerpattern.Beobachtbarer;
@@ -27,6 +27,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
 	private Wuerfel wuerfel;
+
+	private SpielUIVerwalter uiVerwalter = new SpielUIVerwalter();
 
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
 	{
@@ -47,7 +49,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		for (int i = 0; i < 10; i++)
 		{
 			wuerfel.wuerfeln();
-			Pause.pause(100);
+			Pause.pause(100, uiVerwalter);
 		}
 
 		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
@@ -69,7 +71,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				aktuellesFeld.verlasseFeld(spieler);
 				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 				aktuellesFeld.laufeUeberFeld(spieler);
-				Pause.pause(200);
+				Pause.pause(200, uiVerwalter);
 			}
 
 			aktuellesFeld.verlasseFeld(spieler);
@@ -115,7 +117,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
 
-		Oberflaeche.getInstance().leereRand();
+		uiVerwalter.leereRand();
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -220,6 +222,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
+
+		uiVerwalter.createOberflaeche(spieler, this);
+
+		informiereBeobachter();
 	}
 
 	@Override
@@ -240,7 +246,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		if (aktuellerSchritt == CONST_START)
 		{
-			Oberflaeche.getInstance().leereRand();
+			uiVerwalter.leereRand();
 			beschreibungNaechsterSchritt = "Würfeln";
 			aktuellerSchritt = CONST_WUERFELN;
 		}
@@ -267,6 +273,11 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void zeigeAktuellemSpieler(String string, HandelUI handelUI)
 	{
-		Oberflaeche.getInstance().zeigeAufRand(string, handelUI, getAktuellerSpieler());
+		uiVerwalter.zeigeAufRand(string, handelUI, getAktuellerSpieler());
+	}
+
+	public void setAnimationen(boolean b)
+	{
+		uiVerwalter.setAnimationen(false);
 	}
 }

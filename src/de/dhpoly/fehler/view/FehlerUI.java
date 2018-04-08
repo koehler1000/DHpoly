@@ -1,11 +1,12 @@
 package de.dhpoly.fehler.view;
 
-import de.dhpoly.oberflaeche.Oberflaeche;
+import javax.swing.JOptionPane;
 
 public class FehlerUI
 {
 	public FehlerUI(String fehler)
 	{
-		Oberflaeche.getInstance().zeigeNachricht("Fehler", fehler);
+		// TODO Fehler auf Oberfläche anzeigen
+		JOptionPane.showMessageDialog(null, fehler);
 	}
 }

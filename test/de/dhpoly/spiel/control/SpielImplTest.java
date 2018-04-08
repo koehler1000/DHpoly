@@ -103,7 +103,7 @@ public class SpielImplTest
 	{
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), null);
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
@@ -121,7 +121,7 @@ public class SpielImplTest
 	{
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), null);
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 

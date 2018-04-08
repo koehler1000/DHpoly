@@ -1,6 +1,7 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -8,18 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
-public class SpielUI extends JPanel
+public class SpielAnsichtUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	public SpielUI(Spiel spiel, Spieler spieler)
+	public SpielAnsichtUI(Spiel spiel, Spieler spieler, Component randAnsicht)
 	{
 		ElementFactory.bearbeitePanel(this);
 
@@ -39,7 +39,7 @@ public class SpielUI extends JPanel
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
-		pnlWest.add(Oberflaeche.getInstance().getRand(spieler));
+		pnlWest.add(randAnsicht);
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 

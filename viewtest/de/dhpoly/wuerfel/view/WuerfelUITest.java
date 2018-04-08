@@ -3,6 +3,7 @@ package de.dhpoly.wuerfel.view;
 import javax.swing.JFrame;
 
 import de.dhpoly.pause.Pause;
+import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class WuerfelUITest // NOSONAR
@@ -28,7 +29,7 @@ public class WuerfelUITest // NOSONAR
 				while (true)
 				{
 					wuerfel.wuerfeln();
-					Pause.pause(1000);
+					Pause.pause(1000, new SpielUIVerwalter());
 				}
 			}
 		});

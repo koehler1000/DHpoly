@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spieler.Spieler;
 
 public class StrasseKaufenUI extends JPanel
@@ -38,11 +37,13 @@ public class StrasseKaufenUI extends JPanel
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
 		strasse.kaufe(spieler);
-		Oberflaeche.getInstance().leereRand();
+		// FIXME
+		// Oberflaeche.getInstance().leereRand();
 	}
 
 	private void abbrechen()
 	{
-		Oberflaeche.getInstance().leereRand();
+		// FIXME
+		// Oberflaeche.getInstance().leereRand();
 	}
 }

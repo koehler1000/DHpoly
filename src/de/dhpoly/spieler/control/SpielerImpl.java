@@ -6,11 +6,8 @@ import java.util.List;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
@@ -81,19 +78,23 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 
 		Spieler handelspartner = transaktion.getHandelspartner();
 		Spieler anbietender = transaktion.getAnbietender();
-		Oberflaeche.getInstance().zeigeAufRand("Handel",
-				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), handelspartner);
-		Oberflaeche.getInstance().zeigeAufRand("Handel - anbietender",
-				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), anbietender);
+		// Oberflaeche.getInstance().zeigeAufRand("Handel",
+		// new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion),
+		// handelspartner);
+		// Oberflaeche.getInstance().zeigeAufRand("Handel - anbietender",
+		// new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion),
+		// anbietender);
 	}
 
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
-		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
-		{
-			Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse, this), this);
-		}
+		// FIXME
+		// if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
+		// {
+		// Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse,
+		// this), this);
+		// }
 	}
 
 	@Override
@@ -101,7 +102,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		spiel.verarbeiteKarte(karte);
 
-		Oberflaeche.getInstance().zeigeNachricht(karte.getBeschreibung());
+		// FIXME
+		// Oberflaeche.getInstance().zeigeNachricht(karte.getBeschreibung());
 	}
 
 	@Override
@@ -201,7 +203,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		strassenZurueckgeben();
 
-		Oberflaeche.getInstance().zeigeNachricht(name + " hat verloren");
+		// FIXME
+		// Oberflaeche.getInstance().zeigeNachricht(name + " hat verloren");
 		verloren = true;
 		informiereBeobachter();
 	}
@@ -222,7 +225,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachrichtGewonnen()
 	{
-		Oberflaeche.getInstance().zeigeNachricht(name + " hat GEWONNEN");
+		// FIXME
+		// Oberflaeche.getInstance().zeigeNachricht(name + " hat GEWONNEN");
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.pause.Pause;
+import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class StrasseUITest // NOSONAR
@@ -31,7 +32,7 @@ public class StrasseUITest // NOSONAR
 			@Override
 			public void run()
 			{
-				Pause.pause(3000);
+				Pause.pause(3000, new SpielUIVerwalter());
 				if (strasse.isKaufbar())
 				{
 					strasse.kaufe(SpielerImplTest.getDefaultSpieler());

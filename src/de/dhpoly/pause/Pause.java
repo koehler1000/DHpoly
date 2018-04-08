@@ -1,15 +1,15 @@
 package de.dhpoly.pause;
 
-import de.dhpoly.oberflaeche.Oberflaeche;
+import de.dhpoly.spiel.view.SpielUIVerwalter;
 
 public class Pause
 {
 	private Pause()
 	{}
 
-	public static void pause(int millis)
+	public static void pause(int millis, SpielUIVerwalter verwalter)
 	{
-		if (Oberflaeche.getInstance().sollAnimiertAnzeigen())
+		if (verwalter.sollAnimiertAnzeigen())
 		{
 			try
 			{

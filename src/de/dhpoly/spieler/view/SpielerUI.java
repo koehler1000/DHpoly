@@ -13,11 +13,9 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
 import observerpattern.Beobachter;
 
 public class SpielerUI extends JPanel implements Beobachter
@@ -80,20 +78,22 @@ public class SpielerUI extends JPanel implements Beobachter
 
 		update();
 
-		SpielerImpl spielerImpl = (SpielerImpl) spieler;
-		spielerImpl.addBeobachter(this);
+		spieler.addBeobachterHinzu(this);
 	}
 
 	private void oeffneKontoauszugElementFactory()
 	{
-		Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler),
-				spieler);
+		// FIXME
+		// Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(),
+		// new KontoauszugUI(spieler),
+		// spieler);
 	}
 
 	private void oeffneHausbauElementFactory()
 	{
+		// FIXME
 		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
-		Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser, spieler);
+		// Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser, spieler);
 	}
 
 	private void oeffneHandelElementFactory()
