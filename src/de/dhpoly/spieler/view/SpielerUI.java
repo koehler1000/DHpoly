@@ -98,7 +98,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneHandelElementFactory()
 	{
-		Oberflaeche.getInstance().zeigeAufRand("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler), spieler);
+		spiel.zeigeAktuellemSpieler("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
 	}
 
 	@Override

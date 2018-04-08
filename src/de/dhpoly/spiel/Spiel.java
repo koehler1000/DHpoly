@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
@@ -39,5 +40,7 @@ public interface Spiel
 	String getBeschreibungNaechsterSchritt();
 
 	void addBeobachter(Beobachter beobachter);
+
+	void zeigeAktuellemSpieler(String string, HandelUI handelUI);
 
 }

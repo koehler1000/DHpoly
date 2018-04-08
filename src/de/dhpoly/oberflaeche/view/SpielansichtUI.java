@@ -9,14 +9,14 @@ import javax.swing.JTabbedPane;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 
-public class OberflaecheUI
+public class SpielansichtUI
 {
 	private JFrame frame = new JFrame("");
 	private JTabbedPane pnlInhalt;
 
 	private JTabbedPane pnlMitte;
 
-	public OberflaecheUI(Bilderverwalter bilderverwalter, String spielername)
+	public SpielansichtUI(Bilderverwalter bilderverwalter, String spielername)
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1000, 1000);

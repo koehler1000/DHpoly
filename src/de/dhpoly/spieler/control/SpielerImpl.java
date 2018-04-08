@@ -80,12 +80,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		// TODO nur einem Spieler zeigen
 
 		Spieler handelspartner = transaktion.getHandelspartner();
-		Spieler anbietender = transaktion.getHandelspartner();
+		Spieler anbietender = transaktion.getAnbietender();
 		Oberflaeche.getInstance().zeigeAufRand("Handel",
 				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), handelspartner);
 		Oberflaeche.getInstance().zeigeAufRand("Handel - anbietender",
 				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), anbietender);
-
 	}
 
 	@Override

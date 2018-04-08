@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.oberflaeche.view.OberflaecheUI;
+import de.dhpoly.oberflaeche.view.SpielansichtUI;
 import de.dhpoly.spieler.Spieler;
 
 public class Oberflaeche
@@ -15,7 +15,7 @@ public class Oberflaeche
 	private static Oberflaeche oberflaeche = new Oberflaeche();
 	private boolean animationen = true;
 
-	private Map<Spieler, OberflaecheUI> ui = new HashMap<>();
+	private Map<Spieler, SpielansichtUI> ui = new HashMap<>();
 
 	public static Oberflaeche getInstance()
 	{
@@ -26,7 +26,7 @@ public class Oberflaeche
 	{
 		if (!ui.containsKey(spieler))
 		{
-			ui.put(spieler, new OberflaecheUI(new Bilderverwalter(), spieler.getName()));
+			ui.put(spieler, new SpielansichtUI(new Bilderverwalter(), spieler.getName()));
 		}
 	}
 
@@ -35,24 +35,21 @@ public class Oberflaeche
 		animationen = value;
 	}
 
-	// public void zeigeAufRand(String beschreibung, Component component)
-	// {
-	// for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
-	// {
-	// // FIXME Componenten können nur einen Parent haben
-	// uiSpieler.getValue().zeigeAufRand(beschreibung, component);
-	// }
-	// }
-
 	public void zeigeAufRand(String beschreibung, Component component, Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		Optional<SpielansichtUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
 		oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
 	}
 
+	// public void zeigeAufRand(String beschreibung, Component component)
+	// {
+	// Spieler aktuellerSpieler = spiel.getAktuellerSpieler();
+	// oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
+	// }
+
 	public void zeigeKomplettesFenster(Component component)
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielansichtUI> uiSpieler : ui.entrySet())
 		{
 			// FIXME Componenten können nur einen Parent haben
 			uiSpieler.getValue().zeigeKomplettesFenster(component);
@@ -61,13 +58,13 @@ public class Oberflaeche
 
 	public void zeigeKomplettesFenster(Component component, Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		Optional<SpielansichtUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
 		oberflaecheSpieler.ifPresent(e -> e.zeigeKomplettesFenster(component));
 	}
 
 	public void leereRand()
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielansichtUI> uiSpieler : ui.entrySet())
 		{
 			uiSpieler.getValue().leereRand();
 		}
@@ -75,8 +72,8 @@ public class Oberflaeche
 
 	public void leereRand(Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(OberflaecheUI::leereRand);
+		Optional<SpielansichtUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		oberflaecheSpieler.ifPresent(SpielansichtUI::leereRand);
 	}
 
 	public Component getRand(Spieler spieler)
@@ -91,7 +88,7 @@ public class Oberflaeche
 
 	public void zeigeNachricht(String nachricht)
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielansichtUI> uiSpieler : ui.entrySet())
 		{
 			uiSpieler.getValue().zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht));
 		}
@@ -109,7 +106,7 @@ public class Oberflaeche
 
 	public void zeigeNachricht(String titel, String nachricht)
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielansichtUI> uiSpieler : ui.entrySet())
 		{
 			uiSpieler.getValue().zeigeKomplettesFenster(ElementFactory.getNachrichtPanel(titel, nachricht));
 		}
