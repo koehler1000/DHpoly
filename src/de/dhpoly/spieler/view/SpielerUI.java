@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.ressource.model.Ressource;
@@ -91,9 +90,7 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneHausbauElementFactory()
 	{
-		// FIXME
-		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
-		// Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser, spieler);
+		spieler.getUI().ifPresent(e -> e.zeigeHausbaumoeglichkeit(spieler.getFelder()));
 	}
 
 	private void oeffneHandelElementFactory()

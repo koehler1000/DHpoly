@@ -32,6 +32,8 @@ public class SpielUIVerwalter
 			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
 			ui.put(spieler, ansicht);
 			fenster.zeigeSpielansicht(ansicht, spieler.getName());
+
+			spieler.setSpielfeldAnsicht(ansicht);
 		}
 	}
 

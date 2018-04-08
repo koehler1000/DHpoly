@@ -29,7 +29,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private int spielerNr;
 	private boolean verloren = false;
 
-	private Optional<SpielfeldAnsicht> ui;
+	private Optional<SpielfeldAnsicht> ui = Optional.ofNullable(null);
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -78,27 +78,17 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
-		// TODO nur einem Spieler zeigen
-
-		Spieler handelspartner = transaktion.getHandelspartner();
-		Spieler anbietender = transaktion.getAnbietender();
-		// Oberflaeche.getInstance().zeigeAufRand("Handel",
-		// new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion),
-		// handelspartner);
-		// Oberflaeche.getInstance().zeigeAufRand("Handel - anbietender",
-		// new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion),
-		// anbietender);
+		ui.ifPresent(e -> e.zeigeTransaktion(transaktion));
 	}
 
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
 		// FIXME
-		// if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
-		// {
-		// Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse,
-		// this), this);
-		// }
+		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
+		{
+			ui.ifPresent(e -> e.zeigeKaufmoeglichkeit(strasse, this));
+		}
 	}
 
 	@Override
@@ -263,5 +253,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{
 		ui = Optional.of(ansicht);
+	}
+
+	@Override
+	public Optional<SpielfeldAnsicht> getUI()
+	{
+		return ui;
 	}
 }

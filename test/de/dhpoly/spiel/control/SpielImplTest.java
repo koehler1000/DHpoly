@@ -120,8 +120,6 @@ public class SpielImplTest
 		felder.add(StrasseTest.getDefaultStrasse());
 		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 
-		Spieler sieger = getSpieler(true);
-
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 

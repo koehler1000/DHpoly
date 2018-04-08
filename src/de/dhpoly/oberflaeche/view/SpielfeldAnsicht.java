@@ -4,11 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.view.HaeuserUI;
+import de.dhpoly.feld.view.StrasseKaufenUI;
+import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
@@ -84,5 +91,21 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	public void update()
 	{
 		setAnDerReihe(spieler.isAktuellerSpieler());
+	}
+
+	public void zeigeHausbaumoeglichkeit(List<Feld> felder)
+	{
+		tabRand.addTab("Häuser", new HaeuserUI(felder));
+	}
+
+	public void zeigeTransaktion(Transaktion transaktion)
+	{
+		Spieler handelspartner = transaktion.getHandelspartner();
+		tabRand.addTab("Handel", new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion));
+	}
+
+	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
+	{
+		tabRand.addTab("Kaufen", new StrasseKaufenUI(strasse, spieler));
 	}
 }
