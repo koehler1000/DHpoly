@@ -122,11 +122,15 @@ public class SpielImplTest
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
 		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+
+		Spieler sieger = getSpieler(true);
+
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 
 		spiel.naechsterSpieler();
 
+		// FIXME -> roter Test
 		assertThat(hatGewonnen, Is.is(true));
 	}
 
@@ -140,15 +144,15 @@ public class SpielImplTest
 			{}
 
 			@Override
-			public void verloren()
+			public void ausscheiden()
 			{
-				hatGewonnen = true;
+				hatVerloren = true;
 			}
 
 			@Override
 			public void gewonnen()
 			{
-				hatVerloren = true;
+				hatGewonnen = true;
 			}
 
 			@Override

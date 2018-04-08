@@ -128,7 +128,7 @@ public class EreignisfeldTest
 			}
 
 			@Override
-			public void verloren()
+			public void ausscheiden()
 			{}
 
 			@Override

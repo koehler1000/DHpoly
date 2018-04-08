@@ -50,7 +50,7 @@ public interface Spieler
 
 	boolean kannBezahlen(List<RessourcenDatensatz> kosten);
 
-	void verloren();
+	void ausscheiden();
 
 	void gewonnen();
 

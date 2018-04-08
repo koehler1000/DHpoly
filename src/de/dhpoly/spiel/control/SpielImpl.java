@@ -125,13 +125,12 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		if (spielerAktuell.isNegative())
 		{
 			spieler.remove(spielerAktuell);
-			spielerAktuell.verloren();
+			spielerAktuell.ausscheiden();
 			uiVerwalter.zeigeNachricht("Verloren", spielerAktuell);
 
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
-				sieger.gewonnen();
 				uiVerwalter.zeigeNachricht(sieger.getName() + " hat gewonnen");
 			}
 
