@@ -3,11 +3,8 @@ package de.dhpoly;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
-import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
-import de.dhpoly.spiel.view.SpielAnsichtUI;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
