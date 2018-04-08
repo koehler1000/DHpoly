@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
@@ -19,7 +18,7 @@ public class SpielAnsichtUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	public SpielAnsichtUI(Spiel spiel, Spieler spieler, Component randAnsicht)
+	public SpielAnsichtUI(Spiel spiel, Component randAnsicht)
 	{
 		ElementFactory.bearbeitePanel(this);
 

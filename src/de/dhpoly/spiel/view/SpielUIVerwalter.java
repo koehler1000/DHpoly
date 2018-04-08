@@ -25,7 +25,7 @@ public class SpielUIVerwalter
 			ui.put(spieler, new OberflaecheUI(new Bilderverwalter(), spieler.getName()));
 		}
 
-		zeigeKomplettesFenster(new SpielAnsichtUI(spiel, spieler, ElementFactory.getTabbedPane()), spieler);
+		zeigeKomplettesFenster(new SpielAnsichtUI(spiel, ElementFactory.getTabbedPane()), spieler);
 	}
 
 	public void setAnimationen(boolean value)
