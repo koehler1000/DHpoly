@@ -16,12 +16,12 @@ public class OberflaecheUI
 
 	private JTabbedPane pnlMitte;
 
-	public OberflaecheUI(Bilderverwalter bilderverwalter)
+	public OberflaecheUI(Bilderverwalter bilderverwalter, String spielername)
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1000, 1000);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setTitle("DHPoly");
+		frame.setTitle("DHPoly - " + spielername);
 
 		frame.setIconImage(bilderverwalter.getBild(Bilderverwalter.LOGO).getImage());
 		frame.setLayout(new BorderLayout());

@@ -5,6 +5,7 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.oberflaeche.Oberflaeche;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
@@ -20,6 +21,9 @@ public class SpielUITest // NOSONAR
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Alex", einstellungen, spiel));
 
-		Oberflaeche.getInstance().zeigeKomplettesFenster(new SpielUI(spiel));
+		for (Spieler spieler : spiel.getSpieler())
+		{
+			Oberflaeche.getInstance().zeigeKomplettesFenster(new SpielUI(spiel, spieler));
+		}
 	}
 }

@@ -77,8 +77,15 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{
+		// TODO nur einem Spieler zeigen
+
+		Spieler handelspartner = transaktion.getHandelspartner();
+		Spieler anbietender = transaktion.getHandelspartner();
 		Oberflaeche.getInstance().zeigeAufRand("Handel",
-				new HandelUI(transaktion.getAnbietender(), transaktion.getHandelspartner(), transaktion));
+				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), handelspartner);
+		Oberflaeche.getInstance().zeigeAufRand("Handel - anbietender",
+				new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion), anbietender);
+
 	}
 
 	@Override
@@ -86,7 +93,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
 		{
-			Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse, this));
+			Oberflaeche.getInstance().zeigeAufRand("Kaufen", new StrasseKaufenUI(strasse, this), this);
 		}
 	}
 

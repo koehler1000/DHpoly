@@ -86,18 +86,19 @@ public class SpielerUI extends JPanel implements Beobachter
 
 	private void oeffneKontoauszugElementFactory()
 	{
-		Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler));
+		Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(), new KontoauszugUI(spieler),
+				spieler);
 	}
 
 	private void oeffneHausbauElementFactory()
 	{
 		HaeuserUI pnlHaeuser = new HaeuserUI(spieler.getFelder());
-		Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser);
+		Oberflaeche.getInstance().zeigeAufRand("Häuser", pnlHaeuser, spieler);
 	}
 
 	private void oeffneHandelElementFactory()
 	{
-		Oberflaeche.getInstance().zeigeAufRand("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
+		Oberflaeche.getInstance().zeigeAufRand("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler), spieler);
 	}
 
 	@Override
