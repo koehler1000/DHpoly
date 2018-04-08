@@ -29,7 +29,7 @@ public class SpielUIVerwalter
 	{
 		if (!ui.containsKey(spieler))
 		{
-			SpielfeldAnsicht ansicht = new SpielfeldAnsicht();
+			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
 			ui.put(spieler, ansicht);
 			fenster.zeigeSpielansicht(ansicht, spieler.getName());
 		}
@@ -108,10 +108,4 @@ public class SpielUIVerwalter
 	// nachricht));
 	// }
 	// }
-
-	public void setNichtAnDerReihe(Spieler spieler)
-	{
-		Optional<SpielfeldAnsicht> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(e -> e.setAnDerReihe(false));
-	}
 }

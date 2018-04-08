@@ -14,17 +14,14 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
-import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.karte.Karte;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.control.SpielerUnimplemented;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
-import observerpattern.Beobachter;
 
 public class SpielImplTest
 {
@@ -136,13 +133,8 @@ public class SpielImplTest
 
 	private Spieler getSpieler(boolean gewinntImmer)
 	{
-		return new Spieler()
+		return new SpielerUnimplemented()
 		{
-
-			@Override
-			public void zeigeTransaktionsvorschlag(Transaktion transaktion)
-			{}
-
 			@Override
 			public void ausscheiden()
 			{
@@ -154,26 +146,6 @@ public class SpielImplTest
 			{
 				hatGewonnen = true;
 			}
-
-			@Override
-			public void zeigeKaufmoeglichkeit(Strasse strasse)
-			{}
-
-			@Override
-			public void zeigeKarte(Karte karte)
-			{}
-
-			@Override
-			public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
-			{}
-
-			@Override
-			public void setFeldNr(int feldNrSoll)
-			{}
-
-			@Override
-			public void setAkutellerSpieler(boolean isAktuell)
-			{}
 
 			@Override
 			public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
@@ -192,80 +164,6 @@ public class SpielImplTest
 			{
 				return false;
 			}
-
-			@Override
-			public int getSpielerNr()
-			{
-				return 0;
-			}
-
-			@Override
-			public int getRessourcenWerte(Ressource ressource)
-			{
-				return 0;
-			}
-
-			@Override
-			public List<RessourcenDatensatz> getRessourcenTransaktionen()
-			{
-				return null;
-			}
-
-			@Override
-			public String getName()
-			{
-				return null;
-			}
-
-			@Override
-			public int getFeldNr()
-			{
-				return 0;
-			}
-
-			@Override
-			public void einzahlen(List<RessourcenDatensatz> datensaetze)
-			{}
-
-			@Override
-			public void einzahlen(RessourcenDatensatz datensatz)
-			{}
-
-			@Override
-			public void auszahlen(List<RessourcenDatensatz> datensaetze)
-			{}
-
-			@Override
-			public void auszahlen(RessourcenDatensatz datensatz)
-			{}
-
-			@Override
-			public void addBeobachterHinzu(Beobachter beobachter)
-			{}
-
-			@Override
-			public List<Feld> getFelder()
-			{
-				return null;
-			}
-
-			@Override
-			public void feldHinzu(Feld feld)
-			{}
-
-			@Override
-			public void feldWeg(Feld feld)
-			{}
-
-			@Override
-			public void setSpielerNr(int nr)
-			{}
-
-			@Override
-			public boolean hatVerloren()
-			{
-				return false;
-			}
 		};
-	}
+	};
 }

@@ -2,17 +2,18 @@ package de.dhpoly.spieler.control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.view.SpielAnsichtUI;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
 import observerpattern.Beobachter;
@@ -28,7 +29,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private int spielerNr;
 	private boolean verloren = false;
 
-	private SpielAnsichtUI ui;
+	private Optional<SpielfeldAnsicht> ui;
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -46,11 +47,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		{
 			einzahlen(ressourcenDatensatz);
 		}
-	}
-
-	public void setSpielAnsichtUI(SpielAnsichtUI ui)
-	{
-		this.ui = ui;
 	}
 
 	@Override
@@ -261,5 +257,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public boolean hatVerloren()
 	{
 		return verloren;
+	}
+
+	@Override
+	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
+	{
+		ui = Optional.of(ansicht);
 	}
 }
