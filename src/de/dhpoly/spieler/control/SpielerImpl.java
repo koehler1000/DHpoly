@@ -12,6 +12,7 @@ import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.view.SpielAnsichtUI;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
 import observerpattern.Beobachter;
@@ -26,6 +27,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private List<Feld> felder = new ArrayList<>();
 	private int spielerNr;
 	private boolean verloren = false;
+
+	private SpielAnsichtUI ui;
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -43,6 +46,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		{
 			einzahlen(ressourcenDatensatz);
 		}
+	}
+
+	public void setSpielAnsichtUI(SpielAnsichtUI ui)
+	{
+		this.ui = ui;
 	}
 
 	@Override

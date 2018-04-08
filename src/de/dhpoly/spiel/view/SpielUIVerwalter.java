@@ -8,7 +8,8 @@ import java.util.Optional;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.view.OberflaecheUI;
+import de.dhpoly.oberflaeche.view.Fenster;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
@@ -16,16 +17,22 @@ public class SpielUIVerwalter
 {
 	private boolean animationen = true;
 
-	private Map<Spieler, OberflaecheUI> ui = new HashMap<>();
+	private Map<Spieler, SpielfeldAnsicht> ui = new HashMap<>();
+	private Fenster fenster;
+
+	public SpielUIVerwalter()
+	{
+		fenster = new Fenster(new Bilderverwalter());
+	}
 
 	public void createOberflaeche(Spieler spieler, Spiel spiel)
 	{
 		if (!ui.containsKey(spieler))
 		{
-			ui.put(spieler, new OberflaecheUI(new Bilderverwalter(), spieler.getName()));
+			SpielfeldAnsicht ansicht = new SpielfeldAnsicht();
+			ui.put(spieler, ansicht);
+			fenster.zeigeSpielansicht(ansicht, spieler.getName());
 		}
-
-		zeigeKomplettesFenster(new SpielAnsichtUI(spiel, ElementFactory.getTabbedPane()), spieler);
 	}
 
 	public void setAnimationen(boolean value)
@@ -35,7 +42,7 @@ public class SpielUIVerwalter
 
 	public void zeigeAufRand(String beschreibung, Component component, Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		Optional<SpielfeldAnsicht> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
 		oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
 	}
 
@@ -44,25 +51,26 @@ public class SpielUIVerwalter
 	// Spieler aktuellerSpieler = spiel.getAktuellerSpieler();
 	// oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
 	// }
-
-	public void zeigeKomplettesFenster(Component component)
-	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
-		{
-			// FIXME Componenten können nur einen Parent haben
-			uiSpieler.getValue().zeigeKomplettesFenster(component);
-		}
-	}
-
-	public void zeigeKomplettesFenster(Component component, Spieler spieler)
-	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(e -> e.zeigeKomplettesFenster(component));
-	}
+	//
+	// public void zeigeKomplettesFenster(Component component)
+	// {
+	// for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
+	// {
+	// // FIXME Componenten können nur einen Parent haben
+	// // uiSpieler.getValue().zeigeKomplettesFenster(component);
+	// }
+	// }
+	//
+	// public void zeigeKomplettesFenster(Component component, Spieler spieler)
+	// {
+	// Optional<SpielfeldAnsicht> oberflaecheSpieler =
+	// Optional.ofNullable(ui.get(spieler));
+	// oberflaecheSpieler.ifPresent(e -> e.zeigeKomplettesFenster(component));
+	// }
 
 	public void leereRand()
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
 		{
 			uiSpieler.getValue().leereRand();
 		}
@@ -70,23 +78,13 @@ public class SpielUIVerwalter
 
 	public void leereRand(Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(OberflaecheUI::leereRand);
-	}
-
-	public Component getRand(Spieler spieler, Spiel spiel)
-	{
-		if (!ui.containsKey(spieler))
-		{
-			this.createOberflaeche(spieler, spiel);
-		}
-
-		return ui.get(spieler).getRand();
+		Optional<SpielfeldAnsicht> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		oberflaecheSpieler.ifPresent(SpielfeldAnsicht::leereRand);
 	}
 
 	public void zeigeNachricht(String nachricht)
 	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
+		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
 		{
 			uiSpieler.getValue().zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht));
 		}
@@ -102,17 +100,18 @@ public class SpielUIVerwalter
 		return animationen;
 	}
 
-	public void zeigeNachricht(String titel, String nachricht)
-	{
-		for (Entry<Spieler, OberflaecheUI> uiSpieler : ui.entrySet())
-		{
-			uiSpieler.getValue().zeigeKomplettesFenster(ElementFactory.getNachrichtPanel(titel, nachricht));
-		}
-	}
+	// public void zeigeNachricht(String titel, String nachricht)
+	// {
+	// for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
+	// {
+	// uiSpieler.getValue().zeigeKomplettesFenster(ElementFactory.getNachrichtPanel(titel,
+	// nachricht));
+	// }
+	// }
 
 	public void setNichtAnDerReihe(Spieler spieler)
 	{
-		Optional<OberflaecheUI> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(e -> e.setNichtAnDerReihe());
+		Optional<SpielfeldAnsicht> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
+		oberflaecheSpieler.ifPresent(e -> e.setAnDerReihe(false));
 	}
 }

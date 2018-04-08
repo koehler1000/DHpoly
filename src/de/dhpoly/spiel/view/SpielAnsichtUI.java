@@ -18,6 +18,8 @@ public class SpielAnsichtUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
+	private JButton butWeiter = new JButton();
+
 	public SpielAnsichtUI(Spiel spiel, Component randAnsicht)
 	{
 		ElementFactory.bearbeitePanel(this);
@@ -42,7 +44,7 @@ public class SpielAnsichtUI extends JPanel
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
-		JButton butWeiter = ElementFactory.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
+		butWeiter = ElementFactory.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
 		butWeiter.addActionListener(e -> {
 			spiel.naechsterSchritt();
 			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
@@ -50,5 +52,10 @@ public class SpielAnsichtUI extends JPanel
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
 		this.add(pnlWest, BorderLayout.WEST);
+	}
+
+	public void setAnDerReihe(boolean value)
+	{
+		butWeiter.setEnabled(value);
 	}
 }

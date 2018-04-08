@@ -48,14 +48,4 @@ public class OberflaecheUI
 	{
 		pnlInhalt.removeAll();
 	}
-
-	public Component getRand()
-	{
-		return pnlInhalt;
-	}
-
-	public void setNichtAnDerReihe()
-	{
-		// TODO Oberfläche teilweise sperren
-	}
 }
