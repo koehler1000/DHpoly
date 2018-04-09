@@ -74,4 +74,6 @@ public interface Spieler
 	void sperreOberflaeche(Transaktion transaktion);
 
 	void zeigeHausbauMoeglichkeit();
+
+	void loescheRand();
 }

@@ -282,4 +282,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void loescheRand()
+	{
+		ui.ifPresent(SpielfeldAnsicht::leereRand);
+	}
 }

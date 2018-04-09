@@ -37,6 +37,7 @@ public class StrasseKaufenUI extends JPanel
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
 		strasse.kaufe(spieler);
+		spieler.loescheRand();
 		// FIXME
 		// Oberflaeche.getInstance().leereRand();
 	}

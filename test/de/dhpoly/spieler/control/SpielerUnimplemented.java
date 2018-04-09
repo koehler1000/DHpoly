@@ -158,4 +158,8 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{}
+
+	@Override
+	public void loescheRand()
+	{}
 }
