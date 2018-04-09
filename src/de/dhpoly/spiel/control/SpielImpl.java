@@ -145,9 +145,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		// TODO Implementation
 		// jeder der Holz oder Stein-Ressourcenquellen hat, soll je nach Einstellung
 		// Ressourcen erhalten
-		// FehlerImpl.fehlerAufgetreten(
-		// "SpielImpl teilt nicht die entsprechenden Ressourcen zu (siehe
-		// 'vergebeRessourcen();'");
 	}
 
 	@Override
