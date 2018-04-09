@@ -32,7 +32,7 @@ Interesting and crazy events and dynamic game changes provide a completely new g
 
 #### Trading and making business:
 
-When playing Monopoly playing and making the smartest decision for your Business Play a very important role.
+When playing Monopoly trading and making the smartest decision for your Business plays a very important role.
 
 #### AI (artificial intelligence):
 
