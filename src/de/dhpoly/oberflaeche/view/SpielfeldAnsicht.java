@@ -162,10 +162,9 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
-	public void zeigeHandelOberflaeche(Spieler anbieter, Spieler handelsPartner)
+	public void zeigeHandelOberflaeche(Spieler handelsPartner)
 	{
-		// TODO Handel als Object
-		// TODO HandelUI mit Handel-Objekt
+		// TODO null ersetzen
 		hinzu("Handel", null, new HandelUI(spieler, handelsPartner));
 	}
 }

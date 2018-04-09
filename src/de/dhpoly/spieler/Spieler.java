@@ -77,7 +77,7 @@ public interface Spieler
 
 	void loescheRand();
 
-	void zeigeHandelOberflaeche(Spieler spieler, Spieler handelspartner);
+	void zeigeHandelOberflaeche(Spieler handelspartner);
 
 	void zeigeNachricht(String nachricht);
 }

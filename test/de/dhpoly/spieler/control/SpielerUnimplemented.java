@@ -164,7 +164,7 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void zeigeHandelOberflaeche(Spieler spieler, Spieler handelspartner)
+	public void zeigeHandelOberflaeche(Spieler handelspartner)
 	{}
 
 	@Override

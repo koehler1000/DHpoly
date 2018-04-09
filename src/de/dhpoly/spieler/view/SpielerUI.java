@@ -62,7 +62,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.add(butKontoauszug);
 
 		butHandel = ElementFactory.getButton("Handeln");
-		butHandel.addActionListener(e -> ansicht.get().zeigeHandelOberflaeche(spieler, spiel.getAktuellerSpieler()));
+		butHandel.addActionListener(e -> ansicht.get().zeigeHandelOberflaeche(spieler));
 
 		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);
