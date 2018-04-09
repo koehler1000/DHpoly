@@ -12,12 +12,20 @@ public class Transaktion
 {
 	private List<Feld> felderEigentumswechsel = new ArrayList<>();
 
-	private List<RessourcenDatensatz> ressourcenGeben;
-	private List<RessourcenDatensatz> ressourcenBekommen;
+	private List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
+	private List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
 
 	private Spieler anbietender;
 	private Spieler handelspartner;
 
+	public Transaktion(Spieler anbietender, Spieler handelspartner)
+	{
+		this.anbietender = anbietender;
+		this.handelspartner = handelspartner;
+	}
+
+	// TODO neuen Konstruktor verwenden und getter und setter verwenden.
+	@Deprecated
 	public Transaktion(List<Feld> felderEigentumswechsel, List<RessourcenDatensatz> ressourcenGeben,
 			List<RessourcenDatensatz> ressourcenBekommen, Spieler anbietender, Spieler handelspartner)
 	{
