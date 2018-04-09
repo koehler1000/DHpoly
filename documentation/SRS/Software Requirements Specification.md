@@ -32,7 +32,7 @@ Interesting and crazy events and dynamic game changes provide a completely new g
 
 #### Trading and making business:
 
-When playing Monopoly playing and making the smartest decision for your Business Play a very important role.
+When playing Monopoly trading and making the smartest decision for your Business plays a very important role.
 
 #### AI (artificial intelligence):
 
@@ -40,7 +40,7 @@ We want to make it possible to play Monopoly even when your friends are not arou
 
 #### Multiplayer:
 
-Multiplayer is possible via the internet or on the same device locally.
+Multiplayer is possible in the local network or on the same device locally.
 
 ### 3.1 Definitions, Acronyms and Abbreviations
 
