@@ -7,18 +7,20 @@ import javax.swing.JPanel;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 
-public class StrasseKaufenUI extends JPanel
+public class StrasseKaufenUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
-	public StrasseKaufenUI(Strasse strasse, Spieler spieler)
+	public StrasseKaufenUI(Strasse strasse, Spieler spieler, SpielfeldAnsicht ansicht)
 	{
-		ElementFactory.bearbeitePanel(this);
+		super(ansicht);
 		this.setLayout(new GridLayout(1, 2, 10, 10));
 
-		this.add(new StrasseInfoUI(strasse));
+		this.add(new StrasseInfoUI(strasse, ansicht));
 
 		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));

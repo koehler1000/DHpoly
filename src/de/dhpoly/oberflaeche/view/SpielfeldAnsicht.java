@@ -110,7 +110,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
 	{
-		tabRand.addTab("Kaufen", new StrasseKaufenUI(strasse, spieler));
+		tabRand.addTab("Kaufen", new StrasseKaufenUI(strasse, spieler, this));
 	}
 
 	public void zeigeKarte(Karte karte)

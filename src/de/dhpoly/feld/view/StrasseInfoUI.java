@@ -12,21 +12,23 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
-public class StrasseInfoUI extends JPanel
+public class StrasseInfoUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseInfoUI(Strasse feld)
+	public StrasseInfoUI(Strasse feld, SpielfeldAnsicht ansicht)
 	{
-		ElementFactory.bearbeitePanel(this);
+		super(ansicht);
 
 		JPanel frameMieten = ElementFactory.erzeugePanel();
 		frameMieten.setLayout(new GridLayout(2, 1));

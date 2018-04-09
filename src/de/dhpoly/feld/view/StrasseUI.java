@@ -55,7 +55,7 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 
 	private void zeigeDetails()
 	{
-		ansicht.ifPresent(e -> e.zeigeAufRand("Straﬂe", new StrasseInfoUI(feld)));
+		ansicht.ifPresent(e -> e.zeigeAufRand("Straﬂe", new StrasseInfoUI(feld, ansicht.get())));
 	}
 
 	private void setFarbe(Color farbe)
