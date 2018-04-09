@@ -125,6 +125,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeNachricht(String string)
 	{
+		leereRand();
 		tabRand.addTab("Nachricht", ElementFactory.getNachrichtPanel("Nachricht", string));
 	}
 

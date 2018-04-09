@@ -24,6 +24,6 @@ public class Oberflaeche extends JPanel
 
 	protected void sperren()
 	{
-
+		this.setEnabled(false);
 	}
 }
