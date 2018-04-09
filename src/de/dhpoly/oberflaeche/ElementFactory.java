@@ -13,7 +13,6 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.bilderverwalter.view.Bild;
-import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 
 public class ElementFactory
@@ -155,15 +154,7 @@ public class ElementFactory
 		return tabbedPane;
 	}
 
-	@Deprecated
 	public static void bearbeitePanel(JPanel pnl)
-	{
-		pnl.setBackground(FARBE_DESIGN);
-		pnl.setLayout(new BorderLayout(10, 10));
-		pnl.setBorder(new LineBorder(FARBE_DESIGN, 10));
-	}
-
-	public static void bearbeiteOberflaeche(Oberflaeche pnl)
 	{
 		pnl.setBackground(FARBE_DESIGN);
 		pnl.setLayout(new BorderLayout(10, 10));

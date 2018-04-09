@@ -14,7 +14,7 @@ public class Oberflaeche extends JPanel
 	public Oberflaeche(SpielfeldAnsicht ansicht)
 	{
 		this.ansicht = Optional.ofNullable(ansicht);
-		ElementFactory.bearbeiteOberflaeche(this);
+		ElementFactory.bearbeitePanel(this);
 	}
 
 	protected void entfernen()
