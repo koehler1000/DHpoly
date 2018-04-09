@@ -144,8 +144,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void sperreOberflaeche(Transaktion transaktion)
 	{
-		// TODO später nur transaktion und nicht alles entfernen
-		leereRand();
+		loesche(transaktion);
 	}
 
 	public void zeigeKontoauszug(Spieler spieler)
