@@ -82,14 +82,6 @@ public class SpielerUI extends JPanel implements Beobachter
 		spieler.addBeobachterHinzu(this);
 	}
 
-	private void oeffneKontoauszugElementFactory()
-	{
-		// FIXME
-		// Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(),
-		// new KontoauszugUI(spieler),
-		// spieler);
-	}
-
 	private void oeffneHandelElementFactory()
 	{
 		spiel.zeigeAktuellemSpieler("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
