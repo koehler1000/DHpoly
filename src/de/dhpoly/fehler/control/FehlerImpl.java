@@ -19,7 +19,6 @@ public class FehlerImpl implements Fehler
 	{
 		stillerFehler(nachricht);
 		ansicht.ifPresent(e -> e.zeigeFehler(nachricht));
-		// FIXME new FehlerUI(nachricht);
 	}
 
 	public void fehlerAufgetreten(Exception ex)
