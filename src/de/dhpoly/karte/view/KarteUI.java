@@ -1,17 +1,16 @@
 package de.dhpoly.karte.view;
 
-import javax.swing.JPanel;
-
 import de.dhpoly.karte.Karte;
-import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class KarteUI extends JPanel
+public class KarteUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
-	public KarteUI(Karte karte)
+	public KarteUI(Karte karte, SpielfeldAnsicht ansicht)
 	{
-		ElementFactory.bearbeitePanel(this);
+		super(ansicht);
 
 		// TODO Beschreibung und Titel anzeigen
 	}

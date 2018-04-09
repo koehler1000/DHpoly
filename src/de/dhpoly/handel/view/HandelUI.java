@@ -13,11 +13,13 @@ import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
-public class HandelUI extends JPanel
+public class HandelUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 	private List<RessourceAnbietenUI> ressourcenGeben = new ArrayList<>();
@@ -30,8 +32,10 @@ public class HandelUI extends JPanel
 
 	private transient Handel handel = new HandelImpl();
 
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen)
+	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, SpielfeldAnsicht ansicht)
 	{
+		super(ansicht);
+
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
 
@@ -47,8 +51,6 @@ public class HandelUI extends JPanel
 			butFertig.setText("Annehmen");
 		}
 		this.vorgeschlagen = vorgeschlagen;
-
-		ElementFactory.bearbeitePanel(this);
 
 		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
 		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
@@ -79,7 +81,7 @@ public class HandelUI extends JPanel
 
 	public HandelUI(Spieler spieler, Spieler handelsPartner)
 	{
-		this(spieler, handelsPartner, null);
+		this(spieler, handelsPartner, null, null);
 	}
 
 	private void handelAnbieten()
