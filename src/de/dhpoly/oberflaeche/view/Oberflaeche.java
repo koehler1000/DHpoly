@@ -9,7 +9,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 public class Oberflaeche extends JPanel
 {
 	private static final long serialVersionUID = 1L;
-	protected Optional<SpielfeldAnsicht> ansicht;
+	protected transient Optional<SpielfeldAnsicht> ansicht;
 
 	public Oberflaeche(SpielfeldAnsicht ansicht)
 	{

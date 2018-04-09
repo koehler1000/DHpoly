@@ -17,7 +17,7 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 	private transient Spiel spiel;
-	private Optional<SpielfeldAnsicht> ansicht;
+	private transient Optional<SpielfeldAnsicht> ansicht;
 
 	public SpielerUebersichtUI(Spiel spiel, Optional<SpielfeldAnsicht> ansicht)
 	{
