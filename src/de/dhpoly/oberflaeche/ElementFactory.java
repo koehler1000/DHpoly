@@ -141,9 +141,6 @@ public class ElementFactory
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);
 
-		// FIXME kein Zugriff auf die Oberfläche!
-		// Oberflaeche.getInstance().zeigeAufRand("Info", pnlInhalt, spieler);
-
 		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
 		butText.addActionListener(e -> pnlInhalt.setVisible(false));
 

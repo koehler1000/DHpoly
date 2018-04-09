@@ -25,7 +25,7 @@ public class FeldUI extends JPanel implements Beobachter
 	private JPanel pnlSpieler = new JPanel();
 	private transient Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
-	protected Optional<SpielfeldAnsicht> ansicht;
+	protected transient Optional<SpielfeldAnsicht> ansicht;
 
 	public FeldUI(Feld feld, Optional<SpielfeldAnsicht> ansicht)
 	{

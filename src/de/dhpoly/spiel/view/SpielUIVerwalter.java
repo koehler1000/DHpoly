@@ -48,28 +48,6 @@ public class SpielUIVerwalter
 		oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
 	}
 
-	// public void zeigeAufRand(String beschreibung, Component component)
-	// {
-	// Spieler aktuellerSpieler = spiel.getAktuellerSpieler();
-	// oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
-	// }
-	//
-	// public void zeigeKomplettesFenster(Component component)
-	// {
-	// for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
-	// {
-	// // FIXME Componenten können nur einen Parent haben
-	// // uiSpieler.getValue().zeigeKomplettesFenster(component);
-	// }
-	// }
-	//
-	// public void zeigeKomplettesFenster(Component component, Spieler spieler)
-	// {
-	// Optional<SpielfeldAnsicht> oberflaecheSpieler =
-	// Optional.ofNullable(ui.get(spieler));
-	// oberflaecheSpieler.ifPresent(e -> e.zeigeKomplettesFenster(component));
-	// }
-
 	public void leereRand()
 	{
 		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
@@ -101,13 +79,4 @@ public class SpielUIVerwalter
 	{
 		return animationen;
 	}
-
-	// public void zeigeNachricht(String titel, String nachricht)
-	// {
-	// for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
-	// {
-	// uiSpieler.getValue().zeigeKomplettesFenster(ElementFactory.getNachrichtPanel(titel,
-	// nachricht));
-	// }
-	// }
 }
