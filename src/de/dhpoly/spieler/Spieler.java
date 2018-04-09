@@ -71,5 +71,10 @@ public interface Spieler
 	@Deprecated // stattdessen zeigeXY(Datentyp) verwenden
 	Optional<SpielfeldAnsicht> getUI();
 
+	void zeigeTransaktionErfolgreich(Transaktion transaktion);
+
+	void zeigeTransaktionGescheitert(Transaktion transaktion);
+
+	@Deprecated
 	void informiereErfolgreicheTransaktion(Transaktion transaktion);
 }

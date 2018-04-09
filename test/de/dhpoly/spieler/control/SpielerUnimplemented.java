@@ -153,4 +153,18 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void informiereErfolgreicheTransaktion(Transaktion transaktion)
 	{}
+
+	@Override
+	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void zeigeTransaktionGescheitert(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }
