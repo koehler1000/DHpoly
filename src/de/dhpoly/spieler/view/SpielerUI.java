@@ -53,7 +53,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
 		butHausBau = ElementFactory.getButton("Häuser" + System.lineSeparator() + "anzeigen");
-		butHausBau.addActionListener(e -> oeffneHausbauElementFactory());
+		butHausBau.addActionListener(e -> spieler.zeigeHausbauMoeglichkeit());
 		butHausBau.setForeground(backcolor);
 		pnlSueden.add(butHausBau);
 
@@ -86,12 +86,6 @@ public class SpielerUI extends JPanel implements Beobachter
 		// Oberflaeche.getInstance().zeigeAufRand("Kontostand von " + spieler.getName(),
 		// new KontoauszugUI(spieler),
 		// spieler);
-	}
-
-	@Deprecated
-	private void oeffneHausbauElementFactory()
-	{
-		spieler.getUI().ifPresent(e -> e.zeigeHausbaumoeglichkeit(spieler.getFelder()));
 	}
 
 	private void oeffneHandelElementFactory()

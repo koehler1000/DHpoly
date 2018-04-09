@@ -256,18 +256,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public Optional<SpielfeldAnsicht> getUI()
-	{
-		return ui;
-	}
-
-	@Override
-	public void informiereErfolgreicheTransaktion(Transaktion transaktion)
-	{
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
 		// TODO Auto-generated method stub
@@ -283,6 +271,13 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 
 	@Override
 	public void sperreOberflaeche(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void zeigeHausbauMoeglichkeit()
 	{
 		// TODO Auto-generated method stub
 

@@ -1,7 +1,6 @@
 package de.dhpoly.spieler.control;
 
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -145,16 +144,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public Optional<SpielfeldAnsicht> getUI()
-	{
-		return Optional.ofNullable(null);
-	}
-
-	@Override
-	public void informiereErfolgreicheTransaktion(Transaktion transaktion)
-	{}
-
-	@Override
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{}
 
@@ -164,5 +153,9 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void sperreOberflaeche(Transaktion transaktion)
+	{}
+
+	@Override
+	public void zeigeHausbauMoeglichkeit()
 	{}
 }

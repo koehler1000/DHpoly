@@ -1,7 +1,6 @@
 package de.dhpoly.spieler;
 
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -68,15 +67,11 @@ public interface Spieler
 
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
 
-	@Deprecated // stattdessen zeigeXY(Datentyp) verwenden
-	Optional<SpielfeldAnsicht> getUI();
-
 	void zeigeTransaktionErfolgreich(Transaktion transaktion);
 
 	void zeigeTransaktionGescheitert(Transaktion transaktion);
 
-	@Deprecated
-	void informiereErfolgreicheTransaktion(Transaktion transaktion);
-
 	void sperreOberflaeche(Transaktion transaktion);
+
+	void zeigeHausbauMoeglichkeit();
 }
