@@ -121,4 +121,9 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		// TODO Auto-generated method stub
 	}
+
+	public void zeigeNachricht(String string)
+	{
+		// TODO Auto-generated method stub
+	}
 }

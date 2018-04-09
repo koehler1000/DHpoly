@@ -214,8 +214,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void gewonnen()
 	{
-		// FIXME
-		// Oberflaeche.getInstance().zeigeNachricht();
+		ui.ifPresent(e -> e.zeigeNachricht("Gewonnen"));
 	}
 
 	@Override
