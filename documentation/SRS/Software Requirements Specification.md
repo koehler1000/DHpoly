@@ -16,7 +16,7 @@ This SRS describes all specifications of DHPoly. Our game will be based on the u
 
 ## 3. Scope
 
-There are five major sectors we will be focusing on:
+There are six major sectors we will be focusing on:
 
 #### Playing field:
 
@@ -37,6 +37,10 @@ When playing Monopoly playing and making the smartest decision for your Business
 #### AI (artificial intelligence):
 
 We want to make it possible to play Monopoly even when your friends are not around. That for there will be opportunities to Play against programmed robots.
+
+#### Multiplayer:
+
+Multiplayer is possible via the internet or on the same device locally.
 
 ### 3.1 Definitions, Acronyms and Abbreviations
 
