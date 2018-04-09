@@ -123,7 +123,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.isNegative())
+		if (spielerAktuell.isNegative() || spielerAktuell.hatVerloren())
 		{
 			spieler.remove(spielerAktuell);
 			spielerAktuell.ausscheiden();
@@ -132,6 +132,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
+				sieger.gewonnen();
 				uiVerwalter.zeigeNachricht(sieger.getName() + " hat gewonnen");
 			}
 

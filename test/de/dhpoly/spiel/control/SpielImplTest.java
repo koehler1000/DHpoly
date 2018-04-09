@@ -15,7 +15,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.StrasseTest;
-import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -120,12 +119,14 @@ public class SpielImplTest
 		felder.add(StrasseTest.getDefaultStrasse());
 		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
 
+		Spieler sieger = getSpieler(true);
+
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 
 		spiel.naechsterSpieler();
 
-		// FIXME -> roter Test
+		assertThat(sieger.hatVerloren(), Is.is(false));
 		assertThat(hatGewonnen, Is.is(true));
 	}
 
@@ -146,21 +147,9 @@ public class SpielImplTest
 			}
 
 			@Override
-			public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
-			{
-				return false;
-			}
-
-			@Override
 			public boolean isNegative()
 			{
 				return !gewinntImmer;
-			}
-
-			@Override
-			public boolean isAktuellerSpieler()
-			{
-				return false;
 			}
 		};
 	};
