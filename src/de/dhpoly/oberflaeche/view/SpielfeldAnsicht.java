@@ -39,7 +39,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	private JTabbedPane tabRand;
 	private transient Spieler spieler;
 
-	private Map<Object, Oberflaeche> inhalte = new HashMap<>();
+	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, Spieler spieler)
 	{
