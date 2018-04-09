@@ -11,7 +11,7 @@ import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 
-public class StrasseKaufenUI extends Oberflaeche
+public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

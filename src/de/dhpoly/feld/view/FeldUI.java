@@ -17,7 +17,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
-public class FeldUI extends Oberflaeche implements Beobachter
+public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

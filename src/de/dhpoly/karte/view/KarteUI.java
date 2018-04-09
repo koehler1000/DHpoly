@@ -4,7 +4,7 @@ import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class KarteUI extends Oberflaeche
+public class KarteUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

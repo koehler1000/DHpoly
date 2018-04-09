@@ -19,7 +19,7 @@ import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
-public class HandelUI extends Oberflaeche
+public class HandelUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 	private List<RessourceAnbietenUI> ressourcenGeben = new ArrayList<>();
