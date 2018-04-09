@@ -120,7 +120,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
-		zeigeNachricht("Handel angenommen");
+		zeigeNachricht("Handel mit " + transaktion.getHandelspartner().getName() + " angenommen");
 	}
 
 	public void zeigeNachricht(String string)
