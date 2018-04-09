@@ -16,6 +16,8 @@ import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
+import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
@@ -107,5 +109,10 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
 	{
 		tabRand.addTab("Kaufen", new StrasseKaufenUI(strasse, spieler));
+	}
+
+	public void zeigeKarte(Karte karte)
+	{
+		tabRand.addTab(karte.getTitel(), new KarteUI(karte));
 	}
 }

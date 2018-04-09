@@ -95,9 +95,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-
-		// FIXME
-		// Oberflaeche.getInstance().zeigeNachricht(karte.getBeschreibung());
+		ui.ifPresent(e -> e.zeigeKarte(karte));
 	}
 
 	@Override
