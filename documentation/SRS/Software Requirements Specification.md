@@ -40,7 +40,7 @@ We want to make it possible to play Monopoly even when your friends are not arou
 
 #### Multiplayer:
 
-Multiplayer is possible via the internet or on the same device locally.
+Multiplayer is possible in the local network or on the same device locally.
 
 ### 3.1 Definitions, Acronyms and Abbreviations
 
