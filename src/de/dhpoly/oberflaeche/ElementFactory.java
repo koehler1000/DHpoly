@@ -154,6 +154,7 @@ public class ElementFactory
 		return tabbedPane;
 	}
 
+	@Deprecated
 	public static void bearbeitePanel(JPanel pnl)
 	{
 		pnl.setBackground(FARBE_DESIGN);

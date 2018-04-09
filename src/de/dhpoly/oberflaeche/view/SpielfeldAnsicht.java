@@ -99,7 +99,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeHausbaumoeglichkeit(List<Feld> felder)
 	{
-		tabRand.addTab("Häuser", new HaeuserUI(felder));
+		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
 	}
 
 	public void zeigeTransaktion(Transaktion transaktion)

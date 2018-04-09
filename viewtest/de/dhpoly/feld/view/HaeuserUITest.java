@@ -15,7 +15,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class HaeuserUITest //NOSONAR
+public class HaeuserUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -54,7 +54,7 @@ public class HaeuserUITest //NOSONAR
 		felder.add(strasse);
 		felder.add(strasse2);
 
-		frame.add(new HaeuserUI(felder));
+		frame.add(new HaeuserUI(felder, null));
 
 		List<RessourcenDatensatz> ressourcen = new ArrayList<>();
 		ressourcen.add(new RessourcenDatensatzImpl(Ressource.GELD, 100000));

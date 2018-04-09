@@ -3,19 +3,21 @@ package de.dhpoly.fehler.control;
 import java.io.IOException;
 
 import de.dhpoly.fehler.Fehler;
-import de.dhpoly.fehler.view.FehlerUI;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
 public class FehlerImpl implements Fehler
 {
-	private FehlerImpl()
+	SpielfeldAnsicht ansicht;
+
+	public FehlerImpl(SpielfeldAnsicht ansicht)
 	{
-		// keine Instanzen
+		this.ansicht = ansicht;
 	}
 
 	public static void fehlerAufgetreten(String nachricht)
 	{
 		stillerFehler(nachricht);
-		new FehlerUI(nachricht);
+		// FIXME new FehlerUI(nachricht);
 	}
 
 	public static void fehlerAufgetreten(Exception ex)
