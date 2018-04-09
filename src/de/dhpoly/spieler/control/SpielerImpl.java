@@ -84,7 +84,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
-		// FIXME
 		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
 		{
 			ui.ifPresent(e -> e.zeigeKaufmoeglichkeit(strasse, this));
