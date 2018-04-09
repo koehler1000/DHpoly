@@ -1,26 +1,28 @@
 package de.dhpoly.fehler.control;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import de.dhpoly.fehler.Fehler;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
 public class FehlerImpl implements Fehler
 {
-	SpielfeldAnsicht ansicht;
+	Optional<SpielfeldAnsicht> ansicht;
 
 	public FehlerImpl(SpielfeldAnsicht ansicht)
 	{
-		this.ansicht = ansicht;
+		this.ansicht = Optional.ofNullable(ansicht);
 	}
 
-	public static void fehlerAufgetreten(String nachricht)
+	public void fehlerAufgetreten(String nachricht)
 	{
 		stillerFehler(nachricht);
+		ansicht.ifPresent(e -> e.zeigeFehler(nachricht));
 		// FIXME new FehlerUI(nachricht);
 	}
 
-	public static void fehlerAufgetreten(Exception ex)
+	public void fehlerAufgetreten(Exception ex)
 	{
 		fehlerAufgetreten(ex.getMessage());
 	}

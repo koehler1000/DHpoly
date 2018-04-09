@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
@@ -166,5 +167,11 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		// TODO null ersetzen
 		hinzu("Handel", null, new HandelUI(spieler, handelsPartner));
+	}
+
+	public void zeigeFehler(String nachricht)
+	{
+		// TODO null ersetzen
+		hinzu("Fehler", null, new FehlerUI(nachricht, this));
 	}
 }

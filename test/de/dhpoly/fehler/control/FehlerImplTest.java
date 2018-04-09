@@ -7,16 +7,17 @@ public class FehlerImplTest
 {
 	@Ignore
 	@Test
-	public void fehlerNachricht() //NOSONAR
+	public void fehlerNachricht() // NOSONAR
 	{
-		FehlerImpl.fehlerAufgetreten("Testfehler aus JUnit. Der Fehler kann ignoriert werden.");
+		new FehlerImpl(null).fehlerAufgetreten("Testfehler aus JUnit. Der Fehler kann ignoriert werden.");
 	}
 
 	@Ignore
 	@Test
-	public void fehlerException() //NOSONAR
+	public void fehlerException() // NOSONAR
 	{
-		FehlerImpl.fehlerAufgetreten(new Exception("Testfehler aus JUnit. Der Fehler kann ignoriert werden."));
+		new FehlerImpl(null)
+				.fehlerAufgetreten(new Exception("Testfehler aus JUnit. Der Fehler kann ignoriert werden."));
 	}
 
 }
