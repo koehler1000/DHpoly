@@ -1,4 +1,4 @@
-package de.dhpoly.kartenstapel.view;
+package de.dhpoly.karte.view;
 
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 
-public class KartenOberflaecheVorschau
+public class KarteUITest // NOSONAR
 {
 	@Test
 	public void vorschau()
