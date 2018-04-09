@@ -119,11 +119,17 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
-		// TODO Auto-generated method stub
+		zeigeNachricht("Handel angenommen");
 	}
 
 	public void zeigeNachricht(String string)
 	{
-		// TODO Auto-generated method stub
+		tabRand.addTab("Nachricht", ElementFactory.getNachrichtPanel("Nachricht", string));
+	}
+
+	public void sperreOberflaeche(Transaktion transaktion)
+	{
+		// TODO später nur transaktion und nicht alles entfernen
+		leereRand();
 	}
 }

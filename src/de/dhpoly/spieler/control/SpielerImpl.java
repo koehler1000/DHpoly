@@ -260,15 +260,14 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionGescheitert(Transaktion transaktion)
 	{
-		// TODO Auto-generated method stub
-
+		ui.ifPresent(
+				e -> e.zeigeNachricht("Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt"));
 	}
 
 	@Override
 	public void sperreOberflaeche(Transaktion transaktion)
 	{
-		// TODO Auto-generated method stub
-
+		ui.ifPresent(e -> e.sperreOberflaeche(transaktion));
 	}
 
 	@Override
