@@ -274,8 +274,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
-		// TODO Auto-generated method stub
-
+		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(felder));
 	}
 
 	@Override
