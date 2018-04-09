@@ -2,7 +2,6 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Optional;
 
 import javax.swing.border.LineBorder;
 
@@ -16,7 +15,7 @@ public class LosfeldUI extends FeldUI implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public LosfeldUI(Losfeld feld, Optional<SpielfeldAnsicht> ansicht)
+	public LosfeldUI(Losfeld feld, SpielfeldAnsicht ansicht)
 	{
 		super(feld, ansicht);
 		this.setLayout(new BorderLayout());

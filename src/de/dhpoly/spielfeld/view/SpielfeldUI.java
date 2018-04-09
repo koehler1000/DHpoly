@@ -3,7 +3,6 @@ package de.dhpoly.spielfeld.view;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.List;
-import java.util.Optional;
 
 import javax.swing.JPanel;
 
@@ -17,17 +16,18 @@ import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
 import de.dhpoly.feld.view.StrasseUI;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class SpielfeldUI extends JPanel
+public class SpielfeldUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
 	private int felderProSeite;
 
-	public SpielfeldUI(List<Feld> spielfelder, Optional<SpielfeldAnsicht> ansicht)
+	public SpielfeldUI(List<Feld> spielfelder, SpielfeldAnsicht ansicht)
 	{
-		ElementFactory.bearbeitePanel(this);
+		super(ansicht);
 
 		felderProSeite = spielfelder.size() / 4;
 
@@ -81,7 +81,7 @@ public class SpielfeldUI extends JPanel
 		}
 	}
 
-	private Component getFeldUI(Feld feld, Optional<SpielfeldAnsicht> ansicht)
+	private Component getFeldUI(Feld feld, SpielfeldAnsicht ansicht)
 	{
 		if (feld instanceof Strasse)
 		{

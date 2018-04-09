@@ -27,7 +27,7 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseUI(Strasse feld, Optional<SpielfeldAnsicht> ansicht)
+	public StrasseUI(Strasse feld, SpielfeldAnsicht ansicht)
 	{
 		super(feld, ansicht);
 		this.feld = feld;

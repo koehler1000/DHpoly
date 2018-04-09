@@ -2,7 +2,6 @@ package de.dhpoly.spielfeld.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.swing.JFrame;
 
@@ -25,7 +24,7 @@ public class SpielfeldUITest // NOSONAR
 			felder.add(StrasseTest.getDefaultStrasse("Test " + i));
 		}
 
-		frame.add(new SpielfeldUI(felder, Optional.ofNullable(null)));
+		frame.add(new SpielfeldUI(felder, null));
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 150);

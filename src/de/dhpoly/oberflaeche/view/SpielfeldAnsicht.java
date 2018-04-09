@@ -46,7 +46,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		butWeiter = ElementFactory.getButton("Spiel beginnen");
 		tabRand = ElementFactory.getTabbedPane();
 
-		this.add(new SpielfeldUI(spiel.getFelder(), Optional.of(this)));
+		this.add(new SpielfeldUI(spiel.getFelder(), this));
 
 		this.add(new SpielerUebersichtUI(spiel, Optional.of(this)), BorderLayout.EAST);
 

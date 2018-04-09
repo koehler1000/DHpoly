@@ -2,7 +2,6 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Optional;
 
 import javax.swing.border.LineBorder;
 
@@ -18,7 +17,7 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
 
 	private transient Ressourcenfeld feld;
 
-	public RessourcenfeldUI(Ressourcenfeld feld, Optional<SpielfeldAnsicht> ansicht)
+	public RessourcenfeldUI(Ressourcenfeld feld, SpielfeldAnsicht ansicht)
 	{
 		super(feld, ansicht);
 		this.feld = feld;

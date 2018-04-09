@@ -1,7 +1,6 @@
 package de.dhpoly.feld.view;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import javax.swing.JFrame;
 
@@ -12,8 +11,7 @@ public class EreignisfeldUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
-		EreignisfeldUI ui = new EreignisfeldUI(new Ereignisfeld(new KartenstapelImpl(new ArrayList<>())),
-				Optional.ofNullable(null));
+		EreignisfeldUI ui = new EreignisfeldUI(new Ereignisfeld(new KartenstapelImpl(new ArrayList<>())), null);
 
 		JFrame frame = new JFrame("EreignisfeldUITest");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
