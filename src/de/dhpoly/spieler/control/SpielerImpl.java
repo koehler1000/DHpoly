@@ -256,8 +256,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
-		// TODO Auto-generated method stub
-
+		ui.ifPresent(e -> e.zeigeTransaktionErfolgreich(transaktion));
 	}
 
 	@Override

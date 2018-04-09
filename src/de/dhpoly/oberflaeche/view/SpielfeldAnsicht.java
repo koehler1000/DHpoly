@@ -115,4 +115,9 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		tabRand.addTab(karte.getTitel(), new KarteUI(karte));
 	}
+
+	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+	}
 }
