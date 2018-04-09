@@ -32,9 +32,8 @@ public class HandelImpl implements Handel
 		transaktion.getHandelspartner().einzahlen(transaktion.getRessourcenGeben());
 		transaktion.getHandelspartner().auszahlen(transaktion.getRessourcenBekommen());
 
-		// TODO Funktionen implementieren
-		// transaktion.getAnbietender().zeigeTransaktionsvorschlagAngenommen(transaktion);
-		// transaktion.getHandelspartner().zeigeTransaktionsvorschlagAngenommen(transaktion);
+		transaktion.getAnbietender().zeigeTransaktionErfolgreich(transaktion);
+		transaktion.getHandelspartner().zeigeTransaktionErfolgreich(transaktion);
 	}
 
 	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler anbietender, Spieler handelspartner)
