@@ -77,4 +77,6 @@ public interface Spieler
 
 	@Deprecated
 	void informiereErfolgreicheTransaktion(Transaktion transaktion);
+
+	void sperreOberflaeche(Transaktion transaktion);
 }

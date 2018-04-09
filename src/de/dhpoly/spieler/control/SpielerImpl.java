@@ -280,4 +280,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void sperreOberflaeche(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }

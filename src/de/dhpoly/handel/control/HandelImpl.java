@@ -16,7 +16,9 @@ public class HandelImpl implements Handel
 	{
 		// TODO UI des Spielers verstecken, stattdessen
 		// getAnbietender.versteckeTransaktion oder sperreTransaktion
-		transaktion.getAnbietender().getUI().ifPresent(e -> e.leereRand());
+		transaktion.getAnbietender().sperreOberflaeche(transaktion);
+		
+		transaktion.getAnbietender().zeigeTransaktionsvorschlag(transaktion);
 		transaktion.getHandelspartner().zeigeTransaktionsvorschlag(transaktion);
 	}
 
