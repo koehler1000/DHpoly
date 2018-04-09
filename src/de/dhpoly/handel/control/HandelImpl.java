@@ -14,11 +14,7 @@ public class HandelImpl implements Handel
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion)
 	{
-		// TODO UI des Spielers verstecken, stattdessen
-		// getAnbietender.versteckeTransaktion oder sperreTransaktion
 		transaktion.getAnbietender().sperreOberflaeche(transaktion);
-		
-		transaktion.getAnbietender().zeigeTransaktionsvorschlag(transaktion);
 		transaktion.getHandelspartner().zeigeTransaktionsvorschlag(transaktion);
 	}
 
