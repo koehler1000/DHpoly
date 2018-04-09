@@ -7,6 +7,8 @@ import de.dhpoly.oberflaeche.ElementFactory;
 
 public class KarteUI extends JPanel
 {
+	private static final long serialVersionUID = 1L;
+
 	public KarteUI(Karte karte)
 	{
 		ElementFactory.bearbeitePanel(this);
