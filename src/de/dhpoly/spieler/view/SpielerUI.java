@@ -14,7 +14,6 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
@@ -28,7 +27,7 @@ public class SpielerUI extends JPanel implements Beobachter
 	private JButton butHausBau;
 	private JButton butHandel;
 
-	public SpielerUI(Spieler spieler, Spiel spiel, Optional<SpielfeldAnsicht> ansicht)
+	public SpielerUI(Spieler spieler, Optional<SpielfeldAnsicht> ansicht)
 	{
 		this.spieler = spieler;
 

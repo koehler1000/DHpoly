@@ -41,8 +41,8 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 			this.addTab("Alle Spieler", pnlAlleSpieler);
 			for (Spieler spieler : spiel.getSpieler())
 			{
-				pnlAlleSpieler.add(new SpielerUI(spieler, spiel, ansicht));
-				this.addTab(spieler.getName(), new SpielerUI(spieler, spiel, ansicht));
+				pnlAlleSpieler.add(new SpielerUI(spieler, ansicht));
+				this.addTab(spieler.getName(), new SpielerUI(spieler, ansicht));
 			}
 		}
 	}

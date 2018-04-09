@@ -1,20 +1,16 @@
 package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.swing.JFrame;
 
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class KontoUITest // NOSONAR
 {
@@ -26,9 +22,8 @@ public class KontoUITest // NOSONAR
 		JFrame frame = new JFrame("Test");
 		frame.setLayout(new GridLayout(2, 1));
 
-		SpielImpl spiel = new SpielImpl(new ArrayList<>(), new EinstellungenImpl(), new WuerfelImpl());
-		frame.add(new SpielerUI(spieler, spiel, Optional.ofNullable(null)));
-		frame.add(new SpielerUI(spieler2, spiel, Optional.ofNullable(null)));
+		frame.add(new SpielerUI(spieler, Optional.ofNullable(null)));
+		frame.add(new SpielerUI(spieler2, Optional.ofNullable(null)));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 150);
 		frame.setVisible(true);
