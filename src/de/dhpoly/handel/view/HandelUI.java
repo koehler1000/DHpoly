@@ -34,6 +34,9 @@ public class HandelUI extends JPanel
 	{
 		this.handelPartner = handelsPartner;
 		this.handelAnbieter = spieler;
+
+		JButton butFertig = ElementFactory.getButtonUeberschrift("Anbieten");
+
 		if (vorgeschlagen == null)
 		{
 			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), spieler,
@@ -41,8 +44,7 @@ public class HandelUI extends JPanel
 		}
 		else
 		{
-			// FIXME Text "Vorschlag annehmen" auf UI, bis irgendein Wert verändert wird,
-			// dann "Gegenvorschlag senden" als Text
+			butFertig.setText("Annehmen");
 		}
 		this.vorgeschlagen = vorgeschlagen;
 
@@ -71,7 +73,6 @@ public class HandelUI extends JPanel
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
 
-		JButton butFertig = ElementFactory.getButtonUeberschrift("Anbieten");
 		butFertig.addActionListener(e -> handelAnbieten());
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
