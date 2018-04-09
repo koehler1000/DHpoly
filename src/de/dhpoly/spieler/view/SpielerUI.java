@@ -88,6 +88,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		// spieler);
 	}
 
+	@Deprecated
 	private void oeffneHausbauElementFactory()
 	{
 		spieler.getUI().ifPresent(e -> e.zeigeHausbaumoeglichkeit(spieler.getFelder()));
