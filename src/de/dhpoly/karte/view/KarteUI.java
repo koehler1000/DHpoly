@@ -1,6 +1,7 @@
 package de.dhpoly.karte.view;
 
 import de.dhpoly.karte.Karte;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -12,6 +13,6 @@ public class KarteUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
-		// TODO Beschreibung und Titel anzeigen
+		ElementFactory.getNachrichtPanel(karte.getTitel(), karte.getBeschreibung());
 	}
 }
