@@ -138,4 +138,9 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		tabRand.addTab("Kontoauszug", new KontoauszugUI(spieler));
 	}
+
+	public void entferne(Oberflaeche oberflaeche)
+	{
+		tabRand.remove(oberflaeche);
+	}
 }
