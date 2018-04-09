@@ -99,10 +99,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void naechsterSpieler()
 	{
-		Spieler spielerAktuell = spieler.get(aktuellerSpieler);
+		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
 
-		spieler.get(aktuellerSpieler).setAkutellerSpieler(false);
-		pruefeVerloren(spielerAktuell);
+		spielerAktuellAlt.setAkutellerSpieler(false);
+		pruefeVerloren(spielerAktuellAlt);
 
 		if (aktuellerSpieler + 1 >= spieler.size())
 		{
@@ -114,9 +114,11 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			aktuellerSpieler++;
 		}
 
-		spieler.get(aktuellerSpieler).setAkutellerSpieler(true);
+		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
+		spielerAktuellNeu.setAkutellerSpieler(true);
 
 		uiVerwalter.leereRand();
+		uiVerwalter.zeigeSpieler(spielerAktuellNeu);
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)

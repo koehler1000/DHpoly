@@ -71,4 +71,9 @@ public class SpielUIVerwalter
 	{
 		return animationen;
 	}
+
+	public void zeigeSpieler(Spieler spielerAktuell)
+	{
+		fenster.zeigeTab(spielerAktuell.getName());
+	}
 }

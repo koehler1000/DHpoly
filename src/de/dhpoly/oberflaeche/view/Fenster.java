@@ -40,4 +40,9 @@ public class Fenster
 	{
 		frame.add(componente);
 	}
+
+	public void zeigeTab(String name)
+	{
+		spielansichten.setSelectedIndex(spielansichten.indexOfTab(name));
+	}
 }
