@@ -2,6 +2,7 @@ package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javax.swing.JFrame;
 
@@ -26,8 +27,8 @@ public class KontoUITest // NOSONAR
 		frame.setLayout(new GridLayout(2, 1));
 
 		SpielImpl spiel = new SpielImpl(new ArrayList<>(), new EinstellungenImpl(), new WuerfelImpl());
-		frame.add(new SpielerUI(spieler, spiel));
-		frame.add(new SpielerUI(spieler2, spiel));
+		frame.add(new SpielerUI(spieler, spiel, Optional.ofNullable(null)));
+		frame.add(new SpielerUI(spieler2, spiel, Optional.ofNullable(null)));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 150);
 		frame.setVisible(true);

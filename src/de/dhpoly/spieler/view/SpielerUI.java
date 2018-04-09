@@ -3,6 +3,7 @@ package de.dhpoly.spieler.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Optional;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -12,6 +13,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -28,7 +30,7 @@ public class SpielerUI extends JPanel implements Beobachter
 	private JButton butHausBau;
 	private JButton butHandel;
 
-	public SpielerUI(Spieler spieler, Spiel spiel)
+	public SpielerUI(Spieler spieler, Spiel spiel, Optional<SpielfeldAnsicht> ansicht)
 	{
 		this.spieler = spieler;
 		this.spiel = spiel;
@@ -58,7 +60,7 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.add(butHausBau);
 
 		JButton butKontoauszug = ElementFactory.getButton("Konto" + System.lineSeparator() + "anzeigen");
-		butKontoauszug.addActionListener(e -> oeffneKontoauszugElementFactory());
+		butKontoauszug.addActionListener(e -> ansicht.ifPresent(x -> x.zeigeKontoauszug(spieler)));
 		butKontoauszug.setForeground(backcolor);
 		pnlSueden.add(butKontoauszug);
 

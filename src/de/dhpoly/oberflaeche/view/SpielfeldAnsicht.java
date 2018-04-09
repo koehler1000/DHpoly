@@ -23,6 +23,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
@@ -47,7 +48,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 		this.add(new SpielfeldUI(spiel.getFelder(), Optional.of(this)));
 
-		this.add(new SpielerUebersichtUI(spiel), BorderLayout.EAST);
+		this.add(new SpielerUebersichtUI(spiel, Optional.of(this)), BorderLayout.EAST);
 
 		JPanel pnlWest = ElementFactory.erzeugePanel();
 
@@ -131,5 +132,10 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		// TODO später nur transaktion und nicht alles entfernen
 		leereRand();
+	}
+
+	public void zeigeKontoauszug(Spieler spieler)
+	{
+		tabRand.addTab("Kontoauszug", new KontoauszugUI(spieler));
 	}
 }
