@@ -68,6 +68,7 @@ public interface Spieler
 
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
 
+	@Deprecated // stattdessen zeigeXY(Datentyp) verwenden
 	Optional<SpielfeldAnsicht> getUI();
 
 	void informiereErfolgreicheTransaktion(Transaktion transaktion);
