@@ -1,12 +1,16 @@
 package de.dhpoly.fehler.view;
 
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class FehlerUI
+import de.dhpoly.oberflaeche.ElementFactory;
+
+public class FehlerUI extends JPanel
 {
+	private static final long serialVersionUID = 1L;
+
 	public FehlerUI(String fehler)
 	{
-		// TODO Fehler auf Oberfläche anzeigen
-		JOptionPane.showMessageDialog(null, fehler);
+		ElementFactory.bearbeitePanel(this);
+		this.add(ElementFactory.getNachrichtPanel("Fehler", fehler));
 	}
 }
