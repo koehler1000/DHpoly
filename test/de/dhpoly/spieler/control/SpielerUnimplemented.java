@@ -162,4 +162,12 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void loescheRand()
 	{}
+
+	@Override
+	public void zeigeHandelOberflaeche(Spieler spieler, Spieler handelspartner)
+	{}
+
+	@Override
+	public void zeigeNachricht(String nachricht)
+	{}
 }

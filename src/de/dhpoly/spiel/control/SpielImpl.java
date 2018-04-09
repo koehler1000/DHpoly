@@ -5,7 +5,6 @@ import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
@@ -270,12 +269,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public String getBeschreibungNaechsterSchritt()
 	{
 		return beschreibungNaechsterSchritt;
-	}
-
-	@Override
-	public void zeigeAktuellemSpieler(String string, HandelUI handelUI)
-	{
-		uiVerwalter.zeigeAufRand(string, handelUI, getAktuellerSpieler());
 	}
 
 	public void setAnimationen(boolean b)

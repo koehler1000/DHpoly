@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
@@ -24,7 +23,6 @@ public class SpielerUI extends JPanel implements Beobachter
 	private static final long serialVersionUID = 1L;
 
 	private transient Spieler spieler;
-	private transient Spiel spiel;
 	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
 	private JButton butHausBau;
@@ -33,7 +31,6 @@ public class SpielerUI extends JPanel implements Beobachter
 	public SpielerUI(Spieler spieler, Spiel spiel, Optional<SpielfeldAnsicht> ansicht)
 	{
 		this.spieler = spieler;
-		this.spiel = spiel;
 
 		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 
@@ -65,7 +62,8 @@ public class SpielerUI extends JPanel implements Beobachter
 		pnlSueden.add(butKontoauszug);
 
 		butHandel = ElementFactory.getButton("Handeln");
-		butHandel.addActionListener(e -> oeffneHandelElementFactory());
+		butHandel.addActionListener(e -> ansicht.get().zeigeHandelOberflaeche(spieler, spiel.getAktuellerSpieler()));
+
 		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);
 
@@ -80,11 +78,6 @@ public class SpielerUI extends JPanel implements Beobachter
 		update();
 
 		spieler.addBeobachterHinzu(this);
-	}
-
-	private void oeffneHandelElementFactory()
-	{
-		spiel.zeigeAktuellemSpieler("Handel", new HandelUI(spiel.getAktuellerSpieler(), spieler));
 	}
 
 	@Override
@@ -106,7 +99,7 @@ public class SpielerUI extends JPanel implements Beobachter
 			}
 			else
 			{
-				// TODO prüfen, ob Farbe setzen nötig ist.
+				// TODO Randfarbe setzen
 				// this.setBorder(BorderFactory.createLineBorder(ElementFactory.getKontrastfarbe(),
 				// 10));
 			}

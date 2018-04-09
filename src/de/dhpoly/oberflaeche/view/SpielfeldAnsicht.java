@@ -1,10 +1,11 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JTabbedPane;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
+import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
@@ -36,6 +38,8 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	private JButton butWeiter;
 	private JTabbedPane tabRand;
 	private transient Spieler spieler;
+
+	private Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, Spieler spieler)
 	{
@@ -76,14 +80,23 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		this.add(pnlWest, BorderLayout.WEST);
 	}
 
-	public void zeigeAufRand(String beschreibung, Component component)
+	private void loesche(Object obj)
 	{
-		tabRand.addTab(beschreibung, component);
+		Oberflaeche oberflaeche = inhalte.get(obj);
+		tabRand.remove(oberflaeche);
+		inhalte.remove(obj);
+	}
+
+	private void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
+	{
+		tabRand.addTab(beschreibung, oberflaeche);
+		inhalte.put(obj, oberflaeche);
 	}
 
 	public void leereRand()
 	{
 		tabRand.removeAll();
+		inhalte.clear();
 	}
 
 	private void setAnDerReihe(boolean value)
@@ -143,5 +156,17 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	public void entferne(Oberflaeche oberflaeche)
 	{
 		tabRand.remove(oberflaeche);
+	}
+
+	public void zeigeStrasseInfo(Strasse feld, SpielfeldAnsicht spielfeldAnsicht)
+	{
+		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
+	}
+
+	public void zeigeHandelOberflaeche(Spieler anbieter, Spieler handelsPartner)
+	{
+		// TODO Handel als Object
+		// TODO HandelUI mit Handel-Objekt
+		hinzu("Handel", null, new HandelUI(spieler, handelsPartner));
 	}
 }

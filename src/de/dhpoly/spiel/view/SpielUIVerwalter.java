@@ -1,13 +1,11 @@
 package de.dhpoly.spiel.view;
 
-import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
@@ -42,12 +40,6 @@ public class SpielUIVerwalter
 		animationen = value;
 	}
 
-	public void zeigeAufRand(String beschreibung, Component component, Spieler spieler)
-	{
-		Optional<SpielfeldAnsicht> oberflaecheSpieler = Optional.ofNullable(ui.get(spieler));
-		oberflaecheSpieler.ifPresent(e -> e.zeigeAufRand(beschreibung, component));
-	}
-
 	public void leereRand()
 	{
 		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
@@ -66,13 +58,13 @@ public class SpielUIVerwalter
 	{
 		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
 		{
-			uiSpieler.getValue().zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht));
+			uiSpieler.getValue().zeigeNachricht(nachricht);
 		}
 	}
 
 	public void zeigeNachricht(String nachricht, Spieler spieler)
 	{
-		zeigeAufRand("Info", ElementFactory.getNachrichtPanel("Info", nachricht), spieler);
+		spieler.zeigeNachricht(nachricht);
 	}
 
 	public boolean sollAnimiertAnzeigen()
