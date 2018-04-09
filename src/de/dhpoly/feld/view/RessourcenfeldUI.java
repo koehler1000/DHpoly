@@ -2,12 +2,14 @@ package de.dhpoly.feld.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Optional;
 
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import observerpattern.Beobachter;
 
 public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
@@ -16,9 +18,9 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
 
 	private transient Ressourcenfeld feld;
 
-	public RessourcenfeldUI(Ressourcenfeld feld)
+	public RessourcenfeldUI(Ressourcenfeld feld, Optional<SpielfeldAnsicht> ansicht)
 	{
-		super(feld);
+		super(feld, ansicht);
 		this.feld = feld;
 
 		this.setLayout(new BorderLayout());

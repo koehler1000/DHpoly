@@ -5,12 +5,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
@@ -23,9 +25,12 @@ public class FeldUI extends JPanel implements Beobachter
 	private JPanel pnlSpieler = new JPanel();
 	private transient Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
-	public FeldUI(Feld feld)
+	protected Optional<SpielfeldAnsicht> ansicht;
+
+	public FeldUI(Feld feld, Optional<SpielfeldAnsicht> ansicht)
 	{
 		this.feld = feld;
+		this.ansicht = ansicht;
 		feld.addBeobachter(this);
 
 		this.setLayout(new BorderLayout());

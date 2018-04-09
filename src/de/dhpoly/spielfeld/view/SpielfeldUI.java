@@ -3,6 +3,7 @@ package de.dhpoly.spielfeld.view;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.JPanel;
 
@@ -16,6 +17,7 @@ import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
 import de.dhpoly.feld.view.StrasseUI;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
 public class SpielfeldUI extends JPanel
 {
@@ -23,7 +25,7 @@ public class SpielfeldUI extends JPanel
 
 	private int felderProSeite;
 
-	public SpielfeldUI(List<Feld> spielfelder)
+	public SpielfeldUI(List<Feld> spielfelder, Optional<SpielfeldAnsicht> ansicht)
 	{
 		ElementFactory.bearbeitePanel(this);
 
@@ -45,28 +47,28 @@ public class SpielfeldUI extends JPanel
 		for (int i = 0; i < felderProSeite; i++)
 		{
 			Feld feld = spielfelder.get(i);
-			felder[0][i] = getFeldUI(feld);
+			felder[0][i] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 2
 		for (int i = 0; i < felderProSeite; i++)
 		{
 			Feld feld = spielfelder.get(i + felderProSeite);
-			felder[i][felderProSeite] = getFeldUI(feld);
+			felder[i][felderProSeite] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 3
 		for (int i = 0; i < felderProSeite; i++)
 		{
 			Feld feld = spielfelder.get(i + felderProSeite * 2);
-			felder[felderProSeite][felderProSeite - i] = getFeldUI(feld);
+			felder[felderProSeite][felderProSeite - i] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 4
 		for (int i = 0; i < felderProSeite; i++)
 		{
 			Feld feld = spielfelder.get(i + felderProSeite * 3);
-			felder[felderProSeite - i][0] = getFeldUI(feld);
+			felder[felderProSeite - i][0] = getFeldUI(feld, ansicht);
 		}
 
 		// auf Panel malen
@@ -79,23 +81,23 @@ public class SpielfeldUI extends JPanel
 		}
 	}
 
-	private Component getFeldUI(Feld feld)
+	private Component getFeldUI(Feld feld, Optional<SpielfeldAnsicht> ansicht)
 	{
 		if (feld instanceof Strasse)
 		{
-			return new StrasseUI((Strasse) feld);
+			return new StrasseUI((Strasse) feld, ansicht);
 		}
 		else if (feld instanceof Ereignisfeld)
 		{
-			return new EreignisfeldUI((Ereignisfeld) feld);
+			return new EreignisfeldUI((Ereignisfeld) feld, ansicht);
 		}
 		else if (feld instanceof Ressourcenfeld)
 		{
-			return new RessourcenfeldUI((Ressourcenfeld) feld);
+			return new RessourcenfeldUI((Ressourcenfeld) feld, ansicht);
 		}
 		else if (feld instanceof Losfeld)
 		{
-			return new LosfeldUI((Losfeld) feld);
+			return new LosfeldUI((Losfeld) feld, ansicht);
 		}
 		else
 		{

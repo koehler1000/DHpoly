@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
@@ -26,9 +27,9 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseUI(Strasse feld)
+	public StrasseUI(Strasse feld, Optional<SpielfeldAnsicht> ansicht)
 	{
-		super(feld);
+		super(feld, ansicht);
 		this.feld = feld;
 		butName.setText(feld.getName());
 		this.setLayout(new BorderLayout());
@@ -54,8 +55,7 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 
 	private void zeigeDetails()
 	{
-		// TODO Informationen in dem Fenster anzeigen, indem die Info angefordert wurde
-		// Oberflaeche.getInstance().zeigeAufRand("Straﬂe", new StrasseInfoUI(feld));
+		ansicht.ifPresent(e -> e.zeigeAufRand("Straﬂe", new StrasseInfoUI(feld)));
 	}
 
 	private void setFarbe(Color farbe)

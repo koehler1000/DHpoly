@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -44,7 +45,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		butWeiter = ElementFactory.getButton("Spiel beginnen");
 		tabRand = ElementFactory.getTabbedPane();
 
-		this.add(new SpielfeldUI(spiel.getFelder()));
+		this.add(new SpielfeldUI(spiel.getFelder(), Optional.of(this)));
 
 		this.add(new SpielerUebersichtUI(spiel), BorderLayout.EAST);
 

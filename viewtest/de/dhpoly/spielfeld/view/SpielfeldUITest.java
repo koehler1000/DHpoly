@@ -2,6 +2,7 @@ package de.dhpoly.spielfeld.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.JFrame;
 
@@ -9,7 +10,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.StrasseTest;
 
-public class SpielfeldUITest //NOSONAR
+public class SpielfeldUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
@@ -24,7 +25,7 @@ public class SpielfeldUITest //NOSONAR
 			felder.add(StrasseTest.getDefaultStrasse("Test " + i));
 		}
 
-		frame.add(new SpielfeldUI(felder));
+		frame.add(new SpielfeldUI(felder, Optional.ofNullable(null)));
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600, 150);

@@ -1,6 +1,7 @@
 package de.dhpoly.feld.view;
 
 import java.awt.GridLayout;
+import java.util.Optional;
 
 import javax.swing.JFrame;
 
@@ -19,8 +20,8 @@ public class StrasseUITest // NOSONAR
 
 		Strasse strasse = StrasseTest.getDefaultStrasse("Badstraﬂe", 100);
 
-		frame.add(new StrasseUI(strasse));
-		frame.add(new StrasseUI(StrasseTest.getDefaultStrasse("Schlossallee", 1000)));
+		frame.add(new StrasseUI(strasse, Optional.ofNullable(null)));
+		frame.add(new StrasseUI(StrasseTest.getDefaultStrasse("Schlossallee", 1000), Optional.ofNullable(null)));
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 550);
