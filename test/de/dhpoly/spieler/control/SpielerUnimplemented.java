@@ -149,4 +149,8 @@ public class SpielerUnimplemented implements Spieler
 	{
 		return Optional.ofNullable(null);
 	}
+
+	@Override
+	public void informiereErfolgreicheTransaktion(Transaktion transaktion)
+	{}
 }

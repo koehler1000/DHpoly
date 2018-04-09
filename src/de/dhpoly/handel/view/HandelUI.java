@@ -106,12 +106,12 @@ public class HandelUI extends JPanel
 		if (transaktion.isGleich(vorgeschlagen))
 		{
 			handel.vorschlagAnnehmen(transaktion);
-
-			// TODO Vorschlag angenommen -> Informieren
 		}
 		else
 		{
 			handel.vorschlagAnbieten(transaktion);
+			// TODO schauen, ob die richtige Person den Vorschlag angezeigt bekommt
+			transaktion.getHandelspartner().zeigeTransaktionsvorschlag(transaktion);
 		}
 
 		this.setVisible(false);

@@ -69,4 +69,6 @@ public interface Spieler
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
 
 	Optional<SpielfeldAnsicht> getUI();
+
+	void informiereErfolgreicheTransaktion(Transaktion transaktion);
 }

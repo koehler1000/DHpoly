@@ -260,4 +260,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		return ui;
 	}
+
+	@Override
+	public void informiereErfolgreicheTransaktion(Transaktion transaktion)
+	{
+		// TODO Auto-generated method stub
+	}
 }
