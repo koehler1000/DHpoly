@@ -24,7 +24,7 @@ public class StrasseKaufenUI extends JPanel
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
 
 		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
-		butAbbrechen.addActionListener(e -> abbrechen());
+		butAbbrechen.addActionListener(e -> abbrechen(spieler));
 
 		JPanel pnlOptionen = ElementFactory.erzeugePanel();
 		pnlOptionen.setLayout(new GridLayout(2, 1, 10, 10));
@@ -38,13 +38,10 @@ public class StrasseKaufenUI extends JPanel
 	{
 		strasse.kaufe(spieler);
 		spieler.loescheRand();
-		// FIXME
-		// Oberflaeche.getInstance().leereRand();
 	}
 
-	private void abbrechen()
+	private void abbrechen(Spieler spieler)
 	{
-		// FIXME
-		// Oberflaeche.getInstance().leereRand();
+		spieler.loescheRand();
 	}
 }
