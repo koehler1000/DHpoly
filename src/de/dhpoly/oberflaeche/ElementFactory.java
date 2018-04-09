@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -14,6 +15,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.spieler.view.SpielerUI;
 
 public class ElementFactory
 {
@@ -166,5 +168,15 @@ public class ElementFactory
 		JPanel pnl = new JPanel();
 		bearbeitePanel(pnl);
 		return pnl;
+	}
+
+	public static void setzeRand(SpielerUI spielerUI, int dicke)
+	{
+		setzeRand(spielerUI, dicke, FARBE_KONTRAST);
+	}
+
+	public static void setzeRand(SpielerUI spielerUI, int dicke, Color farbe)
+	{
+		spielerUI.setBorder(BorderFactory.createLineBorder(farbe, dicke));
 	}
 }

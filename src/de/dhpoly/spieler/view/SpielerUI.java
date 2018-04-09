@@ -94,13 +94,11 @@ public class SpielerUI extends JPanel implements Beobachter
 
 			if (spieler.isAktuellerSpieler())
 			{
-				this.setBorder(BorderFactory.createLineBorder(this.getBackground(), 10));
+				ElementFactory.setzeRand(this, 10, this.getBackground());
 			}
 			else
 			{
-				// TODO Randfarbe setzen
-				// this.setBorder(BorderFactory.createLineBorder(ElementFactory.getKontrastfarbe(),
-				// 10));
+				ElementFactory.setzeRand(this, 10);
 			}
 
 			butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
