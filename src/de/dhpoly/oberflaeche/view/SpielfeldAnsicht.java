@@ -23,6 +23,7 @@ import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.view.KarteUI;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
@@ -133,17 +134,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		tabRand.addTab(karte.getTitel(), new KarteUI(karte, this));
 	}
 
-	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
-	{
-		zeigeNachricht("Handel mit " + transaktion.getHandelspartner().getName() + " angenommen");
-	}
-
-	public void zeigeNachricht(String string)
-	{
-		leereRand();
-		tabRand.addTab("Nachricht", ElementFactory.getNachrichtPanel("Nachricht", string));
-	}
-
 	public void sperreOberflaeche(Transaktion transaktion)
 	{
 		loesche(transaktion);
@@ -178,6 +168,18 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeObjekt(Datenobjekt objekt)
 	{
-		// TODO Auto-generated method stub
+		if (objekt instanceof Nachricht)
+		{
+			leereRand();
+			// TODO NachrichtUI verwenden
+			// hinzu(objekt.getClassName(), objekt, new Oberflaeche(this));
+			tabRand.addTab("Nachricht",
+					ElementFactory.getNachrichtPanel("Nachricht", ((Nachricht) objekt).getNachricht()));
+
+		}
+		else
+		{
+			// TODO FEHLER anzeigen
+		}
 	}
 }

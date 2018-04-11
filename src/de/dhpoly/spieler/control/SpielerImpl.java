@@ -10,6 +10,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
@@ -214,7 +215,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void gewonnen()
 	{
-		ui.ifPresent(e -> e.zeigeNachricht("Gewonnen"));
+		zeige(new Nachricht("Gewonnen"));
 	}
 
 	@Override
@@ -255,14 +256,17 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
-		ui.ifPresent(e -> e.zeigeTransaktionErfolgreich(transaktion));
+		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde angenommen";
+		Nachricht nachricht = new Nachricht(nachrichtentext);
+		zeige(nachricht);
 	}
 
 	@Override
 	public void zeigeTransaktionGescheitert(Transaktion transaktion)
 	{
-		ui.ifPresent(
-				e -> e.zeigeNachricht("Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt"));
+		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt";
+		Nachricht nachricht = new Nachricht(nachrichtentext);
+		zeige(nachricht);
 	}
 
 	@Override
@@ -292,7 +296,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeNachricht(String nachricht)
 	{
-		ui.ifPresent(e -> e.zeigeNachricht(nachricht));
+		zeige(new Nachricht(nachricht));
 	}
 
 	@Override

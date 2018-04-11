@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
@@ -58,7 +59,8 @@ public class SpielUIVerwalter
 	{
 		for (Entry<Spieler, SpielfeldAnsicht> uiSpieler : ui.entrySet())
 		{
-			uiSpieler.getValue().zeigeNachricht(nachricht);
+			Nachricht nachrichtObj = new Nachricht(nachricht);
+			uiSpieler.getValue().zeigeObjekt(nachrichtObj);
 		}
 	}
 
