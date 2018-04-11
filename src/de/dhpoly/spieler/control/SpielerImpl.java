@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -292,5 +293,26 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeNachricht(String nachricht)
 	{
 		ui.ifPresent(e -> e.zeigeNachricht(nachricht));
+	}
+
+	@Override
+	public void zeige(Datenobjekt objekt)
+	{
+		if (objekt != null)
+		{
+			ui.ifPresent(e -> zeigeObjekt(objekt));
+		}
+	}
+
+	private void zeigeObjekt(Datenobjekt objekt)
+	{
+		if (objekt instanceof Karte)
+		{
+			// TODO Karte anzeigen
+		}
+		else
+		{
+			// TODO FEHLER anzeigen
+		}
 	}
 }

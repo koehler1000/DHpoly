@@ -2,6 +2,7 @@ package de.dhpoly.spieler;
 
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
@@ -80,4 +81,6 @@ public interface Spieler
 	void zeigeHandelOberflaeche(Spieler handelspartner);
 
 	void zeigeNachricht(String nachricht);
+
+	void zeige(Datenobjekt objekt);
 }

@@ -2,6 +2,7 @@ package de.dhpoly.spieler.control;
 
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
@@ -169,5 +170,9 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void zeigeNachricht(String nachricht)
+	{}
+
+	@Override
+	public void zeige(Datenobjekt objekt)
 	{}
 }
