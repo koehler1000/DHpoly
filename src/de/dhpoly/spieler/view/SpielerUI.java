@@ -18,7 +18,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
-public class SpielerUI extends Oberflaeche implements Beobachter
+public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

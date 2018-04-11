@@ -82,60 +82,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		update();
 	}
 
-	@Deprecated
-	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, SpielfeldAnsicht ansicht)
-	{
-		super(ansicht);
-
-		this.handelPartner = handelsPartner;
-		this.handelAnbieter = spieler;
-
-		JButton butFertig = ElementFactory.getButtonUeberschrift("Anbieten");
-
-		if (vorgeschlagen == null)
-		{
-			vorgeschlagen = new Transaktion(spieler, handelsPartner);
-		}
-		else
-		{
-			butFertig.setText("Annehmen");
-		}
-		this.vorgeschlagen = vorgeschlagen;
-
-		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
-		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
-		for (Ressource res : Ressource.values())
-		{
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res, vorgeschlagen.getWertGeben(res));
-			ressourcenGeben.add(resAnbieten);
-			pnlRessourcen.add(resAnbieten);
-
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res,
-					vorgeschlagen.getWertBekommen(res));
-			ressourcenBekommen.add(resBekommen);
-			pnlRessourcen.add(resBekommen);
-		}
-		this.add(pnlRessourcen, BorderLayout.NORTH);
-
-		JPanel pnlStrassen = ElementFactory.erzeugePanel();
-		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
-		felderBekommen = new StrassenAnbietenUI(spieler, vorgeschlagen.getFelderEigentumswechsel());
-		pnlStrassen.add(felderBekommen);
-		felderGeben = new StrassenAnbietenUI(handelsPartner, vorgeschlagen.getFelderEigentumswechsel()); // hier
-		pnlStrassen.add(felderGeben);
-
-		this.add(pnlStrassen, BorderLayout.CENTER);
-
-		butFertig.addActionListener(e -> handelAbschliessen());
-		this.add(butFertig, BorderLayout.SOUTH);
-	}
-
-	@Deprecated
-	public HandelUI(Spieler spieler, Spieler handelsPartner)
-	{
-		this(spieler, handelsPartner, null, null);
-	}
-
 	private void handelAbschliessen()
 	{
 		List<RessourcenDatensatz> datensaetzeGeben = new ArrayList<>();

@@ -157,13 +157,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
-	@Deprecated
-	public void zeigeHandelOberflaeche(Spieler handelsPartner)
-	{
-		// TODO null ersetzen
-		hinzu("Handel", null, new HandelUI(spieler, handelsPartner));
-	}
-
 	public void zeigeFehler(String nachricht)
 	{
 		// TODO null ersetzen
