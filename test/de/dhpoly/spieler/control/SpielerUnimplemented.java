@@ -169,10 +169,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void zeigeNachricht(String nachricht)
-	{}
-
-	@Override
 	public void zeige(Datenobjekt objekt)
 	{}
 }

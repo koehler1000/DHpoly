@@ -80,8 +80,5 @@ public interface Spieler
 
 	void zeigeHandelOberflaeche(Spieler handelspartner);
 
-	@Deprecated
-	void zeigeNachricht(String nachricht);
-
 	void zeige(Datenobjekt objekt);
 }

@@ -64,11 +64,6 @@ public class SpielUIVerwalter
 		}
 	}
 
-	public void zeigeNachricht(String nachricht, Spieler spieler)
-	{
-		spieler.zeigeNachricht(nachricht);
-	}
-
 	public boolean sollAnimiertAnzeigen()
 	{
 		return animationen;

@@ -3,6 +3,7 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
@@ -11,6 +12,7 @@ import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielUIVerwalter;
@@ -127,16 +129,28 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			spieler.remove(spielerAktuell);
 			spielerAktuell.ausscheiden();
-			uiVerwalter.zeigeNachricht("Verloren", spielerAktuell);
+
+			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren");
+			zeigeAllenSpielern(nachricht);
 
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
 				sieger.gewonnen();
-				uiVerwalter.zeigeNachricht(sieger.getName() + " hat gewonnen");
+
+				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
+				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 
 			informiereBeobachter();
+		}
+	}
+
+	private void zeigeAllenSpielern(Datenobjekt objekt)
+	{
+		for (Spieler sp : spieler)
+		{
+			sp.zeige(objekt);
 		}
 	}
 

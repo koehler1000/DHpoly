@@ -294,12 +294,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void zeigeNachricht(String nachricht)
-	{
-		zeige(new Nachricht(nachricht));
-	}
-
-	@Override
 	public void zeige(Datenobjekt objekt)
 	{
 		if (objekt != null)
