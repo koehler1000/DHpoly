@@ -173,7 +173,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 		if (objekt instanceof Nachricht)
 		{
-			// TODO NachrichtUI verwenden
 			hinzu(objekt.getClassName(), objekt, new NachrichtUI((Nachricht) objekt, this));
 		}
 		else
