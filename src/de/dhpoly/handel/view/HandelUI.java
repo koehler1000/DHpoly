@@ -14,9 +14,7 @@ import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
 public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -26,8 +24,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	private List<RessourceAnbietenUI> ressourcenBekommen = new ArrayList<>();
 	private StrassenAnbietenUI felderBekommen;
 	private StrassenAnbietenUI felderGeben;
-	private transient Spieler handelAnbieter;
-	private transient Spieler handelPartner;
 	private transient Transaktion vorgeschlagen;
 
 	private transient Handel handel = new HandelImpl();
@@ -45,6 +41,7 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		butFertig.addActionListener(e -> handelAbschliessen());
 
 		// TODO refactoring
+		// TODO Veränderungen ins Objekt "Transaktion" aufnehmen
 
 		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
 		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
@@ -84,34 +81,14 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private void handelAbschliessen()
 	{
-		List<RessourcenDatensatz> datensaetzeGeben = new ArrayList<>();
-		List<RessourcenDatensatz> datensaetzeBekommen = new ArrayList<>();
-
-		for (RessourceAnbietenUI handelAngebot : ressourcenBekommen)
-		{
-			datensaetzeBekommen.add(handelAngebot.getDatensatz());
-		}
-
-		for (RessourceAnbietenUI handelAngebot : ressourcenGeben)
-		{
-			datensaetzeGeben.add(handelAngebot.getDatensatz());
-		}
-
-		Transaktion transaktion = new Transaktion(handelAnbieter, handelPartner);
-		felderGeben.getStrassen().forEach(transaktion::addDatensatzFelderwechsel);
-		felderBekommen.getStrassen().forEach(transaktion::addDatensatzFelderwechsel);
-		datensaetzeGeben.forEach(transaktion::addDatensatzGeben);
-		datensaetzeBekommen.forEach(transaktion::addDatensatzBekommen);
-
-		if (transaktion.isGleich(vorgeschlagen))
-		{
-			handel.vorschlagAnnehmen(transaktion);
-		}
-		else
+		if (transaktion.isVeraendert())
 		{
 			handel.vorschlagAnbieten(transaktion);
 		}
-
+		else
+		{
+			handel.vorschlagAnnehmen(transaktion);
+		}
 		this.setVisible(false);
 	}
 

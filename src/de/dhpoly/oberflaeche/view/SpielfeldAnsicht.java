@@ -122,9 +122,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	public void zeigeTransaktion(Transaktion transaktion)
 	{
 		zeigeObjekt(transaktion);
-
-		// tabRand.addTab("Handel", new HandelUI(transaktion.getAnbietender(),
-		// handelspartner, transaktion, this));
 	}
 
 	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
