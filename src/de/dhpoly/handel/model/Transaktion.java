@@ -18,22 +18,64 @@ public class Transaktion
 	private Spieler anbietender;
 	private Spieler handelspartner;
 
+	private boolean veraendert = false;
+
 	public Transaktion(Spieler anbietender, Spieler handelspartner)
 	{
 		this.anbietender = anbietender;
 		this.handelspartner = handelspartner;
+		this.veraendert = false;
 	}
 
-	// TODO neuen Konstruktor verwenden und getter und setter verwenden.
-	@Deprecated
-	public Transaktion(List<Feld> felderEigentumswechsel, List<RessourcenDatensatz> ressourcenGeben,
-			List<RessourcenDatensatz> ressourcenBekommen, Spieler anbietender, Spieler handelspartner)
+	public Transaktion getTransaktionsAngebot()
 	{
-		this.felderEigentumswechsel.addAll(felderEigentumswechsel);
-		this.ressourcenGeben = ressourcenGeben;
-		this.ressourcenBekommen = ressourcenBekommen;
-		this.anbietender = anbietender;
-		this.handelspartner = handelspartner;
+		Transaktion t = new Transaktion(anbietender, handelspartner);
+		t.felderEigentumswechsel = felderEigentumswechsel;
+		t.ressourcenGeben = ressourcenGeben;
+		t.ressourcenBekommen = ressourcenBekommen;
+		t.veraendert = false;
+		return t;
+	}
+
+	public void addDatensatzGeben(RessourcenDatensatz datensatz)
+	{
+		ressourcenGeben.add(datensatz);
+		veraendert = true;
+	}
+
+	public void removeDatensatzGeben(RessourcenDatensatz datensatz)
+	{
+		ressourcenGeben.remove(datensatz);
+		veraendert = true;
+	}
+
+	public void addDatensatzBekommen(RessourcenDatensatz datensatz)
+	{
+		ressourcenBekommen.add(datensatz);
+		veraendert = true;
+	}
+
+	public void removeDatensatzBekommen(RessourcenDatensatz datensatz)
+	{
+		ressourcenBekommen.remove(datensatz);
+		veraendert = true;
+	}
+
+	public void addDatensatzFelderwechsel(Feld feld)
+	{
+		felderEigentumswechsel.add(feld);
+		veraendert = true;
+	}
+
+	public void removeDatensatzFelderwechsel(Feld feld)
+	{
+		felderEigentumswechsel.remove(feld);
+		veraendert = true;
+	}
+
+	public boolean isVeraendert()
+	{
+		return veraendert;
 	}
 
 	public List<RessourcenDatensatz> getRessourcenGeben()
@@ -59,11 +101,6 @@ public class Transaktion
 	public Spieler getHandelspartner()
 	{
 		return handelspartner;
-	}
-
-	public boolean isFeldInEigentumswechsel(Feld feld)
-	{
-		return felderEigentumswechsel.contains(feld);
 	}
 
 	public int getWertBekommen(Ressource ressource)

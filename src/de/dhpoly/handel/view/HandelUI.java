@@ -8,7 +8,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
@@ -43,8 +42,7 @@ public class HandelUI extends Oberflaeche // NOSONAR
 
 		if (vorgeschlagen == null)
 		{
-			vorgeschlagen = new Transaktion(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), spieler,
-					handelsPartner);
+			vorgeschlagen = new Transaktion(spieler, handelsPartner);
 		}
 		else
 		{
@@ -99,12 +97,11 @@ public class HandelUI extends Oberflaeche // NOSONAR
 			datensaetzeGeben.add(handelAngebot.getDatensatz());
 		}
 
-		List<Feld> felderEigentumswechsel = new ArrayList<>();
-		felderEigentumswechsel.addAll(felderGeben.getStrassen());
-		felderEigentumswechsel.addAll(felderBekommen.getStrassen());
-
-		Transaktion transaktion = new Transaktion(felderEigentumswechsel, datensaetzeGeben, datensaetzeBekommen,
-				handelAnbieter, handelPartner);
+		Transaktion transaktion = new Transaktion(handelAnbieter, handelPartner);
+		felderGeben.getStrassen().forEach(transaktion::addDatensatzFelderwechsel);
+		felderBekommen.getStrassen().forEach(transaktion::addDatensatzFelderwechsel);
+		datensaetzeGeben.forEach(transaktion::addDatensatzGeben);
+		datensaetzeBekommen.forEach(transaktion::addDatensatzBekommen);
 
 		if (transaktion.isGleich(vorgeschlagen))
 		{
