@@ -3,20 +3,26 @@ package de.dhpoly.handel.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
-public class Transaktion
+public class Transaktion extends Datenobjekt
 {
-	private List<Feld> felderEigentumswechsel = new ArrayList<>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	private List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
-	private List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
+	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();
 
-	private Spieler anbietender;
-	private Spieler handelspartner;
+	private transient List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
+	private transient List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
+
+	private transient Spieler anbietender;
+	private transient Spieler handelspartner;
 
 	private boolean veraendert = false;
 
@@ -163,5 +169,11 @@ public class Transaktion
 		}
 
 		return true;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Handel";
 	}
 }

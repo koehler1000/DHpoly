@@ -17,8 +17,9 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
+import observerpattern.Beobachter;
 
-public class HandelUI extends Oberflaeche // NOSONAR
+public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 	private List<RessourceAnbietenUI> ressourcenGeben = new ArrayList<>();
@@ -31,6 +32,57 @@ public class HandelUI extends Oberflaeche // NOSONAR
 
 	private transient Handel handel = new HandelImpl();
 
+	private Transaktion transaktion;
+
+	private JButton butFertig = new JButton("");
+
+	public HandelUI(Transaktion transaktion, SpielfeldAnsicht ansicht)
+	{
+		super(ansicht);
+		this.transaktion = transaktion;
+
+		butFertig = ElementFactory.getButtonUeberschrift("");
+		butFertig.addActionListener(e -> handelAbschliessen());
+
+		// TODO refactoring
+
+		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
+		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
+		for (Ressource res : Ressource.values())
+		{
+			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion.getAnbietender(), res,
+					vorgeschlagen.getWertGeben(res));
+			ressourcenGeben.add(resAnbieten);
+			pnlRessourcen.add(resAnbieten);
+
+			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion.getHandelspartner(), res,
+					vorgeschlagen.getWertBekommen(res));
+			ressourcenBekommen.add(resBekommen);
+			pnlRessourcen.add(resBekommen);
+		}
+		this.add(pnlRessourcen, BorderLayout.NORTH);
+
+		JPanel pnlStrassen = ElementFactory.erzeugePanel();
+		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
+		felderBekommen = new StrassenAnbietenUI(transaktion.getAnbietender(),
+				vorgeschlagen.getFelderEigentumswechsel());
+		pnlStrassen.add(felderBekommen);
+		felderGeben = new StrassenAnbietenUI(transaktion.getHandelspartner(),
+				vorgeschlagen.getFelderEigentumswechsel()); // hier
+		pnlStrassen.add(felderGeben);
+
+		this.add(pnlStrassen, BorderLayout.CENTER);
+
+		butFertig.addActionListener(e -> handelAbschliessen());
+		this.add(butFertig, BorderLayout.SOUTH);
+
+		// TODO ende
+
+		transaktion.addBeobachter(this);
+		update();
+	}
+
+	@Deprecated
 	public HandelUI(Spieler spieler, Spieler handelsPartner, Transaktion vorgeschlagen, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
@@ -54,11 +106,12 @@ public class HandelUI extends Oberflaeche // NOSONAR
 		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
 		for (Ressource res : Ressource.values())
 		{
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res, getWertGeben(res));
+			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(spieler, res, vorgeschlagen.getWertGeben(res));
 			ressourcenGeben.add(resAnbieten);
 			pnlRessourcen.add(resAnbieten);
 
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res, getWertBekommen(res));
+			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(handelsPartner, res,
+					vorgeschlagen.getWertBekommen(res));
 			ressourcenBekommen.add(resBekommen);
 			pnlRessourcen.add(resBekommen);
 		}
@@ -73,16 +126,17 @@ public class HandelUI extends Oberflaeche // NOSONAR
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
 
-		butFertig.addActionListener(e -> handelAnbieten());
+		butFertig.addActionListener(e -> handelAbschliessen());
 		this.add(butFertig, BorderLayout.SOUTH);
 	}
 
+	@Deprecated
 	public HandelUI(Spieler spieler, Spieler handelsPartner)
 	{
 		this(spieler, handelsPartner, null, null);
 	}
 
-	private void handelAnbieten()
+	private void handelAbschliessen()
 	{
 		List<RessourcenDatensatz> datensaetzeGeben = new ArrayList<>();
 		List<RessourcenDatensatz> datensaetzeBekommen = new ArrayList<>();
@@ -115,13 +169,10 @@ public class HandelUI extends Oberflaeche // NOSONAR
 		this.setVisible(false);
 	}
 
-	private int getWertBekommen(Ressource ressource)
+	@Override
+	public void update()
 	{
-		return vorgeschlagen.getWertBekommen(ressource);
-	}
-
-	private int getWertGeben(Ressource ressource)
-	{
-		return vorgeschlagen.getWertGeben(ressource);
+		String beschriftung = transaktion.isVeraendert() ? "Anbieten" : "Annehmen";
+		butFertig.setText(beschriftung);
 	}
 }

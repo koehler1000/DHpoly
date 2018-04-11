@@ -2,7 +2,9 @@ package de.dhpoly.datenobjekt;
 
 import java.io.Serializable;
 
-public abstract class Datenobjekt implements Serializable
+import observerpattern.Beobachtbarer;
+
+public abstract class Datenobjekt extends Beobachtbarer implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 

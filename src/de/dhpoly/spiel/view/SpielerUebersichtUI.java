@@ -1,7 +1,6 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.GridLayout;
-import java.util.Optional;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -17,9 +16,9 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 	private transient Spiel spiel;
-	private transient Optional<SpielfeldAnsicht> ansicht;
+	private transient SpielfeldAnsicht ansicht;
 
-	public SpielerUebersichtUI(Spiel spiel, Optional<SpielfeldAnsicht> ansicht)
+	public SpielerUebersichtUI(Spiel spiel, SpielfeldAnsicht ansicht)
 	{
 		this.spiel = spiel;
 		this.ansicht = ansicht;

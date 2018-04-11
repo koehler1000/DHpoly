@@ -8,6 +8,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
@@ -38,6 +39,8 @@ public class HandelUITest // NOSONAR
 		s1.einzahlen(datensaetze);
 		s2.einzahlen(datensaetze);
 
-		new Fenster(new Bilderverwalter()).zeigeComponente(new HandelUI(s1, s2));
+		Transaktion transaktion = new Transaktion(s1, s2);
+
+		new Fenster(new Bilderverwalter()).zeigeComponente(new HandelUI(transaktion, null));
 	}
 }

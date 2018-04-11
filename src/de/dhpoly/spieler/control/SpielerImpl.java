@@ -290,7 +290,8 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeHandelOberflaeche(Spieler handelspartner)
 	{
-		ui.ifPresent(e -> e.zeigeHandelOberflaeche(handelspartner));
+		Transaktion transaktion = new Transaktion(this, handelspartner);
+		zeige(transaktion);
 	}
 
 	@Override

@@ -6,13 +6,13 @@ import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fehler.control.FehlerImpl;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -56,7 +56,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 		this.add(new SpielfeldUI(spiel.getFelder(), this));
 
-		this.add(new SpielerUebersichtUI(spiel, Optional.of(this)), BorderLayout.EAST);
+		this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
 
 		JPanel pnlWest = ElementFactory.erzeugePanel();
 
@@ -121,8 +121,10 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeTransaktion(Transaktion transaktion)
 	{
-		Spieler handelspartner = transaktion.getHandelspartner();
-		tabRand.addTab("Handel", new HandelUI(transaktion.getAnbietender(), handelspartner, transaktion, this));
+		zeigeObjekt(transaktion);
+
+		// tabRand.addTab("Handel", new HandelUI(transaktion.getAnbietender(),
+		// handelspartner, transaktion, this));
 	}
 
 	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
@@ -155,6 +157,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		hinzu("Straße", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
+	@Deprecated
 	public void zeigeHandelOberflaeche(Spieler handelsPartner)
 	{
 		// TODO null ersetzen
@@ -171,13 +174,27 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 	{
 		leereRand();
 
+		String fehlerText = "Keine Oberfläche für " + objekt.getClassName() + " implementiert.";
+		Oberflaeche oberflaeche = new FehlerUI(fehlerText, this);
+
 		if (objekt instanceof Nachricht)
 		{
-			hinzu(objekt.getClassName(), objekt, new NachrichtUI((Nachricht) objekt, this));
+			oberflaeche = new NachrichtUI((Nachricht) objekt, this);
+		}
+		else if (objekt instanceof Transaktion)
+		{
+			oberflaeche = new HandelUI((Transaktion) objekt, this);
 		}
 		else
 		{
-			// TODO FEHLER anzeigen
+			FehlerImpl.stillerFehler(fehlerText);
 		}
+
+		hinzu(objekt.getTitel(), objekt, oberflaeche);
+	}
+
+	public Spieler getSpieler()
+	{
+		return spieler;
 	}
 }
