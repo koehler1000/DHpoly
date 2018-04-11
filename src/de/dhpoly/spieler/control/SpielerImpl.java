@@ -300,19 +300,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		if (objekt != null)
 		{
-			ui.ifPresent(e -> zeigeObjekt(objekt));
-		}
-	}
-
-	private void zeigeObjekt(Datenobjekt objekt)
-	{
-		if (objekt instanceof Karte)
-		{
-			// TODO Karte anzeigen
-		}
-		else
-		{
-			// TODO FEHLER anzeigen
+			ui.ifPresent(e -> e.zeigeObjekt(objekt));
 		}
 	}
 }
