@@ -17,4 +17,10 @@ public class Nachricht extends Datenobjekt
 	{
 		return nachrichtentext;
 	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Nachricht";
+	}
 }

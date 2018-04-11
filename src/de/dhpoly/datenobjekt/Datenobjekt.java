@@ -10,4 +10,6 @@ public abstract class Datenobjekt implements Serializable
 	{
 		return this.getClass().getName();
 	}
+
+	public abstract String getTitel();
 }

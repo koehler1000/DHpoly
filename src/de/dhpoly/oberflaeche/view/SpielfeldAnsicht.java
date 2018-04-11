@@ -24,6 +24,7 @@ import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.nachricht.view.NachrichtUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
@@ -168,14 +169,12 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 	public void zeigeObjekt(Datenobjekt objekt)
 	{
+		leereRand();
+
 		if (objekt instanceof Nachricht)
 		{
-			leereRand();
 			// TODO NachrichtUI verwenden
-			// hinzu(objekt.getClassName(), objekt, new Oberflaeche(this));
-			tabRand.addTab("Nachricht",
-					ElementFactory.getNachrichtPanel("Nachricht", ((Nachricht) objekt).getNachricht()));
-
+			hinzu(objekt.getClassName(), objekt, new NachrichtUI((Nachricht) objekt, this));
 		}
 		else
 		{
