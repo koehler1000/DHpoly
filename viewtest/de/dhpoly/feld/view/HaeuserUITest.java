@@ -3,8 +3,6 @@ package de.dhpoly.feld.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.Strasse;
@@ -14,14 +12,12 @@ import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.utils.Spielansicht;
 
 public class HaeuserUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
-		JFrame frame = new JFrame("HausUITest");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		Felderverwaltung verwaltung = new Felderverwaltung()
 		{
 			@Override
@@ -54,8 +50,6 @@ public class HaeuserUITest // NOSONAR
 		felder.add(strasse);
 		felder.add(strasse2);
 
-		frame.add(new HaeuserUI(felder, null));
-
 		List<RessourcenDatensatz> ressourcen = new ArrayList<>();
 		ressourcen.add(new RessourcenDatensatzImpl(Ressource.GELD, 100000));
 		ressourcen.add(new RessourcenDatensatzImpl(Ressource.STEIN, 100000));
@@ -67,7 +61,6 @@ public class HaeuserUITest // NOSONAR
 		strasse.kaufe(spieler);
 		strasse2.kaufe(spieler);
 
-		frame.setSize(1000, 1000);
-		frame.setVisible(true);
+		Spielansicht.zeige(new HaeuserUI(felder, Spielansicht.getSpielfeldAnsicht()));
 	}
 }
