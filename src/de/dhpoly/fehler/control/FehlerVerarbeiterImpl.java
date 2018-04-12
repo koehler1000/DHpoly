@@ -6,11 +6,11 @@ import java.util.Optional;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class FehlerImpl implements de.dhpoly.fehler.Fehler
+public class FehlerVerarbeiterImpl implements de.dhpoly.fehler.FehlerVerarbeiter
 {
 	Optional<SpielfeldAnsicht> ansicht;
 
-	public FehlerImpl(SpielfeldAnsicht ansicht)
+	public FehlerVerarbeiterImpl(SpielfeldAnsicht ansicht)
 	{
 		this.ansicht = Optional.ofNullable(ansicht);
 	}

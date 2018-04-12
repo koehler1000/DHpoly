@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fehler.control.FehlerImpl;
+import de.dhpoly.fehler.control.FehlerVerarbeiterImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
@@ -178,7 +178,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		}
 		else
 		{
-			FehlerImpl.stillerFehler(fehlerText);
+			FehlerVerarbeiterImpl.stillerFehler(fehlerText);
 		}
 
 		hinzu(objekt.getTitel(), objekt, oberflaeche);
