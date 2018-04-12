@@ -17,7 +17,11 @@ public class FehlerVerarbeiterImpl implements de.dhpoly.fehler.FehlerVerarbeiter
 
 	public void fehlerAufgetreten(Fehler fehler)
 	{
-		stillerFehler(fehler.getFehlertext());
+		if (fehler.getFehlertyp().isEntwicklerInformieren())
+		{
+			stillerFehler(fehler.getFehlertext());
+		}
+
 		ansicht.ifPresent(e -> e.zeigeObjekt(fehler));
 	}
 
