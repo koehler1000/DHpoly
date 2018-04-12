@@ -19,7 +19,6 @@ import de.dhpoly.spieler.control.SpielerImplTest;
 
 public class StrasseTest
 {
-
 	@Test
 	public void spielerKauftStrasse()
 	{

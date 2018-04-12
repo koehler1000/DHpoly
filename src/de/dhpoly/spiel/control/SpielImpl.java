@@ -150,7 +150,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		for (Spieler sp : spieler)
 		{
-			sp.zeige(objekt);
+			sp.zeigeDatenobjekt(objekt);
 		}
 	}
 

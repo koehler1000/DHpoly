@@ -76,9 +76,11 @@ public interface Spieler
 
 	void zeigeHausbauMoeglichkeit();
 
+	@Deprecated
 	void loescheRand();
 
+	@Deprecated
 	void zeigeHandelOberflaeche(Spieler handelspartner);
 
-	void zeige(Datenobjekt objekt);
+	void zeigeDatenobjekt(Datenobjekt objekt);
 }

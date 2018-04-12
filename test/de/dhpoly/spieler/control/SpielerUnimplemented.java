@@ -169,6 +169,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void zeige(Datenobjekt objekt)
+	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{}
 }

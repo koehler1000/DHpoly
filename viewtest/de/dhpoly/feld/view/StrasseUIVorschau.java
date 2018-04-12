@@ -9,7 +9,7 @@ public class StrasseUIVorschau
 {
 	public static void main(String[] args)
 	{
-		Strasse strasse = StrasseTest.getDefaultStrasse("Badstraﬂe", 100);
+		Strasse strasse = StrasseTest.getDefaultStrasse();
 		Spielansicht.zeige(
 				new StrasseKaufenUI(strasse, SpielerImplTest.getDefaultSpieler(), Spielansicht.getSpielfeldAnsicht()));
 	}

@@ -215,7 +215,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void gewonnen()
 	{
-		zeige(new Nachricht("Gewonnen"));
+		zeigeDatenobjekt(new Nachricht("Gewonnen"));
 	}
 
 	@Override
@@ -258,7 +258,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde angenommen";
 		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeige(nachricht);
+		zeigeDatenobjekt(nachricht);
 	}
 
 	@Override
@@ -266,7 +266,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt";
 		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeige(nachricht);
+		zeigeDatenobjekt(nachricht);
 	}
 
 	@Override
@@ -291,11 +291,11 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void zeigeHandelOberflaeche(Spieler handelspartner)
 	{
 		Transaktion transaktion = new Transaktion(this, handelspartner);
-		zeige(transaktion);
+		zeigeDatenobjekt(transaktion);
 	}
 
 	@Override
-	public void zeige(Datenobjekt objekt)
+	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{
 		if (objekt != null)
 		{

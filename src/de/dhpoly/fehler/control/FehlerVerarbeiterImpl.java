@@ -3,10 +3,11 @@ package de.dhpoly.fehler.control;
 import java.io.IOException;
 import java.util.Optional;
 
+import de.dhpoly.fehler.FehlerVerarbeiter;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class FehlerVerarbeiterImpl implements de.dhpoly.fehler.FehlerVerarbeiter
+public class FehlerVerarbeiterImpl implements FehlerVerarbeiter
 {
 	Optional<SpielfeldAnsicht> ansicht;
 
