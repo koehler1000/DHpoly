@@ -23,7 +23,7 @@ public class HaeuserUIVorschau
 			@Override
 			public void setFelder(List<Feld> felder)
 			{
-				throw new UnsupportedOperationException();
+				throw new UnsupportedOperationException("Felder werden nicht gesetzt");
 			}
 
 			@Override
@@ -41,7 +41,7 @@ public class HaeuserUIVorschau
 			@Override
 			public List<Feld> getFelder(Spieler spieler)
 			{
-				throw new UnsupportedOperationException();
+				throw new UnsupportedOperationException("Felder werden nicht gesetzt");
 			}
 		};
 
