@@ -22,7 +22,9 @@ public class HaeuserUIVorschau
 		{
 			@Override
 			public void setFelder(List<Feld> felder)
-			{}
+			{
+				throw new UnsupportedOperationException();
+			}
 
 			@Override
 			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
@@ -39,7 +41,7 @@ public class HaeuserUIVorschau
 			@Override
 			public List<Feld> getFelder(Spieler spieler)
 			{
-				return null;
+				throw new UnsupportedOperationException();
 			}
 		};
 
