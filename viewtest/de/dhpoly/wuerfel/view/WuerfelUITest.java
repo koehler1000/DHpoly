@@ -1,24 +1,15 @@
 package de.dhpoly.wuerfel.view;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.view.SpielUIVerwalter;
+import de.dhpoly.utils.Spielansicht;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 
 public class WuerfelUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
-		JFrame frame = new JFrame("Würfel");
-		frame.setSize(100, 100);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		WuerfelImpl wuerfel = new WuerfelImpl();
-
-		frame.add(new WuerfelUI(wuerfel, 1));
-		frame.setVisible(true);
-		frame.pack();
 
 		Thread t1 = new Thread(new Runnable()
 		{
@@ -34,5 +25,7 @@ public class WuerfelUITest // NOSONAR
 			}
 		});
 		t1.start();
+
+		Spielansicht.zeige(new WuerfelUI(wuerfel, 1, Spielansicht.getSpielfeldAnsicht()));
 	}
 }

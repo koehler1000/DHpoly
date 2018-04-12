@@ -1,15 +1,16 @@
 package de.dhpoly.wuerfel.view;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import observerpattern.Beobachter;
 
-public class WuerfelUI extends JPanel implements Beobachter
+public class WuerfelUI extends Oberflaeche implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
@@ -21,8 +22,10 @@ public class WuerfelUI extends JPanel implements Beobachter
 
 	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
-	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr)
+	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr, SpielfeldAnsicht ansicht)
 	{
+		super(ansicht);
+
 		ElementFactory.bearbeitePanel(this);
 
 		this.wuerfel = wuerfel;
