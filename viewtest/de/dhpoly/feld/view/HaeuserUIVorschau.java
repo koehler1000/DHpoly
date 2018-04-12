@@ -14,7 +14,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.utils.Spielansicht;
 
-public class HaeuserUITest // NOSONAR
+public class HaeuserUIVorschau
 {
 	public static void main(String[] args)
 	{

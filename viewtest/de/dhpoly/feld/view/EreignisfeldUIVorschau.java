@@ -6,7 +6,7 @@ import de.dhpoly.feld.control.Ereignisfeld;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.utils.Spielansicht;
 
-public class EreignisfeldUITest // NOSONAR
+public class EreignisfeldUIVorschau
 {
 	public static void main(String[] args)
 	{

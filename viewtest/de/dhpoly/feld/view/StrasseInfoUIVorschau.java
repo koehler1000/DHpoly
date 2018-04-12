@@ -4,7 +4,7 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.utils.Spielansicht;
 
-public class StrasseInfoUITest // NOSONAR
+public class StrasseInfoUIVorschau
 {
 	public static void main(String[] args)
 	{

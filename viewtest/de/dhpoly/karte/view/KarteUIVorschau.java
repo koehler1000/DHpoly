@@ -6,7 +6,7 @@ import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.utils.Spielansicht;
 
-public class KarteUITest // NOSONAR
+public class KarteUIVorschau
 {
 	public static void main(String[] args)
 	{

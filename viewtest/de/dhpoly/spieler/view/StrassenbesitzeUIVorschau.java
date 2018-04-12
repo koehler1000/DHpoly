@@ -13,7 +13,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.utils.Spielansicht;
 
-public class StrassenbesitzeUITest // NOSONAR
+public class StrassenbesitzeUIVorschau
 {
 	public static void main(String[] args)
 	{
