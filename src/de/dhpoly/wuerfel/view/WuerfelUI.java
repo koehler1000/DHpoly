@@ -10,7 +10,7 @@ import de.dhpoly.wuerfel.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelImpl;
 import observerpattern.Beobachter;
 
-public class WuerfelUI extends Oberflaeche implements Beobachter
+public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

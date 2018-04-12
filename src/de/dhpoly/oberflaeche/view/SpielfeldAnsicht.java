@@ -37,7 +37,7 @@ import de.dhpoly.wuerfel.control.WuerfelImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 import observerpattern.Beobachter;
 
-public class SpielfeldAnsicht extends JPanel implements Beobachter
+public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -67,8 +67,8 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 
 		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
 		pnlWuerfel.setLayout(new GridLayout(1, 1));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1));
-		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 1, this));
+		pnlWuerfel.add(new WuerfelUI((WuerfelImpl) spiel.getWuerfel(), 2, this));
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
