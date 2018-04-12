@@ -21,8 +21,14 @@ public class FehlerVerarbeiterImpl implements de.dhpoly.fehler.FehlerVerarbeiter
 		{
 			stillerFehler(fehler.getFehlertext());
 		}
-
-		ansicht.ifPresent(e -> e.zeigeObjekt(fehler));
+		if (fehler.getFehlertyp().isAktuellenSpielerInformieren())
+		{
+			ansicht.ifPresent(e -> e.zeigeObjekt(fehler));
+		}
+		if (fehler.getFehlertyp().isAlleSpielerInformieren())
+		{
+			// TODO andere Spieler informieren
+		}
 	}
 
 	public static void stillerFehler(String nachricht)
