@@ -2,20 +2,18 @@ package de.dhpoly.karte.view;
 
 import org.junit.Test;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.utils.Spielansicht;
 
 public class KarteUITest // NOSONAR
 {
 	@Test
 	public void vorschau()
 	{
-		new Fenster(new Bilderverwalter())
-				.zeigeComponente(new KarteUI(new BezahlKarte("Die Steuer wird fällig, zahle 1000€",
-						GeldTransfer.BANK_SPIELER, new RessourcenDatensatzImpl(Ressource.GELD, 1000)), null));
+		Spielansicht.zeige(new KarteUI(new BezahlKarte("Die Steuer wird fällig, zahle 1000€", GeldTransfer.BANK_SPIELER,
+				new RessourcenDatensatzImpl(Ressource.GELD, 1000)), Spielansicht.getSpielfeldAnsicht()));
 	}
 }
