@@ -2,21 +2,15 @@ package de.dhpoly.feld.view;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.feld.control.Ereignisfeld;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
+import de.dhpoly.utils.Spielansicht;
 
 public class EreignisfeldUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
-		EreignisfeldUI ui = new EreignisfeldUI(new Ereignisfeld(new KartenstapelImpl(new ArrayList<>())), null);
-
-		JFrame frame = new JFrame("EreignisfeldUITest");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(ui);
-		frame.setSize(200, 300);
-		frame.setVisible(true);
+		Ereignisfeld feld = new Ereignisfeld(new KartenstapelImpl(new ArrayList<>()));
+		Spielansicht.zeige(new EreignisfeldUI(feld, Spielansicht.getSpielfeldAnsicht()));
 	}
 }
