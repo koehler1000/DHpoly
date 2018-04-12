@@ -3,8 +3,6 @@ package de.dhpoly.spieler.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
@@ -13,15 +11,12 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.utils.Spielansicht;
 
-public class StrassenbesitzeUITest //NOSONAR
+public class StrassenbesitzeUITest // NOSONAR
 {
 	public static void main(String[] args)
 	{
-		JFrame frame = new JFrame("StrassenbesitzeUITest");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1000, 1000);
-
 		Felderverwaltung felderverwaltung = new FelderverwaltungImpl();
 		Spieler spieler = new SpielerImpl("Bla", new EinstellungenImpl(), null);
 
@@ -36,8 +31,6 @@ public class StrassenbesitzeUITest //NOSONAR
 
 		felderverwaltung.setFelder(felder);
 
-		frame.add(new StrassenbesitzeUI(felderverwaltung, spieler));
-
-		frame.setVisible(true);
+		Spielansicht.zeige(new StrassenbesitzeUI(felderverwaltung, spieler, Spielansicht.getSpielfeldAnsicht()));
 	}
 }

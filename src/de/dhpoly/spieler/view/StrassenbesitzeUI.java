@@ -4,22 +4,24 @@ import java.awt.GridLayout;
 import java.util.List;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
-public class StrassenbesitzeUI extends JPanel implements Beobachter
+public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
 	private transient Felderverwaltung felderverwaltung;
 	private transient Spieler spieler;
 
-	public StrassenbesitzeUI(Felderverwaltung felderverwaltung, Spieler spieler)
+	public StrassenbesitzeUI(Felderverwaltung felderverwaltung, Spieler spieler, SpielfeldAnsicht ansicht)
 	{
+		super(ansicht);
 		this.spieler = spieler;
 		this.felderverwaltung = felderverwaltung;
 
