@@ -3,18 +3,17 @@ package de.dhpoly.handel.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.utils.Spielansicht;
 
 public class HandelUITest // NOSONAR
 {
@@ -41,6 +40,6 @@ public class HandelUITest // NOSONAR
 
 		Transaktion transaktion = new Transaktion(s1, s2);
 
-		new Fenster(new Bilderverwalter()).zeigeComponente(new HandelUI(transaktion, null));
+		Spielansicht.zeige(new HandelUI(transaktion, Spielansicht.getSpielfeldAnsicht()));
 	}
 }
