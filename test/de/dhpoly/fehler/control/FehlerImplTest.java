@@ -3,21 +3,16 @@ package de.dhpoly.fehler.control;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
+
 public class FehlerImplTest
 {
 	@Ignore
 	@Test
 	public void fehlerNachricht() // NOSONAR
 	{
-		new FehlerImpl(null).fehlerAufgetreten("Testfehler aus JUnit. Der Fehler kann ignoriert werden.");
+		Fehler fehler = new Fehler("Testfehler aus JUnit. Der Fehler kann ignoriert werden.", FehlerTyp.FEHLER_ALLE);
+		new FehlerImpl(null).fehlerAufgetreten(fehler);
 	}
-
-	@Ignore
-	@Test
-	public void fehlerException() // NOSONAR
-	{
-		new FehlerImpl(null)
-				.fehlerAufgetreten(new Exception("Testfehler aus JUnit. Der Fehler kann ignoriert werden."));
-	}
-
 }

@@ -13,6 +13,8 @@ import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.fehler.control.FehlerImpl;
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
@@ -154,18 +156,13 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		hinzu("Straße", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
-	public void zeigeFehler(String nachricht)
-	{
-		// TODO null ersetzen
-		hinzu("Fehler", null, new FehlerUI(nachricht, this));
-	}
-
 	public void zeigeObjekt(Datenobjekt objekt)
 	{
 		leereRand();
 
 		String fehlerText = "Keine Oberfläche für " + objekt.getClassName() + " implementiert.";
-		Oberflaeche oberflaeche = new FehlerUI(fehlerText, this);
+		Fehler fehler = new Fehler(fehlerText, FehlerTyp.FEHLER_ALLE);
+		Oberflaeche oberflaeche = new FehlerUI(fehler, this);
 
 		if (objekt instanceof Nachricht)
 		{
@@ -174,6 +171,10 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter
 		else if (objekt instanceof Transaktion)
 		{
 			oberflaeche = new HandelUI((Transaktion) objekt, this);
+		}
+		else if (objekt instanceof Fehler)
+		{
+			oberflaeche = new FehlerUI((Fehler) objekt, this);
 		}
 		else
 		{

@@ -3,10 +3,10 @@ package de.dhpoly.fehler.control;
 import java.io.IOException;
 import java.util.Optional;
 
-import de.dhpoly.fehler.Fehler;
+import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class FehlerImpl implements Fehler
+public class FehlerImpl implements de.dhpoly.fehler.Fehler
 {
 	Optional<SpielfeldAnsicht> ansicht;
 
@@ -15,15 +15,10 @@ public class FehlerImpl implements Fehler
 		this.ansicht = Optional.ofNullable(ansicht);
 	}
 
-	public void fehlerAufgetreten(String nachricht)
+	public void fehlerAufgetreten(Fehler fehler)
 	{
-		stillerFehler(nachricht);
-		ansicht.ifPresent(e -> e.zeigeFehler(nachricht));
-	}
-
-	public void fehlerAufgetreten(Exception ex)
-	{
-		fehlerAufgetreten(ex.getMessage());
+		stillerFehler(fehler.getFehlertext());
+		ansicht.ifPresent(e -> e.zeigeObjekt(fehler));
 	}
 
 	public static void stillerFehler(String nachricht)

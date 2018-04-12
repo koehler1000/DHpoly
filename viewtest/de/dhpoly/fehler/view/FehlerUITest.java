@@ -1,6 +1,7 @@
 package de.dhpoly.fehler.view;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.view.Fenster;
 
 public class FehlerUITest // NOSONAR
@@ -8,6 +9,7 @@ public class FehlerUITest // NOSONAR
 	public static void main(String[] args)
 	{
 		Fenster fenster = new Fenster(new Bilderverwalter());
-		fenster.zeigeComponente(new FehlerUI("Das ist der Fehlertext", null));
+		Fehler fehler = new Fehler("Das ist der Fehlertext", null);
+		fenster.zeigeComponente(new FehlerUI(fehler, null));
 	}
 }

@@ -5,13 +5,8 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
 public interface Fehler
 {
-	static void fehlerAufgetreten(String nachricht, SpielfeldAnsicht ansicht)
+	static void fehlerAufgetreten(de.dhpoly.fehler.model.Fehler fehler, SpielfeldAnsicht ansicht)
 	{
-		new FehlerImpl(ansicht).fehlerAufgetreten(nachricht);
-	}
-
-	static void fehlerAufgetreten(Exception ex, SpielfeldAnsicht ansicht)
-	{
-		new FehlerImpl(ansicht).fehlerAufgetreten(ex);
+		new FehlerImpl(ansicht).fehlerAufgetreten(fehler);
 	}
 }
