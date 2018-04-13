@@ -430,8 +430,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void starteSpiel()
 	{
-		// TODO Auto-generated method stub
-
+		status = SpielStatus.SPIEL_LAEUFT;
 	}
 
 }
