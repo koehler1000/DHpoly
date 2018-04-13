@@ -36,8 +36,14 @@ public class WuerfelpaarImpl extends Beobachtbarer implements Wuerfelpaar
 	}
 
 	@Override
-	public int getWuerfelErgebnisSumme()
+	public int berechneWuerfelSumme()
 	{
 		return getWuerfelErgebnis1() + getWuerfelErgebnis2();
+	}
+
+	@Override
+	public List<Wuerfel> getWuerfel()
+	{
+		return wuerfel;
 	}
 }

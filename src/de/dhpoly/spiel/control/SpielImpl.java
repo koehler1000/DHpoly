@@ -62,7 +62,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			Pause.pause(100, animationen);
 		}
 
-		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
+		ruecke(getAktuellerSpieler(), wuerfel.berechneWuerfelSumme());
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
