@@ -368,7 +368,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 		catch (IOException ex)
 		{
-			// ignorieren
+			System.err.println("Fehler beim Senden der Nachricht - " + ex.getClass() + " - " + ex.getMessage());
 		}
 	}
 
