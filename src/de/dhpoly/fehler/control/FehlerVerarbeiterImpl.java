@@ -11,11 +11,13 @@ public class FehlerVerarbeiterImpl implements FehlerVerarbeiter
 {
 	Optional<SpielfeldAnsicht> ansicht;
 
+	@Deprecated
 	public FehlerVerarbeiterImpl(SpielfeldAnsicht ansicht)
 	{
 		this.ansicht = Optional.ofNullable(ansicht);
 	}
 
+	@Deprecated
 	public void fehlerAufgetreten(Fehler fehler)
 	{
 		if (fehler.getFehlertyp().isEntwicklerInformieren())
@@ -32,6 +34,7 @@ public class FehlerVerarbeiterImpl implements FehlerVerarbeiter
 		}
 	}
 
+	@Deprecated
 	public static void stillerFehler(String nachricht)
 	{
 		try

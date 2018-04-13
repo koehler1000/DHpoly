@@ -1,11 +1,14 @@
 package de.dhpoly.spiel.control;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.fehler.control.TelegramNotification;
+import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
@@ -314,5 +317,35 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void setAnimationen(boolean b)
 	{
 		animationen = b;
+	}
+
+	@Override
+	public void verarbeiteFehler(Fehler fehler)
+	{
+		if (fehler.getFehlertyp().isAlleSpielerInformieren())
+		{
+			spieler.forEach(e -> e.zeigeDatenobjekt(fehler));
+		}
+		else if (fehler.getFehlertyp().isAktuellenSpielerInformieren())
+		{
+			spieler.get(aktuellerSpieler).zeigeDatenobjekt(fehler);
+		}
+
+		if (fehler.getFehlertyp().isEntwicklerInformieren())
+		{
+			informiereEntwickler(fehler);
+		}
+	}
+
+	private void informiereEntwickler(Fehler fehler)
+	{
+		try
+		{
+			TelegramNotification.sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+		}
+		catch (IOException ex)
+		{
+			// ignorieren
+		}
 	}
 }
