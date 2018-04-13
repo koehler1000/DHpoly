@@ -282,19 +282,6 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void loescheRand()
-	{
-		ui.ifPresent(SpielfeldAnsicht::leereRand);
-	}
-
-	@Override
-	public void zeigeHandelOberflaeche(Spieler handelspartner)
-	{
-		Transaktion transaktion = new Transaktion(this, handelspartner);
-		zeigeDatenobjekt(transaktion);
-	}
-
-	@Override
 	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{
 		if (objekt != null)
