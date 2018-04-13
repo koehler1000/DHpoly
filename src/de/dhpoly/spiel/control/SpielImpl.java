@@ -23,6 +23,7 @@ import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
+import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachtbarer;
 
 public class SpielImpl extends Beobachtbarer implements Spiel
@@ -273,9 +274,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public Wuerfelpaar getWuerfel()
+	public List<Wuerfel> getWuerfel()
 	{
-		return wuerfel;
+		return wuerfel.getWuerfel();
 	}
 
 	private static final int CONST_START = 0;

@@ -68,7 +68,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
 		pnlWuerfel.setLayout(new GridLayout(1, 1));
 
-		spiel.getWuerfel().getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
+		spiel.getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
