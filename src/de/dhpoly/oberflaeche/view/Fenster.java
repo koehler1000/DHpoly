@@ -28,6 +28,7 @@ public class Fenster
 		spielansichten = ElementFactory.getTabbedPane();
 
 		frame.add(spielansichten);
+		frame.setVisible(true);
 	}
 
 	public void zeigeSpielansicht(SpielfeldAnsicht ansicht, String titel)
@@ -48,10 +49,5 @@ public class Fenster
 	public void loescheKomponente(SpielerstellerUI komponente)
 	{
 		spielansichten.remove(komponente);
-	}
-
-	public void anzeigen()
-	{
-		frame.setVisible(true);
 	}
 }

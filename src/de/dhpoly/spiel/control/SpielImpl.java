@@ -47,6 +47,11 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	public SpielImpl()
 	{
+		this(new Fenster(new Bilderverwalter()));
+	}
+
+	public SpielImpl(Fenster fenster)
+	{
 		felder = new ArrayList<>();
 		spieler = new ArrayList<>();
 		aktuellerSpieler = 0;
@@ -54,7 +59,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		einstellungen = new EinstellungenImpl();
 		wuerfelPaar = new WuerfelpaarImpl();
 
-		fenster = new Fenster(new Bilderverwalter());
+		this.fenster = fenster;
 	}
 
 	@Override

@@ -20,8 +20,7 @@ public class SpielerstellerUI extends JPanel
 	{
 		this.setLayout(new GridLayout(2, 3));
 
-		Spiel spiel = new SpielImpl();
-		spiel.setFenster(fenster);
+		Spiel spiel = new SpielImpl(fenster);
 		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld());
 
 		this.add(ElementFactory.getTextFeldUeberschrift("Spieler"));
@@ -44,6 +43,5 @@ public class SpielerstellerUI extends JPanel
 		this.add(butStart);
 
 		fenster.zeigeComponente(this, "Spielersteller");
-		fenster.anzeigen();
 	}
 }
