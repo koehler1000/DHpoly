@@ -31,7 +31,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	private int spielerNr;
 	private boolean verloren = false;
 
-	private Optional<SpielfeldAnsicht> ui = Optional.ofNullable(null);
+	private Optional<SpielfeldAnsicht> ui = Optional.empty();
 
 	// mit vorverkauften Strassen
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
@@ -207,7 +207,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 			if (feld instanceof Strasse)
 			{
 				Strasse strasse = (Strasse) feld;
-				strasse.setEigentuemer(null);
+				strasse.zurueckgeben();
 			}
 		}
 	}
@@ -284,10 +284,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{
-		if (objekt != null)
-		{
-			ui.ifPresent(e -> e.zeigeObjekt(objekt));
-		}
+		Optional.ofNullable(objekt).ifPresent(obj -> ui.ifPresent(e -> e.zeigeObjekt(obj)));
 	}
 
 	@Override

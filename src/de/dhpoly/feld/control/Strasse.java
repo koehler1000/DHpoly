@@ -12,7 +12,7 @@ import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends FeldImpl
 {
-	private Optional<Spieler> eigentuemer = Optional.ofNullable(null);
+	private Optional<Spieler> eigentuemer = Optional.empty();
 	private int[] miete = new int[6];
 
 	private int haueser = 0;
@@ -215,5 +215,10 @@ public class Strasse extends FeldImpl
 	public boolean isHausbauMoeglich()
 	{
 		return eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus) && haueser < miete.length - 1;
+	}
+
+	public void zurueckgeben()
+	{
+		eigentuemer = Optional.empty();
 	}
 }

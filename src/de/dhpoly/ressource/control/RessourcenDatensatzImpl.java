@@ -7,7 +7,7 @@ public class RessourcenDatensatzImpl implements RessourcenDatensatz
 {
 	private Ressource ressource;
 	private int anzahl;
-	private String beschreibung;
+	private String beschreibung = "<keine Beschreibung angegeben>";
 
 	public RessourcenDatensatzImpl(Ressource ressource, int anzahl)
 	{
@@ -42,10 +42,6 @@ public class RessourcenDatensatzImpl implements RessourcenDatensatz
 	@Override
 	public String getBeschreibung()
 	{
-		if (beschreibung == null)
-		{
-			return "";
-		}
 		return beschreibung;
 	}
 }
