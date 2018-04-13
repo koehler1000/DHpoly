@@ -44,5 +44,6 @@ public class SpielerstellerUI extends JPanel
 		this.add(butStart);
 
 		fenster.zeigeComponente(this, "Spielersteller");
+		fenster.anzeigen();
 	}
 }

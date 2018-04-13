@@ -1,11 +1,13 @@
 package de.dhpoly.karte.control;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 
-public class RueckenKarte implements Karte
+public class RueckenKarte extends Datenobjekt implements Karte
 {
-	private Feld zielFeld;
+	private static final long serialVersionUID = 1L;
+	private transient Feld zielFeld;
 
 	public RueckenKarte(Feld zielFeld)
 	{

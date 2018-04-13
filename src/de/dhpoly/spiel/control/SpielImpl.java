@@ -218,16 +218,19 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private void verarbeiteKarte(BezahlKarte karte)
 	{
 		new KartenverbucherImpl().bewegeGeld(karte, spieler, spieler.get(aktuellerSpieler));
+		zeigeAllenSpielern(karte);
 	}
 
 	private void verarbeiteKarte(RueckenKarte karte)
 	{
 		new KartenverbucherImpl().bewegeSpieler(karte, spieler.get(aktuellerSpieler), wetter);
+		zeigeAllenSpielern(karte);
 	}
 
 	private void verarbeiteKarte(WetterKarte karte)
 	{
 		this.wetter = karte.getWetter();
+		zeigeAllenSpielern(karte);
 	}
 
 	@Override

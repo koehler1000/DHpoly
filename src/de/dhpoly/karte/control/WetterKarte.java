@@ -1,10 +1,13 @@
 package de.dhpoly.karte.control;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
 
-public class WetterKarte implements Karte
+public class WetterKarte extends Datenobjekt implements Karte
 {
+	private static final long serialVersionUID = 1L;
+
 	private Wetter wetter;
 
 	public WetterKarte(Wetter wetter)
