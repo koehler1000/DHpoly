@@ -1,13 +1,13 @@
 package de.dhpoly.wuerfel.view;
 
 import de.dhpoly.utils.Spielansicht;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class WuerfelUIVorschau
 {
 	public static void main(String[] args)
 	{
-		WuerfelImpl wuerfel = new WuerfelImpl();
+		WuerfelpaarImpl wuerfel = new WuerfelpaarImpl();
 		Spielansicht.zeige(new WuerfelUI(wuerfel, 1, Spielansicht.getSpielfeldAnsicht()));
 	}
 }

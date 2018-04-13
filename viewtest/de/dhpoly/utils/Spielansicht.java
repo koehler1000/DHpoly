@@ -11,7 +11,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class Spielansicht
 {
@@ -20,7 +20,7 @@ public class Spielansicht
 
 	public static SpielfeldAnsicht getSpielfeldAnsicht()
 	{
-		Spiel spiel = new SpielImpl(new ArrayList<>(), new EinstellungenImpl(), new WuerfelImpl());
+		Spiel spiel = new SpielImpl(new ArrayList<>(), new EinstellungenImpl(), new WuerfelpaarImpl());
 		Spieler spieler = new SpielerImpl("foo", new EinstellungenImpl(), spiel);
 		return new SpielfeldAnsicht(spiel, spieler);
 	}

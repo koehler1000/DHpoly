@@ -7,14 +7,14 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spielfeld.control.SpielfeldImpl;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class Main
 {
 	public static void main(String[] args)
 	{
 		Einstellungen einstellungen = new EinstellungenImpl();
-		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelImpl());
+		Spiel spiel = new SpielImpl(new SpielfeldImpl().getStandardSpielfeld(), einstellungen, new WuerfelpaarImpl());
 
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Rico", einstellungen, spiel));
 		spiel.fuegeSpielerHinzu(new SpielerImpl("Sven", einstellungen, spiel));

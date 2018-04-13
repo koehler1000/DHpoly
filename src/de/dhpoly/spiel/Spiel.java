@@ -8,7 +8,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.wuerfel.Wuerfel;
+import de.dhpoly.wuerfel.Wuerfelpaar;
 import observerpattern.Beobachter;
 
 public interface Spiel
@@ -19,7 +19,7 @@ public interface Spiel
 
 	Wetter getWetter();
 
-	Wuerfel getWuerfel();
+	Wuerfelpaar getWuerfel();
 
 	List<Spieler> getSpieler();
 

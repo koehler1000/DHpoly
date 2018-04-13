@@ -20,7 +20,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.control.SpielerUnimplemented;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class SpielImplTest
 {
@@ -32,7 +32,7 @@ public class SpielImplTest
 		List<Feld> felder = new ArrayList<>();
 		felder.add(LosfeldTest.getDefaultFeld());
 		felder.add(StrasseTest.getDefaultStrasse());
-		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 	}
@@ -74,7 +74,7 @@ public class SpielImplTest
 		felder.add(feld);
 		Ressourcenfeld feld2 = new Ressourcenfeld(Ressource.STEIN);
 		felder.add(feld2);
-		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
 
@@ -99,7 +99,7 @@ public class SpielImplTest
 	{
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
 
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
@@ -117,7 +117,7 @@ public class SpielImplTest
 	{
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
-		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelImpl());
+		Spiel spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
 
 		Spieler sieger = getSpieler(true);
 

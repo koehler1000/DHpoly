@@ -6,8 +6,8 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.wuerfel.Wuerfel;
-import de.dhpoly.wuerfel.control.WuerfelImpl;
+import de.dhpoly.wuerfel.Wuerfelpaar;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 import observerpattern.Beobachter;
 
 public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -18,11 +18,11 @@ public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private int wuerfelNr = 0;
 
-	private transient Wuerfel wuerfel;
+	private transient Wuerfelpaar wuerfel;
 
 	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
-	public WuerfelUI(WuerfelImpl wuerfel, int wuerfelNr, SpielfeldAnsicht ansicht)
+	public WuerfelUI(WuerfelpaarImpl wuerfel, int wuerfelNr, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 

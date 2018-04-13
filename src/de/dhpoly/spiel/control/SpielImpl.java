@@ -22,7 +22,7 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.wuerfel.Wuerfel;
+import de.dhpoly.wuerfel.Wuerfelpaar;
 import observerpattern.Beobachtbarer;
 
 public class SpielImpl extends Beobachtbarer implements Spiel
@@ -32,13 +32,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private int aktuellerSpieler;
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
-	private Wuerfel wuerfel;
+	private Wuerfelpaar wuerfel;
 
 	private Fenster fenster;
 
 	private boolean animationen = true;
 
-	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
+	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
 	{
 		this.felder = felder;
 		this.einstellungen = einstellungen;
@@ -273,7 +273,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public Wuerfel getWuerfel()
+	public Wuerfelpaar getWuerfel()
 	{
 		return wuerfel;
 	}

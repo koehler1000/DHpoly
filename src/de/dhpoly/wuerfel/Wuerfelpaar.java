@@ -1,6 +1,6 @@
 package de.dhpoly.wuerfel;
 
-public interface Wuerfel
+public interface Wuerfelpaar
 {
 	void wuerfeln();
 
@@ -9,6 +9,4 @@ public interface Wuerfel
 	int getWuerfelErgebnis2();
 
 	int getWuerfelErgebnis1();
-
-	int getWuerfelZufall();
 }
