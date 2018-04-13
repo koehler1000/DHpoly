@@ -52,11 +52,11 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
 		butName = ElementFactory.getButtonUeberschrift(feld.getBeschriftung(), backcolor);
-		butName.addActionListener(e -> this.setVisible(false));
+		butName.addActionListener(e -> schliessen());
 		this.add(butName, BorderLayout.NORTH);
 
 		butBesitzer = ElementFactory.getButtonUeberschrift(getEigentuemerString(feld));
-		butBesitzer.addActionListener(e -> this.setVisible(false));
+		butBesitzer.addActionListener(e -> schliessen());
 		this.add(butBesitzer, BorderLayout.SOUTH);
 
 		feld.getEigentuemer().ifPresent(this::farbeSetzen);
