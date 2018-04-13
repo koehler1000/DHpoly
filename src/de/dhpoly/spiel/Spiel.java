@@ -7,8 +7,10 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachter;
 
@@ -49,4 +51,22 @@ public interface Spiel
 	SpielStatus getStatus();
 
 	void setStatus(SpielStatus spielLaeuft);
+
+	Wuerfelpaar getWuerfelPaar();
+
+	void setWuerfelPaar(Wuerfelpaar wuerfelPaar);
+
+	Fenster getFenster();
+
+	void setFelder(List<Feld> felder);
+
+	void setFenster(Fenster fenster);
+
+	boolean isAnimationen();
+
+	void setSpieler(List<Spieler> spieler);
+
+	void setWetter(Wetter wetter);
+
+	void setEinstellungen(Einstellungen einstellungen);
 }

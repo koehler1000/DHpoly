@@ -7,6 +7,7 @@ import java.util.List;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
@@ -26,6 +27,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 import observerpattern.Beobachtbarer;
 
 public class SpielImpl extends Beobachtbarer implements Spiel
@@ -35,7 +37,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private int aktuellerSpieler;
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
-	private Wuerfelpaar wuerfel;
+	private Wuerfelpaar wuerfelPaar;
 
 	private Fenster fenster;
 
@@ -43,6 +45,19 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
+	public SpielImpl()
+	{
+		felder = new ArrayList<>();
+		spieler = new ArrayList<>();
+		aktuellerSpieler = 0;
+		wetter = Wetter.BEWOELKT;
+		einstellungen = new EinstellungenImpl();
+		wuerfelPaar = new WuerfelpaarImpl();
+
+		fenster = new Fenster(new Bilderverwalter());
+	}
+
+	@Deprecated
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
 	{
 		this(new Fenster(new Bilderverwalter()), felder, einstellungen, wuerfel);
@@ -53,7 +68,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.fenster = fenster;
 		this.felder = felder;
 		this.einstellungen = einstellungen;
-		this.wuerfel = wuerfel;
+		this.wuerfelPaar = wuerfel;
 		this.aktuellerSpieler = 0;
 	}
 
@@ -67,11 +82,11 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			wuerfel.wuerfeln();
+			wuerfelPaar.wuerfeln();
 			Pause.pause(100, animationen);
 		}
 
-		ruecke(getAktuellerSpieler(), wuerfel.berechneWuerfelSumme());
+		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -290,7 +305,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public List<Wuerfel> getWuerfel()
 	{
-		return wuerfel.getWuerfel();
+		return wuerfelPaar.getWuerfel();
 	}
 
 	private static final int CONST_START = 0;
@@ -375,4 +390,59 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		this.status = status;
 	}
+
+	@Override
+	public Wuerfelpaar getWuerfelPaar()
+	{
+		return wuerfelPaar;
+	}
+
+	@Override
+	public void setWuerfelPaar(Wuerfelpaar wuerfelPaar)
+	{
+		this.wuerfelPaar = wuerfelPaar;
+	}
+
+	@Override
+	public Fenster getFenster()
+	{
+		return fenster;
+	}
+
+	@Override
+	public void setFenster(Fenster fenster)
+	{
+		this.fenster = fenster;
+	}
+
+	@Override
+	public boolean isAnimationen()
+	{
+		return animationen;
+	}
+
+	@Override
+	public void setFelder(List<Feld> felder)
+	{
+		this.felder = felder;
+	}
+
+	@Override
+	public void setSpieler(List<Spieler> spieler)
+	{
+		this.spieler = spieler;
+	}
+
+	@Override
+	public void setWetter(Wetter wetter)
+	{
+		this.wetter = wetter;
+	}
+
+	@Override
+	public void setEinstellungen(Einstellungen einstellungen)
+	{
+		this.einstellungen = einstellungen;
+	}
+
 }
