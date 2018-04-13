@@ -39,11 +39,11 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
 		strasse.kaufe(spieler);
-		entfernen();
+		schliessen();
 	}
 
 	private void abbrechen()
 	{
-		entfernen();
+		schliessen();
 	}
 }

@@ -17,7 +17,7 @@ public abstract class Oberflaeche extends JPanel
 		ElementFactory.bearbeitePanel(this);
 	}
 
-	protected void entfernen()
+	protected void schliessen()
 	{
 		ansicht.ifPresent(e -> e.entferne(this));
 	}
