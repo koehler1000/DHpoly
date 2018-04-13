@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class TelegramNotificationTest
+public class TelegamBenachrichtigerTest
 {
 	@Ignore
 	@Test
@@ -15,7 +15,7 @@ public class TelegramNotificationTest
 	{
 		try
 		{
-			TelegramNotification.sendTelegramMessage("Testfehler",
+			TelegamBenachrichtiger.sendTelegramMessage("Testfehler",
 					"Das ist ein Fehler aus dem JUnitTest. Dieser ist beabsichtigt und darf ignoriert werden.");
 		}
 		catch (IOException ex)

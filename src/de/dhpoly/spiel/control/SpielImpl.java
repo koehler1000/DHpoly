@@ -7,7 +7,7 @@ import java.util.List;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.fehler.control.TelegramNotification;
+import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
@@ -341,7 +341,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		try
 		{
-			TelegramNotification.sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			TelegamBenachrichtiger.sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
 		}
 		catch (IOException ex)
 		{

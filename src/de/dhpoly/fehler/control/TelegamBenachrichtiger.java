@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class TelegramNotification
+public class TelegamBenachrichtiger
 {
 	private static final String CHAT_ID = "-1001131918455";
 
-	private TelegramNotification()
+	private TelegamBenachrichtiger()
 	{}
 
 	public static void sendTelegramMessage(String thema, String nachricht) throws IOException
