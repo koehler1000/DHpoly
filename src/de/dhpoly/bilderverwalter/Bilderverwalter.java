@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import de.dhpoly.fehler.control.FehlerVerarbeiterImpl;
 import de.dhpoly.ressource.model.Ressource;
 
 public class Bilderverwalter
@@ -62,7 +61,6 @@ public class Bilderverwalter
 		}
 		catch (IOException ex)
 		{
-			FehlerVerarbeiterImpl.stillerFehler(ex + " (" + pfad + ")");
 			ImageIcon icon = new ImageIcon();
 			bilder.put(pfad, icon);
 			return icon;

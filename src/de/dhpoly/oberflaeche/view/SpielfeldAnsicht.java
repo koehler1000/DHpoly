@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fehler.control.FehlerVerarbeiterImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
@@ -44,11 +43,13 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 	private JButton butWeiter;
 	private JTabbedPane tabRand;
 	private transient Spieler spieler;
+	private transient Spiel spiel;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, Spieler spieler)
 	{
+		this.spiel = spiel;
 		this.spieler = spieler;
 		spieler.addBeobachterHinzu(this);
 
@@ -178,7 +179,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 		}
 		else
 		{
-			FehlerVerarbeiterImpl.stillerFehler(fehlerText);
+			spiel.verarbeiteFehler(fehler);
 		}
 
 		hinzu(objekt.getTitel(), objekt, oberflaeche);
