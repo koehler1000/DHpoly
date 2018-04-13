@@ -24,21 +24,14 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 	}
 
 	@Override
-	public int getWuerfelErgebnis1()
-	{
-		return wuerfel.get(0).getZahl();
-	}
-
-	@Override
-	public int getWuerfelErgebnis2()
-	{
-		return wuerfel.get(1).getZahl();
-	}
-
-	@Override
 	public int berechneWuerfelSumme()
 	{
-		return getWuerfelErgebnis1() + getWuerfelErgebnis2();
+		int summe = 0;
+		for (Wuerfel w : wuerfel)
+		{
+			summe += w.getZahl();
+		}
+		return summe;
 	}
 
 	@Override

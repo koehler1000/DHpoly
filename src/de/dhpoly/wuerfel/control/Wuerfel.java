@@ -1,9 +1,10 @@
 package de.dhpoly.wuerfel.control;
 
-import observerpattern.Beobachtbarer;
+import de.dhpoly.datenobjekt.Datenobjekt;
 
-public class Wuerfel extends Beobachtbarer
+public class Wuerfel extends Datenobjekt
 {
+	private static final long serialVersionUID = 1L;
 	int zahl = 1;
 
 	public Wuerfel(int zahl)
@@ -19,5 +20,11 @@ public class Wuerfel extends Beobachtbarer
 	public int getZahl()
 	{
 		return zahl;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Würfel";
 	}
 }

@@ -11,10 +11,4 @@ public interface Wuerfelpaar
 	int berechneWuerfelSumme();
 
 	List<Wuerfel> getWuerfel();
-
-	@Deprecated
-	int getWuerfelErgebnis2();
-
-	@Deprecated
-	int getWuerfelErgebnis1();
 }

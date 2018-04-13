@@ -15,7 +15,7 @@ public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private JLabel lblWuerfelBild = new JLabel();
 
-	private Wuerfel wuerfel;
+	private transient Wuerfel wuerfel;
 
 	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
