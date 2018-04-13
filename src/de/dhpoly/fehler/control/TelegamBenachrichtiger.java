@@ -13,7 +13,12 @@ public class TelegamBenachrichtiger
 
 	public static void sendTelegramMessage(String thema, String nachricht) throws IOException
 	{
-		String toSend = thema + " - " + nachricht;
+		String toSend = thema //
+				.replaceAll("[äÄ]", "ae") //
+				.replaceAll("[öÖ]", "oe") //
+				.replaceAll("[üÜ]", "ue") //
+				.replaceAll("ß", "ss") //
+				+ " - " + nachricht;
 		String command = "https://api.telegram.org/bot444829640:AAEZSHnTqmqtRkLualeRH4JmvkV95t5o8b8/sendmessage?chat_id="
 				+ CHAT_ID + "&text=";
 		command += toSend;
