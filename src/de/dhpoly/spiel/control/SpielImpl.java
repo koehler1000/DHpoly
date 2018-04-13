@@ -257,18 +257,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public Wetter getWetter()
-	{
-		return wetter;
-	}
-
-	@Override
-	public Einstellungen getEinstellungen()
-	{
-		return einstellungen;
-	}
-
-	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
 		spieler.setAkutellerSpieler(this.spieler.isEmpty());
@@ -368,7 +356,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 		catch (IOException ex)
 		{
-			System.err.println("Fehler beim Senden der Nachricht - " + ex.getClass() + " - " + ex.getMessage());
+			// ignorieren
 		}
 	}
 
@@ -379,24 +367,12 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public Wuerfelpaar getWuerfelPaar()
-	{
-		return wuerfelPaar;
-	}
-
-	@Override
 	public void setWuerfelPaar(Wuerfelpaar wuerfelPaar)
 	{
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
 			this.wuerfelPaar = wuerfelPaar;
 		}
-	}
-
-	@Override
-	public Fenster getFenster()
-	{
-		return fenster;
 	}
 
 	@Override
