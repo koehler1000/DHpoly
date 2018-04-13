@@ -8,6 +8,7 @@ import javax.swing.JTabbedPane;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.spielersteller.view.SpielerstellerUI;
 
 public class Fenster
 {
@@ -36,13 +37,18 @@ public class Fenster
 		spielansichten.addTab(titel, ansicht);
 	}
 
-	public void zeigeComponente(Component componente)
+	public void zeigeComponente(Component componente, String titel)
 	{
-		frame.add(componente);
+		spielansichten.addTab(titel, componente);
 	}
 
 	public void zeigeTab(String name)
 	{
 		spielansichten.setSelectedIndex(spielansichten.indexOfTab(name));
+	}
+
+	public void loescheKomponente(SpielerstellerUI komponente)
+	{
+		spielansichten.remove(komponente);
 	}
 }

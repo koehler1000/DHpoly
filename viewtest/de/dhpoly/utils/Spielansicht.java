@@ -28,6 +28,6 @@ public class Spielansicht
 	public static void zeige(Oberflaeche oberflaeche)
 	{
 		Fenster fenster = new Fenster(new Bilderverwalter());
-		fenster.zeigeComponente(oberflaeche);
+		fenster.zeigeComponente(oberflaeche, "Oberfläche");
 	}
 }

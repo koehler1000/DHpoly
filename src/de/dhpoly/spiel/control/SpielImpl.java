@@ -21,7 +21,9 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachtbarer;
@@ -39,14 +41,20 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private boolean animationen = true;
 
+	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
+
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
 	{
+		this(new Fenster(new Bilderverwalter()), felder, einstellungen, wuerfel);
+	}
+
+	public SpielImpl(Fenster fenster, List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
+	{
+		this.fenster = fenster;
 		this.felder = felder;
 		this.einstellungen = einstellungen;
 		this.wuerfel = wuerfel;
 		this.aktuellerSpieler = 0;
-
-		this.fenster = new Fenster(new Bilderverwalter());
 	}
 
 	@Override
@@ -266,6 +274,12 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		informiereBeobachter();
 	}
 
+	@Override
+	public void fuegeSpielerHinzu(String spielerName)
+	{
+		fuegeSpielerHinzu(new SpielerImpl(spielerName, einstellungen, this));
+	}
+
 	private void createOberflaeche(Spieler spieler, Spiel spiel)
 	{
 		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
@@ -348,5 +362,17 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			// ignorieren
 		}
+	}
+
+	@Override
+	public SpielStatus getStatus()
+	{
+		return status;
+	}
+
+	@Override
+	public void setStatus(SpielStatus status)
+	{
+		this.status = status;
 	}
 }
