@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 
 public class Abbuchung
 {
-
 	public static void main(String[] args)
 	{
 		JOptionPane.showMessageDialog(null, "Alter Kontostand:    50.000\n"
