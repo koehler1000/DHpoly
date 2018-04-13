@@ -18,8 +18,10 @@ public interface Spiel
 {
 	Spieler getAktuellerSpieler();
 
+	@Deprecated
 	Einstellungen getEinstellungen();
 
+	@Deprecated
 	Wetter getWetter();
 
 	List<Wuerfel> getWuerfel();
@@ -52,10 +54,12 @@ public interface Spiel
 
 	void starteSpiel();
 
+	@Deprecated
 	Wuerfelpaar getWuerfelPaar();
 
 	void setWuerfelPaar(Wuerfelpaar wuerfelPaar);
 
+	@Deprecated
 	Fenster getFenster();
 
 	void setFelder(List<Feld> felder);
