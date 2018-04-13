@@ -57,16 +57,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		fenster = new Fenster(new Bilderverwalter());
 	}
 
-	@Deprecated
-	public SpielImpl(Fenster fenster, List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
-	{
-		this.fenster = fenster;
-		this.felder = felder;
-		this.einstellungen = einstellungen;
-		this.wuerfelPaar = wuerfel;
-		this.aktuellerSpieler = 0;
-	}
-
 	@Override
 	public void ruecke()
 	{
