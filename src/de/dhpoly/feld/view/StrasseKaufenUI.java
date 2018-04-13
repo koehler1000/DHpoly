@@ -26,7 +26,7 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
 
 		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
-		butAbbrechen.addActionListener(e -> abbrechen(spieler));
+		butAbbrechen.addActionListener(e -> abbrechen());
 
 		JPanel pnlOptionen = ElementFactory.erzeugePanel();
 		pnlOptionen.setLayout(new GridLayout(2, 1, 10, 10));
@@ -39,11 +39,11 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	private void kaufen(Strasse strasse, Spieler spieler)
 	{
 		strasse.kaufe(spieler);
-		spieler.loescheRand();
+		entfernen();
 	}
 
-	private void abbrechen(Spieler spieler)
+	private void abbrechen()
 	{
-		spieler.loescheRand();
+		entfernen();
 	}
 }
