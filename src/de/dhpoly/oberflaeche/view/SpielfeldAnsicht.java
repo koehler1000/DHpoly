@@ -23,6 +23,9 @@ import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.control.RueckenKarte;
+import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.nachricht.view.NachrichtUI;
@@ -175,6 +178,18 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 		else if (objekt instanceof Fehler)
 		{
 			oberflaeche = new FehlerUI((Fehler) objekt, this);
+		}
+		else if (objekt instanceof BezahlKarte)
+		{
+			oberflaeche = new KarteUI((BezahlKarte) objekt, this);
+		}
+		else if (objekt instanceof RueckenKarte)
+		{
+			oberflaeche = new KarteUI((RueckenKarte) objekt, this);
+		}
+		else if (objekt instanceof WetterKarte)
+		{
+			oberflaeche = new KarteUI((WetterKarte) objekt, this);
 		}
 		else
 		{
