@@ -19,6 +19,7 @@ public class SpielUIVerwalter
 	private Map<Spieler, SpielfeldAnsicht> ui = new HashMap<>();
 	private Fenster fenster;
 
+	@Deprecated
 	public SpielUIVerwalter()
 	{
 		fenster = new Fenster(new Bilderverwalter());

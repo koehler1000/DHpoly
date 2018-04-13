@@ -1,15 +1,13 @@
 package de.dhpoly.pause;
 
-import de.dhpoly.spiel.view.SpielUIVerwalter;
-
 public class Pause
 {
 	private Pause()
 	{}
 
-	public static void pause(int millis, SpielUIVerwalter verwalter)
+	public static void pause(int millis, boolean animationenAnzeigen)
 	{
-		if (verwalter.sollAnimiertAnzeigen())
+		if (animationenAnzeigen)
 		{
 			try
 			{

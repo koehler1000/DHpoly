@@ -77,4 +77,6 @@ public interface Spieler
 	void zeigeHausbauMoeglichkeit();
 
 	void zeigeDatenobjekt(Datenobjekt objekt);
+
+	void leereRand();
 }

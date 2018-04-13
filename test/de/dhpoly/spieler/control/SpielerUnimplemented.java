@@ -163,4 +163,8 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{}
+
+	@Override
+	public void leereRand()
+	{}
 }

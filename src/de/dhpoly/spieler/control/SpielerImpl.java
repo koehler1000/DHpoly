@@ -289,4 +289,10 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 			ui.ifPresent(e -> e.zeigeObjekt(objekt));
 		}
 	}
+
+	@Override
+	public void leereRand()
+	{
+		ui.ifPresent(SpielfeldAnsicht::leereRand);
+	}
 }

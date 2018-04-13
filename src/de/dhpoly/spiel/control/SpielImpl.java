@@ -3,6 +3,7 @@ package de.dhpoly.spiel.control;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
@@ -13,9 +14,10 @@ import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.oberflaeche.view.Fenster;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.view.SpielUIVerwalter;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfel;
 import observerpattern.Beobachtbarer;
@@ -29,7 +31,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfel wuerfel;
 
-	private SpielUIVerwalter uiVerwalter = new SpielUIVerwalter();
+	private Fenster fenster;
+
+	private boolean animationen = true;
 
 	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfel wuerfel)
 	{
@@ -37,6 +41,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.einstellungen = einstellungen;
 		this.wuerfel = wuerfel;
 		this.aktuellerSpieler = 0;
+
+		this.fenster = new Fenster(new Bilderverwalter());
 	}
 
 	@Override
@@ -50,7 +56,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		for (int i = 0; i < 10; i++)
 		{
 			wuerfel.wuerfeln();
-			Pause.pause(100, uiVerwalter);
+			Pause.pause(100, animationen);
 		}
 
 		ruecke(getAktuellerSpieler(), wuerfel.getWuerfelErgebnisSumme());
@@ -72,7 +78,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				aktuellesFeld.verlasseFeld(spieler);
 				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 				aktuellesFeld.laufeUeberFeld(spieler);
-				Pause.pause(200, uiVerwalter);
+				Pause.pause(200, animationen);
 			}
 
 			aktuellesFeld.verlasseFeld(spieler);
@@ -119,8 +125,21 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
 		spielerAktuellNeu.setAkutellerSpieler(true);
 
-		uiVerwalter.leereRand();
-		uiVerwalter.zeigeSpieler(spielerAktuellNeu);
+		leereRand();
+		zeigeAktuellenSpieler();
+	}
+
+	private void zeigeAktuellenSpieler()
+	{
+		fenster.zeigeTab(spieler.get(aktuellerSpieler).getName());
+	}
+
+	private void leereRand()
+	{
+		for (Spieler sp : spieler)
+		{
+			sp.leereRand();
+		}
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -238,9 +257,16 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.spieler.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 
-		uiVerwalter.createOberflaeche(spieler, this);
+		createOberflaeche(spieler, this);
 
 		informiereBeobachter();
+	}
+
+	private void createOberflaeche(Spieler spieler, Spiel spiel)
+	{
+		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
+		fenster.zeigeSpielansicht(ansicht, spieler.getName());
+		spieler.setSpielfeldAnsicht(ansicht);
 	}
 
 	@Override
@@ -261,7 +287,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		if (aktuellerSchritt == CONST_START)
 		{
-			uiVerwalter.leereRand();
+			leereRand();
 			beschreibungNaechsterSchritt = "Würfeln";
 			aktuellerSchritt = CONST_WUERFELN;
 		}
@@ -287,6 +313,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	public void setAnimationen(boolean b)
 	{
-		uiVerwalter.setAnimationen(b);
+		animationen = b;
 	}
 }
