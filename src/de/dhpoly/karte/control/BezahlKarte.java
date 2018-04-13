@@ -14,7 +14,7 @@ public class BezahlKarte extends Datenobjekt implements Karte
 
 	private String beschreibung;
 	private GeldTransfer transfer;
-	private List<RessourcenDatensatz> ressourcenDatensaetze;
+	private transient List<RessourcenDatensatz> ressourcenDatensaetze;
 
 	public BezahlKarte(String beschreibung, GeldTransfer transfer, List<RessourcenDatensatz> ressourcenDatensaetze)
 	{
