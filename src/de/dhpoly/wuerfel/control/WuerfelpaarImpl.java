@@ -2,11 +2,11 @@ package de.dhpoly.wuerfel.control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import de.dhpoly.wuerfel.Wuerfelpaar;
-import observerpattern.Beobachtbarer;
 
-public class WuerfelpaarImpl extends Beobachtbarer implements Wuerfelpaar
+public class WuerfelpaarImpl implements Wuerfelpaar
 {
 	private List<Wuerfel> wuerfel = new ArrayList<>();
 
@@ -19,8 +19,8 @@ public class WuerfelpaarImpl extends Beobachtbarer implements Wuerfelpaar
 	@Override
 	public void wuerfeln()
 	{
-		wuerfel.forEach(Wuerfel::wuerfeln);
-		informiereBeobachter();
+		Random r = new Random();
+		wuerfel.forEach(wuerf -> wuerf.setZahl(1 + r.nextInt(6)));
 	}
 
 	@Override

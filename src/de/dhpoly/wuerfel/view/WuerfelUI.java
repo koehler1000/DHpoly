@@ -6,8 +6,7 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.wuerfel.Wuerfelpaar;
-import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
+import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachter;
 
 public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -16,37 +15,25 @@ public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private JLabel lblWuerfelBild = new JLabel();
 
-	private int wuerfelNr = 0;
-
-	private transient Wuerfelpaar wuerfel;
+	private Wuerfel wuerfel;
 
 	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
-	public WuerfelUI(WuerfelpaarImpl wuerfel, int wuerfelNr, SpielfeldAnsicht ansicht)
+	public WuerfelUI(Wuerfel wuerfel, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
+		this.wuerfel = wuerfel;
 
 		ElementFactory.bearbeitePanel(this);
-
-		this.wuerfel = wuerfel;
-		this.wuerfelNr = wuerfelNr;
-
 		this.add(lblWuerfelBild);
 
-		wuerfel.addBeobachter(this);
 		update();
+		wuerfel.addBeobachter(this);
 	}
 
 	@Override
 	public void update()
 	{
-		if (wuerfelNr == 1)
-		{
-			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis1()));
-		}
-		else
-		{
-			lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getWuerfelErgebnis2()));
-		}
+		lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getZahl()));
 	}
 }

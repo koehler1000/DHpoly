@@ -32,7 +32,6 @@ import de.dhpoly.spiel.view.SpielerUebersichtUI;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
-import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 import observerpattern.Beobachter;
 
@@ -68,8 +67,8 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 
 		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
 		pnlWuerfel.setLayout(new GridLayout(1, 1));
-		pnlWuerfel.add(new WuerfelUI((WuerfelpaarImpl) spiel.getWuerfel(), 1, this));
-		pnlWuerfel.add(new WuerfelUI((WuerfelpaarImpl) spiel.getWuerfel(), 2, this));
+
+		spiel.getWuerfel().getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 

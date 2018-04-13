@@ -2,7 +2,9 @@ package de.dhpoly.wuerfel.control;
 
 import java.util.Random;
 
-public class Wuerfel
+import observerpattern.Beobachtbarer;
+
+public class Wuerfel extends Beobachtbarer
 {
 	int zahl = 1;
 
@@ -11,10 +13,16 @@ public class Wuerfel
 		this.zahl = zahl;
 	}
 
+	@Deprecated
 	public void wuerfeln()
 	{
 		Random r = new Random();
-		zahl = 1 + r.nextInt(6);
+		setZahl(1 + r.nextInt(6));
+	}
+
+	public void setZahl(int zahl)
+	{
+		this.zahl = zahl;
 	}
 
 	public int getZahl()
