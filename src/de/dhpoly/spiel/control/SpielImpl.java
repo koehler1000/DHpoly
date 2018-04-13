@@ -58,11 +58,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Deprecated
-	public SpielImpl(List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
-	{
-		this(new Fenster(new Bilderverwalter()), felder, einstellungen, wuerfel);
-	}
-
 	public SpielImpl(Fenster fenster, List<Feld> felder, Einstellungen einstellungen, Wuerfelpaar wuerfel)
 	{
 		this.fenster = fenster;
@@ -386,12 +381,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public void setStatus(SpielStatus status)
-	{
-		this.status = status;
-	}
-
-	@Override
 	public Wuerfelpaar getWuerfelPaar()
 	{
 		return wuerfelPaar;
@@ -434,15 +423,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public void setSpieler(List<Spieler> spieler)
-	{
-		if (status == SpielStatus.SPIEL_VORBEREITUNG)
-		{
-			this.spieler = spieler;
-		}
-	}
-
-	@Override
 	public void setWetter(Wetter wetter)
 	{
 		this.wetter = wetter;
@@ -455,6 +435,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			this.einstellungen = einstellungen;
 		}
+	}
+
+	@Override
+	public void starteSpiel()
+	{
+		// TODO Auto-generated method stub
+
 	}
 
 }

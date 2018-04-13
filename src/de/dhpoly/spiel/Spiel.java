@@ -50,7 +50,7 @@ public interface Spiel
 
 	SpielStatus getStatus();
 
-	void setStatus(SpielStatus spielLaeuft);
+	void starteSpiel();
 
 	Wuerfelpaar getWuerfelPaar();
 
@@ -63,8 +63,6 @@ public interface Spiel
 	void setFenster(Fenster fenster);
 
 	boolean isAnimationen();
-
-	void setSpieler(List<Spieler> spieler);
 
 	void setWetter(Wetter wetter);
 

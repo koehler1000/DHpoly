@@ -6,14 +6,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
-import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spielfeld.model.Standardspielfeld;
-import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class SpielerstellerUI extends JPanel
 {
@@ -23,8 +20,9 @@ public class SpielerstellerUI extends JPanel
 	{
 		this.setLayout(new GridLayout(2, 3));
 
-		Spiel spiel = new SpielImpl(fenster, new Standardspielfeld().getStandardSpielfeld(), new EinstellungenImpl(),
-				new WuerfelpaarImpl());
+		Spiel spiel = new SpielImpl();
+		spiel.setFenster(fenster);
+		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld());
 
 		this.add(ElementFactory.getTextFeldUeberschrift("Spieler"));
 
@@ -40,7 +38,7 @@ public class SpielerstellerUI extends JPanel
 
 		JButton butStart = ElementFactory.getButtonUeberschrift("Spiel starten");
 		butStart.addActionListener(e -> {
-			spiel.setStatus(SpielStatus.SPIEL_LAEUFT);
+			spiel.starteSpiel();
 			fenster.loescheKomponente(this);
 		});
 		this.add(butStart);
