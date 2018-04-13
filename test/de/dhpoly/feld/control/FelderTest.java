@@ -7,13 +7,11 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class FelderTest
 {
@@ -43,7 +41,8 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		SpielImpl spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
+		SpielImpl spiel = new SpielImpl();
+		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(sp1);
 		spiel.setAnimationen(false);
 
@@ -68,7 +67,8 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		SpielImpl spiel = new SpielImpl(felder, new EinstellungenImpl(), new WuerfelpaarImpl());
+		SpielImpl spiel = new SpielImpl();
+		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(sp1);
 		spiel.setAnimationen(false);
 

@@ -400,7 +400,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void setWuerfelPaar(Wuerfelpaar wuerfelPaar)
 	{
-		this.wuerfelPaar = wuerfelPaar;
+		if (status == SpielStatus.SPIEL_VORBEREITUNG)
+		{
+			this.wuerfelPaar = wuerfelPaar;
+		}
 	}
 
 	@Override
@@ -424,13 +427,19 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void setFelder(List<Feld> felder)
 	{
-		this.felder = felder;
+		if (status == SpielStatus.SPIEL_VORBEREITUNG)
+		{
+			this.felder = felder;
+		}
 	}
 
 	@Override
 	public void setSpieler(List<Spieler> spieler)
 	{
-		this.spieler = spieler;
+		if (status == SpielStatus.SPIEL_VORBEREITUNG)
+		{
+			this.spieler = spieler;
+		}
 	}
 
 	@Override
@@ -442,7 +451,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void setEinstellungen(Einstellungen einstellungen)
 	{
-		this.einstellungen = einstellungen;
+		if (status == SpielStatus.SPIEL_VORBEREITUNG)
+		{
+			this.einstellungen = einstellungen;
+		}
 	}
 
 }
