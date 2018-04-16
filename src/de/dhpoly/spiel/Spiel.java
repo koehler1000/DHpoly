@@ -18,6 +18,7 @@ public interface Spiel
 {
 	Spieler getAktuellerSpieler();
 
+	@Deprecated
 	List<Wuerfel> getWuerfel();
 
 	List<Spieler> getSpieler();

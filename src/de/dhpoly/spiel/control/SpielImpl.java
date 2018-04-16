@@ -276,7 +276,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		// TODO sollte nicht abgefragt werden müssen
 		if (spieler instanceof SpielerLokal)
 		{
-			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
+			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, wuerfelPaar.getWuerfel(), spieler);
 			fenster.zeigeSpielansicht(ansicht, spieler.getName());
 			spieler.setSpielfeldAnsicht(ansicht);
 		}

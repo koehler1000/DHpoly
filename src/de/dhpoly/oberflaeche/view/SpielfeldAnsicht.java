@@ -35,6 +35,7 @@ import de.dhpoly.spiel.view.SpielerUebersichtUI;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
+import de.dhpoly.wuerfel.control.Wuerfel;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 import observerpattern.Beobachter;
 
@@ -49,7 +50,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
-	public SpielfeldAnsicht(Spiel spiel, Spieler spieler)
+	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
 	{
 		this.spiel = spiel;
 		this.spieler = spieler;
@@ -71,7 +72,7 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
 		pnlWuerfel.setLayout(new GridLayout(1, 1));
 
-		spiel.getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
+		wuerfel.forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
 
