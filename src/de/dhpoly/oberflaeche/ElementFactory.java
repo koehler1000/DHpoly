@@ -132,24 +132,6 @@ public class ElementFactory
 		return bilderverwalter;
 	}
 
-	@Deprecated
-	public static JPanel getNachrichtPanel(String titel, String string)
-	{
-		JPanel pnlInhalt = new JPanel(new BorderLayout(10, 10));
-		pnlInhalt.setBorder(new LineBorder(FARBE_DESIGN, 10));
-		pnlInhalt.setBackground(FARBE_DESIGN);
-		JButton butUeberschrift = getButtonUeberschrift(titel);
-		JButton butText = getButton(string);
-
-		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
-		pnlInhalt.add(butText);
-
-		butUeberschrift.addActionListener(e -> pnlInhalt.setVisible(false));
-		butText.addActionListener(e -> pnlInhalt.setVisible(false));
-
-		return pnlInhalt;
-	}
-
 	public static JTabbedPane getTabbedPane()
 	{
 		JTabbedPane tabbedPane = new JTabbedPane();
