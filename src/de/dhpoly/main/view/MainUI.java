@@ -1,4 +1,4 @@
-package de.dhpoly.spielersteller.view;
+package de.dhpoly.main.view;
 
 import java.awt.GridLayout;
 
@@ -12,11 +12,11 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spielfeld.model.Standardspielfeld;
 
-public class SpielerstellerUI extends JPanel
+public class MainUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	public SpielerstellerUI(Fenster fenster)
+	public MainUI(Fenster fenster)
 	{
 		this.setLayout(new GridLayout(2, 3));
 
