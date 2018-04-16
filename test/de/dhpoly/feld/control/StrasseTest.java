@@ -11,9 +11,8 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -62,9 +61,9 @@ public class StrasseTest
 		final int kostenHausStein = 100;
 
 		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
@@ -87,9 +86,9 @@ public class StrasseTest
 		final int kostenHausStein = 100;
 
 		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
@@ -109,9 +108,9 @@ public class StrasseTest
 		final int kostenHausStein = 100;
 
 		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
@@ -135,9 +134,9 @@ public class StrasseTest
 		final int kostenHausStein = 100;
 
 		final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz));
-		kostenHaus.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));
+		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht

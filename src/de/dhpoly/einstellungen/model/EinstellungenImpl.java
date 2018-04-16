@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public class EinstellungenImpl implements Einstellungen
 {
@@ -110,9 +109,9 @@ public class EinstellungenImpl implements Einstellungen
 	public List<RessourcenDatensatz> getHauskosten(int seite)
 	{
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, kostenHausGeld * seite, "Hauskosten"));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.HOLZ, kostenHausHolz * seite, "Hausbau"));
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.STEIN, kostenHausStein * seite, "Hausbau"));
+		ressourcenDatensaetze.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld * seite, "Hauskosten"));
+		ressourcenDatensaetze.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz * seite, "Hausbau"));
+		ressourcenDatensaetze.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein * seite, "Hausbau"));
 		return ressourcenDatensaetze;
 	}
 
@@ -120,7 +119,7 @@ public class EinstellungenImpl implements Einstellungen
 	public List<RessourcenDatensatz> getSpielerStartVorraete()
 	{
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
-		ressourcenDatensaetze.add(new RessourcenDatensatzImpl(Ressource.GELD, startguthaben, "Startguthaben"));
+		ressourcenDatensaetze.add(new RessourcenDatensatz(Ressource.GELD, startguthaben, "Startguthaben"));
 		return ressourcenDatensaetze;
 	}
 }

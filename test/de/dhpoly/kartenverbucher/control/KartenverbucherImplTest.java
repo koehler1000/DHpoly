@@ -11,8 +11,8 @@ import org.junit.Test;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -27,7 +27,7 @@ public class KartenverbucherImplTest
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startgeld);
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.BANK_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, transferbetrag));
+				new RessourcenDatensatz(Ressource.GELD, transferbetrag));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler);
@@ -48,7 +48,7 @@ public class KartenverbucherImplTest
 		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
 
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 50));
+				new RessourcenDatensatz(Ressource.GELD, 50));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);
@@ -72,7 +72,7 @@ public class KartenverbucherImplTest
 		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
 
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_ANDERESPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 50));
+				new RessourcenDatensatz(Ressource.GELD, 50));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);

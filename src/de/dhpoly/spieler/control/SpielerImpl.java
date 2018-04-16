@@ -10,9 +10,8 @@ import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
@@ -95,7 +94,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{
-		RessourcenDatensatz satz = new RessourcenDatensatzImpl(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
+		RessourcenDatensatz satz = new RessourcenDatensatz(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
 				datensatz.getBeschreibung());
 		verlauf.add(satz);
 		informiereBeobachter();
@@ -234,7 +233,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 			if (feld instanceof Ressourcenfeld)
 			{
 				Ressourcenfeld ressourcenfeld = (Ressourcenfeld) feld;
-				RessourcenDatensatz res = new RessourcenDatensatzImpl(ressourcenfeld.getRessource(), ertrag);
+				RessourcenDatensatz res = new RessourcenDatensatz(ressourcenfeld.getRessource(), ertrag);
 
 				einzahlen(res);
 			}

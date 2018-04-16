@@ -2,7 +2,7 @@ package de.dhpoly.einstellungen;
 
 import java.util.List;
 
-import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public interface Einstellungen
 {

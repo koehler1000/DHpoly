@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
@@ -20,7 +20,7 @@ public class SpielerImplTest
 		Spieler empfaenger = getDefaultSpieler(100);
 		Spieler sender = getDefaultSpieler(100);
 
-		sender.ueberweise(new RessourcenDatensatzImpl(Ressource.GELD, 50), empfaenger);
+		sender.ueberweise(new RessourcenDatensatz(Ressource.GELD, 50), empfaenger);
 
 		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));
 		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));

@@ -7,7 +7,7 @@ import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
-import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher

@@ -6,7 +6,7 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
-import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public class BezahlKarte extends Datenobjekt implements Karte
 {

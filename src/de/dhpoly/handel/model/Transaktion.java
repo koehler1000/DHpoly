@@ -5,15 +5,12 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class Transaktion extends Datenobjekt
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();

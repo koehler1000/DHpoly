@@ -16,9 +16,8 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -61,7 +60,7 @@ public class HandelImplTest
 		felder.add(feld);
 
 		List<RessourcenDatensatz> datensaetze = new ArrayList<>();
-		RessourcenDatensatz datensatz = new RessourcenDatensatzImpl(Ressource.GELD, 50);
+		RessourcenDatensatz datensatz = new RessourcenDatensatz(Ressource.GELD, 50);
 		datensaetze.add(datensatz);
 
 		Handel handel = new HandelImpl();
@@ -81,7 +80,7 @@ public class HandelImplTest
 		Spieler s2 = SpielerImplTest.getDefaultSpieler(250);
 
 		List<RessourcenDatensatz> datensaetze = new ArrayList<>();
-		RessourcenDatensatz datensatz = new RessourcenDatensatzImpl(Ressource.GELD, 50);
+		RessourcenDatensatz datensatz = new RessourcenDatensatz(Ressource.GELD, 50);
 		datensaetze.add(datensatz);
 
 		Handel handel = new HandelImpl();

@@ -2,8 +2,8 @@ package de.dhpoly.feld.control;
 
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class Losfeld extends FeldImpl
@@ -19,13 +19,13 @@ public class Losfeld extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
 	}
 
 	@Override
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		super.laufeUeberFeld(spieler);
-		spieler.einzahlen(new RessourcenDatensatzImpl(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
 	}
 }

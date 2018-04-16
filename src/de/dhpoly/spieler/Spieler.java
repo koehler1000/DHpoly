@@ -8,8 +8,8 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import observerpattern.Beobachter;
 
 public interface Spieler

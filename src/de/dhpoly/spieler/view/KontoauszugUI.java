@@ -7,7 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.ressource.RessourcenDatensatz;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class KontoauszugUI extends JPanel

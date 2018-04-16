@@ -9,9 +9,8 @@ import javax.swing.JSlider;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
@@ -74,6 +73,6 @@ public class RessourceAnbietenUI extends JPanel
 
 	public RessourcenDatensatz getDatensatz()
 	{
-		return new RessourcenDatensatzImpl(ressource, numAnzahl.getValue());
+		return new RessourcenDatensatz(ressource, numAnzahl.getValue());
 	}
 }

@@ -17,9 +17,8 @@ import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public class Standardspielfeld
 {
@@ -32,12 +31,12 @@ public class Standardspielfeld
 		Kartenstapel kartenstapelSuperevents = new KartenstapelImpl(superevent);
 
 		karten.add(new BezahlKarte("Zahle Geld an deine Mitspieler", GeldTransfer.SPIELER_ANDERESPIELER,
-				new RessourcenDatensatzImpl(Ressource.GELD, 100, "Ereigniskarte")));
+				new RessourcenDatensatz(Ressource.GELD, 100, "Ereigniskarte")));
 
 		superevent.add(new BezahlKarte("Du erhältst supermäßige 150 € von deinen Mitspielern",
-				GeldTransfer.ANDERESPIELER_SPIELER, new RessourcenDatensatzImpl(Ressource.GELD, 150, "Superevent")));
+				GeldTransfer.ANDERESPIELER_SPIELER, new RessourcenDatensatz(Ressource.GELD, 150, "Superevent")));
 		superevent.add(new BezahlKarte("Ein Holz-LKW verunglückt auf deinem Gebiet. Du erhältst 100 Holz.",
-				GeldTransfer.BANK_SPIELER, new RessourcenDatensatzImpl(Ressource.HOLZ, 100, "Holz-LKW")));
+				GeldTransfer.BANK_SPIELER, new RessourcenDatensatz(Ressource.HOLZ, 100, "Holz-LKW")));
 
 		Einstellungen einstellungen = new EinstellungenImpl();
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
@@ -46,20 +45,20 @@ public class Standardspielfeld
 		List<Feld> standardfeld = new ArrayList<>();
 
 		standardfeld.add(new Losfeld(einstellungen));
-		standardfeld.add(
-				new Strasse(verwaltung, 100, new int[] { 10, 11, 13, 15, 20, 30 }, getHauskosten(seite), 1, "Weilheim"));
+		standardfeld.add(new Strasse(verwaltung, 100, new int[] { 10, 11, 13, 15, 20, 30 }, getHauskosten(seite), 1,
+				"Weilheim"));
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 		standardfeld.add(new Ressourcenfeld(Ressource.STEIN));
-		standardfeld.add(
-				new Strasse(verwaltung, 110, new int[] { 11, 12, 14, 16, 22, 33 }, getHauskosten(seite), 1, "Esslingen"));
+		standardfeld.add(new Strasse(verwaltung, 110, new int[] { 11, 12, 14, 16, 22, 33 }, getHauskosten(seite), 1,
+				"Esslingen"));
 		standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
 		standardfeld.add(
 				new Strasse(verwaltung, 150, new int[] { 15, 16, 19, 24, 30, 45 }, getHauskosten(seite), 2, "Ulm"));
 		standardfeld.add(new Ereignisfeld(kartenstapel));
 		standardfeld.add(
 				new Strasse(verwaltung, 160, new int[] { 16, 17, 20, 25, 32, 48 }, getHauskosten(seite), 2, "Neu-Ulm"));
-		standardfeld.add(
-				new Strasse(verwaltung, 170, new int[] { 17, 18, 21, 25, 34, 51 }, getHauskosten(seite), 2, "Bruchsal"));
+		standardfeld.add(new Strasse(verwaltung, 170, new int[] { 17, 18, 21, 25, 34, 51 }, getHauskosten(seite), 2,
+				"Bruchsal"));
 
 		seite = 2;
 		standardfeld.add(new Ereignisfeld(kartenstapelSuperevents));
@@ -68,8 +67,8 @@ public class Standardspielfeld
 		standardfeld.add(
 				new Strasse(verwaltung, 210, new int[] { 21, 22, 26, 31, 42, 63 }, getHauskosten(seite), 3, "Dresden"));
 		standardfeld.add(new Ereignisfeld(kartenstapel));
-		standardfeld.add(
-				new Strasse(verwaltung, 220, new int[] { 22, 24, 28, 33, 44, 66 }, getHauskosten(seite), 3, "Bielefeld"));
+		standardfeld.add(new Strasse(verwaltung, 220, new int[] { 22, 24, 28, 33, 44, 66 }, getHauskosten(seite), 3,
+				"Bielefeld"));
 		standardfeld.add(new Ressourcenfeld(Ressource.HOLZ));
 		standardfeld.add(new Strasse(verwaltung, 250, new int[] { 25, 27, 31, 37, 50, 75 }, getHauskosten(seite), 4,
 				"Aschheim"));

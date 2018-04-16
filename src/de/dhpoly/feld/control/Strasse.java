@@ -5,9 +5,8 @@ import java.util.Optional;
 
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class Strasse extends FeldImpl
@@ -74,8 +73,7 @@ public class Strasse extends FeldImpl
 	{
 		if (isKaufbar())
 		{
-			potentiellerKaeufer
-					.auszahlen(new RessourcenDatensatzImpl(Ressource.GELD, betrag, "Kauf: " + this.getName()));
+			potentiellerKaeufer.auszahlen(new RessourcenDatensatz(Ressource.GELD, betrag, "Kauf: " + this.getName()));
 			setEigentuemer(potentiellerKaeufer);
 
 			informiereBeobachter();
@@ -95,7 +93,7 @@ public class Strasse extends FeldImpl
 	private RessourcenDatensatz getMietDatensatz(Wetter wetter)
 	{
 		int aktuelleMiete = getAkuelleMiete(wetter);
-		return new RessourcenDatensatzImpl(Ressource.GELD, aktuelleMiete, "Miete");
+		return new RessourcenDatensatz(Ressource.GELD, aktuelleMiete, "Miete");
 	}
 
 	public int getAkuelleMiete()
