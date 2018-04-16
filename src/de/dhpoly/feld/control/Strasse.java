@@ -126,9 +126,7 @@ public class Strasse extends FeldImpl
 
 	public void setEigentuemer(Spieler anbietender)
 	{
-		eigentuemer.ifPresent(besitzer -> besitzer.feldWeg(this));
 		eigentuemer = Optional.ofNullable(anbietender);
-		eigentuemer.ifPresent(besitzer -> besitzer.feldHinzu(this));
 		informiereBeobachter();
 	}
 

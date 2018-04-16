@@ -59,4 +59,6 @@ public interface Spiel
 	void setWetter(Wetter wetter);
 
 	void setEinstellungen(Einstellungen einstellungen);
+
+	List<Feld> getFelder(Spieler spieler);
 }

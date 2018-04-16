@@ -418,4 +418,19 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		status = SpielStatus.SPIEL_LAEUFT;
 	}
 
+	@Override
+	public List<Feld> getFelder(Spieler spieler)
+	{
+		List<Feld> felderSpieler = new ArrayList<>();
+		for (Feld feld : felder)
+		{
+			if (feld.gehoertSpieler(spieler))
+			{
+				felderSpieler.add(feld);
+			}
+		}
+
+		return felderSpieler;
+	}
+
 }

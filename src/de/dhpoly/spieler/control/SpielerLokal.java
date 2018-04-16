@@ -5,15 +5,12 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
-import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import observerpattern.Beobachter;
@@ -21,11 +18,6 @@ import observerpattern.Beobachter;
 public class SpielerLokal extends SpielerImpl
 {
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
-
-	public SpielerLokal(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
-	{
-		super(name, einstellungen, spiel, felder);
-	}
 
 	public SpielerLokal(String name, Einstellungen einstellungen, Spiel spiel)
 	{
@@ -161,7 +153,7 @@ public class SpielerLokal extends SpielerImpl
 	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
-		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(felder));
+		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(spiel.getFelder(this)));
 	}
 
 	@Override
@@ -174,20 +166,5 @@ public class SpielerLokal extends SpielerImpl
 	public void leereRand()
 	{
 		ui.ifPresent(SpielfeldAnsicht::leereRand);
-	}
-
-	@Override
-	public void vergebeRessourcen(int ertrag)
-	{
-		for (Feld feld : felder)
-		{
-			if (feld instanceof Ressourcenfeld)
-			{
-				Ressourcenfeld ressourcenfeld = (Ressourcenfeld) feld;
-				RessourcenDatensatz res = new RessourcenDatensatzImpl(ressourcenfeld.getRessource(), ertrag);
-
-				einzahlen(res);
-			}
-		}
 	}
 }

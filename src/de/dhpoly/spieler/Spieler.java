@@ -58,10 +58,6 @@ public interface Spieler
 
 	List<Feld> getFelder();
 
-	void feldHinzu(Feld feld);
-
-	void feldWeg(Feld feld);
-
 	void setSpielerNr(int nr);
 
 	boolean hatVerloren();

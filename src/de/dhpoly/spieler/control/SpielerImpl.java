@@ -30,17 +30,9 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	int spielerNr;
 	boolean verloren = false;
 
-	List<Feld> felder = new ArrayList<>();
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
 
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
-
-	// mit vorverkauften Strassen
-	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel, List<Feld> felder)
-	{
-		this(name, einstellungen, spiel);
-		this.felder = felder;
-	}
 
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
 	{
@@ -189,6 +181,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 
 	protected void strassenZurueckgeben()
 	{
+		List<Feld> felder = spiel.getFelder(this);
 		while (!felder.isEmpty())
 		{
 			Feld feld = felder.get(0);
@@ -207,21 +200,16 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void feldHinzu(Feld feld)
-	{
-		felder.add(feld);
-	}
-
-	@Override
-	public void feldWeg(Feld feld)
-	{
-		felder.remove(feld);
-	}
-
-	@Override
 	public List<Feld> getFelder()
 	{
-		return felder;
+		if (Optional.ofNullable(spiel).isPresent())
+		{
+			return spiel.getFelder(this);
+		}
+		else
+		{
+			return new ArrayList<>();
+		}
 	}
 
 	@Override
@@ -266,7 +254,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
-		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(felder));
+		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(spiel.getFelder(this)));
 	}
 
 	@Override
@@ -284,7 +272,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	@Override
 	public void vergebeRessourcen(int ertrag)
 	{
-		for (Feld feld : felder)
+		for (Feld feld : spiel.getFelder(this))
 		{
 			if (feld instanceof Ressourcenfeld)
 			{

@@ -123,14 +123,6 @@ public class SpielerUnimplemented implements Spieler
 	}
 
 	@Override
-	public void feldHinzu(Feld feld)
-	{}
-
-	@Override
-	public void feldWeg(Feld feld)
-	{}
-
-	@Override
 	public void setSpielerNr(int nr)
 	{}
 
