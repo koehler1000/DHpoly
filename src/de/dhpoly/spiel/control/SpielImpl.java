@@ -25,7 +25,6 @@ import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerLokal;
 import de.dhpoly.wuerfel.Wuerfelpaar;
-import de.dhpoly.wuerfel.control.Wuerfel;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 import observerpattern.Beobachtbarer;
 
@@ -280,12 +279,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			fenster.zeigeSpielansicht(ansicht, spieler.getName());
 			spieler.setSpielfeldAnsicht(ansicht);
 		}
-	}
-
-	@Override
-	public List<Wuerfel> getWuerfel()
-	{
-		return wuerfelPaar.getWuerfel();
 	}
 
 	private static final int CONST_START = 0;

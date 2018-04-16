@@ -11,15 +11,11 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
-import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachter;
 
 public interface Spiel
 {
 	Spieler getAktuellerSpieler();
-
-	@Deprecated
-	List<Wuerfel> getWuerfel();
 
 	List<Spieler> getSpieler();
 
