@@ -35,7 +35,7 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		this.setLayout(new BorderLayout());
 
 		pnlSpieler.setLayout(new GridLayout(1, 1));
-		pnlSpieler.setBorder(new LineBorder(this.getBackground(), 5));
+		pnlSpieler.setBackground(this.getBackground());
 
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 	}
@@ -74,9 +74,10 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 			pnlSpieler.add(getPanel(spieler));
 		}
 
+		int randBreite = feld.getSpielerAufFeld().isEmpty() ? 0 : 5;
+		pnlSpieler.setBorder(new LineBorder(this.getBackground(), randBreite));
+
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 		this.revalidate();
-
-		pnlSpieler.setBorder(new LineBorder(this.getBackground(), 5));
 	}
 }

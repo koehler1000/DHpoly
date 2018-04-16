@@ -35,10 +35,10 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
+		Color strassengruppeFarbe = new Strassengruppe().getColor(feld.getGruppe());
 
 		butName.setFont(SCHRIFT_SPIELFELD_STRASSENNAME);
-		butName.setBackground(backcolor);
+		butName.setBackground(strassengruppeFarbe);
 		butName.setBorder(new LineBorder(Color.BLACK));
 		this.add(butName, BorderLayout.NORTH);
 
@@ -64,9 +64,9 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 		this.setBackground(farbe);
 	}
 
-	private void setBeschriftung(Optional<Spieler> text)
+	private void setBeschriftung(Optional<Spieler> spieler)
 	{
-		butBesitzer.setText(text.isPresent() ? text.get().getName() : feld.getKaufpreis() + "€");
+		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
 	}
 
 	@Override
