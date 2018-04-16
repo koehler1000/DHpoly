@@ -4,7 +4,7 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.utils.Spielansicht;
 
-public class FehlerUITest // NOSONAR
+public class FehlerUIVorschau
 {
 	public static void main(String[] args)
 	{

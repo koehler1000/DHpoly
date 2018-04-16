@@ -132,6 +132,7 @@ public class ElementFactory
 		return bilderverwalter;
 	}
 
+	@Deprecated
 	public static JPanel getNachrichtPanel(String titel, String string)
 	{
 		JPanel pnlInhalt = new JPanel(new BorderLayout(10, 10));
