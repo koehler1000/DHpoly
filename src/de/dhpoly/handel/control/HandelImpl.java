@@ -10,11 +10,9 @@ import de.dhpoly.spieler.Spieler;
 
 public class HandelImpl implements Handel
 {
-
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion)
 	{
-		transaktion.getAnbietender().sperreOberflaeche(transaktion);
 		transaktion.getHandelspartner().zeigeTransaktionsvorschlag(transaktion);
 	}
 

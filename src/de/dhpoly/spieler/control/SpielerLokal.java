@@ -145,12 +145,6 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void sperreOberflaeche(Transaktion transaktion)
-	{
-		ui.ifPresent(e -> e.sperreOberflaeche(transaktion));
-	}
-
-	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
 		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(spiel.getFelder(this)));

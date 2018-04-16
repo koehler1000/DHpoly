@@ -68,8 +68,6 @@ public interface Spieler
 
 	void zeigeTransaktionGescheitert(Transaktion transaktion);
 
-	void sperreOberflaeche(Transaktion transaktion);
-
 	void zeigeHausbauMoeglichkeit();
 
 	void zeigeDatenobjekt(Datenobjekt objekt);

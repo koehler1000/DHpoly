@@ -34,13 +34,6 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void sperreOberflaeche(Transaktion transaktion)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
 		// TODO Auto-generated method stub

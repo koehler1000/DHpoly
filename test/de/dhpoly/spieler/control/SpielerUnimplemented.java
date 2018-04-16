@@ -145,10 +145,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void sperreOberflaeche(Transaktion transaktion)
-	{}
-
-	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{}
 
