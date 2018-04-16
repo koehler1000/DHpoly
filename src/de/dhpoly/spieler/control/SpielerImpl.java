@@ -21,16 +21,17 @@ import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachtbarer;
 import observerpattern.Beobachter;
 
-public class SpielerImpl extends Beobachtbarer implements Spieler
+public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 {
-	private int feldNr = 0;
-	private String name;
-	private Spiel spiel;
-	private boolean aktuellerSpieler = false;
+	int feldNr = 0;
+	String name;
+	Spiel spiel;
+	boolean aktuellerSpieler = false;
+	int spielerNr;
+	boolean verloren = false;
+
+	List<Feld> felder = new ArrayList<>();
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
-	private List<Feld> felder = new ArrayList<>();
-	private int spielerNr;
-	private boolean verloren = false;
 
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
 
@@ -79,23 +80,9 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
-	{
-		ui.ifPresent(e -> e.zeigeTransaktion(transaktion));
-	}
-
-	@Override
-	public void zeigeKaufmoeglichkeit(Strasse strasse)
-	{
-		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
-		{
-			ui.ifPresent(e -> e.zeigeKaufmoeglichkeit(strasse, this));
-		}
-	}
-
-	@Override
 	public void zeigeKarte(Karte karte)
 	{
+		// TODO Refactoring
 		spiel.verarbeiteKarte(karte);
 		ui.ifPresent(e -> e.zeigeKarte(karte));
 	}
@@ -200,7 +187,7 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 		informiereBeobachter();
 	}
 
-	private void strassenZurueckgeben()
+	protected void strassenZurueckgeben()
 	{
 		while (!felder.isEmpty())
 		{

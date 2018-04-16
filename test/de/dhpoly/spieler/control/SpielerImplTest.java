@@ -28,7 +28,7 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerImpl("me", new EinstellungenImpl(), null);
+		return new SpielerLokal("me", new EinstellungenImpl(), null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)
@@ -55,6 +55,6 @@ public class SpielerImplTest
 	{
 		Einstellungen einstellungen = new EinstellungenImpl();
 		einstellungen.setStartguthaben(geld);
-		return new SpielerImpl(name, einstellungen, spiel);
+		return new SpielerLokal(name, einstellungen, spiel);
 	}
 }
