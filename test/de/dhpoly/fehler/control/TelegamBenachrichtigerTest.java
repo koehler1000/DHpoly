@@ -4,14 +4,13 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
-
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class TelegamBenachrichtigerTest
 {
-	@Ignore
 	@Test
+	@Ignore
 	public void test() // NOSONAR
 	{
 		try
