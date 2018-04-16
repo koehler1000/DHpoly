@@ -1,12 +1,15 @@
 package de.dhpoly.feld.control;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
 public class Ressourcenfeld extends FeldImpl
 {
 	private Ressource ressource;
+	private Einstellungen einstellungen;
 
 	public Ressourcenfeld(Ressource ressourcentyp)
 	{
@@ -17,7 +20,8 @@ public class Ressourcenfeld extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		// TODO Was passiert, wenn Ressourcenfelder betreten werden?
+		// TODO Anzeige der erfolgreichen Buchung erstellen
+		spieler.einzahlen(new RessourcenDatensatzImpl(ressource, einstellungen.getRessourcenErtrag()));
 	}
 
 	public Ressource getRessource()
