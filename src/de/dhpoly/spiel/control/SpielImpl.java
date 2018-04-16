@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
@@ -44,11 +43,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private boolean animationen = true;
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
-
-	public SpielImpl()
-	{
-		this(new Fenster(new Bilderverwalter()));
-	}
 
 	public SpielImpl(Fenster fenster)
 	{
@@ -279,9 +273,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void createOberflaeche(Spieler spieler, Spiel spiel)
 	{
-		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
-		fenster.zeigeSpielansicht(ansicht, spieler.getName());
-		spieler.setSpielfeldAnsicht(ansicht);
+		// TODO sollte nicht abgefragt werden müssen
+		if (spieler instanceof SpielerLokal)
+		{
+			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, spieler);
+			fenster.zeigeSpielansicht(ansicht, spieler.getName());
+			spieler.setSpielfeldAnsicht(ansicht);
+		}
 	}
 
 	@Override

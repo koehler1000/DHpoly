@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.RessourcenDatensatz;
 import de.dhpoly.ressource.control.RessourcenDatensatzImpl;
 import de.dhpoly.ressource.model.Ressource;
@@ -31,8 +28,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	boolean verloren = false;
 
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
-
-	private Optional<SpielfeldAnsicht> ui = Optional.empty();
 
 	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
 	{
@@ -69,14 +64,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	public boolean isNegative()
 	{
 		return getRessourcenWerte(Ressource.GELD) < 0;
-	}
-
-	@Override
-	public void zeigeKarte(Karte karte)
-	{
-		// TODO Refactoring
-		spiel.verarbeiteKarte(karte);
-		ui.ifPresent(e -> e.zeigeKarte(karte));
 	}
 
 	@Override
@@ -224,12 +211,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
-	{
-		ui = Optional.of(ansicht);
-	}
-
-	@Override
 	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
 	{
 		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde angenommen";
@@ -243,30 +224,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt";
 		Nachricht nachricht = new Nachricht(nachrichtentext);
 		zeigeDatenobjekt(nachricht);
-	}
-
-	@Override
-	public void sperreOberflaeche(Transaktion transaktion)
-	{
-		ui.ifPresent(e -> e.sperreOberflaeche(transaktion));
-	}
-
-	@Override
-	public void zeigeHausbauMoeglichkeit()
-	{
-		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(spiel.getFelder(this)));
-	}
-
-	@Override
-	public void zeigeDatenobjekt(Datenobjekt objekt)
-	{
-		Optional.ofNullable(objekt).ifPresent(obj -> ui.ifPresent(e -> e.zeigeObjekt(obj)));
-	}
-
-	@Override
-	public void leereRand()
-	{
-		ui.ifPresent(SpielfeldAnsicht::leereRand);
 	}
 
 	@Override

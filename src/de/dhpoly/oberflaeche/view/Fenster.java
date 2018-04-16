@@ -49,4 +49,9 @@ public class Fenster
 	{
 		spielansichten.remove(komponente);
 	}
+
+	public void verstecken()
+	{
+		frame.setVisible(false);
+	}
 }

@@ -6,7 +6,7 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerLokal;
 
@@ -17,7 +17,7 @@ public class Spielansicht
 
 	public static SpielfeldAnsicht getSpielfeldAnsicht()
 	{
-		Spiel spiel = new SpielImpl();
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		Spieler spieler = new SpielerLokal("foo", new EinstellungenImpl(), spiel);
 		return new SpielfeldAnsicht(spiel, spieler);
 	}

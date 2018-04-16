@@ -28,7 +28,7 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerLokal("me", new EinstellungenImpl(), null);
+		return new SpielerComputer("me", new EinstellungenImpl(), null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)

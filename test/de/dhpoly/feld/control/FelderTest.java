@@ -10,6 +10,7 @@ import org.junit.Test;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
@@ -41,7 +42,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		SpielImpl spiel = new SpielImpl();
+		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(sp1);
 		spiel.setAnimationen(false);
@@ -67,7 +68,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		SpielImpl spiel = new SpielImpl();
+		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(sp1);
 		spiel.setAnimationen(false);

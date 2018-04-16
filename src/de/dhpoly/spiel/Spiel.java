@@ -61,4 +61,6 @@ public interface Spiel
 	void setEinstellungen(Einstellungen einstellungen);
 
 	List<Feld> getFelder(Spieler spieler);
+
+	void setAnimationen(boolean b);
 }
