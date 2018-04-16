@@ -79,4 +79,6 @@ public interface Spieler
 	void zeigeDatenobjekt(Datenobjekt objekt);
 
 	void leereRand();
+
+	void vergebeRessourcen(int ertrag);
 }

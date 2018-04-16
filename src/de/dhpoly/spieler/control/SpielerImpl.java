@@ -7,6 +7,7 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
@@ -291,5 +292,20 @@ public class SpielerImpl extends Beobachtbarer implements Spieler
 	public void leereRand()
 	{
 		ui.ifPresent(SpielfeldAnsicht::leereRand);
+	}
+
+	@Override
+	public void vergebeRessourcen(int ertrag)
+	{
+		for (Feld feld : felder)
+		{
+			if (feld instanceof Ressourcenfeld)
+			{
+				Ressourcenfeld ressourcenfeld = (Ressourcenfeld) feld;
+				RessourcenDatensatz res = new RessourcenDatensatzImpl(ressourcenfeld.getRessource(), ertrag);
+
+				einzahlen(res);
+			}
+		}
 	}
 }

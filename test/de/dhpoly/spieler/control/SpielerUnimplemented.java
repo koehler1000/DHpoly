@@ -167,4 +167,8 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void leereRand()
 	{}
+
+	@Override
+	public void vergebeRessourcen(int ertrag)
+	{}
 }

@@ -10,7 +10,6 @@ import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
@@ -193,10 +192,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void vergebeRessourcen()
 	{
-		// TODO Implementation
-		verarbeiteFehler(new Fehler("vergebeRessourcen() ist noch nicht implementiert", FehlerTyp.FEHLER_ENTWICKLER));
-		// jeder der Holz oder Stein-Ressourcenquellen hat, soll je nach Einstellung
-		// Ressourcen erhalten
+		for (Spieler sp : spieler)
+		{
+			sp.vergebeRessourcen(einstellungen.getRessourcenErtrag());
+		}
 	}
 
 	@Override
