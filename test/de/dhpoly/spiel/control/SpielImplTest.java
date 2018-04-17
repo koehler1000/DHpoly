@@ -10,14 +10,12 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Losfeld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.StrasseTest;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -27,7 +25,6 @@ import de.dhpoly.spieler.control.SpielerUnimplemented;
 public class SpielImplTest
 {
 	private SpielImpl spiel;
-	private static Fenster fenster = new Fenster(new Bilderverwalter());
 
 	@Before
 	public void vorbereitung()
@@ -35,7 +32,7 @@ public class SpielImplTest
 		List<Feld> felder = new ArrayList<>();
 		felder.add(LosfeldTest.getDefaultFeld());
 		felder.add(StrasseTest.getDefaultStrasse());
-		spiel = new SpielImpl(fenster);
+		spiel = new SpielImpl();
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
@@ -163,13 +160,10 @@ public class SpielImplTest
 
 	public static SpielImpl getDefaultSpiel()
 	{
-		Fenster fenster = new Fenster(new Bilderverwalter());
-		fenster.verstecken();
-
 		List<Feld> felder = new ArrayList<>();
 		felder.add(new Losfeld(new EinstellungenImpl()));
 
-		SpielImpl spiel = new SpielImpl(fenster);
+		SpielImpl spiel = new SpielImpl();
 		spiel.setFelder(felder);
 
 		return spiel;
