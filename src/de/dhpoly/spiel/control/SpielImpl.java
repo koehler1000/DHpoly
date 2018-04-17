@@ -3,6 +3,7 @@ package de.dhpoly.spiel.control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.Einstellungen;
@@ -37,12 +38,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfelpaar wuerfelPaar;
 
-	private Fenster fenster;
+	private Optional<Fenster> fenster;
 
 	private boolean animationen = true;
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
+	@Deprecated
 	public SpielImpl(Fenster fenster)
 	{
 		felder = new ArrayList<>();
@@ -52,7 +54,19 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		einstellungen = new EinstellungenImpl();
 		wuerfelPaar = new WuerfelpaarImpl();
 
-		this.fenster = fenster;
+		this.fenster = Optional.ofNullable(fenster);
+	}
+
+	public SpielImpl()
+	{
+		felder = new ArrayList<>();
+		spieler = new ArrayList<>();
+		aktuellerSpieler = 0;
+		wetter = Wetter.BEWOELKT;
+		einstellungen = new EinstellungenImpl();
+		wuerfelPaar = new WuerfelpaarImpl();
+
+		this.fenster = Optional.empty();
 	}
 
 	@Override
@@ -141,7 +155,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void zeigeAktuellenSpieler()
 	{
-		fenster.zeigeTab(spieler.get(aktuellerSpieler).getName());
+		fenster.ifPresent(f -> f.zeigeTab(spieler.get(aktuellerSpieler).getName()));
 	}
 
 	private void leereRand()
@@ -276,7 +290,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		if (spieler instanceof SpielerLokal)
 		{
 			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, wuerfelPaar.getWuerfel(), spieler);
-			fenster.zeigeSpielansicht(ansicht, spieler.getName());
+			fenster.ifPresent(f -> f.zeigeSpielansicht(ansicht, spieler.getName()));
 			spieler.setSpielfeldAnsicht(ansicht);
 		}
 	}
@@ -370,7 +384,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void setFenster(Fenster fenster)
 	{
-		this.fenster = fenster;
+		this.fenster = Optional.ofNullable(fenster);
 	}
 
 	@Override
