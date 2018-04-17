@@ -69,7 +69,7 @@ public class MainUI extends JPanel implements Beobachter
 		pnl.add(txtNamePC);
 
 		JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
-		butHinzu.addActionListener(e -> spiel.fuegeComputerSpielerHinzu(txtName.getText()));
+		butHinzu.addActionListener(e -> spiel.fuegeComputerSpielerHinzu(txtNamePC.getText()));
 		pnl.add(butHinzu);
 
 		return pnl;
