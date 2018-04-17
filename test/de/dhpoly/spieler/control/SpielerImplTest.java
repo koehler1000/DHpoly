@@ -49,7 +49,7 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerComputer("me", null);
+		return new SpielerLokal("me", null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)
