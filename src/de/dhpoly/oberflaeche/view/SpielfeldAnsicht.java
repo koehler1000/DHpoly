@@ -80,14 +80,26 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
-		butWeiter = ElementFactory.getButtonUeberschrift(spiel.getBeschreibungNaechsterSchritt());
-		butWeiter.addActionListener(e -> {
-			spiel.naechsterSchritt();
-			butWeiter.setText(spiel.getBeschreibungNaechsterSchritt());
-		});
+		butWeiter = ElementFactory.getButtonUeberschrift("");
+		butWeiter.addActionListener(e -> weiter());
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
 		this.add(pnlWest, BorderLayout.WEST);
+
+		update();
+	}
+
+	private void weiter()
+	{
+		if (spiel.kannWuerfeln(spieler))
+		{
+			spiel.wuerfeln(spieler);
+		}
+
+		if (spiel.kannWuerfelWeitergeben(spieler))
+		{
+			spiel.wuerfelWeitergeben(spieler);
+		}
 	}
 
 	private void loesche(Object obj)
@@ -118,6 +130,16 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 	public void update()
 	{
 		setAnDerReihe(spieler.isAktuellerSpieler());
+
+		if (spiel.kannWuerfeln(spieler))
+		{
+			butWeiter.setText("Würfeln");
+		}
+
+		if (spiel.kannWuerfelWeitergeben(spieler))
+		{
+			butWeiter.setText("Würfel weitergeben");
+		}
 	}
 
 	public void zeigeHausbaumoeglichkeit(List<Feld> felder)

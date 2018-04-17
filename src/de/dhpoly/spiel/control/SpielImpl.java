@@ -43,6 +43,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private boolean animationen = true;
 
+	private boolean aktuellerSpielerHatGewuerfelt = false;
+
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
 	public SpielImpl()
@@ -61,6 +63,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void ruecke()
 	{
 		new Thread(this::rueckeAsync).start();
+		setAktuellerSpielerHatGewuerfelt(true);
 	}
 
 	private void rueckeAsync()
@@ -114,31 +117,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			return felder.get(feldNr);
 		}
-	}
-
-	@Override
-	public void naechsterSpieler()
-	{
-		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
-
-		spielerAktuellAlt.setAkutellerSpieler(false);
-		pruefeVerloren(spielerAktuellAlt);
-
-		if (aktuellerSpieler + 1 >= spieler.size())
-		{
-			aktuellerSpieler = 0;
-			vergebeRessourcen();
-		}
-		else
-		{
-			aktuellerSpieler++;
-		}
-
-		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
-		spielerAktuellNeu.setAkutellerSpieler(true);
-
-		leereRand();
-		zeigeAktuellenSpieler();
 	}
 
 	private void zeigeAktuellenSpieler()
@@ -283,42 +261,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 	}
 
-	private static final int CONST_START = 0;
-	private static final int CONST_WUERFELN = 1;
-	private static final int CONST_NAECHSTER_SPIELER = 2;
-
-	private int aktuellerSchritt = CONST_START;
-	private String beschreibungNaechsterSchritt = "Spiel beginnen";
-
-	@Override
-	public void naechsterSchritt()
-	{
-		if (aktuellerSchritt == CONST_START)
-		{
-			leereRand();
-			beschreibungNaechsterSchritt = "Würfeln";
-			aktuellerSchritt = CONST_WUERFELN;
-		}
-		else if (aktuellerSchritt == CONST_WUERFELN)
-		{
-			ruecke();
-			beschreibungNaechsterSchritt = "Würfel weitergeben";
-			aktuellerSchritt = CONST_NAECHSTER_SPIELER;
-		}
-		else if (aktuellerSchritt == CONST_NAECHSTER_SPIELER)
-		{
-			naechsterSpieler();
-			aktuellerSchritt = CONST_START;
-			naechsterSchritt();
-		}
-	}
-
-	@Override
-	public String getBeschreibungNaechsterSchritt()
-	{
-		return beschreibungNaechsterSchritt;
-	}
-
 	public void setAnimationen(boolean b)
 	{
 		animationen = b;
@@ -437,4 +379,67 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.fuegeSpielerHinzu(new SpielerComputer(text, this));
 	}
 
+	@Override
+	public void wuerfeln(Spieler spieler)
+	{
+		if (spieler == getAktuellerSpieler())
+		{
+			ruecke();
+		}
+	}
+
+	// TODO private machen -> wuerfel weitergeben stattdessen
+	@Override
+	public void naechsterSpieler()
+	{
+		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
+
+		spielerAktuellAlt.setAkutellerSpieler(false);
+		pruefeVerloren(spielerAktuellAlt);
+
+		if (aktuellerSpieler + 1 >= spieler.size())
+		{
+			aktuellerSpieler = 0;
+			vergebeRessourcen();
+		}
+		else
+		{
+			aktuellerSpieler++;
+		}
+
+		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
+		spielerAktuellNeu.setAkutellerSpieler(true);
+
+		leereRand();
+		zeigeAktuellenSpieler();
+
+		setAktuellerSpielerHatGewuerfelt(false);
+	}
+
+	@Override
+	public void wuerfelWeitergeben(Spieler spieler)
+	{
+		if (spieler == getAktuellerSpieler())
+		{
+			naechsterSpieler();
+		}
+	}
+
+	private void setAktuellerSpielerHatGewuerfelt(boolean wert)
+	{
+		aktuellerSpielerHatGewuerfelt = wert;
+		informiereBeobachter();
+	}
+
+	@Override
+	public boolean kannWuerfeln(Spieler spieler)
+	{
+		return status == SpielStatus.SPIEL_LAEUFT && !aktuellerSpielerHatGewuerfelt;
+	}
+
+	@Override
+	public boolean kannWuerfelWeitergeben(Spieler spieler)
+	{
+		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerHatGewuerfelt;
+	}
 }

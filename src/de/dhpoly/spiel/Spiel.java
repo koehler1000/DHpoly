@@ -35,9 +35,9 @@ public interface Spiel
 
 	void fuegeComputerSpielerHinzu(String text);
 
-	void naechsterSchritt();
+	void wuerfeln(Spieler spieler);
 
-	String getBeschreibungNaechsterSchritt();
+	void wuerfelWeitergeben(Spieler spieler);
 
 	void addBeobachter(Beobachter beobachter);
 
@@ -62,4 +62,8 @@ public interface Spiel
 	List<Feld> getFelder(Spieler spieler);
 
 	void setAnimationen(boolean b);
+
+	boolean kannWuerfeln(Spieler spieler);
+
+	boolean kannWuerfelWeitergeben(Spieler spieler);
 }

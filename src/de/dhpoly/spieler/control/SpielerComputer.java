@@ -61,8 +61,8 @@ public class SpielerComputer extends SpielerImpl
 	{
 		if (isAktuell)
 		{
-			spiel.naechsterSchritt(); // wuerfeln
-			spiel.naechsterSchritt(); // Würfel weitergeben
+			spiel.wuerfeln(this);
+			spiel.wuerfelWeitergeben(this);
 		}
 	}
 }
