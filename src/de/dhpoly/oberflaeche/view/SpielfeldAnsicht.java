@@ -159,8 +159,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void zeigeObjekt(Datenobjekt objekt)
 	{
-		leereRand();
-
 		String fehlerText = "Keine Oberfläche für " + objekt.getClassName() + " implementiert.";
 		Fehler fehler = new Fehler(fehlerText, FehlerTyp.FEHLER_ALLE);
 		Oberflaeche oberflaeche = new FehlerUI(fehler, this);

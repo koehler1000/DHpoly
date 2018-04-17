@@ -65,7 +65,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		getAktuellerSpieler().setWuerfelnMoeglich(false);
 		new Thread(this::rueckeAsync).start();
-		setAktuellerSpielerHatGewuerfelt(true);
 	}
 
 	private void rueckeAsync()
@@ -75,11 +74,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			wuerfelPaar.wuerfeln();
 			Pause.pause(100, animationen);
 		}
+		setAktuellerSpielerHatGewuerfelt(true);
 
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
-		aktuellerSpielerIstGerueckt = true;
-
-		getAktuellerSpieler().setWuerfelWeitergabeMoeglich(true);
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -105,6 +102,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 			aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
 			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+
+			aktuellerSpielerIstGerueckt = true;
+			spieler.setWuerfelWeitergabeMoeglich(true);
 		});
 	}
 
@@ -361,6 +361,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		{
 			sp.einzahlen(einstellungen.getSpielerStartVorraete());
 		}
+
+		getAktuellerSpieler().setWuerfelnMoeglich(true);
 	}
 
 	@Override
