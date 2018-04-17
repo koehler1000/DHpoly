@@ -44,6 +44,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private boolean animationen = true;
 
 	private boolean aktuellerSpielerHatGewuerfelt = false;
+	private boolean aktuellerSpielerIstGerueckt = false;
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
@@ -75,6 +76,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+		aktuellerSpielerIstGerueckt = true;
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -414,6 +416,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		zeigeAktuellenSpieler();
 
 		setAktuellerSpielerHatGewuerfelt(false);
+		setAktuellerSpielerIstGerueckt(false);
+	}
+
+	private void setAktuellerSpielerIstGerueckt(boolean b)
+	{
+		aktuellerSpielerIstGerueckt = b;
+		informiereBeobachter();
 	}
 
 	@Override
@@ -440,6 +449,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public boolean kannWuerfelWeitergeben(Spieler spieler)
 	{
-		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerHatGewuerfelt;
+		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerIstGerueckt;
 	}
 }

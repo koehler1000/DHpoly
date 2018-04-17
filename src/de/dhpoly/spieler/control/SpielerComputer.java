@@ -62,7 +62,6 @@ public class SpielerComputer extends SpielerImpl
 		if (isAktuell)
 		{
 			spiel.wuerfeln(this);
-			spiel.wuerfelWeitergeben(this);
 		}
 	}
 }
