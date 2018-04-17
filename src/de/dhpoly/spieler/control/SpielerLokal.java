@@ -160,4 +160,10 @@ public class SpielerLokal extends SpielerImpl
 	{
 		ui.ifPresent(SpielfeldAnsicht::leereRand);
 	}
+
+	@Override
+	void setAktuellerSpielerAbstract(boolean isAktuell)
+	{
+		// für Computerspieler
+	}
 }

@@ -23,7 +23,7 @@ public class SpielerComputer extends SpielerImpl
 	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
-		// TODO AI entscheiden lassen
+		strasse.kaufe(this);
 	}
 
 	@Override
@@ -35,28 +35,34 @@ public class SpielerComputer extends SpielerImpl
 	@Override
 	public void zeigeHausbauMoeglichkeit()
 	{
-		// TODO Auto-generated method stub
-
+		// ignorieren
 	}
 
 	@Override
 	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{
-		// TODO Auto-generated method stub
-
+		// ignorieren
 	}
 
 	@Override
 	public void leereRand()
 	{
-		// TODO Auto-generated method stub
-
+		// ignorieren
 	}
 
 	@Override
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{
-		// TODO Auto-generated method stub
+		// ignorieren
+	}
 
+	@Override
+	void setAktuellerSpielerAbstract(boolean isAktuell)
+	{
+		if (isAktuell)
+		{
+			spiel.naechsterSchritt(); // wuerfeln
+			spiel.naechsterSchritt(); // Würfel weitergeben
+		}
 	}
 }
