@@ -19,21 +19,25 @@ public class MainUI extends JPanel implements Beobachter
 	private static final long serialVersionUID = 1L;
 
 	private JTextArea txtName;
+	private JTextArea txtNamePC;
 	private transient Spiel spiel;
 
 	public MainUI(Fenster fenster)
 	{
-		this.setLayout(new GridLayout(2, 3));
+		this.setLayout(new GridLayout(3, 1));
 
 		spiel = new SpielImpl();
 		spiel.setFenster(fenster);
 		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld());
 		spiel.addBeobachter(this);
 
-		this.add(getSpielerVerwalterPanel(spiel));
+		this.add(getSpielerLokalVerwalterPanel(spiel));
+		this.add(getSpielerComputerVerwalterPanel(spiel));
 		this.add(getSpielVerwalterPanel(fenster, spiel));
 
 		fenster.zeigeComponente(this, "Spielersteller");
+
+		update();
 	}
 
 	private Component getSpielVerwalterPanel(Fenster fenster, Spiel spiel)
@@ -54,18 +58,35 @@ public class MainUI extends JPanel implements Beobachter
 		return pnl;
 	}
 
-	private Component getSpielerVerwalterPanel(Spiel spiel)
+	private Component getSpielerComputerVerwalterPanel(Spiel spiel)
 	{
 		JPanel pnl = ElementFactory.erzeugePanel();
 		pnl.setLayout(new GridLayout());
 
 		pnl.add(ElementFactory.getTextFeldUeberschrift("Lokale Spieler"));
 
-		txtName = ElementFactory.getTextFeld("Spieler " + (spiel.getSpieler().size() + 1), true);
+		txtNamePC = ElementFactory.getTextFeld("", true);
+		pnl.add(txtNamePC);
+
+		JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
+		butHinzu.addActionListener(e -> spiel.fuegeComputerSpielerHinzu(txtName.getText()));
+		pnl.add(butHinzu);
+
+		return pnl;
+	}
+
+	private Component getSpielerLokalVerwalterPanel(Spiel spiel)
+	{
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setLayout(new GridLayout());
+
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Lokale Spieler"));
+
+		txtName = ElementFactory.getTextFeld("", true);
 		pnl.add(txtName);
 
 		JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
-		butHinzu.addActionListener(e -> spiel.fuegeSpielerHinzu(txtName.getText()));
+		butHinzu.addActionListener(e -> spiel.fuegeLokalenSpielerHinzu(txtName.getText()));
 		pnl.add(butHinzu);
 
 		return pnl;
@@ -74,6 +95,8 @@ public class MainUI extends JPanel implements Beobachter
 	@Override
 	public void update()
 	{
-		txtName.setText("Spieler " + (spiel.getSpieler().size() + 1));
+		String spielerName = "Spieler " + (spiel.getSpieler().size() + 1);
+		txtName.setText(spielerName);
+		txtNamePC.setText(spielerName + " (AI)");
 	}
 }

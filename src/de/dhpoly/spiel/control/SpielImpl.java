@@ -24,6 +24,7 @@ import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerComputer;
 import de.dhpoly.spieler.control.SpielerLokal;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
@@ -266,7 +267,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	}
 
 	@Override
-	public void fuegeSpielerHinzu(String spielerName)
+	public void fuegeLokalenSpielerHinzu(String spielerName)
 	{
 		fuegeSpielerHinzu(new SpielerLokal(spielerName, this));
 	}
@@ -428,6 +429,12 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		return felderSpieler;
+	}
+
+	@Override
+	public void fuegeComputerSpielerHinzu(String text)
+	{
+		this.fuegeSpielerHinzu(new SpielerComputer(text, this));
 	}
 
 }

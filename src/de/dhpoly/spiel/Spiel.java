@@ -31,7 +31,9 @@ public interface Spiel
 
 	void fuegeSpielerHinzu(Spieler spieler);
 
-	void fuegeSpielerHinzu(String spielerName);
+	void fuegeLokalenSpielerHinzu(String spielerName);
+
+	void fuegeComputerSpielerHinzu(String text);
 
 	void naechsterSchritt();
 
