@@ -44,19 +44,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
-	@Deprecated
-	public SpielImpl(Fenster fenster)
-	{
-		felder = new ArrayList<>();
-		spieler = new ArrayList<>();
-		aktuellerSpieler = 0;
-		wetter = Wetter.BEWOELKT;
-		einstellungen = new EinstellungenImpl();
-		wuerfelPaar = new WuerfelpaarImpl();
-
-		this.fenster = Optional.ofNullable(fenster);
-	}
-
 	public SpielImpl()
 	{
 		felder = new ArrayList<>();
