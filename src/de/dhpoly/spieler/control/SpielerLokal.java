@@ -45,10 +45,9 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void zeigeKarte(Karte karte)
+	public void verarbeiteKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-		ui.ifPresent(e -> e.zeigeKarte(karte));
 	}
 
 	@Override

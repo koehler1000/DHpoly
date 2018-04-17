@@ -19,6 +19,6 @@ public class Ereignisfeld extends FeldImpl
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
 		Karte karte = kartenstapel.ziehen();
-		spieler.zeigeKarte(karte);
+		spieler.verarbeiteKarte(karte);
 	}
 }

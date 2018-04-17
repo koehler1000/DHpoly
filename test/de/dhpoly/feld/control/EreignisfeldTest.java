@@ -30,7 +30,7 @@ public class EreignisfeldTest
 		Spieler spieler = new SpielerUnimplemented()
 		{
 			@Override
-			public void zeigeKarte(Karte karte)
+			public void verarbeiteKarte(Karte karte)
 			{
 				ereigniskarteGezeigt = true;
 			}

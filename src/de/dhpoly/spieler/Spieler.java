@@ -36,7 +36,7 @@ public interface Spieler
 
 	void zeigeKaufmoeglichkeit(Strasse strasse);
 
-	void zeigeKarte(Karte karte);
+	void verarbeiteKarte(Karte karte);
 
 	int getSpielerNr();
 

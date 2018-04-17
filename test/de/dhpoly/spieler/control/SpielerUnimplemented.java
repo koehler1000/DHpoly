@@ -67,7 +67,7 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void zeigeKarte(Karte karte)
+	public void verarbeiteKarte(Karte karte)
 	{}
 
 	@Override

@@ -27,7 +27,7 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void zeigeKarte(Karte karte)
+	public void verarbeiteKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
 	}
