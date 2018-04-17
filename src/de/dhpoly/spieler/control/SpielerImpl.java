@@ -60,14 +60,11 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void setAkutellerSpieler(boolean isAktuell)
+	public void setAktuellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
-		setAktuellerSpielerAbstract(isAktuell);
 		informiereBeobachter();
 	}
-
-	abstract void setAktuellerSpielerAbstract(boolean isAktuell);
 
 	@Override
 	public boolean isAktuellerSpieler()

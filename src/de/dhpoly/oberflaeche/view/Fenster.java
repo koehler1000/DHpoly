@@ -42,7 +42,11 @@ public class Fenster
 
 	public void zeigeTab(String name)
 	{
-		spielansichten.setSelectedIndex(spielansichten.indexOfTab(name));
+		int tabIdx = spielansichten.indexOfTab(name);
+		if (tabIdx >= 0)
+		{
+			spielansichten.setSelectedIndex(tabIdx);
+		}
 	}
 
 	public void loescheKomponente(Component komponente)

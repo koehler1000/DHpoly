@@ -63,6 +63,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void ruecke()
 	{
+		getAktuellerSpieler().setWuerfelnMoeglich(false);
 		new Thread(this::rueckeAsync).start();
 		setAktuellerSpielerHatGewuerfelt(true);
 	}
@@ -77,6 +78,8 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 		aktuellerSpielerIstGerueckt = true;
+
+		getAktuellerSpieler().setWuerfelWeitergabeMoeglich(true);
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -235,7 +238,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
-		spieler.setAkutellerSpieler(this.spieler.isEmpty());
+		spieler.setAktuellerSpieler(this.spieler.isEmpty());
 
 		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
@@ -395,8 +398,10 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void naechsterSpieler()
 	{
 		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
+		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
+		spielerAktuellAlt.setWuerfelnMoeglich(false);
 
-		spielerAktuellAlt.setAkutellerSpieler(false);
+		spielerAktuellAlt.setAktuellerSpieler(false);
 		pruefeVerloren(spielerAktuellAlt);
 
 		if (aktuellerSpieler + 1 >= spieler.size())
@@ -410,7 +415,9 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 
 		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
-		spielerAktuellNeu.setAkutellerSpieler(true);
+		spielerAktuellNeu.setAktuellerSpieler(true);
+
+		spielerAktuellNeu.setWuerfelnMoeglich(true);
 
 		leereRand();
 		zeigeAktuellenSpieler();

@@ -77,7 +77,7 @@ public class SpielerUnimplemented implements Spieler
 	}
 
 	@Override
-	public void setAkutellerSpieler(boolean isAktuell)
+	public void setAktuellerSpieler(boolean isAktuell)
 	{}
 
 	@Override
@@ -158,5 +158,13 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void vergebeRessourcen(int ertrag)
+	{}
+
+	@Override
+	public void setWuerfelnMoeglich(boolean value)
+	{}
+
+	@Override
+	public void setWuerfelWeitergabeMoeglich(boolean value)
 	{}
 }

@@ -40,7 +40,7 @@ public interface Spieler
 
 	int getSpielerNr();
 
-	void setAkutellerSpieler(boolean isAktuell);
+	void setAktuellerSpieler(boolean isAktuell);
 
 	boolean isAktuellerSpieler();
 
@@ -75,4 +75,8 @@ public interface Spieler
 	void leereRand();
 
 	void vergebeRessourcen(int ertrag);
+
+	void setWuerfelnMoeglich(boolean value);
+
+	void setWuerfelWeitergabeMoeglich(boolean value);
 }

@@ -52,7 +52,7 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void setAkutellerSpieler(boolean isAktuell)
+	public void setAktuellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
 		informiereBeobachter();
@@ -162,8 +162,14 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	void setAktuellerSpielerAbstract(boolean isAktuell)
+	public void setWuerfelnMoeglich(boolean value)
 	{
-		// für Computerspieler
+		ui.ifPresent(e -> e.wuerfelnErmoeglichen(value));
+	}
+
+	@Override
+	public void setWuerfelWeitergabeMoeglich(boolean value)
+	{
+		ui.ifPresent(e -> e.wuerfelWeitergabeErmoeglichen(value));
 	}
 }

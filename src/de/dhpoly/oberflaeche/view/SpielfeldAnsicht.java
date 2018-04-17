@@ -37,9 +37,8 @@ import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.control.Wuerfel;
 import de.dhpoly.wuerfel.view.WuerfelUI;
-import observerpattern.Beobachter;
 
-public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
+public class SpielfeldAnsicht extends JPanel // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -54,10 +53,9 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 	{
 		this.spiel = spiel;
 		this.spieler = spieler;
-		spieler.addBeobachterHinzu(this);
 
 		ElementFactory.bearbeitePanel(this);
-		butWeiter = ElementFactory.getButton("Spiel beginnen");
+		butWeiter = ElementFactory.getButton("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
 
 		this.add(new SpielfeldUI(spiel.getFelder(), this));
@@ -85,8 +83,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
 		this.add(pnlWest, BorderLayout.WEST);
-
-		update();
 	}
 
 	private void weiter()
@@ -119,27 +115,6 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 	{
 		tabRand.removeAll();
 		inhalte.clear();
-	}
-
-	private void setAnDerReihe(boolean value)
-	{
-		butWeiter.setEnabled(value);
-	}
-
-	@Override
-	public void update()
-	{
-		setAnDerReihe(spieler.isAktuellerSpieler());
-
-		if (spiel.kannWuerfeln(spieler))
-		{
-			butWeiter.setText("Würfeln");
-		}
-
-		if (spiel.kannWuerfelWeitergeben(spieler))
-		{
-			butWeiter.setText("Würfel weitergeben");
-		}
 	}
 
 	public void zeigeHausbaumoeglichkeit(List<Feld> felder)
@@ -225,5 +200,17 @@ public class SpielfeldAnsicht extends JPanel implements Beobachter // NOSONAR
 	public Spieler getSpieler()
 	{
 		return spieler;
+	}
+
+	public void wuerfelnErmoeglichen(boolean b)
+	{
+		butWeiter.setEnabled(b);
+		butWeiter.setText("Würfeln");
+	}
+
+	public void wuerfelWeitergabeErmoeglichen(boolean b)
+	{
+		butWeiter.setEnabled(b);
+		butWeiter.setText("Würfel weitergeben");
 	}
 }

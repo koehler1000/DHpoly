@@ -57,11 +57,20 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	void setAktuellerSpielerAbstract(boolean isAktuell)
+	public void setWuerfelnMoeglich(boolean value)
 	{
-		if (isAktuell)
+		if (value)
 		{
 			spiel.wuerfeln(this);
+		}
+	}
+
+	@Override
+	public void setWuerfelWeitergabeMoeglich(boolean value)
+	{
+		if (value)
+		{
+			spiel.wuerfelWeitergeben(this);
 		}
 	}
 }
