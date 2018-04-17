@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
@@ -28,15 +27,10 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
 
-	public SpielerImpl(String name, Einstellungen einstellungen, Spiel spiel)
+	public SpielerImpl(String name, Spiel spiel)
 	{
 		this.name = name;
 		this.spiel = spiel;
-
-		for (RessourcenDatensatz ressourcenDatensatz : einstellungen.getSpielerStartVorraete())
-		{
-			einzahlen(ressourcenDatensatz);
-		}
 	}
 
 	@Override

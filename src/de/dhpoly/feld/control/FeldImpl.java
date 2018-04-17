@@ -26,7 +26,12 @@ public abstract class FeldImpl extends Beobachtbarer implements Feld
 	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
 		spielerAufFeld.add(spieler);
-		spielerBetrittFeld(spieler, augensumme, aktuellesWetter);
+
+		// wird z.B. beim Spielstart nicht ausgeführt
+		if (augensumme > 0)
+		{
+			spielerBetrittFeld(spieler, augensumme, aktuellesWetter);
+		}
 
 		informiereBeobachter();
 	}

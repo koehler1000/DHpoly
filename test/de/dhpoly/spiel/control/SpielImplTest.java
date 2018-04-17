@@ -13,6 +13,7 @@ import org.junit.Test;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.Losfeld;
 import de.dhpoly.feld.control.LosfeldTest;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.StrasseTest;
@@ -164,6 +165,13 @@ public class SpielImplTest
 	{
 		Fenster fenster = new Fenster(new Bilderverwalter());
 		fenster.verstecken();
-		return new SpielImpl(fenster);
+
+		List<Feld> felder = new ArrayList<>();
+		felder.add(new Losfeld(new EinstellungenImpl()));
+
+		SpielImpl spiel = new SpielImpl(fenster);
+		spiel.setFelder(felder);
+
+		return spiel;
 	}
 }

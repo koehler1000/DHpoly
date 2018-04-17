@@ -10,6 +10,7 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerImplTest
@@ -26,9 +27,29 @@ public class SpielerImplTest
 		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));
 	}
 
+	@Test
+	public void spielerErhaeltGeldBeiSpielstart()
+	{
+		Einstellungen einstellungen = new EinstellungenImpl();
+		int guthabenNachStart = einstellungen.getStartguthaben();
+		int guthabenVorStart = 0;
+
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		spiel.setEinstellungen(einstellungen);
+
+		Spieler spieler = getDefaultSpieler(guthabenVorStart, spiel);
+		spiel.fuegeSpielerHinzu(spieler);
+
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(guthabenVorStart));
+
+		spiel.starteSpiel();
+
+		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(guthabenNachStart));
+	}
+
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerComputer("me", new EinstellungenImpl(), null);
+		return new SpielerComputer("me", null);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)
@@ -53,8 +74,8 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler(String name, int geld, Spiel spiel)
 	{
-		Einstellungen einstellungen = new EinstellungenImpl();
-		einstellungen.setStartguthaben(geld);
-		return new SpielerLokal(name, einstellungen, spiel);
+		Spieler spieler = new SpielerLokal(name, spiel);
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, geld));
+		return spieler;
 	}
 }

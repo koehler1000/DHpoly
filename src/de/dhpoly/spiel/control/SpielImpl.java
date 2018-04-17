@@ -267,7 +267,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(String spielerName)
 	{
-		fuegeSpielerHinzu(new SpielerLokal(spielerName, einstellungen, this));
+		fuegeSpielerHinzu(new SpielerLokal(spielerName, this));
 	}
 
 	private void createOberflaeche(Spieler spieler, Spiel spiel)
@@ -407,6 +407,11 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void starteSpiel()
 	{
 		status = SpielStatus.SPIEL_LAEUFT;
+
+		for (Spieler sp : spieler)
+		{
+			sp.einzahlen(einstellungen.getSpielerStartVorraete());
+		}
 	}
 
 	@Override

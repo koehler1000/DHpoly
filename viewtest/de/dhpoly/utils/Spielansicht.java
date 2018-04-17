@@ -1,7 +1,6 @@
 package de.dhpoly.utils;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -19,7 +18,7 @@ public class Spielansicht
 	public static SpielfeldAnsicht getSpielfeldAnsicht()
 	{
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
-		Spieler spieler = new SpielerLokal("foo", new EinstellungenImpl(), spiel);
+		Spieler spieler = new SpielerLokal("foo", spiel);
 		return new SpielfeldAnsicht(spiel, new WuerfelpaarImpl().getWuerfel(), spieler);
 	}
 

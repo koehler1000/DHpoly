@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
@@ -19,9 +18,9 @@ public class SpielerLokal extends SpielerImpl
 {
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
 
-	public SpielerLokal(String name, Einstellungen einstellungen, Spiel spiel)
+	public SpielerLokal(String name, Spiel spiel)
 	{
-		super(name, einstellungen, spiel);
+		super(name, spiel);
 	}
 
 	@Override
