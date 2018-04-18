@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -161,5 +162,10 @@ public class ElementFactory
 	public static void setzeRand(SpielerUI spielerUI, int dicke, Color farbe)
 	{
 		spielerUI.setBorder(BorderFactory.createLineBorder(farbe, dicke));
+	}
+
+	public static Component erzeugeScrollPanel(JPanel panel)
+	{
+		return new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 }
