@@ -1,6 +1,7 @@
 package de.dhpoly.handel.model;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class Transaktion extends Datenobjekt
 		}
 		else
 		{
-			Map<Ressource, Integer> map = new HashMap<>();
+			Map<Ressource, Integer> map = new EnumMap<>(Ressource.class);
 			ressourcen.put(abgebenderSpieler, map);
 			setRessourcen(abgebenderSpieler, ressource, value);
 		}
