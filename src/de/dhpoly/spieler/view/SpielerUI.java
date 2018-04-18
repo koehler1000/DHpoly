@@ -64,6 +64,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		pnlSueden.add(butKontoauszug);
 
 		butHandel = ElementFactory.getButton("Handeln");
+		butHandel.setEnabled(spieler != ansicht.getSpieler());
 
 		butHandel.addActionListener(e -> ansicht.zeigeObjekt(new Transaktion(ansicht.getSpieler(), spieler)));
 
@@ -106,7 +107,6 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 			}
 
 			butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
-			butHandel.setEnabled(!spieler.isAktuellerSpieler());
 		}
 	}
 }
