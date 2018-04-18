@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
@@ -15,6 +16,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
 public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -24,7 +26,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	private List<RessourceAnbietenUI> ressourcenBekommen = new ArrayList<>();
 	private StrassenAnbietenUI felderBekommen;
 	private StrassenAnbietenUI felderGeben;
-	private transient Transaktion vorgeschlagen;
 
 	private transient Handel handel = new HandelImpl();
 
@@ -47,13 +48,13 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
 		for (Ressource res : Ressource.values())
 		{
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion.getAnbietender(), res,
-					vorgeschlagen.getWertGeben(res));
+			// TODO "0" ersetzen
+			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion.getAnbietender(), res, 0);
 			ressourcenGeben.add(resAnbieten);
 			pnlRessourcen.add(resAnbieten);
 
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion.getHandelspartner(), res,
-					vorgeschlagen.getWertBekommen(res));
+			// TODO "0" ersetzen
+			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion.getHandelspartner(), res, 0);
 			ressourcenBekommen.add(resBekommen);
 			pnlRessourcen.add(resBekommen);
 		}
@@ -62,10 +63,10 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		JPanel pnlStrassen = ElementFactory.erzeugePanel();
 		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
 		felderBekommen = new StrassenAnbietenUI(transaktion.getAnbietender(),
-				vorgeschlagen.getFelderEigentumswechsel());
+				felderVonSpieler(transaktion.getFelderEigentumswechsel(), transaktion.getAnbietender()));
 		pnlStrassen.add(felderBekommen);
 		felderGeben = new StrassenAnbietenUI(transaktion.getHandelspartner(),
-				vorgeschlagen.getFelderEigentumswechsel()); // hier
+				felderVonSpieler(transaktion.getFelderEigentumswechsel(), transaktion.getHandelspartner()));
 		pnlStrassen.add(felderGeben);
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
@@ -77,6 +78,19 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 		transaktion.addBeobachter(this);
 		update();
+	}
+
+	private List<Feld> felderVonSpieler(List<Feld> alleFelder, Spieler spieler)
+	{
+		List<Feld> felder = new ArrayList<>();
+		for (Feld feld : alleFelder)
+		{
+			if (feld.gehoertSpieler(spieler))
+			{
+				felder.add(feld);
+			}
+		}
+		return felder;
 	}
 
 	private void handelAbschliessen()
