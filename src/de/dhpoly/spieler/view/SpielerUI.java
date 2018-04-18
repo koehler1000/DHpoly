@@ -87,15 +87,14 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 	@Override
 	public void update()
 	{
-		txtKontostand.setText("");
-
 		if (!spieler.hatVerloren())
 		{
+			StringBuilder builder = new StringBuilder();
 			for (Ressource res : Ressource.values())
 			{
-				txtKontostand.setText(txtKontostand.getText()
-						+ Ressource.getString(res, spieler.getRessourcenWerte(res)) + System.lineSeparator());
+				builder.append(Ressource.getString(res, spieler.getRessourcenWerte(res)) + System.lineSeparator());
 			}
+			txtKontostand.setText(builder.toString());
 
 			if (spieler.isAktuellerSpieler())
 			{
