@@ -108,6 +108,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	{
 		tabRand.addTab(beschreibung, oberflaeche);
 		inhalte.put(obj, oberflaeche);
+		tabRand.setSelectedComponent(oberflaeche);
 	}
 
 	public void leereRand()
