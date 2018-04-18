@@ -387,9 +387,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 	}
 
-	// TODO private machen -> wuerfel weitergeben stattdessen
-	@Override
-	public void naechsterSpieler()
+	private void naechsterSpieler()
 	{
 		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
 		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);

@@ -48,7 +48,7 @@ public class SpielImplTest
 	@Test
 	public void testnaechsterSpieler()
 	{
-		spiel.naechsterSpieler();
+		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
 	}
 
@@ -85,7 +85,7 @@ public class SpielImplTest
 
 		for (int i = 0; i < spiel.getSpieler().size(); i++)
 		{
-			spiel.naechsterSpieler();
+			spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 		}
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.HOLZ),
@@ -108,7 +108,7 @@ public class SpielImplTest
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 
 		assertThat(hatVerloren, Is.is(false));
-		spiel.naechsterSpieler();
+		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
 		assertThat(hatVerloren, Is.is(true));
 	}
@@ -128,7 +128,7 @@ public class SpielImplTest
 		spiel.fuegeSpielerHinzu(getSpieler(false));
 		spiel.fuegeSpielerHinzu(getSpieler(true));
 
-		spiel.naechsterSpieler();
+		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
 		assertThat(sieger.hatVerloren(), Is.is(false));
 		assertThat(hatGewonnen, Is.is(true));

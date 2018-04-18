@@ -23,8 +23,6 @@ public interface Spiel
 
 	double getFaktorMiete();
 
-	void naechsterSpieler();
-
 	void ruecke();
 
 	void verarbeiteKarte(Karte karte);
