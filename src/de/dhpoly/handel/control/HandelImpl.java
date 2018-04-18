@@ -15,7 +15,7 @@ public class HandelImpl implements Handel
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion)
 	{
-		transaktion.getHandelspartner().zeigeTransaktionsvorschlag(transaktion);
+		transaktion.getAnbietender().zeigeTransaktionsvorschlag(transaktion);
 	}
 
 	@Override
