@@ -47,7 +47,7 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 				JPanel pnlAlleSpieler = ElementFactory.erzeugePanel();
 				pnlAlleSpieler.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
 
-				this.addTab("Alle Spieler", pnlAlleSpieler);
+				this.addTab("Alle Spieler", ElementFactory.erzeugeScrollPanel(pnlAlleSpieler));
 				for (Spieler spieler : spiel.getSpieler())
 				{
 					pnlAlleSpieler.add(new SpielerUI(spieler, ansicht));

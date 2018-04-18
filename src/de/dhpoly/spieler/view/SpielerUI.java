@@ -84,10 +84,31 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		spieler.addBeobachterHinzu(this);
 	}
 
+	private boolean kannHaeuserBauen()
+	{
+		if (!spieler.isAktuellerSpieler())
+		{
+			return false; // nicht an der Reihe
+		}
+		if (!ansicht.isPresent())
+		{
+			return false;
+		}
+		if (ansicht.get().getSpieler() != spieler)
+		{
+			return false; // falscher Spieler
+		}
+		return true;
+	}
+
 	@Override
 	public void update()
 	{
-		if (!spieler.hatVerloren())
+		if (spieler.hatVerloren())
+		{
+			butHausBau.setEnabled(false);
+		}
+		else
 		{
 			StringBuilder builder = new StringBuilder();
 			for (Ressource res : Ressource.values())
@@ -105,7 +126,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 				ElementFactory.setzeRand(this, 10);
 			}
 
-			butHausBau.setEnabled(spieler.isAktuellerSpieler() && !spieler.getFelder().isEmpty());
+			butHausBau.setEnabled(kannHaeuserBauen());
 		}
 	}
 }
