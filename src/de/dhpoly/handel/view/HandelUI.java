@@ -2,8 +2,6 @@ package de.dhpoly.handel.view;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,10 +18,6 @@ import observerpattern.Beobachter;
 public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
-	private List<RessourceAnbietenUI> ressourcenGeben = new ArrayList<>();
-	private List<RessourceAnbietenUI> ressourcenBekommen = new ArrayList<>();
-	private StrassenAnbietenUI felderBekommen;
-	private StrassenAnbietenUI felderGeben;
 
 	private transient Handel handel = new HandelImpl();
 
@@ -36,42 +30,24 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		super(ansicht);
 		this.transaktion = transaktion;
 
-		butFertig = ElementFactory.getButtonUeberschrift("");
-		butFertig.addActionListener(e -> handelAbschliessen());
-
-		// TODO refactoring
-		// TODO Veränderungen ins Objekt "Transaktion" aufnehmen
-
 		JPanel pnlRessourcen = ElementFactory.erzeugePanel();
 		pnlRessourcen.setLayout(new GridLayout(Ressource.values().length, 2, 10, 10));
 		for (Ressource res : Ressource.values())
 		{
-			// TODO "0" ersetzen
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion, res, transaktion.getAnbietender());
-			ressourcenGeben.add(resAnbieten);
-			pnlRessourcen.add(resAnbieten);
-
-			// TODO "0" ersetzen
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion, res,
-					transaktion.getHandelspartner());
-			ressourcenBekommen.add(resBekommen);
-			pnlRessourcen.add(resBekommen);
+			pnlRessourcen.add(new RessourceAnbietenUI(transaktion, res, transaktion.getAnbietender()));
+			pnlRessourcen.add(new RessourceAnbietenUI(transaktion, res, transaktion.getHandelspartner()));
 		}
 		this.add(pnlRessourcen, BorderLayout.NORTH);
 
 		JPanel pnlStrassen = ElementFactory.erzeugePanel();
 		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
-		felderBekommen = new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion);
-		pnlStrassen.add(felderBekommen);
-		felderGeben = new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion);
-		pnlStrassen.add(felderGeben);
-
+		pnlStrassen.add(new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion));
+		pnlStrassen.add(new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion));
 		this.add(pnlStrassen, BorderLayout.CENTER);
 
+		butFertig = ElementFactory.getButtonUeberschrift("Fertig");
 		butFertig.addActionListener(e -> handelAbschliessen());
 		this.add(butFertig, BorderLayout.SOUTH);
-
-		// TODO ende
 
 		transaktion.addBeobachter(this);
 		update();
@@ -79,6 +55,8 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private void handelAbschliessen()
 	{
+		super.schliessen();
+
 		if (transaktion.isVeraendert())
 		{
 			handel.vorschlagAnbieten(transaktion.getTransaktionsGegenangebot());
@@ -87,7 +65,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		{
 			handel.vorschlagAnnehmen(transaktion);
 		}
-		this.setVisible(false);
 	}
 
 	@Override
