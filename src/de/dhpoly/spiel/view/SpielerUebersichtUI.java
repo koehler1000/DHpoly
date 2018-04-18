@@ -1,6 +1,8 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -18,6 +20,8 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 	private transient Spiel spiel;
 	private transient SpielfeldAnsicht ansicht;
 
+	private transient List<Spieler> cacheSpieler = new ArrayList<>();
+
 	public SpielerUebersichtUI(Spiel spiel, SpielfeldAnsicht ansicht)
 	{
 		this.spiel = spiel;
@@ -30,18 +34,25 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 	@Override
 	public void update()
 	{
-		this.removeAll();
-
-		if (!spiel.getSpieler().isEmpty())
+		if (cacheSpieler.size() != spiel.getSpieler().size())
 		{
-			JPanel pnlAlleSpieler = ElementFactory.erzeugePanel();
-			pnlAlleSpieler.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
+			// Neuzeichnen nur, wenn Spieler sich verändern.
 
-			this.addTab("Alle Spieler", pnlAlleSpieler);
-			for (Spieler spieler : spiel.getSpieler())
+			cacheSpieler.addAll(spiel.getSpieler());
+
+			this.removeAll();
+
+			if (!spiel.getSpieler().isEmpty())
 			{
-				pnlAlleSpieler.add(new SpielerUI(spieler, ansicht));
-				this.addTab(spieler.getName(), new SpielerUI(spieler, ansicht));
+				JPanel pnlAlleSpieler = ElementFactory.erzeugePanel();
+				pnlAlleSpieler.setLayout(new GridLayout(spiel.getSpieler().size(), 1, 10, 10));
+
+				this.addTab("Alle Spieler", pnlAlleSpieler);
+				for (Spieler spieler : spiel.getSpieler())
+				{
+					pnlAlleSpieler.add(new SpielerUI(spieler, ansicht));
+					this.addTab(spieler.getName(), new SpielerUI(spieler, ansicht));
+				}
 			}
 		}
 	}
