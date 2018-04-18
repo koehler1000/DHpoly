@@ -50,6 +50,12 @@ public class Transaktion extends Datenobjekt
 
 	public void setRessourcen(Spieler abgebenderSpieler, Ressource ressource, int value)
 	{
+		int alterWert = getRessource(abgebenderSpieler, ressource);
+		if (alterWert == value)
+		{
+			return;
+		}
+
 		if (ressourcen.containsKey(abgebenderSpieler))
 		{
 			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
