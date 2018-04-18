@@ -45,12 +45,6 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void leereRand()
-	{
-		// ignorieren
-	}
-
-	@Override
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{
 		// ignorieren

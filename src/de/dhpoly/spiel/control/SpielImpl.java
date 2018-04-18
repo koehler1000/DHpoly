@@ -129,14 +129,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		fenster.ifPresent(f -> f.zeigeTab(spieler.get(aktuellerSpieler).getName()));
 	}
 
-	private void leereRand()
-	{
-		for (Spieler sp : spieler)
-		{
-			sp.leereRand();
-		}
-	}
-
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
 		if (spielerAktuell.isNegative() || spielerAktuell.hatVerloren())
@@ -421,7 +413,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 		spielerAktuellNeu.setWuerfelnMoeglich(true);
 
-		leereRand();
 		zeigeAktuellenSpieler();
 
 		setAktuellerSpielerHatGewuerfelt(false);

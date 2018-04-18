@@ -155,12 +155,6 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void leereRand()
-	{
-		ui.ifPresent(SpielfeldAnsicht::leereRand);
-	}
-
-	@Override
 	public void setWuerfelnMoeglich(boolean value)
 	{
 		ui.ifPresent(e -> e.wuerfelnErmoeglichen(value));
