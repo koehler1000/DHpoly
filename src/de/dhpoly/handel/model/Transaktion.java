@@ -45,7 +45,7 @@ public class Transaktion extends Datenobjekt
 		return t;
 	}
 
-	public int getRessourcen(Spieler abgebenderSpieler, Ressource ressource)
+	public int getRessource(Spieler abgebenderSpieler, Ressource ressource)
 	{
 		Map<Ressource, Integer> res = ressourcen.getOrDefault(abgebenderSpieler, new HashMap<>());
 		Integer wert = res.getOrDefault(ressource, Integer.valueOf(0));

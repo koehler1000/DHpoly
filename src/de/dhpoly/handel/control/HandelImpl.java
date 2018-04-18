@@ -27,11 +27,11 @@ public class HandelImpl implements Handel
 
 		for (Ressource res : Ressource.values())
 		{
-			int vonAnbietendem = transaktion.getRessourcen(transaktion.getAnbietender(), res);
+			int vonAnbietendem = transaktion.getRessource(transaktion.getAnbietender(), res);
 			transaktion.getAnbietender().ueberweise(new RessourcenDatensatz(res, vonAnbietendem),
 					transaktion.getHandelspartner());
 
-			int vonHandelspartner = transaktion.getRessourcen(transaktion.getHandelspartner(), res);
+			int vonHandelspartner = transaktion.getRessource(transaktion.getHandelspartner(), res);
 			transaktion.getHandelspartner().ueberweise(new RessourcenDatensatz(res, vonHandelspartner),
 					transaktion.getAnbietender());
 

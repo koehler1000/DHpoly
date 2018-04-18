@@ -34,9 +34,7 @@ public class RessourceAnbietenUI extends JPanel
 
 		Color hintergrund = Color.WHITE;
 		Color randFarbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
-
 		Border rand = new LineBorder(hintergrund, 10);
-
 		this.setBackground(hintergrund);
 
 		JLabel lblTitel = new JLabel(ressource.toString() + " von " + spieler.getName());
@@ -55,7 +53,7 @@ public class RessourceAnbietenUI extends JPanel
 		numAnzahl = new JSlider();
 		numAnzahl.setMaximum(max);
 		numAnzahl.setMinimum(min);
-		numAnzahl.setValue(transaktion.getRessourcen(spieler, ressource));
+		numAnzahl.setValue(transaktion.getRessource(spieler, ressource));
 		numAnzahl.addChangeListener(e -> lblAktualisieren());
 		numAnzahl.setBackground(hintergrund);
 		numAnzahl.setBorder(rand);
