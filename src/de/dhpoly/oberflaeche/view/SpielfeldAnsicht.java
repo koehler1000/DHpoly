@@ -78,7 +78,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
 
-		butWeiter = ElementFactory.getButtonUeberschrift("");
 		butWeiter.addActionListener(e -> weiter());
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
