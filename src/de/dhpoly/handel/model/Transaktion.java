@@ -21,7 +21,7 @@ public class Transaktion extends Datenobjekt
 	private transient List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
 	private transient List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
 
-	private Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
+	private transient Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
 
 	private transient Spieler anbietender;
 	private transient Spieler handelspartner;
@@ -68,34 +68,6 @@ public class Transaktion extends Datenobjekt
 		}
 	}
 
-	@Deprecated
-	public void addDatensatzGeben(RessourcenDatensatz datensatz)
-	{
-		ressourcenGeben.add(datensatz);
-		veraendert = true;
-	}
-
-	@Deprecated
-	public void removeDatensatzGeben(RessourcenDatensatz datensatz)
-	{
-		ressourcenGeben.remove(datensatz);
-		veraendert = true;
-	}
-
-	@Deprecated
-	public void addDatensatzBekommen(RessourcenDatensatz datensatz)
-	{
-		ressourcenBekommen.add(datensatz);
-		veraendert = true;
-	}
-
-	@Deprecated
-	public void removeDatensatzBekommen(RessourcenDatensatz datensatz)
-	{
-		ressourcenBekommen.remove(datensatz);
-		veraendert = true;
-	}
-
 	public void addDatensatzFelderwechsel(Feld feld)
 	{
 		felderEigentumswechsel.add(feld);
@@ -111,18 +83,6 @@ public class Transaktion extends Datenobjekt
 	public boolean isVeraendert()
 	{
 		return veraendert;
-	}
-
-	@Deprecated
-	public List<RessourcenDatensatz> getRessourcenGeben()
-	{
-		return ressourcenGeben;
-	}
-
-	@Deprecated
-	public List<RessourcenDatensatz> getRessourcenBekommen()
-	{
-		return ressourcenBekommen;
 	}
 
 	public List<Feld> getFelderEigentumswechsel(Spieler spieler)
@@ -143,85 +103,6 @@ public class Transaktion extends Datenobjekt
 	public Spieler getHandelspartner()
 	{
 		return handelspartner;
-	}
-
-	@Deprecated
-	public int getWert(Ressource ressource, Spieler spieler)
-	{
-		if (spieler == anbietender)
-		{
-			return getWertGeben(ressource);
-		}
-		if (spieler == handelspartner)
-		{
-			return getWertBekommen(ressource);
-		}
-		return 0;
-	}
-
-	@Deprecated
-	public int getWertBekommen(Ressource ressource)
-	{
-		int anz = 0;
-		for (RessourcenDatensatz daten : ressourcenBekommen)
-		{
-			if (daten.getRessource() == ressource)
-			{
-				anz += daten.getAnzahl();
-			}
-		}
-
-		return anz;
-	}
-
-	@Deprecated
-	public int getWertGeben(Ressource ressource)
-	{
-		int anz = 0;
-		for (RessourcenDatensatz daten : ressourcenGeben)
-		{
-			if (daten.getRessource() == ressource)
-			{
-				anz += daten.getAnzahl();
-			}
-		}
-
-		return anz;
-	}
-
-	@Deprecated
-	public boolean isGleich(Transaktion transaktion)
-	{
-		// alle Ressourcen müssen beim Geben und Nehmen gleich sein
-		for (Ressource res : Ressource.values())
-		{
-			if (this.getWertBekommen(res) != transaktion.getWertBekommen(res))
-			{
-				return false;
-			}
-			if (this.getWertGeben(res) != transaktion.getWertGeben(res))
-			{
-				return false;
-			}
-		}
-
-		// alle Strassen müssen gleich sein
-		for (Feld feld : felderEigentumswechsel)
-		{
-			if (!transaktion.getFelderEigentumswechsel().contains(feld))
-			{
-				return false;
-			}
-		}
-		for (Feld feld : transaktion.getFelderEigentumswechsel())
-		{
-			if (!getFelderEigentumswechsel().contains(feld))
-			{
-				return false;
-			}
-		}
-
-		return true;
 	}
 
 	@Override

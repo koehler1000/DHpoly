@@ -24,11 +24,13 @@ public class RessourceAnbietenUI extends JPanel
 	private JLabel lblAnzahl;
 
 	private Transaktion transaktion;
+	private transient Spieler spieler;
 
 	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, Spieler spieler)
 	{
 		this.ressource = ressource;
 		this.transaktion = transaktion;
+		this.spieler = spieler;
 
 		Color hintergrund = Color.WHITE;
 		Color randFarbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
@@ -53,7 +55,7 @@ public class RessourceAnbietenUI extends JPanel
 		numAnzahl = new JSlider();
 		numAnzahl.setMaximum(max);
 		numAnzahl.setMinimum(min);
-		numAnzahl.setValue(transaktion.getWert(ressource, spieler));
+		numAnzahl.setValue(transaktion.getRessourcen(spieler, ressource));
 		numAnzahl.addChangeListener(e -> lblAktualisieren());
 		numAnzahl.setBackground(hintergrund);
 		numAnzahl.setBorder(rand);
@@ -68,7 +70,7 @@ public class RessourceAnbietenUI extends JPanel
 	private void lblAktualisieren()
 	{
 		lblAnzahl.setText("Aktuelle Auswahl: " + ressource.getString(numAnzahl.getValue()));
-		transaktion.addDatensatzBekommen(new RessourcenDatensatz(ressource, numAnzahl.getValue()));
+		transaktion.setRessourcen(spieler, ressource, numAnzahl.getValue());
 	}
 
 	public RessourcenDatensatz getDatensatz()
