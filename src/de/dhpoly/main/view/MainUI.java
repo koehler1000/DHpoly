@@ -63,7 +63,7 @@ public class MainUI extends JPanel implements Beobachter
 		JPanel pnl = ElementFactory.erzeugePanel();
 		pnl.setLayout(new GridLayout());
 
-		pnl.add(ElementFactory.getTextFeldUeberschrift("Lokale Spieler"));
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Computerspieler"));
 
 		txtNamePC = ElementFactory.getTextFeld("", true);
 		pnl.add(txtNamePC);
