@@ -34,7 +34,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 {
 	private List<Feld> felder;
 	private List<Spieler> spieler = new ArrayList<>();
-	private int aktuellerSpieler;
+	private List<Spieler> spielerImSpiel = new ArrayList<>();
 	private Wetter wetter = Wetter.BEWOELKT;
 	private Einstellungen einstellungen;
 	private Wuerfelpaar wuerfelPaar;
@@ -52,7 +52,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		felder = new ArrayList<>();
 		spieler = new ArrayList<>();
-		aktuellerSpieler = 0;
 		wetter = Wetter.BEWOELKT;
 		einstellungen = new EinstellungenImpl();
 		wuerfelPaar = new WuerfelpaarImpl();
@@ -126,7 +125,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void zeigeAktuellenSpieler()
 	{
-		fenster.ifPresent(f -> f.zeigeTab(spieler.get(aktuellerSpieler).getName()));
+		fenster.ifPresent(f -> f.zeigeTab(spielerImSpiel.get(0).getName()));
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -171,7 +170,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	@Override
 	public Spieler getAktuellerSpieler()
 	{
-		return spieler.get(aktuellerSpieler);
+		return spielerImSpiel.get(0);
 	}
 
 	@Override
@@ -193,13 +192,13 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void verarbeiteKarte(BezahlKarte karte)
 	{
-		new KartenverbucherImpl().bewegeGeld(karte, spieler, spieler.get(aktuellerSpieler));
+		new KartenverbucherImpl().bewegeGeld(karte, spieler, getAktuellerSpieler());
 		zeigeAllenSpielern(karte);
 	}
 
 	private void verarbeiteKarte(RueckenKarte karte)
 	{
-		new KartenverbucherImpl().bewegeSpieler(karte, spieler.get(aktuellerSpieler), wetter);
+		new KartenverbucherImpl().bewegeSpieler(karte, getAktuellerSpieler(), wetter);
 		zeigeAllenSpielern(karte);
 	}
 
@@ -234,6 +233,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
+		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 
 		createOberflaeche(spieler, this);
@@ -272,7 +272,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		}
 		else if (fehler.getFehlertyp().isAktuellenSpielerInformieren())
 		{
-			spieler.get(aktuellerSpieler).zeigeDatenobjekt(fehler);
+			getAktuellerSpieler().zeigeDatenobjekt(fehler);
 		}
 
 		if (fehler.getFehlertyp().isEntwicklerInformieren())
@@ -389,32 +389,32 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void naechsterSpieler()
 	{
-		Spieler spielerAktuellAlt = spieler.get(aktuellerSpieler);
+		Spieler spielerAktuellAlt = getAktuellerSpieler();
 		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
 		spielerAktuellAlt.setWuerfelnMoeglich(false);
-
 		spielerAktuellAlt.setAktuellerSpieler(false);
-		pruefeVerloren(spielerAktuellAlt);
 
-		if (aktuellerSpieler + 1 >= spieler.size())
+		spielerImSpiel.remove(spielerAktuellAlt);
+		pruefeVerloren(spielerAktuellAlt);
+		if (!spielerAktuellAlt.hatVerloren())
 		{
-			aktuellerSpieler = 0;
+			spielerImSpiel.add(spielerAktuellAlt);
+		}
+
+		if (spieler.get(0) == spielerAktuellAlt)
+		{
+			// Überrundung
 			vergebeRessourcen();
 		}
-		else
-		{
-			aktuellerSpieler++;
-		}
 
-		Spieler spielerAktuellNeu = spieler.get(aktuellerSpieler);
+		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
 		spielerAktuellNeu.setAktuellerSpieler(true);
-
 		spielerAktuellNeu.setWuerfelnMoeglich(true);
-
-		zeigeAktuellenSpieler();
 
 		setAktuellerSpielerHatGewuerfelt(false);
 		setAktuellerSpielerIstGerueckt(false);
+
+		zeigeAktuellenSpieler();
 	}
 
 	private void setAktuellerSpielerIstGerueckt(boolean b)
