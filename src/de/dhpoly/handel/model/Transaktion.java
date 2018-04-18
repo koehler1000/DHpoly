@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class Transaktion extends Datenobjekt
@@ -17,9 +16,6 @@ public class Transaktion extends Datenobjekt
 	private static final long serialVersionUID = 1L;
 
 	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();
-
-	private transient List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
-	private transient List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
 
 	private transient Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
 
@@ -39,8 +35,7 @@ public class Transaktion extends Datenobjekt
 	{
 		Transaktion t = new Transaktion(handelspartner, anbietender);
 		t.felderEigentumswechsel = felderEigentumswechsel;
-		t.ressourcenGeben = ressourcenBekommen;
-		t.ressourcenBekommen = ressourcenGeben;
+		t.ressourcen = ressourcen;
 		t.veraendert = false;
 		return t;
 	}
