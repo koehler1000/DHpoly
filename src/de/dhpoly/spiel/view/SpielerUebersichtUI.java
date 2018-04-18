@@ -38,7 +38,7 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 		{
 			// Neuzeichnen nur, wenn Spieler sich verändern.
 
-			cacheSpieler.addAll(spiel.getSpieler());
+			cacheSpieler = new ArrayList<>(spiel.getSpieler());
 
 			this.removeAll();
 

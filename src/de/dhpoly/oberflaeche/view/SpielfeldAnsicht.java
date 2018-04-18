@@ -55,7 +55,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		this.spieler = spieler;
 
 		ElementFactory.bearbeitePanel(this);
-		butWeiter = ElementFactory.getButton("Bitte warten...");
+		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
 
 		this.add(new SpielfeldUI(spiel.getFelder(), this));
