@@ -21,20 +21,19 @@ public class HandelImpl implements Handel
 	@Override
 	public void vorschlagAnnehmen(Transaktion transaktion)
 	{
+		Spieler anbietender = transaktion.getAnbietender();
+		Spieler handelspartner = transaktion.getHandelspartner();
+
 		// Felder Eigentum übertragen
-		eigentumUebertragen(transaktion.getFelderEigentumswechsel(), transaktion.getAnbietender(),
-				transaktion.getHandelspartner());
+		eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender, handelspartner);
 
 		for (Ressource res : Ressource.values())
 		{
-			int vonAnbietendem = transaktion.getRessource(transaktion.getAnbietender(), res);
-			transaktion.getAnbietender().ueberweise(new RessourcenDatensatz(res, vonAnbietendem),
-					transaktion.getHandelspartner());
+			anbietender.ueberweise(new RessourcenDatensatz(res, transaktion.getRessource(anbietender, res)),
+					handelspartner);
 
-			int vonHandelspartner = transaktion.getRessource(transaktion.getHandelspartner(), res);
-			transaktion.getHandelspartner().ueberweise(new RessourcenDatensatz(res, vonHandelspartner),
-					transaktion.getAnbietender());
-
+			handelspartner.ueberweise(new RessourcenDatensatz(res, transaktion.getRessource(handelspartner, res)),
+					anbietender);
 		}
 
 		// Ressourcen transferieren
