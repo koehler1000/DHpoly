@@ -8,7 +8,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
@@ -16,7 +15,6 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spieler.Spieler;
 import observerpattern.Beobachter;
 
 public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -31,7 +29,7 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private Transaktion transaktion;
 
-	private JButton butFertig = new JButton("");
+	private JButton butFertig;
 
 	public HandelUI(Transaktion transaktion, SpielfeldAnsicht ansicht)
 	{
@@ -49,12 +47,13 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		for (Ressource res : Ressource.values())
 		{
 			// TODO "0" ersetzen
-			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion.getAnbietender(), res, 0);
+			RessourceAnbietenUI resAnbieten = new RessourceAnbietenUI(transaktion, res, transaktion.getAnbietender());
 			ressourcenGeben.add(resAnbieten);
 			pnlRessourcen.add(resAnbieten);
 
 			// TODO "0" ersetzen
-			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion.getHandelspartner(), res, 0);
+			RessourceAnbietenUI resBekommen = new RessourceAnbietenUI(transaktion, res,
+					transaktion.getHandelspartner());
 			ressourcenBekommen.add(resBekommen);
 			pnlRessourcen.add(resBekommen);
 		}
@@ -62,11 +61,9 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 		JPanel pnlStrassen = ElementFactory.erzeugePanel();
 		pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
-		felderBekommen = new StrassenAnbietenUI(transaktion.getAnbietender(),
-				felderVonSpieler(transaktion.getFelderEigentumswechsel(), transaktion.getAnbietender()));
+		felderBekommen = new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion);
 		pnlStrassen.add(felderBekommen);
-		felderGeben = new StrassenAnbietenUI(transaktion.getHandelspartner(),
-				felderVonSpieler(transaktion.getFelderEigentumswechsel(), transaktion.getHandelspartner()));
+		felderGeben = new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion);
 		pnlStrassen.add(felderGeben);
 
 		this.add(pnlStrassen, BorderLayout.CENTER);
@@ -80,24 +77,11 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		update();
 	}
 
-	private List<Feld> felderVonSpieler(List<Feld> alleFelder, Spieler spieler)
-	{
-		List<Feld> felder = new ArrayList<>();
-		for (Feld feld : alleFelder)
-		{
-			if (feld.gehoertSpieler(spieler))
-			{
-				felder.add(feld);
-			}
-		}
-		return felder;
-	}
-
 	private void handelAbschliessen()
 	{
 		if (transaktion.isVeraendert())
 		{
-			handel.vorschlagAnbieten(transaktion);
+			handel.vorschlagAnbieten(transaktion.getTransaktionsGegenangebot());
 		}
 		else
 		{

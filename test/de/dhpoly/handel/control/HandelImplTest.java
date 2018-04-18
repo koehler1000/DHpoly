@@ -79,14 +79,10 @@ public class HandelImplTest
 		Spieler s1 = SpielerImplTest.getDefaultSpieler(150);
 		Spieler s2 = SpielerImplTest.getDefaultSpieler(250);
 
-		List<RessourcenDatensatz> datensaetze = new ArrayList<>();
-		RessourcenDatensatz datensatz = new RessourcenDatensatz(Ressource.GELD, 50);
-		datensaetze.add(datensatz);
-
 		Handel handel = new HandelImpl();
 
 		Transaktion transaktion = new Transaktion(s1, s2);
-		transaktion.addDatensatzBekommen(datensatz);
+		transaktion.setRessourcen(s2, Ressource.GELD, 50);
 		handel.vorschlagAnnehmen(transaktion);
 
 		assertThat(s1.getRessourcenWerte(Ressource.GELD), Is.is(200));

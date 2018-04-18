@@ -2,7 +2,6 @@ package de.dhpoly.handel.view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -11,6 +10,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
@@ -18,36 +18,27 @@ public class StrassenAnbietenUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient List<Feld> ausgewaehlteStrassen = new ArrayList<>();
+	private Transaktion transaktion;
 
-	public StrassenAnbietenUI(Spieler spieler, List<Feld> ausgewaehlte)
+	public StrassenAnbietenUI(Spieler spieler, Transaktion transaktion)
 	{
+		this.transaktion = transaktion;
+
 		this.setBackground(Color.WHITE);
 		this.setLayout(new GridLayout());
-
-		for (Feld feld : ausgewaehlte)
-		{
-			if (feld instanceof Strasse)
-			{
-				Strasse strasse = (Strasse) feld;
-				if (strasse.gehoertSpieler(spieler))
-				{
-					ausgewaehlteStrassen.add(strasse);
-				}
-			}
-		}
 
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe));
 
-		JPanel pnlStrassen = new JPanel(new GridLayout(ausgewaehlteStrassen.size(), 1));
+		JPanel pnlStrassen = new JPanel(new GridLayout(transaktion.getFelderEigentumswechsel(spieler).size(), 1));
 		pnlStrassen.setBackground(Color.WHITE);
 
 		for (Feld feld : spieler.getFelder())
 		{
 			if (feld instanceof Strasse)
 			{
-				pnlStrassen.add(new StrasseAnbietenUI((Strasse) feld, this, ausgewaehlteStrassen.contains(feld)));
+				pnlStrassen.add(new StrasseAnbietenUI((Strasse) feld, this,
+						transaktion.getFelderEigentumswechsel().contains(feld)));
 			}
 		}
 
@@ -56,16 +47,16 @@ public class StrassenAnbietenUI extends JPanel
 
 	void feldAuswaehlen(Feld feld)
 	{
-		ausgewaehlteStrassen.add(feld);
+		transaktion.addDatensatzFelderwechsel(feld);
 	}
 
 	void feldAuswaehlenRueckgaengig(Feld feld)
 	{
-		ausgewaehlteStrassen.remove(feld);
+		transaktion.removeDatensatzFelderwechsel(feld);
 	}
 
 	public List<Feld> getStrassen()
 	{
-		return ausgewaehlteStrassen;
+		return transaktion.getFelderEigentumswechsel();
 	}
 }

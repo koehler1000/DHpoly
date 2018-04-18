@@ -6,6 +6,8 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class HandelImpl implements Handel
@@ -23,13 +25,19 @@ public class HandelImpl implements Handel
 		eigentumUebertragen(transaktion.getFelderEigentumswechsel(), transaktion.getAnbietender(),
 				transaktion.getHandelspartner());
 
+		for (Ressource res : Ressource.values())
+		{
+			int vonAnbietendem = transaktion.getRessourcen(transaktion.getAnbietender(), res);
+			transaktion.getAnbietender().ueberweise(new RessourcenDatensatz(res, vonAnbietendem),
+					transaktion.getHandelspartner());
+
+			int vonHandelspartner = transaktion.getRessourcen(transaktion.getHandelspartner(), res);
+			transaktion.getHandelspartner().ueberweise(new RessourcenDatensatz(res, vonHandelspartner),
+					transaktion.getAnbietender());
+
+		}
+
 		// Ressourcen transferieren
-		transaktion.getAnbietender().einzahlen(transaktion.getRessourcenBekommen());
-		transaktion.getAnbietender().auszahlen(transaktion.getRessourcenGeben());
-
-		transaktion.getHandelspartner().einzahlen(transaktion.getRessourcenGeben());
-		transaktion.getHandelspartner().auszahlen(transaktion.getRessourcenBekommen());
-
 		transaktion.getAnbietender().zeigeTransaktionErfolgreich(transaktion);
 		transaktion.getHandelspartner().zeigeTransaktionErfolgreich(transaktion);
 	}

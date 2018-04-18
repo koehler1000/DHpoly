@@ -9,6 +9,7 @@ import javax.swing.JSlider;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
@@ -22,14 +23,12 @@ public class RessourceAnbietenUI extends JPanel
 	private JSlider numAnzahl;
 	private JLabel lblAnzahl;
 
-	public RessourceAnbietenUI(Spieler spieler, Ressource ressource)
-	{
-		this(spieler, ressource, 0);
-	}
+	private Transaktion transaktion;
 
-	public RessourceAnbietenUI(Spieler spieler, Ressource ressource, int auswahl)
+	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, Spieler spieler)
 	{
 		this.ressource = ressource;
+		this.transaktion = transaktion;
 
 		Color hintergrund = Color.WHITE;
 		Color randFarbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
@@ -54,7 +53,7 @@ public class RessourceAnbietenUI extends JPanel
 		numAnzahl = new JSlider();
 		numAnzahl.setMaximum(max);
 		numAnzahl.setMinimum(min);
-		numAnzahl.setValue(auswahl);
+		numAnzahl.setValue(transaktion.getWert(ressource, spieler));
 		numAnzahl.addChangeListener(e -> lblAktualisieren());
 		numAnzahl.setBackground(hintergrund);
 		numAnzahl.setBorder(rand);
@@ -69,6 +68,7 @@ public class RessourceAnbietenUI extends JPanel
 	private void lblAktualisieren()
 	{
 		lblAnzahl.setText("Aktuelle Auswahl: " + ressource.getString(numAnzahl.getValue()));
+		transaktion.addDatensatzBekommen(new RessourcenDatensatz(ressource, numAnzahl.getValue()));
 	}
 
 	public RessourcenDatensatz getDatensatz()

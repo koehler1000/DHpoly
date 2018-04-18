@@ -1,7 +1,10 @@
 package de.dhpoly.handel.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
@@ -18,6 +21,8 @@ public class Transaktion extends Datenobjekt
 	private transient List<RessourcenDatensatz> ressourcenGeben = new ArrayList<>();
 	private transient List<RessourcenDatensatz> ressourcenBekommen = new ArrayList<>();
 
+	private Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
+
 	private transient Spieler anbietender;
 	private transient Spieler handelspartner;
 
@@ -30,34 +35,61 @@ public class Transaktion extends Datenobjekt
 		this.veraendert = false;
 	}
 
-	public Transaktion getTransaktionsAngebot()
+	public Transaktion getTransaktionsGegenangebot()
 	{
-		Transaktion t = new Transaktion(anbietender, handelspartner);
+		Transaktion t = new Transaktion(handelspartner, anbietender);
 		t.felderEigentumswechsel = felderEigentumswechsel;
-		t.ressourcenGeben = ressourcenGeben;
-		t.ressourcenBekommen = ressourcenBekommen;
+		t.ressourcenGeben = ressourcenBekommen;
+		t.ressourcenBekommen = ressourcenGeben;
 		t.veraendert = false;
 		return t;
 	}
 
+	public int getRessourcen(Spieler abgebenderSpieler, Ressource ressource)
+	{
+		Map<Ressource, Integer> res = ressourcen.getOrDefault(abgebenderSpieler, new HashMap<>());
+		Integer wert = res.getOrDefault(ressource, Integer.valueOf(0));
+		return wert.intValue();
+	}
+
+	public void setRessourcen(Spieler abgebenderSpieler, Ressource ressource, int value)
+	{
+		if (ressourcen.containsKey(abgebenderSpieler))
+		{
+			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
+			res.put(ressource, value);
+			veraendert = true;
+		}
+		else
+		{
+			Map<Ressource, Integer> map = new HashMap<>();
+			ressourcen.put(abgebenderSpieler, map);
+			setRessourcen(abgebenderSpieler, ressource, value);
+		}
+	}
+
+	@Deprecated
 	public void addDatensatzGeben(RessourcenDatensatz datensatz)
 	{
 		ressourcenGeben.add(datensatz);
 		veraendert = true;
 	}
 
+	@Deprecated
 	public void removeDatensatzGeben(RessourcenDatensatz datensatz)
 	{
 		ressourcenGeben.remove(datensatz);
 		veraendert = true;
 	}
 
+	@Deprecated
 	public void addDatensatzBekommen(RessourcenDatensatz datensatz)
 	{
 		ressourcenBekommen.add(datensatz);
 		veraendert = true;
 	}
 
+	@Deprecated
 	public void removeDatensatzBekommen(RessourcenDatensatz datensatz)
 	{
 		ressourcenBekommen.remove(datensatz);
@@ -81,14 +113,21 @@ public class Transaktion extends Datenobjekt
 		return veraendert;
 	}
 
+	@Deprecated
 	public List<RessourcenDatensatz> getRessourcenGeben()
 	{
 		return ressourcenGeben;
 	}
 
+	@Deprecated
 	public List<RessourcenDatensatz> getRessourcenBekommen()
 	{
 		return ressourcenBekommen;
+	}
+
+	public List<Feld> getFelderEigentumswechsel(Spieler spieler)
+	{
+		return getFelderEigentumswechsel().stream().filter(e -> e.gehoertSpieler(spieler)).collect(Collectors.toList());
 	}
 
 	public List<Feld> getFelderEigentumswechsel()
@@ -106,6 +145,21 @@ public class Transaktion extends Datenobjekt
 		return handelspartner;
 	}
 
+	@Deprecated
+	public int getWert(Ressource ressource, Spieler spieler)
+	{
+		if (spieler == anbietender)
+		{
+			return getWertGeben(ressource);
+		}
+		if (spieler == handelspartner)
+		{
+			return getWertBekommen(ressource);
+		}
+		return 0;
+	}
+
+	@Deprecated
 	public int getWertBekommen(Ressource ressource)
 	{
 		int anz = 0;
@@ -120,6 +174,7 @@ public class Transaktion extends Datenobjekt
 		return anz;
 	}
 
+	@Deprecated
 	public int getWertGeben(Ressource ressource)
 	{
 		int anz = 0;
@@ -134,6 +189,7 @@ public class Transaktion extends Datenobjekt
 		return anz;
 	}
 
+	@Deprecated
 	public boolean isGleich(Transaktion transaktion)
 	{
 		// alle Ressourcen müssen beim Geben und Nehmen gleich sein
