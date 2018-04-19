@@ -86,19 +86,9 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private boolean kannHaeuserBauen()
 	{
-		if (!spieler.isAktuellerSpieler())
-		{
-			return false; // nicht an der Reihe
-		}
-		if (!ansicht.isPresent())
-		{
-			return false;
-		}
-		if (ansicht.get().getSpieler() != spieler)
-		{
-			return false; // falscher Spieler
-		}
-		return true;
+		return spieler.isAktuellerSpieler() // an der Reihe
+				&& ansicht.isPresent() // Ansicht existiert
+				&& ansicht.get().getSpieler() == spieler; // Spieler gehört die Ansicht
 	}
 
 	@Override
