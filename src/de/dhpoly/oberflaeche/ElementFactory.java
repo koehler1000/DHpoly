@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -166,6 +168,39 @@ public class ElementFactory
 
 	public static Component erzeugeScrollPanel(JPanel panel)
 	{
-		return new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane pane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		pane.setBackground(FARBE_KONTRAST);
+
+		JPanel pnl = erzeugePanel();
+		pnl.setLayout(new BorderLayout());
+		pnl.add(pane, BorderLayout.CENTER);
+
+		JButton butHoch = getButtonUeberschrift("^");
+		butHoch.addActionListener(getScrollListener(pane, -100));
+		pnl.add(butHoch, BorderLayout.NORTH);
+
+		JButton butRunter = getButtonUeberschrift("v");
+		butRunter.addActionListener(getScrollListener(pane, +100));
+		pnl.add(butRunter, BorderLayout.SOUTH);
+
+		pane.getViewport().setViewPosition(new Point(0, 0));
+		return pnl;
+	}
+
+	private static ActionListener getScrollListener(JScrollPane pane, int verschiebung)
+	{
+		return e -> {
+			int position = pane.getViewport().getViewPosition().y;
+
+			position += verschiebung;
+
+			if (position < 0)
+			{
+				position = 0;
+			}
+
+			pane.getViewport().setViewPosition(new Point(0, position));
+		};
 	}
 }
