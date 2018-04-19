@@ -235,7 +235,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 
-		createOberflaeche(spieler, this);
+		createOberflaeche(spieler);
 
 		informiereBeobachter();
 	}
@@ -246,7 +246,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		fuegeSpielerHinzu(new SpielerLokal(spielerName, this));
 	}
 
-	private void createOberflaeche(Spieler spieler, Spiel spiel)
+	private void createOberflaeche(Spieler spieler)
 	{
 		spieler.setSpielfeldAnsichtDaten(fenster, wuerfelPaar.getWuerfel());
 	}
