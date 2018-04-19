@@ -8,10 +8,12 @@ import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachter;
 
 public class SpielerLokal extends SpielerImpl
@@ -164,5 +166,12 @@ public class SpielerLokal extends SpielerImpl
 	public void setWuerfelWeitergabeMoeglich(boolean value)
 	{
 		ui.ifPresent(e -> e.wuerfelWeitergabeErmoeglichen(value));
+	}
+
+	@Override
+	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
+	{
+		setSpielfeldAnsicht(new SpielfeldAnsicht(spiel, wuerfel, this));
+		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, name)));
 	}
 }

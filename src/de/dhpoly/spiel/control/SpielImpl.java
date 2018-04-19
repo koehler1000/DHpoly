@@ -19,7 +19,6 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
@@ -249,13 +248,7 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 
 	private void createOberflaeche(Spieler spieler, Spiel spiel)
 	{
-		// TODO sollte nicht abgefragt werden müssen
-		if (spieler instanceof SpielerLokal)
-		{
-			SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spiel, wuerfelPaar.getWuerfel(), spieler);
-			fenster.ifPresent(f -> f.zeigeSpielansicht(ansicht, spieler.getName()));
-			spieler.setSpielfeldAnsicht(ansicht);
-		}
+		spieler.setSpielfeldAnsichtDaten(fenster, wuerfelPaar.getWuerfel());
 	}
 
 	public void setAnimationen(boolean b)

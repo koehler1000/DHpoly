@@ -1,16 +1,19 @@
 package de.dhpoly.spieler.control;
 
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
+import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.wuerfel.control.Wuerfel;
 import observerpattern.Beobachter;
 
 public class SpielerUnimplemented implements Spieler
@@ -162,5 +165,9 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void setWuerfelWeitergabeMoeglich(boolean value)
+	{}
+
+	@Override
+	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
 	{}
 }
