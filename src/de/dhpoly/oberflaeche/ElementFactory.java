@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionListener;
+import java.util.Optional;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -18,7 +19,8 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spieler.view.SpielerUI;
+import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.view.SpielerFarben;
 
 public class ElementFactory
 {
@@ -156,14 +158,19 @@ public class ElementFactory
 		return pnl;
 	}
 
-	public static void setzeRand(SpielerUI spielerUI, int dicke)
+	private static void setzeRand(JPanel pnl, int dicke, Color farbe)
 	{
-		setzeRand(spielerUI, dicke, FARBE_KONTRAST);
+		pnl.setBorder(BorderFactory.createLineBorder(farbe, dicke));
 	}
 
-	public static void setzeRand(SpielerUI spielerUI, int dicke, Color farbe)
+	/**
+	 * Spieler ist optional -> falls null > Kontrastfarbe
+	 **/
+	public static void setzeRand(JPanel pnl, int dicke, Spieler spieler)
 	{
-		spielerUI.setBorder(BorderFactory.createLineBorder(farbe, dicke));
+		Optional<Spieler> sp = Optional.ofNullable(spieler);
+		Color farbe = sp.isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()) : FARBE_KONTRAST;
+		setzeRand(pnl, dicke, farbe);
 	}
 
 	public static Component erzeugeScrollPanel(JPanel panel)

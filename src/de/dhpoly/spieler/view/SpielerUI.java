@@ -117,14 +117,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 			}
 			txtKontostand.setText(builder.toString());
 
-			if (spieler.isAktuellerSpieler())
-			{
-				ElementFactory.setzeRand(this, 10, this.getBackground());
-			}
-			else
-			{
-				ElementFactory.setzeRand(this, 10);
-			}
+			ElementFactory.setzeRand(this, 10, spieler.isAktuellerSpieler() ? spieler : null);
 
 			butHausBau.setEnabled(kannHaeuserBauen());
 		}
