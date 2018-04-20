@@ -90,7 +90,7 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public List<RessourcenDatensatz> getRessourcenTransaktionen()
+	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return null;
 	}

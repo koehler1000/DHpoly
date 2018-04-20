@@ -33,6 +33,7 @@ public interface Spieler
 
 	void setFeldNr(int feldNrSoll);
 
+	@Deprecated
 	void zeigeTransaktionsvorschlag(Transaktion transaktion);
 
 	void zeigeKaufmoeglichkeit(Strasse strasse);
@@ -47,7 +48,7 @@ public interface Spieler
 
 	void addBeobachterHinzu(Beobachter beobachter);
 
-	List<RessourcenDatensatz> getRessourcenTransaktionen();
+	List<RessourcenDatensatz> getRessourcenKontoauszug();
 
 	int getRessourcenWerte(Ressource ressource);
 
@@ -65,10 +66,13 @@ public interface Spieler
 
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
 
+	@Deprecated // zeigeDatenobjekt stattdessen
 	void zeigeTransaktionErfolgreich(Transaktion transaktion);
 
+	@Deprecated // zeigeDatenobjekt stattdessen
 	void zeigeTransaktionGescheitert(Transaktion transaktion);
 
+	@Deprecated // zeigeDatenobjekt stattdessen
 	void zeigeHausbauMoeglichkeit();
 
 	void zeigeDatenobjekt(Datenobjekt objekt);

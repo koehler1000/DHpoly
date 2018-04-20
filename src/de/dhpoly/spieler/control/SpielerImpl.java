@@ -95,7 +95,7 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public List<RessourcenDatensatz> getRessourcenTransaktionen()
+	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return verlauf;
 	}

@@ -21,7 +21,7 @@ public class KontoauszugUI extends JPanel
 		JTextArea txtText = ElementFactory.getTextFeld("", false);
 		JTextArea txtWert = ElementFactory.getTextFeld("", false);
 
-		for (RessourcenDatensatz transaktion : spieler.getRessourcenTransaktionen())
+		for (RessourcenDatensatz transaktion : spieler.getRessourcenKontoauszug())
 		{
 			txtText.setText(txtText.getText() + transaktion.getBeschreibung() + System.lineSeparator());
 			txtWert.setText(txtWert.getText() + transaktion.getString() + System.lineSeparator());
