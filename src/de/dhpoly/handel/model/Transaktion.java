@@ -25,6 +25,8 @@ public class Transaktion extends Datenobjekt
 
 	private boolean veraendert = false;
 
+	private TransaktionsTyp typ = TransaktionsTyp.NEU;
+
 	public Transaktion(Spieler anbietender, Spieler handelspartner)
 	{
 		this.anbietender = anbietender;
@@ -37,6 +39,7 @@ public class Transaktion extends Datenobjekt
 		Transaktion t = new Transaktion(handelspartner, anbietender);
 		t.felderEigentumswechsel = felderEigentumswechsel;
 		t.ressourcen = ressourcen;
+		t.typ = TransaktionsTyp.NEU;
 		t.veraendert = false;
 		return t;
 	}
@@ -83,9 +86,15 @@ public class Transaktion extends Datenobjekt
 		veraendert = true;
 	}
 
+	@Deprecated
 	public boolean isVeraendert()
 	{
 		return veraendert;
+	}
+
+	public TransaktionsTyp getTransaktionsTyp()
+	{
+		return typ;
 	}
 
 	public List<Feld> getFelderEigentumswechsel(Spieler spieler)
