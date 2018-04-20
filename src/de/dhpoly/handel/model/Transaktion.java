@@ -23,16 +23,13 @@ public class Transaktion extends Datenobjekt
 	private transient Spieler anbietender;
 	private transient Spieler handelspartner;
 
-	@Deprecated
-	private boolean veraendert = false;
-
 	private TransaktionsTyp typ = TransaktionsTyp.NEU;
 
 	public Transaktion(Spieler anbietender, Spieler handelspartner)
 	{
 		this.anbietender = anbietender;
 		this.handelspartner = handelspartner;
-		this.veraendert = false;
+		this.typ = TransaktionsTyp.NEU;
 	}
 
 	public Transaktion getTransaktionsGegenangebot()
@@ -40,8 +37,7 @@ public class Transaktion extends Datenobjekt
 		Transaktion t = new Transaktion(handelspartner, anbietender);
 		t.felderEigentumswechsel = felderEigentumswechsel;
 		t.ressourcen = ressourcen;
-		t.typ = TransaktionsTyp.NEU;
-		t.veraendert = false;
+		t.typ = TransaktionsTyp.VORSCHLAG;
 		return t;
 	}
 
@@ -64,8 +60,7 @@ public class Transaktion extends Datenobjekt
 		{
 			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
 			res.put(ressource, value);
-			veraendert = true;
-			typ = TransaktionsTyp.VORSCHLAG;
+			typ = TransaktionsTyp.NEUER_VORSCHLAG;
 			informiereBeobachter();
 		}
 		else
@@ -79,19 +74,13 @@ public class Transaktion extends Datenobjekt
 	public void addDatensatzFelderwechsel(Feld feld)
 	{
 		felderEigentumswechsel.add(feld);
-		veraendert = true;
+		typ = TransaktionsTyp.NEUER_VORSCHLAG;
 	}
 
 	public void removeDatensatzFelderwechsel(Feld feld)
 	{
 		felderEigentumswechsel.remove(feld);
-		veraendert = true;
-	}
-
-	@Deprecated
-	public boolean isVeraendert()
-	{
-		return veraendert;
+		typ = TransaktionsTyp.NEUER_VORSCHLAG;
 	}
 
 	public TransaktionsTyp getTransaktionsTyp()
@@ -123,5 +112,10 @@ public class Transaktion extends Datenobjekt
 	public String getTitel()
 	{
 		return "Handel";
+	}
+
+	public void setTransaktionsTyp(TransaktionsTyp typ)
+	{
+		this.typ = typ;
 	}
 }

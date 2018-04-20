@@ -7,4 +7,6 @@ public interface Handel
 	void vorschlagAnbieten(Transaktion transaktion);
 
 	void vorschlagAnnehmen(Transaktion transaktion);
+
+	void vorschlagAblehnen(Transaktion transaktion);
 }

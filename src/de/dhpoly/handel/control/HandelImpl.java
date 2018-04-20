@@ -6,6 +6,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
@@ -15,12 +16,14 @@ public class HandelImpl implements Handel
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion)
 	{
-		transaktion.getAnbietender().zeigeTransaktionsvorschlag(transaktion);
+		transaktion.getAnbietender().zeigeDatenobjekt(transaktion);
 	}
 
 	@Override
 	public void vorschlagAnnehmen(Transaktion transaktion)
 	{
+		transaktion.setTransaktionsTyp(TransaktionsTyp.ANGENOMMEN);
+
 		Spieler anbietender = transaktion.getAnbietender();
 		Spieler handelspartner = transaktion.getHandelspartner();
 
@@ -38,9 +41,8 @@ public class HandelImpl implements Handel
 			handelspartner.auszahlen(bekommen);
 		}
 
-		// Ressourcen transferieren
-		transaktion.getAnbietender().zeigeTransaktionErfolgreich(transaktion);
-		transaktion.getHandelspartner().zeigeTransaktionErfolgreich(transaktion);
+		anbietender.zeigeDatenobjekt(transaktion);
+		handelspartner.zeigeDatenobjekt(transaktion);
 	}
 
 	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler anbietender, Spieler handelspartner)
@@ -66,5 +68,11 @@ public class HandelImpl implements Handel
 				strasse.setEigentuemer(anbietender);
 			}
 		}
+	}
+
+	@Override
+	public void vorschlagAblehnen(Transaktion transaktion)
+	{
+		transaktion.setTransaktionsTyp(TransaktionsTyp.ABGELEHNT);
 	}
 }
