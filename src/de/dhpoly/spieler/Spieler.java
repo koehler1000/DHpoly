@@ -25,8 +25,6 @@ public interface Spieler
 
 	void auszahlen(List<RessourcenDatensatz> datensaetze);
 
-	void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger);
-
 	boolean isNegative();
 
 	int getFeldNr();

@@ -36,10 +36,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
-	{}
-
-	@Override
 	public boolean isNegative()
 	{
 		return false;

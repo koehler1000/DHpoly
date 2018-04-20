@@ -95,13 +95,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void ueberweise(RessourcenDatensatz datensatz, Spieler empfaenger)
-	{
-		auszahlen(datensatz);
-		empfaenger.einzahlen(datensatz);
-	}
-
-	@Override
 	public List<RessourcenDatensatz> getRessourcenTransaktionen()
 	{
 		return verlauf;

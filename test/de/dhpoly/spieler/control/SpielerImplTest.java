@@ -21,7 +21,9 @@ public class SpielerImplTest
 		Spieler empfaenger = getDefaultSpieler(100);
 		Spieler sender = getDefaultSpieler(100);
 
-		sender.ueberweise(new RessourcenDatensatz(Ressource.GELD, 50), empfaenger);
+		RessourcenDatensatz dat = new RessourcenDatensatz(Ressource.GELD, 50);
+		sender.auszahlen(dat);
+		empfaenger.einzahlen(dat);
 
 		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));
 		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));

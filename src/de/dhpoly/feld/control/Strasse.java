@@ -82,12 +82,16 @@ public class Strasse extends FeldImpl
 
 	private void zahle(Spieler zahlender, Wetter wetter)
 	{
-		eigentuemer.ifPresent(besitzer -> {
-			if (!hypothek)
-			{
-				zahlender.ueberweise(getMietDatensatz(wetter), besitzer);
-			}
-		});
+		eigentuemer.ifPresent(besitzer -> einzahlenFallsKeineHypothek(zahlender, besitzer, getMietDatensatz(wetter)));
+	}
+
+	private void einzahlenFallsKeineHypothek(Spieler zahlender, Spieler besitzer, RessourcenDatensatz mietDatensatz)
+	{
+		if (!hypothek)
+		{
+			zahlender.auszahlen(mietDatensatz);
+			besitzer.einzahlen(mietDatensatz);
+		}
 	}
 
 	private RessourcenDatensatz getMietDatensatz(Wetter wetter)
