@@ -23,6 +23,7 @@ public class Transaktion extends Datenobjekt
 	private transient Spieler anbietender;
 	private transient Spieler handelspartner;
 
+	@Deprecated
 	private boolean veraendert = false;
 
 	private TransaktionsTyp typ = TransaktionsTyp.NEU;
@@ -64,6 +65,7 @@ public class Transaktion extends Datenobjekt
 			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
 			res.put(ressource, value);
 			veraendert = true;
+			typ = TransaktionsTyp.VORSCHLAG;
 			informiereBeobachter();
 		}
 		else

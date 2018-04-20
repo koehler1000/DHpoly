@@ -57,11 +57,11 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	{
 		super.schliessen();
 
-		if (transaktion.isVeraendert())
+		if (transaktion.getTransaktionsTyp().isHandelAnbieten())
 		{
 			handel.vorschlagAnbieten(transaktion.getTransaktionsGegenangebot());
 		}
-		else
+		else if (transaktion.getTransaktionsTyp().isHandelAnnehmen())
 		{
 			handel.vorschlagAnnehmen(transaktion);
 		}
@@ -70,7 +70,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	@Override
 	public void update()
 	{
-		String beschriftung = transaktion.isVeraendert() ? "Anbieten" : "Annehmen";
-		butFertig.setText(beschriftung);
+		butFertig.setText(transaktion.getTransaktionsTyp().getBeschreibung());
 	}
 }
