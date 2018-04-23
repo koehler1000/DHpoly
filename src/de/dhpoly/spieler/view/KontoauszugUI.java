@@ -1,5 +1,6 @@
 package de.dhpoly.spieler.view;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -7,16 +8,23 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
-public class KontoauszugUI extends JPanel
+public class KontoauszugUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public KontoauszugUI(Spieler spieler)
+	public KontoauszugUI(Spieler spieler, SpielfeldAnsicht ansicht)
 	{
-		this.setLayout(new GridLayout(1, 1));
+		super(ansicht);
+
+		this.setLayout(new BorderLayout());
+
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setLayout(new GridLayout(1, 1));
 
 		JTextArea txtText = ElementFactory.getTextFeld("", false);
 		JTextArea txtWert = ElementFactory.getTextFeld("", false);
@@ -32,6 +40,9 @@ public class KontoauszugUI extends JPanel
 		pnlWerte.add(txtText);
 		pnlWerte.add(txtWert);
 
-		this.add(new JScrollPane(pnlWerte));
+		pnl.add(new JScrollPane(pnlWerte));
+
+		this.add(pnl, BorderLayout.CENTER);
+		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
 }

@@ -144,7 +144,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void zeigeKontoauszug(Spieler spieler)
 	{
-		tabRand.addTab("Kontoauszug", new KontoauszugUI(spieler));
+		tabRand.addTab("Kontoauszug", new KontoauszugUI(spieler, this));
 	}
 
 	public void entferne(Oberflaeche oberflaeche)
