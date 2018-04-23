@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.einstellungen.Einstellungen;
+import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.Spiel;
@@ -26,9 +28,11 @@ public class MainUI extends JPanel implements Beobachter
 	{
 		this.setLayout(new GridLayout(3, 1));
 
+		Einstellungen einstellungen = new EinstellungenImpl();
+
 		spiel = new SpielImpl();
 		spiel.setFenster(fenster);
-		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld());
+		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 		spiel.addBeobachter(this);
 
 		this.add(getSpielerLokalVerwalterPanel(spiel));

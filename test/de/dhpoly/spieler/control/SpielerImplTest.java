@@ -54,6 +54,11 @@ public class SpielerImplTest
 		return new SpielerLokal("me", null);
 	}
 
+	public static Spieler getDefaultSpieler(Spiel spiel)
+	{
+		return new SpielerLokal("me", spiel);
+	}
+
 	public static Spieler getDefaultSpieler(int geld)
 	{
 		return getDefaultSpieler("me", geld);

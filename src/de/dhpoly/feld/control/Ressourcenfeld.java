@@ -1,5 +1,6 @@
 package de.dhpoly.feld.control;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
@@ -7,11 +8,12 @@ import de.dhpoly.spieler.Spieler;
 public class Ressourcenfeld extends FeldImpl
 {
 	private Ressource ressource;
-	// private Einstellungen einstellungen;
+	private Einstellungen einstellungen;
 
-	public Ressourcenfeld(Ressource ressourcentyp)
+	public Ressourcenfeld(Ressource ressourcentyp, Einstellungen einstellungen)
 	{
 		super("Ressource");
+		this.einstellungen = einstellungen;
 		this.ressource = ressourcentyp;
 	}
 

@@ -10,6 +10,7 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Losfeld;
@@ -68,14 +69,16 @@ public class SpielImplTest
 	@Test
 	public void ressourcenJedeRunde()
 	{
+		Einstellungen einstellungen = new EinstellungenImpl();
+
 		List<Feld> felder = new ArrayList<>();
 		felder.add(StrasseTest.getDefaultStrasse());
 		felder.add(StrasseTest.getDefaultStrasse());
-		Ressourcenfeld feld = new Ressourcenfeld(Ressource.HOLZ);
+		Ressourcenfeld feld = new Ressourcenfeld(Ressource.HOLZ, einstellungen);
 		felder.add(feld);
-		Ressourcenfeld feld2 = new Ressourcenfeld(Ressource.STEIN);
+		Ressourcenfeld feld2 = new Ressourcenfeld(Ressource.STEIN, einstellungen);
 		felder.add(feld2);
-		spiel = SpielImplTest.getDefaultSpiel();
+		spiel = SpielImplTest.getDefaultSpiel(einstellungen);
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
@@ -160,8 +163,13 @@ public class SpielImplTest
 
 	public static SpielImpl getDefaultSpiel()
 	{
+		return getDefaultSpiel(new EinstellungenImpl());
+	}
+
+	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)
+	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(new Losfeld(new EinstellungenImpl()));
+		felder.add(new Losfeld(einstellungen));
 
 		SpielImpl spiel = new SpielImpl();
 		spiel.setFelder(felder);

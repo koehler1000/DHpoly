@@ -40,11 +40,12 @@ public class FelderTest
 		felder.add(getDefaultFeld(verwaltung));
 		felder.add(getDefaultFeld(verwaltung));
 
-		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
-
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
+
+		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
 		spiel.fuegeSpielerHinzu(sp1);
+
 		spiel.setAnimationen(false);
 
 		Thread thread = spiel.rueckeThread(sp1, 2);
@@ -66,11 +67,12 @@ public class FelderTest
 		felder.add(getDefaultFeld(verwaltung));
 		felder.add(getDefaultFeld(verwaltung));
 
-		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
-
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
+
+		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
 		spiel.fuegeSpielerHinzu(sp1);
+
 		spiel.setAnimationen(false);
 
 		spiel.ruecke(sp1, 4);

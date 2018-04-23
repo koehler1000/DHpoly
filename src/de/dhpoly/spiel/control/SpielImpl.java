@@ -229,7 +229,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
 		spieler.setAktuellerSpieler(this.spieler.isEmpty());
-
 		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
