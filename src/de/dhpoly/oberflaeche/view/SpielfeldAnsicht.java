@@ -129,12 +129,12 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
 	{
-		tabRand.addTab("Kaufen", new StrasseKaufenUI(strasse, spieler, this));
+		hinzu("Kaufen", strasse, new StrasseKaufenUI(strasse, spieler, this));
 	}
 
 	public void zeigeKarte(Karte karte)
 	{
-		tabRand.addTab(karte.getTitel(), new KarteUI(karte, this));
+		hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)
@@ -144,7 +144,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void zeigeKontoauszug(Spieler spieler)
 	{
-		tabRand.addTab("Kontoauszug", new KontoauszugUI(spieler, this));
+		hinzu("Kontoauszug", spieler, new KontoauszugUI(spieler, this));
 	}
 
 	public void entferne(Oberflaeche oberflaeche)
