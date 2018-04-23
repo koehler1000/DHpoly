@@ -6,7 +6,6 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -55,10 +54,6 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void setFeldNr(int feldNrSoll)
-	{}
-
-	@Override
-	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
 	{}
 
 	@Override
@@ -133,18 +128,6 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
-	{}
-
-	@Override
-	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
-	{}
-
-	@Override
-	public void zeigeTransaktionGescheitert(Transaktion transaktion)
-	{}
-
-	@Override
-	public void zeigeHausbauMoeglichkeit()
 	{}
 
 	@Override

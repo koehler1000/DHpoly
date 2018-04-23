@@ -7,7 +7,6 @@ import java.util.Optional;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Ressourcenfeld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -194,22 +193,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	public boolean hatVerloren()
 	{
 		return verloren;
-	}
-
-	@Override
-	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
-	{
-		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde angenommen";
-		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeigeDatenobjekt(nachricht);
-	}
-
-	@Override
-	public void zeigeTransaktionGescheitert(Transaktion transaktion)
-	{
-		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt";
-		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeigeDatenobjekt(nachricht);
 	}
 
 	@Override

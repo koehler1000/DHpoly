@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -29,12 +28,6 @@ public class SpielerLokal extends SpielerImpl
 	public int getSpielerNr()
 	{
 		return spielerNr;
-	}
-
-	@Override
-	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
-	{
-		ui.ifPresent(e -> e.zeigeTransaktion(transaktion));
 	}
 
 	@Override
@@ -126,28 +119,6 @@ public class SpielerLokal extends SpielerImpl
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{
 		ui = Optional.of(ansicht);
-	}
-
-	@Override
-	public void zeigeTransaktionErfolgreich(Transaktion transaktion)
-	{
-		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde angenommen";
-		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeigeDatenobjekt(nachricht);
-	}
-
-	@Override
-	public void zeigeTransaktionGescheitert(Transaktion transaktion)
-	{
-		String nachrichtentext = "Handel mit " + transaktion.getHandelspartner().getName() + " wurde abgelehnt";
-		Nachricht nachricht = new Nachricht(nachrichtentext);
-		zeigeDatenobjekt(nachricht);
-	}
-
-	@Override
-	public void zeigeHausbauMoeglichkeit()
-	{
-		ui.ifPresent(e -> e.zeigeHausbaumoeglichkeit(spiel.getFelder(this)));
 	}
 
 	@Override

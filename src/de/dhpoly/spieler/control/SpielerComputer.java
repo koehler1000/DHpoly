@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -20,12 +19,6 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void zeigeTransaktionsvorschlag(Transaktion transaktion)
-	{
-		// TODO AI entscheiden lassen
-	}
-
-	@Override
 	public void zeigeKaufmoeglichkeit(Strasse strasse)
 	{
 		strasse.kaufe(this);
@@ -35,12 +28,6 @@ public class SpielerComputer extends SpielerImpl
 	public void verarbeiteKarte(Karte karte)
 	{
 		spiel.verarbeiteKarte(karte);
-	}
-
-	@Override
-	public void zeigeHausbauMoeglichkeit()
-	{
-		// ignorieren
 	}
 
 	@Override

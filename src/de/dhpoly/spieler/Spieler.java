@@ -6,7 +6,6 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -32,9 +31,6 @@ public interface Spieler
 	String getName();
 
 	void setFeldNr(int feldNrSoll);
-
-	@Deprecated
-	void zeigeTransaktionsvorschlag(Transaktion transaktion);
 
 	void zeigeKaufmoeglichkeit(Strasse strasse);
 
@@ -65,15 +61,6 @@ public interface Spieler
 	boolean hatVerloren();
 
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
-
-	@Deprecated // zeigeDatenobjekt stattdessen
-	void zeigeTransaktionErfolgreich(Transaktion transaktion);
-
-	@Deprecated // zeigeDatenobjekt stattdessen
-	void zeigeTransaktionGescheitert(Transaktion transaktion);
-
-	@Deprecated // zeigeDatenobjekt stattdessen
-	void zeigeHausbauMoeglichkeit();
 
 	void zeigeDatenobjekt(Datenobjekt objekt);
 
