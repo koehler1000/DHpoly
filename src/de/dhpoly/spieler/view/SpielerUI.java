@@ -54,7 +54,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
 		butHausBau = ElementFactory.getButton("Häuser" + System.lineSeparator() + "anzeigen");
-		butHausBau.addActionListener(e -> spieler.zeigeHausbauMoeglichkeit());
+		butHausBau.addActionListener(e -> ansicht.zeigeHausbaumoeglichkeit(spieler.getFelder()));
 		butHausBau.setForeground(backcolor);
 		pnlSueden.add(butHausBau);
 
