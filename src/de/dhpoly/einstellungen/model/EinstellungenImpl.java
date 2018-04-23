@@ -19,7 +19,7 @@ public class EinstellungenImpl implements Einstellungen
 	private int kostenHausGeld = 100;
 	private int kostenHausHolz = 10;
 
-	private int ressourcenErtrag;
+	private int ressourcenErtrag = 10;
 
 	@Override
 	public int getBetragBetretenLos()
