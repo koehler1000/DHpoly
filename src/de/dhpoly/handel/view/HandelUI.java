@@ -31,7 +31,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		super(ansicht);
 		this.transaktion = transaktion;
 
-		// TODO Refactoring
 		if (transaktion.getTransaktionsTyp() != TransaktionsTyp.ANGENOMMEN)
 		{
 			JPanel pnlRessourcen = ElementFactory.erzeugePanel();
