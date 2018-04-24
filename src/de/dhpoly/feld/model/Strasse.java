@@ -36,6 +36,11 @@ public class Strasse extends Datenobjekt
 		return miete;
 	}
 
+	public int getMiete(int haeuser)
+	{
+		return miete[haeuser];
+	}
+
 	public void setMiete(int[] miete)
 	{
 		this.miete = miete;
@@ -109,6 +114,6 @@ public class Strasse extends Datenobjekt
 
 	public int getAkuelleMiete()
 	{
-		return getMiete()[haueser];
+		return getMiete(haueser);
 	}
 }
