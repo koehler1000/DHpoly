@@ -7,6 +7,7 @@ import java.util.Optional;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -208,5 +209,11 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 				einzahlen(res);
 			}
 		}
+	}
+
+	@Override
+	public void kaufe(StrasseKaufen strasse)
+	{
+		spiel.kaufe(strasse, this);
 	}
 }

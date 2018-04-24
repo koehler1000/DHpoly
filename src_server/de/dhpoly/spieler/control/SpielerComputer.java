@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -58,11 +57,5 @@ public class SpielerComputer extends SpielerImpl
 	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
 	{
 		// ignorieren
-	}
-
-	@Override
-	public void kaufe(StrasseKaufen strasse)
-	{
-		spiel.kaufe(strasse, this);
 	}
 }
