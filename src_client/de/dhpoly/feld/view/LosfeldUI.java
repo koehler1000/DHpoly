@@ -25,7 +25,5 @@ public class LosfeldUI extends FeldUI implements Beobachter // NOSONAR
 		this.add(ElementFactory.getBild(Bilderverwalter.LOSFELD, Color.WHITE));
 
 		update();
-
-		feld.addBeobachter(this);
 	}
 }

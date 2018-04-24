@@ -25,6 +25,5 @@ public class EreignisfeldUI extends FeldUI implements Beobachter // NOSONAR
 		this.add(ElementFactory.getBild(Bilderverwalter.EREIGNISFELD, Color.WHITE));
 
 		update();
-		feld.addBeobachter(this);
 	}
 }

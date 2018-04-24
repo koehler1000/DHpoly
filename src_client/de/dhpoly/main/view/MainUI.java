@@ -32,7 +32,6 @@ public class MainUI extends JPanel implements Beobachter
 		spiel = new SpielImpl();
 		spiel.setFenster(fenster);
 		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
-		spiel.addBeobachter(this);
 
 		this.add(getSpielerLokalVerwalterPanel(spiel));
 		this.add(getSpielerComputerVerwalterPanel(spiel));

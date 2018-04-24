@@ -6,9 +6,8 @@ import java.util.List;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
-import observerpattern.Beobachtbarer;
 
-public abstract class FeldImpl extends Beobachtbarer implements Feld
+public abstract class FeldImpl implements Feld
 {
 	private String beschriftung;
 	private List<Spieler> spielerAufFeld = new ArrayList<>();
@@ -32,16 +31,12 @@ public abstract class FeldImpl extends Beobachtbarer implements Feld
 		{
 			spielerBetrittFeld(spieler, augensumme, aktuellesWetter);
 		}
-
-		informiereBeobachter();
 	}
 
 	public void verlasseFeld(Spieler spieler)
 	{
 		spielerAufFeld.remove(spieler);
 		spielerVerlaesstFeld(spieler);
-
-		informiereBeobachter();
 	}
 
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
@@ -74,6 +69,5 @@ public abstract class FeldImpl extends Beobachtbarer implements Feld
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		spielerAufFeld.add(spieler);
-		informiereBeobachter();
 	}
 }

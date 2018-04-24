@@ -47,8 +47,6 @@ public class HausUI extends JPanel implements Beobachter
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(pnlHaeuser, BorderLayout.CENTER);
 		update();
-
-		strasse.addBeobachter(this);
 	}
 
 	// wird immer aufgerufen, wenn sich etwas im Modell (also in der Straﬂe) ‰ndert.

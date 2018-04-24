@@ -71,8 +71,6 @@ public class FeldStrasse extends FeldImpl
 		{
 			potentiellerKaeufer.auszahlen(new RessourcenDatensatz(Ressource.GELD, betrag, "Kauf: " + this.getName()));
 			setEigentuemer(potentiellerKaeufer);
-
-			informiereBeobachter();
 		}
 	}
 
@@ -137,7 +135,6 @@ public class FeldStrasse extends FeldImpl
 	public void setEigentuemer(Spieler anbietender)
 	{
 		strasse.setEigentuemer(Optional.ofNullable(anbietender));
-		informiereBeobachter();
 	}
 
 	public Optional<Spieler> getEigentuemer()
@@ -195,7 +192,6 @@ public class FeldStrasse extends FeldImpl
 				{
 					strasse.getEigentuemer().get().auszahlen(strasse.getKostenHaus());
 					strasse.setHaueser(strasse.getHaueser() + 1);
-					informiereBeobachter();
 				}
 			});
 		}
@@ -216,7 +212,6 @@ public class FeldStrasse extends FeldImpl
 		if (strasse.getHaueser() > 0)
 		{
 			strasse.setHaueser(strasse.getHaueser() - 1);
-			informiereBeobachter();
 		}
 	}
 

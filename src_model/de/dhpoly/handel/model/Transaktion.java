@@ -61,7 +61,6 @@ public class Transaktion extends Datenobjekt
 			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
 			res.put(ressource, value);
 			typ = TransaktionsTyp.NEUER_VORSCHLAG;
-			informiereBeobachter();
 		}
 		else
 		{

@@ -15,7 +15,6 @@ public class Wuerfel extends Datenobjekt
 	public void setZahl(int zahl)
 	{
 		this.zahl = zahl;
-		informiereBeobachter();
 	}
 
 	public int getZahl()

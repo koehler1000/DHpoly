@@ -28,7 +28,6 @@ public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 		this.add(lblWuerfelBild);
 
 		update();
-		wuerfel.addBeobachter(this);
 	}
 
 	@Override

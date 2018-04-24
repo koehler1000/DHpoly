@@ -27,8 +27,6 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 		this.spiel = spiel;
 		this.ansicht = ansicht;
 		update();
-
-		spiel.addBeobachter(this);
 	}
 
 	@Override

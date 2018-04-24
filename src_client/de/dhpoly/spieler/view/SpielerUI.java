@@ -80,8 +80,6 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		update();
-
-		spieler.addBeobachterHinzu(this);
 	}
 
 	private boolean kannHaeuserBauen()

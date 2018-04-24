@@ -25,7 +25,6 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 		this.spieler = spieler;
 		this.felderverwaltung = felderverwaltung;
 
-		spieler.addBeobachterHinzu(this);
 		update();
 	}
 

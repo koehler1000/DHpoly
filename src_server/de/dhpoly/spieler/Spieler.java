@@ -12,7 +12,6 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.wuerfel.control.Wuerfel;
-import observerpattern.Beobachter;
 
 public interface Spieler
 {
@@ -39,8 +38,6 @@ public interface Spieler
 	void setAktuellerSpieler(boolean isAktuell);
 
 	boolean isAktuellerSpieler();
-
-	void addBeobachterHinzu(Beobachter beobachter);
 
 	List<RessourcenDatensatz> getRessourcenKontoauszug();
 

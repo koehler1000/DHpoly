@@ -57,7 +57,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		butFertig.addActionListener(e -> handelAbschliessen());
 		this.add(butFertig, BorderLayout.SOUTH);
 
-		transaktion.addBeobachter(this);
 		update();
 	}
 

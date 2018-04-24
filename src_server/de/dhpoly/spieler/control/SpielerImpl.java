@@ -13,10 +13,8 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
-import observerpattern.Beobachtbarer;
-import observerpattern.Beobachter;
 
-public abstract class SpielerImpl extends Beobachtbarer implements Spieler
+public abstract class SpielerImpl implements Spieler
 {
 	int feldNr = 0;
 	String name;
@@ -63,7 +61,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	public void setAktuellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
-		informiereBeobachter();
 	}
 
 	@Override
@@ -73,16 +70,9 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	}
 
 	@Override
-	public void addBeobachterHinzu(Beobachter beobachter)
-	{
-		addBeobachter(beobachter);
-	}
-
-	@Override
 	public void einzahlen(RessourcenDatensatz datensatz)
 	{
 		verlauf.add(datensatz);
-		informiereBeobachter();
 	}
 
 	@Override
@@ -91,7 +81,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 		RessourcenDatensatz satz = new RessourcenDatensatz(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
 				datensatz.getBeschreibung());
 		verlauf.add(satz);
-		informiereBeobachter();
 	}
 
 	@Override
@@ -149,7 +138,6 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		strassenZurueckgeben();
 		verloren = true;
-		informiereBeobachter();
 	}
 
 	protected void strassenZurueckgeben()

@@ -30,7 +30,6 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		super(ansicht);
 
 		this.feld = feld;
-		feld.addBeobachter(this);
 
 		this.setLayout(new BorderLayout());
 

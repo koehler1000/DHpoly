@@ -29,8 +29,6 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
 		Bild bild = ElementFactory.getBild(feld.getRessource());
 		bild.setBackground(this.getBackground());
 		this.add(bild, BorderLayout.CENTER);
-
-		feld.addBeobachter(this);
 	}
 
 	private void hintergrundfarbeSetzen()

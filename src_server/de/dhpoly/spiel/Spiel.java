@@ -12,7 +12,6 @@ import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spielobjekte.fehler.model.Fehler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
-import observerpattern.Beobachter;
 
 public interface Spiel
 {
@@ -37,8 +36,6 @@ public interface Spiel
 	void wuerfeln(Spieler spieler);
 
 	void wuerfelWeitergeben(Spieler spieler);
-
-	void addBeobachter(Beobachter beobachter);
 
 	void verarbeiteFehler(Fehler fehler);
 

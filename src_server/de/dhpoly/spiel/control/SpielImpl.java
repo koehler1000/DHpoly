@@ -29,9 +29,8 @@ import de.dhpoly.spielobjekte.fehler.model.Fehler;
 import de.dhpoly.spielobjekte.fehler.model.FehlerTyp;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
-import observerpattern.Beobachtbarer;
 
-public class SpielImpl extends Beobachtbarer implements Spiel
+public class SpielImpl implements Spiel
 {
 	private List<Feld> felder;
 	private List<Spieler> spieler = new ArrayList<>();
@@ -147,8 +146,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
-
-			informiereBeobachter();
 		}
 	}
 
@@ -237,8 +234,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 		felder.get(0).betreteFeld(spieler, 0, wetter);
 
 		createOberflaeche(spieler);
-
-		informiereBeobachter();
 	}
 
 	@Override
@@ -414,7 +409,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private void setAktuellerSpielerIstGerueckt(boolean b)
 	{
 		aktuellerSpielerIstGerueckt = b;
-		informiereBeobachter();
 	}
 
 	@Override
@@ -429,7 +423,6 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	private void setAktuellerSpielerHatGewuerfelt(boolean wert)
 	{
 		aktuellerSpielerHatGewuerfelt = wert;
-		informiereBeobachter();
 	}
 
 	@Override

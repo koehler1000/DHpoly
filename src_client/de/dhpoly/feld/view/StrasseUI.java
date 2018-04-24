@@ -50,7 +50,6 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 		butName.addActionListener(e -> zeigeDetails());
 
 		update();
-		feld.addBeobachter(this);
 	}
 
 	private void zeigeDetails()

@@ -11,7 +11,6 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.wuerfel.control.Wuerfel;
-import observerpattern.Beobachter;
 
 public class SpielerLokal extends SpielerImpl
 {
@@ -38,19 +37,12 @@ public class SpielerLokal extends SpielerImpl
 	public void setAktuellerSpieler(boolean isAktuell)
 	{
 		aktuellerSpieler = isAktuell;
-		informiereBeobachter();
 	}
 
 	@Override
 	public boolean isAktuellerSpieler()
 	{
 		return aktuellerSpieler;
-	}
-
-	@Override
-	public void addBeobachterHinzu(Beobachter beobachter)
-	{
-		addBeobachter(beobachter);
 	}
 
 	@Override
@@ -89,7 +81,6 @@ public class SpielerLokal extends SpielerImpl
 	{
 		strassenZurueckgeben();
 		verloren = true;
-		informiereBeobachter();
 	}
 
 	@Override

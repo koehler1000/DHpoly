@@ -13,7 +13,6 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.wuerfel.control.Wuerfel;
-import observerpattern.Beobachter;
 
 public class SpielerUnimplemented implements Spieler
 {
@@ -75,10 +74,6 @@ public class SpielerUnimplemented implements Spieler
 	{
 		return false;
 	}
-
-	@Override
-	public void addBeobachterHinzu(Beobachter beobachter)
-	{}
 
 	@Override
 	public List<RessourcenDatensatz> getRessourcenKontoauszug()
