@@ -32,6 +32,7 @@ public interface Spieler
 
 	void setFeldNr(int feldNrSoll);
 
+	@Deprecated
 	void zeigeKaufmoeglichkeit(FeldStrasse strasse);
 
 	void verarbeiteKarte(Karte karte);
