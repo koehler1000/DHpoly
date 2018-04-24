@@ -8,7 +8,7 @@ import java.util.List;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
@@ -25,7 +25,7 @@ public class FeldStrasseTest
 		final int kosten = 50;
 
 		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
-				new EinstellungenImpl().getHauskosten(1), 3, "Badstrasse");
+				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 
 		assertThat(strasse.isKaufbar(), Is.is(true));
@@ -44,7 +44,7 @@ public class FeldStrasseTest
 		final int kosten = 50;
 
 		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
-				new EinstellungenImpl().getHauskosten(1), 3, "Badstrasse");
+				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 		strasse.kaufe(spieler);
 
@@ -174,12 +174,12 @@ public class FeldStrasseTest
 
 	public static FeldStrasse getDefaultStrasse(String name, int preis, int[] mieten)
 	{
-		return new FeldStrasse(null, preis, mieten, new EinstellungenImpl().getHauskosten(1), 1, name);
+		return new FeldStrasse(null, preis, mieten, new Einstellungen().getHauskosten(1), 1, name);
 	}
 
 	public static FeldStrasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
 	{
-		FeldStrasse strasse = new FeldStrasse(verwaltung, 0, new int[1], new EinstellungenImpl().getHauskosten(1), 1,
+		FeldStrasse strasse = new FeldStrasse(verwaltung, 0, new int[1], new Einstellungen().getHauskosten(1), 1,
 				"Strasse");
 		strasse.setEigentuemer(s1);
 		return strasse;
@@ -192,6 +192,6 @@ public class FeldStrasseTest
 
 	public static FeldStrasse getDefaultStrasse(int[] miete, Felderverwaltung verwaltung)
 	{
-		return new FeldStrasse(verwaltung, 1000, miete, new EinstellungenImpl().getHauskosten(1), 1, "Teststrasse");
+		return new FeldStrasse(verwaltung, 1000, miete, new Einstellungen().getHauskosten(1), 1, "Teststrasse");
 	}
 }

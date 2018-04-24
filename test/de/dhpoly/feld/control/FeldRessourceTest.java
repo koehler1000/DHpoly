@@ -5,8 +5,7 @@ import static org.junit.Assert.assertThat;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
@@ -19,7 +18,7 @@ public class FeldRessourceTest
 	@Test
 	public void spielerErhaeltRessourceBeimBetreten()
 	{
-		Einstellungen einstellungen = new EinstellungenImpl();
+		Einstellungen einstellungen = new Einstellungen();
 		einstellungen.setRessourcenErtrag(10);
 		einstellungen.setStartguthaben(0);
 

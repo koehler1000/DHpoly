@@ -10,8 +10,7 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dhpoly.einstellungen.Einstellungen;
-import de.dhpoly.einstellungen.model.EinstellungenImpl;
+import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldLosTest;
@@ -62,7 +61,7 @@ public class SpielImplTest
 		thread.join();
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
-				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
+				Is.is(geldVorDemLaufen + new Einstellungen().getBetragPassierenLos()));
 	}
 
 	boolean hatVerloren = false;
@@ -131,7 +130,7 @@ public class SpielImplTest
 
 	public static SpielImpl getDefaultSpiel()
 	{
-		return getDefaultSpiel(new EinstellungenImpl());
+		return getDefaultSpiel(new Einstellungen());
 	}
 
 	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)

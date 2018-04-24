@@ -7,10 +7,12 @@
 	</classpathentry>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="pics"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="tools"/>
 	<classpathentry kind="src" path="viewtest"/>
 	<classpathentry kind="src" path="fakes"/>
+	<classpathentry kind="src" path="src_server"/>
+	<classpathentry kind="src" path="src_client"/>
+	<classpathentry kind="src" path="src_model"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="DHpoly/bin"/>
 </classpath>
