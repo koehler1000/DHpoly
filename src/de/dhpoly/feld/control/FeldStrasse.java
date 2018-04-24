@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -11,15 +12,7 @@ import de.dhpoly.spieler.Spieler;
 
 public class FeldStrasse extends FeldImpl
 {
-	private Optional<Spieler> eigentuemer = Optional.empty();
-	private int[] miete = new int[6];
-
-	private int haueser = 0;
-	private boolean hypothek = false;
-	private List<RessourcenDatensatz> kostenHaus;
-	private int gruppe;
-	private String name;
-	private int kaufpreis;
+	private Strasse strasse;
 
 	private Felderverwaltung strassenverwaltung;
 
@@ -28,11 +21,13 @@ public class FeldStrasse extends FeldImpl
 	{
 		super(name);
 		this.strassenverwaltung = strassenverwaltung;
-		this.miete = miete;
-		this.kostenHaus = kostenHaus;
-		this.gruppe = gruppe;
-		this.name = name;
-		this.kaufpreis = kaufpreis;
+
+		strasse = new Strasse();
+		strasse.setMiete(miete);
+		strasse.setKostenHaus(kostenHaus);
+		strasse.setGruppe(gruppe);
+		strasse.setName(name);
+		strasse.setKaufpreis(kaufpreis);
 	}
 
 	@Override
@@ -61,12 +56,12 @@ public class FeldStrasse extends FeldImpl
 
 	public boolean isVerkauft()
 	{
-		return eigentuemer.isPresent();
+		return strasse.getEigentuemer().isPresent();
 	}
 
 	public void kaufe(Spieler potentiellerKaeufer)
 	{
-		kaufe(potentiellerKaeufer, kaufpreis);
+		kaufe(potentiellerKaeufer, strasse.getKaufpreis());
 	}
 
 	public void kaufe(Spieler potentiellerKaeufer, int betrag)
@@ -82,12 +77,13 @@ public class FeldStrasse extends FeldImpl
 
 	private void zahle(Spieler zahlender, Wetter wetter)
 	{
-		eigentuemer.ifPresent(besitzer -> einzahlenFallsKeineHypothek(zahlender, besitzer, getMietDatensatz(wetter)));
+		strasse.getEigentuemer()
+				.ifPresent(besitzer -> einzahlenFallsKeineHypothek(zahlender, besitzer, getMietDatensatz(wetter)));
 	}
 
 	private void einzahlenFallsKeineHypothek(Spieler zahlender, Spieler besitzer, RessourcenDatensatz mietDatensatz)
 	{
-		if (!hypothek)
+		if (!strasse.isHypothek())
 		{
 			zahlender.auszahlen(mietDatensatz);
 			besitzer.einzahlen(mietDatensatz);
@@ -112,15 +108,16 @@ public class FeldStrasse extends FeldImpl
 
 	private int getMietkosten()
 	{
-		if (eigentuemer.isPresent())
+		if (strasse.getEigentuemer().isPresent())
 		{
-			if (strassenverwaltung.isNutzerBesitzerAllerStrassen(gruppe, eigentuemer.get()) && haueser == 0)
+			if (strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(), strasse.getEigentuemer().get())
+					&& strasse.getHaueser() == 0)
 			{
-				return miete[0] * 2;
+				return strasse.getMiete()[0] * 2;
 			}
 			else
 			{
-				return miete[haueser];
+				return strasse.getMiete()[strasse.getHaueser()];
 			}
 		}
 		return 0;
@@ -128,75 +125,76 @@ public class FeldStrasse extends FeldImpl
 
 	public void setEigentuemer(Spieler anbietender)
 	{
-		eigentuemer = Optional.ofNullable(anbietender);
+		strasse.setEigentuemer(Optional.ofNullable(anbietender));
 		informiereBeobachter();
 	}
 
 	public Optional<Spieler> getEigentuemer()
 	{
-		return eigentuemer;
+		return strasse.getEigentuemer();
 	}
 
 	public int getHaeuser()
 	{
-		return haueser;
+		return strasse.getHaueser();
 	}
 
 	public boolean isHypothek()
 	{
-		return hypothek;
+		return strasse.isHypothek();
 	}
 
 	public int[] getMiete()
 	{
-		return miete;
+		return strasse.getMiete();
 	}
 
 	public int getGruppe()
 	{
-		return gruppe;
+		return strasse.getGruppe();
 	}
 
 	public String getName()
 	{
-		return name;
+		return strasse.getName();
 	}
 
 	public int getKaufpreis()
 	{
-		return kaufpreis;
+		return strasse.getKaufpreis();
 	}
 
 	public List<RessourcenDatensatz> getKostenHaus()
 	{
-		return kostenHaus;
+		return strasse.getKostenHaus();
 	}
 
 	@Override
 	public boolean gehoertSpieler(Spieler spieler)
 	{
-		return eigentuemer.isPresent() && eigentuemer.get() == spieler;
+		return strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get() == spieler;
 	}
 
 	public void hausBauen()
 	{
-		if (haueser < miete.length - 1 && eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus))
+		if (strasse.getHaueser() < strasse.getMiete().length - 1 && strasse.getEigentuemer().isPresent()
+				&& strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus()))
 		{
-			eigentuemer.get().auszahlen(kostenHaus);
-			haueser++;
+			strasse.getEigentuemer().get().auszahlen(strasse.getKostenHaus());
+			strasse.setHaueser(strasse.getHaueser() + 1);
 			informiereBeobachter();
 		}
 	}
 
 	public void hausVerkaufen()
 	{
-		if (haueser > 0 && eigentuemer.isPresent())
+		if (strasse.getHaueser() > 0 && strasse.getEigentuemer().isPresent())
 		{
-			for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
+			for (RessourcenDatensatz ressourcenDatensatz : strasse.getKostenHaus())
 			{
 				if (ressourcenDatensatz.getRessource() != Ressource.GELD)
 				{
-					eigentuemer.get().einzahlen(ressourcenDatensatz);
+					strasse.getEigentuemer().get().einzahlen(ressourcenDatensatz);
 				}
 			}
 			hausZerstoeren();
@@ -205,20 +203,22 @@ public class FeldStrasse extends FeldImpl
 
 	public void hausZerstoeren()
 	{
-		if (haueser > 0)
+		if (strasse.getHaueser() > 0)
 		{
-			haueser--;
+			strasse.setHaueser(strasse.getHaueser() - 1);
 			informiereBeobachter();
 		}
 	}
 
 	public boolean isHausbauMoeglich()
 	{
-		return eigentuemer.isPresent() && eigentuemer.get().kannBezahlen(kostenHaus) && haueser < miete.length - 1;
+		return strasse.getEigentuemer().isPresent()
+				&& strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus())
+				&& strasse.getHaueser() < strasse.getMiete().length - 1;
 	}
 
 	public void zurueckgeben()
 	{
-		eigentuemer = Optional.empty();
+		strasse.setEigentuemer(Optional.empty());
 	}
 }
