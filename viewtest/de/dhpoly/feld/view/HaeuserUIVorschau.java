@@ -2,6 +2,7 @@ package de.dhpoly.feld.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
@@ -41,6 +42,13 @@ public class HaeuserUIVorschau
 			public List<Feld> getFelder(Spieler spieler)
 			{
 				throw new UnsupportedOperationException("Felder werden nicht gesetzt");
+			}
+
+			@Override
+			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional)
+			{
+				// TODO Auto-generated method stub
+				return false;
 			}
 		};
 

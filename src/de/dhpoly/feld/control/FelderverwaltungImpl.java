@@ -2,6 +2,7 @@ package de.dhpoly.feld.control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
@@ -56,5 +57,15 @@ public class FelderverwaltungImpl implements Felderverwaltung
 		}
 
 		return felderVonSpieler;
+	}
+
+	@Override
+	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional)
+	{
+		if (optional.isPresent())
+		{
+			return isNutzerBesitzerAllerStrassen(strassengruppe, optional.get());
+		}
+		return false;
 	}
 }

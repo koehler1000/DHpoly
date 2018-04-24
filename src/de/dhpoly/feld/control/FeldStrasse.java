@@ -108,19 +108,34 @@ public class FeldStrasse extends FeldImpl
 
 	private int getMietkosten()
 	{
-		if (strasse.getEigentuemer().isPresent())
+		if (isVerkauft())
 		{
-			if (strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(), strasse.getEigentuemer().get())
-					&& strasse.getHaueser() == 0)
-			{
-				return strasse.getMiete()[0] * 2;
-			}
-			else
-			{
-				return strasse.getMiete()[strasse.getHaueser()];
-			}
+			return berechneMiete();
 		}
 		return 0;
+	}
+
+	private int berechneMiete()
+	{
+		if (isDoppelteMiete())
+		{
+			return strasse.getMiete()[0] * 2;
+		}
+		else
+		{
+			return strasse.getMiete()[strasse.getHaueser()];
+		}
+	}
+
+	private boolean isDoppelteMiete()
+	{
+		boolean hatAlleStrassen = false;
+		if (strasse.getEigentuemer().isPresent())
+		{
+			hatAlleStrassen = strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(),
+					strasse.getEigentuemer().get());
+		}
+		return (hatAlleStrassen && strasse.getHaueser() == 0);
 	}
 
 	public void setEigentuemer(Spieler anbietender)
