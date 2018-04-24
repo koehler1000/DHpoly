@@ -29,6 +29,7 @@ public class MainUI extends JPanel implements Beobachter
 
 		Einstellungen einstellungen = new Einstellungen();
 
+		// TODO keine Serverobjekte erstellen!!!
 		spiel = new SpielImpl();
 		spiel.setFenster(fenster);
 		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
