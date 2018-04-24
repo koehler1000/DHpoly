@@ -29,7 +29,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 	private int felderProSeite;
 
-	private Map<FeldStrasse, StrasseUI> strassen = new HashMap<>();
+	private transient Map<FeldStrasse, StrasseUI> strassen = new HashMap<>();
 
 	public SpielfeldUI(List<Feld> spielfelder, SpielfeldAnsicht ansicht)
 	{
