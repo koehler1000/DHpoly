@@ -2,7 +2,10 @@ package de.dhpoly.spielfeld.view;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JPanel;
 
@@ -11,6 +14,7 @@ import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.view.EreignisfeldUI;
 import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
@@ -24,6 +28,8 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	private static final long serialVersionUID = 1L;
 
 	private int felderProSeite;
+
+	private Map<FeldStrasse, StrasseUI> strassen = new HashMap<>();
 
 	public SpielfeldUI(List<Feld> spielfelder, SpielfeldAnsicht ansicht)
 	{
@@ -85,7 +91,9 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	{
 		if (feld instanceof FeldStrasse)
 		{
-			return new StrasseUI((FeldStrasse) feld, ansicht);
+			StrasseUI ui = new StrasseUI((FeldStrasse) feld, ansicht);
+			strassen.put((FeldStrasse) feld, ui);
+			return ui;
 		}
 		else if (feld instanceof FeldEreignis)
 		{
@@ -102,6 +110,17 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		else
 		{
 			return ElementFactory.erzeugePanel();
+		}
+	}
+
+	public void aktualisiere(Strasse objekt)
+	{
+		for (Entry<FeldStrasse, StrasseUI> st : strassen.entrySet())
+		{
+			if (st.getKey().getStrasse() == objekt)
+			{
+				st.getValue().update();
+			}
 		}
 	}
 }

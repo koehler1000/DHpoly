@@ -16,7 +16,6 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.view.HaeuserUI;
@@ -49,18 +48,21 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private transient Spieler spieler;
 	private transient Spiel spiel;
 
+	private SpielfeldUI spielfeld;
+
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
 	{
 		this.spiel = spiel;
 		this.spieler = spieler;
+		this.spielfeld = new SpielfeldUI(spiel.getFelder(), this);
 
 		ElementFactory.bearbeitePanel(this);
 		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
 
-		this.add(new SpielfeldUI(spiel.getFelder(), this));
+		this.add(spielfeld);
 
 		this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
 
@@ -129,11 +131,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		zeigeObjekt(transaktion);
 	}
 
-	public void zeigeKaufmoeglichkeit(FeldStrasse strasse, Spieler spieler)
-	{
-		// hinzu("Kaufen", strasse, new StrasseKaufenUI(strasse, spieler, this));
-	}
-
 	public void zeigeKarte(Karte karte)
 	{
 		hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
@@ -192,6 +189,11 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		else if (objekt instanceof StrasseKaufen)
 		{
 			oberflaeche = new StrasseKaufenUI((StrasseKaufen) objekt, this);
+		}
+		else if (objekt instanceof Strasse)
+		{
+			oberflaeche = new StrasseInfoUI((Strasse) objekt, this);
+			spielfeld.aktualisiere((Strasse) objekt);
 		}
 		else
 		{

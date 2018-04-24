@@ -10,6 +10,7 @@ import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
@@ -449,9 +450,23 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	{
 		if (getAktuellerSpieler() == spieler)
 		{
-			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
-
-			// TODO Kauflogik hierher
+			kaufAbwickeln(strasse, spieler);
 		}
+		else
+		{
+			spieler.zeigeDatenobjekt(new Fehler("Kauf fehlgeschlagen: Nicht an der Reihe", FehlerTyp.FEHLER_SPIELER));
+		}
+	}
+
+	private void kaufAbwickeln(StrasseKaufen strasse, Spieler sp)
+	{
+		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
+		{
+			sp.auszahlen(strasse.getKaufpreis());
+			strasse.setEigentuemer(sp);
+			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+		}
+
+		zeigeAllenSpielern(strasse.getStrasse());
 	}
 }

@@ -1,6 +1,13 @@
 package de.dhpoly.feld.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spieler.Spieler;
 
 public class StrasseKaufen extends Datenobjekt
 {
@@ -33,5 +40,22 @@ public class StrasseKaufen extends Datenobjekt
 	public String getTitel()
 	{
 		return "Strassenkauf";
+	}
+
+	public List<RessourcenDatensatz> getKaufpreis()
+	{
+		List<RessourcenDatensatz> kaufPreis = new ArrayList<>();
+		kaufPreis.add(new RessourcenDatensatz(Ressource.GELD, strasse.getKaufpreis(), "Kauf von " + strasse.getName()));
+		return kaufPreis;
+	}
+
+	public boolean isKaufbar()
+	{
+		return !strasse.getEigentuemer().isPresent();
+	}
+
+	public void setEigentuemer(Spieler sp)
+	{
+		strasse.setEigentuemer(Optional.of(sp));
 	}
 }
