@@ -227,9 +227,13 @@ public class FeldStrasse extends FeldImpl
 
 	public boolean isHausbauMoeglich()
 	{
-		return strasse.getEigentuemer().isPresent()
-				&& strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus())
-				&& strasse.getHaueser() < strasse.getMiete().length - 1;
+		if (isVerkauft())
+		{
+			return strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus())
+					&& strasse.getHaueser() < strasse.getMiete().length - 1;
+		}
+
+		return false;
 	}
 
 	public void zurueckgeben()
