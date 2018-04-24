@@ -188,7 +188,7 @@ public class FeldStrasse extends FeldImpl
 	@Override
 	public boolean gehoertSpieler(Spieler spieler)
 	{
-		return strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get() == spieler;
+		return strasse.isEigentuemer(spieler);
 	}
 
 	public void hausBauen()

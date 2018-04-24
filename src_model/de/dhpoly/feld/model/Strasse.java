@@ -116,4 +116,9 @@ public class Strasse extends Datenobjekt
 	{
 		return getMiete(haueser);
 	}
+
+	public boolean isEigentuemer(Spieler spieler)
+	{
+		return eigentuemer.isPresent() && eigentuemer.get() == spieler;
+	}
 }
