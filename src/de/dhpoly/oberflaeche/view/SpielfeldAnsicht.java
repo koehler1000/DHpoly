@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Strasse;
@@ -36,6 +34,8 @@ import de.dhpoly.spiel.view.SpielerUebersichtUI;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
+import de.dhpoly.spielobjekte.fehler.model.Fehler;
+import de.dhpoly.spielobjekte.fehler.model.FehlerTyp;
 import de.dhpoly.wuerfel.control.Wuerfel;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 

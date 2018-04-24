@@ -1,4 +1,4 @@
-package de.dhpoly.fehler.model;
+package de.dhpoly.spielobjekte.fehler.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 

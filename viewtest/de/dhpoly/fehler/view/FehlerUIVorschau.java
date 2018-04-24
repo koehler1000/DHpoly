@@ -1,7 +1,7 @@
 package de.dhpoly.fehler.view;
 
-import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
+import de.dhpoly.spielobjekte.fehler.model.Fehler;
+import de.dhpoly.spielobjekte.fehler.model.FehlerTyp;
 import de.dhpoly.utils.Spielansicht;
 
 public class FehlerUIVorschau

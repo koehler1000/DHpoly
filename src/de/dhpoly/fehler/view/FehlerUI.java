@@ -4,10 +4,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.spielobjekte.fehler.model.Fehler;
 
 public class FehlerUI extends Oberflaeche // NOSONAR
 {
