@@ -130,13 +130,8 @@ public class FeldStrasse extends FeldImpl
 
 	private boolean isDoppelteMiete()
 	{
-		boolean hatAlleStrassen = false;
-		if (strasse.getEigentuemer().isPresent())
-		{
-			hatAlleStrassen = strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(),
-					strasse.getEigentuemer().get());
-		}
-		return (hatAlleStrassen && strasse.getHaueser() == 0);
+		return strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(), strasse.getEigentuemer())
+				&& strasse.getHaueser() == 0;
 	}
 
 	public void setEigentuemer(Spieler anbietender)
@@ -193,27 +188,26 @@ public class FeldStrasse extends FeldImpl
 
 	public void hausBauen()
 	{
-		if (strasse.getHaueser() < strasse.getMiete().length - 1 && strasse.getEigentuemer().isPresent()
-				&& strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus()))
+		if (!strasse.isAlleHaeuserGebaut())
 		{
-			strasse.getEigentuemer().get().auszahlen(strasse.getKostenHaus());
-			strasse.setHaueser(strasse.getHaueser() + 1);
-			informiereBeobachter();
+			strasse.getEigentuemer().ifPresent(besitzer -> {
+				if (besitzer.kannBezahlen(strasse.getKostenHaus()))
+				{
+					strasse.getEigentuemer().get().auszahlen(strasse.getKostenHaus());
+					strasse.setHaueser(strasse.getHaueser() + 1);
+					informiereBeobachter();
+				}
+			});
 		}
 	}
 
 	public void hausVerkaufen()
 	{
-		if (strasse.getHaueser() > 0 && strasse.getEigentuemer().isPresent())
+		if (strasse.haeuserGebaut())
 		{
-			for (RessourcenDatensatz ressourcenDatensatz : strasse.getKostenHaus())
-			{
-				if (ressourcenDatensatz.getRessource() != Ressource.GELD)
-				{
-					strasse.getEigentuemer().get().einzahlen(ressourcenDatensatz);
-				}
-			}
 			hausZerstoeren();
+			strasse.getKostenHaus().stream().filter(e -> e.getRessource() != Ressource.GELD)
+					.forEach(e -> strasse.getEigentuemer().ifPresent(besitzer -> besitzer.einzahlen(e)));
 		}
 	}
 
@@ -226,17 +220,6 @@ public class FeldStrasse extends FeldImpl
 		}
 	}
 
-	public boolean isHausbauMoeglich()
-	{
-		if (isVerkauft())
-		{
-			return strasse.getEigentuemer().get().kannBezahlen(strasse.getKostenHaus())
-					&& strasse.getHaueser() < strasse.getMiete().length - 1;
-		}
-
-		return false;
-	}
-
 	public void zurueckgeben()
 	{
 		strasse.setEigentuemer(Optional.empty());
@@ -245,5 +228,11 @@ public class FeldStrasse extends FeldImpl
 	public Strasse getStrasse()
 	{
 		return strasse;
+	}
+
+	public boolean kannBebautWerden()
+	{
+		return !strasse.isAlleHaeuserGebaut()
+				&& getEigentuemer().filter(e -> e.kannBezahlen(getKostenHaus())).isPresent();
 	}
 }

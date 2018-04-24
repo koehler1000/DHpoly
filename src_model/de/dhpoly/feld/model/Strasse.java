@@ -121,4 +121,14 @@ public class Strasse extends Datenobjekt
 	{
 		return eigentuemer.isPresent() && eigentuemer.get() == spieler;
 	}
+
+	public boolean isAlleHaeuserGebaut()
+	{
+		return haueser + 1 >= miete.length;
+	}
+
+	public boolean haeuserGebaut()
+	{
+		return getHaueser() > 0;
+	}
 }

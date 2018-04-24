@@ -57,7 +57,7 @@ public class HausUI extends JPanel implements Beobachter
 	public void update()
 	{
 		butHausVerkaufen.setEnabled(strasse.getHaeuser() > 0);
-		butHausBauen.setEnabled(strasse.isHausbauMoeglich());
+		butHausBauen.setEnabled(strasse.kannBebautWerden());
 		txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() + System.lineSeparator() + "Häuser: "
 				+ strasse.getHaeuser());
 	}
