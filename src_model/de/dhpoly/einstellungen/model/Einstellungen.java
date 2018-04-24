@@ -3,11 +3,14 @@ package de.dhpoly.einstellungen.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 
-public class Einstellungen
+public class Einstellungen extends Datenobjekt
 {
+	private static final long serialVersionUID = 1L;
+
 	private int startguthaben = 1000;
 
 	private int betragBetretenLos = 100;
@@ -104,5 +107,11 @@ public class Einstellungen
 		List<RessourcenDatensatz> ressourcenDatensaetze = new ArrayList<>();
 		ressourcenDatensaetze.add(new RessourcenDatensatz(Ressource.GELD, startguthaben, "Startguthaben"));
 		return ressourcenDatensaetze;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Einstellungen";
 	}
 }
