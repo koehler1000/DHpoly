@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
@@ -23,11 +23,11 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 	private static final Font SCHRIFT_SPIELFELD_STRASSENNAME = new Font(ARIAL, Font.BOLD, 15);
 	private static final Font SCHRIFT_SPIELFELD_BESITZER = new Font(ARIAL, Font.PLAIN, 12);
 
-	private transient Strasse feld;
+	private transient FeldStrasse feld;
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseUI(Strasse feld, SpielfeldAnsicht ansicht)
+	public StrasseUI(FeldStrasse feld, SpielfeldAnsicht ansicht)
 	{
 		super(feld, ansicht);
 		this.feld = feld;

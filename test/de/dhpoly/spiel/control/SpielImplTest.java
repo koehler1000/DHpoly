@@ -13,10 +13,9 @@ import org.junit.Test;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Losfeld;
-import de.dhpoly.feld.control.LosfeldTest;
-import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.feld.control.FeldLos;
+import de.dhpoly.feld.control.FeldLosTest;
+import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -31,8 +30,8 @@ public class SpielImplTest
 	public void vorbereitung()
 	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(LosfeldTest.getDefaultFeld());
-		felder.add(StrasseTest.getDefaultStrasse());
+		felder.add(FeldLosTest.getDefaultFeld());
+		felder.add(FeldStrasseTest.getDefaultStrasse());
 		spiel = new SpielImpl();
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
@@ -66,44 +65,13 @@ public class SpielImplTest
 				Is.is(geldVorDemLaufen + new EinstellungenImpl().getBetragPassierenLos()));
 	}
 
-	@Test
-	public void ressourcenJedeRunde()
-	{
-		Einstellungen einstellungen = new EinstellungenImpl();
-
-		List<Feld> felder = new ArrayList<>();
-		felder.add(StrasseTest.getDefaultStrasse());
-		felder.add(StrasseTest.getDefaultStrasse());
-		Ressourcenfeld feld = new Ressourcenfeld(Ressource.HOLZ, einstellungen);
-		felder.add(feld);
-		Ressourcenfeld feld2 = new Ressourcenfeld(Ressource.STEIN, einstellungen);
-		felder.add(feld2);
-		spiel = SpielImplTest.getDefaultSpiel(einstellungen);
-		spiel.setFelder(felder);
-		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
-		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
-
-		int holzVorErstemSpieler = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.HOLZ);
-		int steinVorErstemSpieler = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.STEIN);
-
-		for (int i = 0; i < spiel.getSpieler().size(); i++)
-		{
-			spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
-		}
-
-		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.HOLZ),
-				Is.is(holzVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
-		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.STEIN),
-				Is.is(steinVorErstemSpieler + new EinstellungenImpl().getRessourcenErtrag()));
-	}
-
 	boolean hatVerloren = false;
 
 	@Test
 	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat()
 	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(StrasseTest.getDefaultStrasse());
+		felder.add(FeldStrasseTest.getDefaultStrasse());
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
@@ -122,7 +90,7 @@ public class SpielImplTest
 	public void spielerGewinntWennAlleAnderenVerlorenHaben()
 	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(StrasseTest.getDefaultStrasse());
+		felder.add(FeldStrasseTest.getDefaultStrasse());
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
@@ -169,7 +137,7 @@ public class SpielImplTest
 	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)
 	{
 		List<Feld> felder = new ArrayList<>();
-		felder.add(new Losfeld(einstellungen));
+		felder.add(new FeldLos(einstellungen));
 
 		SpielImpl spiel = new SpielImpl();
 		spiel.setFelder(felder);

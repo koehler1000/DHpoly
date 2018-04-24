@@ -14,7 +14,7 @@ import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class RessourcenfeldTest
+public class FeldRessourceTest
 {
 	@Test
 	public void spielerErhaeltRessourceBeimBetreten()
@@ -23,7 +23,7 @@ public class RessourcenfeldTest
 		einstellungen.setRessourcenErtrag(10);
 		einstellungen.setStartguthaben(0);
 
-		Ressourcenfeld feld = new Ressourcenfeld(Ressource.HOLZ, einstellungen);
+		FeldRessource feld = new FeldRessource(Ressource.HOLZ, einstellungen);
 		Spiel spiel = SpielImplTest.getDefaultSpiel(einstellungen);
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(spiel);

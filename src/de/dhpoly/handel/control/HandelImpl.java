@@ -3,7 +3,7 @@ package de.dhpoly.handel.control;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
@@ -55,9 +55,9 @@ public class HandelImpl implements Handel
 
 	private void eigentumUebertragen(Feld feld, Spieler anbietender, Spieler handelspartner)
 	{
-		if (feld instanceof Strasse)
+		if (feld instanceof FeldStrasse)
 		{
-			Strasse strasse = (Strasse) feld;
+			FeldStrasse strasse = (FeldStrasse) feld;
 
 			if (strasse.gehoertSpieler(anbietender))
 			{

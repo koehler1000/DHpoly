@@ -6,7 +6,7 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.view.Bild;
-import de.dhpoly.feld.control.Ressourcenfeld;
+import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import observerpattern.Beobachter;
@@ -15,9 +15,9 @@ public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Ressourcenfeld feld;
+	private transient FeldRessource feld;
 
-	public RessourcenfeldUI(Ressourcenfeld feld, SpielfeldAnsicht ansicht)
+	public RessourcenfeldUI(FeldRessource feld, SpielfeldAnsicht ansicht)
 	{
 		super(feld, ansicht);
 		this.feld = feld;

@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.view.StrasseVorschauUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 
@@ -19,9 +19,9 @@ public class StrasseAnbietenUI extends JPanel
 	private StrassenAnbietenUI strassenAnbietenUi;
 	private JButton butAnbieten;
 	private boolean angeboten = false;
-	private transient Strasse strasse;
+	private transient FeldStrasse strasse;
 
-	public StrasseAnbietenUI(Strasse strasse, StrassenAnbietenUI ui, boolean ausgewaehlt)
+	public StrasseAnbietenUI(FeldStrasse strasse, StrassenAnbietenUI ui, boolean ausgewaehlt)
 	{
 		this.strassenAnbietenUi = ui;
 		this.strasse = strasse;

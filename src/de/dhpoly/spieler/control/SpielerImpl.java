@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldRessource;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -157,9 +157,9 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 		while (!felder.isEmpty())
 		{
 			Feld feld = felder.get(0);
-			if (feld instanceof Strasse)
+			if (feld instanceof FeldStrasse)
 			{
-				Strasse strasse = (Strasse) feld;
+				FeldStrasse strasse = (FeldStrasse) feld;
 				strasse.zurueckgeben();
 			}
 		}
@@ -200,9 +200,9 @@ public abstract class SpielerImpl extends Beobachtbarer implements Spieler
 	{
 		for (Feld feld : spiel.getFelder(this))
 		{
-			if (feld instanceof Ressourcenfeld)
+			if (feld instanceof FeldRessource)
 			{
-				Ressourcenfeld ressourcenfeld = (Ressourcenfeld) feld;
+				FeldRessource ressourcenfeld = (FeldRessource) feld;
 				RessourcenDatensatz res = new RessourcenDatensatz(ressourcenfeld.getRessource(), ertrag);
 
 				einzahlen(res);

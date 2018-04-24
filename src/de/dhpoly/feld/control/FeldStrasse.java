@@ -9,7 +9,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
-public class Strasse extends FeldImpl
+public class FeldStrasse extends FeldImpl
 {
 	private Optional<Spieler> eigentuemer = Optional.empty();
 	private int[] miete = new int[6];
@@ -23,7 +23,7 @@ public class Strasse extends FeldImpl
 
 	private Felderverwaltung strassenverwaltung;
 
-	public Strasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete,
+	public FeldStrasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete,
 			List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
 	{
 		super(name);

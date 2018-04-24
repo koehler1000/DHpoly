@@ -5,9 +5,9 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
-import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.utils.Spielansicht;
@@ -23,7 +23,7 @@ public class StrassenbesitzeUIVorschau
 
 		for (int i = 0; i < 5; i++)
 		{
-			Strasse str = StrasseTest.getDefaultStrasse("Str" + i);
+			FeldStrasse str = FeldStrasseTest.getDefaultStrasse("Str" + i);
 			felder.add(str);
 			str.kaufe(spieler);
 		}

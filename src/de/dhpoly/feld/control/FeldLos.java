@@ -6,11 +6,11 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
-public class Losfeld extends FeldImpl
+public class FeldLos extends FeldImpl
 {
 	private Einstellungen einstellungen;
 
-	public Losfeld(Einstellungen einstellungenImpl)
+	public FeldLos(Einstellungen einstellungenImpl)
 	{
 		super("Los");
 		this.einstellungen = einstellungenImpl;

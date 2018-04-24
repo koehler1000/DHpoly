@@ -16,7 +16,7 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class StrasseTest
+public class FeldStrasseTest
 {
 	@Test
 	public void spielerKauftStrasse()
@@ -24,7 +24,7 @@ public class StrasseTest
 		final int startbetrag = 500;
 		final int kosten = 50;
 
-		Strasse strasse = new Strasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
+		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
 				new EinstellungenImpl().getHauskosten(1), 3, "Badstrasse");
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 
@@ -43,7 +43,7 @@ public class StrasseTest
 		final int startbetrag = 500;
 		final int kosten = 50;
 
-		Strasse strasse = new Strasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
+		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
 				new EinstellungenImpl().getHauskosten(1), 3, "Badstrasse");
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 		strasse.kaufe(spieler);
@@ -68,7 +68,7 @@ public class StrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
-		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
 		strasse.hausBauen();
@@ -93,7 +93,7 @@ public class StrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
-		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 		strasse.hausBauen();
 
@@ -115,7 +115,7 @@ public class StrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
-		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
 		strasse.hausBauen();
@@ -141,7 +141,7 @@ public class StrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
-		Strasse strasse = StrasseTest.getDefaultStrasse(kostenHaus);
+		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
 		strasse.hausBauen();
@@ -152,46 +152,46 @@ public class StrasseTest
 		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(100));
 	}
 
-	private static Strasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
+	private static FeldStrasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
 	{
-		return new Strasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
+		return new FeldStrasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
 	}
 
-	public static Strasse getDefaultStrasse()
+	public static FeldStrasse getDefaultStrasse()
 	{
 		return getDefaultStrasse("test");
 	}
 
-	public static Strasse getDefaultStrasse(String name)
+	public static FeldStrasse getDefaultStrasse(String name)
 	{
 		return getDefaultStrasse(name, 0);
 	}
 
-	public static Strasse getDefaultStrasse(String name, int preis)
+	public static FeldStrasse getDefaultStrasse(String name, int preis)
 	{
 		return getDefaultStrasse(name, preis, new int[1]);
 	}
 
-	public static Strasse getDefaultStrasse(String name, int preis, int[] mieten)
+	public static FeldStrasse getDefaultStrasse(String name, int preis, int[] mieten)
 	{
-		return new Strasse(null, preis, mieten, new EinstellungenImpl().getHauskosten(1), 1, name);
+		return new FeldStrasse(null, preis, mieten, new EinstellungenImpl().getHauskosten(1), 1, name);
 	}
 
-	public static Strasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
+	public static FeldStrasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
 	{
-		Strasse strasse = new Strasse(verwaltung, 0, new int[1], new EinstellungenImpl().getHauskosten(1), 1,
+		FeldStrasse strasse = new FeldStrasse(verwaltung, 0, new int[1], new EinstellungenImpl().getHauskosten(1), 1,
 				"Strasse");
 		strasse.setEigentuemer(s1);
 		return strasse;
 	}
 
-	public static Strasse getDefaultStrasse(int[] miete)
+	public static FeldStrasse getDefaultStrasse(int[] miete)
 	{
 		return getDefaultStrasse("Teststrasse", 1000, miete);
 	}
 
-	public static Strasse getDefaultStrasse(int[] miete, Felderverwaltung verwaltung)
+	public static FeldStrasse getDefaultStrasse(int[] miete, Felderverwaltung verwaltung)
 	{
-		return new Strasse(verwaltung, 1000, miete, new EinstellungenImpl().getHauskosten(1), 1, "Teststrasse");
+		return new FeldStrasse(verwaltung, 1000, miete, new EinstellungenImpl().getHauskosten(1), 1, "Teststrasse");
 	}
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.LosfeldTest;
-import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.feld.control.FeldLosTest;
+import de.dhpoly.feld.control.FeldStrasseTest;
 
 public class Strassenspielfeld
 {
@@ -13,11 +13,11 @@ public class Strassenspielfeld
 	{
 		List<Feld> standardfeld = new ArrayList<>();
 
-		standardfeld.add(LosfeldTest.getDefaultFeld());
+		standardfeld.add(FeldLosTest.getDefaultFeld());
 
 		for (int i = 0; i < 39; i++)
 		{
-			standardfeld.add(StrasseTest.getDefaultStrasse("Test " + i));
+			standardfeld.add(FeldStrasseTest.getDefaultStrasse("Test " + i));
 		}
 
 		return standardfeld;

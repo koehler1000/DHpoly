@@ -6,12 +6,12 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
-public class Ressourcenfeld extends FeldImpl
+public class FeldRessource extends FeldImpl
 {
 	private Ressource ressource;
 	private Einstellungen einstellungen;
 
-	public Ressourcenfeld(Ressource ressourcentyp, Einstellungen einstellungen)
+	public FeldRessource(Ressource ressourcentyp, Einstellungen einstellungen)
 	{
 		super("Ressource");
 		this.einstellungen = einstellungen;

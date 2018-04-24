@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.ElementFactory;
 import observerpattern.Beobachter;
 
@@ -15,7 +15,7 @@ public class HausUI extends JPanel implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Strasse strasse;
+	private transient FeldStrasse strasse;
 	private JTextArea txtName;
 	private JTextArea txtAktuelleMiete;
 
@@ -23,7 +23,7 @@ public class HausUI extends JPanel implements Beobachter
 
 	private JButton butHausVerkaufen;
 
-	public HausUI(Strasse strasse)
+	public HausUI(FeldStrasse strasse)
 	{
 		this.strasse = strasse;
 		ElementFactory.bearbeitePanel(this);

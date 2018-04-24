@@ -7,10 +7,10 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Ereignisfeld;
-import de.dhpoly.feld.control.Losfeld;
-import de.dhpoly.feld.control.Ressourcenfeld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldEreignis;
+import de.dhpoly.feld.control.FeldLos;
+import de.dhpoly.feld.control.FeldRessource;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.view.EreignisfeldUI;
 import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
@@ -83,21 +83,21 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 	private Component getFeldUI(Feld feld, SpielfeldAnsicht ansicht)
 	{
-		if (feld instanceof Strasse)
+		if (feld instanceof FeldStrasse)
 		{
-			return new StrasseUI((Strasse) feld, ansicht);
+			return new StrasseUI((FeldStrasse) feld, ansicht);
 		}
-		else if (feld instanceof Ereignisfeld)
+		else if (feld instanceof FeldEreignis)
 		{
-			return new EreignisfeldUI((Ereignisfeld) feld, ansicht);
+			return new EreignisfeldUI((FeldEreignis) feld, ansicht);
 		}
-		else if (feld instanceof Ressourcenfeld)
+		else if (feld instanceof FeldRessource)
 		{
-			return new RessourcenfeldUI((Ressourcenfeld) feld, ansicht);
+			return new RessourcenfeldUI((FeldRessource) feld, ansicht);
 		}
-		else if (feld instanceof Losfeld)
+		else if (feld instanceof FeldLos)
 		{
-			return new LosfeldUI((Losfeld) feld, ansicht);
+			return new LosfeldUI((FeldLos) feld, ansicht);
 		}
 		else
 		{

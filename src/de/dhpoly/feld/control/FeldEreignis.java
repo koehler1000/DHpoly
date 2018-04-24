@@ -5,11 +5,11 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.spieler.Spieler;
 
-public class Ereignisfeld extends FeldImpl
+public class FeldEreignis extends FeldImpl
 {
 	private Kartenstapel kartenstapel;
 
-	public Ereignisfeld(Kartenstapel kartenstapel)
+	public FeldEreignis(Kartenstapel kartenstapel)
 	{
 		super("Ereignisfeld");
 		this.kartenstapel = kartenstapel;

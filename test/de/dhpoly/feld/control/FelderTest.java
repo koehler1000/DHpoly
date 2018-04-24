@@ -86,7 +86,7 @@ public class FelderTest
 
 	public static Feld getDefaultFeld(Felderverwaltung verwaltung, int strassenGruppe)
 	{
-		return new Strasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe,
+		return new FeldStrasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe,
 				"test");
 	}
 }

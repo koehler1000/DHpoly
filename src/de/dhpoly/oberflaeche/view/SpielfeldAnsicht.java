@@ -16,7 +16,7 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.feld.view.StrasseKaufenUI;
@@ -127,7 +127,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		zeigeObjekt(transaktion);
 	}
 
-	public void zeigeKaufmoeglichkeit(Strasse strasse, Spieler spieler)
+	public void zeigeKaufmoeglichkeit(FeldStrasse strasse, Spieler spieler)
 	{
 		hinzu("Kaufen", strasse, new StrasseKaufenUI(strasse, spieler, this));
 	}
@@ -152,7 +152,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		tabRand.remove(oberflaeche);
 	}
 
-	public void zeigeStrasseInfo(Strasse feld, SpielfeldAnsicht spielfeldAnsicht)
+	public void zeigeStrasseInfo(FeldStrasse feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}

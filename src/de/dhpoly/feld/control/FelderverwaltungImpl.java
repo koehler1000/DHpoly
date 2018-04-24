@@ -16,9 +16,9 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	{
 		for (Feld feld : felder)
 		{
-			if (feld instanceof Strasse)
+			if (feld instanceof FeldStrasse)
 			{
-				Strasse strasse = (Strasse) feld;
+				FeldStrasse strasse = (FeldStrasse) feld;
 				if (strasse.getGruppe() == strassengruppe && !isEigentuemer(strasse, eigentuemer))
 				{
 					return false;

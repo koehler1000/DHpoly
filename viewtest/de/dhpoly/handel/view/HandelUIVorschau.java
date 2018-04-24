@@ -5,8 +5,8 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
-import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -23,10 +23,10 @@ public class HandelUIVorschau
 
 		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		List<Feld> felder = new ArrayList<>();
-		felder.add(StrasseTest.getDefaultStrasse(verwaltung, s1));
-		felder.add(StrasseTest.getDefaultStrasse(verwaltung, s2));
-		felder.add(StrasseTest.getDefaultStrasse(verwaltung, s1));
-		felder.add(StrasseTest.getDefaultStrasse(verwaltung, s1));
+		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
+		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s2));
+		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
+		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
 		verwaltung.setFelder(felder);
 
 		List<RessourcenDatensatz> datensaetze = new ArrayList<>();

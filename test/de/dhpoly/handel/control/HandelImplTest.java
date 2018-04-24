@@ -11,9 +11,9 @@ import org.junit.Test;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.control.FelderverwaltungTest;
-import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.control.StrasseTest;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
@@ -33,7 +33,7 @@ public class HandelImplTest
 		Spieler s2 = SpielerImplTest.getDefaultSpieler();
 
 		List<Feld> felder = new ArrayList<>();
-		Strasse feld = StrasseTest.getDefaultStrasse(verwaltung, s1);
+		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(verwaltung, s1);
 		felder.add(feld);
 
 		Handel handel = new HandelImpl();
@@ -54,7 +54,7 @@ public class HandelImplTest
 		Spieler s1 = SpielerImplTest.getDefaultSpieler();
 		Spieler s2 = SpielerImplTest.getDefaultSpieler();
 
-		Strasse feld = StrasseTest.getDefaultStrasse(verwaltung, s2);
+		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(verwaltung, s2);
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(feld);

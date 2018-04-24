@@ -4,7 +4,7 @@ import java.awt.GridLayout;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -19,9 +19,9 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 
 		for (Feld feld : felder)
 		{
-			if (feld instanceof Strasse)
+			if (feld instanceof FeldStrasse)
 			{
-				this.add(new HausUI((Strasse) feld));
+				this.add(new HausUI((FeldStrasse) feld));
 			}
 		}
 	}

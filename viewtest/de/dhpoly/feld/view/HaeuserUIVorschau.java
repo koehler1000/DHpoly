@@ -5,8 +5,8 @@ import java.util.List;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.feld.control.Strasse;
-import de.dhpoly.feld.control.StrasseTest;
+import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
@@ -44,8 +44,8 @@ public class HaeuserUIVorschau
 			}
 		};
 
-		Strasse strasse = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
-		Strasse strasse2 = StrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
+		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
+		FeldStrasse strasse2 = FeldStrasseTest.getDefaultStrasse(new int[] { 1, 10, 20, 50, 75 }, verwaltung);
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(strasse);

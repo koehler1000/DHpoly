@@ -18,7 +18,7 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerUnimplemented;
 
-public class EreignisfeldTest
+public class FeldEreignisTest
 {
 	private static boolean ereigniskarteGezeigt = false;
 
@@ -40,7 +40,7 @@ public class EreignisfeldTest
 		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
 				new RessourcenDatensatz(Ressource.GELD, 1000)));
 
-		Feld ereignisfeld = new Ereignisfeld(new KartenstapelImpl(kartenstapel));
+		Feld ereignisfeld = new FeldEreignis(new KartenstapelImpl(kartenstapel));
 		ereignisfeld.betreteFeld(spieler, 2, Wetter.BEWOELKT);
 
 		assertTrue(ereigniskarteGezeigt);

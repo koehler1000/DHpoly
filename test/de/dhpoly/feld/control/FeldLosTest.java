@@ -12,7 +12,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
 
-public class LosfeldTest
+public class FeldLosTest
 {
 	@Test
 	public void spielerBetrittLosUndErhaeltEingestelltesGeld()
@@ -20,7 +20,7 @@ public class LosfeldTest
 		int startgeld = 100;
 
 		Spieler s1 = SpielerImplTest.getDefaultSpieler(startgeld);
-		Losfeld los = new Losfeld(new EinstellungenImpl());
+		FeldLos los = new FeldLos(new EinstellungenImpl());
 		los.betreteFeld(s1, 2, Wetter.BEWOELKT);
 
 		assertThat(s1.getRessourcenWerte(Ressource.GELD),
@@ -29,6 +29,6 @@ public class LosfeldTest
 
 	public static Feld getDefaultFeld()
 	{
-		return new Losfeld(new EinstellungenImpl());
+		return new FeldLos(new EinstellungenImpl());
 	}
 }

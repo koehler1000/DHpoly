@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.Strasse;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
@@ -35,9 +35,9 @@ public class StrassenAnbietenUI extends JPanel
 
 		for (Feld feld : spieler.getFelder())
 		{
-			if (feld instanceof Strasse)
+			if (feld instanceof FeldStrasse)
 			{
-				pnlStrassen.add(new StrasseAnbietenUI((Strasse) feld, this,
+				pnlStrassen.add(new StrasseAnbietenUI((FeldStrasse) feld, this,
 						transaktion.getFelderEigentumswechsel().contains(feld)));
 			}
 		}
