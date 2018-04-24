@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -17,12 +16,6 @@ public class SpielerComputer extends SpielerImpl
 	public SpielerComputer(String name, Spiel spiel)
 	{
 		super(name, spiel);
-	}
-
-	@Override
-	public void zeigeKaufmoeglichkeit(FeldStrasse strasse)
-	{
-		strasse.kaufe(this);
 	}
 
 	@Override

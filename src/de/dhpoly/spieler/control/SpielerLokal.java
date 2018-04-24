@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.wuerfel.control.Wuerfel;
@@ -29,15 +27,6 @@ public class SpielerLokal extends SpielerImpl
 	public int getSpielerNr()
 	{
 		return spielerNr;
-	}
-
-	@Override
-	public void zeigeKaufmoeglichkeit(FeldStrasse strasse)
-	{
-		if (strasse.getKaufpreis() <= getRessourcenWerte(Ressource.GELD))
-		{
-			ui.ifPresent(e -> e.zeigeKaufmoeglichkeit(strasse, this));
-		}
 	}
 
 	@Override

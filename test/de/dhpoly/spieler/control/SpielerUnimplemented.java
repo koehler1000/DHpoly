@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -55,10 +54,6 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void setFeldNr(int feldNrSoll)
-	{}
-
-	@Override
-	public void zeigeKaufmoeglichkeit(FeldStrasse strasse)
 	{}
 
 	@Override
