@@ -107,9 +107,8 @@ public class Strasse extends Datenobjekt
 		return "Informationen zu " + getName();
 	}
 
-	public String getAkuelleMiete()
+	public int getAkuelleMiete()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return getMiete()[haueser];
 	}
 }
