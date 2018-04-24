@@ -60,11 +60,11 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	}
 
 	@Override
-	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional)
+	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> spieler)
 	{
-		if (optional.isPresent())
+		if (spieler.isPresent())
 		{
-			return isNutzerBesitzerAllerStrassen(strassengruppe, optional.get());
+			return isNutzerBesitzerAllerStrassen(strassengruppe, spieler.get());
 		}
 		return false;
 	}
