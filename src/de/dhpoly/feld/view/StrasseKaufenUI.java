@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -15,15 +15,15 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public StrasseKaufenUI(FeldStrasse strasse, Spieler spieler, SpielfeldAnsicht ansicht)
+	public StrasseKaufenUI(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 		this.setLayout(new GridLayout(1, 2, 10, 10));
 
-		this.add(new StrasseInfoUI(strasse, ansicht));
+		this.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
 
 		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
-		butKaufen.addActionListener(e -> kaufen(strasse, spieler));
+		butKaufen.addActionListener(e -> kaufen(strasse, ansicht.getSpieler()));
 
 		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
 		butAbbrechen.addActionListener(e -> abbrechen());
@@ -36,9 +36,9 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		this.add(pnlOptionen);
 	}
 
-	private void kaufen(FeldStrasse strasse, Spieler spieler)
+	private void kaufen(StrasseKaufen strasse, Spieler spieler)
 	{
-		strasse.kaufe(spieler);
+		spieler.kaufe(strasse);
 		schliessen();
 	}
 

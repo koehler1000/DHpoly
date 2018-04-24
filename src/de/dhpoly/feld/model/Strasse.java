@@ -3,11 +3,14 @@ package de.dhpoly.feld.model;
 import java.util.List;
 import java.util.Optional;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
-public class Strasse
+public class Strasse extends Datenobjekt
 {
+	private static final long serialVersionUID = 1L;
+
 	private Optional<Spieler> eigentuemer = Optional.empty();
 	private int[] miete = new int[6];
 
@@ -96,5 +99,17 @@ public class Strasse
 	public void setKaufpreis(int kaufpreis)
 	{
 		this.kaufpreis = kaufpreis;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Informationen zu " + getName();
+	}
+
+	public String getAkuelleMiete()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

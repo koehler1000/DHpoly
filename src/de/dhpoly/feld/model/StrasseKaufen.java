@@ -1,13 +1,15 @@
 package de.dhpoly.feld.model;
 
-import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.datenobjekt.Datenobjekt;
 
-public class StrasseKaufen
+public class StrasseKaufen extends Datenobjekt
 {
-	private StrasseKaufenStatus status = StrasseKaufenStatus.ANGEBOTEN;
-	private FeldStrasse strasse;
+	private static final long serialVersionUID = 1L;
 
-	public StrasseKaufen(FeldStrasse strasse)
+	private StrasseKaufenStatus status = StrasseKaufenStatus.ANGEBOTEN;
+	private Strasse strasse;
+
+	public StrasseKaufen(Strasse strasse)
 	{
 		this.strasse = strasse;
 	}
@@ -22,8 +24,14 @@ public class StrasseKaufen
 		this.status = status;
 	}
 
-	public FeldStrasse getStrasse()
+	public Strasse getStrasse()
 	{
 		return strasse;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Strassenkauf";
 	}
 }

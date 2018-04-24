@@ -6,6 +6,7 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -72,4 +73,6 @@ public interface Spieler
 	void setWuerfelWeitergabeMoeglich(boolean value);
 
 	void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel);
+
+	void kaufe(StrasseKaufen strasse);
 }

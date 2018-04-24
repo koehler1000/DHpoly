@@ -5,6 +5,7 @@ import java.util.List;
 import de.dhpoly.einstellungen.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -64,4 +65,6 @@ public interface Spiel
 	boolean kannWuerfeln(Spieler spieler);
 
 	boolean kannWuerfelWeitergeben(Spieler spieler);
+
+	void kaufe(StrasseKaufen strasse, Spieler spieler);
 }

@@ -17,6 +17,8 @@ import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.feld.view.StrasseKaufenUI;
@@ -129,7 +131,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void zeigeKaufmoeglichkeit(FeldStrasse strasse, Spieler spieler)
 	{
-		hinzu("Kaufen", strasse, new StrasseKaufenUI(strasse, spieler, this));
+		// hinzu("Kaufen", strasse, new StrasseKaufenUI(strasse, spieler, this));
 	}
 
 	public void zeigeKarte(Karte karte)
@@ -152,7 +154,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		tabRand.remove(oberflaeche);
 	}
 
-	public void zeigeStrasseInfo(FeldStrasse feld, SpielfeldAnsicht spielfeldAnsicht)
+	public void zeigeStrasseInfo(Strasse feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
@@ -186,6 +188,10 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		else if (objekt instanceof WetterKarte)
 		{
 			oberflaeche = new KarteUI((WetterKarte) objekt, this);
+		}
+		else if (objekt instanceof StrasseKaufen)
+		{
+			oberflaeche = new StrasseKaufenUI((StrasseKaufen) objekt, this);
 		}
 		else
 		{

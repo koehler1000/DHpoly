@@ -6,6 +6,7 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -148,5 +149,9 @@ public class SpielerUnimplemented implements Spieler
 
 	@Override
 	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
+	{}
+
+	@Override
+	public void kaufe(StrasseKaufen strasse)
 	{}
 }

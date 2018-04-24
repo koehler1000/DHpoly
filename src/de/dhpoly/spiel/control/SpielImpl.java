@@ -11,6 +11,8 @@ import de.dhpoly.einstellungen.model.EinstellungenImpl;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.StrasseKaufen;
+import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
@@ -440,5 +442,16 @@ public class SpielImpl extends Beobachtbarer implements Spiel
 	public boolean kannWuerfelWeitergeben(Spieler spieler)
 	{
 		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerIstGerueckt;
+	}
+
+	@Override
+	public void kaufe(StrasseKaufen strasse, Spieler spieler)
+	{
+		if (getAktuellerSpieler() == spieler)
+		{
+			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+
+			// TODO Kauflogik hierher
+		}
 	}
 }

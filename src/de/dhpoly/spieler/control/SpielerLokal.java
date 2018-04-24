@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -144,5 +145,11 @@ public class SpielerLokal extends SpielerImpl
 	{
 		setSpielfeldAnsicht(new SpielfeldAnsicht(spiel, wuerfel, this));
 		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, name)));
+	}
+
+	@Override
+	public void kaufe(StrasseKaufen strasse)
+	{
+		spiel.kaufe(strasse, this);
 	}
 }
