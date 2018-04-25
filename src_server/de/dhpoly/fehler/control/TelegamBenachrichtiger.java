@@ -13,9 +13,6 @@ public class TelegamBenachrichtiger implements Logik
 {
 	private static final String CHAT_ID = "-1001131918455";
 
-	private TelegamBenachrichtiger()
-	{}
-
 	public static void sendTelegramMessage(String thema, String nachricht) throws IOException
 	{
 		String toSend = thema //

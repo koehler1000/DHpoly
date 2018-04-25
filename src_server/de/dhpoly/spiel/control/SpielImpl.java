@@ -2,7 +2,9 @@ package de.dhpoly.spiel.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
@@ -14,15 +16,14 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.Handel;
-import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
 import de.dhpoly.karte.control.WetterKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
+import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.pause.Pause;
@@ -50,6 +51,8 @@ public class SpielImpl implements Spiel
 	private boolean aktuellerSpielerHatGewuerfelt = false;
 	private boolean aktuellerSpielerIstGerueckt = false;
 
+	private Map<Class<? extends Datenobjekt>, Class<? extends Logik>> map = new HashMap<>();
+
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
 	public SpielImpl()
@@ -61,6 +64,9 @@ public class SpielImpl implements Spiel
 		wuerfelPaar = new WuerfelpaarImpl();
 
 		this.fenster = Optional.empty();
+
+		map.put(Fehler.class, TelegamBenachrichtiger.class);
+		map.put(Transaktion.class, Handel.class);
 	}
 
 	@Override
@@ -469,17 +475,21 @@ public class SpielImpl implements Spiel
 	@Override
 	public void empfange(Datenobjekt objekt)
 	{
-		if (objekt instanceof Transaktion)
+		try
 		{
-			Transaktion transaktion = (Transaktion) objekt;
-			if (transaktion.getTransaktionsTyp() == TransaktionsTyp.ANGENOMMEN)
+			map.get(objekt.getClass()).newInstance().verarbeite(objekt);
+		}
+		catch (IOException | InstantiationException | IllegalAccessException ex)
+		{
+			try
 			{
-				Handel handel = new HandelImpl();
-				handel.vorschlagAnnehmen(transaktion);
+				TelegamBenachrichtiger benachrichtiger = new TelegamBenachrichtiger();
+				benachrichtiger.verarbeite(new Fehler("FEHLER" + ex.getMessage(), FehlerTyp.FEHLER_ENTWICKLER));
+			}
+			catch (IOException ex1)
+			{
+				// ignorieren
 			}
 		}
-
-		// TODO Auto-generated method stub
-
 	}
 }
