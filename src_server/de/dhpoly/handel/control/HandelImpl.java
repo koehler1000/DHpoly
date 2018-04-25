@@ -11,6 +11,7 @@ import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public class HandelImpl implements Handel
@@ -79,7 +80,7 @@ public class HandelImpl implements Handel
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel, Spieler spieler) throws IOException
 	{
 		Transaktion transaktion = (Transaktion) objekt;
 		switch (transaktion.getTransaktionsTyp())

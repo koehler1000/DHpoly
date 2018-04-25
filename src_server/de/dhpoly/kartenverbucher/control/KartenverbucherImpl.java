@@ -1,13 +1,16 @@
 package de.dhpoly.kartenverbucher.control;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.RueckenKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher
@@ -49,5 +52,18 @@ public class KartenverbucherImpl implements Kartenverbucher
 	public void bewegeSpieler(RueckenKarte karte, Spieler spieler, Wetter wetter)
 	{
 		karte.getZiel().betreteFeld(spieler, 0, wetter);
+	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt, Spiel spiel, Spieler spieler) throws IOException
+	{
+		if (objekt instanceof BezahlKarte)
+		{
+
+		}
+		else if (objekt instanceof RueckenKarte)
+		{
+
+		}
 	}
 }
