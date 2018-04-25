@@ -461,4 +461,11 @@ public class SpielImpl implements Spiel
 
 		zeigeAllenSpielern(strasse.getStrasse());
 	}
+
+	@Override
+	public void empfange(Datenobjekt objekt)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }
