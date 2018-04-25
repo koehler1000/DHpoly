@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 
-import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;

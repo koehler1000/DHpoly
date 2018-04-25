@@ -1,10 +1,9 @@
-package de.dhpoly.karte.control;
+package de.dhpoly.karte.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.karte.Karte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 

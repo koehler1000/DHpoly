@@ -1,6 +1,6 @@
 package de.dhpoly.feld.control;
 
-import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.spieler.Spieler;

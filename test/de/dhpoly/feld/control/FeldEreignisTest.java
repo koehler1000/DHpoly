@@ -8,8 +8,8 @@ import java.util.List;
 import org.junit.Test;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.karte.Karte;
-import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.model.BezahlKarte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;

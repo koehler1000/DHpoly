@@ -6,7 +6,7 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
-import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;

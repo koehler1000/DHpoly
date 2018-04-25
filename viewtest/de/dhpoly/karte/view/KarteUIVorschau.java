@@ -1,6 +1,6 @@
 package de.dhpoly.karte.view;
 
-import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;

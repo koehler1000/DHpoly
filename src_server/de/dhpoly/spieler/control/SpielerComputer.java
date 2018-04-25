@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import de.dhpoly.karte.Karte;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.kartenstapel.Kartenstapel;
 
 public class KartenstapelImpl implements Kartenstapel

@@ -8,7 +8,7 @@ import java.util.List;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import de.dhpoly.karte.control.BezahlKarte;
+import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.Ressource;

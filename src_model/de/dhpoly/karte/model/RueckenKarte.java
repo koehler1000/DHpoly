@@ -1,8 +1,7 @@
-package de.dhpoly.karte.control;
+package de.dhpoly.karte.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.karte.Karte;
 
 public class RueckenKarte extends Datenobjekt implements Karte
 {

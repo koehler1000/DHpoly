@@ -1,4 +1,4 @@
-package de.dhpoly.karte;
+package de.dhpoly.karte.model;
 
 public interface Karte
 {
