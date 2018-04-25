@@ -16,11 +16,15 @@ public class Transaktion extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
+	// TODO Feld > FeldDaten
 	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();
 
+	// TODO Spieler > SpielerDaten
 	private transient Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
 
+	// TODO Spieler > SpielerDaten
 	private transient Spieler anbietender;
+	// TODO Spieler > SpielerDaten
 	private transient Spieler handelspartner;
 
 	private TransaktionsTyp typ = TransaktionsTyp.NEU;
