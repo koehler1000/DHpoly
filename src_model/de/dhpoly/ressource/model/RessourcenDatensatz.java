@@ -1,7 +1,11 @@
 package de.dhpoly.ressource.model;
 
-public class RessourcenDatensatz
+import de.dhpoly.datenobjekt.Datenobjekt;
+
+public class RessourcenDatensatz extends Datenobjekt
 {
+	private static final long serialVersionUID = 1L;
+
 	private Ressource ressource;
 	private int anzahl;
 	private String beschreibung = "<keine Beschreibung angegeben>";
@@ -36,5 +40,11 @@ public class RessourcenDatensatz
 	public String getBeschreibung()
 	{
 		return beschreibung;
+	}
+
+	@Override
+	public String getTitel()
+	{
+		return "Datensatz";
 	}
 }
