@@ -8,6 +8,8 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
@@ -25,8 +27,6 @@ import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerComputer;
 import de.dhpoly.spieler.control.SpielerLokal;
-import de.dhpoly.spielobjekte.fehler.model.Fehler;
-import de.dhpoly.spielobjekte.fehler.model.FehlerTyp;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 

@@ -1,4 +1,4 @@
-package de.dhpoly.spielobjekte.fehler.model;
+package de.dhpoly.fehler.model;
 
 public enum FehlerTyp
 {
