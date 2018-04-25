@@ -51,6 +51,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private SpielfeldUI spielfeld;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
+	private Map<Class<? extends Datenobjekt>, Class<? extends Oberflaeche>> map = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
 	{
