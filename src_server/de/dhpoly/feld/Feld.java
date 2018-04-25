@@ -5,7 +5,7 @@ import java.util.List;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
 
-public interface Feld
+public interface Feld // TODO extends Logik
 {
 	public String getBeschriftung();
 
