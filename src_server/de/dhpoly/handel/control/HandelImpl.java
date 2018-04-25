@@ -1,7 +1,9 @@
 package de.dhpoly.handel.control;
 
+import java.io.IOException;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.handel.Handel;
@@ -74,5 +76,31 @@ public class HandelImpl implements Handel
 	public void vorschlagAblehnen(Transaktion transaktion)
 	{
 		transaktion.setTransaktionsTyp(TransaktionsTyp.ABGELEHNT);
+	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt) throws IOException
+	{
+		Transaktion transaktion = (Transaktion) objekt;
+		switch (transaktion.getTransaktionsTyp())
+		{
+			case ABGELEHNT:
+				vorschlagAblehnen(transaktion);
+				break;
+			case ANGENOMMEN:
+				vorschlagAnnehmen(transaktion);
+				break;
+			case NEU:
+				vorschlagAnbieten(transaktion);
+				break;
+			case NEUER_VORSCHLAG:
+				vorschlagAnbieten(transaktion);
+				break;
+			case VORSCHLAG:
+				vorschlagAnbieten(transaktion);
+				break;
+			default:
+				break;
+		}
 	}
 }
