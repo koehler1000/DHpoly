@@ -11,6 +11,7 @@ public class Strasse extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
+	// TODO Spieler > SpielerDaten
 	private Optional<Spieler> eigentuemer = Optional.empty();
 	private int[] miete = new int[6];
 
