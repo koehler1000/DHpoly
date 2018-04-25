@@ -2,6 +2,7 @@ package de.dhpoly.spiel;
 
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
@@ -64,4 +65,6 @@ public interface Spiel
 	boolean kannWuerfelWeitergeben(Spieler spieler);
 
 	void kaufe(StrasseKaufen strasse, Spieler spieler);
+
+	void empfange(Datenobjekt objekt);
 }
