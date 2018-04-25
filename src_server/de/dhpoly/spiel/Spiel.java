@@ -67,4 +67,6 @@ public interface Spiel
 	void kaufe(StrasseKaufen strasse, Spieler spieler);
 
 	void empfange(Datenobjekt objekt);
+
+	Wetter getWetter();
 }

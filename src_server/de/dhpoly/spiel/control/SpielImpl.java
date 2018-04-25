@@ -493,4 +493,10 @@ public class SpielImpl implements Spiel
 			}
 		}
 	}
+
+	@Override
+	public Wetter getWetter()
+	{
+		return wetter;
+	}
 }
