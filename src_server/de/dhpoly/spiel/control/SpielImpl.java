@@ -13,6 +13,10 @@ import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
+import de.dhpoly.handel.Handel;
+import de.dhpoly.handel.control.HandelImpl;
+import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.karte.Karte;
 import de.dhpoly.karte.control.BezahlKarte;
 import de.dhpoly.karte.control.RueckenKarte;
@@ -465,6 +469,16 @@ public class SpielImpl implements Spiel
 	@Override
 	public void empfange(Datenobjekt objekt)
 	{
+		if (objekt instanceof Transaktion)
+		{
+			Transaktion transaktion = (Transaktion) objekt;
+			if (transaktion.getTransaktionsTyp() == TransaktionsTyp.ANGENOMMEN)
+			{
+				Handel handel = new HandelImpl();
+				handel.vorschlagAnnehmen(transaktion);
+			}
+		}
+
 		// TODO Auto-generated method stub
 
 	}
