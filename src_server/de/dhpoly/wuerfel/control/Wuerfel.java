@@ -5,7 +5,7 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 public class Wuerfel extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
-	int zahl = 1;
+	private int zahl = 1;
 
 	public Wuerfel(int zahl)
 	{
