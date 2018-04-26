@@ -285,7 +285,7 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			TelegamBenachrichtiger.sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			new TelegamBenachrichtiger().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
 		}
 		catch (IOException ex)
 		{

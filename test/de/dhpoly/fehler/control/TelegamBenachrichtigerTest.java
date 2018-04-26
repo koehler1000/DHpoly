@@ -21,7 +21,7 @@ public class TelegamBenachrichtigerTest
 	{
 		try
 		{
-			TelegamBenachrichtiger.sendTelegramMessage("Testfehler",
+			new TelegamBenachrichtiger().sendTelegramMessage("Testfehler",
 					"Das ist ein Fehler aus dem JUnitTest. Dieser ist beabsichtigt und darf ignoriert werden.");
 		}
 		catch (IOException ex)
