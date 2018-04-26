@@ -6,9 +6,19 @@ public class NetzwerkClientVorschau
 {
 	public static void main(String[] args) throws IOException
 	{
-		CreateServer server = new CreateServer();
+		try {
+			CreateServer.main(new String[]{});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CreateClient client = new CreateClient();
-		String ip = "172....";
+		try {
+			client.main(new String[]{});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		client.connectToServer();
 	}
 }
