@@ -56,8 +56,12 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 	{
 		if (objekt instanceof WuerfelAufruf)
 		{
-			wuerfeln();
-			spiel.empfange(wuerfelDaten);
+			WuerfelAufruf aufruf = (WuerfelAufruf) objekt;
+			if (aufruf.getSpielerDaten() == spiel.getAktuellerSpielerDaten())
+			{
+				wuerfeln();
+				spiel.empfange(wuerfelDaten);
+			}
 		}
 	}
 }

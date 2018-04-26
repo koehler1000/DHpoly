@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
@@ -68,4 +69,6 @@ public interface Spieler
 	void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel);
 
 	void kaufe(StrasseKaufen strasse);
+
+	SpielerDaten getDaten();
 }

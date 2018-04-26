@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
+import de.dhpoly.datenobjekt.spieler.model.SpielerTyp;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -15,10 +17,12 @@ import de.dhpoly.wuerfel.model.Wuerfel;
 public class SpielerLokal extends SpielerImpl
 {
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
+	private SpielerDaten daten;
 
 	public SpielerLokal(String name, Spiel spiel)
 	{
 		super(name, spiel);
+		daten = new SpielerDaten(SpielerTyp.LOKAL, name);
 	}
 
 	@Override
@@ -124,5 +128,11 @@ public class SpielerLokal extends SpielerImpl
 	{
 		setSpielfeldAnsicht(new SpielfeldAnsicht(spiel, wuerfel, this));
 		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, name)));
+	}
+
+	@Override
+	public SpielerDaten getDaten()
+	{
+		return daten;
 	}
 }

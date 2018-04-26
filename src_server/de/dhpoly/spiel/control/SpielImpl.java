@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
@@ -497,5 +498,11 @@ public class SpielImpl implements Spiel
 	public Wetter getWetter()
 	{
 		return wetter;
+	}
+
+	@Override
+	public SpielerDaten getAktuellerSpielerDaten()
+	{
+		return getAktuellerSpieler().getDaten();
 	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
+import de.dhpoly.datenobjekt.spieler.model.SpielerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
@@ -144,4 +146,10 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void kaufe(StrasseKaufen strasse)
 	{}
+
+	@Override
+	public SpielerDaten getDaten()
+	{
+		return new SpielerDaten(SpielerTyp.LOKAL, "Typ von 'Unimplemented'");
+	}
 }
