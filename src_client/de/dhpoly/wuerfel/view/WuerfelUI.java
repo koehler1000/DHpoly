@@ -6,7 +6,7 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.model.Wuerfel;
 import observerpattern.Beobachter;
 
 public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR

@@ -1,4 +1,4 @@
-package de.dhpoly.wuerfel.control;
+package de.dhpoly.wuerfel.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 

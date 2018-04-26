@@ -36,7 +36,7 @@ import de.dhpoly.spiel.view.SpielerUebersichtUI;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
-import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.model.Wuerfel;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class SpielfeldAnsicht extends JPanel // NOSONAR

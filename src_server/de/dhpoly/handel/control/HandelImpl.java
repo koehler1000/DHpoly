@@ -80,7 +80,7 @@ public class HandelImpl implements Handel
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel, Spieler spieler) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
 	{
 		Transaktion transaktion = (Transaktion) objekt;
 		switch (transaktion.getTransaktionsTyp())

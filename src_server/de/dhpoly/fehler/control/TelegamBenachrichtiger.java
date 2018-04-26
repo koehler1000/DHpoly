@@ -9,7 +9,6 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
 
 public class TelegamBenachrichtiger implements Logik
 {
@@ -33,7 +32,7 @@ public class TelegamBenachrichtiger implements Logik
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel, Spieler spieler) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
 	{
 		if (objekt instanceof Nachricht)
 		{

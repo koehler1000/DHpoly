@@ -8,7 +8,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerComputer extends SpielerImpl
 {

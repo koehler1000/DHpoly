@@ -477,15 +477,14 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			map.get(objekt.getClass()).newInstance().verarbeite(objekt, this, getAktuellerSpieler());
+			map.get(objekt.getClass()).newInstance().verarbeite(objekt, this);
 		}
 		catch (IOException | InstantiationException | IllegalAccessException ex)
 		{
 			try
 			{
 				TelegamBenachrichtiger benachrichtiger = new TelegamBenachrichtiger();
-				benachrichtiger.verarbeite(new Fehler("FEHLER" + ex.getMessage(), FehlerTyp.FEHLER_ENTWICKLER), this,
-						getAktuellerSpieler());
+				benachrichtiger.verarbeite(new Fehler("FEHLER" + ex.getMessage(), FehlerTyp.FEHLER_ENTWICKLER), this);
 			}
 			catch (IOException ex1)
 			{

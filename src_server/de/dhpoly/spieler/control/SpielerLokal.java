@@ -10,7 +10,7 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerLokal extends SpielerImpl
 {

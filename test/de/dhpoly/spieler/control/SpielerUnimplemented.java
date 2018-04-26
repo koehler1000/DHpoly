@@ -12,7 +12,7 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.wuerfel.control.Wuerfel;
+import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerUnimplemented implements Spieler
 {

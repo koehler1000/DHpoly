@@ -55,17 +55,17 @@ public class KartenverbucherImpl implements Kartenverbucher
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel, Spieler spieler) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
 	{
 		if (objekt instanceof BezahlKarte)
 		{
 			BezahlKarte karte = (BezahlKarte) objekt;
-			bewegeGeld(karte, spiel.getSpieler(), spieler);
+			bewegeGeld(karte, spiel.getSpieler(), spiel.getAktuellerSpieler());
 		}
 		else if (objekt instanceof RueckenKarte)
 		{
 			RueckenKarte karte = (RueckenKarte) objekt;
-			bewegeSpieler(karte, spieler, spiel.getWetter());
+			bewegeSpieler(karte, spiel.getAktuellerSpieler(), spiel.getWetter());
 		}
 	}
 }
