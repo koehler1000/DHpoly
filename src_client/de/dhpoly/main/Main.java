@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import de.dhpoly.UIVerwalter;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.netzwerk.NetzwerkClient;
@@ -33,7 +32,6 @@ public class Main
 	private void starteClient(String ipHost) throws IOException
 	{
 		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
-		new UIVerwalter(str);
 
 		NetzwerkClient client = new NetzwerkClientImpl();
 
