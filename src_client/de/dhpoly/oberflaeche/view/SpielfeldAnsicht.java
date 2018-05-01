@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -37,9 +38,10 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private static final long serialVersionUID = 1L;
 
 	private JButton butWeiter = new JButton("");
-	private JTabbedPane tabRand;
-	private transient SpielerDaten spieler;
-	private transient SpielDaten spiel;
+	private JTabbedPane tabRand = new JTabbedPane();
+	private SpielerDaten spieler;
+
+	private SpielDaten spiel;
 	private NetzwerkClient client;
 
 	private SpielfeldUI spielfeld;
@@ -120,9 +122,12 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		tabRand.addTab(beschreibung, oberflaeche);
-		inhalte.put(obj, oberflaeche);
-		tabRand.setSelectedComponent(oberflaeche);
+		if (Optional.of(oberflaeche).isPresent())
+		{
+			tabRand.addTab(beschreibung, oberflaeche);
+			inhalte.put(obj, oberflaeche);
+			tabRand.setSelectedComponent(oberflaeche);
+		}
 	}
 
 	public void leereRand()

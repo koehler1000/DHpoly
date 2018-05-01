@@ -101,7 +101,7 @@ public class SpielImpl implements Spiel
 		return new Thread(() -> {
 			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
 
-			for (int i = 0; i < augensumme - 1; i++)
+			for (int i = 1; i < augensumme; i++)
 			{
 				aktuellesFeld.verlasseFeld(spieler);
 				aktuellesFeld = getNaechstesFeld(aktuellesFeld);

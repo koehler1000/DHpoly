@@ -39,6 +39,6 @@ public abstract class Oberflaeche extends JPanel
 	public void zeige(String beschreibung, Datenobjekt objekt, SpielfeldAnsicht ansicht)
 	{
 		this.ansicht = Optional.of(ansicht);
-		ansicht.hinzu(beschreibung, objekt, this);
+		Optional.of(ansicht).ifPresent(ui -> ui.hinzu(beschreibung, objekt, this));
 	}
 }

@@ -47,6 +47,7 @@ public class FelderTest
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.setAnimationen(false);
+		spiel.starteSpiel();
 
 		Thread thread = spiel.rueckeThread(sp1, 2);
 		thread.start();
