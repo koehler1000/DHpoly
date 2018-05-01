@@ -1,6 +1,7 @@
 package de.dhpoly.spiel;
 
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
@@ -73,4 +74,6 @@ public interface Spiel
 	Wetter getWetter();
 
 	SpielerDaten getAktuellerSpielerDaten();
+
+	Optional<Spieler> getSpieler(SpielerDaten spielerDaten);
 }

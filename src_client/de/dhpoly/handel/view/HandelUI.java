@@ -64,14 +64,15 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	{
 		super.schliessen();
 
-		if (transaktion.getTransaktionsTyp().isHandelAnbieten())
-		{
-			handel.vorschlagAnbieten(transaktion.getTransaktionsGegenangebot());
-		}
-		else if (transaktion.getTransaktionsTyp().isHandelAnnehmen())
-		{
-			handel.vorschlagAnnehmen(transaktion);
-		}
+		// TODO
+		// if (transaktion.getTransaktionsTyp().isHandelAnbieten())
+		// {
+		// handel.vorschlagAnbieten(transaktion.getTransaktionsGegenangebot());
+		// }
+		// else if (transaktion.getTransaktionsTyp().isHandelAnnehmen())
+		// {
+		// handel.vorschlagAnnehmen(transaktion);
+		// }
 	}
 
 	@Override

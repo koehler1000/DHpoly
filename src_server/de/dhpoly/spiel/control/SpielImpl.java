@@ -506,4 +506,10 @@ public class SpielImpl implements Spiel
 	{
 		return getAktuellerSpieler().getDaten();
 	}
+
+	@Override
+	public Optional<Spieler> getSpieler(SpielerDaten spielerDaten)
+	{
+		return spieler.stream().findFirst().filter(s -> s.getDaten() == spielerDaten);
+	}
 }
