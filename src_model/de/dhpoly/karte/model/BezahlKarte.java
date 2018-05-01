@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public class BezahlKarte extends Datenobjekt implements Karte
@@ -48,5 +50,11 @@ public class BezahlKarte extends Datenobjekt implements Karte
 	public String getTitel()
 	{
 		return "Bezahlkarte";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return KarteUI.class;
 	}
 }

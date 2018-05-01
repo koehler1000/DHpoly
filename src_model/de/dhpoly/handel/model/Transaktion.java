@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.handel.view.HandelUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
 
@@ -120,5 +122,11 @@ public class Transaktion extends Datenobjekt
 	public void setTransaktionsTyp(TransaktionsTyp typ)
 	{
 		this.typ = typ;
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return HandelUI.class;
 	}
 }

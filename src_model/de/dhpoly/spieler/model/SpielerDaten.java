@@ -1,6 +1,7 @@
 package de.dhpoly.spieler.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class SpielerDaten extends Datenobjekt
 {
@@ -30,5 +31,12 @@ public class SpielerDaten extends Datenobjekt
 	public String getTitel()
 	{
 		return "Spielerdaten";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

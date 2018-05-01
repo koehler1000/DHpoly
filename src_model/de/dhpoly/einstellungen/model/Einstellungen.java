@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.einstellungen.view.EinstellungenUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 
@@ -113,5 +115,11 @@ public class Einstellungen extends Datenobjekt
 	public String getTitel()
 	{
 		return "Einstellungen";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return EinstellungenUI.class;
 	}
 }

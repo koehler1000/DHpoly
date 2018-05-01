@@ -1,6 +1,7 @@
 package de.dhpoly.ressource.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class RessourcenDatensatz extends Datenobjekt
 {
@@ -46,5 +47,12 @@ public class RessourcenDatensatz extends Datenobjekt
 	public String getTitel()
 	{
 		return "Datensatz";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

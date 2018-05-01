@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.feld.view.StrasseKaufenUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
@@ -57,5 +59,11 @@ public class StrasseKaufen extends Datenobjekt
 	public void setEigentuemer(Spieler sp)
 	{
 		strasse.setEigentuemer(Optional.of(sp));
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return StrasseKaufenUI.class;
 	}
 }

@@ -1,6 +1,7 @@
 package de.dhpoly.wuerfel.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.spieler.model.SpielerDaten;
 
 public class WuerfelAufruf extends Datenobjekt
@@ -22,5 +23,12 @@ public class WuerfelAufruf extends Datenobjekt
 	public SpielerDaten getSpielerDaten()
 	{
 		return spieler;
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

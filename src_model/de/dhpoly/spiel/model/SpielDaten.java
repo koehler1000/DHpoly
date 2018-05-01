@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.spieler.model.SpielerDaten;
 
 public class SpielDaten extends Datenobjekt
@@ -35,5 +36,12 @@ public class SpielDaten extends Datenobjekt
 	public String getTitel()
 	{
 		return "Spiel";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

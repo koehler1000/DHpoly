@@ -2,6 +2,8 @@ package de.dhpoly.karte.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.karte.view.KarteUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class RueckenKarte extends Datenobjekt implements Karte
 {
@@ -28,6 +30,12 @@ public class RueckenKarte extends Datenobjekt implements Karte
 	public Feld getZiel()
 	{
 		return zielFeld;
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return KarteUI.class;
 	}
 
 }

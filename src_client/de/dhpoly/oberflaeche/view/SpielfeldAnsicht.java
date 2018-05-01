@@ -109,7 +109,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		inhalte.remove(obj);
 	}
 
-	private void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
+	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
 		tabRand.addTab(beschreibung, oberflaeche);
 		inhalte.put(obj, oberflaeche);

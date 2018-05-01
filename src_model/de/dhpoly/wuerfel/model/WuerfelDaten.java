@@ -3,6 +3,8 @@ package de.dhpoly.wuerfel.model;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class WuerfelDaten extends Datenobjekt
 {
@@ -24,5 +26,11 @@ public class WuerfelDaten extends Datenobjekt
 	public String getTitel()
 	{
 		return "Wuerfel";
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return WuerfelUI.class;
 	}
 }

@@ -1,7 +1,8 @@
 package de.dhpoly.karte.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.karte.view.KarteUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class WetterKarte extends Datenobjekt implements Karte
 {
@@ -29,6 +30,12 @@ public class WetterKarte extends Datenobjekt implements Karte
 	public Wetter getWetter()
 	{
 		return wetter;
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return KarteUI.class;
 	}
 
 }

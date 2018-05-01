@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.feld.view.StrasseInfoUI;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
@@ -131,5 +133,11 @@ public class Strasse extends Datenobjekt
 	public boolean haeuserGebaut()
 	{
 		return getHaueser() > 0;
+	}
+
+	@Override
+	public Class<? extends Oberflaeche> getClassUI()
+	{
+		return StrasseInfoUI.class;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.ElementFactory;
 
 public abstract class Oberflaeche extends JPanel
@@ -33,5 +34,11 @@ public abstract class Oberflaeche extends JPanel
 	protected void sperren()
 	{
 		this.setEnabled(false);
+	}
+
+	public void zeige(String beschreibung, Datenobjekt objekt, SpielfeldAnsicht ansicht)
+	{
+		this.ansicht = Optional.of(ansicht);
+		ansicht.hinzu(beschreibung, objekt, this);
 	}
 }
