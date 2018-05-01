@@ -10,6 +10,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class FeldStrasse extends FeldImpl
 {
@@ -229,5 +230,11 @@ public class FeldStrasse extends FeldImpl
 	{
 		return !strasse.isAlleHaeuserGebaut()
 				&& getEigentuemer().filter(e -> e.kannBezahlen(getKostenHaus())).isPresent();
+	}
+
+	@Override
+	public boolean gehoertSpieler(SpielerDaten spielerDaten)
+	{
+		return (strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get().getDaten() == spielerDaten);
 	}
 }

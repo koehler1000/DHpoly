@@ -66,7 +66,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		butHandel = ElementFactory.getButton("Handeln");
 		butHandel.setEnabled(spieler != ansicht.getSpieler());
 
-		butHandel.addActionListener(e -> new Transaktion(ansicht.getSpieler(), spieler).anzeigen(ansicht));
+		butHandel.addActionListener(e -> new Transaktion(ansicht.getSpieler(), spieler.getDaten()).anzeigen(ansicht));
 
 		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);

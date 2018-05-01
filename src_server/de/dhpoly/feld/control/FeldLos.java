@@ -5,6 +5,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class FeldLos extends FeldImpl
 {
@@ -27,5 +28,11 @@ public class FeldLos extends FeldImpl
 	{
 		super.laufeUeberFeld(spieler);
 		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
+	}
+
+	@Override
+	public boolean gehoertSpieler(SpielerDaten spielerDaten)
+	{
+		return false;
 	}
 }

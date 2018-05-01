@@ -5,6 +5,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class FeldRessource extends FeldImpl
 {
@@ -28,5 +29,11 @@ public class FeldRessource extends FeldImpl
 	public Ressource getRessource()
 	{
 		return ressource;
+	}
+
+	@Override
+	public boolean gehoertSpieler(SpielerDaten spielerDaten)
+	{
+		return false;
 	}
 }

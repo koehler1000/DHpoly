@@ -34,7 +34,7 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	@Override
 	public boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
 	{
-		return feld.gehoertSpieler(moeglicherEigentuemer);
+		return feld.gehoertSpieler(moeglicherEigentuemer.getDaten());
 	}
 
 	@Override

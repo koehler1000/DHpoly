@@ -12,7 +12,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class RessourceAnbietenUI extends JPanel
@@ -24,27 +24,27 @@ public class RessourceAnbietenUI extends JPanel
 	private JLabel lblAnzahl;
 
 	private Transaktion transaktion;
-	private transient Spieler spieler;
+	private SpielerDaten spieler;
 
-	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, Spieler spieler)
+	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, SpielerDaten spielerDaten)
 	{
 		this.ressource = ressource;
 		this.transaktion = transaktion;
-		this.spieler = spieler;
+		this.spieler = spielerDaten;
 
 		Color hintergrund = Color.WHITE;
-		Color randFarbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
+		Color randFarbe = SpielerFarben.getSpielerfarbe(spielerDaten.getSpielerNr());
 		Border rand = new LineBorder(hintergrund, 10);
 		this.setBackground(hintergrund);
 
-		JLabel lblTitel = new JLabel(ressource.toString() + " von " + spieler.getName());
+		JLabel lblTitel = new JLabel(ressource.toString() + " von " + spielerDaten.getName());
 		lblTitel.setBorder(rand);
 
 		this.setLayout(new BorderLayout());
 		this.add(lblTitel, BorderLayout.NORTH);
 
 		int min = 0;
-		int max = spieler.getRessourcenWerte(ressource);
+		int max = spielerDaten.getRessourcenWert(ressource);
 
 		lblAnzahl = new JLabel();
 		lblAnzahl.setBorder(rand);
@@ -53,7 +53,7 @@ public class RessourceAnbietenUI extends JPanel
 		numAnzahl = new JSlider();
 		numAnzahl.setMaximum(max);
 		numAnzahl.setMinimum(min);
-		numAnzahl.setValue(transaktion.getRessource(spieler, ressource));
+		numAnzahl.setValue(transaktion.getRessource(spielerDaten, ressource));
 		numAnzahl.addChangeListener(e -> lblAktualisieren());
 		numAnzahl.setBackground(hintergrund);
 		numAnzahl.setBorder(rand);

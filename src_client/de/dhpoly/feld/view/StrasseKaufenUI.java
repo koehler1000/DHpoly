@@ -23,7 +23,8 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		this.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
 
 		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
-		butKaufen.addActionListener(e -> kaufen(strasse, ansicht.getSpieler()));
+		// TODO
+		// butKaufen.addActionListener(e -> kaufen(strasse, ansicht.getSpieler()));
 
 		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
 		butAbbrechen.addActionListener(e -> abbrechen());

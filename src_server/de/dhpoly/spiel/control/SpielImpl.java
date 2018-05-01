@@ -364,7 +364,7 @@ public class SpielImpl implements Spiel
 		List<Feld> felderSpieler = new ArrayList<>();
 		for (Feld feld : felder)
 		{
-			if (feld.gehoertSpieler(spieler))
+			if (feld.gehoertSpieler(spieler.getDaten()))
 			{
 				felderSpieler.add(feld);
 			}

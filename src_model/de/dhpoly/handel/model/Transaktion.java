@@ -12,7 +12,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class Transaktion extends Datenobjekt
 {
@@ -21,17 +21,14 @@ public class Transaktion extends Datenobjekt
 	// TODO Feld > FeldDaten
 	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();
 
-	// TODO Spieler > SpielerDaten
-	private transient Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
+	private Map<SpielerDaten, Map<Ressource, Integer>> ressourcen = new HashMap<>();
 
-	// TODO Spieler > SpielerDaten
-	private transient Spieler anbietender;
-	// TODO Spieler > SpielerDaten
-	private transient Spieler handelspartner;
+	private SpielerDaten anbietender;
+	private SpielerDaten handelspartner;
 
 	private TransaktionsTyp typ = TransaktionsTyp.NEU;
 
-	public Transaktion(Spieler anbietender, Spieler handelspartner)
+	public Transaktion(SpielerDaten anbietender, SpielerDaten handelspartner)
 	{
 		this.anbietender = anbietender;
 		this.handelspartner = handelspartner;
@@ -47,14 +44,14 @@ public class Transaktion extends Datenobjekt
 		return t;
 	}
 
-	public int getRessource(Spieler abgebenderSpieler, Ressource ressource)
+	public int getRessource(SpielerDaten abgebenderSpieler, Ressource ressource)
 	{
 		Map<Ressource, Integer> res = ressourcen.getOrDefault(abgebenderSpieler, new HashMap<>());
 		Integer wert = res.getOrDefault(ressource, Integer.valueOf(0));
 		return wert.intValue();
 	}
 
-	public void setRessourcen(Spieler abgebenderSpieler, Ressource ressource, int value)
+	public void setRessourcen(SpielerDaten abgebenderSpieler, Ressource ressource, int value)
 	{
 		int alterWert = getRessource(abgebenderSpieler, ressource);
 		if (alterWert == value)
@@ -93,9 +90,10 @@ public class Transaktion extends Datenobjekt
 		return typ;
 	}
 
-	public List<Feld> getFelderEigentumswechsel(Spieler spieler)
+	public List<Feld> getFelderEigentumswechsel(SpielerDaten spielerDaten)
 	{
-		return getFelderEigentumswechsel().stream().filter(e -> e.gehoertSpieler(spieler)).collect(Collectors.toList());
+		return getFelderEigentumswechsel().stream().filter(e -> e.gehoertSpieler(spielerDaten))
+				.collect(Collectors.toList());
 	}
 
 	public List<Feld> getFelderEigentumswechsel()
@@ -103,12 +101,12 @@ public class Transaktion extends Datenobjekt
 		return felderEigentumswechsel;
 	}
 
-	public Spieler getAnbietender()
+	public SpielerDaten getAnbietender()
 	{
 		return anbietender;
 	}
 
-	public Spieler getHandelspartner()
+	public SpielerDaten getHandelspartner()
 	{
 		return handelspartner;
 	}

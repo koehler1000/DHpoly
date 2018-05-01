@@ -38,7 +38,7 @@ public class HandelImplTest
 
 		Handel handel = new HandelImpl();
 
-		Transaktion transaktion = new Transaktion(s1, s2);
+		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 		transaktion.addDatensatzFelderwechsel(feld);
 		handel.vorschlagAnnehmen(transaktion);
 
@@ -65,7 +65,7 @@ public class HandelImplTest
 
 		Handel handel = new HandelImpl();
 
-		Transaktion transaktion = new Transaktion(s1, s2);
+		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 		transaktion.addDatensatzFelderwechsel(feld);
 		handel.vorschlagAnnehmen(transaktion);
 
@@ -81,8 +81,8 @@ public class HandelImplTest
 
 		Handel handel = new HandelImpl();
 
-		Transaktion transaktion = new Transaktion(s1, s2);
-		transaktion.setRessourcen(s2, Ressource.GELD, 50);
+		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
+		transaktion.setRessourcen(s2.getDaten(), Ressource.GELD, 50);
 		handel.vorschlagAnnehmen(transaktion);
 
 		assertThat(s1.getRessourcenWerte(Ressource.GELD), Is.is(200));

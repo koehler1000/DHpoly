@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Feld // TODO extends Logik
 {
@@ -17,7 +18,7 @@ public interface Feld // TODO extends Logik
 
 	public List<Spieler> getSpielerAufFeld();
 
-	public boolean gehoertSpieler(Spieler spieler);
+	public boolean gehoertSpieler(SpielerDaten spielerDaten);
 
 	public boolean isKaufbar();
 }

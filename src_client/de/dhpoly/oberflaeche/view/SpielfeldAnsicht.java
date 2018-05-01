@@ -3,6 +3,7 @@ package de.dhpoly.oberflaeche.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,75 +19,96 @@ import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.view.KarteUI;
+import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.view.SpielerUebersichtUI;
+import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.model.Wuerfel;
+import de.dhpoly.wuerfel.model.WuerfelAufruf;
+import de.dhpoly.wuerfel.model.WuerfelDaten;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class SpielfeldAnsicht extends JPanel // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private JButton butWeiter;
+	private JButton butWeiter = new JButton("");
 	private JTabbedPane tabRand;
-	private transient Spieler spieler;
-	private transient Spiel spiel;
+	private transient SpielerDaten spieler;
+	private transient SpielDaten spiel;
+	private NetzwerkClient client;
 
 	private SpielfeldUI spielfeld;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
-	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
+	public SpielfeldAnsicht(SpielerDaten spieler, NetzwerkClient client)
 	{
-		this.spiel = spiel;
 		this.spieler = spieler;
-		this.spielfeld = new SpielfeldUI(spiel.getFelder(), this);
+		this.client = client;
 
 		ElementFactory.bearbeitePanel(this);
 		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
 
-		this.add(spielfeld);
+		butWeiter.addActionListener(e -> weiter());
+	}
 
-		this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
-
+	private void empfangeWuerfel(WuerfelDaten wuerfel)
+	{
 		JPanel pnlWest = ElementFactory.erzeugePanel();
-
-		JButton butImpressum = ElementFactory.getButtonUeberschrift("DHpoly");
-		pnlWest.add(butImpressum, BorderLayout.CENTER);
 
 		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
 		pnlWuerfel.setLayout(new GridLayout(1, 1));
 
-		wuerfel.forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
+		wuerfel.getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
 
 		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
-
 		pnlWest.add(tabRand);
-
 		pnlWest.setPreferredSize(new Dimension(500, 1000));
-
-		butWeiter.addActionListener(e -> weiter());
 
 		pnlWest.add(butWeiter, BorderLayout.SOUTH);
 		this.add(pnlWest, BorderLayout.WEST);
 	}
 
+	// TODO
+	// private void empfangeSpielFeld(SpielfeldDaten spielfeld)
+	// {
+	// this.spielfeld = new SpielfeldUI(spiel.getFelder(), this);
+	// this.add(spielfeld);
+	// }
+
+	// TODO
+	// private void empfangeSpieler(SpielerDaten daten)
+	// {
+	// this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
+	// }
+
+	@Deprecated
+	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
+	{}
+
 	private void weiter()
 	{
-		if (spiel.kannWuerfeln(spieler))
+		WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
+		try
 		{
-			spiel.wuerfeln(spieler);
+			client.sende(aufruf);
+		}
+		catch (IOException ex)
+		{
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
 		}
 
-		if (spiel.kannWuerfelWeitergeben(spieler))
-		{
-			spiel.wuerfelWeitergeben(spieler);
-		}
+		// if (spiel.kannWuerfelWeitergeben(spieler))
+		// {
+		// spiel.wuerfelWeitergeben(spieler);
+		// }
 	}
 
 	private void loesche(Object obj)
@@ -139,7 +161,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
-	public Spieler getSpieler()
+	public SpielerDaten getSpieler()
 	{
 		return spieler;
 	}

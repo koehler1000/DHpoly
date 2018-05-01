@@ -6,17 +6,23 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import de.dhpoly.UIVerwalter;
+import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
+import de.dhpoly.oberflaeche.view.Fenster;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
 
 public class Main
 {
+	private Fenster fenster = new Fenster(new Bilderverwalter());
+
 	public static void main(String[] args) throws IOException
 	{
 		Main main = new Main();
@@ -27,8 +33,15 @@ public class Main
 	private void starteClient(String ipHost) throws IOException
 	{
 		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
+		new UIVerwalter(str);
+
 		NetzwerkClient client = new NetzwerkClientImpl();
-		client.sende(new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler"));
+
+		SpielerDaten spieler = new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler");
+		client.sende(spieler);
+
+		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
+		fenster.zeigeSpielansicht(ansicht, spieler.getName());
 	}
 
 	private String starteServer() throws IOException

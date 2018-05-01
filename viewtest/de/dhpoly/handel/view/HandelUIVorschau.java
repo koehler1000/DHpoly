@@ -37,7 +37,7 @@ public class HandelUIVorschau
 		s1.einzahlen(datensaetze);
 		s2.einzahlen(datensaetze);
 
-		Transaktion transaktion = new Transaktion(s1, s2);
+		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 
 		Spielansicht.zeige(new HandelUI(transaktion, Spielansicht.getSpielfeldAnsicht()));
 	}
