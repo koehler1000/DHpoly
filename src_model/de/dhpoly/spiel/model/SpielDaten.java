@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
 import de.dhpoly.einstellungen.model.Einstellungen;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class SpielDaten extends Datenobjekt
 {

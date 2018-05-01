@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
@@ -33,6 +32,7 @@ import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerComputer;
 import de.dhpoly.spieler.control.SpielerLokal;
+import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 

@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
-import de.dhpoly.datenobjekt.spieler.model.SpielerTyp;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerLokal extends SpielerImpl

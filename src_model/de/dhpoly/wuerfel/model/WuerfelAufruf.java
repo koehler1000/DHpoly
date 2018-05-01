@@ -1,7 +1,7 @@
 package de.dhpoly.wuerfel.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class WuerfelAufruf extends Datenobjekt
 {

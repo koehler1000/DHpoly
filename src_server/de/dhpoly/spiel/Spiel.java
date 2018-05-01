@@ -3,7 +3,6 @@ package de.dhpoly.spiel;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.datenobjekt.spieler.model.SpielerDaten;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
@@ -13,6 +12,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
 public interface Spiel

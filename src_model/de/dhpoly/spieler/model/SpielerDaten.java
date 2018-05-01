@@ -1,4 +1,4 @@
-package de.dhpoly.datenobjekt.spieler.model;
+package de.dhpoly.spieler.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 
