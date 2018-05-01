@@ -11,25 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
-import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Strasse;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
-import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.handel.view.HandelUI;
-import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.karte.model.RueckenKarte;
-import de.dhpoly.karte.model.WetterKarte;
 import de.dhpoly.karte.view.KarteUI;
-import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.nachricht.view.NachrichtUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.view.SpielerUebersichtUI;
@@ -51,7 +39,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private SpielfeldUI spielfeld;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
-	private Map<Class<? extends Datenobjekt>, Class<? extends Oberflaeche>> map = new HashMap<>();
 
 	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
 	{
@@ -127,11 +114,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
 	}
 
-	public void zeigeTransaktion(Transaktion transaktion)
-	{
-		zeigeObjekt(transaktion);
-	}
-
 	public void zeigeKarte(Karte karte)
 	{
 		hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
@@ -155,53 +137,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	public void zeigeStrasseInfo(Strasse feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
 		hinzu("Straße", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
-	}
-
-	public void zeigeObjekt(Datenobjekt objekt)
-	{
-		String fehlerText = "Keine Oberfläche für " + objekt.getClassName() + " implementiert.";
-		Fehler fehler = new Fehler(fehlerText, FehlerTyp.FEHLER_ALLE);
-		Oberflaeche oberflaeche = new FehlerUI(fehler, this);
-
-		if (objekt instanceof Nachricht)
-		{
-			oberflaeche = new NachrichtUI((Nachricht) objekt, this);
-		}
-		else if (objekt instanceof Transaktion)
-		{
-			oberflaeche = new HandelUI((Transaktion) objekt, this);
-		}
-		else if (objekt instanceof Fehler)
-		{
-			oberflaeche = new FehlerUI((Fehler) objekt, this);
-		}
-		else if (objekt instanceof BezahlKarte)
-		{
-			oberflaeche = new KarteUI((BezahlKarte) objekt, this);
-		}
-		else if (objekt instanceof RueckenKarte)
-		{
-			oberflaeche = new KarteUI((RueckenKarte) objekt, this);
-		}
-		else if (objekt instanceof WetterKarte)
-		{
-			oberflaeche = new KarteUI((WetterKarte) objekt, this);
-		}
-		else if (objekt instanceof StrasseKaufen)
-		{
-			oberflaeche = new StrasseKaufenUI((StrasseKaufen) objekt, this);
-		}
-		else if (objekt instanceof Strasse)
-		{
-			oberflaeche = new StrasseInfoUI((Strasse) objekt, this);
-			spielfeld.aktualisiere((Strasse) objekt);
-		}
-		else
-		{
-			spiel.verarbeiteFehler(fehler);
-		}
-
-		hinzu(objekt.getTitel(), objekt, oberflaeche);
 	}
 
 	public Spieler getSpieler()

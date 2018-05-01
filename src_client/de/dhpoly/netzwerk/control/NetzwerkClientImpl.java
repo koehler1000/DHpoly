@@ -54,6 +54,6 @@ public class NetzwerkClientImpl implements NetzwerkClient
 
 	private void empfange(Datenobjekt objekt)
 	{
-		interessenten.forEach(e -> e.zeigeObjekt(objekt));
+		interessenten.forEach(e -> objekt.anzeigen(e));
 	}
 }

@@ -108,7 +108,7 @@ public class SpielerLokal extends SpielerImpl
 	@Override
 	public void zeigeDatenobjekt(Datenobjekt objekt)
 	{
-		Optional.ofNullable(objekt).ifPresent(obj -> ui.ifPresent(e -> e.zeigeObjekt(obj)));
+		Optional.ofNullable(objekt).ifPresent(obj -> ui.ifPresent(e -> obj.anzeigen(e)));
 	}
 
 	@Override
