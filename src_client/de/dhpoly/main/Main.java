@@ -8,6 +8,12 @@ public class Main
 {
 	public static void main(String[] args)
 	{
+		new Main().starteServer();
 		new MainUI(new Fenster(new Bilderverwalter()));
+	}
+
+	private void starteServer()
+	{
+		// TODO Auto-generated method stub
 	}
 }

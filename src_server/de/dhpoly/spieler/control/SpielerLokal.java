@@ -1,5 +1,6 @@
 package de.dhpoly.spieler.control;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -134,5 +135,12 @@ public class SpielerLokal extends SpielerImpl
 	public SpielerDaten getDaten()
 	{
 		return daten;
+	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	{
+		// TODO Auto-generated method stub
+
 	}
 }

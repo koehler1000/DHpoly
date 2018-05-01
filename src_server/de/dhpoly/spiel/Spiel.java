@@ -49,6 +49,7 @@ public interface Spiel
 
 	void setFelder(List<Feld> felder);
 
+	@Deprecated
 	void setFenster(Fenster fenster);
 
 	boolean isAnimationen();

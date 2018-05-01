@@ -45,6 +45,7 @@ public class SpielImpl implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfelpaar wuerfelPaar;
 
+	@Deprecated
 	private Optional<Fenster> fenster;
 
 	private boolean animationen = true;

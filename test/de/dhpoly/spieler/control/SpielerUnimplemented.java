@@ -1,5 +1,6 @@
 package de.dhpoly.spieler.control;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
@@ -152,4 +154,8 @@ public class SpielerUnimplemented implements Spieler
 	{
 		return new SpielerDaten(SpielerTyp.LOKAL, "Typ von 'Unimplemented'");
 	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	{}
 }
