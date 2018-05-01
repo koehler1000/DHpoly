@@ -3,7 +3,7 @@ package de.dhpoly.einstellungen.view;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class EinstellungenUI extends Oberflaeche
+public class EinstellungenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
