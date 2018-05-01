@@ -7,15 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.control.SpielImpl;
-import de.dhpoly.spielfeld.model.Standardspielfeld;
-import observerpattern.Beobachter;
 
-public class MainUI extends JPanel implements Beobachter
+public class MainUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,20 +19,18 @@ public class MainUI extends JPanel implements Beobachter
 	private JTextArea txtNamePC;
 	private transient Spiel spiel;
 
-	public MainUI(Fenster fenster)
+	public MainUI(Fenster fenster, String ip)
 	{
 		this.setLayout(new GridLayout(3, 1));
 
-		Einstellungen einstellungen = new Einstellungen();
-
 		// TODO keine Serverobjekte erstellen!!!
-		spiel = new SpielImpl();
-		spiel.setFenster(fenster);
-		spiel.setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
+		// spiel = new SpielImpl();
+		// spiel.setFenster(fenster);
+		// spiel.setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 
-		this.add(getSpielerLokalVerwalterPanel(spiel));
-		this.add(getSpielerComputerVerwalterPanel(spiel));
-		this.add(getSpielVerwalterPanel(fenster, spiel));
+		// this.add(getSpielerLokalVerwalterPanel(spiel));
+		// this.add(getSpielerComputerVerwalterPanel(spiel));
+		// this.add(getSpielVerwalterPanel(fenster, spiel));
 
 		fenster.zeigeComponente(this, "Spielersteller");
 
@@ -61,41 +55,42 @@ public class MainUI extends JPanel implements Beobachter
 		return pnl;
 	}
 
-	private Component getSpielerComputerVerwalterPanel(Spiel spiel)
-	{
-		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout());
+	// private Component getSpielerComputerVerwalterPanel(Spiel spiel)
+	// {
+	// JPanel pnl = ElementFactory.erzeugePanel();
+	// pnl.setLayout(new GridLayout());
+	//
+	// pnl.add(ElementFactory.getTextFeldUeberschrift("Computerspieler"));
+	//
+	// txtNamePC = ElementFactory.getTextFeld("", true);
+	// pnl.add(txtNamePC);
+	//
+	// JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
+	// butHinzu.addActionListener(e ->
+	// spiel.fuegeComputerSpielerHinzu(txtNamePC.getText()));
+	// pnl.add(butHinzu);
+	//
+	// return pnl;
+	// }
+	//
+	// private Component getSpielerLokalVerwalterPanel(Spiel spiel)
+	// {
+	// JPanel pnl = ElementFactory.erzeugePanel();
+	// pnl.setLayout(new GridLayout());
+	//
+	// pnl.add(ElementFactory.getTextFeldUeberschrift("Lokale Spieler"));
+	//
+	// txtName = ElementFactory.getTextFeld("", true);
+	// pnl.add(txtName);
+	//
+	// JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
+	// butHinzu.addActionListener(e ->
+	// spiel.fuegeLokalenSpielerHinzu(txtName.getText()));
+	// pnl.add(butHinzu);
+	//
+	// return pnl;
+	// }
 
-		pnl.add(ElementFactory.getTextFeldUeberschrift("Computerspieler"));
-
-		txtNamePC = ElementFactory.getTextFeld("", true);
-		pnl.add(txtNamePC);
-
-		JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
-		butHinzu.addActionListener(e -> spiel.fuegeComputerSpielerHinzu(txtNamePC.getText()));
-		pnl.add(butHinzu);
-
-		return pnl;
-	}
-
-	private Component getSpielerLokalVerwalterPanel(Spiel spiel)
-	{
-		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout());
-
-		pnl.add(ElementFactory.getTextFeldUeberschrift("Lokale Spieler"));
-
-		txtName = ElementFactory.getTextFeld("", true);
-		pnl.add(txtName);
-
-		JButton butHinzu = ElementFactory.getButtonUeberschrift("+");
-		butHinzu.addActionListener(e -> spiel.fuegeLokalenSpielerHinzu(txtName.getText()));
-		pnl.add(butHinzu);
-
-		return pnl;
-	}
-
-	@Override
 	public void update()
 	{
 		String spielerName = "Spieler " + (spiel.getSpieler().size() + 1);

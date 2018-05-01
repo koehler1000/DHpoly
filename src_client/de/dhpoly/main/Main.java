@@ -6,12 +6,11 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.main.view.MainUI;
+import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
+import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
@@ -20,11 +19,19 @@ public class Main
 {
 	public static void main(String[] args) throws IOException
 	{
-		new Main().starteServer();
-		new MainUI(new Fenster(new Bilderverwalter()));
+		Main main = new Main();
+		String ip = main.starteServer();
+		main.starteClient(ip);
 	}
 
-	private void starteServer() throws IOException
+	private void starteClient(String ipHost) throws IOException
+	{
+		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
+		NetzwerkClient client = new NetzwerkClientImpl();
+		client.sende(new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler"));
+	}
+
+	private String starteServer() throws IOException
 	{
 		// TODO Server starten
 		NetzwerkServer server = new NetzwerkServerImpl();
@@ -40,5 +47,6 @@ public class Main
 		// TODO IP-Adresse verwenden
 		String ip = ""; // = server.getIP();
 		JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip + " zu spielen");
+		return ip;
 	}
 }
