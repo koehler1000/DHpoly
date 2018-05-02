@@ -33,7 +33,7 @@ public class Main
 	{
 		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
 
-		NetzwerkClient client = new NetzwerkClientImpl();
+		NetzwerkClient client = new NetzwerkClientImpl(str);
 
 		SpielerDaten spieler = new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler");
 		client.sende(spieler);
