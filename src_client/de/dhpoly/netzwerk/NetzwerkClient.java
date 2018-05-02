@@ -12,4 +12,6 @@ public interface NetzwerkClient
 	void sende(Datenobjekt objekt) throws IOException;
 
 	void addAnsicht(SpielfeldAnsicht ansicht);
+
+	void connectToServer() throws IOException;
 }

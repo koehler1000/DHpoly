@@ -9,7 +9,7 @@ public class NetzwerkClientVorschau
 	{
 		NetzwerkServer server = new NetzwerkServerImpl();
 		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
-		client.addAnsicht(null);
+		client.connectToServer();
 		server.sende("hallo");
 	}
 }

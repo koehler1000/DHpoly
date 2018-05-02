@@ -37,6 +37,18 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		Socket socket = new Socket(serverIp, 9898);
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
+		try
+		{
+			while (!in.ready())
+			{
+				System.out.println(in.readLine());
+			}
+			in.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Fehler!");
+		}
 	}
 
 	@Override
@@ -60,6 +72,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 
 	@Override
 	public void addAnsicht(SpielfeldAnsicht ansicht)
+
 	{
 		interessenten.add(ansicht);
 	}
