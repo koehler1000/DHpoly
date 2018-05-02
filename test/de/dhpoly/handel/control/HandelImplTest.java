@@ -61,7 +61,6 @@ public class HandelImplTest
 		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 		transaktion.addDatensatzFelderwechsel(feld);
 
-		
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
 		assertTrue(feld.getEigentuemer().isPresent());
