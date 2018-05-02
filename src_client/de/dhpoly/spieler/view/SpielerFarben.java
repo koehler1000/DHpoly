@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Optional;
 
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class SpielerFarben
 {
@@ -29,8 +30,13 @@ public class SpielerFarben
 		return getSpielerfarbe(spieler.getSpielerNr());
 	}
 
-	public static Color getSpielerfarbe(Optional<Spieler> spieler)
+	public static Color getSpielerfarbe(SpielerDaten spieler)
 	{
-		return spieler.isPresent() ? getSpielerfarbe(spieler.get()) : DEFAULTFARBE;
+		return getSpielerfarbe(spieler.getSpielerNr());
+	}
+
+	public static Color getSpielerfarbe(Optional<SpielerDaten> eigentuemer)
+	{
+		return eigentuemer.isPresent() ? getSpielerfarbe(eigentuemer.get()) : DEFAULTFARBE;
 	}
 }

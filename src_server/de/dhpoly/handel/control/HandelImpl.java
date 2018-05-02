@@ -70,11 +70,11 @@ public class HandelImpl implements Handel
 
 			if (strasse.gehoertSpieler(anbietender))
 			{
-				strasse.setEigentuemer(handelspartner);
+				strasse.setEigentuemer(handelspartner.getDaten());
 			}
 			else
 			{
-				strasse.setEigentuemer(anbietender);
+				strasse.setEigentuemer(anbietender.getDaten());
 			}
 		}
 	}

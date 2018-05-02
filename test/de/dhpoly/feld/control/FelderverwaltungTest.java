@@ -29,7 +29,7 @@ public class FelderverwaltungTest
 		FeldStrasse strasse = (FeldStrasse) felder.get(0);
 		strasse.kaufe(spieler);
 
-		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
+		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler.getDaten()));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ public class FelderverwaltungTest
 		FeldStrasse strasse = (FeldStrasse) felder.get(0);
 		strasse.kaufe(spieler);
 
-		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
+		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler.getDaten()));
 	}
 
 	public static Felderverwaltung getDefaultFelderverwaltung()

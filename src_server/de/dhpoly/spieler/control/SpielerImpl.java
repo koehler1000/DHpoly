@@ -204,4 +204,10 @@ public abstract class SpielerImpl implements Spieler
 	{
 		spiel.kaufe(strasse, this);
 	}
+
+	@Override
+	public Spiel getSpiel()
+	{
+		return spiel;
+	}
 }

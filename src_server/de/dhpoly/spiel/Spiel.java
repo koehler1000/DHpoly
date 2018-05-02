@@ -76,4 +76,6 @@ public interface Spiel
 	SpielerDaten getAktuellerSpielerDaten();
 
 	Optional<Spieler> getSpieler(SpielerDaten spielerDaten);
+
+	Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer);
 }

@@ -11,11 +11,10 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.SpielerFarben;
-import observerpattern.Beobachter;
 
-public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
+public class StrasseUI extends FeldUI // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -63,12 +62,11 @@ public class StrasseUI extends FeldUI implements Beobachter // NOSONAR
 		this.setBackground(farbe);
 	}
 
-	private void setBeschriftung(Optional<Spieler> spieler)
+	private void setBeschriftung(Optional<SpielerDaten> spieler)
 	{
 		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
 	}
 
-	@Override
 	public void update()
 	{
 		setFarbe(SpielerFarben.getSpielerfarbe(feld.getEigentuemer()));

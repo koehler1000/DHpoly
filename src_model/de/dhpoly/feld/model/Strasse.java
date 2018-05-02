@@ -8,13 +8,13 @@ import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class Strasse extends Datenobjekt
 {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 
-	// TODO Spieler > SpielerDaten
-	private Optional<Spieler> eigentuemer = Optional.empty();
+	private Optional<SpielerDaten> eigentuemer = Optional.empty();
 	private int[] miete = new int[6];
 
 	private int haueser = 0;
@@ -24,12 +24,12 @@ public class Strasse extends Datenobjekt
 	private String name;
 	private int kaufpreis;
 
-	public Optional<Spieler> getEigentuemer()
+	public Optional<SpielerDaten> getEigentuemer()
 	{
 		return eigentuemer;
 	}
 
-	public void setEigentuemer(Optional<Spieler> eigentuemer)
+	public void setEigentuemer(Optional<SpielerDaten> eigentuemer)
 	{
 		this.eigentuemer = eigentuemer;
 	}

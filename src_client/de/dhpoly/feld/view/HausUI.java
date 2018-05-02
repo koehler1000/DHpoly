@@ -9,9 +9,10 @@ import javax.swing.JTextArea;
 
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.ElementFactory;
-import observerpattern.Beobachter;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImplTest;
 
-public class HausUI extends JPanel implements Beobachter
+public class HausUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
@@ -36,26 +37,21 @@ public class HausUI extends JPanel implements Beobachter
 
 		pnlHaeuser.add(txtAktuelleMiete);
 
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+
 		butHausBauen = ElementFactory.getButtonUeberschrift("+");
-		butHausBauen.addActionListener(e -> strasse.hausBauen());
+		butHausBauen.addActionListener(e -> strasse.hausBauen(spiel));
 		pnlHaeuser.add(butHausBauen);
 
 		butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
-		butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen());
+		butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen(spiel));
 		pnlHaeuser.add(butHausVerkaufen);
 
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(pnlHaeuser, BorderLayout.CENTER);
-		update();
-	}
 
-	// wird immer aufgerufen, wenn sich etwas im Modell (also in der Straße) ändert.
-	// Darunter z.B. Häuser bauen, verkaufen, Eigentümerwechsel, ...
-	@Override
-	public void update()
-	{
 		butHausVerkaufen.setEnabled(strasse.getHaeuser() > 0);
-		butHausBauen.setEnabled(strasse.kannBebautWerden());
+		butHausBauen.setEnabled(strasse.kannBebautWerden(spiel));
 		txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() + System.lineSeparator() + "Häuser: "
 				+ strasse.getHaeuser());
 	}

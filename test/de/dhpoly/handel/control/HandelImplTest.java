@@ -43,8 +43,8 @@ public class HandelImplTest
 	{
 		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung();
 
-		s1 = SpielerImplTest.getDefaultSpieler();
-		s2 = SpielerImplTest.getDefaultSpieler();
+		s1 = SpielerImplTest.getDefaultSpieler(spiel);
+		s2 = SpielerImplTest.getDefaultSpieler(spiel);
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);
@@ -53,14 +53,19 @@ public class HandelImplTest
 		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(verwaltung, s1);
 		felder.add(feld);
 
+		feld.kaufe(s1, 0);
+		assertThat(feld.getEigentuemer().get(), Is.is(s1.getDaten()));
+
 		Handel handel = new HandelImpl();
 
 		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 		transaktion.addDatensatzFelderwechsel(feld);
+
+		
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
 		assertTrue(feld.getEigentuemer().isPresent());
-		assertThat(feld.getEigentuemer().get(), Is.is(s2));
+		assertThat(feld.getEigentuemer().get(), Is.is(s2.getDaten()));
 	}
 
 	@Test
@@ -90,7 +95,7 @@ public class HandelImplTest
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
 		assertTrue(feld.getEigentuemer().isPresent());
-		assertThat(feld.getEigentuemer().get(), Is.is(s1));
+		assertThat(feld.getEigentuemer().get(), Is.is(s1.getDaten()));
 	}
 
 	@Test
@@ -271,6 +276,13 @@ public class HandelImplTest
 		{
 			// TODO Auto-generated method stub
 
+		}
+
+		@Override
+		public Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer)
+		{
+			// TODO Auto-generated method stub
+			return null;
 		}
 	};
 }

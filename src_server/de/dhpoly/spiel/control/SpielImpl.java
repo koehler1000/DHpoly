@@ -467,7 +467,7 @@ public class SpielImpl implements Spiel
 		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
 		{
 			sp.auszahlen(strasse.getKaufpreis());
-			strasse.setEigentuemer(sp);
+			strasse.setEigentuemer(sp.getDaten());
 			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
 		}
 
@@ -511,5 +511,15 @@ public class SpielImpl implements Spiel
 	public Optional<Spieler> getSpieler(SpielerDaten spielerDaten)
 	{
 		return spieler.stream().findFirst().filter(s -> s.getDaten() == spielerDaten);
+	}
+
+	@Override
+	public Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer)
+	{
+		if (eigentuemer.isPresent())
+		{
+			return getSpieler(eigentuemer.get());
+		}
+		return Optional.empty();
 	}
 }

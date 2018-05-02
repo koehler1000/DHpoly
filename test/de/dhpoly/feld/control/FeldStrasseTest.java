@@ -13,8 +13,11 @@ import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.control.SpielerLokal;
 
 public class FeldStrasseTest
 {
@@ -33,7 +36,7 @@ public class FeldStrasseTest
 		strasse.kaufe(spieler);
 
 		assertThat(strasse.isKaufbar(), Is.is(false));
-		assertThat(strasse.getEigentuemer().get(), Is.is(spieler));
+		assertThat(strasse.getEigentuemer().get(), Is.is(spieler.getDaten()));
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
@@ -45,8 +48,14 @@ public class FeldStrasseTest
 
 		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
 				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
-		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
+
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		Spieler spieler = new SpielerLokal("Peter", spiel);
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, startbetrag));
+
 		strasse.kaufe(spieler);
+
+		spiel.fuegeSpielerHinzu(spieler);
 
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
 		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
@@ -71,7 +80,10 @@ public class FeldStrasseTest
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
-		strasse.hausBauen();
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		spiel.fuegeSpielerHinzu(spieler);
+
+		strasse.hausBauen(spiel);
 
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
 		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(0));
@@ -93,9 +105,12 @@ public class FeldStrasseTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		spiel.fuegeSpielerHinzu(spieler);
+
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
-		strasse.hausBauen();
+		strasse.hausBauen(spiel);
 
 		assertThat(strasse.getHaeuser(), Is.is(1));
 	}
@@ -118,7 +133,10 @@ public class FeldStrasseTest
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
-		strasse.hausBauen();
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		spiel.fuegeSpielerHinzu(spieler);
+
+		strasse.hausBauen(spiel);
 		strasse.hausZerstoeren();
 
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
@@ -144,8 +162,11 @@ public class FeldStrasseTest
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
-		strasse.hausBauen();
-		strasse.hausVerkaufen();
+		Spiel spiel = SpielImplTest.getDefaultSpiel();
+		spiel.fuegeSpielerHinzu(spieler);
+
+		strasse.hausBauen(spiel);
+		strasse.hausVerkaufen(spiel);
 
 		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
 		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(100));
@@ -181,7 +202,7 @@ public class FeldStrasseTest
 	{
 		FeldStrasse strasse = new FeldStrasse(verwaltung, 0, new int[1], new Einstellungen().getHauskosten(1), 1,
 				"Strasse");
-		strasse.setEigentuemer(s1);
+		strasse.setEigentuemer(s1.getDaten());
 		return strasse;
 	}
 
