@@ -16,7 +16,6 @@ public class HausUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient FeldStrasse strasse;
 	private JTextArea txtName;
 	private JTextArea txtAktuelleMiete;
 
@@ -26,7 +25,6 @@ public class HausUI extends JPanel
 
 	public HausUI(FeldStrasse strasse)
 	{
-		this.strasse = strasse;
 		ElementFactory.bearbeitePanel(this);
 
 		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getBeschriftung());
