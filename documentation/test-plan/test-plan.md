@@ -10,15 +10,23 @@ It describes the approach to testing the software, and is the top-level plan gen
 
 This Test Plan for the DHPoly supports the following objectives:
 
-• Identifies the items that should be targeted by the tests.
+- Identifies the items that should be targeted by the tests.
 
-• Identifies the motivation for and ideas behind the test areas to be covered.
 
-• Outlines the testing approach that will be used.
+-  Identifies the motivation for and ideas behind the test areas to be covered.
 
-• Identifies the required resources and provides an estimate of the test efforts.
 
-• Lists the deliverable elements of the test project
+
+- Outlines the testing approach that will be used.
+
+
+
+- Identifies the required resources and provides an estimate of the test efforts.
+
+
+
+- Lists the deliverable elements of the test project
+
 
 ### 1.2 Scope
 
@@ -80,41 +88,84 @@ Items for testing:
 
 ## 4. Outline of Planned Tests
 
+In this section we will provide a high level overview of our testing.
+
 ### 4.1 Outline of Test Inclusions
+
+The major sector will be game logic.
 
 ### 4.2 Outline of other candidates for potential inclusion
 
+We might possibly make use of testing regarding the User Interface.
+
 ### 4.3 Outline of Test Exclusions 
+
+Server and client communication tests are currently not planed.
 
 ## 5. Test Approach
 
+Our test approach is thinking about the most important functionalities and testing them by implementing tests.
+
 ### 5.1 Initial Test-Idea Catalogs and other reference sources
+
+to be done
 
 ### 5.2 Testing and Techniques and Types
 
 #### 5.2.1 Data and Database Integrity Testing
 
+n/a
+
 #### 5.2.2 Function testing
+
+|                        | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| Technique Objective    | Client and server communication                 |
+| Technique              | Use-Case Scenario                               |
+| Oracles                | Using JUnit Tests                               |
+| Required Tools         | Eclipse with JUnit, TeamCity, SonarLint, GitHub |
+| Success Criteria       | positive tests                                  |
+| Special Considerations | n/a                                             |
 
 #### 5.2.3 Business Cycle Testing
 
+n/a
+
 #### 5.2.4 User Interface Testing
+
+n/a
 
 #### 5.2.5 Performance
 
+n/a
+
 #### 5.2.6 Load Testing
+
+n/a
 
 #### 5.2.7 Stress Testing
 
+n/a
+
 #### 5.2.8 Volume Testing
+
+n/a
 
 #### 5.2.9 Security and Access Control Testing
 
+n/a
+
 #### 5.2.10 Failover and Recovery Testing
+
+n/a
 
 #### 5.2.11 Configuration Testing
 
+n/a
+
 #### 5.2.12 Installation testing
+
+n/a
 
 ## 6. Entry and Exit Criteria
 
@@ -122,39 +173,75 @@ Items for testing:
 
 #### 6.1.1 Test Plan Entry Criteria
 
+We don't have any entry criteria for testing. The only mandatory condition is that the code can be compiled. We test at any given time.
+
 #### 6.1.2 Test Plan Exit Criteria
+
+The exit criteria is full filled once a test has finished or manually stopped.
 
 #### 6.1.3 Suspension and resumption criteria
 
+Our suspension criteria is that we interrupt a test as soon as a certain time limit is exceeded.
+
 ### 6.2 Test Cycles
+
+to be done
 
 #### 6.1.1 Test Cycle Entry Criteria
 
+to be done
+
 #### 6.2.2 Test Cycle Exit Criteria
+
+The criteria is full filled as soon as all test have ended successfully.
 
 #### 6.2.3 Test Cycle abnormal termination
 
+to be done
+
 ## 7. Deliverables
+
+to be done
 
 ### 7.1 Test Evaluation Summaries
 
+to be done
+
 ### 7.2 Reporting on Test Coverage
+
+to be done
 
 ### 7.3 Perceived Quality Reports
 
+to be done
+
 ### 7.4 Incident Logs and Change Requests
+
+to be done
 
 ### 7.5 Smoke Test Suite and supporting Test Scripts
 
+to be done
+
 ### 7.6 Additional work products
+
+to be done
 
 #### 7.6.1 Detailed Test Results
 
+to be done
+
 #### 7.6.2 Additional automated functional Test Scripts
+
+to be done
 
 #### 7.6.3 Test Guidelines
 
+to be done
+
 #### 7.6.4 Traceability Matrices
+
+to be done
 
 ## 8. Testing Workflow
 
