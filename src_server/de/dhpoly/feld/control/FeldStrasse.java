@@ -246,6 +246,6 @@ public class FeldStrasse extends FeldImpl
 	@Override
 	public boolean gehoertSpieler(SpielerDaten spielerDaten)
 	{
-		return (strasse.getEigentuemer().isPresent() && strasse.getEigentuemer().get() == spielerDaten);
+		return strasse.getEigentuemer().filter(e -> e == spielerDaten).isPresent();
 	}
 }
