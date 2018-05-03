@@ -28,7 +28,6 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	public NetzwerkServerImpl() throws IOException
 	{
-		int clientNumber = 0;
 		listener = new ServerSocket(9898);
 		socket = listener.accept();
 		ausgabe = new PrintWriter(socket.getOutputStream(), true);

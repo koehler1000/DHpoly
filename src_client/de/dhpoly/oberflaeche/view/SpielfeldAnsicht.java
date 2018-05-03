@@ -23,11 +23,9 @@ import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.KontoauszugUI;
-import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.model.Wuerfel;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
@@ -41,10 +39,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private JTabbedPane tabRand = new JTabbedPane();
 	private SpielerDaten spieler;
 
-	private SpielDaten spiel;
-	private NetzwerkClient client;
-
-	private SpielfeldUI spielfeld;
+	private transient NetzwerkClient client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
