@@ -33,7 +33,7 @@ public class TelegamBenachrichtigerTest
 
 	@Test
 	@Ignore
-	public void spielEmpfangen() throws Exception
+	public void spielEmpfangen() throws Exception // NOSONAR
 	{
 		Datenobjekt fehler = new Fehler("Fehler aus Junit. Neuer fehler", FehlerTyp.FEHLER_ENTWICKLER);
 		Spiel spiel = new SpielImpl();
