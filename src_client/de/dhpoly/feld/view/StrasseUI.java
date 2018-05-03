@@ -67,6 +67,7 @@ public class StrasseUI extends FeldUI // NOSONAR
 		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
 	}
 
+	@Override
 	public void update()
 	{
 		setFarbe(SpielerFarben.getSpielerfarbe(feld.getEigentuemer()));
