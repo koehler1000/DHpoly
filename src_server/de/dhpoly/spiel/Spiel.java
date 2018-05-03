@@ -10,12 +10,13 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.logik.Logikverwalter;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
-public interface Spiel
+public interface Spiel extends Logikverwalter
 {
 	Spieler getAktuellerSpieler();
 
@@ -60,8 +61,6 @@ public interface Spiel
 	boolean kannWuerfelWeitergeben(Spieler spieler);
 
 	void kaufe(StrasseKaufen strasse, Spieler spieler);
-
-	void empfange(Datenobjekt objekt);
 
 	Wetter getWetter();
 
