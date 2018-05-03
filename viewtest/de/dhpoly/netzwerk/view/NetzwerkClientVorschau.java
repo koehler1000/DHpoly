@@ -1,5 +1,7 @@
 package de.dhpoly.netzwerk.view;
 
+import java.io.IOException;
+
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
@@ -14,7 +16,26 @@ public class NetzwerkClientVorschau
 {
 	public static void main(String[] args) throws Exception
 	{
-		NetzwerkServer server = new NetzwerkServerImpl();
+		NetzwerkServerImpl server = new NetzwerkServerImpl();
+		Thread x = new Thread(new Runnable()
+		{
+
+			@Override
+			public void run()
+			{
+				try
+				{
+					server.run();
+				}
+				catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		});
+		x.start();
 		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
 		client.connectToServer();
 
@@ -24,6 +45,5 @@ public class NetzwerkClientVorschau
 		fenster.zeigeSpielansicht(ansicht, "NetzwerkClientVorschau");
 
 		client.addAnsicht(ansicht);
-		server.sende("hallo");
 	}
 }

@@ -41,6 +41,8 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		{
 			while (!in.ready())
 			{
+				String nachricht = in.readLine();
+				if(nachricht != null && nachricht != "")
 				System.out.println(in.readLine());
 			}
 			in.close();
