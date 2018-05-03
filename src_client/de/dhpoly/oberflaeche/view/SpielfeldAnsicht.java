@@ -60,7 +60,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		butWeiter.addActionListener(e -> weiter());
 	}
 
-	private void empfangeWuerfel(WuerfelDaten wuerfel)
+	public void empfangeWuerfel(WuerfelDaten wuerfel)
 	{
 		JPanel pnlWest = ElementFactory.erzeugePanel();
 

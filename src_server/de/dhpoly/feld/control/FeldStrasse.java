@@ -43,7 +43,7 @@ public class FeldStrasse extends FeldImpl
 	{
 		if (isVerkauft())
 		{
-			zahle(spieler.getDaten(), wetter, spieler.getSpiel());
+			zahle(spieler.getDaten(), wetter);
 		}
 		else
 		{
@@ -76,7 +76,7 @@ public class FeldStrasse extends FeldImpl
 		}
 	}
 
-	private void zahle(SpielerDaten spielerDaten, Wetter wetter, Spiel spiel)
+	private void zahle(SpielerDaten spielerDaten, Wetter wetter)
 	{
 		strasse.getEigentuemer()
 				.ifPresent(besitzer -> einzahlenFallsKeineHypothek(spielerDaten, besitzer, getMietDatensatz(wetter)));
