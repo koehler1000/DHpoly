@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
-import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -17,23 +16,17 @@ public class NetzwerkClientVorschau
 	public static void main(String[] args) throws Exception
 	{
 		NetzwerkServerImpl server = new NetzwerkServerImpl();
-		Thread x = new Thread(new Runnable()
-		{
-
-			@Override
-			public void run()
+		Thread x = new Thread(() -> {
+			try
 			{
-				try
-				{
-					server.run();
-				}
-				catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
+				server.run();
 			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		});
 		x.start();
 		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
