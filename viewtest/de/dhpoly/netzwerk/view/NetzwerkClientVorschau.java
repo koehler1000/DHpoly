@@ -1,6 +1,8 @@
-package de.dhpoly.netzwerk;
+package de.dhpoly.netzwerk.view;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.netzwerk.NetzwerkClient;
+import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
