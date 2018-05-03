@@ -54,6 +54,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 			oos.writeObject(obj);
 		}
 		// TODO sende("");
+		empfange("Nachricht wurde gesendet");
 	}
 
 	@Override
