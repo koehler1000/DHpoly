@@ -68,6 +68,7 @@ public interface Spieler extends Logik
 
 	void setWuerfelWeitergabeMoeglich(boolean value);
 
+	@Deprecated
 	void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel);
 
 	void kaufe(StrasseKaufen strasse);

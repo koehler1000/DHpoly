@@ -18,18 +18,10 @@ import de.dhpoly.wuerfel.model.Wuerfel;
 public class SpielerLokal extends SpielerImpl
 {
 	private Optional<SpielfeldAnsicht> ui = Optional.empty();
-	private SpielerDaten daten;
 
 	public SpielerLokal(String name, Spiel spiel)
 	{
-		super(name, spiel);
-		daten = new SpielerDaten(SpielerTyp.LOKAL, name);
-	}
-
-	@Override
-	public int getSpielerNr()
-	{
-		return spielerNr;
+		super(new SpielerDaten(SpielerTyp.LOKAL, name), spiel);
 	}
 
 	@Override
@@ -95,12 +87,6 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void setSpielerNr(int nr)
-	{
-		spielerNr = nr;
-	}
-
-	@Override
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{
 		ui = Optional.of(ansicht);
@@ -128,13 +114,7 @@ public class SpielerLokal extends SpielerImpl
 	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
 	{
 		setSpielfeldAnsicht(new SpielfeldAnsicht(spiel, wuerfel, this));
-		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, name)));
-	}
-
-	@Override
-	public SpielerDaten getDaten()
-	{
-		return daten;
+		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, getName())));
 	}
 
 	@Override

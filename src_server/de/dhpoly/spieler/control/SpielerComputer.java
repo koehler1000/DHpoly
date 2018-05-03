@@ -15,12 +15,9 @@ import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerComputer extends SpielerImpl
 {
-	private SpielerDaten daten;
-
 	public SpielerComputer(String name, Spiel spiel)
 	{
-		super(name, spiel);
-		daten = new SpielerDaten(SpielerTyp.COMPUTER, name);
+		super(new SpielerDaten(SpielerTyp.COMPUTER, name), spiel);
 	}
 
 	@Override

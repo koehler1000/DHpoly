@@ -13,28 +13,29 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public abstract class SpielerImpl implements Spieler
 {
 	int feldNr = 0;
-	String name;
 	Spiel spiel;
 	boolean aktuellerSpieler = false;
-	int spielerNr;
 	boolean verloren = false;
+
+	SpielerDaten daten;
 
 	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
 
-	public SpielerImpl(String name, Spiel spiel)
+	public SpielerImpl(SpielerDaten daten, Spiel spiel)
 	{
-		this.name = name;
+		this.daten = daten;
 		this.spiel = spiel;
 	}
 
 	@Override
 	public int getSpielerNr()
 	{
-		return spielerNr;
+		return daten.getSpielerNr();
 	}
 
 	public int getFeldNr()
@@ -44,7 +45,7 @@ public abstract class SpielerImpl implements Spieler
 
 	public String getName()
 	{
-		return name;
+		return daten.getName();
 	}
 
 	public void setFeldNr(int feldNrSoll)
@@ -176,7 +177,7 @@ public abstract class SpielerImpl implements Spieler
 	@Override
 	public void setSpielerNr(int nr)
 	{
-		spielerNr = nr;
+		daten.setSpielerNr(nr);
 	}
 
 	public boolean hatVerloren()
@@ -209,5 +210,11 @@ public abstract class SpielerImpl implements Spieler
 	public Spiel getSpiel()
 	{
 		return spiel;
+	}
+
+	@Override
+	public SpielerDaten getDaten()
+	{
+		return daten;
 	}
 }

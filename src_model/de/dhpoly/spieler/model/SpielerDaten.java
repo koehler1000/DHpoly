@@ -7,7 +7,7 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.view.SpielerUI;
 
 public class SpielerDaten extends Datenobjekt
 {
@@ -16,6 +16,7 @@ public class SpielerDaten extends Datenobjekt
 	private SpielerTyp typ;
 	private String name;
 	private List<RessourcenDatensatz> kasse = new ArrayList<>();
+	private int spielerNr;
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
@@ -43,20 +44,29 @@ public class SpielerDaten extends Datenobjekt
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return SpielerUI.class;
 	}
 
 	public int getRessourcenWert(Ressource ressource)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int wert = 0;
+		for (RessourcenDatensatz ressourcenDatensatz : kasse)
+		{
+			if (ressourcenDatensatz.getRessource() == ressource)
+			{
+				wert += ressourcenDatensatz.getAnzahl();
+			}
+		}
+		return wert;
 	}
 
-	@Deprecated
-	public Spieler getSpielerNr()
+	public int getSpielerNr()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return spielerNr;
+	}
+
+	public void setSpielerNr(int spielerNr)
+	{
+		this.spielerNr = spielerNr;
 	}
 }
