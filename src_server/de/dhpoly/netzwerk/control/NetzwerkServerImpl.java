@@ -24,9 +24,14 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	private Spiel spiel;
 
-	public NetzwerkServerImpl()
+	public NetzwerkServerImpl() throws IOException
 	{
 		spiel = new SpielImpl();
+		listener = new ServerSocket(9898);
+		socket = listener.accept();
+		ausgabe = new PrintWriter(socket.getOutputStream(), true);
+		eingabe = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		ausgabe.print("test");
 	}
 
 	public void run() throws IOException
