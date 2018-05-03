@@ -189,12 +189,6 @@ public abstract class SpielerImpl implements Spieler
 	}
 
 	@Override
-	public Spiel getSpiel()
-	{
-		return spiel;
-	}
-
-	@Override
 	public SpielerDaten getDaten()
 	{
 		return daten;

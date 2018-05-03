@@ -10,7 +10,6 @@ import de.dhpoly.logik.Logik;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
@@ -68,7 +67,4 @@ public interface Spieler extends Logik
 	void kaufe(StrasseKaufen strasse);
 
 	SpielerDaten getDaten();
-
-	@Deprecated
-	Spiel getSpiel();
 }
