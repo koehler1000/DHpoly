@@ -1,8 +1,12 @@
 package de.dhpoly.spieler.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.Spieler;
 
 public class SpielerDaten extends Datenobjekt
@@ -11,6 +15,7 @@ public class SpielerDaten extends Datenobjekt
 
 	private SpielerTyp typ;
 	private String name;
+	private List<RessourcenDatensatz> kasse = new ArrayList<>();
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
@@ -48,6 +53,7 @@ public class SpielerDaten extends Datenobjekt
 		return 0;
 	}
 
+	@Deprecated
 	public Spieler getSpielerNr()
 	{
 		// TODO Auto-generated method stub
