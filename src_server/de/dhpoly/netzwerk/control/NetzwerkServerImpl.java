@@ -26,10 +26,6 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	private ServerSocket listener;
 	private Socket socket;
 
-	public NetzwerkServerImpl()
-	{
-	}
-
 	public void run() throws IOException
 	{
 		listener = new ServerSocket(9898);
