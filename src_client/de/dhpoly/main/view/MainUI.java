@@ -1,13 +1,10 @@
 package de.dhpoly.main.view;
 
-import java.awt.Component;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.Spiel;
 
@@ -37,23 +34,23 @@ public class MainUI extends JPanel
 		update();
 	}
 
-	private Component getSpielVerwalterPanel(Fenster fenster, Spiel spiel)
-	{
-		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout());
-
-		pnl.add(ElementFactory.getTextFeldUeberschrift("Spiel verwalten"));
-		pnl.add(ElementFactory.getTextFeldUeberschrift(""));
-
-		JButton butStart = ElementFactory.getButtonUeberschrift("Spiel starten");
-		butStart.addActionListener(e -> {
-			spiel.starteSpiel();
-			fenster.loescheKomponente(this);
-		});
-		pnl.add(butStart);
-
-		return pnl;
-	}
+	// private Component getSpielVerwalterPanel(Fenster fenster, Spiel spiel)
+	// {
+	// JPanel pnl = ElementFactory.erzeugePanel();
+	// pnl.setLayout(new GridLayout());
+	//
+	// pnl.add(ElementFactory.getTextFeldUeberschrift("Spiel verwalten"));
+	// pnl.add(ElementFactory.getTextFeldUeberschrift(""));
+	//
+	// JButton butStart = ElementFactory.getButtonUeberschrift("Spiel starten");
+	// butStart.addActionListener(e -> {
+	// spiel.starteSpiel();
+	// fenster.loescheKomponente(this);
+	// });
+	// pnl.add(butStart);
+	//
+	// return pnl;
+	// }
 
 	// private Component getSpielerComputerVerwalterPanel(Spiel spiel)
 	// {
