@@ -24,6 +24,7 @@ import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.karte.model.WetterKarte;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
+import de.dhpoly.nachricht.control.NachrichtVerwalter;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
@@ -60,6 +61,7 @@ public class SpielImpl implements Spiel
 
 		map.put(Fehler.class, TelegamBenachrichtiger.class);
 		map.put(Transaktion.class, Handel.class);
+		map.put(Nachricht.class, NachrichtVerwalter.class);
 	}
 
 	@Override
@@ -434,7 +436,10 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			map.get(objekt.getClass()).newInstance().verarbeite(objekt, this);
+			if (map.containsKey(objekt.getClass()))
+			{
+				map.get(objekt.getClass()).newInstance().verarbeite(objekt, this);
+			}
 		}
 		catch (IOException | InstantiationException | IllegalAccessException ex)
 		{
