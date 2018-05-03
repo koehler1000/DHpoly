@@ -13,6 +13,6 @@ public class NachrichtVerwalter implements Logik
 	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
 	{
 		Nachricht nachricht = (Nachricht) objekt;
-		System.out.println(nachricht.getNachricht());
+		System.out.println("Server empfangen: " + nachricht.getNachricht());
 	}
 }
