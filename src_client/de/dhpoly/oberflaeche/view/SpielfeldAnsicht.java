@@ -51,6 +51,8 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		tabRand = ElementFactory.getTabbedPane();
 
 		butWeiter.addActionListener(e -> weiter());
+
+		client.addAnsicht(this);
 	}
 
 	public void empfangeWuerfel(WuerfelDaten wuerfel)
