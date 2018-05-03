@@ -6,8 +6,6 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import de.dhpoly.handel.Handel;
-import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -19,8 +17,6 @@ import observerpattern.Beobachter;
 public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
-
-	private transient Handel handel = new HandelImpl();
 
 	private Transaktion transaktion;
 
