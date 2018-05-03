@@ -1,10 +1,8 @@
 package de.dhpoly.netzwerk.control;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -58,14 +56,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	@Override
 	public void sende(Datenobjekt obj) throws IOException
 	{
-		try (FileOutputStream fos = new FileOutputStream("dummy.ser");
-				ObjectOutputStream oos = new ObjectOutputStream(fos))
-		{
-			oos.writeObject(obj);
-		}
-
-		// TODO senden
-
+		sende(Serialisierer.toString(obj));
 	}
 
 	@Override

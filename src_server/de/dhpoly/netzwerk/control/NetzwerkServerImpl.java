@@ -1,10 +1,8 @@
 package de.dhpoly.netzwerk.control;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Inet4Address;
 import java.net.ServerSocket;
@@ -53,13 +51,11 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	@Override
 	public void sende(Datenobjekt obj) throws IOException
 	{
-		try (FileOutputStream fos = new FileOutputStream("dummy.ser");
-				ObjectOutputStream oos = new ObjectOutputStream(fos))
+		if (obj != null)
 		{
-			oos.writeObject(obj);
+			sende(Serialisierer.toString(obj));
+			empfange("Nachricht wurde gesendet");
 		}
-		// TODO sende("");
-		empfange("Nachricht wurde gesendet");
 	}
 
 	@Override
