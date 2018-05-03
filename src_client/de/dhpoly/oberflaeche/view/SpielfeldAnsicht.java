@@ -76,28 +76,17 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		this.add(pnlWest, BorderLayout.WEST);
 	}
 
-	// TODO
-	// private void empfangeSpielFeld(SpielfeldDaten spielfeld)
-	// {
-	// this.spielfeld = new SpielfeldUI(spiel.getFelder(), this);
-	// this.add(spielfeld);
-	// }
-
-	// TODO
-	// private void empfangeSpieler(SpielerDaten daten)
-	// {
-	// this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
-	// }
-
 	private void weiter()
 	{
-		WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
-		sendeAnServer(aufruf);
-
-		// if (spiel.kannWuerfelWeitergeben(spieler))
-		// {
-		// spiel.wuerfelWeitergeben(spieler);
-		// }
+		if (tabRand.getTabCount() > 0)
+		{
+			tabRand.remove(tabRand.getSelectedIndex());
+		}
+		else
+		{
+			WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
+			sendeAnServer(aufruf);
+		}
 	}
 
 	public void sendeAnServer(Datenobjekt objekt)
