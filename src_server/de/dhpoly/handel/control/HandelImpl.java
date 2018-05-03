@@ -14,6 +14,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerDaten;
 
 public class HandelImpl implements Handel
 {
@@ -33,7 +34,8 @@ public class HandelImpl implements Handel
 			spiel.getSpieler(transaktion.getHandelspartner()).ifPresent(handelspartner -> {
 
 				// Felder Eigentum übertragen
-				eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender, handelspartner);
+				eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender.getDaten(),
+						handelspartner.getDaten());
 
 				for (Ressource res : Ressource.values())
 				{
@@ -54,15 +56,16 @@ public class HandelImpl implements Handel
 		});
 	}
 
-	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler anbietender, Spieler handelspartner)
+	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, SpielerDaten spielerDaten,
+			SpielerDaten spielerDaten2)
 	{
 		for (Feld feld : felderEigentumswechsel)
 		{
-			eigentumUebertragen(feld, anbietender, handelspartner);
+			eigentumUebertragen(feld, spielerDaten, spielerDaten2);
 		}
 	}
 
-	private void eigentumUebertragen(Feld feld, Spieler anbietender, Spieler handelspartner)
+	private void eigentumUebertragen(Feld feld, SpielerDaten anbietender, SpielerDaten handelspartner)
 	{
 		if (feld instanceof FeldStrasse)
 		{
@@ -70,11 +73,11 @@ public class HandelImpl implements Handel
 
 			if (strasse.gehoertSpieler(anbietender))
 			{
-				strasse.setEigentuemer(handelspartner.getDaten());
+				strasse.setEigentuemer(handelspartner);
 			}
 			else
 			{
-				strasse.setEigentuemer(anbietender.getDaten());
+				strasse.setEigentuemer(anbietender);
 			}
 		}
 	}
