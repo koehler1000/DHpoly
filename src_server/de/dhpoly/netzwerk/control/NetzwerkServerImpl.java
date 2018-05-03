@@ -40,7 +40,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		ausgabe.print(content);
 	}
 
-	public String empfangen() throws Exception
+	public String empfangen() throws IOException
 	{
 		return eingabe.readLine();
 	}
