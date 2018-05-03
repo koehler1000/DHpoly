@@ -84,4 +84,10 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	{
 		return Inet4Address.getLocalHost().getHostAddress();
 	}
+
+	@Override
+	public void verbindungAbbauen() throws IOException
+	{
+		socket.close();
+	}
 }

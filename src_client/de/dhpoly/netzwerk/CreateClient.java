@@ -12,18 +12,22 @@ public class CreateClient
 	private PrintWriter out;
 	private String serverIp;
 
-	public CreateClient(String serverIp){
+	@Deprecated
+	public CreateClient(String serverIp)
+	{
 		this.serverIp = serverIp;
 	}
-	
-	public void senden(String content){
+
+	public void senden(String content)
+	{
 		out.println(content);
 	}
-	
-	public String empfangen() throws IOException{
+
+	public String empfangen() throws IOException
+	{
 		return in.readLine();
 	}
-	
+
 	public void connectToServer() throws IOException
 	{
 		Socket socket = new Socket(serverIp, 9898);

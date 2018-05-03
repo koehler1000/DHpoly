@@ -16,7 +16,7 @@ public class NetzwerkClientVorschau
 	{
 		NetzwerkServer server = new NetzwerkServerImpl();
 		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
-		client.connectToServer();
+		client.verbindungAufbauen();
 
 		Fenster fenster = new Fenster(new Bilderverwalter());
 		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(new SpielerDaten(SpielerTyp.NETZWERK, "Netzwerkspieler"),

@@ -15,4 +15,6 @@ public interface NetzwerkServer
 	void addInteressent(Spiel spiel);
 
 	String getIp() throws UnknownHostException;
+
+	void verbindungAbbauen() throws IOException;
 }
