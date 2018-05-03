@@ -1,20 +1,24 @@
 package de.dhpoly.oberflaeche.view;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 
 public abstract class Oberflaeche extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	protected transient Optional<SpielfeldAnsicht> ansicht;
+	private Optional<NetzwerkClient> client;
 
 	public Oberflaeche(SpielfeldAnsicht ansicht)
 	{
+		this.client = Optional.empty(); // TODO
 		this.ansicht = Optional.ofNullable(ansicht);
 		ElementFactory.bearbeitePanel(this);
 	}
@@ -43,6 +47,18 @@ public abstract class Oberflaeche extends JPanel
 
 	public void sendeAnServer(Datenobjekt antwort)
 	{
-		// TODO senden
+		client.ifPresent(c -> sendeAnServer(c, antwort));
+	}
+
+	private void sendeAnServer(NetzwerkClient c, Datenobjekt antwort)
+	{
+		try
+		{
+			c.sende(antwort);
+		}
+		catch (IOException ex)
+		{
+			// TODO Fehler abfangen
+		}
 	}
 }
