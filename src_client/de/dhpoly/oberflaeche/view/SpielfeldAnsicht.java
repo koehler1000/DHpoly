@@ -22,11 +22,9 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.KontoauszugUI;
-import de.dhpoly.wuerfel.model.Wuerfel;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 import de.dhpoly.wuerfel.view.WuerfelUI;
@@ -84,10 +82,6 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	// {
 	// this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
 	// }
-
-	@Deprecated
-	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
-	{}
 
 	private void weiter()
 	{
