@@ -69,4 +69,32 @@ public class SpielerDaten extends Datenobjekt
 	{
 		this.spielerNr = spielerNr;
 	}
+
+	public void einzahlen(List<RessourcenDatensatz> datensaetze)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
+		{
+			einzahlen(ressourcenDatensatz);
+		}
+	}
+
+	public void auszahlen(List<RessourcenDatensatz> datensaetze)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
+		{
+			auszahlen(ressourcenDatensatz);
+		}
+	}
+
+	public void einzahlen(RessourcenDatensatz datensatz)
+	{
+		kasse.add(datensatz);
+	}
+
+	public void auszahlen(RessourcenDatensatz datensatz)
+	{
+		RessourcenDatensatz satz = new RessourcenDatensatz(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
+				datensatz.getBeschreibung());
+		kasse.add(satz);
+	}
 }

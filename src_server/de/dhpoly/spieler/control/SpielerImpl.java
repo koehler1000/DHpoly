@@ -73,15 +73,13 @@ public abstract class SpielerImpl implements Spieler
 	@Override
 	public void einzahlen(RessourcenDatensatz datensatz)
 	{
-		verlauf.add(datensatz);
+		daten.einzahlen(datensatz);
 	}
 
 	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{
-		RessourcenDatensatz satz = new RessourcenDatensatz(datensatz.getRessource(), 0 - datensatz.getAnzahl(),
-				datensatz.getBeschreibung());
-		verlauf.add(satz);
+		daten.auszahlen(datensatz);
 	}
 
 	@Override
@@ -92,33 +90,19 @@ public abstract class SpielerImpl implements Spieler
 
 	public int getRessourcenWerte(Ressource ressource)
 	{
-		int i = 0;
-		for (RessourcenDatensatz ressourcenDatensatz : verlauf)
-		{
-			if (ressourcenDatensatz.getRessource() == ressource)
-			{
-				i += ressourcenDatensatz.getAnzahl();
-			}
-		}
-		return i;
+		return daten.getRessourcenWert(ressource);
 	}
 
 	@Override
 	public void einzahlen(List<RessourcenDatensatz> datensaetze)
 	{
-		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
-		{
-			einzahlen(ressourcenDatensatz);
-		}
+		daten.einzahlen(datensaetze);
 	}
 
 	@Override
 	public void auszahlen(List<RessourcenDatensatz> datensaetze)
 	{
-		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
-		{
-			auszahlen(ressourcenDatensatz);
-		}
+		daten.auszahlen(datensaetze);
 	}
 
 	@Override
