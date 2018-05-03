@@ -7,13 +7,11 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
-import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerLokal extends SpielerImpl
 {
@@ -108,13 +106,6 @@ public class SpielerLokal extends SpielerImpl
 	public void setWuerfelWeitergabeMoeglich(boolean value)
 	{
 		ui.ifPresent(e -> e.wuerfelWeitergabeErmoeglichen(value));
-	}
-
-	@Override
-	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
-	{
-		setSpielfeldAnsicht(new SpielfeldAnsicht(spiel, wuerfel, this));
-		fenster.ifPresent(e -> ui.ifPresent(u -> e.zeigeSpielansicht(u, getName())));
 	}
 
 	@Override

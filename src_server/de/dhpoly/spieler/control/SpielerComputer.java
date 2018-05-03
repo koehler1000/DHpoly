@@ -1,17 +1,13 @@
 package de.dhpoly.spieler.control;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
-import de.dhpoly.wuerfel.model.Wuerfel;
 
 public class SpielerComputer extends SpielerImpl
 {
@@ -54,12 +50,6 @@ public class SpielerComputer extends SpielerImpl
 		{
 			spiel.wuerfelWeitergeben(this);
 		}
-	}
-
-	@Override
-	public void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel)
-	{
-		// ignorieren
 	}
 
 	@Override

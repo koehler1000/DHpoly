@@ -23,7 +23,6 @@ import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -144,19 +143,11 @@ public class HandelImplTest
 		{}
 
 		@Override
-		public void setFenster(Fenster fenster)
-		{}
-
-		@Override
 		public void setFelder(List<Feld> felder)
 		{}
 
 		@Override
 		public void setEinstellungen(Einstellungen einstellungen)
-		{}
-
-		@Override
-		public void setAnimationen(boolean b)
 		{}
 
 		@Override
@@ -175,12 +166,6 @@ public class HandelImplTest
 
 		@Override
 		public boolean kannWuerfelWeitergeben(Spieler spieler)
-		{
-			return false;
-		}
-
-		@Override
-		public boolean isAnimationen()
 		{
 			return false;
 		}

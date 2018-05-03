@@ -45,8 +45,6 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
 		spiel.fuegeSpielerHinzu(sp1);
-
-		spiel.setAnimationen(false);
 		spiel.starteSpiel();
 
 		Thread thread = spiel.rueckeThread(sp1, 2);
@@ -73,8 +71,6 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
 		spiel.fuegeSpielerHinzu(sp1);
-
-		spiel.setAnimationen(false);
 
 		spiel.ruecke(sp1, 4);
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));

@@ -25,8 +25,6 @@ import de.dhpoly.karte.model.WetterKarte;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.oberflaeche.view.Fenster;
-import de.dhpoly.pause.Pause;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
@@ -45,11 +43,6 @@ public class SpielImpl implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfelpaar wuerfelPaar;
 
-	@Deprecated
-	private Optional<Fenster> fenster;
-
-	private boolean animationen = true;
-
 	private boolean aktuellerSpielerHatGewuerfelt = false;
 	private boolean aktuellerSpielerIstGerueckt = false;
 
@@ -65,8 +58,6 @@ public class SpielImpl implements Spiel
 		einstellungen = new Einstellungen();
 		wuerfelPaar = new WuerfelpaarImpl();
 
-		this.fenster = Optional.empty();
-
 		map.put(Fehler.class, TelegamBenachrichtiger.class);
 		map.put(Transaktion.class, Handel.class);
 	}
@@ -80,11 +71,7 @@ public class SpielImpl implements Spiel
 
 	private void rueckeAsync()
 	{
-		for (int i = 0; i < 10; i++)
-		{
-			wuerfelPaar.wuerfeln();
-			Pause.pause(100, animationen);
-		}
+		wuerfelPaar.wuerfeln();
 		setAktuellerSpielerHatGewuerfelt(true);
 
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
@@ -106,7 +93,6 @@ public class SpielImpl implements Spiel
 				aktuellesFeld.verlasseFeld(spieler);
 				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 				aktuellesFeld.laufeUeberFeld(spieler);
-				Pause.pause(200, animationen);
 			}
 
 			aktuellesFeld.verlasseFeld(spieler);
@@ -133,11 +119,6 @@ public class SpielImpl implements Spiel
 		{
 			return felder.get(feldNr);
 		}
-	}
-
-	private void zeigeAktuellenSpieler()
-	{
-		fenster.ifPresent(f -> f.zeigeTab(spielerImSpiel.get(0).getName()));
 	}
 
 	private void pruefeVerloren(Spieler spielerAktuell)
@@ -244,24 +225,12 @@ public class SpielImpl implements Spiel
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
-
-		createOberflaeche(spieler);
 	}
 
 	@Override
 	public void fuegeLokalenSpielerHinzu(String spielerName)
 	{
 		fuegeSpielerHinzu(new SpielerLokal(spielerName, this));
-	}
-
-	private void createOberflaeche(Spieler spieler)
-	{
-		spieler.setSpielfeldAnsichtDaten(fenster, wuerfelPaar.getWuerfel());
-	}
-
-	public void setAnimationen(boolean b)
-	{
-		animationen = b;
 	}
 
 	@Override
@@ -307,18 +276,6 @@ public class SpielImpl implements Spiel
 		{
 			this.wuerfelPaar = wuerfelPaar;
 		}
-	}
-
-	@Override
-	public void setFenster(Fenster fenster)
-	{
-		this.fenster = Optional.ofNullable(fenster);
-	}
-
-	@Override
-	public boolean isAnimationen()
-	{
-		return animationen;
 	}
 
 	@Override
@@ -414,8 +371,6 @@ public class SpielImpl implements Spiel
 
 		setAktuellerSpielerHatGewuerfelt(false);
 		setAktuellerSpielerIstGerueckt(false);
-
-		zeigeAktuellenSpieler();
 	}
 
 	private void setAktuellerSpielerIstGerueckt(boolean b)

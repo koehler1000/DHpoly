@@ -10,7 +10,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
@@ -50,18 +49,11 @@ public interface Spiel
 
 	void setFelder(List<Feld> felder);
 
-	@Deprecated
-	void setFenster(Fenster fenster);
-
-	boolean isAnimationen();
-
 	void setWetter(Wetter wetter);
 
 	void setEinstellungen(Einstellungen einstellungen);
 
 	List<Feld> getFelder(Spieler spieler);
-
-	void setAnimationen(boolean b);
 
 	boolean kannWuerfeln(Spieler spieler);
 

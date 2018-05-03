@@ -1,20 +1,17 @@
 package de.dhpoly.spieler;
 
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.logik.Logik;
-import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.SpielerDaten;
-import de.dhpoly.wuerfel.model.Wuerfel;
 
 public interface Spieler extends Logik
 {
@@ -67,9 +64,6 @@ public interface Spieler extends Logik
 	void setWuerfelnMoeglich(boolean value);
 
 	void setWuerfelWeitergabeMoeglich(boolean value);
-
-	@Deprecated
-	void setSpielfeldAnsichtDaten(Optional<Fenster> fenster, List<Wuerfel> wuerfel);
 
 	void kaufe(StrasseKaufen strasse);
 
