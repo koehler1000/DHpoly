@@ -10,21 +10,26 @@ import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImpl;
 
 public class NetzwerkServerImpl implements NetzwerkServer
 {
-	private List<Spiel> interessenten = new ArrayList<>();
 	private PrintWriter ausgabe;
 	private BufferedReader eingabe;
 	private ServerSocket listener;
 	private Socket socket;
+
+	private Spiel spiel;
+
+	public NetzwerkServerImpl()
+	{
+		spiel = new SpielImpl();
+	}
 
 	public void run() throws IOException
 	{
@@ -63,12 +68,6 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		senden(string);
 	}
 
-	@Override
-	public void addInteressent(Spiel spiel)
-	{
-		interessenten.add(spiel);
-	}
-
 	private void empfange(String string)
 	{
 		Nachricht nachricht = new Nachricht(string);
@@ -77,7 +76,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	private void empfange(Datenobjekt objekt)
 	{
-		interessenten.forEach(e -> e.empfange(objekt));
+		spiel.empfange(objekt);
 	}
 
 	@Override
