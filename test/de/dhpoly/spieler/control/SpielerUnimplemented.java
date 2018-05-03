@@ -151,10 +151,4 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
 	{}
-
-	@Override
-	public Spiel getSpiel()
-	{
-		return null;
-	}
 }

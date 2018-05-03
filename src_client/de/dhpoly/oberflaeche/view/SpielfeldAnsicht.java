@@ -13,6 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
+import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
@@ -22,13 +26,9 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.KontoauszugUI;
-import de.dhpoly.spielfeld.view.SpielfeldUI;
-import de.dhpoly.wuerfel.model.Wuerfel;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 import de.dhpoly.wuerfel.view.WuerfelUI;
@@ -41,10 +41,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private JTabbedPane tabRand = new JTabbedPane();
 	private SpielerDaten spieler;
 
-	private SpielDaten spiel;
-	private NetzwerkClient client;
-
-	private SpielfeldUI spielfeld;
+	private transient NetzwerkClient client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
@@ -58,9 +55,11 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		tabRand = ElementFactory.getTabbedPane();
 
 		butWeiter.addActionListener(e -> weiter());
+
+		client.addAnsicht(this);
 	}
 
-	private void empfangeWuerfel(WuerfelDaten wuerfel)
+	public void empfangeWuerfel(WuerfelDaten wuerfel)
 	{
 		JPanel pnlWest = ElementFactory.erzeugePanel();
 
@@ -77,40 +76,30 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		this.add(pnlWest, BorderLayout.WEST);
 	}
 
-	// TODO
-	// private void empfangeSpielFeld(SpielfeldDaten spielfeld)
-	// {
-	// this.spielfeld = new SpielfeldUI(spiel.getFelder(), this);
-	// this.add(spielfeld);
-	// }
-
-	// TODO
-	// private void empfangeSpieler(SpielerDaten daten)
-	// {
-	// this.add(new SpielerUebersichtUI(spiel, this), BorderLayout.EAST);
-	// }
-
-	@Deprecated
-	public SpielfeldAnsicht(Spiel spiel, List<Wuerfel> wuerfel, Spieler spieler)
-	{}
-
 	private void weiter()
 	{
-		WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
+		if (tabRand.getTabCount() > 0)
+		{
+			tabRand.remove(tabRand.getSelectedIndex());
+		}
+		else
+		{
+			WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
+			sendeAnServer(aufruf);
+		}
+	}
+
+	public void sendeAnServer(Datenobjekt objekt)
+	{
 		try
 		{
-			client.sende(aufruf);
+			client.sende(objekt);
 		}
 		catch (IOException ex)
 		{
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
+			Fehler fehler = new Fehler(ex.getMessage(), FehlerTyp.FEHLER_ALLE);
+			hinzu("Fehler", fehler, new FehlerUI(fehler, this));
 		}
-
-		// if (spiel.kannWuerfelWeitergeben(spieler))
-		// {
-		// spiel.wuerfelWeitergeben(spieler);
-		// }
 	}
 
 	private void loesche(Object obj)

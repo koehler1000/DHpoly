@@ -24,8 +24,6 @@ public abstract class SpielerImpl implements Spieler
 
 	SpielerDaten daten;
 
-	private List<RessourcenDatensatz> verlauf = new ArrayList<>();
-
 	public SpielerImpl(SpielerDaten daten, Spiel spiel)
 	{
 		this.daten = daten;
@@ -85,7 +83,7 @@ public abstract class SpielerImpl implements Spieler
 	@Override
 	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
-		return verlauf;
+		return daten.getRessourcenKontoauszug();
 	}
 
 	public int getRessourcenWerte(Ressource ressource)
@@ -188,12 +186,6 @@ public abstract class SpielerImpl implements Spieler
 	public void kaufe(StrasseKaufen strasse)
 	{
 		spiel.kaufe(strasse, this);
-	}
-
-	@Override
-	public Spiel getSpiel()
-	{
-		return spiel;
 	}
 
 	@Override

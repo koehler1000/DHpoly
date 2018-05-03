@@ -28,10 +28,10 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	public NetzwerkServerImpl()
 	{
-		int clientNumber = 0;
 	}
-	
-	public void run() throws IOException{
+
+	public void run() throws IOException
+	{
 		listener = new ServerSocket(9898);
 		socket = listener.accept();
 		ausgabe = new PrintWriter(socket.getOutputStream(), true);
@@ -58,6 +58,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 			oos.writeObject(obj);
 		}
 		// TODO sende("");
+		empfange("Nachricht wurde gesendet");
 	}
 
 	@Override
@@ -87,5 +88,11 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	public String getIp() throws UnknownHostException
 	{
 		return Inet4Address.getLocalHost().getHostAddress();
+	}
+
+	@Override
+	public void verbindungAbbauen() throws IOException
+	{
+		socket.close();
 	}
 }

@@ -9,7 +9,6 @@ import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.Spieler;
 
 public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
@@ -35,12 +34,6 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		pnlOptionen.add(butAbbrechen);
 
 		this.add(pnlOptionen);
-	}
-
-	private void kaufen(StrasseKaufen strasse, Spieler spieler)
-	{
-		spieler.kaufe(strasse);
-		schliessen();
 	}
 
 	private void abbrechen()

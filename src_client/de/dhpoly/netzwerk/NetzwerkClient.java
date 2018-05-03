@@ -13,5 +13,7 @@ public interface NetzwerkClient
 
 	void addAnsicht(SpielfeldAnsicht ansicht);
 
-	void connectToServer() throws IOException;
+	void verbindungAufbauen() throws IOException;
+
+	void verbindungAbbauen() throws IOException;
 }

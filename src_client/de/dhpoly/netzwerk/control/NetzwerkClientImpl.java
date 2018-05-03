@@ -22,6 +22,8 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	private PrintWriter out;
 	private String serverIp;
 
+	private Socket socket;
+
 	public NetzwerkClientImpl(String serverIp)
 	{
 		this.serverIp = serverIp;
@@ -32,9 +34,9 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		empfange(in.readLine());
 	}
 
-	public void connectToServer() throws IOException
+	public void verbindungAufbauen() throws IOException
 	{
-		Socket socket = new Socket(serverIp, 9898);
+		socket = new Socket(serverIp, 9898);
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
 		try
@@ -89,5 +91,11 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	{
 		System.out.println(objekt.getTitel());
 		interessenten.forEach(e -> objekt.anzeigen(e));
+	}
+
+	@Override
+	public void verbindungAbbauen() throws IOException
+	{
+		socket.close();
 	}
 }

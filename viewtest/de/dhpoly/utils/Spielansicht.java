@@ -8,7 +8,6 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerLokal;
-import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class Spielansicht
 {
@@ -19,7 +18,7 @@ public class Spielansicht
 	{
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		Spieler spieler = new SpielerLokal("foo", spiel);
-		return new SpielfeldAnsicht(spiel, new WuerfelpaarImpl().getWuerfel(), spieler);
+		return new SpielfeldAnsicht(spieler.getDaten(), null);
 	}
 
 	public static void zeige(Oberflaeche oberflaeche)
