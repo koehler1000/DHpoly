@@ -97,4 +97,9 @@ public class SpielerDaten extends Datenobjekt
 				datensatz.getBeschreibung());
 		kasse.add(satz);
 	}
+
+	public List<RessourcenDatensatz> getRessourcenKontoauszug()
+	{
+		return kasse;
+	}
 }

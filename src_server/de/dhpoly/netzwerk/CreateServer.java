@@ -1,7 +1,6 @@
 package de.dhpoly.netzwerk;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -33,8 +32,9 @@ public class CreateServer
 	{
 		capitalizer.senden(content);
 	}
-	
-	public String empfangen() throws Exception{
+
+	public String empfangen() throws Exception
+	{
 		return capitalizer.empfangen();
 	}
 
@@ -45,8 +45,8 @@ public class CreateServer
 
 		public Capitalizer(Socket socket, int clientNummer) throws Exception
 		{
-				eingabe = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				ausgabe = new PrintWriter(socket.getOutputStream(), true);
+			eingabe = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			ausgabe = new PrintWriter(socket.getOutputStream(), true);
 		}
 
 		public void senden(String content)
@@ -56,7 +56,7 @@ public class CreateServer
 
 		public String empfangen() throws Exception
 		{
-				return eingabe.readLine();
+			return eingabe.readLine();
 		}
 	}
 }

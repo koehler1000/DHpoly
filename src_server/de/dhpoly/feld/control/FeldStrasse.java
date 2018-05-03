@@ -78,20 +78,16 @@ public class FeldStrasse extends FeldImpl
 
 	private void zahle(SpielerDaten spielerDaten, Wetter wetter, Spiel spiel)
 	{
-		Spieler zahlender = spiel.getAktuellerSpieler();
-
-		strasse.getEigentuemer().ifPresent(besitzer -> {
-			spiel.getSpieler(besitzer).ifPresent(e -> {
-				einzahlenFallsKeineHypothek(zahlender, e, getMietDatensatz(wetter));
-			});
-		});
+		strasse.getEigentuemer()
+				.ifPresent(besitzer -> einzahlenFallsKeineHypothek(spielerDaten, besitzer, getMietDatensatz(wetter)));
 	}
 
-	private void einzahlenFallsKeineHypothek(Spieler zahlender, Spieler besitzer, RessourcenDatensatz mietDatensatz)
+	private void einzahlenFallsKeineHypothek(SpielerDaten spielerDaten, SpielerDaten besitzer,
+			RessourcenDatensatz mietDatensatz)
 	{
 		if (!strasse.isHypothek())
 		{
-			zahlender.auszahlen(mietDatensatz);
+			spielerDaten.auszahlen(mietDatensatz);
 			besitzer.einzahlen(mietDatensatz);
 		}
 	}
