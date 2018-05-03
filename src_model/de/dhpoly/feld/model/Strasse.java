@@ -14,7 +14,7 @@ public class Strasse extends Datenobjekt
 {
 	private static final long serialVersionUID = 2L;
 
-	private Optional<SpielerDaten> eigentuemer = Optional.empty();
+	private SpielerDaten eigentuemer = null;
 	private int[] miete = new int[6];
 
 	private int haueser = 0;
@@ -26,12 +26,17 @@ public class Strasse extends Datenobjekt
 
 	public Optional<SpielerDaten> getEigentuemer()
 	{
-		return eigentuemer;
+		return Optional.ofNullable(eigentuemer);
+	}
+
+	public void setEigentuemer(SpielerDaten eigentuemer)
+	{
+		this.eigentuemer = eigentuemer;
 	}
 
 	public void setEigentuemer(Optional<SpielerDaten> eigentuemer)
 	{
-		this.eigentuemer = eigentuemer;
+		this.eigentuemer = eigentuemer.get(); // NOSONAR weil Optional nicht Serialisierbar ist
 	}
 
 	public int[] getMiete()
@@ -122,7 +127,12 @@ public class Strasse extends Datenobjekt
 
 	public boolean isEigentuemer(Spieler spieler)
 	{
-		return eigentuemer.isPresent() && eigentuemer.get() == spieler;
+		return isEigentuemer(spieler.getDaten());
+	}
+
+	public boolean isEigentuemer(SpielerDaten spieler)
+	{
+		return spieler.equals(eigentuemer);
 	}
 
 	public boolean isAlleHaeuserGebaut()
