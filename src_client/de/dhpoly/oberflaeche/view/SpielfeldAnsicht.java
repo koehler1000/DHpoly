@@ -13,6 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
+import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
@@ -88,20 +92,25 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private void weiter()
 	{
 		WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
-		try
-		{
-			client.sende(aufruf);
-		}
-		catch (IOException ex)
-		{
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		}
+		sendeAnServer(aufruf);
 
 		// if (spiel.kannWuerfelWeitergeben(spieler))
 		// {
 		// spiel.wuerfelWeitergeben(spieler);
 		// }
+	}
+
+	public void sendeAnServer(Datenobjekt objekt)
+	{
+		try
+		{
+			client.sende(objekt);
+		}
+		catch (IOException ex)
+		{
+			Fehler fehler = new Fehler(ex.getMessage(), FehlerTyp.FEHLER_ALLE);
+			hinzu("Fehler", fehler, new FehlerUI(fehler, this));
+		}
 	}
 
 	private void loesche(Object obj)
