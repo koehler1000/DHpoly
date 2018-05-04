@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.control.FeldStrasse;
@@ -193,4 +194,8 @@ public abstract class SpielerImpl implements Spieler
 	{
 		return daten;
 	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
+	{}
 }

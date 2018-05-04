@@ -106,11 +106,4 @@ public class SpielerLokal extends SpielerImpl
 	{
 		ui.ifPresent(e -> e.wuerfelWeitergabeErmoeglichen(value));
 	}
-
-	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel)
-	{
-		// TODO Auto-generated method stub
-
-	}
 }
