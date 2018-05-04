@@ -44,7 +44,6 @@ public class Main
 
 	private String starteServer() throws IOException
 	{
-		// TODO Server starten
 		NetzwerkServer server = new NetzwerkServerImpl();
 
 		List<SpielerDaten> spieler = new ArrayList<>();
@@ -55,8 +54,7 @@ public class Main
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
 		server.sende(daten);
 
-		// TODO IP-Adresse verwenden
-		String ip = ""; // = server.getIP();
+		String ip = server.getIp();
 		JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip + " zu spielen");
 		return ip;
 	}
