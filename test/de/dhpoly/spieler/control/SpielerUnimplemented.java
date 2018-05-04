@@ -25,12 +25,6 @@ public class SpielerUnimplemented implements Spieler
 	}
 
 	@Override
-	public boolean hatVerloren()
-	{
-		return false;
-	}
-
-	@Override
 	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
 	{}
 

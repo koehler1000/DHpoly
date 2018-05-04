@@ -16,8 +16,6 @@ public interface Spieler extends Logik
 
 	List<Feld> getFelder();
 
-	boolean hatVerloren();
-
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);
 
 	void zeigeDatenobjekt(Datenobjekt objekt);
