@@ -21,12 +21,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public int getSpielerNr()
-	{
-		return 0;
-	}
-
-	@Override
 	public void setAktuellerSpieler(boolean isAktuell)
 	{}
 

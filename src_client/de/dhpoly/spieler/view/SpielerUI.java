@@ -34,7 +34,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 
 		this.spieler = spieler;
 
-		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
+		Color backcolor = SpielerFarben.getSpielerfarbe(spieler.getDaten().getSpielerNr());
 
 		txtKontostand = ElementFactory.getTextFeld("", false);
 		for (Ressource res : Ressource.values())

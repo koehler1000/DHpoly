@@ -31,12 +31,6 @@ public abstract class SpielerImpl implements Spieler
 		this.spiel = spiel;
 	}
 
-	@Override
-	public int getSpielerNr()
-	{
-		return daten.getSpielerNr();
-	}
-
 	public int getFeldNr()
 	{
 		return feldNr;

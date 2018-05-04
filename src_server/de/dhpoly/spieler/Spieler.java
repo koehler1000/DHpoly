@@ -16,8 +16,6 @@ public interface Spieler extends Logik
 {
 	void verarbeiteKarte(Karte karte);
 
-	int getSpielerNr();
-
 	void setAktuellerSpieler(boolean isAktuell);
 
 	boolean isAktuellerSpieler();

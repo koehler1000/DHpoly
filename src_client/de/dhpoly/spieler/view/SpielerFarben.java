@@ -27,7 +27,7 @@ public class SpielerFarben
 
 	public static Color getSpielerfarbe(Spieler spieler)
 	{
-		return getSpielerfarbe(spieler.getSpielerNr());
+		return getSpielerfarbe(spieler.getDaten().getSpielerNr());
 	}
 
 	public static Color getSpielerfarbe(SpielerDaten spieler)
