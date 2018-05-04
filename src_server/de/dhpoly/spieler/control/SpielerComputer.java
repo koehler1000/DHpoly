@@ -1,7 +1,5 @@
 package de.dhpoly.spieler.control;
 
-import java.io.IOException;
-
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -59,7 +57,7 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		// TODO Auto-generated method stub
 

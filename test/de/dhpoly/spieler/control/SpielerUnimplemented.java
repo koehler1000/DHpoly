@@ -1,6 +1,5 @@
 package de.dhpoly.spieler.control;
 
-import java.io.IOException;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
@@ -149,6 +148,6 @@ public class SpielerUnimplemented implements Spieler
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{}
 }

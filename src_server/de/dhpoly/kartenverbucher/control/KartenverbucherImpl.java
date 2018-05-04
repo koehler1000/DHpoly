@@ -1,6 +1,5 @@
 package de.dhpoly.kartenverbucher.control;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		if (objekt instanceof BezahlKarte)
 		{

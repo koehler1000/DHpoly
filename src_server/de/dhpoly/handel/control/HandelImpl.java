@@ -1,6 +1,5 @@
 package de.dhpoly.handel.control;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -88,7 +87,7 @@ public class HandelImpl implements Handel
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		Transaktion transaktion = (Transaktion) objekt;
 		switch (transaktion.getTransaktionsTyp())

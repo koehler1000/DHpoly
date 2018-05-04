@@ -1,6 +1,5 @@
 package de.dhpoly.feld.control;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +72,7 @@ public abstract class FeldImpl implements Feld
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		if (objekt instanceof Transaktion)
 		{

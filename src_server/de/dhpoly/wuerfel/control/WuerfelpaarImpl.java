@@ -1,6 +1,5 @@
 package de.dhpoly.wuerfel.control;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,7 +51,7 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		if (objekt instanceof WuerfelAufruf)
 		{

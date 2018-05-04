@@ -1,6 +1,5 @@
 package de.dhpoly.spieler.control;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,7 +108,7 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		// TODO Auto-generated method stub
 

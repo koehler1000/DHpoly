@@ -33,17 +33,24 @@ public class TelegamBenachrichtiger implements FehlerInterface
 	}
 
 	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
-		if (objekt instanceof Nachricht)
+		try
 		{
-			Nachricht nachricht = (Nachricht) objekt;
-			sendTelegramMessage(nachricht.getTitel(), nachricht.getNachricht());
+			if (objekt instanceof Nachricht)
+			{
+				Nachricht nachricht = (Nachricht) objekt;
+				sendTelegramMessage(nachricht.getTitel(), nachricht.getNachricht());
+			}
+			else if (objekt instanceof FehlerInterface)
+			{
+				Fehler fehler = (Fehler) objekt;
+				sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			}
 		}
-		else if (objekt instanceof FehlerInterface)
+		catch (IOException ex)
 		{
-			Fehler fehler = (Fehler) objekt;
-			sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			// ignorieren
 		}
 	}
 }

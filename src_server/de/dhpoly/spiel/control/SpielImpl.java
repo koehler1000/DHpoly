@@ -2,9 +2,7 @@ package de.dhpoly.spiel.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
@@ -16,7 +14,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.Handel;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.RueckenKarte;
@@ -47,7 +44,7 @@ public class SpielImpl implements Spiel
 	private boolean aktuellerSpielerHatGewuerfelt = false;
 	private boolean aktuellerSpielerIstGerueckt = false;
 
-	private Map<Class<? extends Datenobjekt>, Class<? extends Logik>> map = new HashMap<>();
+	List<Class<? extends Logik>> logikverwalter = new ArrayList<>();
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
@@ -59,9 +56,9 @@ public class SpielImpl implements Spiel
 		einstellungen = new Einstellungen();
 		wuerfelPaar = new WuerfelpaarImpl();
 
-		map.put(Fehler.class, TelegamBenachrichtiger.class);
-		map.put(Transaktion.class, Handel.class);
-		map.put(Nachricht.class, NachrichtVerwalter.class);
+		logikverwalter.add(TelegamBenachrichtiger.class);
+		logikverwalter.add(Handel.class);
+		logikverwalter.add(NachrichtVerwalter.class);
 	}
 
 	@Override
@@ -434,19 +431,21 @@ public class SpielImpl implements Spiel
 	@Override
 	public void empfange(Datenobjekt objekt)
 	{
+		logikverwalter.forEach(c -> empfange(c, objekt));
+	}
+
+	private void empfange(Class<? extends Logik> c, Datenobjekt objekt)
+	{
 		try
 		{
-			if (map.containsKey(objekt.getClass()))
-			{
-				map.get(objekt.getClass()).newInstance().verarbeite(objekt, this);
-			}
+			c.newInstance().verarbeite(objekt, this);
 		}
-		catch (IOException | InstantiationException | IllegalAccessException ex)
+		catch (InstantiationException | IllegalAccessException ex)
 		{
+			TelegamBenachrichtiger benachrichtiger = new TelegamBenachrichtiger();
 			try
 			{
-				TelegamBenachrichtiger benachrichtiger = new TelegamBenachrichtiger();
-				benachrichtiger.verarbeite(new Fehler("FEHLER" + ex.getMessage(), FehlerTyp.FEHLER_ENTWICKLER), this);
+				benachrichtiger.sendTelegramMessage("Fehler", ex.getMessage());
 			}
 			catch (IOException ex1)
 			{
