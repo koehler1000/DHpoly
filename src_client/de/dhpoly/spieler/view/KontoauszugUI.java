@@ -29,7 +29,7 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 		JTextArea txtText = ElementFactory.getTextFeld("", false);
 		JTextArea txtWert = ElementFactory.getTextFeld("", false);
 
-		for (RessourcenDatensatz transaktion : spieler.getRessourcenKontoauszug())
+		for (RessourcenDatensatz transaktion : spieler.getDaten().getKasse())
 		{
 			txtText.setText(txtText.getText() + transaktion.getBeschreibung() + System.lineSeparator());
 			txtWert.setText(txtWert.getText() + transaktion.getString() + System.lineSeparator());

@@ -24,8 +24,8 @@ public class SpielerImplTest
 		sender.getDaten().auszahlen(dat);
 		empfaenger.getDaten().einzahlen(dat);
 
-		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));
-		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));
+		assertThat(sender.getDaten().getRessourcenWert(Ressource.GELD), Is.is(50));
+		assertThat(empfaenger.getDaten().getRessourcenWert(Ressource.GELD), Is.is(150));
 	}
 
 	@Test
@@ -41,11 +41,11 @@ public class SpielerImplTest
 		Spieler spieler = getDefaultSpieler(guthabenVorStart, spiel);
 		spiel.fuegeSpielerHinzu(spieler);
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(guthabenVorStart));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(guthabenVorStart));
 
 		spiel.starteSpiel();
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(guthabenNachStart));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(guthabenNachStart));
 	}
 
 	public static Spieler getDefaultSpieler()

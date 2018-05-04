@@ -11,6 +11,7 @@ import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.Handel;
@@ -30,6 +31,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerComputer;
 import de.dhpoly.spieler.control.SpielerLokal;
 import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
@@ -86,7 +88,7 @@ public class SpielImpl implements Spiel
 	public Thread rueckeThread(Spieler spieler, int augensumme)
 	{
 		return new Thread(() -> {
-			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
+			Feld aktuellesFeld = felder.get(spieler.getDaten().getFeldNr());
 
 			for (int i = 1; i < augensumme; i++)
 			{
@@ -98,7 +100,7 @@ public class SpielImpl implements Spiel
 			aktuellesFeld.verlasseFeld(spieler);
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 			aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
-			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+			spieler.getDaten().setFeldNr(felder.indexOf(aktuellesFeld));
 
 			aktuellerSpielerIstGerueckt = true;
 			spieler.setWuerfelWeitergabeMoeglich(true);
@@ -123,23 +125,42 @@ public class SpielImpl implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) >= 0 || spielerAktuell.hatVerloren())
+		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) < 0 || spielerAktuell.hatVerloren())
 		{
-			spieler.remove(spielerAktuell);
-			spielerAktuell.ausscheiden();
+			spielerAusscheidenLassen(spielerAktuell);
 
-			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren");
+			Nachricht nachricht = new Nachricht(spielerAktuell.getDaten().getName() + " hat verloren");
 			zeigeAllenSpielern(nachricht);
 
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
-				sieger.gewonnen();
+				sieger.getDaten().setSpielerStatus(SpielerStatus.GEWONNEN);
 
-				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
+				Nachricht nachrichtGewonnen = new Nachricht(sieger.getDaten().getName() + " hat gewonnen");
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 		}
+	}
+
+	private void spielerAusscheidenLassen(Spieler spieler)
+	{
+		this.spieler.remove(spieler);
+
+		// Felder zurueckgeben
+		List<Feld> felder = getFelder(spieler);
+		while (!felder.isEmpty())
+		{
+			Feld feld = felder.get(0);
+			if (feld instanceof FeldStrasse)
+			{
+				FeldStrasse strasse = (FeldStrasse) feld;
+				strasse.zurueckgeben();
+			}
+		}
+
+		// Spielerstatus setzen
+		spieler.getDaten().setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
 	private void zeigeAllenSpielern(Datenobjekt objekt)
@@ -220,8 +241,8 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
-		spieler.setAktuellerSpieler(this.spieler.isEmpty());
-		spieler.setSpielerNr(this.spieler.size());
+		spieler.getDaten().setAktuellerSpieler(this.spieler.isEmpty());
+		spieler.getDaten().setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);
@@ -350,7 +371,7 @@ public class SpielImpl implements Spiel
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
 		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
 		spielerAktuellAlt.setWuerfelnMoeglich(false);
-		spielerAktuellAlt.setAktuellerSpieler(false);
+		spielerAktuellAlt.getDaten().setAktuellerSpieler(false);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
 		pruefeVerloren(spielerAktuellAlt);
@@ -366,7 +387,7 @@ public class SpielImpl implements Spiel
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
-		spielerAktuellNeu.setAktuellerSpieler(true);
+		spielerAktuellNeu.getDaten().setAktuellerSpieler(true);
 		spielerAktuellNeu.setWuerfelnMoeglich(true);
 
 		setAktuellerSpielerHatGewuerfelt(false);
@@ -419,7 +440,7 @@ public class SpielImpl implements Spiel
 
 	private void kaufAbwickeln(StrasseKaufen strasse, Spieler sp)
 	{
-		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
+		if (strasse.isKaufbar() && sp.getDaten().kannBezahlen(strasse.getKaufpreis()))
 		{
 			sp.getDaten().auszahlen(strasse.getKaufpreis());
 			strasse.setEigentuemer(sp.getDaten());

@@ -8,39 +8,13 @@ import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	int getFeldNr();
-
-	String getName();
-
-	void setFeldNr(int feldNrSoll);
-
 	void verarbeiteKarte(Karte karte);
 
-	int getSpielerNr();
-
-	void setAktuellerSpieler(boolean isAktuell);
-
-	boolean isAktuellerSpieler();
-
-	List<RessourcenDatensatz> getRessourcenKontoauszug();
-
-	int getRessourcenWerte(Ressource ressource);
-
-	boolean kannBezahlen(List<RessourcenDatensatz> kosten);
-
-	void ausscheiden();
-
-	void gewonnen();
-
 	List<Feld> getFelder();
-
-	void setSpielerNr(int nr);
 
 	boolean hatVerloren();
 

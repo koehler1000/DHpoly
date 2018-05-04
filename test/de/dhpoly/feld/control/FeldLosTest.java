@@ -23,7 +23,7 @@ public class FeldLosTest
 		FeldLos los = new FeldLos(new Einstellungen());
 		los.betreteFeld(s1, 2, Wetter.BEWOELKT);
 
-		assertThat(s1.getRessourcenWerte(Ressource.GELD),
+		assertThat(s1.getDaten().getRessourcenWert(Ressource.GELD),
 				Is.is(new Einstellungen().getBetragBetretenLos() + startgeld));
 	}
 

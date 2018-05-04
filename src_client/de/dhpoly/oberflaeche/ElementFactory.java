@@ -169,7 +169,8 @@ public class ElementFactory
 	public static void setzeRand(JPanel pnl, int dicke, Spieler spieler)
 	{
 		Optional<Spieler> sp = Optional.ofNullable(spieler);
-		Color farbe = sp.isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()) : FARBE_KONTRAST;
+		Color farbe = sp.isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getDaten().getSpielerNr())
+				: FARBE_KONTRAST;
 		setzeRand(pnl, dicke, farbe);
 	}
 

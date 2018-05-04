@@ -37,7 +37,7 @@ public class FeldStrasseTest
 
 		assertThat(strasse.isKaufbar(), Is.is(false));
 		assertThat(strasse.getEigentuemer().get(), Is.is(spieler.getDaten()));
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
 	@Test
@@ -57,9 +57,9 @@ public class FeldStrasseTest
 
 		spiel.fuegeSpielerHinzu(spieler);
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
 		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(startbetrag - kosten));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
 	@Test
@@ -85,9 +85,9 @@ public class FeldStrasseTest
 
 		strasse.hausBauen(spiel);
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.STEIN), Is.is(0));
 	}
 
 	@Test
@@ -139,9 +139,9 @@ public class FeldStrasseTest
 		strasse.hausBauen(spiel);
 		strasse.hausZerstoeren();
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.STEIN), Is.is(0));
 	}
 
 	@Test
@@ -168,9 +168,9 @@ public class FeldStrasseTest
 		strasse.hausBauen(spiel);
 		strasse.hausVerkaufen(spiel);
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(100));
-		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(100));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(100));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.STEIN), Is.is(100));
 	}
 
 	private static FeldStrasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)

@@ -7,8 +7,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
@@ -17,65 +15,7 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielerUnimplemented implements Spieler
 {
 	@Override
-	public int getFeldNr()
-	{
-		return 0;
-	}
-
-	@Override
-	public String getName()
-	{
-		return null;
-	}
-
-	@Override
-	public void setFeldNr(int feldNrSoll)
-	{}
-
-	@Override
 	public void verarbeiteKarte(Karte karte)
-	{}
-
-	@Override
-	public int getSpielerNr()
-	{
-		return 0;
-	}
-
-	@Override
-	public void setAktuellerSpieler(boolean isAktuell)
-	{}
-
-	@Override
-	public boolean isAktuellerSpieler()
-	{
-		return false;
-	}
-
-	@Override
-	public List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return null;
-	}
-
-	@Override
-	public int getRessourcenWerte(Ressource ressource)
-	{
-		return 0;
-	}
-
-	@Override
-	public boolean kannBezahlen(List<RessourcenDatensatz> kosten)
-	{
-		return false;
-	}
-
-	@Override
-	public void ausscheiden()
-	{}
-
-	@Override
-	public void gewonnen()
 	{}
 
 	@Override
@@ -83,10 +23,6 @@ public class SpielerUnimplemented implements Spieler
 	{
 		return null;
 	}
-
-	@Override
-	public void setSpielerNr(int nr)
-	{}
 
 	@Override
 	public boolean hatVerloren()

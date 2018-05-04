@@ -7,10 +7,8 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -29,12 +27,6 @@ public abstract class SpielerImpl implements Spieler
 	{
 		this.daten = daten;
 		this.spiel = spiel;
-	}
-
-	@Override
-	public int getSpielerNr()
-	{
-		return daten.getSpielerNr();
 	}
 
 	public int getFeldNr()
@@ -57,67 +49,9 @@ public abstract class SpielerImpl implements Spieler
 		return getRessourcenWerte(Ressource.GELD) < 0;
 	}
 
-	@Override
-	public void setAktuellerSpieler(boolean isAktuell)
-	{
-		daten.setAktuellerSpieler(isAktuell);
-	}
-
-	@Override
-	public boolean isAktuellerSpieler()
-	{
-		return daten.isAnDerReihe();
-	}
-
-	@Override
-	public List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return daten.getRessourcenKontoauszug();
-	}
-
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
-	{
-		for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
-		{
-			if (getRessourcenWerte(ressourcenDatensatz.getRessource()) < ressourcenDatensatz.getAnzahl())
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
-	@Override
-	public void ausscheiden()
-	{
-		strassenZurueckgeben();
-		daten.setSpielerStatus(SpielerStatus.VERLOREN);
-	}
-
-	protected void strassenZurueckgeben()
-	{
-		List<Feld> felder = spiel.getFelder(this);
-		while (!felder.isEmpty())
-		{
-			Feld feld = felder.get(0);
-			if (feld instanceof FeldStrasse)
-			{
-				FeldStrasse strasse = (FeldStrasse) feld;
-				strasse.zurueckgeben();
-			}
-		}
-	}
-
-	@Override
-	public void gewonnen()
-	{
-		zeigeDatenobjekt(new Nachricht("Gewonnen"));
 	}
 
 	@Override
@@ -131,12 +65,6 @@ public abstract class SpielerImpl implements Spieler
 		{
 			return new ArrayList<>();
 		}
-	}
-
-	@Override
-	public void setSpielerNr(int nr)
-	{
-		daten.setSpielerNr(nr);
 	}
 
 	public boolean hatVerloren()

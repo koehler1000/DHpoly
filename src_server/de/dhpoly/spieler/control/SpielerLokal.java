@@ -1,7 +1,6 @@
 package de.dhpoly.spieler.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.SpielerDaten;
@@ -12,12 +11,6 @@ public class SpielerLokal extends SpielerImpl
 	public SpielerLokal(String name, Spiel spiel)
 	{
 		super(new SpielerDaten(SpielerTyp.LOKAL, name), spiel);
-	}
-
-	@Override
-	public void gewonnen()
-	{
-		zeigeDatenobjekt(new Nachricht("Gewonnen"));
 	}
 
 	@Override

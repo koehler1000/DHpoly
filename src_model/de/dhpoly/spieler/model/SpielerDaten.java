@@ -19,6 +19,7 @@ public class SpielerDaten extends Datenobjekt
 	private int spielerNr;
 	private SpielerStatus status;
 	private boolean anDerReihe = false;
+	private int feldNr;
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
@@ -101,11 +102,6 @@ public class SpielerDaten extends Datenobjekt
 		kasse.add(satz);
 	}
 
-	public final List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return kasse;
-	}
-
 	public final List<RessourcenDatensatz> getKasse()
 	{
 		return kasse;
@@ -141,5 +137,15 @@ public class SpielerDaten extends Datenobjekt
 			}
 		}
 		return true;
+	}
+
+	public int getFeldNr()
+	{
+		return feldNr;
+	}
+
+	public void setFeldNr(int feldNr)
+	{
+		this.feldNr = feldNr;
 	}
 }

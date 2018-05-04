@@ -31,8 +31,8 @@ public class FeldRessourceTest
 
 		feld.betreteFeld(spieler, 2, Wetter.BEWOELKT);
 
-		assertThat(spieler.getRessourcenWerte(Ressource.GELD), Is.is(0));
-		assertThat(spieler.getRessourcenWerte(Ressource.HOLZ), Is.is(10));
-		assertThat(spieler.getRessourcenWerte(Ressource.STEIN), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(10));
+		assertThat(spieler.getDaten().getRessourcenWert(Ressource.STEIN), Is.is(0));
 	}
 }

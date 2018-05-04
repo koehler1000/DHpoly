@@ -26,7 +26,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
+		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(0));
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class FelderTest
 		thread.start();
 		thread.join();
 
-		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
+		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(2));
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class FelderTest
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 4);
-		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
+		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(0));
 	}
 
 	public static Feld getDefaultFeld(Felderverwaltung verwaltung)
