@@ -57,19 +57,6 @@ public abstract class SpielerImpl implements Spieler
 	}
 
 	@Override
-	public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
-	{
-		for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
-		{
-			if (getRessourcenWerte(ressourcenDatensatz.getRessource()) < ressourcenDatensatz.getAnzahl())
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-
-	@Override
 	public void ausscheiden()
 	{
 		strassenZurueckgeben();

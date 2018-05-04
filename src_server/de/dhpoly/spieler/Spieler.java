@@ -8,14 +8,11 @@ import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
 	void verarbeiteKarte(Karte karte);
-
-	boolean kannBezahlen(List<RessourcenDatensatz> kosten);
 
 	void ausscheiden();
 

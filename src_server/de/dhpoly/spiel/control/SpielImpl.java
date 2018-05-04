@@ -419,7 +419,7 @@ public class SpielImpl implements Spiel
 
 	private void kaufAbwickeln(StrasseKaufen strasse, Spieler sp)
 	{
-		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
+		if (strasse.isKaufbar() && sp.getDaten().kannBezahlen(strasse.getKaufpreis()))
 		{
 			sp.getDaten().auszahlen(strasse.getKaufpreis());
 			strasse.setEigentuemer(sp.getDaten());

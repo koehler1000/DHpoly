@@ -194,7 +194,7 @@ public class FeldStrasse extends FeldImpl
 			strasse.getEigentuemer().ifPresent(eigentuemer -> {
 				Optional<Spieler> sp = spiel.getSpieler(eigentuemer);
 				sp.ifPresent(s -> {
-					if (s.kannBezahlen(strasse.getKostenHaus()))
+					if (s.getDaten().kannBezahlen(strasse.getKostenHaus()))
 					{
 						s.getDaten().auszahlen(strasse.getKostenHaus());
 						strasse.setHaueser(strasse.getHaueser() + 1);
@@ -242,7 +242,7 @@ public class FeldStrasse extends FeldImpl
 
 		Optional<Spieler> spieler = spiel.getSpieler(strasse.getEigentuemer());
 
-		return spieler.filter(e -> e.kannBezahlen(getKostenHaus())).isPresent();
+		return spieler.filter(e -> e.getDaten().kannBezahlen(getKostenHaus())).isPresent();
 	}
 
 	@Override
