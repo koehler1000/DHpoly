@@ -39,8 +39,8 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		txtKontostand = ElementFactory.getTextFeld("", false);
 		for (Ressource res : Ressource.values())
 		{
-			txtKontostand.setText(txtKontostand.getText() + Ressource.getString(res, spieler.getRessourcenWerte(res))
-					+ System.lineSeparator());
+			txtKontostand.setText(txtKontostand.getText()
+					+ Ressource.getString(res, spieler.getDaten().getRessourcenWert(res)) + System.lineSeparator());
 		}
 		txtKontostand.setBackground(backcolor);
 		txtKontostand.setBorder(new LineBorder(backcolor, 10));
@@ -101,7 +101,8 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 			StringBuilder builder = new StringBuilder();
 			for (Ressource res : Ressource.values())
 			{
-				builder.append(Ressource.getString(res, spieler.getRessourcenWerte(res)) + System.lineSeparator());
+				builder.append(
+						Ressource.getString(res, spieler.getDaten().getRessourcenWert(res)) + System.lineSeparator());
 			}
 			txtKontostand.setText(builder.toString());
 

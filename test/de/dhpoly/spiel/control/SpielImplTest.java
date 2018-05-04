@@ -54,13 +54,13 @@ public class SpielImplTest
 	@Test
 	public void geldBeiUeberLos() throws InterruptedException
 	{
-		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD);
+		int geldVorDemLaufen = spiel.getAktuellerSpieler().getDaten().getRessourcenWert(Ressource.GELD);
 
 		Thread thread = spiel.rueckeThread(spiel.getAktuellerSpieler(), 2);
 		thread.start();
 		thread.join();
 
-		assertThat(spiel.getAktuellerSpieler().getRessourcenWerte(Ressource.GELD),
+		assertThat(spiel.getAktuellerSpieler().getDaten().getRessourcenWert(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new Einstellungen().getBetragPassierenLos()));
 	}
 

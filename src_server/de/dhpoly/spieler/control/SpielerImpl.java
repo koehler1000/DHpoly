@@ -51,12 +51,6 @@ public abstract class SpielerImpl implements Spieler
 		return getRessourcenWerte(Ressource.GELD) < 0;
 	}
 
-	@Override
-	public List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return daten.getRessourcenKontoauszug();
-	}
-
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);

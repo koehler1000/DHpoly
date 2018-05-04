@@ -108,8 +108,8 @@ public class HandelImplTest
 		transaktion.setRessourcen(s2.getDaten(), Ressource.GELD, 50);
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
-		assertThat(s1.getRessourcenWerte(Ressource.GELD), Is.is(200));
-		assertThat(s2.getRessourcenWerte(Ressource.GELD), Is.is(200));
+		assertThat(s1.getDaten().getRessourcenWert(Ressource.GELD), Is.is(200));
+		assertThat(s2.getDaten().getRessourcenWert(Ressource.GELD), Is.is(200));
 	}
 
 	Spiel spiel = new Spiel()

@@ -7,7 +7,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -19,18 +18,6 @@ public class SpielerUnimplemented implements Spieler
 	@Override
 	public void verarbeiteKarte(Karte karte)
 	{}
-
-	@Override
-	public List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return null;
-	}
-
-	@Override
-	public int getRessourcenWerte(Ressource ressource)
-	{
-		return 0;
-	}
 
 	@Override
 	public boolean kannBezahlen(List<RessourcenDatensatz> kosten)

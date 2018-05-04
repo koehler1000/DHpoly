@@ -102,11 +102,6 @@ public class SpielerDaten extends Datenobjekt
 		kasse.add(satz);
 	}
 
-	public final List<RessourcenDatensatz> getRessourcenKontoauszug()
-	{
-		return kasse;
-	}
-
 	public final List<RessourcenDatensatz> getKasse()
 	{
 		return kasse;
