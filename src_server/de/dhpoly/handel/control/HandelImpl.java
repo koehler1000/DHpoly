@@ -30,30 +30,29 @@ public class HandelImpl implements Handel
 	{
 		transaktion.setTransaktionsTyp(TransaktionsTyp.ANGENOMMEN);
 
-		spiel.getSpieler(transaktion.getAnbietender()).ifPresent(anbietender -> {
-			spiel.getSpieler(transaktion.getHandelspartner()).ifPresent(handelspartner -> {
+		spiel.getSpieler(transaktion.getAnbietender()).ifPresent(
+				anbietender -> spiel.getSpieler(transaktion.getHandelspartner()).ifPresent(handelspartner -> {
 
-				// Felder Eigentum übertragen
-				eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender.getDaten(),
-						handelspartner.getDaten());
+					// Felder Eigentum übertragen
+					eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender.getDaten(),
+							handelspartner.getDaten());
 
-				for (Ressource res : Ressource.values())
-				{
-					RessourcenDatensatz geben = new RessourcenDatensatz(res,
-							transaktion.getRessource(anbietender.getDaten(), res));
-					anbietender.auszahlen(geben);
-					handelspartner.einzahlen(geben);
+					for (Ressource res : Ressource.values())
+					{
+						RessourcenDatensatz geben = new RessourcenDatensatz(res,
+								transaktion.getRessource(anbietender.getDaten(), res));
+						anbietender.auszahlen(geben);
+						handelspartner.einzahlen(geben);
 
-					RessourcenDatensatz bekommen = new RessourcenDatensatz(res,
-							transaktion.getRessource(handelspartner.getDaten(), res));
-					anbietender.einzahlen(bekommen);
-					handelspartner.auszahlen(bekommen);
-				}
+						RessourcenDatensatz bekommen = new RessourcenDatensatz(res,
+								transaktion.getRessource(handelspartner.getDaten(), res));
+						anbietender.einzahlen(bekommen);
+						handelspartner.auszahlen(bekommen);
+					}
 
-				anbietender.zeigeDatenobjekt(transaktion);
-				handelspartner.zeigeDatenobjekt(transaktion);
-			});
-		});
+					anbietender.zeigeDatenobjekt(transaktion);
+					handelspartner.zeigeDatenobjekt(transaktion);
+				}));
 	}
 
 	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, SpielerDaten spielerDaten,
