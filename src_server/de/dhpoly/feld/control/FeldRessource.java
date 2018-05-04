@@ -36,4 +36,10 @@ public class FeldRessource extends FeldImpl
 	{
 		return false;
 	}
+
+	@Override
+	public boolean gehoertSpieler(Spieler spieler)
+	{
+		return false;
+	}
 }

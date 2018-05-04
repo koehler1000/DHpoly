@@ -35,4 +35,10 @@ public class FeldLos extends FeldImpl
 	{
 		return false;
 	}
+
+	@Override
+	public boolean gehoertSpieler(Spieler spieler)
+	{
+		return false;
+	}
 }

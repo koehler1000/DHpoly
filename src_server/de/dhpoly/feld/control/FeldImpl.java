@@ -60,10 +60,7 @@ public abstract class FeldImpl implements Feld
 		return spielerAufFeld;
 	}
 
-	public boolean gehoertSpieler(Spieler spieler)
-	{
-		return false;
-	}
+	public abstract boolean gehoertSpieler(Spieler spieler);
 
 	public boolean isKaufbar()
 	{

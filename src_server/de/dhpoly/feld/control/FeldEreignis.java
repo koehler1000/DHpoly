@@ -28,4 +28,10 @@ public class FeldEreignis extends FeldImpl
 	{
 		return false;
 	}
+
+	@Override
+	public boolean gehoertSpieler(Spieler spieler)
+	{
+		return false;
+	}
 }
