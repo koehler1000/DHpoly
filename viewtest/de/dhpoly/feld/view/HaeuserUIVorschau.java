@@ -48,7 +48,6 @@ public class HaeuserUIVorschau
 			@Override
 			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<SpielerDaten> optional)
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 		};
