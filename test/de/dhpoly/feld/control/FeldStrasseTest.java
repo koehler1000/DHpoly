@@ -51,7 +51,7 @@ public class FeldStrasseTest
 
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		Spieler spieler = new SpielerLokal("Peter", spiel);
-		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, startbetrag));
+		spieler.getDaten().einzahlen(new RessourcenDatensatz(Ressource.GELD, startbetrag));
 
 		strasse.kaufe(spieler);
 
@@ -75,7 +75,7 @@ public class FeldStrasseTest
 		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
-		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+		spieler.getDaten().einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
@@ -103,7 +103,7 @@ public class FeldStrasseTest
 		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
-		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+		spieler.getDaten().einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.fuegeSpielerHinzu(spieler);
@@ -128,7 +128,7 @@ public class FeldStrasseTest
 		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
-		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+		spieler.getDaten().einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
@@ -157,7 +157,7 @@ public class FeldStrasseTest
 		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
-		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
+		spieler.getDaten().einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
 
 		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);

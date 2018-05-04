@@ -22,7 +22,7 @@ public class FeldRessource extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		spieler.einzahlen(new RessourcenDatensatz(ressource, einstellungen.getRessourcenErtrag(),
+		spieler.getDaten().einzahlen(new RessourcenDatensatz(ressource, einstellungen.getRessourcenErtrag(),
 				ressource.getRessourcenFeldString()));
 	}
 

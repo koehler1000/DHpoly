@@ -22,7 +22,7 @@ public class SpielerImplTest
 
 		RessourcenDatensatz dat = new RessourcenDatensatz(Ressource.GELD, 50);
 		sender.auszahlen(dat);
-		empfaenger.einzahlen(dat);
+		empfaenger.getDaten().einzahlen(dat);
 
 		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));
 		assertThat(empfaenger.getRessourcenWerte(Ressource.GELD), Is.is(150));
@@ -81,7 +81,7 @@ public class SpielerImplTest
 	public static Spieler getDefaultSpieler(String name, int geld, Spiel spiel)
 	{
 		Spieler spieler = new SpielerLokal(name, spiel);
-		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, geld));
+		spieler.getDaten().einzahlen(new RessourcenDatensatz(Ressource.GELD, geld));
 		return spieler;
 	}
 }

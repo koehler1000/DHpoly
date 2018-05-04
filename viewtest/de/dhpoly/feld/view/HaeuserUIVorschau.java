@@ -65,7 +65,7 @@ public class HaeuserUIVorschau
 		ressourcen.add(new RessourcenDatensatz(Ressource.HOLZ, 100000));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
-		spieler.einzahlen(ressourcen);
+		spieler.getDaten().einzahlen(ressourcen);
 
 		strasse.kaufe(spieler);
 		strasse2.kaufe(spieler);

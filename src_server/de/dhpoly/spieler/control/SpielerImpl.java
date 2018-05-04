@@ -9,18 +9,19 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
+import de.dhpoly.karte.model.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.SpielerStatus;
 
 public abstract class SpielerImpl implements Spieler
 {
 	int feldNr = 0;
 	Spiel spiel;
-	boolean verloren = false;
 
 	SpielerDaten daten;
 
@@ -69,12 +70,6 @@ public abstract class SpielerImpl implements Spieler
 	}
 
 	@Override
-	public void einzahlen(RessourcenDatensatz datensatz)
-	{
-		daten.einzahlen(datensatz);
-	}
-
-	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{
 		daten.auszahlen(datensatz);
@@ -89,12 +84,6 @@ public abstract class SpielerImpl implements Spieler
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public void einzahlen(List<RessourcenDatensatz> datensaetze)
-	{
-		daten.einzahlen(datensaetze);
 	}
 
 	@Override
@@ -120,7 +109,7 @@ public abstract class SpielerImpl implements Spieler
 	public void ausscheiden()
 	{
 		strassenZurueckgeben();
-		verloren = true;
+		daten.setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
 	protected void strassenZurueckgeben()
@@ -164,7 +153,13 @@ public abstract class SpielerImpl implements Spieler
 
 	public boolean hatVerloren()
 	{
-		return verloren;
+		return daten.getStatus() == SpielerStatus.VERLOREN;
+	}
+
+	@Override
+	public void verarbeiteKarte(Karte karte)
+	{
+		spiel.verarbeiteKarte(karte);
 	}
 
 	@Override
@@ -177,7 +172,7 @@ public abstract class SpielerImpl implements Spieler
 				FeldRessource ressourcenfeld = (FeldRessource) feld;
 				RessourcenDatensatz res = new RessourcenDatensatz(ressourcenfeld.getRessource(), ertrag);
 
-				einzahlen(res);
+				getDaten().einzahlen(res);
 			}
 		}
 	}

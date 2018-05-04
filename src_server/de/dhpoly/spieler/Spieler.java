@@ -14,10 +14,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	void einzahlen(RessourcenDatensatz datensatz);
-
-	void einzahlen(List<RessourcenDatensatz> datensaetze);
-
 	void auszahlen(RessourcenDatensatz datensatz);
 
 	void auszahlen(List<RessourcenDatensatz> datensaetze);

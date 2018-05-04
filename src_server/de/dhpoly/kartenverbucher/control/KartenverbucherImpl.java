@@ -25,7 +25,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 				umbuchen(alleSpieler, ziehenderSpielerAlsListe, karte.getRessourcenDatensaetze());
 				break;
 			case BANK_SPIELER:
-				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
+				ziehenderSpieler.getDaten().einzahlen(karte.getRessourcenDatensaetze());
 				break;
 			case SPIELER_ANDERESPIELER:
 				umbuchen(ziehenderSpielerAlsListe, alleSpieler, karte.getRessourcenDatensaetze());
@@ -41,7 +41,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 		{
 			for (Spieler spielerEmpfaenger : empfaenger)
 			{
-				spielerEmpfaenger.einzahlen(datensaetze);
+				spielerEmpfaenger.getDaten().einzahlen(datensaetze);
 				spielerSender.auszahlen(datensaetze);
 			}
 		}

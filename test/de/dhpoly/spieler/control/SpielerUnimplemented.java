@@ -16,15 +16,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 
 public class SpielerUnimplemented implements Spieler
 {
-
-	@Override
-	public void einzahlen(RessourcenDatensatz datensatz)
-	{}
-
-	@Override
-	public void einzahlen(List<RessourcenDatensatz> datensaetze)
-	{}
-
 	@Override
 	public void auszahlen(RessourcenDatensatz datensatz)
 	{}

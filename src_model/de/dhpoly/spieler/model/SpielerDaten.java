@@ -125,4 +125,21 @@ public class SpielerDaten extends Datenobjekt
 	{
 		anDerReihe = isAktuell;
 	}
+
+	public void setSpielerStatus(SpielerStatus status)
+	{
+		this.status = status;
+	}
+
+	public boolean kannBezahlen(List<RessourcenDatensatz> kostenHaus)
+	{
+		for (RessourcenDatensatz ressourcenDatensatz : kostenHaus)
+		{
+			if (getRessourcenWert(ressourcenDatensatz.getRessource()) < ressourcenDatensatz.getAnzahl())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }

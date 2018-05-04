@@ -34,8 +34,8 @@ public class HandelUIVorschau
 		datensaetze.add(new RessourcenDatensatz(Ressource.HOLZ, 10));
 		datensaetze.add(new RessourcenDatensatz(Ressource.STEIN, 50));
 
-		s1.einzahlen(datensaetze);
-		s2.einzahlen(datensaetze);
+		s1.getDaten().einzahlen(datensaetze);
+		s2.getDaten().einzahlen(datensaetze);
 
 		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
 

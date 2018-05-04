@@ -208,8 +208,9 @@ public class FeldStrasse extends FeldImpl
 		if (strasse.haeuserGebaut())
 		{
 			hausZerstoeren();
-			strasse.getKostenHaus().stream().filter(e -> e.getRessource() != Ressource.GELD).forEach(e -> strasse
-					.getEigentuemer().ifPresent(besitzer -> spiel.getSpieler(besitzer).ifPresent(s -> s.einzahlen(e))));
+			strasse.getKostenHaus().stream().filter(e -> e.getRessource() != Ressource.GELD)
+					.forEach(e -> strasse.getEigentuemer().ifPresent(
+							besitzer -> spiel.getSpieler(besitzer).ifPresent(s -> s.getDaten().einzahlen(e))));
 		}
 	}
 

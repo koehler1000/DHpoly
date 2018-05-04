@@ -20,14 +20,16 @@ public class FeldLos extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
 	{
-		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
+		spieler.getDaten()
+				.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
 	}
 
 	@Override
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		super.laufeUeberFeld(spieler);
-		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
+		spieler.getDaten()
+				.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
 	}
 
 	@Override

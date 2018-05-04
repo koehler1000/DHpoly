@@ -308,7 +308,7 @@ public class SpielImpl implements Spiel
 
 		for (Spieler sp : spieler)
 		{
-			sp.einzahlen(einstellungen.getSpielerStartVorraete());
+			sp.getDaten().einzahlen(einstellungen.getSpielerStartVorraete());
 		}
 
 		getAktuellerSpieler().setWuerfelnMoeglich(true);
