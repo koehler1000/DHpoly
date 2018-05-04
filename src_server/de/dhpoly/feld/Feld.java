@@ -3,10 +3,11 @@ package de.dhpoly.feld;
 import java.util.List;
 
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.logik.Logik;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 
-public interface Feld // TODO extends Logik
+public interface Feld extends Logik // TODO extends Logik
 {
 	public String getBeschriftung();
 

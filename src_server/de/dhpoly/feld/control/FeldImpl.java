@@ -1,10 +1,14 @@
 package de.dhpoly.feld.control;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
 public abstract class FeldImpl implements Feld
@@ -69,5 +73,14 @@ public abstract class FeldImpl implements Feld
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		spielerAufFeld.add(spieler);
+	}
+
+	@Override
+	public void verarbeite(Datenobjekt objekt, Spiel spiel) throws IOException
+	{
+		if (objekt instanceof Transaktion)
+		{
+			// TODO Transaktion
+		}
 	}
 }
