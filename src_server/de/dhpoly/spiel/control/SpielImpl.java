@@ -242,7 +242,7 @@ public class SpielImpl implements Spiel
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
 		spieler.getDaten().setAktuellerSpieler(this.spieler.isEmpty());
-		spieler.setSpielerNr(this.spieler.size());
+		spieler.getDaten().setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, wetter);

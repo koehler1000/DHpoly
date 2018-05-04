@@ -16,8 +16,6 @@ public interface Spieler extends Logik
 
 	List<Feld> getFelder();
 
-	void setSpielerNr(int nr);
-
 	boolean hatVerloren();
 
 	void setSpielfeldAnsicht(SpielfeldAnsicht ansicht);

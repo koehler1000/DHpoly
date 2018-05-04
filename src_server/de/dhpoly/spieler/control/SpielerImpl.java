@@ -67,12 +67,6 @@ public abstract class SpielerImpl implements Spieler
 		}
 	}
 
-	@Override
-	public void setSpielerNr(int nr)
-	{
-		daten.setSpielerNr(nr);
-	}
-
 	public boolean hatVerloren()
 	{
 		return daten.getStatus() == SpielerStatus.VERLOREN;

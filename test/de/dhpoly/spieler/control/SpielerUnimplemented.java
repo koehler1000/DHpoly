@@ -25,10 +25,6 @@ public class SpielerUnimplemented implements Spieler
 	}
 
 	@Override
-	public void setSpielerNr(int nr)
-	{}
-
-	@Override
 	public boolean hatVerloren()
 	{
 		return false;
