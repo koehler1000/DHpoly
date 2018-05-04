@@ -66,7 +66,6 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isEinmalig()
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
