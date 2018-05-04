@@ -16,6 +16,7 @@ import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.SpielerStatus;
 import observerpattern.Beobachter;
 
 public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -92,7 +93,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 	@Override
 	public void update()
 	{
-		if (spieler.hatVerloren())
+		if (spieler.getDaten().getStatus() == SpielerStatus.VERLOREN)
 		{
 			butHausBau.setEnabled(false);
 		}

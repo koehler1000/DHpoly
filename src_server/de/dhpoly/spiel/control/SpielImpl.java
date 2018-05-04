@@ -125,7 +125,8 @@ public class SpielImpl implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) < 0 || spielerAktuell.hatVerloren())
+		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) < 0
+				|| spielerAktuell.getDaten().getStatus() == SpielerStatus.VERLOREN)
 		{
 			spielerAusscheidenLassen(spielerAktuell);
 
@@ -375,7 +376,7 @@ public class SpielImpl implements Spiel
 
 		spielerImSpiel.remove(spielerAktuellAlt);
 		pruefeVerloren(spielerAktuellAlt);
-		if (!spielerAktuellAlt.hatVerloren())
+		if (spielerAktuellAlt.getDaten().getStatus() != SpielerStatus.VERLOREN)
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
 		}
