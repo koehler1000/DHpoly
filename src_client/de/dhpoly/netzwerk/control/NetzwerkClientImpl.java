@@ -37,20 +37,15 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		socket = new Socket(serverIp, 9898);
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
-		try
+		while (!in.ready())
 		{
-			while (!in.ready())
+			String nachricht = in.readLine();
+			if (nachricht != null && nachricht != "")
 			{
-				String nachricht = in.readLine();
-				if (nachricht != null && nachricht != "")
-					System.out.println(in.readLine());
+				empfange(nachricht);
 			}
-			in.close();
 		}
-		catch (Exception e)
-		{
-			System.out.println("Fehler!");
-		}
+		in.close();
 	}
 
 	@Override
