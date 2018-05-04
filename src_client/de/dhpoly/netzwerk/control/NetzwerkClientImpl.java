@@ -28,7 +28,7 @@ import javax.swing.JTextField;
  * line beginning with "MESSAGE " then all characters following
  * this string should be displayed in its message area.
  */
-public class ChatClient {
+public class NetzwerkClientImpl {
 
     BufferedReader in;
     PrintWriter out;
@@ -44,7 +44,7 @@ public class ChatClient {
      * only becomes editable AFTER the client receives the NAMEACCEPTED
      * message from the server.
      */
-    public ChatClient() {
+    public NetzwerkClientImpl() {
 
         // Layout GUI
         textField.setEditable(false);
@@ -118,7 +118,7 @@ public class ChatClient {
      * Runs the client as an application with a closeable frame.
      */
     public static void main(String[] args) throws Exception {
-        ChatClient client = new ChatClient();
+        NetzwerkClientImpl client = new NetzwerkClientImpl();
         client.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         client.frame.setVisible(true);
         client.run();

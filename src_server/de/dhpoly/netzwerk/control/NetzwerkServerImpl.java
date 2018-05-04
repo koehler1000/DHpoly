@@ -25,7 +25,7 @@ import java.util.HashSet;
  *
  *     2. The server should do some logging.
  */
-public class ChatServer {
+public class NetzwerkServerImpl {
 
     /**
      * The port that the server listens on.
