@@ -220,7 +220,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
-		spieler.setAktuellerSpieler(this.spieler.isEmpty());
+		spieler.getDaten().setAktuellerSpieler(this.spieler.isEmpty());
 		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
@@ -350,7 +350,7 @@ public class SpielImpl implements Spiel
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
 		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
 		spielerAktuellAlt.setWuerfelnMoeglich(false);
-		spielerAktuellAlt.setAktuellerSpieler(false);
+		spielerAktuellAlt.getDaten().setAktuellerSpieler(false);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
 		pruefeVerloren(spielerAktuellAlt);
@@ -366,7 +366,7 @@ public class SpielImpl implements Spiel
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
-		spielerAktuellNeu.setAktuellerSpieler(true);
+		spielerAktuellNeu.getDaten().setAktuellerSpieler(true);
 		spielerAktuellNeu.setWuerfelnMoeglich(true);
 
 		setAktuellerSpielerHatGewuerfelt(false);

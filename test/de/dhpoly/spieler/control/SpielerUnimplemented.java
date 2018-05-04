@@ -21,16 +21,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void setAktuellerSpieler(boolean isAktuell)
-	{}
-
-	@Override
-	public boolean isAktuellerSpieler()
-	{
-		return false;
-	}
-
-	@Override
 	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return null;

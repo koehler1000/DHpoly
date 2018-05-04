@@ -52,18 +52,6 @@ public abstract class SpielerImpl implements Spieler
 	}
 
 	@Override
-	public void setAktuellerSpieler(boolean isAktuell)
-	{
-		daten.setAktuellerSpieler(isAktuell);
-	}
-
-	@Override
-	public boolean isAktuellerSpieler()
-	{
-		return daten.isAnDerReihe();
-	}
-
-	@Override
 	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return daten.getRessourcenKontoauszug();

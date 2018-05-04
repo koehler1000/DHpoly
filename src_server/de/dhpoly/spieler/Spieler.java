@@ -16,10 +16,6 @@ public interface Spieler extends Logik
 {
 	void verarbeiteKarte(Karte karte);
 
-	void setAktuellerSpieler(boolean isAktuell);
-
-	boolean isAktuellerSpieler();
-
 	List<RessourcenDatensatz> getRessourcenKontoauszug();
 
 	int getRessourcenWerte(Ressource ressource);

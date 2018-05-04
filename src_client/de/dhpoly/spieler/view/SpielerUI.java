@@ -84,7 +84,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 
 	private boolean kannHaeuserBauen()
 	{
-		return spieler.isAktuellerSpieler() // an der Reihe
+		return spieler.getDaten().isAnDerReihe() // an der Reihe
 				&& ansicht.isPresent() // Ansicht existiert
 				&& ansicht.get().getSpieler() == spieler; // Spieler gehört die Ansicht
 	}
@@ -105,7 +105,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 			}
 			txtKontostand.setText(builder.toString());
 
-			ElementFactory.setzeRand(this, 10, spieler.isAktuellerSpieler() ? spieler : null);
+			ElementFactory.setzeRand(this, 10, spieler.getDaten().isAnDerReihe() ? spieler : null);
 
 			butHausBau.setEnabled(kannHaeuserBauen());
 		}
