@@ -245,13 +245,31 @@ to be done
 
 ## 8. Testing Workflow
 
+Our testing workflow is specified as follows:
+- think about a szenario
+- write a test
+- implement that test
+- run the test
+- if necessary, fix problems
+
 ## 9. Environmental Needs
 
 ### 9.1 Base System Hardware
 
+Our base hardware for the system is not a lot, which is a good thing.
+So the only thing needed is:
+- laptop
+
 ### 9.2 Base Software Elements in the Test Environment
 
+The same thing as in 9.1 goes for the software.
+The only necessary software is:
+- IDE with JUnit (Eclipse for us)
+
 ### 9.3 Productivity and Support Tools
+
+We only use one tool for better/faster testing and that is:
+- Sonar Lint (which is integrated in our IDE Eclipse)
 
 ### 9.4 Test Environment Configurations
 
@@ -263,9 +281,17 @@ to be done
 
 ## 11. Iteration Milestones
 
+n/a
+
 ## 12. Risks, Dependencies, Assumptions and Constraints
 
+One risk is, to destroy already written tests while refactoring code.
+Also when chaning data types of certain objects within the code, it might also be that a test does not end successfully anymore.
+Furthermore it is very hard to write tests, if there are a lot of dependencies between objects and methods (which is the case fairly often).
+
 ## 13. Management Process and Procedures
+
+
 
 ### 13.1 Measuring and Assessing the Extent of Testing
 
