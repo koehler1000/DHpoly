@@ -28,4 +28,10 @@ public class FehlerUI extends Oberflaeche // NOSONAR
 		butUeberschrift.addActionListener(e -> super.schliessen());
 		butText.addActionListener(e -> super.schliessen());
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

@@ -45,4 +45,10 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 		this.add(pnl, BorderLayout.CENTER);
 		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

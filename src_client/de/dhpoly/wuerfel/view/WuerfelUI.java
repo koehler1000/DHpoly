@@ -35,4 +35,10 @@ public class WuerfelUI extends Oberflaeche implements Beobachter // NOSONAR
 	{
 		lblWuerfelBild.setIcon(bilderverwalter.getWuerfelBild(wuerfel.getZahl()));
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return true;
+	}
 }

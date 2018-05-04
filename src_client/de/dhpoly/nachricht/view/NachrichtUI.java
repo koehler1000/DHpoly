@@ -29,4 +29,10 @@ public class NachrichtUI extends Oberflaeche // NOSONAR
 		butText.addActionListener(e -> super.schliessen());
 	}
 
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
+
 }

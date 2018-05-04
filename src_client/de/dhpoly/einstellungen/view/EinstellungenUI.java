@@ -12,4 +12,10 @@ public class EinstellungenUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 	}
 
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
+
 }

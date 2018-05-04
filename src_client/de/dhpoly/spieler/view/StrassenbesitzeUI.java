@@ -40,4 +40,10 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 			this.add(new JLabel(feld.getBeschriftung()));
 		}
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

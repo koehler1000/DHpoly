@@ -110,4 +110,10 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 			butHausBau.setEnabled(kannHaeuserBauen());
 		}
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

@@ -25,4 +25,10 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 			}
 		}
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

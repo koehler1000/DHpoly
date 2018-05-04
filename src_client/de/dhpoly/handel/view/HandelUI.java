@@ -77,4 +77,10 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 	{
 		butFertig.setText(transaktion.getTransaktionsTyp().getBeschreibung());
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

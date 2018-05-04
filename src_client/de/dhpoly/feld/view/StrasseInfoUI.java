@@ -94,4 +94,10 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe, 10));
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

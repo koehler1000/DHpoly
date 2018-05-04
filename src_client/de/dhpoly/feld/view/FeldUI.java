@@ -79,4 +79,10 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		this.add(pnlSpieler, BorderLayout.SOUTH);
 		this.revalidate();
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return true;
+	}
 }

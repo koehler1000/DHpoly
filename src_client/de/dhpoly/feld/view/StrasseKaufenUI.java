@@ -40,4 +40,10 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	{
 		schliessen();
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
+	}
 }

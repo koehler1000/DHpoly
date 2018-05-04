@@ -123,4 +123,10 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 			}
 		}
 	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return true;
+	}
 }
