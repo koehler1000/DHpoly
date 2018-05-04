@@ -17,14 +17,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielerUnimplemented implements Spieler
 {
 	@Override
-	public void auszahlen(RessourcenDatensatz datensatz)
-	{}
-
-	@Override
-	public void auszahlen(List<RessourcenDatensatz> datensaetze)
-	{}
-
-	@Override
 	public boolean isNegative()
 	{
 		return false;

@@ -40,13 +40,13 @@ public class HandelImpl implements Handel
 					{
 						RessourcenDatensatz geben = new RessourcenDatensatz(res,
 								transaktion.getRessource(anbietender.getDaten(), res));
-						anbietender.auszahlen(geben);
+						anbietender.getDaten().auszahlen(geben);
 						handelspartner.getDaten().einzahlen(geben);
 
 						RessourcenDatensatz bekommen = new RessourcenDatensatz(res,
 								transaktion.getRessource(handelspartner.getDaten(), res));
 						anbietender.getDaten().einzahlen(bekommen);
-						handelspartner.auszahlen(bekommen);
+						handelspartner.getDaten().auszahlen(bekommen);
 					}
 
 					anbietender.zeigeDatenobjekt(transaktion);

@@ -71,7 +71,8 @@ public class FeldStrasse extends FeldImpl
 	{
 		if (isKaufbar())
 		{
-			potentiellerKaeufer.auszahlen(new RessourcenDatensatz(Ressource.GELD, betrag, "Kauf: " + this.getName()));
+			potentiellerKaeufer.getDaten()
+					.auszahlen(new RessourcenDatensatz(Ressource.GELD, betrag, "Kauf: " + this.getName()));
 			setEigentuemer(potentiellerKaeufer.getDaten());
 		}
 	}
@@ -195,7 +196,7 @@ public class FeldStrasse extends FeldImpl
 				sp.ifPresent(s -> {
 					if (s.kannBezahlen(strasse.getKostenHaus()))
 					{
-						s.auszahlen(strasse.getKostenHaus());
+						s.getDaten().auszahlen(strasse.getKostenHaus());
 						strasse.setHaueser(strasse.getHaueser() + 1);
 					}
 				});

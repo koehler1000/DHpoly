@@ -42,7 +42,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 			for (Spieler spielerEmpfaenger : empfaenger)
 			{
 				spielerEmpfaenger.getDaten().einzahlen(datensaetze);
-				spielerSender.auszahlen(datensaetze);
+				spielerSender.getDaten().auszahlen(datensaetze);
 			}
 		}
 	}

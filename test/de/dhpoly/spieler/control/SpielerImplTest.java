@@ -21,7 +21,7 @@ public class SpielerImplTest
 		Spieler sender = getDefaultSpieler(100);
 
 		RessourcenDatensatz dat = new RessourcenDatensatz(Ressource.GELD, 50);
-		sender.auszahlen(dat);
+		sender.getDaten().auszahlen(dat);
 		empfaenger.getDaten().einzahlen(dat);
 
 		assertThat(sender.getRessourcenWerte(Ressource.GELD), Is.is(50));

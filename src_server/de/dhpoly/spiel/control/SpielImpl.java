@@ -420,7 +420,7 @@ public class SpielImpl implements Spiel
 	{
 		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
 		{
-			sp.auszahlen(strasse.getKaufpreis());
+			sp.getDaten().auszahlen(strasse.getKaufpreis());
 			strasse.setEigentuemer(sp.getDaten());
 			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
 		}

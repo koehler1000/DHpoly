@@ -70,12 +70,6 @@ public abstract class SpielerImpl implements Spieler
 	}
 
 	@Override
-	public void auszahlen(RessourcenDatensatz datensatz)
-	{
-		daten.auszahlen(datensatz);
-	}
-
-	@Override
 	public List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return daten.getRessourcenKontoauszug();
@@ -84,12 +78,6 @@ public abstract class SpielerImpl implements Spieler
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public void auszahlen(List<RessourcenDatensatz> datensaetze)
-	{
-		daten.auszahlen(datensaetze);
 	}
 
 	@Override

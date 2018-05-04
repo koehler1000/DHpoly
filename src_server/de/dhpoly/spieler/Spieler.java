@@ -14,10 +14,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	void auszahlen(RessourcenDatensatz datensatz);
-
-	void auszahlen(List<RessourcenDatensatz> datensaetze);
-
 	boolean isNegative();
 
 	int getFeldNr();
