@@ -94,7 +94,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	{
 		try
 		{
-			client.sende(objekt);
+			client.sendeAnServer(objekt);
 		}
 		catch (IOException ex)
 		{

@@ -49,13 +49,13 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	@Override
-	public void sende(Datenobjekt obj) throws IOException
+	public void sendeAnServer(Datenobjekt obj) throws IOException
 	{
-		sende(Serialisierer.toString(obj));
+		sendeAnServer(Serialisierer.toString(obj));
 	}
 
 	@Override
-	public void sende(String string) throws IOException
+	public void sendeAnServer(String string) throws IOException
 	{
 		out.println(string);
 	}

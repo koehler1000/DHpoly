@@ -36,7 +36,7 @@ public class Main
 		NetzwerkClient client = new NetzwerkClientImpl(str);
 
 		SpielerDaten spieler = new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler");
-		client.sende(spieler);
+		client.sendeAnServer(spieler);
 
 		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
 		fenster.zeigeSpielansicht(ansicht, spieler.getName());
