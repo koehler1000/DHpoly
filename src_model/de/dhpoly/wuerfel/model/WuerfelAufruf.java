@@ -3,6 +3,8 @@ package de.dhpoly.wuerfel.model;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.wuerfel.view.WuerfelAufrufUI;
+import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class WuerfelAufruf extends Datenobjekt
 {
@@ -28,7 +30,6 @@ public class WuerfelAufruf extends Datenobjekt
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return WuerfelAufrufUI.class;
 	}
 }
