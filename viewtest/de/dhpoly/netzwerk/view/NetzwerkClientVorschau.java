@@ -15,6 +15,14 @@ public class NetzwerkClientVorschau
 {
 	public static void main(String[] args) throws Exception
 	{
+		Fenster fenster = new Fenster(new Bilderverwalter());
+		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
+
+		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(new SpielerDaten(SpielerTyp.NETZWERK, "Netzwerkspieler"),
+				client);
+		client.addAnsicht(ansicht);
+		fenster.zeigeSpielansicht(ansicht, "NetzwerkClientVorschau");
+
 		NetzwerkServerImpl server = new NetzwerkServerImpl();
 		Thread x = new Thread(() -> {
 			try
@@ -29,14 +37,7 @@ public class NetzwerkClientVorschau
 
 		});
 		x.start();
-		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
 		client.verbindungAufbauen();
 
-		Fenster fenster = new Fenster(new Bilderverwalter());
-		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(new SpielerDaten(SpielerTyp.NETZWERK, "Netzwerkspieler"),
-				client);
-		fenster.zeigeSpielansicht(ansicht, "NetzwerkClientVorschau");
-
-		client.addAnsicht(ansicht);
 	}
 }
