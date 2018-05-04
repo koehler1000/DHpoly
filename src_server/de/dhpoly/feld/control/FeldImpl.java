@@ -77,7 +77,11 @@ public abstract class FeldImpl implements Feld
 	{
 		if (objekt instanceof Transaktion)
 		{
-			// TODO Transaktion
+			Transaktion transaktion = (Transaktion) objekt;
+			if (transaktion.getFelderEigentumswechsel().contains(this))
+			{
+				// TODO Transaktion
+			}
 		}
 	}
 }
