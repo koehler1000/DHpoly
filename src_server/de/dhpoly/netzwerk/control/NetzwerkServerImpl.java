@@ -54,17 +54,17 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	}
 
 	@Override
-	public void sende(Datenobjekt obj) throws IOException
+	public void sendeAnClients(Datenobjekt obj) throws IOException
 	{
 		if (obj != null)
 		{
-			sende(Serialisierer.toString(obj));
+			sendeAnClients(Serialisierer.toString(obj));
 			empfange("Nachricht wurde gesendet");
 		}
 	}
 
 	@Override
-	public void sende(String string) throws IOException
+	public void sendeAnClients(String string) throws IOException
 	{
 		senden(string);
 	}

@@ -7,9 +7,9 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 
 public interface NetzwerkServer
 {
-	void sende(Datenobjekt obj) throws IOException;
+	void sendeAnClients(Datenobjekt obj) throws IOException;
 
-	void sende(String string) throws IOException;
+	void sendeAnClients(String string) throws IOException;
 
 	String getIp() throws UnknownHostException;
 

@@ -52,7 +52,7 @@ public class Main
 		spieler.add(new SpielerDaten(SpielerTyp.COMPUTER, "Alex"));
 
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
-		server.sende(daten);
+		server.sendeAnClients(daten);
 
 		String ip = server.getIp();
 		JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip + " zu spielen");
