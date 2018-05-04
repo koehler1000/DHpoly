@@ -1,6 +1,7 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.IOException;
@@ -113,6 +114,12 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	{
 		if (Optional.of(oberflaeche).isPresent())
 		{
+			if (inhalte.containsKey(obj))
+			{
+				Container parent = inhalte.get(obj).getParent();
+				parent.remove(inhalte.get(obj));
+			}
+
 			tabRand.addTab(beschreibung, oberflaeche);
 			inhalte.put(obj, oberflaeche);
 			tabRand.setSelectedComponent(oberflaeche);
