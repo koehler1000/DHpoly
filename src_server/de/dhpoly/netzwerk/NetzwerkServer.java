@@ -14,4 +14,6 @@ public interface NetzwerkServer
 	String getIp() throws UnknownHostException;
 
 	void verbindungAbbauen() throws IOException;
+
+	void empfange(Datenobjekt objekt);
 }

@@ -16,4 +16,6 @@ public interface NetzwerkClient
 	void verbindungAufbauen() throws IOException;
 
 	void verbindungAbbauen() throws IOException;
+
+	void empfange(Datenobjekt obj);
 }

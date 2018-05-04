@@ -73,7 +73,8 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		empfange(nachricht);
 	}
 
-	private void empfange(Datenobjekt objekt)
+	@Override
+	public void empfange(Datenobjekt objekt)
 	{
 		interessenten.forEach(objekt::anzeigen);
 	}

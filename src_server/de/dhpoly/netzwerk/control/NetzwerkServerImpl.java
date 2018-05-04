@@ -75,7 +75,8 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		empfange(nachricht);
 	}
 
-	private void empfange(Datenobjekt objekt)
+	@Override
+	public void empfange(Datenobjekt objekt)
 	{
 		spiel.empfange(objekt);
 	}
