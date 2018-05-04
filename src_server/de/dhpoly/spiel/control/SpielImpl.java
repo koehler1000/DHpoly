@@ -86,7 +86,7 @@ public class SpielImpl implements Spiel
 	public Thread rueckeThread(Spieler spieler, int augensumme)
 	{
 		return new Thread(() -> {
-			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
+			Feld aktuellesFeld = felder.get(spieler.getDaten().getFeldNr());
 
 			for (int i = 1; i < augensumme; i++)
 			{
@@ -98,7 +98,7 @@ public class SpielImpl implements Spiel
 			aktuellesFeld.verlasseFeld(spieler);
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 			aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
-			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+			spieler.getDaten().setFeldNr(felder.indexOf(aktuellesFeld));
 
 			aktuellerSpielerIstGerueckt = true;
 			spieler.setWuerfelWeitergabeMoeglich(true);
@@ -128,7 +128,7 @@ public class SpielImpl implements Spiel
 			spieler.remove(spielerAktuell);
 			spielerAktuell.ausscheiden();
 
-			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren");
+			Nachricht nachricht = new Nachricht(spielerAktuell.getDaten().getName() + " hat verloren");
 			zeigeAllenSpielern(nachricht);
 
 			if (spieler.size() == 1)
@@ -136,7 +136,7 @@ public class SpielImpl implements Spiel
 				Spieler sieger = spieler.get(0);
 				sieger.gewonnen();
 
-				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
+				Nachricht nachrichtGewonnen = new Nachricht(sieger.getDaten().getName() + " hat gewonnen");
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 		}

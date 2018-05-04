@@ -47,7 +47,7 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		}
 		else
 		{
-			JLabel lblSp = new JLabel(spieler.getName());
+			JLabel lblSp = new JLabel(spieler.getDaten().getName());
 			JPanel pnlSp = new JPanel();
 			pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
 			pnlSp.add(lblSp);

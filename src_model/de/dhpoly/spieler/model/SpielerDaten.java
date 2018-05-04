@@ -19,6 +19,7 @@ public class SpielerDaten extends Datenobjekt
 	private int spielerNr;
 	private SpielerStatus status;
 	private boolean anDerReihe = false;
+	private int feldNr;
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
@@ -141,5 +142,15 @@ public class SpielerDaten extends Datenobjekt
 			}
 		}
 		return true;
+	}
+
+	public int getFeldNr()
+	{
+		return feldNr;
+	}
+
+	public void setFeldNr(int feldNr)
+	{
+		this.feldNr = feldNr;
 	}
 }

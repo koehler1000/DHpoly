@@ -45,7 +45,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		txtKontostand.setBackground(backcolor);
 		txtKontostand.setBorder(new LineBorder(backcolor, 10));
 
-		txtName = ElementFactory.getTextFeldUeberschrift(spieler.getName() + ": ");
+		txtName = ElementFactory.getTextFeldUeberschrift(spieler.getDaten().getName() + ": ");
 		txtName.setBackground(backcolor);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 

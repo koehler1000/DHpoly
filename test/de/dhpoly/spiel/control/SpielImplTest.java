@@ -41,14 +41,14 @@ public class SpielImplTest
 	public void testaktuellerSpieler()
 	{
 		spiel.getAktuellerSpieler();
-		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
+		assertEquals("Test1", spiel.getAktuellerSpieler().getDaten().getName());
 	}
 
 	@Test
 	public void testnaechsterSpieler()
 	{
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
-		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
+		assertEquals("Test2", spiel.getAktuellerSpieler().getDaten().getName());
 	}
 
 	@Test

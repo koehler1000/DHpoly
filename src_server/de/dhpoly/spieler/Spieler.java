@@ -14,12 +14,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	int getFeldNr();
-
-	String getName();
-
-	void setFeldNr(int feldNrSoll);
-
 	void verarbeiteKarte(Karte karte);
 
 	int getSpielerNr();

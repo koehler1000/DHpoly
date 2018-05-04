@@ -17,22 +17,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielerUnimplemented implements Spieler
 {
 	@Override
-	public int getFeldNr()
-	{
-		return 0;
-	}
-
-	@Override
-	public String getName()
-	{
-		return null;
-	}
-
-	@Override
-	public void setFeldNr(int feldNrSoll)
-	{}
-
-	@Override
 	public void verarbeiteKarte(Karte karte)
 	{}
 
