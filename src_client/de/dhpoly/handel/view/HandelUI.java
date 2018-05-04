@@ -40,8 +40,8 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 
 			JPanel pnlStrassen = ElementFactory.erzeugePanel();
 			pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
-			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion));
-			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion));
+			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion, ansicht));
+			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion, ansicht));
 			this.add(pnlStrassen, BorderLayout.CENTER);
 		}
 		else

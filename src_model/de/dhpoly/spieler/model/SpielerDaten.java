@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.feld.Feld;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -17,6 +18,8 @@ public class SpielerDaten extends Datenobjekt
 	private String name;
 	private List<RessourcenDatensatz> kasse = new ArrayList<>();
 	private int spielerNr;
+
+	private List<Feld> felder = new ArrayList<>();
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{

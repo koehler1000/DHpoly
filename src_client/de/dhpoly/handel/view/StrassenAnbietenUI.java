@@ -10,17 +10,20 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.SpielerFarben;
 
-public class StrassenAnbietenUI extends JPanel
+public class StrassenAnbietenUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
 	private Transaktion transaktion;
 
-	public StrassenAnbietenUI(SpielerDaten spielerDaten, Transaktion transaktion)
+	public StrassenAnbietenUI(SpielerDaten spielerDaten, Transaktion transaktion, SpielfeldAnsicht ansicht)
 	{
+		super(ansicht);
 		this.transaktion = transaktion;
 
 		this.setBackground(Color.WHITE);
@@ -32,7 +35,7 @@ public class StrassenAnbietenUI extends JPanel
 		JPanel pnlStrassen = new JPanel(new GridLayout(transaktion.getFelderEigentumswechsel(spielerDaten).size(), 1));
 		pnlStrassen.setBackground(Color.WHITE);
 
-		// TODO
+		// TODO Felder der Spieler anzeigen
 		// for (Feld feld : spielerDaten.getFelder())
 		// {
 		// if (feld instanceof FeldStrasse)
@@ -58,5 +61,12 @@ public class StrassenAnbietenUI extends JPanel
 	public List<Feld> getStrassen()
 	{
 		return transaktion.getFelderEigentumswechsel();
+	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
