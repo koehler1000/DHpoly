@@ -17,12 +17,15 @@ public class SpielerDaten extends Datenobjekt
 	private String name;
 	private List<RessourcenDatensatz> kasse = new ArrayList<>();
 	private int spielerNr;
+	private SpielerStatus status;
+	private boolean anDerReihe = false;
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
 		super();
 		this.typ = typ;
 		this.name = name;
+		this.status = SpielerStatus.IM_SPIEL;
 	}
 
 	public SpielerTyp getTyp()
@@ -98,8 +101,28 @@ public class SpielerDaten extends Datenobjekt
 		kasse.add(satz);
 	}
 
-	public List<RessourcenDatensatz> getRessourcenKontoauszug()
+	public final List<RessourcenDatensatz> getRessourcenKontoauszug()
 	{
 		return kasse;
+	}
+
+	public final List<RessourcenDatensatz> getKasse()
+	{
+		return kasse;
+	}
+
+	public SpielerStatus getStatus()
+	{
+		return status;
+	}
+
+	public boolean isAnDerReihe()
+	{
+		return anDerReihe;
+	}
+
+	public void setAktuellerSpieler(boolean isAktuell)
+	{
+		anDerReihe = isAktuell;
 	}
 }

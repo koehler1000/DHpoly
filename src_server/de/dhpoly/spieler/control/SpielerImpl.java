@@ -20,7 +20,6 @@ public abstract class SpielerImpl implements Spieler
 {
 	int feldNr = 0;
 	Spiel spiel;
-	boolean aktuellerSpieler = false;
 	boolean verloren = false;
 
 	SpielerDaten daten;
@@ -60,13 +59,13 @@ public abstract class SpielerImpl implements Spieler
 	@Override
 	public void setAktuellerSpieler(boolean isAktuell)
 	{
-		aktuellerSpieler = isAktuell;
+		daten.setAktuellerSpieler(isAktuell);
 	}
 
 	@Override
 	public boolean isAktuellerSpieler()
 	{
-		return aktuellerSpieler;
+		return daten.isAnDerReihe();
 	}
 
 	@Override

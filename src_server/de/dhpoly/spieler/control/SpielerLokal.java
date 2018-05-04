@@ -28,18 +28,6 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void setAktuellerSpieler(boolean isAktuell)
-	{
-		aktuellerSpieler = isAktuell;
-	}
-
-	@Override
-	public boolean isAktuellerSpieler()
-	{
-		return aktuellerSpieler;
-	}
-
-	@Override
 	public void einzahlen(List<RessourcenDatensatz> datensaetze)
 	{
 		for (RessourcenDatensatz ressourcenDatensatz : datensaetze)
