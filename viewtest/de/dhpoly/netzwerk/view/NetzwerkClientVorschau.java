@@ -3,6 +3,8 @@ package de.dhpoly.netzwerk.view;
 import java.io.IOException;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
@@ -31,8 +33,8 @@ public class NetzwerkClientVorschau
 			}
 			catch (IOException e)
 			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Fehler fehler = new Fehler(e.getMessage(), FehlerTyp.FEHLER_ALLE);
+				fehler.anzeigen(ansicht);
 			}
 
 		});
