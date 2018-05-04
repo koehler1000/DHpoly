@@ -7,7 +7,6 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
-import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.nachricht.model.Nachricht;
@@ -54,27 +53,6 @@ public abstract class SpielerImpl implements Spieler
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public void ausscheiden()
-	{
-		strassenZurueckgeben();
-		daten.setSpielerStatus(SpielerStatus.VERLOREN);
-	}
-
-	protected void strassenZurueckgeben()
-	{
-		List<Feld> felder = spiel.getFelder(this);
-		while (!felder.isEmpty())
-		{
-			Feld feld = felder.get(0);
-			if (feld instanceof FeldStrasse)
-			{
-				FeldStrasse strasse = (FeldStrasse) feld;
-				strasse.zurueckgeben();
-			}
-		}
 	}
 
 	@Override

@@ -14,8 +14,6 @@ public interface Spieler extends Logik
 {
 	void verarbeiteKarte(Karte karte);
 
-	void ausscheiden();
-
 	void gewonnen();
 
 	List<Feld> getFelder();

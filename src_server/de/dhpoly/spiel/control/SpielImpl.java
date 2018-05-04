@@ -11,6 +11,7 @@ import de.dhpoly.fehler.control.TelegamBenachrichtiger;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.Handel;
@@ -30,6 +31,7 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerComputer;
 import de.dhpoly.spieler.control.SpielerLokal;
 import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
@@ -123,10 +125,9 @@ public class SpielImpl implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) >= 0 || spielerAktuell.hatVerloren())
+		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) < 0 || spielerAktuell.hatVerloren())
 		{
-			spieler.remove(spielerAktuell);
-			spielerAktuell.ausscheiden();
+			spielerAusscheidenLassen(spielerAktuell);
 
 			Nachricht nachricht = new Nachricht(spielerAktuell.getDaten().getName() + " hat verloren");
 			zeigeAllenSpielern(nachricht);
@@ -135,11 +136,32 @@ public class SpielImpl implements Spiel
 			{
 				Spieler sieger = spieler.get(0);
 				sieger.gewonnen();
+				sieger.getDaten().setSpielerStatus(SpielerStatus.GEWONNEN);
 
 				Nachricht nachrichtGewonnen = new Nachricht(sieger.getDaten().getName() + " hat gewonnen");
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 		}
+	}
+
+	private void spielerAusscheidenLassen(Spieler spieler)
+	{
+		this.spieler.remove(spieler);
+
+		// Felder zurueckgeben
+		List<Feld> felder = getFelder(spieler);
+		while (!felder.isEmpty())
+		{
+			Feld feld = felder.get(0);
+			if (feld instanceof FeldStrasse)
+			{
+				FeldStrasse strasse = (FeldStrasse) feld;
+				strasse.zurueckgeben();
+			}
+		}
+
+		// Spielerstatus setzen
+		spieler.getDaten().setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
 	private void zeigeAllenSpielern(Datenobjekt objekt)

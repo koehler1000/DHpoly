@@ -19,10 +19,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void ausscheiden()
-	{}
-
-	@Override
 	public void gewonnen()
 	{}
 

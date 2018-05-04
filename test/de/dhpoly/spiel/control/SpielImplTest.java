@@ -16,10 +16,12 @@ import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldLosTest;
 import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.spieler.control.SpielerUnimplemented;
+import de.dhpoly.spieler.control.SpielerLokal;
+import de.dhpoly.spieler.model.SpielerStatus;
 
 public class SpielImplTest
 {
@@ -74,53 +76,20 @@ public class SpielImplTest
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		spiel.fuegeSpielerHinzu(getSpieler(false));
-		spiel.fuegeSpielerHinzu(getSpieler(true));
+		Spieler s1 = new SpielerLokal("Peter", spiel);
+		Spieler s2 = new SpielerLokal("Peter", spiel);
 
-		assertThat(hatVerloren, Is.is(false));
-		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
+		spiel.fuegeSpielerHinzu(s1);
+		spiel.fuegeSpielerHinzu(s2);
 
-		assertThat(hatVerloren, Is.is(true));
+		s1.getDaten().auszahlen(new RessourcenDatensatz(Ressource.GELD, 9999999));
+
+		assertThat(s1.getDaten().getStatus(), Is.is(SpielerStatus.IM_SPIEL));
+		spiel.wuerfelWeitergeben(s1);
+
+		assertThat(s1.getDaten().getStatus(), Is.is(SpielerStatus.VERLOREN));
+		assertThat(s2.getDaten().getStatus(), Is.is(SpielerStatus.GEWONNEN));
 	}
-
-	boolean hatGewonnen = false;
-
-	@Test
-	public void spielerGewinntWennAlleAnderenVerlorenHaben()
-	{
-		List<Feld> felder = new ArrayList<>();
-		felder.add(FeldStrasseTest.getDefaultStrasse());
-		Spiel spiel = SpielImplTest.getDefaultSpiel();
-		spiel.setFelder(felder);
-
-		Spieler sieger = getSpieler(true);
-
-		spiel.fuegeSpielerHinzu(getSpieler(false));
-		spiel.fuegeSpielerHinzu(getSpieler(true));
-
-		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
-
-		assertThat(sieger.hatVerloren(), Is.is(false));
-		assertThat(hatGewonnen, Is.is(true));
-	}
-
-	private Spieler getSpieler(boolean gewinntImmer)
-	{
-		return new SpielerUnimplemented()
-		{
-			@Override
-			public void ausscheiden()
-			{
-				hatVerloren = true;
-			}
-
-			@Override
-			public void gewonnen()
-			{
-				hatGewonnen = true;
-			}
-		};
-	};
 
 	public static SpielImpl getDefaultSpiel()
 	{
