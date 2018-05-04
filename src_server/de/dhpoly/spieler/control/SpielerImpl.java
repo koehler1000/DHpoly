@@ -9,7 +9,6 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -53,12 +52,6 @@ public abstract class SpielerImpl implements Spieler
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public void gewonnen()
-	{
-		zeigeDatenobjekt(new Nachricht("Gewonnen"));
 	}
 
 	@Override

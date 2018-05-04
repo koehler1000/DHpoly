@@ -14,8 +14,6 @@ public interface Spieler extends Logik
 {
 	void verarbeiteKarte(Karte karte);
 
-	void gewonnen();
-
 	List<Feld> getFelder();
 
 	void setSpielerNr(int nr);

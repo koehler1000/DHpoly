@@ -135,7 +135,6 @@ public class SpielImpl implements Spiel
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
-				sieger.gewonnen();
 				sieger.getDaten().setSpielerStatus(SpielerStatus.GEWONNEN);
 
 				Nachricht nachrichtGewonnen = new Nachricht(sieger.getDaten().getName() + " hat gewonnen");

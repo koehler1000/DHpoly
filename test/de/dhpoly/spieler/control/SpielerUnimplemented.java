@@ -19,10 +19,6 @@ public class SpielerUnimplemented implements Spieler
 	{}
 
 	@Override
-	public void gewonnen()
-	{}
-
-	@Override
 	public List<Feld> getFelder()
 	{
 		return null;
