@@ -15,7 +15,7 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.view.SpielerFarben;
 
-public class StrassenAnbietenUI extends Oberflaeche
+public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
