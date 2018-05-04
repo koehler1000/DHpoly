@@ -254,6 +254,8 @@ Our testing workflow is specified as follows:
 
 ## 9. Environmental Needs
 
+to be done
+
 ### 9.1 Base System Hardware
 
 Our base hardware for the system is not a lot, which is a good thing.
@@ -273,11 +275,19 @@ We only use one tool for better/faster testing and that is:
 
 ### 9.4 Test Environment Configurations
 
+to be done
+
 ## 10. Responsibilities, Staffing and Training Needs
+
+to be done
 
 ### 10.1 People and Roles
 
+to be done
+
 ### 10.2 Staffing and Training Needs
+
+to be done
 
 ## 11. Iteration Milestones
 
@@ -291,16 +301,28 @@ Furthermore it is very hard to write tests, if there are a lot of dependencies b
 
 ## 13. Management Process and Procedures
 
-
+to be done
 
 ### 13.1 Measuring and Assessing the Extent of Testing
 
+to be done
+
 ### 13.2 Assessing the deliverables of this Test Plan
+
+to be done
 
 ### 13.3 Problem Reporting, Escalation and Issue Resolution
 
+to be done
+
 ### 13.4 Managing Test Cycles
+
+to be done
 
 ### 13.5 Traceability Strategies
 
+to be done
+
 ### 13.6 Approval and Signoff
+
+to be done
