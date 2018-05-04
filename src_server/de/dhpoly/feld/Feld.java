@@ -7,7 +7,7 @@ import de.dhpoly.logik.Logik;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 
-public interface Feld extends Logik // TODO extends Logik
+public interface Feld extends Logik
 {
 	public String getBeschriftung();
 
