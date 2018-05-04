@@ -119,12 +119,6 @@ public class SpielImplTest
 			{
 				hatGewonnen = true;
 			}
-
-			@Override
-			public boolean isNegative()
-			{
-				return !gewinntImmer;
-			}
 		};
 	};
 

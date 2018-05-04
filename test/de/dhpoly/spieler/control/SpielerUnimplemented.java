@@ -17,12 +17,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielerUnimplemented implements Spieler
 {
 	@Override
-	public boolean isNegative()
-	{
-		return false;
-	}
-
-	@Override
 	public int getFeldNr()
 	{
 		return 0;

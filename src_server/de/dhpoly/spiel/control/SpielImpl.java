@@ -23,6 +23,7 @@ import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.control.NachrichtVerwalter;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
@@ -122,7 +123,7 @@ public class SpielImpl implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.isNegative() || spielerAktuell.hatVerloren())
+		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) >= 0 || spielerAktuell.hatVerloren())
 		{
 			spieler.remove(spielerAktuell);
 			spielerAktuell.ausscheiden();

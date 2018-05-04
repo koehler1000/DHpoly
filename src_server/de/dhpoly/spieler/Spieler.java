@@ -14,8 +14,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	boolean isNegative();
-
 	int getFeldNr();
 
 	String getName();
