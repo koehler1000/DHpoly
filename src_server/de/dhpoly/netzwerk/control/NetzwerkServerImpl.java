@@ -6,28 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.HashSet;
 
-/**
- * A multithreaded chat room server.  When a client connects the
- * server requests a screen name by sending the client the
- * text "SUBMITNAME", and keeps requesting a name until
- * a unique one is received.  After a client submits a unique
- * name, the server acknowledges with "NAMEACCEPTED".  Then
- * all messages from that client will be broadcast to all other
- * clients that have submitted a unique screen name.  The
- * broadcast messages are prefixed with "MESSAGE ".
- *
- * Because this is just a teaching example to illustrate a simple
- * chat server, there are a few features that have been left out.
- * Two are very useful and belong in production code:
- *
- *     1. The protocol should be enhanced so that the client can
- *        send clean disconnect messages to the server.
- *
- *     2. The server should do some logging.
- */
-public class NetzwerkServerImpl {
+import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.netzwerk.NetzwerkServer;
+
+public class NetzwerkServerImpl implements NetzwerkServer{
 
     /**
      * The port that the server listens on.
@@ -150,4 +135,34 @@ public class NetzwerkServerImpl {
             }
         }
     }
+
+	@Override
+	public void sendeAnClients(Datenobjekt obj) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendeAnClients(String string) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getIp() throws UnknownHostException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void verbindungAbbauen() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void empfange(Datenobjekt objekt) {
+		// TODO Auto-generated method stub
+		
+	}
 }

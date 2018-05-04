@@ -27,15 +27,16 @@ public class NetzwerkClientVorschau
 
 		NetzwerkServerImpl server = new NetzwerkServerImpl();
 		Thread x = new Thread(() -> {
-			try
-			{
-				server.run();
-			}
-			catch (IOException e)
-			{
-				Fehler fehler = new Fehler(e.getMessage(), FehlerTyp.FEHLER_ALLE);
-				fehler.anzeigen(ansicht);
-			}
+//			try
+//			{
+//				server.run();
+//			}
+//			catch (IOException e)
+//			{
+//				Fehler fehler = new Fehler(e.getMessage(), FehlerTyp.FEHLER_ALLE);
+//				fehler.anzeigen(ansicht);
+//			}
+			//TODO viewtest wieder implementieren
 
 		});
 		x.start();
