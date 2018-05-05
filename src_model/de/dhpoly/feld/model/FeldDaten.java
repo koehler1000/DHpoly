@@ -8,6 +8,13 @@ public class FeldDaten extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
+	private FeldTyp typ;
+
+	public FeldDaten(FeldTyp typ)
+	{
+		this.typ = typ;
+	}
+
 	@Override
 	public String getTitel()
 	{
@@ -18,5 +25,10 @@ public class FeldDaten extends Datenobjekt
 	public Class<? extends Oberflaeche> getClassUI()
 	{
 		return FeldUI.class;
+	}
+
+	public FeldTyp getTyp()
+	{
+		return typ;
 	}
 }
