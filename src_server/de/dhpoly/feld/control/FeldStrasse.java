@@ -183,40 +183,6 @@ public class FeldStrasse extends FeldImpl
 		return strasse.isEigentuemer(spieler);
 	}
 
-	@Deprecated
-	public void hausBauen(Spiel spiel)
-	{
-		if (!strasse.isAlleHaeuserGebaut())
-		{
-			strasse.getEigentuemer().ifPresent(s -> {
-				if (s.kannBezahlen(strasse.getKostenHaus()))
-				{
-					s.auszahlen(strasse.getKostenHaus());
-					strasse.setHaueser(strasse.getHaeuser() + 1);
-				}
-			});
-		}
-	}
-
-	@Deprecated
-	public void hausVerkaufen(Spiel spiel)
-	{
-		if (strasse.haeuserGebaut())
-		{
-			hausZerstoeren();
-			strasse.getKostenHaus().stream().filter(e -> e.getRessource() != Ressource.GELD)
-					.forEach(e -> strasse.getEigentuemer().ifPresent(s -> s.einzahlen(e)));
-		}
-	}
-
-	public void hausZerstoeren()
-	{
-		if (strasse.getHaeuser() > 0)
-		{
-			strasse.setHaueser(strasse.getHaeuser() - 1);
-		}
-	}
-
 	public void zurueckgeben()
 	{
 		strasse.setEigentuemer(Optional.empty());
