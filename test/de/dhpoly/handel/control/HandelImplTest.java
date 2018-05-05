@@ -110,7 +110,7 @@ public class HandelImplTest
 		assertThat(s2.getRessourcenWert(Ressource.GELD), Is.is(200));
 	}
 
-	Spiel spiel = new Spiel()
+	public Spiel spiel = new Spiel()
 	{
 		@Override
 		public void wuerfeln(Spieler spieler)
