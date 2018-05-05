@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -20,6 +21,7 @@ public class SpielerDaten extends Datenobjekt
 	private SpielerStatus status;
 	private boolean anDerReihe = false;
 	private int feldNr;
+	private List<Strasse> strassen = new ArrayList<>();
 
 	public SpielerDaten(SpielerTyp typ, String name)
 	{
@@ -147,5 +149,25 @@ public class SpielerDaten extends Datenobjekt
 	public void setFeldNr(int feldNr)
 	{
 		this.feldNr = feldNr;
+	}
+
+	public List<Strasse> getStrassen()
+	{
+		return strassen;
+	}
+
+	public void leereStrassen()
+	{
+		strassen = new ArrayList<>();
+	}
+
+	public void addStrasse(Strasse strasse)
+	{
+		strassen.add(strasse);
+	}
+
+	public void removeStrasse(Strasse strasse)
+	{
+		strassen.remove(strasse);
 	}
 }
