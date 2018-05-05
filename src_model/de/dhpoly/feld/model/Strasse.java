@@ -1,5 +1,6 @@
 package de.dhpoly.feld.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +20,10 @@ public class Strasse extends Datenobjekt
 
 	private int haueser = 0;
 	private boolean hypothek = false;
-	private List<RessourcenDatensatz> kostenHaus;
-	private int gruppe;
-	private String name;
-	private int kaufpreis;
+	private List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
+	private int gruppe = 0;
+	private String name = "Teststraﬂe";
+	private int kaufpreis = 0;
 
 	public Optional<SpielerDaten> getEigentuemer()
 	{
