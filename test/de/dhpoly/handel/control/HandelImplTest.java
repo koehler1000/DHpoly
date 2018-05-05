@@ -250,23 +250,24 @@ public class HandelImplTest
 
 		@Override
 		public void fuegeComputerSpielerHinzu(String text)
-		{
-			// TODO Auto-generated method stub
-
-		}
+		{}
 
 		@Override
 		public void empfange(Datenobjekt objekt)
-		{
-			// TODO Auto-generated method stub
-
-		}
+		{}
 
 		@Override
 		public Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer)
 		{
-			// TODO Auto-generated method stub
 			return null;
 		}
+
+		@Override
+		public void zeigeSpieler(Spieler sp, Datenobjekt transaktion)
+		{}
+
+		@Override
+		public void zeigeAllenSpielern(Datenobjekt transaktion)
+		{}
 	};
 }

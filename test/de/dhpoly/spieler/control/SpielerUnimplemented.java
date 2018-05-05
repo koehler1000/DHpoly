@@ -6,7 +6,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
@@ -23,14 +22,6 @@ public class SpielerUnimplemented implements Spieler
 	{
 		return null;
 	}
-
-	@Override
-	public void setSpielfeldAnsicht(SpielfeldAnsicht ansicht)
-	{}
-
-	@Override
-	public void zeigeDatenobjekt(Datenobjekt objekt)
-	{}
 
 	@Override
 	public void vergebeRessourcen(int ertrag)

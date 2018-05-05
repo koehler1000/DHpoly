@@ -164,14 +164,6 @@ public class SpielImpl implements Spiel
 		spieler.getDaten().setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
-	private void zeigeAllenSpielern(Datenobjekt objekt)
-	{
-		for (Spieler sp : spieler)
-		{
-			sp.zeigeDatenobjekt(objekt);
-		}
-	}
-
 	private void vergebeRessourcen()
 	{
 		for (Spieler sp : spieler)
@@ -260,11 +252,11 @@ public class SpielImpl implements Spiel
 	{
 		if (fehler.getFehlertyp().isAlleSpielerInformieren())
 		{
-			spieler.forEach(e -> e.zeigeDatenobjekt(fehler));
+			zeigeAllenSpielern(fehler);
 		}
 		else if (fehler.getFehlertyp().isAktuellenSpielerInformieren())
 		{
-			getAktuellerSpieler().zeigeDatenobjekt(fehler);
+			zeigeSpieler(getAktuellerSpieler(), fehler);
 		}
 
 		if (fehler.getFehlertyp().isEntwicklerInformieren())
@@ -435,7 +427,7 @@ public class SpielImpl implements Spiel
 		}
 		else
 		{
-			spieler.zeigeDatenobjekt(new Fehler("Kauf fehlgeschlagen: Nicht an der Reihe", FehlerTyp.FEHLER_SPIELER));
+			zeigeSpieler(spieler, new Fehler("Kauf fehlgeschlagen: Nicht an der Reihe", FehlerTyp.FEHLER_SPIELER));
 		}
 	}
 
@@ -503,5 +495,17 @@ public class SpielImpl implements Spiel
 			return getSpieler(eigentuemer.get());
 		}
 		return Optional.empty();
+	}
+
+	@Override
+	public void zeigeSpieler(Spieler sp, Datenobjekt transaktion)
+	{
+		// TODO versenden
+	}
+
+	@Override
+	public void zeigeAllenSpielern(Datenobjekt transaktion)
+	{
+		// TODO versenden
 	}
 }

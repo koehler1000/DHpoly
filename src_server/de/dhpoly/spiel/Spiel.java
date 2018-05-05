@@ -3,6 +3,7 @@ package de.dhpoly.spiel;
 import java.util.List;
 import java.util.Optional;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
@@ -68,4 +69,8 @@ public interface Spiel extends Logikverwalter
 	Optional<Spieler> getSpieler(SpielerDaten spielerDaten);
 
 	Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer);
+
+	void zeigeAllenSpielern(Datenobjekt objekt);
+
+	void zeigeSpieler(Spieler sp, Datenobjekt objekt);
 }

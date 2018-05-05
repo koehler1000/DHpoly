@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.model.Strasse;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -47,7 +46,8 @@ public class FeldStrasse extends FeldImpl
 		}
 		else
 		{
-			spieler.zeigeDatenobjekt(new StrasseKaufen(strasse));
+			// TODO Spieler Kaufmöglichkeit zeigen
+			// spieler.zeigeDatenobjekt(new StrasseKaufen(strasse));
 		}
 	}
 

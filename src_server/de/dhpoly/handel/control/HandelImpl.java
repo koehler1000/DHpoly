@@ -21,7 +21,7 @@ public class HandelImpl implements Handel
 	public void vorschlagAnbieten(Transaktion transaktion, Spiel spiel)
 	{
 		Optional<Spieler> anbietender = spiel.getSpieler(transaktion.getAnbietender());
-		anbietender.ifPresent(sp -> sp.zeigeDatenobjekt(transaktion));
+		anbietender.ifPresent(sp -> spiel.zeigeSpieler(sp, transaktion));
 	}
 
 	@Override
@@ -49,8 +49,8 @@ public class HandelImpl implements Handel
 						handelspartner.getDaten().auszahlen(bekommen);
 					}
 
-					anbietender.zeigeDatenobjekt(transaktion);
-					handelspartner.zeigeDatenobjekt(transaktion);
+					spiel.zeigeSpieler(anbietender, transaktion);
+					spiel.zeigeSpieler(handelspartner, transaktion);
 				}));
 	}
 
