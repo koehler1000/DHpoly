@@ -2,7 +2,10 @@ package de.dhpoly.spiel.control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
@@ -11,6 +14,7 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.Handel;
@@ -282,7 +286,25 @@ public class SpielImpl implements Spiel
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
 			this.felder = felder;
+			aktualisiereGruppen(felder);
 		}
+	}
+
+	private void aktualisiereGruppen(List<Feld> felder2)
+	{
+		Map<Integer, Integer> gruppenHaeufigkeit = new HashMap<>();
+		List<Strasse> strassen = new ArrayList<>();
+		felder2.stream().filter(e -> (e instanceof Strasse)).forEach(e -> strassen.add((Strasse) e));
+
+		for (Strasse strasse : strassen)
+		{
+			int gruppe = strasse.getGruppe();
+			int alterWert = Optional.ofNullable(gruppenHaeufigkeit.get(gruppe)).orElse(0);
+
+			gruppenHaeufigkeit.put(gruppe, alterWert + 1);
+		}
+
+		strassen.forEach(e -> e.setStrassenAnzahlInGruppe(gruppenHaeufigkeit.get(e.getGruppe())));
 	}
 
 	@Override

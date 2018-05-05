@@ -21,6 +21,7 @@ public class Strasse extends Datenobjekt
 	private boolean hypothek = false;
 	private List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
 	private int gruppe = 0;
+	private int strassenAnzahlInGruppe = 1;
 	private String name = "Teststraße";
 	private int kaufpreis = 0;
 
@@ -138,6 +139,16 @@ public class Strasse extends Datenobjekt
 	public boolean haeuserGebaut()
 	{
 		return getHaeuser() > 0;
+	}
+
+	public int getStrassenAnzahlInGruppe()
+	{
+		return strassenAnzahlInGruppe;
+	}
+
+	public void setStrassenAnzahlInGruppe(int strassenAnzahlInGruppe)
+	{
+		this.strassenAnzahlInGruppe = strassenAnzahlInGruppe;
 	}
 
 	@Override
