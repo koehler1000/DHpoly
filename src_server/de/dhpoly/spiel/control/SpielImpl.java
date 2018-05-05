@@ -28,8 +28,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerComputer;
-import de.dhpoly.spieler.control.SpielerLokal;
+import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.Wuerfelpaar;
@@ -231,7 +230,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeLokalenSpielerHinzu(String spielerName)
 	{
-		fuegeSpielerHinzu(new SpielerLokal(spielerName, this));
+		fuegeSpielerHinzu(new SpielerImpl(spielerName, this));
 	}
 
 	@Override
@@ -335,7 +334,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeComputerSpielerHinzu(String text)
 	{
-		this.fuegeSpielerHinzu(new SpielerComputer(text, this));
+		this.fuegeSpielerHinzu(new SpielerImpl(text, this));
 	}
 
 	@Override

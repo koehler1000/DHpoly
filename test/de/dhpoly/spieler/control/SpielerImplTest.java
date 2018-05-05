@@ -50,12 +50,12 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler()
 	{
-		return new SpielerLokal("me", null);
+		return getDefaultSpieler(null);
 	}
 
 	public static Spieler getDefaultSpieler(Spiel spiel)
 	{
-		return new SpielerLokal("me", spiel);
+		return new SpielerImpl("me", spiel);
 	}
 
 	public static Spieler getDefaultSpieler(int geld)
@@ -80,7 +80,7 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler(String name, int geld, Spiel spiel)
 	{
-		Spieler spieler = new SpielerLokal(name, spiel);
+		Spieler spieler = new SpielerImpl(name, spiel);
 		spieler.getDaten().einzahlen(new RessourcenDatensatz(Ressource.GELD, geld));
 		return spieler;
 	}

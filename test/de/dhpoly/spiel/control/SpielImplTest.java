@@ -19,8 +19,8 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.spieler.control.SpielerLokal;
 import de.dhpoly.spieler.model.SpielerStatus;
 
 public class SpielImplTest
@@ -76,8 +76,8 @@ public class SpielImplTest
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		Spieler s1 = new SpielerLokal("Peter", spiel);
-		Spieler s2 = new SpielerLokal("Peter", spiel);
+		Spieler s1 = new SpielerImpl("Peter", spiel);
+		Spieler s2 = new SpielerImpl("Peter", spiel);
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);

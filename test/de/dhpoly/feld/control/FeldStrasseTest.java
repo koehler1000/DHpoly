@@ -16,8 +16,8 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.control.SpielerImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.spieler.control.SpielerLokal;
 
 public class FeldStrasseTest
 {
@@ -50,7 +50,7 @@ public class FeldStrasseTest
 				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
 
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
-		Spieler spieler = new SpielerLokal("Peter", spiel);
+		Spieler spieler = new SpielerImpl("Peter", spiel);
 		spieler.getDaten().einzahlen(new RessourcenDatensatz(Ressource.GELD, startbetrag));
 
 		strasse.kaufe(spieler);

@@ -6,11 +6,11 @@ import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 import de.dhpoly.spieler.model.SpielerTyp;
 
-public class SpielerComputer implements Spieler
+public class SpielerImpl implements Spieler
 {
 	SpielerDaten daten;
 
-	public SpielerComputer(String name, Spiel spiel)
+	public SpielerImpl(String name, Spiel spiel)
 	{
 		this.daten = new SpielerDaten(SpielerTyp.COMPUTER, name);
 	}
