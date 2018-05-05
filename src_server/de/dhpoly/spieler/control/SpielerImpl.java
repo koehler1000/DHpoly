@@ -1,7 +1,6 @@
 package de.dhpoly.spieler.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -49,12 +48,6 @@ public abstract class SpielerImpl implements Spieler
 	public boolean hatVerloren()
 	{
 		return daten.getStatus() == SpielerStatus.VERLOREN;
-	}
-
-	@Override
-	public void kaufe(StrasseKaufen strasse)
-	{
-		spiel.kaufe(strasse, this);
 	}
 
 	@Override
