@@ -11,7 +11,4 @@ public class SpielerLokal extends SpielerImpl
 		super(new SpielerDaten(SpielerTyp.LOKAL, name), spiel);
 	}
 
-	@Override
-	public void setWuerfelWeitergabeMoeglich(boolean value)
-	{}
 }

@@ -99,7 +99,6 @@ public class SpielImpl implements Spiel
 			spieler.getDaten().setFeldNr(felder.indexOf(aktuellesFeld));
 
 			aktuellerSpielerIstGerueckt = true;
-			spieler.setWuerfelWeitergabeMoeglich(true);
 		});
 	}
 
@@ -351,9 +350,6 @@ public class SpielImpl implements Spiel
 	private void naechsterSpieler()
 	{
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
-		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
-		// TODO braucht man das noch?
-		// spielerAktuellAlt.setWuerfelnMoeglich(false);
 		spielerAktuellAlt.getDaten().setAktuellerSpieler(false);
 
 		spielerImSpiel.remove(spielerAktuellAlt);

@@ -6,8 +6,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	void setWuerfelWeitergabeMoeglich(boolean value);
-
 	void kaufe(StrasseKaufen strasse);
 
 	SpielerDaten getDaten();
