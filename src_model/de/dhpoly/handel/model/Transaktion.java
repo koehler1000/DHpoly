@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.DatenobjektAnClient;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.model.SpielerDaten;
 
-public class Transaktion extends Datenobjekt
+public class Transaktion extends DatenobjektAnClient
 {
 	private static final long serialVersionUID = 1L;
 

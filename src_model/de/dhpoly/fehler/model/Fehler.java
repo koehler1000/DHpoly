@@ -1,10 +1,10 @@
 package de.dhpoly.fehler.model;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.DatenobjektAnClient;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 
-public class Fehler extends Datenobjekt
+public class Fehler extends DatenobjektAnClient
 {
 	private static final long serialVersionUID = 1L;
 
