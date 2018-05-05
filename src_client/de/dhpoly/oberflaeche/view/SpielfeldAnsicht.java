@@ -42,14 +42,14 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	private JTabbedPane tabRand = new JTabbedPane();
 	private SpielerDaten spieler;
 
-	private transient NetzwerkClient client;
+	private transient Optional<NetzwerkClient> client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(SpielerDaten spieler, NetzwerkClient client)
 	{
 		this.spieler = spieler;
-		this.client = client;
+		this.client = Optional.ofNullable(client);
 
 		ElementFactory.bearbeitePanel(this);
 		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
@@ -57,7 +57,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 		butWeiter.addActionListener(e -> weiter());
 
-		client.addAnsicht(this);
+		this.client.ifPresent(c -> c.addAnsicht(this));
 	}
 
 	public void empfangeWuerfel(WuerfelDaten wuerfel)
@@ -92,9 +92,14 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void sendeAnServer(Datenobjekt objekt)
 	{
+		client.ifPresent(c -> sende(c, objekt));
+	}
+
+	public void sende(NetzwerkClient c, Datenobjekt obj)
+	{
 		try
 		{
-			client.sendeAnServer(objekt);
+			c.sendeAnServer(obj);
 		}
 		catch (IOException ex)
 		{
