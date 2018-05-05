@@ -13,7 +13,6 @@ import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -38,8 +37,6 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldVonAnderenSpielern()
 	{
-		Spiel spiel = null;
-
 		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500);
 
 		List<Spieler> spieler = new ArrayList<>();
@@ -62,8 +59,6 @@ public class KartenverbucherImplTest
 	@Test
 	public void geldAnAndereSpielern()
 	{
-		Spiel spiel = null;
-
 		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500);
 
 		List<Spieler> spieler = new ArrayList<>();

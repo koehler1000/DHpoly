@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -17,44 +15,6 @@ public class HaeuserUIVorschau
 {
 	public static void main(String[] args)
 	{
-		Felderverwaltung verwaltung = new Felderverwaltung()
-		{
-			@Override
-			public void setFelder(List<Feld> felder)
-			{
-				throw new UnsupportedOperationException("Felder werden nicht gesetzt");
-			}
-
-			@Override
-			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
-			{
-				return false;
-			}
-
-			@Override
-			public boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
-			{
-				return true;
-			}
-
-			@Override
-			public List<Feld> getFelder(Spieler spieler)
-			{
-				throw new UnsupportedOperationException("Felder werden nicht gesetzt");
-			}
-
-			@Override
-			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional)
-			{
-				return false;
-			}
-		};
-
-		// FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(new int[] { 1, 10,
-		// 20, 50, 75 }, verwaltung);
-		// FeldStrasse strasse2 = FeldStrasseTest.getDefaultStrasse(new int[] { 1, 10,
-		// 20, 50, 75 }, verwaltung);
-
 		Strasse strasse = new Strasse();
 		Strasse strasse2 = new Strasse();
 
