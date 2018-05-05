@@ -1,8 +1,8 @@
 package de.dhpoly.feld.control;
 
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenstapel.Kartenstapel;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 
@@ -17,10 +17,10 @@ public class FeldEreignis extends FeldImpl
 	}
 
 	@Override
-	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
+	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
 		Karte karte = kartenstapel.ziehen();
-		spieler.verarbeiteKarte(karte);
+		spiel.verarbeiteKarte(karte);
 	}
 
 	@Override

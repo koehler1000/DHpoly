@@ -99,7 +99,7 @@ public class SpielImpl implements Spiel
 
 			aktuellesFeld.verlasseFeld(spieler);
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-			aktuellesFeld.betreteFeld(spieler, augensumme, wetter);
+			aktuellesFeld.betreteFeld(spieler, augensumme, this);
 			spieler.getDaten().setFeldNr(felder.indexOf(aktuellesFeld));
 
 			aktuellerSpielerIstGerueckt = true;
@@ -203,7 +203,7 @@ public class SpielImpl implements Spiel
 
 	private void verarbeiteKarte(RueckenKarte karte)
 	{
-		new KartenverbucherImpl().bewegeSpieler(karte, getAktuellerSpieler(), wetter);
+		new KartenverbucherImpl().bewegeSpieler(karte, getAktuellerSpieler(), this);
 		zeigeAllenSpielern(karte);
 	}
 
@@ -238,7 +238,7 @@ public class SpielImpl implements Spiel
 		spieler.getDaten().setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
-		felder.get(0).betreteFeld(spieler, 0, wetter);
+		felder.get(0).betreteFeld(spieler, 0, this);
 	}
 
 	@Override

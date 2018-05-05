@@ -58,7 +58,8 @@ public class FeldStrasseTest
 		spiel.fuegeSpielerHinzu(spieler);
 
 		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
-		strasse.spielerBetrittFeld(spieler, Wetter.BEWOELKT); // eigentümer
+		spiel.setWetter(Wetter.BEWOELKT);
+		strasse.spielerBetrittFeld(spieler, spiel); // eigentümer
 		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 

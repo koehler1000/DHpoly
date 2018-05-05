@@ -6,7 +6,6 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 
@@ -25,14 +24,14 @@ public abstract class FeldImpl implements Feld
 		this.beschriftung = beschriftung;
 	}
 
-	public void betreteFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
+	public void betreteFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
 		spielerAufFeld.add(spieler);
 
 		// wird z.B. beim Spielstart nicht ausgeführt
 		if (augensumme > 0)
 		{
-			spielerBetrittFeld(spieler, augensumme, aktuellesWetter);
+			spielerBetrittFeld(spieler, augensumme, spiel);
 		}
 	}
 
@@ -42,7 +41,7 @@ public abstract class FeldImpl implements Feld
 		spielerVerlaesstFeld(spieler);
 	}
 
-	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
+	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
 		// leer in der Standardimplementierung, kann in Implementierung überschrieben
 		// werden

@@ -6,7 +6,6 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.RueckenKarte;
-import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -48,9 +47,9 @@ public class KartenverbucherImpl implements Kartenverbucher
 	}
 
 	@Override
-	public void bewegeSpieler(RueckenKarte karte, Spieler spieler, Wetter wetter)
+	public void bewegeSpieler(RueckenKarte karte, Spieler spieler, Spiel spiel)
 	{
-		karte.getZiel().betreteFeld(spieler, 0, wetter);
+		karte.getZiel().betreteFeld(spieler, 0, spiel);
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 		else if (objekt instanceof RueckenKarte)
 		{
 			RueckenKarte karte = (RueckenKarte) objekt;
-			bewegeSpieler(karte, spiel.getAktuellerSpieler(), spiel.getWetter());
+			bewegeSpieler(karte, spiel.getAktuellerSpieler(), spiel);
 		}
 	}
 }

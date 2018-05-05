@@ -1,9 +1,9 @@
 package de.dhpoly.feld.control;
 
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
+import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
 
@@ -20,7 +20,7 @@ public class FeldRessource extends FeldImpl
 	}
 
 	@Override
-	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter aktuellesWetter)
+	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
 		spieler.getDaten().einzahlen(new RessourcenDatensatz(ressource, einstellungen.getRessourcenErtrag(),
 				ressource.getRessourcenFeldString()));

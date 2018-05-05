@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -33,21 +34,20 @@ public class FeldStrasse extends FeldImpl
 	}
 
 	@Override
-	public void spielerBetrittFeld(Spieler spieler, int augensumme, Wetter wetter)
+	public void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
-		spielerBetrittFeld(spieler, wetter);
+		spielerBetrittFeld(spieler, spiel);
 	}
 
-	public void spielerBetrittFeld(Spieler spieler, Wetter wetter)
+	public void spielerBetrittFeld(Spieler spieler, Spiel spiel)
 	{
 		if (isVerkauft())
 		{
-			zahle(spieler.getDaten(), wetter);
+			zahle(spieler.getDaten(), spiel.getWetter());
 		}
 		else
 		{
-			// TODO Spieler Kaufmöglichkeit zeigen
-			// spieler.zeigeDatenobjekt(new StrasseKaufen(strasse));
+			spiel.zeigeSpieler(spieler, new StrasseKaufen(strasse));
 		}
 	}
 

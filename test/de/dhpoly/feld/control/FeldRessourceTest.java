@@ -6,7 +6,6 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
@@ -29,7 +28,7 @@ public class FeldRessourceTest
 
 		spiel.fuegeSpielerHinzu(spieler);
 
-		feld.betreteFeld(spieler, 2, Wetter.BEWOELKT);
+		feld.betreteFeld(spieler, 2, spiel);
 
 		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
 		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(10));

@@ -8,7 +8,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.model.StrasseKaufen;
-import de.dhpoly.karte.model.Karte;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -70,12 +69,6 @@ public abstract class SpielerImpl implements Spieler
 	public boolean hatVerloren()
 	{
 		return daten.getStatus() == SpielerStatus.VERLOREN;
-	}
-
-	@Override
-	public void verarbeiteKarte(Karte karte)
-	{
-		spiel.verarbeiteKarte(karte);
 	}
 
 	@Override
