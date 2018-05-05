@@ -184,6 +184,7 @@ public class FeldStrasse extends FeldImpl
 		return strasse.isEigentuemer(spieler);
 	}
 
+	@Deprecated
 	public void hausBauen(Spiel spiel)
 	{
 		if (!strasse.isAlleHaeuserGebaut())
@@ -198,6 +199,7 @@ public class FeldStrasse extends FeldImpl
 		}
 	}
 
+	@Deprecated
 	public void hausVerkaufen(Spiel spiel)
 	{
 		if (strasse.haeuserGebaut())
