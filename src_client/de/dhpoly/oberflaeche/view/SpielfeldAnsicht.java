@@ -18,7 +18,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.fehler.view.FehlerUI;
-import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
@@ -137,7 +136,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		inhalte.clear();
 	}
 
-	public void zeigeHausbaumoeglichkeit(List<Feld> felder)
+	public void zeigeHausbaumoeglichkeit(List<Strasse> felder)
 	{
 		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
 	}

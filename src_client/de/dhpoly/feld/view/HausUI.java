@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
@@ -23,11 +23,11 @@ public class HausUI extends JPanel
 
 	private JButton butHausVerkaufen;
 
-	public HausUI(FeldStrasse strasse)
+	public HausUI(Strasse strasse)
 	{
 		ElementFactory.bearbeitePanel(this);
 
-		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getBeschriftung());
+		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getName());
 		txtAktuelleMiete = ElementFactory.getTextFeld("", false);
 
 		JPanel pnlHaeuser = ElementFactory.erzeugePanel();
@@ -38,19 +38,23 @@ public class HausUI extends JPanel
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 
 		butHausBauen = ElementFactory.getButtonUeberschrift("+");
-		butHausBauen.addActionListener(e -> strasse.hausBauen(spiel));
+		// TODO
+		// butHausBauen.addActionListener(e -> strasse.hausBauen(spiel));
 		pnlHaeuser.add(butHausBauen);
 
 		butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
-		butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen(spiel));
+		// TODO
+		// butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen(spiel));
 		pnlHaeuser.add(butHausVerkaufen);
 
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(pnlHaeuser, BorderLayout.CENTER);
 
-		butHausVerkaufen.setEnabled(strasse.getHaeuser() > 0);
-		butHausBauen.setEnabled(strasse.kannBebautWerden(spiel));
-		txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() + System.lineSeparator() + "Häuser: "
-				+ strasse.getHaeuser());
+		butHausVerkaufen.setEnabled(strasse.getHaueser() > 0);
+		// TODO
+		// butHausBauen.setEnabled(strasse.kannBebautWerden(spiel));
+		// txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() +
+		// System.lineSeparator() + "Häuser: "
+		// + strasse.getHaeuser());
 	}
 }

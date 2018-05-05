@@ -1,9 +1,5 @@
 package de.dhpoly.spieler.control;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldRessource;
@@ -51,19 +47,6 @@ public abstract class SpielerImpl implements Spieler
 	public int getRessourcenWerte(Ressource ressource)
 	{
 		return daten.getRessourcenWert(ressource);
-	}
-
-	@Override
-	public List<Feld> getFelder()
-	{
-		if (Optional.ofNullable(spiel).isPresent())
-		{
-			return spiel.getFelder(this);
-		}
-		else
-		{
-			return new ArrayList<>();
-		}
 	}
 
 	public boolean hatVerloren()

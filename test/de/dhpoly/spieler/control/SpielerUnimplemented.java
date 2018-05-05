@@ -1,9 +1,6 @@
 package de.dhpoly.spieler.control;
 
-import java.util.List;
-
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
@@ -12,12 +9,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 
 public class SpielerUnimplemented implements Spieler
 {
-	@Override
-	public List<Feld> getFelder()
-	{
-		return null;
-	}
-
 	@Override
 	public void vergebeRessourcen(int ertrag)
 	{}
