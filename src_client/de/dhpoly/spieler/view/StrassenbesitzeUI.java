@@ -1,12 +1,9 @@
 package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
-import java.util.List;
 
-import javax.swing.JLabel;
-
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.Felderverwaltung;
+import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
@@ -16,14 +13,12 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Felderverwaltung felderverwaltung;
 	private transient Spieler spieler;
 
-	public StrassenbesitzeUI(Felderverwaltung felderverwaltung, Spieler spieler, SpielfeldAnsicht ansicht)
+	public StrassenbesitzeUI(Spieler spieler, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 		this.spieler = spieler;
-		this.felderverwaltung = felderverwaltung;
 
 		update();
 	}
@@ -31,13 +26,11 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 	@Override
 	public void update()
 	{
-		List<Feld> felderDesSpielers = felderverwaltung.getFelder(spieler);
+		this.setLayout(new GridLayout(1, spieler.getStrassen().size()));
 
-		this.setLayout(new GridLayout(1, felderDesSpielers.size()));
-
-		for (Feld feld : felderDesSpielers)
+		for (Strasse feld : spieler.getStrassen())
 		{
-			this.add(new JLabel(feld.getBeschriftung()));
+			this.add(ElementFactory.getTextFeld(feld.getName(), false));
 		}
 	}
 

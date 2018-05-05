@@ -13,10 +13,8 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.FeldStrasseTest;
-import de.dhpoly.feld.control.FelderverwaltungTest;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
@@ -38,8 +36,6 @@ public class HandelImplTest
 	@Test
 	public void felderVerbuchenStrassenGeben()
 	{
-		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung();
-
 		s1 = SpielerImplTest.getDefaultSpieler();
 		s2 = SpielerImplTest.getDefaultSpieler();
 
@@ -47,7 +43,7 @@ public class HandelImplTest
 		spiel.fuegeSpielerHinzu(s2);
 
 		List<Feld> felder = new ArrayList<>();
-		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(verwaltung, s1);
+		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(s1);
 		felder.add(feld);
 
 		feld.kaufe(s1, 0);
@@ -67,15 +63,13 @@ public class HandelImplTest
 	@Test
 	public void felderVerbuchenStrassenBekommen()
 	{
-		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung();
-
 		s1 = SpielerImplTest.getDefaultSpieler();
 		s2 = SpielerImplTest.getDefaultSpieler();
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);
 
-		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(verwaltung, s2);
+		FeldStrasse feld = FeldStrasseTest.getDefaultStrasse(s2);
 
 		List<Feld> felder = new ArrayList<>();
 		felder.add(feld);

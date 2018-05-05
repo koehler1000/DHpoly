@@ -3,7 +3,6 @@ package de.dhpoly.feld.control;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Wetter;
@@ -16,13 +15,9 @@ public class FeldStrasse extends FeldImpl
 {
 	private Strasse strasse;
 
-	private Felderverwaltung strassenverwaltung;
-
-	public FeldStrasse(Felderverwaltung strassenverwaltung, int kaufpreis, int[] miete,
-			List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
+	public FeldStrasse(int kaufpreis, int[] miete, List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
 	{
 		super(name);
-		this.strassenverwaltung = strassenverwaltung;
 
 		strasse = new Strasse();
 		strasse.setMiete(miete);
@@ -72,6 +67,7 @@ public class FeldStrasse extends FeldImpl
 		{
 			potentiellerKaeufer.auszahlen(new RessourcenDatensatz(Ressource.GELD, betrag, "Kauf: " + this.getName()));
 			setEigentuemer(potentiellerKaeufer);
+			potentiellerKaeufer.addStrasse(getStrasse());
 		}
 	}
 
@@ -129,8 +125,11 @@ public class FeldStrasse extends FeldImpl
 
 	private boolean isDoppelteMiete()
 	{
-		return strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(), strasse.getEigentuemer())
-				&& strasse.getHaeuser() == 0;
+		if (getEigentuemer().isPresent())
+		{
+			return getEigentuemer().get().hatAlleStrassenDerGruppe(getGruppe());
+		}
+		return false;
 	}
 
 	public void setEigentuemer(Spieler anbietender)

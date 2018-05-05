@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FeldStrasseTest;
-import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -21,13 +19,11 @@ public class HandelUIVorschau
 		Spieler s1 = SpielerImplTest.getDefaultSpieler("s1", 0);
 		Spieler s2 = SpielerImplTest.getDefaultSpieler("s2", 0);
 
-		Felderverwaltung verwaltung = new FelderverwaltungImpl();
 		List<Feld> felder = new ArrayList<>();
-		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
-		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s2));
-		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
-		felder.add(FeldStrasseTest.getDefaultStrasse(verwaltung, s1));
-		verwaltung.setFelder(felder);
+		felder.add(FeldStrasseTest.getDefaultStrasse(s1));
+		felder.add(FeldStrasseTest.getDefaultStrasse(s2));
+		felder.add(FeldStrasseTest.getDefaultStrasse(s1));
+		felder.add(FeldStrasseTest.getDefaultStrasse(s1));
 
 		List<RessourcenDatensatz> datensaetze = new ArrayList<>();
 		datensaetze.add(new RessourcenDatensatz(Ressource.GELD, 10000));

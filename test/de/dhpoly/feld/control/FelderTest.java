@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -20,9 +19,8 @@ public class FelderTest
 	public void spielerStartetAufFeld0()
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung(felder);
 
-		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld());
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
@@ -33,12 +31,11 @@ public class FelderTest
 	public void spielerKann2FelderLaufen() throws InterruptedException
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung(felder);
 
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
 
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
@@ -58,13 +55,11 @@ public class FelderTest
 	public void spielerKannUeberrunden()
 	{
 		List<Feld> felder = new ArrayList<>();
-		Felderverwaltung verwaltung = new FelderverwaltungImpl();
-		verwaltung.setFelder(felder);
 
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
-		felder.add(getDefaultFeld(verwaltung));
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
+		felder.add(getDefaultFeld());
 
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
@@ -76,14 +71,13 @@ public class FelderTest
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
-	public static Feld getDefaultFeld(Felderverwaltung verwaltung)
+	public static Feld getDefaultFeld()
 	{
-		return getDefaultFeld(verwaltung, 0);
+		return getDefaultFeld(0);
 	}
 
-	public static Feld getDefaultFeld(Felderverwaltung verwaltung, int strassenGruppe)
+	public static FeldStrasse getDefaultFeld(int strassenGruppe)
 	{
-		return new FeldStrasse(verwaltung, 100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe,
-				"test");
+		return new FeldStrasse(100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe, "test");
 	}
 }

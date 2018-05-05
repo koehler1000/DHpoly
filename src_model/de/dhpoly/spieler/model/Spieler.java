@@ -2,6 +2,7 @@ package de.dhpoly.spieler.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.Strasse;
@@ -169,5 +170,21 @@ public class Spieler extends Datenobjekt
 	public void removeStrasse(Strasse strasse)
 	{
 		strassen.remove(strasse);
+	}
+
+	public boolean hatAlleStrassenDerGruppe(int i)
+	{
+		long anz = strassen.stream().filter(e -> (e.getGruppe() == i)).count();
+
+		Optional<Strasse> strasse = strassen.stream().filter(e -> (e.getGruppe() == i)).findFirst();
+
+		if (strasse.isPresent())
+		{
+			Strasse s = strasse.get();
+			int gesamtzahl = s.getStrassenAnzahlInGruppe();
+			return gesamtzahl == anz;
+		}
+
+		return false;
 	}
 }

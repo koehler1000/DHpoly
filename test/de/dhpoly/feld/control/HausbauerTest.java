@@ -31,7 +31,7 @@ public class HausbauerTest
 	@Before
 	public void startUp()
 	{
-		strasse = new FeldStrasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
+		strasse = new FeldStrasse(0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
 
 		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
 		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));

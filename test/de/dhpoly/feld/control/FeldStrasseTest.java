@@ -8,7 +8,6 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -26,7 +25,7 @@ public class FeldStrasseTest
 		final int startbetrag = 500;
 		final int kosten = 50;
 
-		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
+		FeldStrasse strasse = new FeldStrasse(kosten, new int[] { 10, 20, 30, 50, 70, 90 },
 				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startbetrag);
 
@@ -45,7 +44,7 @@ public class FeldStrasseTest
 		final int startbetrag = 500;
 		final int kosten = 50;
 
-		FeldStrasse strasse = new FeldStrasse(new FelderverwaltungImpl(), kosten, new int[] { 10, 20, 30, 50, 70, 90 },
+		FeldStrasse strasse = new FeldStrasse(kosten, new int[] { 10, 20, 30, 50, 70, 90 },
 				new Einstellungen().getHauskosten(1), 3, "Badstrasse");
 
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
@@ -64,7 +63,7 @@ public class FeldStrasseTest
 
 	static FeldStrasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
 	{
-		return new FeldStrasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
+		return new FeldStrasse(0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
 	}
 
 	public static FeldStrasse getDefaultStrasse()
@@ -84,13 +83,12 @@ public class FeldStrasseTest
 
 	public static FeldStrasse getDefaultStrasse(String name, int preis, int[] mieten)
 	{
-		return new FeldStrasse(null, preis, mieten, new Einstellungen().getHauskosten(1), 1, name);
+		return new FeldStrasse(preis, mieten, new Einstellungen().getHauskosten(1), 1, name);
 	}
 
-	public static FeldStrasse getDefaultStrasse(Felderverwaltung verwaltung, Spieler s1)
+	public static FeldStrasse getDefaultStrasse(Spieler s1)
 	{
-		FeldStrasse strasse = new FeldStrasse(verwaltung, 0, new int[1], new Einstellungen().getHauskosten(1), 1,
-				"Strasse");
+		FeldStrasse strasse = new FeldStrasse(0, new int[1], new Einstellungen().getHauskosten(1), 1, "Strasse");
 		strasse.setEigentuemer(s1);
 		return strasse;
 	}
@@ -98,10 +96,5 @@ public class FeldStrasseTest
 	public static FeldStrasse getDefaultStrasse(int[] miete)
 	{
 		return getDefaultStrasse("Teststrasse", 1000, miete);
-	}
-
-	public static FeldStrasse getDefaultStrasse(int[] miete, Felderverwaltung verwaltung)
-	{
-		return new FeldStrasse(verwaltung, 1000, miete, new Einstellungen().getHauskosten(1), 1, "Teststrasse");
 	}
 }

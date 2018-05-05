@@ -294,7 +294,9 @@ public class SpielImpl implements Spiel
 	{
 		Map<Integer, Integer> gruppenHaeufigkeit = new HashMap<>();
 		List<Strasse> strassen = new ArrayList<>();
-		felder2.stream().filter(e -> (e instanceof Strasse)).forEach(e -> strassen.add((Strasse) e));
+		// TODO Datenobjekt verwenden (Strasse statt FeldStrasse)
+		felder2.stream().filter(e -> (e instanceof FeldStrasse))
+				.forEach(e -> strassen.add(((FeldStrasse) e).getStrasse()));
 
 		for (Strasse strasse : strassen)
 		{
