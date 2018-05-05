@@ -11,7 +11,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class StrasseUI extends FeldUI // NOSONAR
@@ -62,7 +62,7 @@ public class StrasseUI extends FeldUI // NOSONAR
 		this.setBackground(farbe);
 	}
 
-	private void setBeschriftung(Optional<SpielerDaten> spieler)
+	private void setBeschriftung(Optional<Spieler> spieler)
 	{
 		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
 	}

@@ -4,8 +4,7 @@ import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FeldRessource extends FeldImpl
 {
@@ -22,19 +21,13 @@ public class FeldRessource extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
-		spieler.getDaten().einzahlen(new RessourcenDatensatz(ressource, einstellungen.getRessourcenErtrag(),
+		spieler.einzahlen(new RessourcenDatensatz(ressource, einstellungen.getRessourcenErtrag(),
 				ressource.getRessourcenFeldString()));
 	}
 
 	public Ressource getRessource()
 	{
 		return ressource;
-	}
-
-	@Override
-	public boolean gehoertSpieler(SpielerDaten spielerDaten)
-	{
-		return false;
 	}
 
 	@Override

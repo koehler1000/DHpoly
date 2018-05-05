@@ -10,7 +10,7 @@ import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 
 public class NetzwerkClientVorschau
@@ -20,7 +20,7 @@ public class NetzwerkClientVorschau
 		Fenster fenster = new Fenster(new Bilderverwalter());
 		NetzwerkClient client = new NetzwerkClientImpl("127.0.0.1");
 
-		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(new SpielerDaten(SpielerTyp.NETZWERK, "Netzwerkspieler"),
+		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(new Spieler(SpielerTyp.NETZWERK, "Netzwerkspieler"),
 				client);
 		client.addAnsicht(ansicht);
 		fenster.zeigeSpielansicht(ansicht, "NetzwerkClientVorschau");

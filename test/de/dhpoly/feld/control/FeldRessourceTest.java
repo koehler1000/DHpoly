@@ -9,8 +9,8 @@ import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FeldRessourceTest
 {
@@ -24,14 +24,14 @@ public class FeldRessourceTest
 		FeldRessource feld = new FeldRessource(Ressource.HOLZ, einstellungen);
 		Spiel spiel = SpielImplTest.getDefaultSpiel(einstellungen);
 
-		Spieler spieler = SpielerImplTest.getDefaultSpieler(spiel);
+		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 
 		spiel.fuegeSpielerHinzu(spieler);
 
 		feld.betreteFeld(spieler, 2, spiel);
 
-		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(0));
-		assertThat(spieler.getDaten().getRessourcenWert(Ressource.HOLZ), Is.is(10));
-		assertThat(spieler.getDaten().getRessourcenWert(Ressource.STEIN), Is.is(0));
+		assertThat(spieler.getRessourcenWert(Ressource.GELD), Is.is(0));
+		assertThat(spieler.getRessourcenWert(Ressource.HOLZ), Is.is(10));
+		assertThat(spieler.getRessourcenWert(Ressource.STEIN), Is.is(0));
 	}
 }

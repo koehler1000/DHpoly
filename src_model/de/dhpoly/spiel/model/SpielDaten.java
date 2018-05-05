@@ -6,23 +6,23 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class SpielDaten extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
-	private List<SpielerDaten> spieler = new ArrayList<>();
+	private List<Spieler> spieler = new ArrayList<>();
 	private Einstellungen einstellungen = new Einstellungen();
 
-	public SpielDaten(List<SpielerDaten> spieler, Einstellungen einstellungen)
+	public SpielDaten(List<Spieler> spieler, Einstellungen einstellungen)
 	{
 		super();
 		this.spieler = spieler;
 		this.einstellungen = einstellungen;
 	}
 
-	public List<SpielerDaten> getSpieler()
+	public List<Spieler> getSpieler()
 	{
 		return spieler;
 	}

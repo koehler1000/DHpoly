@@ -4,8 +4,7 @@ import java.util.List;
 
 import de.dhpoly.logik.Logik;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public interface Feld extends Logik
 {
@@ -19,7 +18,7 @@ public interface Feld extends Logik
 
 	public List<Spieler> getSpielerAufFeld();
 
-	public boolean gehoertSpieler(SpielerDaten spielerDaten);
+	public boolean gehoertSpieler(Spieler spielerDaten);
 
 	public boolean isKaufbar();
 }

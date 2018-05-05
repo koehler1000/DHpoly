@@ -4,18 +4,18 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class Bewegung extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
-	private SpielerDaten spieler;
+	private Spieler spieler;
 	private int felder;
 	private FeldDaten startfeld;
 	private List<FeldDaten> ueberlaufeneFelder;
 
-	public Bewegung(SpielerDaten spieler, int felder, FeldDaten startfeld, List<FeldDaten> ueberlaufeneFelder)
+	public Bewegung(Spieler spieler, int felder, FeldDaten startfeld, List<FeldDaten> ueberlaufeneFelder)
 	{
 		super();
 		this.spieler = spieler;
@@ -24,7 +24,7 @@ public class Bewegung extends Datenobjekt
 		this.ueberlaufeneFelder = ueberlaufeneFelder;
 	}
 
-	public SpielerDaten getSpieler()
+	public Spieler getSpieler()
 	{
 		return spieler;
 	}

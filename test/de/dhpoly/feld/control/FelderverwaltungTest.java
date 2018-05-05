@@ -10,8 +10,8 @@ import org.junit.Test;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FelderverwaltungTest
 {
@@ -29,7 +29,7 @@ public class FelderverwaltungTest
 		FeldStrasse strasse = (FeldStrasse) felder.get(0);
 		strasse.kaufe(spieler);
 
-		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler.getDaten()));
+		assertTrue(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ public class FelderverwaltungTest
 		FeldStrasse strasse = (FeldStrasse) felder.get(0);
 		strasse.kaufe(spieler);
 
-		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler.getDaten()));
+		assertFalse(verwaltung.isNutzerBesitzerAllerStrassen(1, spieler));
 	}
 
 	public static Felderverwaltung getDefaultFelderverwaltung()

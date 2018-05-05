@@ -4,10 +4,8 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.control.SpielImplTest;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
+import de.dhpoly.spieler.model.Spieler;
+import de.dhpoly.spieler.model.SpielerTyp;
 
 public class Spielansicht
 {
@@ -16,9 +14,8 @@ public class Spielansicht
 
 	public static SpielfeldAnsicht getSpielfeldAnsicht()
 	{
-		Spiel spiel = SpielImplTest.getDefaultSpiel();
-		Spieler spieler = new SpielerImpl("foo", spiel);
-		return new SpielfeldAnsicht(spieler.getDaten(), null);
+		Spieler spieler = new Spieler(SpielerTyp.LOKAL, "foo");
+		return new SpielfeldAnsicht(spieler, null);
 	}
 
 	public static void zeige(Oberflaeche oberflaeche)

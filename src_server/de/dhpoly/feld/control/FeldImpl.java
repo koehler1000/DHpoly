@@ -7,7 +7,7 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 
 public abstract class FeldImpl implements Feld
 {

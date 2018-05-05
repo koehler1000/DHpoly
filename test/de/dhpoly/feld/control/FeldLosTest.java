@@ -10,8 +10,8 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImplTest;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FeldLosTest
 {
@@ -22,12 +22,11 @@ public class FeldLosTest
 
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 
-		Spieler s1 = SpielerImplTest.getDefaultSpieler(startgeld, spiel);
+		Spieler s1 = SpielerImplTest.getDefaultSpieler(startgeld);
 		FeldLos los = new FeldLos(new Einstellungen());
 		los.betreteFeld(s1, 2, spiel);
 
-		assertThat(s1.getDaten().getRessourcenWert(Ressource.GELD),
-				Is.is(new Einstellungen().getBetragBetretenLos() + startgeld));
+		assertThat(s1.getRessourcenWert(Ressource.GELD), Is.is(new Einstellungen().getBetragBetretenLos() + startgeld));
 	}
 
 	public static Feld getDefaultFeld()

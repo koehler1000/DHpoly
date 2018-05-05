@@ -26,8 +26,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
@@ -39,13 +38,13 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	private JButton butWeiter = new JButton("");
 	private JTabbedPane tabRand = new JTabbedPane();
-	private SpielerDaten spieler;
+	private Spieler spieler;
 
 	private transient Optional<NetzwerkClient> client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
-	public SpielfeldAnsicht(SpielerDaten spieler, NetzwerkClient client)
+	public SpielfeldAnsicht(Spieler spieler, NetzwerkClient client)
 	{
 		this.spieler = spieler;
 		this.client = Optional.ofNullable(client);
@@ -166,7 +165,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
-	public SpielerDaten getSpieler()
+	public Spieler getSpieler()
 	{
 		return spieler;
 	}

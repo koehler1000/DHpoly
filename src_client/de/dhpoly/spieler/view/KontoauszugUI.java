@@ -11,7 +11,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 
 public class KontoauszugUI extends Oberflaeche // NOSONAR
 {
@@ -29,7 +29,7 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 		JTextArea txtText = ElementFactory.getTextFeld("", false);
 		JTextArea txtWert = ElementFactory.getTextFeld("", false);
 
-		for (RessourcenDatensatz transaktion : spieler.getDaten().getKasse())
+		for (RessourcenDatensatz transaktion : spieler.getKasse())
 		{
 			txtText.setText(txtText.getText() + transaktion.getBeschreibung() + System.lineSeparator());
 			txtWert.setText(txtWert.getText() + transaktion.getString() + System.lineSeparator());

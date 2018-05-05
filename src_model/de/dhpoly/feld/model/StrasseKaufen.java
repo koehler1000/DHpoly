@@ -9,7 +9,7 @@ import de.dhpoly.feld.view.StrasseKaufenUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class StrasseKaufen extends Datenobjekt
 {
@@ -56,7 +56,7 @@ public class StrasseKaufen extends Datenobjekt
 		return !strasse.getEigentuemer().isPresent();
 	}
 
-	public void setEigentuemer(SpielerDaten sp)
+	public void setEigentuemer(Spieler sp)
 	{
 		strasse.setEigentuemer(Optional.of(sp));
 	}

@@ -8,8 +8,8 @@ import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.control.FelderverwaltungImpl;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.utils.Spielansicht;
 
 public class StrassenbesitzeUIVorschau

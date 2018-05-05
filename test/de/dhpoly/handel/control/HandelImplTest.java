@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.hamcrest.core.Is;
 import org.junit.Test;
@@ -27,9 +26,8 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
 public class HandelImplTest
@@ -42,8 +40,8 @@ public class HandelImplTest
 	{
 		Felderverwaltung verwaltung = FelderverwaltungTest.getDefaultFelderverwaltung();
 
-		s1 = SpielerImplTest.getDefaultSpieler(spiel);
-		s2 = SpielerImplTest.getDefaultSpieler(spiel);
+		s1 = SpielerImplTest.getDefaultSpieler();
+		s2 = SpielerImplTest.getDefaultSpieler();
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);
@@ -53,17 +51,17 @@ public class HandelImplTest
 		felder.add(feld);
 
 		feld.kaufe(s1, 0);
-		assertThat(feld.getEigentuemer().get(), Is.is(s1.getDaten()));
+		assertThat(feld.getEigentuemer().get(), Is.is(s1));
 
 		Handel handel = new HandelImpl();
 
-		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
+		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(feld);
 
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
 		assertTrue(feld.getEigentuemer().isPresent());
-		assertThat(feld.getEigentuemer().get(), Is.is(s2.getDaten()));
+		assertThat(feld.getEigentuemer().get(), Is.is(s2));
 	}
 
 	@Test
@@ -88,12 +86,12 @@ public class HandelImplTest
 
 		Handel handel = new HandelImpl();
 
-		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
+		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(feld);
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
 		assertTrue(feld.getEigentuemer().isPresent());
-		assertThat(feld.getEigentuemer().get(), Is.is(s1.getDaten()));
+		assertThat(feld.getEigentuemer().get(), Is.is(s1));
 	}
 
 	@Test
@@ -104,12 +102,12 @@ public class HandelImplTest
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);
 
-		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
-		transaktion.setRessourcen(s2.getDaten(), Ressource.GELD, 50);
+		Transaktion transaktion = new Transaktion(s1, s2);
+		transaktion.setRessourcen(s2, Ressource.GELD, 50);
 		handel.vorschlagAnnehmen(transaktion, spiel);
 
-		assertThat(s1.getDaten().getRessourcenWert(Ressource.GELD), Is.is(200));
-		assertThat(s2.getDaten().getRessourcenWert(Ressource.GELD), Is.is(200));
+		assertThat(s1.getRessourcenWert(Ressource.GELD), Is.is(200));
+		assertThat(s2.getRessourcenWert(Ressource.GELD), Is.is(200));
 	}
 
 	Spiel spiel = new Spiel()
@@ -183,16 +181,6 @@ public class HandelImplTest
 		}
 
 		@Override
-		public Optional<Spieler> getSpieler(SpielerDaten spielerDaten)
-		{
-			if (spielerDaten == s1.getDaten())
-			{
-				return Optional.of(s1);
-			}
-			return Optional.of(s2);
-		}
-
-		@Override
 		public List<Spieler> getSpieler()
 		{
 			// TODO Auto-generated method stub
@@ -218,13 +206,6 @@ public class HandelImplTest
 		{
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-		public SpielerDaten getAktuellerSpielerDaten()
-		{
-			// TODO Auto-generated method stub
-			return null;
 		}
 
 		@Override
@@ -255,12 +236,6 @@ public class HandelImplTest
 		@Override
 		public void empfange(Datenobjekt objekt)
 		{}
-
-		@Override
-		public Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer)
-		{
-			return null;
-		}
 
 		@Override
 		public void zeigeSpieler(Spieler sp, Datenobjekt transaktion)

@@ -10,8 +10,8 @@ import de.dhpoly.feld.control.FelderverwaltungImpl;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.utils.Spielansicht;
 
 public class HandelUIVorschau
@@ -34,10 +34,10 @@ public class HandelUIVorschau
 		datensaetze.add(new RessourcenDatensatz(Ressource.HOLZ, 10));
 		datensaetze.add(new RessourcenDatensatz(Ressource.STEIN, 50));
 
-		s1.getDaten().einzahlen(datensaetze);
-		s2.getDaten().einzahlen(datensaetze);
+		s1.einzahlen(datensaetze);
+		s2.einzahlen(datensaetze);
 
-		Transaktion transaktion = new Transaktion(s1.getDaten(), s2.getDaten());
+		Transaktion transaktion = new Transaktion(s1, s2);
 
 		Spielansicht.zeige(new HandelUI(transaktion, Spielansicht.getSpielfeldAnsicht()));
 	}

@@ -3,7 +3,6 @@ package de.dhpoly.spiel.control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
@@ -27,10 +26,9 @@ import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
+import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
@@ -83,7 +81,7 @@ public class SpielImpl implements Spiel
 	public Thread rueckeThread(Spieler spieler, int augensumme)
 	{
 		return new Thread(() -> {
-			Feld aktuellesFeld = felder.get(spieler.getDaten().getFeldNr());
+			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
 
 			for (int i = 1; i < augensumme; i++)
 			{
@@ -95,7 +93,7 @@ public class SpielImpl implements Spiel
 			aktuellesFeld.verlasseFeld(spieler);
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 			aktuellesFeld.betreteFeld(spieler, augensumme, this);
-			spieler.getDaten().setFeldNr(felder.indexOf(aktuellesFeld));
+			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
 
 			aktuellerSpielerIstGerueckt = true;
 		});
@@ -119,20 +117,20 @@ public class SpielImpl implements Spiel
 
 	private void pruefeVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.getDaten().getRessourcenWert(Ressource.GELD) < 0
-				|| spielerAktuell.getDaten().getStatus() == SpielerStatus.VERLOREN)
+		if (spielerAktuell.getRessourcenWert(Ressource.GELD) < 0
+				|| spielerAktuell.getStatus() == SpielerStatus.VERLOREN)
 		{
 			spielerAusscheidenLassen(spielerAktuell);
 
-			Nachricht nachricht = new Nachricht(spielerAktuell.getDaten().getName() + " hat verloren");
+			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren");
 			zeigeAllenSpielern(nachricht);
 
 			if (spieler.size() == 1)
 			{
 				Spieler sieger = spieler.get(0);
-				sieger.getDaten().setSpielerStatus(SpielerStatus.GEWONNEN);
+				sieger.setSpielerStatus(SpielerStatus.GEWONNEN);
 
-				Nachricht nachrichtGewonnen = new Nachricht(sieger.getDaten().getName() + " hat gewonnen");
+				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 		}
@@ -155,7 +153,7 @@ public class SpielImpl implements Spiel
 		}
 
 		// Spielerstatus setzen
-		spieler.getDaten().setSpielerStatus(SpielerStatus.VERLOREN);
+		spieler.setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
 	@Override
@@ -220,8 +218,8 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
-		spieler.getDaten().setAktuellerSpieler(this.spieler.isEmpty());
-		spieler.getDaten().setSpielerNr(this.spieler.size());
+		spieler.setAktuellerSpieler(this.spieler.isEmpty());
+		spieler.setSpielerNr(this.spieler.size());
 		this.spieler.add(spieler);
 		this.spielerImSpiel.add(spieler);
 		felder.get(0).betreteFeld(spieler, 0, this);
@@ -230,7 +228,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeLokalenSpielerHinzu(String spielerName)
 	{
-		fuegeSpielerHinzu(new SpielerImpl(spielerName, this));
+		fuegeSpielerHinzu(new Spieler(SpielerTyp.LOKAL, spielerName));
 	}
 
 	@Override
@@ -309,7 +307,7 @@ public class SpielImpl implements Spiel
 
 		for (Spieler sp : spieler)
 		{
-			sp.getDaten().einzahlen(einstellungen.getSpielerStartVorraete());
+			sp.einzahlen(einstellungen.getSpielerStartVorraete());
 		}
 
 		// TODO braucht man das noch?
@@ -322,7 +320,7 @@ public class SpielImpl implements Spiel
 		List<Feld> felderSpieler = new ArrayList<>();
 		for (Feld feld : felder)
 		{
-			if (feld.gehoertSpieler(spieler.getDaten()))
+			if (feld.gehoertSpieler(spieler))
 			{
 				felderSpieler.add(feld);
 			}
@@ -334,7 +332,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeComputerSpielerHinzu(String text)
 	{
-		this.fuegeSpielerHinzu(new SpielerImpl(text, this));
+		this.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, text));
 	}
 
 	@Override
@@ -349,17 +347,17 @@ public class SpielImpl implements Spiel
 	private void naechsterSpieler()
 	{
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
-		spielerAktuellAlt.getDaten().setAktuellerSpieler(false);
+		spielerAktuellAlt.setAktuellerSpieler(false);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
 		pruefeVerloren(spielerAktuellAlt);
-		if (spielerAktuellAlt.getDaten().getStatus() != SpielerStatus.VERLOREN)
+		if (spielerAktuellAlt.getStatus() != SpielerStatus.VERLOREN)
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
-		spielerAktuellNeu.getDaten().setAktuellerSpieler(true);
+		spielerAktuellNeu.setAktuellerSpieler(true);
 		// TODO braucht man das noch?
 		// spielerAktuellNeu.setWuerfelnMoeglich(true);
 
@@ -413,10 +411,10 @@ public class SpielImpl implements Spiel
 
 	private void kaufAbwickeln(StrasseKaufen strasse, Spieler sp)
 	{
-		if (strasse.isKaufbar() && sp.getDaten().kannBezahlen(strasse.getKaufpreis()))
+		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
 		{
-			sp.getDaten().auszahlen(strasse.getKaufpreis());
-			strasse.setEigentuemer(sp.getDaten());
+			sp.auszahlen(strasse.getKaufpreis());
+			strasse.setEigentuemer(sp);
 			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
 		}
 
@@ -453,28 +451,6 @@ public class SpielImpl implements Spiel
 	public Wetter getWetter()
 	{
 		return wetter;
-	}
-
-	@Override
-	public SpielerDaten getAktuellerSpielerDaten()
-	{
-		return getAktuellerSpieler().getDaten();
-	}
-
-	@Override
-	public Optional<Spieler> getSpieler(SpielerDaten spielerDaten)
-	{
-		return spieler.stream().findFirst().filter(s -> s.getDaten() == spielerDaten);
-	}
-
-	@Override
-	public Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer)
-	{
-		if (eigentuemer.isPresent())
-		{
-			return getSpieler(eigentuemer.get());
-		}
-		return Optional.empty();
 	}
 
 	@Override

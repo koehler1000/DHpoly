@@ -16,7 +16,7 @@ import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class StrasseInfoUI extends Oberflaeche // NOSONAR
@@ -64,7 +64,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 
 	private String getEigentuemerString(Strasse feld)
 	{
-		Optional<SpielerDaten> eigentuemer = feld.getEigentuemer();
+		Optional<Spieler> eigentuemer = feld.getEigentuemer();
 		return eigentuemer.isPresent() ? eigentuemer.get().getName() : "Zu kaufen";
 	}
 
@@ -89,7 +89,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		return sb.toString();
 	}
 
-	private void farbeSetzen(SpielerDaten spieler)
+	private void farbeSetzen(Spieler spieler)
 	{
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe, 10));

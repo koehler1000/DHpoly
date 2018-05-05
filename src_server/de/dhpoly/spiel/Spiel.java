@@ -1,7 +1,6 @@
 package de.dhpoly.spiel;
 
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
@@ -12,8 +11,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.logik.Logikverwalter;
 import de.dhpoly.spiel.model.SpielStatus;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
 public interface Spiel extends Logikverwalter
@@ -63,12 +61,6 @@ public interface Spiel extends Logikverwalter
 	void kaufe(StrasseKaufen strasse, Spieler spieler);
 
 	Wetter getWetter();
-
-	SpielerDaten getAktuellerSpielerDaten();
-
-	Optional<Spieler> getSpieler(SpielerDaten spielerDaten);
-
-	Optional<Spieler> getSpieler(Optional<SpielerDaten> eigentuemer);
 
 	void zeigeAllenSpielern(Datenobjekt objekt);
 

@@ -4,8 +4,7 @@ import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FeldLos extends FeldImpl
 {
@@ -20,22 +19,14 @@ public class FeldLos extends FeldImpl
 	@Override
 	protected void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
-		spieler.getDaten()
-				.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragBetretenLos(), "Los"));
 	}
 
 	@Override
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		super.laufeUeberFeld(spieler);
-		spieler.getDaten()
-				.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
-	}
-
-	@Override
-	public boolean gehoertSpieler(SpielerDaten spielerDaten)
-	{
-		return false;
+		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, einstellungen.getBetragPassierenLos(), "Los"));
 	}
 
 	@Override

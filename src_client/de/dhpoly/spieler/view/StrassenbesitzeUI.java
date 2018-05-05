@@ -9,7 +9,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 import observerpattern.Beobachter;
 
 public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSONAR

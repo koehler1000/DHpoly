@@ -15,7 +15,7 @@ import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.model.SpielDaten;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 
 public class Main
@@ -35,7 +35,7 @@ public class Main
 
 		NetzwerkClient client = new NetzwerkClientImpl(str);
 
-		SpielerDaten spieler = new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler");
+		Spieler spieler = new Spieler(SpielerTyp.LOKAL, "Netzwerkspieler");
 		client.sendeAnServer(spieler);
 
 		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
@@ -46,10 +46,10 @@ public class Main
 	{
 		NetzwerkServer server = new NetzwerkServerImpl();
 
-		List<SpielerDaten> spieler = new ArrayList<>();
-		spieler.add(new SpielerDaten(SpielerTyp.LOKAL, "Rico"));
-		spieler.add(new SpielerDaten(SpielerTyp.LOKAL, "Sven"));
-		spieler.add(new SpielerDaten(SpielerTyp.COMPUTER, "Alex"));
+		List<Spieler> spieler = new ArrayList<>();
+		spieler.add(new Spieler(SpielerTyp.LOKAL, "Rico"));
+		spieler.add(new Spieler(SpielerTyp.LOKAL, "Sven"));
+		spieler.add(new Spieler(SpielerTyp.COMPUTER, "Alex"));
 
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
 		server.sendeAnClients(daten);

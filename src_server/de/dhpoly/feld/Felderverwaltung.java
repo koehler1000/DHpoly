@@ -3,18 +3,17 @@ package de.dhpoly.feld;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public interface Felderverwaltung
 {
 	void setFelder(List<Feld> felder);
 
-	boolean isEigentuemer(Feld feld, SpielerDaten eigentuemer);
+	boolean isEigentuemer(Feld feld, Spieler eigentuemer);
 
-	boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<SpielerDaten> optional);
+	boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional);
 
-	boolean isNutzerBesitzerAllerStrassen(int strassengruppe, SpielerDaten eigentuemer);
+	boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer);
 
 	List<Feld> getFelder(Spieler spieler);
 

@@ -11,8 +11,8 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.control.SpielImplTest;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FelderTest
 {
@@ -26,7 +26,7 @@ public class FelderTest
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 
-		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(0));
+		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class FelderTest
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
+		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 		spiel.fuegeSpielerHinzu(sp1);
 		spiel.starteSpiel();
 
@@ -51,7 +51,7 @@ public class FelderTest
 		thread.start();
 		thread.join();
 
-		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(2));
+		Assert.assertThat(sp1.getFeldNr(), Is.is(2));
 	}
 
 	@Test
@@ -69,11 +69,11 @@ public class FelderTest
 		SpielImpl spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		Spieler sp1 = SpielerImplTest.getDefaultSpieler(spiel);
+		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
 		spiel.fuegeSpielerHinzu(sp1);
 
 		spiel.ruecke(sp1, 4);
-		Assert.assertThat(sp1.getDaten().getFeldNr(), Is.is(0));
+		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
 	public static Feld getDefaultFeld(Felderverwaltung verwaltung)

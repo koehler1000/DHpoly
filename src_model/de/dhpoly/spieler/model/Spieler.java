@@ -10,7 +10,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.view.SpielerUI;
 
-public class SpielerDaten extends Datenobjekt
+public class Spieler extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class SpielerDaten extends Datenobjekt
 	private int feldNr;
 	private List<Strasse> strassen = new ArrayList<>();
 
-	public SpielerDaten(SpielerTyp typ, String name)
+	public Spieler(SpielerTyp typ, String name)
 	{
 		super();
 		this.typ = typ;

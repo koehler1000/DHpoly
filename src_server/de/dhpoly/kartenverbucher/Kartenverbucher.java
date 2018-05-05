@@ -6,7 +6,7 @@ import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.RueckenKarte;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 
 public interface Kartenverbucher extends Logik
 {

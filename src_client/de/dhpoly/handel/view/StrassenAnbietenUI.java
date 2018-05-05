@@ -12,7 +12,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
@@ -21,7 +21,7 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 
 	private Transaktion transaktion;
 
-	public StrassenAnbietenUI(SpielerDaten spielerDaten, Transaktion transaktion, SpielfeldAnsicht ansicht)
+	public StrassenAnbietenUI(Spieler spielerDaten, Transaktion transaktion, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 		this.transaktion = transaktion;

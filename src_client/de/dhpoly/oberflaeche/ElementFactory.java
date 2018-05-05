@@ -19,7 +19,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class ElementFactory
@@ -169,8 +169,7 @@ public class ElementFactory
 	public static void setzeRand(JPanel pnl, int dicke, Spieler spieler)
 	{
 		Optional<Spieler> sp = Optional.ofNullable(spieler);
-		Color farbe = sp.isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getDaten().getSpielerNr())
-				: FARBE_KONTRAST;
+		Color farbe = sp.isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()) : FARBE_KONTRAST;
 		setzeRand(pnl, dicke, farbe);
 	}
 

@@ -13,7 +13,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 import observerpattern.Beobachter;
 
@@ -47,9 +47,9 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		}
 		else
 		{
-			JLabel lblSp = new JLabel(spieler.getDaten().getName());
+			JLabel lblSp = new JLabel(spieler.getName());
 			JPanel pnlSp = new JPanel();
-			pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getDaten().getSpielerNr()));
+			pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
 			pnlSp.add(lblSp);
 			pnlSp.setBorder(new LineBorder(Color.BLACK));
 			pnlSpieler.add(pnlSp);

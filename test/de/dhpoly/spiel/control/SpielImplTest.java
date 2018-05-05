@@ -18,10 +18,9 @@ import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerImpl;
-import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
+import de.dhpoly.spieler.model.SpielerTyp;
 
 public class SpielImplTest
 {
@@ -35,34 +34,33 @@ public class SpielImplTest
 		felder.add(FeldStrasseTest.getDefaultStrasse());
 		spiel = new SpielImpl();
 		spiel.setFelder(felder);
-		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test1", spiel));
-		spiel.fuegeSpielerHinzu(SpielerImplTest.getDefaultSpieler("Test2", spiel));
+		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test1"));
+		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
 	}
 
 	@Test
 	public void testaktuellerSpieler()
 	{
-		spiel.getAktuellerSpieler();
-		assertEquals("Test1", spiel.getAktuellerSpieler().getDaten().getName());
+		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
 	}
 
 	@Test
 	public void testnaechsterSpieler()
 	{
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
-		assertEquals("Test2", spiel.getAktuellerSpieler().getDaten().getName());
+		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
 	}
 
 	@Test
 	public void geldBeiUeberLos() throws InterruptedException
 	{
-		int geldVorDemLaufen = spiel.getAktuellerSpieler().getDaten().getRessourcenWert(Ressource.GELD);
+		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD);
 
 		Thread thread = spiel.rueckeThread(spiel.getAktuellerSpieler(), 2);
 		thread.start();
 		thread.join();
 
-		assertThat(spiel.getAktuellerSpieler().getDaten().getRessourcenWert(Ressource.GELD),
+		assertThat(spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new Einstellungen().getBetragPassierenLos()));
 	}
 
@@ -76,19 +74,19 @@ public class SpielImplTest
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		Spieler s1 = new SpielerImpl("Peter", spiel);
-		Spieler s2 = new SpielerImpl("Peter", spiel);
+		Spieler s1 = new Spieler(SpielerTyp.LOKAL, "Peter");
+		Spieler s2 = new Spieler(SpielerTyp.LOKAL, "Peter");
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);
 
-		s1.getDaten().auszahlen(new RessourcenDatensatz(Ressource.GELD, 9999999));
+		s1.auszahlen(new RessourcenDatensatz(Ressource.GELD, 9999999));
 
-		assertThat(s1.getDaten().getStatus(), Is.is(SpielerStatus.IM_SPIEL));
+		assertThat(s1.getStatus(), Is.is(SpielerStatus.IM_SPIEL));
 		spiel.wuerfelWeitergeben(s1);
 
-		assertThat(s1.getDaten().getStatus(), Is.is(SpielerStatus.VERLOREN));
-		assertThat(s2.getDaten().getStatus(), Is.is(SpielerStatus.GEWONNEN));
+		assertThat(s1.getStatus(), Is.is(SpielerStatus.VERLOREN));
+		assertThat(s2.getStatus(), Is.is(SpielerStatus.GEWONNEN));
 	}
 
 	public static SpielImpl getDefaultSpiel()

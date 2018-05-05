@@ -8,14 +8,13 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class Strasse extends Datenobjekt
 {
 	private static final long serialVersionUID = 2L;
 
-	private SpielerDaten eigentuemer = null;
+	private Spieler eigentuemer = null;
 	private int[] miete = new int[6];
 
 	private int haueser = 0;
@@ -25,17 +24,17 @@ public class Strasse extends Datenobjekt
 	private String name = "Teststraﬂe";
 	private int kaufpreis = 0;
 
-	public Optional<SpielerDaten> getEigentuemer()
+	public Optional<Spieler> getEigentuemer()
 	{
 		return Optional.ofNullable(eigentuemer);
 	}
 
-	public void setEigentuemer(SpielerDaten eigentuemer)
+	public void setEigentuemer(Spieler eigentuemer)
 	{
 		this.eigentuemer = eigentuemer;
 	}
 
-	public void setEigentuemer(Optional<SpielerDaten> eigentuemer)
+	public void setEigentuemer(Optional<Spieler> eigentuemer)
 	{
 		this.eigentuemer = eigentuemer.get(); // NOSONAR weil Optional nicht Serialisierbar ist
 	}
@@ -127,11 +126,6 @@ public class Strasse extends Datenobjekt
 	}
 
 	public boolean isEigentuemer(Spieler spieler)
-	{
-		return isEigentuemer(spieler.getDaten());
-	}
-
-	public boolean isEigentuemer(SpielerDaten spieler)
 	{
 		return spieler.equals(eigentuemer);
 	}

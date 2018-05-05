@@ -9,9 +9,8 @@ import de.dhpoly.feld.Felderverwaltung;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.utils.Spielansicht;
 
 public class HaeuserUIVorschau
@@ -27,13 +26,13 @@ public class HaeuserUIVorschau
 			}
 
 			@Override
-			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, SpielerDaten eigentuemer)
+			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
 			{
 				return false;
 			}
 
 			@Override
-			public boolean isEigentuemer(Feld feld, SpielerDaten moeglicherEigentuemer)
+			public boolean isEigentuemer(Feld feld, Spieler moeglicherEigentuemer)
 			{
 				return true;
 			}
@@ -45,7 +44,7 @@ public class HaeuserUIVorschau
 			}
 
 			@Override
-			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<SpielerDaten> optional)
+			public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> optional)
 			{
 				return false;
 			}
@@ -69,9 +68,9 @@ public class HaeuserUIVorschau
 		ressourcen.add(new RessourcenDatensatz(Ressource.HOLZ, 100000));
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
-		spieler.getDaten().einzahlen(ressourcen);
+		spieler.einzahlen(ressourcen);
 
-		strasse.setEigentuemer(Optional.ofNullable(spieler.getDaten()));
+		strasse.setEigentuemer(Optional.ofNullable(spieler));
 
 		Spielansicht.zeige(new HaeuserUI(felder, Spielansicht.getSpielfeldAnsicht()));
 	}

@@ -9,7 +9,7 @@ import de.dhpoly.karte.model.RueckenKarte;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 
 public class KartenverbucherImpl implements Kartenverbucher
 {
@@ -24,7 +24,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 				umbuchen(alleSpieler, ziehenderSpielerAlsListe, karte.getRessourcenDatensaetze());
 				break;
 			case BANK_SPIELER:
-				ziehenderSpieler.getDaten().einzahlen(karte.getRessourcenDatensaetze());
+				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
 				break;
 			case SPIELER_ANDERESPIELER:
 				umbuchen(ziehenderSpielerAlsListe, alleSpieler, karte.getRessourcenDatensaetze());
@@ -40,8 +40,8 @@ public class KartenverbucherImpl implements Kartenverbucher
 		{
 			for (Spieler spielerEmpfaenger : empfaenger)
 			{
-				spielerEmpfaenger.getDaten().einzahlen(datensaetze);
-				spielerSender.getDaten().auszahlen(datensaetze);
+				spielerEmpfaenger.einzahlen(datensaetze);
+				spielerSender.auszahlen(datensaetze);
 			}
 		}
 	}

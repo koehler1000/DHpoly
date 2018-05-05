@@ -12,7 +12,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
 public class RessourceAnbietenUI extends JPanel
@@ -24,9 +24,9 @@ public class RessourceAnbietenUI extends JPanel
 	private JLabel lblAnzahl;
 
 	private Transaktion transaktion;
-	private SpielerDaten spieler;
+	private Spieler spieler;
 
-	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, SpielerDaten spielerDaten)
+	public RessourceAnbietenUI(Transaktion transaktion, Ressource ressource, Spieler spielerDaten)
 	{
 		this.ressource = ressource;
 		this.transaktion = transaktion;

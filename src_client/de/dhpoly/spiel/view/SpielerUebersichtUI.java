@@ -10,7 +10,7 @@ import javax.swing.JTabbedPane;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
+import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
 import observerpattern.Beobachter;
 
@@ -49,7 +49,7 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 				for (Spieler spieler : spiel.getSpieler())
 				{
 					pnlAlleSpieler.add(new SpielerUI(spieler, ansicht));
-					this.addTab(spieler.getDaten().getName(), new SpielerUI(spieler, ansicht));
+					this.addTab(spieler.getName(), new SpielerUI(spieler, ansicht));
 				}
 			}
 		}

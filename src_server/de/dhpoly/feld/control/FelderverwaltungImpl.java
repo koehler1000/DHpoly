@@ -6,15 +6,14 @@ import java.util.Optional;
 
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.Felderverwaltung;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FelderverwaltungImpl implements Felderverwaltung
 {
 	private List<Feld> felder = new ArrayList<>();
 
 	@Override
-	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, SpielerDaten eigentuemer)
+	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Spieler eigentuemer)
 	{
 		for (Feld feld : felder)
 		{
@@ -33,7 +32,7 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	}
 
 	@Override
-	public boolean isEigentuemer(Feld feld, SpielerDaten eigentuemer)
+	public boolean isEigentuemer(Feld feld, Spieler eigentuemer)
 	{
 		return feld.gehoertSpieler(eigentuemer);
 	}
@@ -51,7 +50,7 @@ public class FelderverwaltungImpl implements Felderverwaltung
 
 		for (Feld feld : felder)
 		{
-			if (isEigentuemer(feld, spieler.getDaten()))
+			if (isEigentuemer(feld, spieler))
 			{
 				felderVonSpieler.add(feld);
 			}
@@ -61,7 +60,7 @@ public class FelderverwaltungImpl implements Felderverwaltung
 	}
 
 	@Override
-	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<SpielerDaten> spieler)
+	public boolean isNutzerBesitzerAllerStrassen(int strassengruppe, Optional<Spieler> spieler)
 	{
 		if (spieler.isPresent())
 		{

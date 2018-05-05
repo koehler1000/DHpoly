@@ -3,8 +3,7 @@ package de.dhpoly.feld.control;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class FeldEreignis extends FeldImpl
 {
@@ -21,12 +20,6 @@ public class FeldEreignis extends FeldImpl
 	{
 		Karte karte = kartenstapel.ziehen();
 		spiel.verarbeiteKarte(karte);
-	}
-
-	@Override
-	public boolean gehoertSpieler(SpielerDaten spielerDaten)
-	{
-		return false;
 	}
 
 	@Override

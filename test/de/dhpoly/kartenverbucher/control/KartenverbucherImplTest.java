@@ -14,8 +14,8 @@ import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.control.SpielerImplTest;
+import de.dhpoly.spieler.model.Spieler;
 
 public class KartenverbucherImplTest
 {
@@ -32,7 +32,7 @@ public class KartenverbucherImplTest
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, null, spieler);
 
-		assertThat(spieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(startgeld + transferbetrag));
+		assertThat(spieler.getRessourcenWert(Ressource.GELD), Is.is(startgeld + transferbetrag));
 	}
 
 	@Test
@@ -40,12 +40,12 @@ public class KartenverbucherImplTest
 	{
 		Spiel spiel = null;
 
-		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500, spiel);
+		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500);
 
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
-		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
+		spieler.add(SpielerImplTest.getDefaultSpieler(100));
+		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
 				new RessourcenDatensatz(Ressource.GELD, 50));
@@ -53,10 +53,10 @@ public class KartenverbucherImplTest
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);
 
-		assertThat(ziehenderSpieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(600));
+		assertThat(ziehenderSpieler.getRessourcenWert(Ressource.GELD), Is.is(600));
 
-		assertThat(spieler.get(1).getDaten().getRessourcenWert(Ressource.GELD), Is.is(50));
-		assertThat(spieler.get(2).getDaten().getRessourcenWert(Ressource.GELD), Is.is(50));
+		assertThat(spieler.get(1).getRessourcenWert(Ressource.GELD), Is.is(50));
+		assertThat(spieler.get(2).getRessourcenWert(Ressource.GELD), Is.is(50));
 	}
 
 	@Test
@@ -64,12 +64,12 @@ public class KartenverbucherImplTest
 	{
 		Spiel spiel = null;
 
-		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500, spiel);
+		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500);
 
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(ziehenderSpieler);
-		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
-		spieler.add(SpielerImplTest.getDefaultSpieler(100, spiel));
+		spieler.add(SpielerImplTest.getDefaultSpieler(100));
+		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 
 		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_ANDERESPIELER,
 				new RessourcenDatensatz(Ressource.GELD, 50));
@@ -77,10 +77,10 @@ public class KartenverbucherImplTest
 		Kartenverbucher verbucher = new KartenverbucherImpl();
 		verbucher.bewegeGeld(karte, spieler, ziehenderSpieler);
 
-		assertThat(ziehenderSpieler.getDaten().getRessourcenWert(Ressource.GELD), Is.is(400));
+		assertThat(ziehenderSpieler.getRessourcenWert(Ressource.GELD), Is.is(400));
 
-		assertThat(spieler.get(1).getDaten().getRessourcenWert(Ressource.GELD), Is.is(150));
-		assertThat(spieler.get(2).getDaten().getRessourcenWert(Ressource.GELD), Is.is(150));
+		assertThat(spieler.get(1).getRessourcenWert(Ressource.GELD), Is.is(150));
+		assertThat(spieler.get(2).getRessourcenWert(Ressource.GELD), Is.is(150));
 	}
 
 }

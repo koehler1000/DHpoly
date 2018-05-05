@@ -15,8 +15,6 @@ import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.control.SpielerUnimplemented;
 
 public class FeldEreignisTest
 {
@@ -28,15 +26,6 @@ public class FeldEreignisTest
 	{
 		// TODO fixen
 		ereigniskarteGezeigt = false;
-
-		Spieler spieler = new SpielerUnimplemented()
-		{
-			// @Override
-			// public void verarbeiteKarte(Karte karte)
-			// {
-			// ereigniskarteGezeigt = true;
-			// }
-		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
 		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,

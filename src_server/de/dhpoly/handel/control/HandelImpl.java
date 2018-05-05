@@ -1,7 +1,6 @@
 package de.dhpoly.handel.control;
 
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
@@ -12,16 +11,15 @@ import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spieler.Spieler;
-import de.dhpoly.spieler.model.SpielerDaten;
+import de.dhpoly.spieler.model.Spieler;
 
 public class HandelImpl implements Handel
 {
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion, Spiel spiel)
 	{
-		Optional<Spieler> anbietender = spiel.getSpieler(transaktion.getAnbietender());
-		anbietender.ifPresent(sp -> spiel.zeigeSpieler(sp, transaktion));
+		Spieler anbietender = transaktion.getAnbietender();
+		spiel.zeigeSpieler(anbietender, transaktion);
 	}
 
 	@Override
@@ -29,33 +27,28 @@ public class HandelImpl implements Handel
 	{
 		transaktion.setTransaktionsTyp(TransaktionsTyp.ANGENOMMEN);
 
-		spiel.getSpieler(transaktion.getAnbietender()).ifPresent(
-				anbietender -> spiel.getSpieler(transaktion.getHandelspartner()).ifPresent(handelspartner -> {
+		Spieler anbietender = transaktion.getAnbietender();
+		Spieler handelspartner = transaktion.getHandelspartner();
 
-					// Felder Eigentum übertragen
-					eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender.getDaten(),
-							handelspartner.getDaten());
+		// Felder Eigentum übertragen
+		eigentumUebertragen(transaktion.getFelderEigentumswechsel(), anbietender, handelspartner);
 
-					for (Ressource res : Ressource.values())
-					{
-						RessourcenDatensatz geben = new RessourcenDatensatz(res,
-								transaktion.getRessource(anbietender.getDaten(), res));
-						anbietender.getDaten().auszahlen(geben);
-						handelspartner.getDaten().einzahlen(geben);
+		for (Ressource res : Ressource.values())
+		{
+			RessourcenDatensatz geben = new RessourcenDatensatz(res, transaktion.getRessource(anbietender, res));
+			anbietender.auszahlen(geben);
+			handelspartner.einzahlen(geben);
 
-						RessourcenDatensatz bekommen = new RessourcenDatensatz(res,
-								transaktion.getRessource(handelspartner.getDaten(), res));
-						anbietender.getDaten().einzahlen(bekommen);
-						handelspartner.getDaten().auszahlen(bekommen);
-					}
+			RessourcenDatensatz bekommen = new RessourcenDatensatz(res, transaktion.getRessource(handelspartner, res));
+			anbietender.einzahlen(bekommen);
+			handelspartner.auszahlen(bekommen);
+		}
 
-					spiel.zeigeSpieler(anbietender, transaktion);
-					spiel.zeigeSpieler(handelspartner, transaktion);
-				}));
+		spiel.zeigeSpieler(anbietender, transaktion);
+		spiel.zeigeSpieler(handelspartner, transaktion);
 	}
 
-	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, SpielerDaten spielerDaten,
-			SpielerDaten spielerDaten2)
+	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler spielerDaten, Spieler spielerDaten2)
 	{
 		for (Feld feld : felderEigentumswechsel)
 		{
@@ -63,7 +56,7 @@ public class HandelImpl implements Handel
 		}
 	}
 
-	private void eigentumUebertragen(Feld feld, SpielerDaten anbietender, SpielerDaten handelspartner)
+	private void eigentumUebertragen(Feld feld, Spieler anbietender, Spieler handelspartner)
 	{
 		if (feld instanceof FeldStrasse)
 		{
