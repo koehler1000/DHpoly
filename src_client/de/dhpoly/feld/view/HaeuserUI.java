@@ -18,7 +18,7 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 
 		for (Strasse strasse : felder)
 		{
-			this.add(new HausUI(strasse));
+			this.add(new HausUI(strasse, ansicht));
 		}
 	}
 

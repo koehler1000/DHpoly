@@ -7,12 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.feld.model.Hausbau;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spiel.Spiel;
-import de.dhpoly.spiel.control.SpielImplTest;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class HausUI extends JPanel
+public class HausUI extends Oberflaeche
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,8 +24,9 @@ public class HausUI extends JPanel
 
 	private JButton butHausVerkaufen;
 
-	public HausUI(Strasse strasse)
+	public HausUI(Strasse strasse, SpielfeldAnsicht ansicht)
 	{
+		super(ansicht);
 		ElementFactory.bearbeitePanel(this);
 
 		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getName());
@@ -35,26 +37,26 @@ public class HausUI extends JPanel
 
 		pnlHaeuser.add(txtAktuelleMiete);
 
-		Spiel spiel = SpielImplTest.getDefaultSpiel();
-
 		butHausBauen = ElementFactory.getButtonUeberschrift("+");
-		// TODO
-		// butHausBauen.addActionListener(e -> strasse.hausBauen(spiel));
+		butHausBauen.addActionListener(e -> super.sendeAnServer(new Hausbau(strasse, +1)));
 		pnlHaeuser.add(butHausBauen);
 
 		butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
-		// TODO
-		// butHausVerkaufen.addActionListener(e -> strasse.hausVerkaufen(spiel));
+		butHausVerkaufen.addActionListener(e -> super.sendeAnServer(new Hausbau(strasse, -1)));
+
 		pnlHaeuser.add(butHausVerkaufen);
 
 		this.add(txtName, BorderLayout.NORTH);
 		this.add(pnlHaeuser, BorderLayout.CENTER);
 
-		butHausVerkaufen.setEnabled(strasse.getHaueser() > 0);
-		// TODO
-		// butHausBauen.setEnabled(strasse.kannBebautWerden(spiel));
-		// txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() +
-		// System.lineSeparator() + "Häuser: "
-		// + strasse.getHaeuser());
+		butHausVerkaufen.setEnabled(strasse.getHaeuser() > 0);
+		txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() + System.lineSeparator() + "Häuser: "
+				+ strasse.getHaeuser());
+	}
+
+	@Override
+	public boolean isEinmalig()
+	{
+		return false;
 	}
 }

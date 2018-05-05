@@ -123,14 +123,14 @@ public class FeldStrasse extends FeldImpl
 		}
 		else
 		{
-			return strasse.getMiete()[strasse.getHaueser()];
+			return strasse.getMiete()[strasse.getHaeuser()];
 		}
 	}
 
 	private boolean isDoppelteMiete()
 	{
 		return strassenverwaltung.isNutzerBesitzerAllerStrassen(strasse.getGruppe(), strasse.getEigentuemer())
-				&& strasse.getHaueser() == 0;
+				&& strasse.getHaeuser() == 0;
 	}
 
 	public void setEigentuemer(Spieler anbietender)
@@ -145,7 +145,7 @@ public class FeldStrasse extends FeldImpl
 
 	public int getHaeuser()
 	{
-		return strasse.getHaueser();
+		return strasse.getHaeuser();
 	}
 
 	public boolean isHypothek()
@@ -192,7 +192,7 @@ public class FeldStrasse extends FeldImpl
 				if (s.kannBezahlen(strasse.getKostenHaus()))
 				{
 					s.auszahlen(strasse.getKostenHaus());
-					strasse.setHaueser(strasse.getHaueser() + 1);
+					strasse.setHaueser(strasse.getHaeuser() + 1);
 				}
 			});
 		}
@@ -210,9 +210,9 @@ public class FeldStrasse extends FeldImpl
 
 	public void hausZerstoeren()
 	{
-		if (strasse.getHaueser() > 0)
+		if (strasse.getHaeuser() > 0)
 		{
-			strasse.setHaueser(strasse.getHaueser() - 1);
+			strasse.setHaueser(strasse.getHaeuser() - 1);
 		}
 	}
 

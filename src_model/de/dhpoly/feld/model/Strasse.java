@@ -54,7 +54,7 @@ public class Strasse extends Datenobjekt
 		this.miete = miete;
 	}
 
-	public int getHaueser()
+	public int getHaeuser()
 	{
 		return haueser;
 	}
@@ -137,7 +137,7 @@ public class Strasse extends Datenobjekt
 
 	public boolean haeuserGebaut()
 	{
-		return getHaueser() > 0;
+		return getHaeuser() > 0;
 	}
 
 	@Override
