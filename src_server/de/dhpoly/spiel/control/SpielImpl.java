@@ -67,16 +67,12 @@ public class SpielImpl implements Spiel
 	@Override
 	public void ruecke()
 	{
-		getAktuellerSpieler().setWuerfelnMoeglich(false);
-		new Thread(this::rueckeAsync).start();
-	}
-
-	private void rueckeAsync()
-	{
 		wuerfelPaar.wuerfeln();
 		setAktuellerSpielerHatGewuerfelt(true);
-
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+
+		// TODO braucht man das noch?
+		// getAktuellerSpieler().setWuerfelnMoeglich(false);
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -318,7 +314,8 @@ public class SpielImpl implements Spiel
 			sp.getDaten().einzahlen(einstellungen.getSpielerStartVorraete());
 		}
 
-		getAktuellerSpieler().setWuerfelnMoeglich(true);
+		// TODO braucht man das noch?
+		// getAktuellerSpieler().setWuerfelnMoeglich(true);
 	}
 
 	@Override
@@ -355,7 +352,8 @@ public class SpielImpl implements Spiel
 	{
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
 		spielerAktuellAlt.setWuerfelWeitergabeMoeglich(false);
-		spielerAktuellAlt.setWuerfelnMoeglich(false);
+		// TODO braucht man das noch?
+		// spielerAktuellAlt.setWuerfelnMoeglich(false);
 		spielerAktuellAlt.getDaten().setAktuellerSpieler(false);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
@@ -367,7 +365,8 @@ public class SpielImpl implements Spiel
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
 		spielerAktuellNeu.getDaten().setAktuellerSpieler(true);
-		spielerAktuellNeu.setWuerfelnMoeglich(true);
+		// TODO braucht man das noch?
+		// spielerAktuellNeu.setWuerfelnMoeglich(true);
 
 		setAktuellerSpielerHatGewuerfelt(false);
 		setAktuellerSpielerIstGerueckt(false);

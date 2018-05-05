@@ -13,15 +13,6 @@ public class SpielerComputer extends SpielerImpl
 	}
 
 	@Override
-	public void setWuerfelnMoeglich(boolean value)
-	{
-		if (value)
-		{
-			spiel.wuerfeln(this);
-		}
-	}
-
-	@Override
 	public void setWuerfelWeitergabeMoeglich(boolean value)
 	{
 		if (value)

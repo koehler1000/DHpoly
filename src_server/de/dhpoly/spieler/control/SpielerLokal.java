@@ -12,10 +12,6 @@ public class SpielerLokal extends SpielerImpl
 	}
 
 	@Override
-	public void setWuerfelnMoeglich(boolean value)
-	{}
-
-	@Override
 	public void setWuerfelWeitergabeMoeglich(boolean value)
 	{}
 }
