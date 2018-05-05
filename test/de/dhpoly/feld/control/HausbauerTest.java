@@ -24,13 +24,15 @@ public class HausbauerTest
 	private final int kostenHausStein = 100;
 	private final List<RessourcenDatensatz> kostenHaus = new ArrayList<>();
 	private Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
-	private FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
+	private FeldStrasse strasse;
 	private Spiel spiel = SpielImplTest.getDefaultSpiel();
 	private Hausbauer hausbauer = new Hausbauer();
 
 	@Before
 	public void startUp()
 	{
+		strasse = new FeldStrasse(null, 0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
+
 		kostenHaus.add(new RessourcenDatensatz(Ressource.GELD, kostenHausGeld));
 		kostenHaus.add(new RessourcenDatensatz(Ressource.HOLZ, kostenHausHolz));
 		kostenHaus.add(new RessourcenDatensatz(Ressource.STEIN, kostenHausStein));
@@ -92,8 +94,6 @@ public class HausbauerTest
 	public void hausAnzahlNichtNegativ()
 	{
 		spieler.einzahlen(kostenHaus); // spieler erhält genau das, was er für die Straße braucht
-
-		FeldStrasse strasse = FeldStrasseTest.getDefaultStrasse(kostenHaus);
 		strasse.kaufe(spieler);
 
 		hausbauer.verarbeite(new Hausbau(strasse.getStrasse(), -1), spiel);
