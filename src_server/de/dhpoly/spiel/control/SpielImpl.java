@@ -164,14 +164,6 @@ public class SpielImpl implements Spiel
 		spieler.getDaten().setSpielerStatus(SpielerStatus.VERLOREN);
 	}
 
-	private void vergebeRessourcen()
-	{
-		for (Spieler sp : spieler)
-		{
-			sp.vergebeRessourcen(einstellungen.getRessourcenErtrag());
-		}
-	}
-
 	@Override
 	public Spieler getAktuellerSpieler()
 	{
@@ -371,12 +363,6 @@ public class SpielImpl implements Spiel
 		if (spielerAktuellAlt.getDaten().getStatus() != SpielerStatus.VERLOREN)
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
-		}
-
-		if (spieler.get(0) == spielerAktuellAlt)
-		{
-			// Überrundung
-			vergebeRessourcen();
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);

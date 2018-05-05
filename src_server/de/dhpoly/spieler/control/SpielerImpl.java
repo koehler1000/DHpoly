@@ -1,11 +1,8 @@
 package de.dhpoly.spieler.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.ressource.model.Ressource;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.Spieler;
 import de.dhpoly.spieler.model.SpielerDaten;
@@ -52,21 +49,6 @@ public abstract class SpielerImpl implements Spieler
 	public boolean hatVerloren()
 	{
 		return daten.getStatus() == SpielerStatus.VERLOREN;
-	}
-
-	@Override
-	public void vergebeRessourcen(int ertrag)
-	{
-		for (Feld feld : spiel.getFelder(this))
-		{
-			if (feld instanceof FeldRessource)
-			{
-				FeldRessource ressourcenfeld = (FeldRessource) feld;
-				RessourcenDatensatz res = new RessourcenDatensatz(ressourcenfeld.getRessource(), ertrag);
-
-				getDaten().einzahlen(res);
-			}
-		}
 	}
 
 	@Override

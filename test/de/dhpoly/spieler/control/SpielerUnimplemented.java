@@ -10,10 +10,6 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielerUnimplemented implements Spieler
 {
 	@Override
-	public void vergebeRessourcen(int ertrag)
-	{}
-
-	@Override
 	public void setWuerfelnMoeglich(boolean value)
 	{}
 

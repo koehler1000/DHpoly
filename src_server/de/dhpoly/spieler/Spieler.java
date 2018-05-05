@@ -6,8 +6,6 @@ import de.dhpoly.spieler.model.SpielerDaten;
 
 public interface Spieler extends Logik
 {
-	void vergebeRessourcen(int ertrag);
-
 	void setWuerfelnMoeglich(boolean value);
 
 	void setWuerfelWeitergabeMoeglich(boolean value);
