@@ -1,3 +1,5 @@
+package de.dhpoly.ai;
+
 import java.io.IOException;
 
 import de.dhpoly.netzwerk.NetzwerkClient;
