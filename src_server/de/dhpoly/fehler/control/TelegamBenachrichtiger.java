@@ -5,12 +5,12 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fehler.FehlerLogik;
 import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class TelegamBenachrichtiger implements Logik
+public class TelegamBenachrichtiger implements FehlerLogik
 {
 	private static final String CHAT_ID = "-1001131918455";
 
