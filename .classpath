@@ -15,6 +15,7 @@
 	<classpathentry kind="src" path="src_model"/>
 	<classpathentry kind="src" path="src_ai"/>
 	<classpathentry kind="src" path="src_netzwerk"/>
+	<classpathentry kind="src" path="src_main"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="DHpoly/bin"/>
 </classpath>
