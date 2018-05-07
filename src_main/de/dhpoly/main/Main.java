@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import de.dhpoly.ai.AI;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.netzwerk.NetzwerkServer;
@@ -26,6 +27,13 @@ public class Main implements Runnable
 		Main main = new Main();
 		String ip = main.starteServer();
 		main.starteClient(ip);
+
+		String name;
+		while ((name = JOptionPane.showInputDialog("Name für Computerspieler")) != "")
+		{
+			AI ai = new AI();
+			ai.erzeugeComputerspieler(ip, name);
+		}
 	}
 
 	private void starteClient(String ipHost) throws IOException
