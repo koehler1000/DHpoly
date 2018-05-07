@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
-import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
@@ -95,15 +91,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 	public void sende(NetzwerkClient c, Datenobjekt obj)
 	{
-		try
-		{
-			c.sendeAnServer(obj);
-		}
-		catch (IOException ex)
-		{
-			Fehler fehler = new Fehler(ex.getMessage(), FehlerTyp.FEHLER_ALLE);
-			hinzu("Fehler", fehler, new FehlerUI(fehler, this));
-		}
+		c.sendeAnServer(obj);
 	}
 
 	private void loesche(Object obj)

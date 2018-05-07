@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
@@ -31,13 +30,13 @@ public class Main implements Runnable
 
 	private void starteClient(String ipHost) throws IOException
 	{
-		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);		
-		
-		NetzwerkClientImpl client = new NetzwerkClientImpl(); //TODO ClientName muss übergeben werden
+		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
+
+		NetzwerkClientImpl client = new NetzwerkClientImpl(str); // TODO ClientName muss übergeben werden
 		client.connect(ipHost, 3001);
 
-		Spiele spieler = new SpielerDaten(SpielerTyp.LOKAL, "Netzwerkspieler");
-		client.sendeAnServer(spieler.toString()); //TODO spieler muss noch serialisiert werden
+		Spieler spieler = new Spieler(SpielerTyp.LOKAL, "Netzwerkspieler");
+		client.sendeAnServer(spieler.toString()); // TODO spieler muss noch serialisiert werden
 
 		SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
 		fenster.zeigeSpielansicht(ansicht, spieler.getName());
@@ -48,27 +47,32 @@ public class Main implements Runnable
 		new Thread(new Main()).start();
 
 		List<Spieler> spieler = new ArrayList<>();
-		spieler.add(new SpielerDaten(SpielerTyp.LOKAL, "Rico"));
-		spieler.add(new SpielerDaten(SpielerTyp.LOKAL, "Sven"));
-		spieler.add(new SpielerDaten(SpielerTyp.COMPUTER, "Alex"));
+		spieler.add(new Spieler(SpielerTyp.LOKAL, "Rico"));
+		spieler.add(new Spieler(SpielerTyp.LOKAL, "Sven"));
+		spieler.add(new Spieler(SpielerTyp.COMPUTER, "Alex"));
 
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
-//		server.sendeAnClients(daten);
-//
-//		String ip = server.getIp();
-//		JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip + " zu spielen");
-		return "127.0.0.1"; //TODO richtige IP muss zurückgegeben werden
+		// server.sendeAnClients(daten);
+		//
+		// String ip = server.getIp();
+		// JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip +
+		// " zu spielen");
+		return "127.0.0.1"; // TODO richtige IP muss zurückgegeben werden
 	}
 
 	@Override
-	public void run() {
+	public void run()
+	{
 		NetzwerkServer server = new NetzwerkServerImpl(3001);
-		try {
+		try
+		{
 			server.run(null);
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
