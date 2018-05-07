@@ -8,14 +8,13 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 public interface NetzwerkClient
 {
 	void sendeAnServer(String text) throws IOException;
-
-	void sendeAnServer(Datenobjekt objekt) throws IOException;
+	
+	void sendeAnServer(Object ob);
 
 	void addAnsicht(SpielfeldAnsicht ansicht);
+	
+	String read();
+	
+	void sendQuitMessage(); 
 
-	void verbindungAufbauen() throws IOException;
-
-	void verbindungAbbauen() throws IOException;
-
-	void empfange(Datenobjekt obj);
 }
