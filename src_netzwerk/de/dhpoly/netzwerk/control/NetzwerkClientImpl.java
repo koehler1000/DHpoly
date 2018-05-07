@@ -8,8 +8,8 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
 public class NetzwerkClientImpl implements NetzwerkClient
 {
@@ -93,7 +93,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	@Override
-	public void addAnsicht(SpielfeldAnsicht ansicht)
+	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
 		// TODO Auto-generated method stub
 

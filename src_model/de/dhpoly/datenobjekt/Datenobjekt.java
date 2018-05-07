@@ -19,10 +19,8 @@ public abstract class Datenobjekt implements Serializable
 
 	public abstract String getTitel();
 
-	@Deprecated
 	public abstract Class<? extends Oberflaeche> getClassUI();
 
-	@Deprecated
 	public void anzeigen(SpielfeldAnsicht ansicht)
 	{
 		try

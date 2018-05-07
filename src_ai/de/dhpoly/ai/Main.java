@@ -15,7 +15,6 @@ public class Main
 		NetzwerkClient client = new NetzwerkClientImpl(ip);
 		Spieler spieler = new Spieler(SpielerTyp.COMPUTER, name);
 		client.sendeAnServer(spieler);
-		client.addAnsicht(new SpielfeldAnsicht(spieler, client));
-		// TODO durch client.setDatenobjektverwalter(xy) ersetzen!!!
+		client.setDatenobjektverwalter(new SpielfeldAnsicht(spieler, client));
 	}
 }

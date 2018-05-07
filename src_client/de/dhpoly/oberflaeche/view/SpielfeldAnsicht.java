@@ -20,6 +20,7 @@ import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.view.KarteUI;
+import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spieler.model.Spieler;
@@ -28,7 +29,7 @@ import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 import de.dhpoly.wuerfel.view.WuerfelUI;
 
-public class SpielfeldAnsicht extends JPanel // NOSONAR
+public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -51,7 +52,7 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 
 		butWeiter.addActionListener(e -> weiter());
 
-		this.client.ifPresent(c -> c.addAnsicht(this));
+		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 	}
 
 	public void empfangeWuerfel(WuerfelDaten wuerfel)
@@ -168,5 +169,11 @@ public class SpielfeldAnsicht extends JPanel // NOSONAR
 	{
 		butWeiter.setEnabled(b);
 		butWeiter.setText("Würfel weitergeben");
+	}
+
+	@Override
+	public void empfange(Datenobjekt datenobjekt)
+	{
+		datenobjekt.anzeigen(this);
 	}
 }

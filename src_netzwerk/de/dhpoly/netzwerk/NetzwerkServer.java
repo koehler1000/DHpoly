@@ -16,6 +16,8 @@ public interface NetzwerkServer
 	void verbindungAbbauen() throws IOException;
 
 	void empfange(Datenobjekt objekt);
-	
+
 	void run(String[] args) throws IOException;
+
+	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
 }
