@@ -9,12 +9,12 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
-import de.dhpoly.logik.Logikverwalter;
+import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
-public interface Spiel extends Logikverwalter
+public interface Spiel extends Datenobjektverwalter
 {
 	Spieler getAktuellerSpieler();
 

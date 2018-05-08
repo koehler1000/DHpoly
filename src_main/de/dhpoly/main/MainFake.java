@@ -4,55 +4,43 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
-import de.dhpoly.ai.AI;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.einstellungen.model.Einstellungen;
+import de.dhpoly.fakes.ClientFake;
+import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
+import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 
-public class Main implements Runnable
+public class MainFake implements Runnable
 {
 	private Fenster fenster = new Fenster(new Bilderverwalter());
+	private ClientFake client = ClientFake.clientFake;
+	private ServerFake server = ServerFake.serverfake;
 
 	public static void main(String[] args) throws IOException
 	{
-		Main main = new Main();
-		String ip = main.starteServer();
-		main.starteClient(ip);
-
-		String name;
-		while ((name = JOptionPane.showInputDialog("Name für Computerspieler")) != "")
-		{
-			AI ai = new AI();
-			ai.erzeugeComputerspieler(ip, name);
-		}
+		new MainFake();
 	}
 
-	private void starteClient(String ipHost) throws IOException
+	public MainFake()
 	{
-		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
+		Spieler spieler = new Spieler(SpielerTyp.NETZWERK, "Peter");
+		client.setDatenobjektverwalter(new SpielfeldAnsicht(spieler, client));
 
-		// NetzwerkClientImpl client = new NetzwerkClientImpl(str); // TODO ClientName
-		// muss übergeben werden
-		// client.connect(ipHost, 3001);
-		//
-		// Spieler spieler = new Spieler(SpielerTyp.LOKAL, "Netzwerkspieler");
-		// client.sendeAnServer(spieler.toString()); // TODO spieler muss noch
-		// serialisiert werden
-		//
-		// SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
-		// fenster.zeigeSpielansicht(ansicht, spieler.getName());
+		Spiel spiel = new SpielImpl();
+		server.setDatenobjektverwalter(spiel);
 	}
 
 	private String starteServer() throws IOException
 	{
-		new Thread(new Main()).start();
+		new Thread(new MainFake()).start();
 
 		List<Spieler> spieler = new ArrayList<>();
 		spieler.add(new Spieler(SpielerTyp.LOKAL, "Rico"));
