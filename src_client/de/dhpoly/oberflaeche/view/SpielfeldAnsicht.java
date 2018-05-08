@@ -3,7 +3,6 @@ package de.dhpoly.oberflaeche.view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +25,6 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
-import de.dhpoly.wuerfel.model.WuerfelDaten;
-import de.dhpoly.wuerfel.view.WuerfelUI;
 
 public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
 {
@@ -47,29 +44,18 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		this.client = Optional.ofNullable(client);
 
 		ElementFactory.bearbeitePanel(this);
+		this.setLayout(new BorderLayout(10, 10));
+
 		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
+		tabRand.setPreferredSize(new Dimension(500, 0));
 
 		butWeiter.addActionListener(e -> weiter());
 
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
-	}
 
-	public void empfangeWuerfel(WuerfelDaten wuerfel)
-	{
-		JPanel pnlWest = ElementFactory.erzeugePanel();
-
-		JPanel pnlWuerfel = ElementFactory.erzeugePanel();
-		pnlWuerfel.setLayout(new GridLayout(1, 1));
-
-		wuerfel.getWuerfel().forEach(e -> pnlWuerfel.add(new WuerfelUI(e, this)));
-
-		pnlWest.add(pnlWuerfel, BorderLayout.NORTH);
-		pnlWest.add(tabRand);
-		pnlWest.setPreferredSize(new Dimension(500, 1000));
-
-		pnlWest.add(butWeiter, BorderLayout.SOUTH);
-		this.add(pnlWest, BorderLayout.WEST);
+		this.add(tabRand, BorderLayout.WEST);
+		this.add(ElementFactory.getButtonUeberschrift("Warten auf Spielfeld ..."), BorderLayout.CENTER);
 	}
 
 	private void weiter()
@@ -104,7 +90,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		if (Optional.of(oberflaeche).isPresent())
+		if (Optional.ofNullable(oberflaeche).isPresent())
 		{
 			if (inhalte.containsKey(obj))
 			{

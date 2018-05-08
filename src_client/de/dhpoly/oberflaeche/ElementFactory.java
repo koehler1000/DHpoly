@@ -141,6 +141,7 @@ public class ElementFactory
 	{
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.setBackground(FARBE_DESIGN);
+		tabbedPane.setFont(SCHRIFT_UEBERSCHRIFT);
 		return tabbedPane;
 	}
 

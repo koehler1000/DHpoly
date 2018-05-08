@@ -1,5 +1,8 @@
 package de.dhpoly.fakes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
@@ -7,6 +10,7 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 public class ClientFake implements Client
 {
 	public static ClientFake clientFake = new ClientFake();
+	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
 	private Datenobjektverwalter verwalter;
 
@@ -19,12 +23,13 @@ public class ClientFake implements Client
 	@Override
 	public void sendeAnServer(Datenobjekt obj)
 	{
-		// TODO Auto-generated method stub
-
+		LOGGER.log(Level.INFO, obj.getClassName());
+		ServerFake.serverfake.empfange(obj);
 	}
 
 	public void empfange(Datenobjekt obj)
 	{
+		LOGGER.log(Level.INFO, obj.getClassName());
 		verwalter.empfange(obj);
 	}
 }
