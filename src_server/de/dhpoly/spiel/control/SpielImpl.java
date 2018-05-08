@@ -36,6 +36,7 @@ import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.spielfeld.model.Standardspielfeld;
 import de.dhpoly.wuerfel.Wuerfelpaar;
+import de.dhpoly.wuerfel.control.WuerfelAufrufLogik;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
 public class SpielImpl implements Spiel
@@ -67,6 +68,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(FehlerLogikImpl.class);
 		logikverwalter.add(HandelImpl.class);
 		logikverwalter.add(NachrichtLogikImpl.class);
+		logikverwalter.add(WuerfelAufrufLogik.class);
 	}
 
 	public SpielImpl(Server server)

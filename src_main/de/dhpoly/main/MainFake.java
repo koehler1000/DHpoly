@@ -31,10 +31,12 @@ public class MainFake
 
 		Spiel spiel = new SpielImpl();
 		spiel.fuegeSpielerHinzu(spieler);
+		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Klaus"));
 		server.setDatenobjektverwalter(spiel);
+
+		spiel.starteSpiel();
 
 		server.sendeAnSpieler(new Nachricht("Fake läuft"));
 		server.sendeAnSpieler(spiel.getAktuellerSpieler());
-		spiel.starteSpiel();
 	}
 }
