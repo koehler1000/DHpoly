@@ -1,16 +1,25 @@
 package de.dhpoly.nachricht.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.logik.Logik;
+import de.dhpoly.nachricht.NachrichtLogik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class NachrichtVerwalter implements Logik
+public class NachrichtLogikImpl implements NachrichtLogik
 {
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
-		Nachricht nachricht = (Nachricht) objekt;
+		if (objekt instanceof Nachricht)
+		{
+			sendeNachricht((Nachricht) objekt, spiel);
+		}
+	}
+
+	@Override
+	public void sendeNachricht(Nachricht nachricht, Spiel spiel)
+	{
 		System.out.println("Server empfangen: " + nachricht.getNachricht());
+
 	}
 }
