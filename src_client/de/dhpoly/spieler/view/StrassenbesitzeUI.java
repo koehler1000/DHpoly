@@ -35,7 +35,7 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 	}
 
 	@Override
-	public boolean isEinmalig()
+	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
 	}

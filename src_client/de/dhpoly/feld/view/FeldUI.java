@@ -81,7 +81,7 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 	}
 
 	@Override
-	public boolean isEinmalig()
+	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return true;
 	}

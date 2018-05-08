@@ -55,7 +55,7 @@ public class HausUI extends Oberflaeche
 	}
 
 	@Override
-	public boolean isEinmalig()
+	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
 	}

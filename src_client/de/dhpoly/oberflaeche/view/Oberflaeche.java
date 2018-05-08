@@ -46,5 +46,5 @@ public abstract class Oberflaeche extends JPanel
 		ansicht.ifPresent(ui -> ui.sendeAnServer(antwort));
 	}
 
-	public abstract boolean isEinmalig();
+	public abstract boolean isInvalideBeiSpielerWechsel();
 }

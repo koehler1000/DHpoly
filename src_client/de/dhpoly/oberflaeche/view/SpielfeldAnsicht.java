@@ -3,9 +3,11 @@ package de.dhpoly.oberflaeche.view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -18,7 +20,6 @@ import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -36,7 +37,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private transient Optional<Client> client;
 
-	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
+	private transient Map<Datenobjekt, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spieler spieler, Client client)
 	{
@@ -88,7 +89,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		inhalte.remove(obj);
 	}
 
-	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
+	public void hinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
 	{
 		if (Optional.ofNullable(oberflaeche).isPresent())
 		{
@@ -106,8 +107,15 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void leereRand()
 	{
-		tabRand.removeAll();
-		inhalte.clear();
+		List<Datenobjekt> zuLoeschen = new ArrayList<>();
+
+		for (Entry<Datenobjekt, Oberflaeche> obj : inhalte.entrySet())
+		{
+			zuLoeschen.add(obj.getKey());
+			tabRand.remove(obj.getValue());
+		}
+
+		zuLoeschen.forEach(e -> inhalte.remove(e));
 	}
 
 	public void zeigeHausbaumoeglichkeit(List<Strasse> felder)
@@ -115,9 +123,11 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
 	}
 
+	@Deprecated
 	public void zeigeKarte(Karte karte)
 	{
-		hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
+		// TODO
+		// hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)
@@ -161,5 +171,10 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	public void empfange(Datenobjekt datenobjekt)
 	{
 		datenobjekt.anzeigen(this);
+
+		if (spieler.equals(datenobjekt) && !((Spieler) datenobjekt).isAnDerReihe())
+		{
+			leereRand();
+		}
 	}
 }

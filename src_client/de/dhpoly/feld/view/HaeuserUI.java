@@ -23,7 +23,7 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public boolean isEinmalig()
+	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
 	}
