@@ -17,7 +17,7 @@ import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.Strasse;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
-import de.dhpoly.handel.Handel;
+import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.RueckenKarte;
@@ -65,7 +65,7 @@ public class SpielImpl implements Spiel
 		wuerfelPaar = new WuerfelpaarImpl();
 
 		logikverwalter.add(FehlerLogikImpl.class);
-		logikverwalter.add(Handel.class);
+		logikverwalter.add(HandelImpl.class);
 		logikverwalter.add(NachrichtLogikImpl.class);
 	}
 

@@ -82,26 +82,29 @@ public class HandelImpl implements Handel
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
-		Transaktion transaktion = (Transaktion) objekt;
-		switch (transaktion.getTransaktionsTyp())
+		if (objekt instanceof Transaktion)
 		{
-			case ABGELEHNT:
-				vorschlagAblehnen(transaktion, spiel);
-				break;
-			case ANGENOMMEN:
-				vorschlagAnnehmen(transaktion, spiel);
-				break;
-			case NEU:
-				vorschlagAnbieten(transaktion, spiel);
-				break;
-			case NEUER_VORSCHLAG:
-				vorschlagAnbieten(transaktion, spiel);
-				break;
-			case VORSCHLAG:
-				vorschlagAnbieten(transaktion, spiel);
-				break;
-			default:
-				break;
+			Transaktion transaktion = (Transaktion) objekt;
+			switch (transaktion.getTransaktionsTyp())
+			{
+				case ABGELEHNT:
+					vorschlagAblehnen(transaktion, spiel);
+					break;
+				case ANGENOMMEN:
+					vorschlagAnnehmen(transaktion, spiel);
+					break;
+				case NEU:
+					vorschlagAnbieten(transaktion, spiel);
+					break;
+				case NEUER_VORSCHLAG:
+					vorschlagAnbieten(transaktion, spiel);
+					break;
+				case VORSCHLAG:
+					vorschlagAnbieten(transaktion, spiel);
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
