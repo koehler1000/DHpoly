@@ -2,11 +2,14 @@ package de.dhpoly.datenobjekt;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.spieler.model.Spieler;
 
 public abstract class Datenobjekt implements Serializable
 {
@@ -15,6 +18,11 @@ public abstract class Datenobjekt implements Serializable
 	public String getClassName()
 	{
 		return this.getClass().getName();
+	}
+
+	public List<Spieler> getBeteiligteSpieler()
+	{
+		return new ArrayList<>();
 	}
 
 	public abstract String getTitel();
