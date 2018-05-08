@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.fehler.control.TelegamBenachrichtiger;
+import de.dhpoly.fehler.control.FehlerLogikImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
@@ -60,7 +60,7 @@ public class SpielImpl implements Spiel
 		einstellungen = new Einstellungen();
 		wuerfelPaar = new WuerfelpaarImpl();
 
-		logikverwalter.add(TelegamBenachrichtiger.class);
+		logikverwalter.add(FehlerLogikImpl.class);
 		logikverwalter.add(Handel.class);
 		logikverwalter.add(NachrichtLogikImpl.class);
 	}
@@ -257,7 +257,7 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			new TelegamBenachrichtiger().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			new FehlerLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
 		}
 		catch (IOException ex)
 		{
@@ -459,7 +459,7 @@ public class SpielImpl implements Spiel
 		}
 		catch (InstantiationException | IllegalAccessException ex)
 		{
-			TelegamBenachrichtiger benachrichtiger = new TelegamBenachrichtiger();
+			FehlerLogikImpl benachrichtiger = new FehlerLogikImpl();
 			try
 			{
 				benachrichtiger.sendTelegramMessage("Fehler", ex.getMessage());

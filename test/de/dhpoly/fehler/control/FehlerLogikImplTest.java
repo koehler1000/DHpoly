@@ -13,7 +13,7 @@ import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 
-public class TelegamBenachrichtigerTest
+public class FehlerLogikImplTest
 {
 	@Test
 	@Ignore
@@ -21,7 +21,7 @@ public class TelegamBenachrichtigerTest
 	{
 		try
 		{
-			new TelegamBenachrichtiger().sendTelegramMessage("Testfehler",
+			new FehlerLogikImpl().sendTelegramMessage("Testfehler",
 					"Das ist ein Fehler aus dem JUnitTest. Dieser ist beabsichtigt und darf ignoriert werden.");
 		}
 		catch (IOException ex)

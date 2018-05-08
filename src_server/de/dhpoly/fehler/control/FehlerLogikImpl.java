@@ -10,7 +10,7 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class TelegamBenachrichtiger implements FehlerLogik
+public class FehlerLogikImpl implements FehlerLogik
 {
 	private static final String CHAT_ID = "-1001131918455";
 
