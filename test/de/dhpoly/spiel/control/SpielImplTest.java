@@ -3,6 +3,7 @@ package de.dhpoly.spiel.control;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class SpielImplTest implements Datenobjektverwalter
 {
 	private SpielImpl spiel;
-	private Datenobjekt empfangenesObjekt;
+	private List<Datenobjekt> empfangeneObjekte = new ArrayList<>();
 	private Server server;
 	private Client client;
 
@@ -57,7 +58,23 @@ public class SpielImplTest implements Datenobjektverwalter
 	public void spielStartSendetDatenobjektAnSpieler()
 	{
 		spiel.starteSpiel();
-		assertTrue(empfangenesObjekt instanceof Spieler);
+		assertTrue(empfangeneObjekte.get(0) instanceof Spieler);
+	}
+
+	@Test
+	public void spielerWechselSendetDatenobjektAnSpieler()
+	{
+		spiel.starteSpiel();
+		empfangeneObjekte = new ArrayList<>();
+		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
+
+		if (empfangeneObjekte.size() < 2)
+		{
+			fail("Nicht genügend Objekte empfangen");
+		}
+
+		assertTrue(empfangeneObjekte.get(0) instanceof Spieler);
+		assertTrue(empfangeneObjekte.get(1) instanceof Spieler);
 	}
 
 	@Test
@@ -128,6 +145,6 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Override
 	public void empfange(Datenobjekt datenobjekt)
 	{
-		empfangenesObjekt = datenobjekt;
+		empfangeneObjekte.add(datenobjekt);
 	}
 }

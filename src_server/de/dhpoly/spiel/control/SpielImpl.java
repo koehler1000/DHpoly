@@ -383,11 +383,11 @@ public class SpielImpl implements Spiel
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
 		}
+		server.ifPresent(s -> s.sendeAnSpieler(spielerAktuellAlt));
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
 		spielerAktuellNeu.setAktuellerSpieler(true);
-		// TODO braucht man das noch?
-		// spielerAktuellNeu.setWuerfelnMoeglich(true);
+		server.ifPresent(s -> s.sendeAnSpieler(spielerAktuellNeu));
 
 		setAktuellerSpielerHatGewuerfelt(false);
 		setAktuellerSpielerIstGerueckt(false);
