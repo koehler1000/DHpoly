@@ -79,29 +79,21 @@ public class SpielImpl implements Spiel
 
 	public void ruecke(Spieler spieler, int augensumme)
 	{
-		Thread thread = rueckeThread(spieler, augensumme);
-		thread.start();
-	}
+		Feld aktuellesFeld = felder.get(spieler.getFeldNr());
 
-	public Thread rueckeThread(Spieler spieler, int augensumme)
-	{
-		return new Thread(() -> {
-			Feld aktuellesFeld = felder.get(spieler.getFeldNr());
-
-			for (int i = 1; i < augensumme; i++)
-			{
-				aktuellesFeld.verlasseFeld(spieler);
-				aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-				aktuellesFeld.laufeUeberFeld(spieler);
-			}
-
+		for (int i = 1; i < augensumme; i++)
+		{
 			aktuellesFeld.verlasseFeld(spieler);
 			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-			aktuellesFeld.betreteFeld(spieler, augensumme, this);
-			spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+			aktuellesFeld.laufeUeberFeld(spieler);
+		}
 
-			aktuellerSpielerIstGerueckt = true;
-		});
+		aktuellesFeld.verlasseFeld(spieler);
+		aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+		aktuellesFeld.betreteFeld(spieler, augensumme, this);
+		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
+
+		aktuellerSpielerIstGerueckt = true;
 	}
 
 	private Feld getNaechstesFeld(Feld feld)

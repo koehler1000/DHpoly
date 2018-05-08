@@ -56,9 +56,7 @@ public class SpielImplTest
 	{
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD);
 
-		Thread thread = spiel.rueckeThread(spiel.getAktuellerSpieler(), 2);
-		thread.start();
-		thread.join();
+		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
 
 		assertThat(spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD),
 				Is.is(geldVorDemLaufen + new Einstellungen().getBetragPassierenLos()));
