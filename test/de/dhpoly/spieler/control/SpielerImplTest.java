@@ -9,12 +9,24 @@ import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 
 public class SpielerImplTest
 {
+	private Spiel spiel = new SpielImpl();
+
+	@Test
+	public void spielerKannVorGestartetemSpielHinzugefuegtWerden()
+	{
+		Spieler spieler = getDefaultSpieler();
+		spiel.fuegeSpielerHinzu(spieler);
+
+		assertThat(spiel.getSpieler().size(), Is.is(1));
+	}
+
 	@Test
 	public void ueberweiseGeld()
 	{

@@ -33,6 +33,7 @@ import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
+import de.dhpoly.spielfeld.model.Standardspielfeld;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
 
@@ -54,10 +55,10 @@ public class SpielImpl implements Spiel
 
 	public SpielImpl()
 	{
-		felder = new ArrayList<>();
+		einstellungen = new Einstellungen();
+		felder = new Standardspielfeld().getStandardSpielfeld(einstellungen);
 		spieler = new ArrayList<>();
 		wetter = Wetter.BEWOELKT;
-		einstellungen = new Einstellungen();
 		wuerfelPaar = new WuerfelpaarImpl();
 
 		logikverwalter.add(FehlerLogikImpl.class);
