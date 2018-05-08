@@ -37,7 +37,9 @@ import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.spielfeld.model.Standardspielfeld;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelAufrufLogik;
+import de.dhpoly.wuerfel.control.WuerfelWeitergabeLogik;
 import de.dhpoly.wuerfel.control.WuerfelpaarImpl;
+import de.dhpoly.wuerfel.model.WuerfelDaten;
 
 public class SpielImpl implements Spiel
 {
@@ -69,6 +71,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(HandelImpl.class);
 		logikverwalter.add(NachrichtLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
+		logikverwalter.add(WuerfelWeitergabeLogik.class);
 	}
 
 	public SpielImpl(Server server)
@@ -83,9 +86,6 @@ public class SpielImpl implements Spiel
 		wuerfelPaar.wuerfeln();
 		setAktuellerSpielerHatGewuerfelt(true);
 		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
-
-		// TODO braucht man das noch?
-		// getAktuellerSpieler().setWuerfelnMoeglich(false);
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
@@ -371,6 +371,7 @@ public class SpielImpl implements Spiel
 		if (spieler == getAktuellerSpieler())
 		{
 			ruecke();
+			server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
 		}
 	}
 
@@ -484,14 +485,14 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	public void zeigeSpieler(Spieler sp, Datenobjekt transaktion)
+	public void zeigeSpieler(Spieler sp, Datenobjekt datenobjekt)
 	{
-		// TODO versenden
+		server.ifPresent(s -> s.sendeAnSpieler(datenobjekt, sp));
 	}
 
 	@Override
-	public void zeigeAllenSpielern(Datenobjekt transaktion)
+	public void zeigeAllenSpielern(Datenobjekt datenobjekt)
 	{
-		// TODO versenden
+		server.ifPresent(s -> s.sendeAnSpieler(datenobjekt));
 	}
 }

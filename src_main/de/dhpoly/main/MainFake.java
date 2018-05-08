@@ -25,13 +25,13 @@ public class MainFake
 	public MainFake()
 	{
 		Spieler spieler = new Spieler(SpielerTyp.NETZWERK, "Peter");
+
 		SpielfeldAnsicht verwalter = new SpielfeldAnsicht(spieler, client);
 		client.setDatenobjektverwalter(verwalter);
 		fenster.zeigeSpielansicht(verwalter, "Fake");
 
-		Spiel spiel = new SpielImpl();
+		Spiel spiel = new SpielImpl(server);
 		spiel.fuegeSpielerHinzu(spieler);
-		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Klaus"));
 		server.setDatenobjektverwalter(spiel);
 
 		spiel.starteSpiel();

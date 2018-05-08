@@ -29,6 +29,7 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
+import de.dhpoly.wuerfel.model.WuerfelDaten;
 
 public class SpielImplTest implements Datenobjektverwalter
 {
@@ -75,6 +76,17 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		assertTrue(empfangeneObjekte.get(0) instanceof Spieler);
 		assertTrue(empfangeneObjekte.get(1) instanceof Spieler);
+	}
+
+	@Test
+	public void wuerfelnSendetDatenobjekt()
+	{
+		spiel.starteSpiel();
+		empfangeneObjekte = new ArrayList<>();
+
+		spiel.wuerfeln(spiel.getAktuellerSpieler());
+
+		assertTrue(empfangeneObjekte.get(0) instanceof WuerfelDaten);
 	}
 
 	@Test

@@ -18,6 +18,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
+import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 import observerpattern.Beobachter;
 
 public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
@@ -30,6 +31,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 	private JButton butHausBau;
 	private JButton butHandel;
 	private JButton butWuerfeln;
+	private JButton butWuerfelWeitergeben;
 
 	public SpielerUI(Spieler spieler, SpielfeldAnsicht ansicht)
 	{
@@ -75,6 +77,12 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		butWuerfeln = ElementFactory.getButton("Wuerfeln");
 		butWuerfeln.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
 		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
+		butWuerfeln.setForeground(backcolor);
+		pnlSueden.add(butWuerfeln);
+
+		butWuerfeln = ElementFactory.getButton("Wuerfel weitergeben");
+		butWuerfeln.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
+		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
 		butWuerfeln.setForeground(backcolor);
 		pnlSueden.add(butWuerfeln);
 
