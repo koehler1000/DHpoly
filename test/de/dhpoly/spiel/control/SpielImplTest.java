@@ -86,7 +86,7 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		spiel.wuerfeln(spiel.getAktuellerSpieler());
 
-		assertTrue(empfangeneObjekte.get(0) instanceof WuerfelDaten);
+		assertTrue(empfangeneObjekte.get(empfangeneObjekte.size() - 1) instanceof WuerfelDaten);
 	}
 
 	@Test
