@@ -223,11 +223,14 @@ public class SpielImpl implements Spiel
 	@Override
 	public void fuegeSpielerHinzu(Spieler spieler)
 	{
-		spieler.setAktuellerSpieler(this.spieler.isEmpty());
-		spieler.setSpielerNr(this.spieler.size());
-		this.spieler.add(spieler);
-		this.spielerImSpiel.add(spieler);
-		felder.get(0).betreteFeld(spieler, 0, this);
+		if (status == SpielStatus.SPIEL_VORBEREITUNG)
+		{
+			spieler.setAktuellerSpieler(this.spieler.isEmpty());
+			spieler.setSpielerNr(this.spieler.size());
+			this.spieler.add(spieler);
+			this.spielerImSpiel.add(spieler);
+			felder.get(0).betreteFeld(spieler, 0, this);
+		}
 	}
 
 	@Override

@@ -28,6 +28,18 @@ public class SpielerImplTest
 	}
 
 	@Test
+	public void spielerKannNachGestartetemSpielNichtMehrHinzugefuegtWerden()
+	{
+		Spieler spieler = getDefaultSpieler();
+		spiel.fuegeSpielerHinzu(getDefaultSpieler());
+		spiel.fuegeSpielerHinzu(getDefaultSpieler());
+		spiel.starteSpiel();
+		spiel.fuegeSpielerHinzu(spieler);
+
+		assertThat(spiel.getSpieler().size(), Is.is(2));
+	}
+
+	@Test
 	public void ueberweiseGeld()
 	{
 		Spieler empfaenger = getDefaultSpieler(100);
