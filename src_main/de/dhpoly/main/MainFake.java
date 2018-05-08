@@ -1,7 +1,5 @@
 package de.dhpoly.main;
 
-import java.io.IOException;
-
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
@@ -19,7 +17,7 @@ public class MainFake
 	private ClientFake client = ClientFake.clientFake;
 	private ServerFake server = ServerFake.serverfake;
 
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args)
 	{
 		new MainFake();
 	}

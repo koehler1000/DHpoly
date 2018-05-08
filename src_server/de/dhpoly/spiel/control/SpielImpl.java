@@ -27,6 +27,7 @@ import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.control.NachrichtLogikImpl;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.netzwerk.Server;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
@@ -53,6 +54,8 @@ public class SpielImpl implements Spiel
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
+	private Optional<Server> server = Optional.empty();
+
 	public SpielImpl()
 	{
 		einstellungen = new Einstellungen();
@@ -64,6 +67,12 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(FehlerLogikImpl.class);
 		logikverwalter.add(Handel.class);
 		logikverwalter.add(NachrichtLogikImpl.class);
+	}
+
+	public SpielImpl(Server server)
+	{
+		this();
+		this.server = Optional.ofNullable(server);
 	}
 
 	@Override
@@ -330,8 +339,7 @@ public class SpielImpl implements Spiel
 			sp.einzahlen(einstellungen.getSpielerStartVorraete());
 		}
 
-		// TODO braucht man das noch?
-		// getAktuellerSpieler().setWuerfelnMoeglich(true);
+		server.ifPresent(s -> s.sendeAnSpieler(getAktuellerSpieler()));
 	}
 
 	@Override

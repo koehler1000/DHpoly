@@ -2,6 +2,7 @@ package de.dhpoly.spiel.control;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +11,17 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
+import de.dhpoly.fakes.ClientFake;
+import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldLosTest;
 import de.dhpoly.feld.control.FeldStrasseTest;
+import de.dhpoly.netzwerk.Client;
+import de.dhpoly.netzwerk.Datenobjektverwalter;
+import de.dhpoly.netzwerk.Server;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -22,20 +29,35 @@ import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
 
-public class SpielImplTest
+public class SpielImplTest implements Datenobjektverwalter
 {
 	private SpielImpl spiel;
+	private Datenobjekt empfangenesObjekt;
+	private Server server;
+	private Client client;
 
 	@Before
 	public void vorbereitung()
 	{
+		server = ServerFake.serverfake;
+		client = ClientFake.clientFake;
+
+		client.setDatenobjektverwalter(this);
+
 		List<Feld> felder = new ArrayList<>();
 		felder.add(FeldLosTest.getDefaultFeld());
 		felder.add(FeldStrasseTest.getDefaultStrasse());
-		spiel = new SpielImpl();
+		spiel = new SpielImpl(server);
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test1"));
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
+	}
+
+	@Test
+	public void spielStartSendetDatenobjektAnSpieler()
+	{
+		spiel.starteSpiel();
+		assertTrue(empfangenesObjekt instanceof Spieler);
 	}
 
 	@Test
@@ -101,5 +123,11 @@ public class SpielImplTest
 		spiel.setFelder(felder);
 
 		return spiel;
+	}
+
+	@Override
+	public void empfange(Datenobjekt datenobjekt)
+	{
+		empfangenesObjekt = datenobjekt;
 	}
 }
