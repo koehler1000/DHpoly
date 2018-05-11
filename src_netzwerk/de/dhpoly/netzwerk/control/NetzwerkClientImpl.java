@@ -88,7 +88,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 
-	@Override
+	@Deprecated
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
 		// TODO Auto-generated method stub

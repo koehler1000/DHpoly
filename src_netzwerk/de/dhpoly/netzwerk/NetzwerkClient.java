@@ -6,6 +6,9 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 
 public interface NetzwerkClient
 {
+	/**
+	 * Sendet @param text an den Server
+	 */
 	void sendeAnServer(String text) throws IOException;
 
 	/**
@@ -13,6 +16,7 @@ public interface NetzwerkClient
 	 */
 	public void sendeAnServer(Datenobjekt obj);
 
+	@Deprecated
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
 
 	String read();
