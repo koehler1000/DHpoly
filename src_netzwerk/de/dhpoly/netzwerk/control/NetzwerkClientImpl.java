@@ -8,6 +8,7 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 
@@ -80,6 +81,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		return line;
 	}
 
+	
 	public void sendQuitMessage()
 	{
 		sendeAnServer("QUIT");
@@ -91,6 +93,12 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void sendeAnServer(Datenobjekt obj) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
