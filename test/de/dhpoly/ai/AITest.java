@@ -3,6 +3,8 @@ package de.dhpoly.ai;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +64,18 @@ public class AITest
 		public String read()
 		{
 			return null;
+		}
+
+		@Override
+		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean verbindungTrennen() {
+			// TODO Auto-generated method stub
+			return false;
 		}
 	};
 }
