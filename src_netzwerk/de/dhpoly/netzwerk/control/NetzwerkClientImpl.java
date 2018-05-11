@@ -41,7 +41,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	/** Attempt to close the connection, including input/output streams. */
-	public boolean disconnect()
+	public boolean verbindungTrennen()
 	{
 		try
 		{
@@ -66,6 +66,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	/** Attempt to read from the connection socket. */
+	@Deprecated
 	public String read()
 	{
 		String line = null;

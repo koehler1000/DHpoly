@@ -26,10 +26,13 @@ public interface NetzwerkClient
 	@Deprecated
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
 	
-	/**
-	 * Der Client versucht vom Server zu lesen
-	 */
+	@Deprecated
 	String read();
+	
+	/**
+	 * Trennt die Verbindung zum Server
+	 */
+	boolean verbindungTrennen();
 
 	void sendQuitMessage();
 
