@@ -24,7 +24,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		// TODO Auto-generated constructor stub
 	}
 
-	public void connect(String ip, int port) throws ConnectException, UnknownHostException, IOException
+	public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
 	{
 		server = new Socket(ip, port);
 		try
