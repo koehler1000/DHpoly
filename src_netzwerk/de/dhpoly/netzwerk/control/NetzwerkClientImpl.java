@@ -85,12 +85,6 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		sendeAnServer("QUIT");
 	}
 
-	@Override
-	public void sendeAnServer(Object ob)
-	{
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
