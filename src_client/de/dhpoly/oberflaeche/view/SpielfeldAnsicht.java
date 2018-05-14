@@ -24,16 +24,14 @@ import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.model.SpielStart;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
-import de.dhpoly.spielfeld.view.SpielfeldUI;
-import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
 public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private JButton butWeiter = new JButton("");
 	private JTabbedPane tabRand = new JTabbedPane();
 	private JTabbedPane tabCenter = new JTabbedPane();
 	private Spieler spieler;
@@ -56,9 +54,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabCenter = ElementFactory.getTabbedPane();
 		this.add(tabCenter, BorderLayout.CENTER);
 
-		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
-		butWeiter.addActionListener(e -> weiter());
-
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
 		this.add(tabRand, BorderLayout.WEST);
@@ -68,19 +63,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
 
 		tabCenter.addTab("Start", butSpielStarten);
-	}
-
-	private void weiter()
-	{
-		if (tabRand.getTabCount() > 0)
-		{
-			tabRand.remove(tabRand.getSelectedIndex());
-		}
-		else
-		{
-			WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
-			sendeAnServer(aufruf);
-		}
 	}
 
 	public void sendeAnServer(Datenobjekt objekt)
@@ -104,23 +86,42 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	{
 		if (Optional.ofNullable(oberflaeche).isPresent())
 		{
-			if (oberflaeche instanceof SpielfeldUI)
+			if (obj instanceof SpielfeldDaten)
 			{
-				tabCenter.addTab("Spiel", oberflaeche);
+				fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
 			}
 			else
 			{
-				if (inhalte.containsKey(obj))
-				{
-					Container parent = inhalte.get(obj).getParent();
-					parent.remove(inhalte.get(obj));
-				}
-
-				tabRand.addTab(beschreibung, oberflaeche);
-				inhalte.put(obj, oberflaeche);
-				tabRand.setSelectedComponent(oberflaeche);
+				fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
 			}
 		}
+	}
+
+	private void fuegeInhaltHinzuRand(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
+	{
+		JTabbedPane tabPane = tabRand;
+		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
+	}
+
+	private void fuegeInhaltHinzuMitte(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
+	{
+		tabCenter.removeAll();
+
+		JTabbedPane tabPane = tabCenter;
+		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
+	}
+
+	private void fuegeInhaltHinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
+	{
+		if (inhalte.containsKey(obj))
+		{
+			Container parent = inhalte.get(obj).getParent();
+			parent.remove(inhalte.get(obj));
+		}
+
+		tabPane.addTab(beschreibung, oberflaeche);
+		inhalte.put(obj, oberflaeche);
+		tabPane.setSelectedComponent(oberflaeche);
 	}
 
 	public void leereRand()
@@ -171,18 +172,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	public Spieler getSpieler()
 	{
 		return spieler;
-	}
-
-	public void wuerfelnErmoeglichen(boolean b)
-	{
-		butWeiter.setEnabled(b);
-		butWeiter.setText("Würfeln");
-	}
-
-	public void wuerfelWeitergabeErmoeglichen(boolean b)
-	{
-		butWeiter.setEnabled(b);
-		butWeiter.setText("Würfel weitergeben");
 	}
 
 	@Override
