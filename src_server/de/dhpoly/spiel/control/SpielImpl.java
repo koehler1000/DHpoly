@@ -74,6 +74,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(NachrichtLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
+		logikverwalter.add(SpielStarterLogik.class);
 	}
 
 	public SpielImpl(Server server)
@@ -86,9 +87,17 @@ public class SpielImpl implements Spiel
 	@Override
 	public void ruecke()
 	{
-		wuerfelPaar.wuerfeln();
-		setAktuellerSpielerHatGewuerfelt(true);
-		ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+		if (status == SpielStatus.SPIEL_LAEUFT)
+		{
+			wuerfelPaar.wuerfeln();
+			setAktuellerSpielerHatGewuerfelt(true);
+			ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+		}
+		else
+		{
+			Fehler fehler = new Fehler("Spiel noch nicht gestartet", FehlerTyp.FEHLER_SPIELER);
+			verarbeiteFehler(fehler);
+		}
 	}
 
 	public void ruecke(Spieler spieler, int augensumme)
