@@ -26,6 +26,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.model.SpielStart;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
+import de.dhpoly.spielfeld.view.SpielfeldUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
 public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
@@ -34,6 +35,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private JButton butWeiter = new JButton("");
 	private JTabbedPane tabRand = new JTabbedPane();
+	private JTabbedPane tabCenter = new JTabbedPane();
 	private Spieler spieler;
 
 	private transient Optional<Client> client;
@@ -51,6 +53,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabRand = ElementFactory.getTabbedPane();
 		tabRand.setPreferredSize(new Dimension(500, 0));
 
+		tabCenter = ElementFactory.getTabbedPane();
+		this.add(tabCenter, BorderLayout.CENTER);
+
 		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		butWeiter.addActionListener(e -> weiter());
 
@@ -62,7 +67,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
 		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
 
-		this.add(butSpielStarten, BorderLayout.CENTER);
+		tabCenter.addTab("Start", butSpielStarten);
 	}
 
 	private void weiter()
@@ -99,15 +104,22 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	{
 		if (Optional.ofNullable(oberflaeche).isPresent())
 		{
-			if (inhalte.containsKey(obj))
+			if (oberflaeche instanceof SpielfeldUI)
 			{
-				Container parent = inhalte.get(obj).getParent();
-				parent.remove(inhalte.get(obj));
+				tabCenter.addTab("Spiel", oberflaeche);
 			}
+			else
+			{
+				if (inhalte.containsKey(obj))
+				{
+					Container parent = inhalte.get(obj).getParent();
+					parent.remove(inhalte.get(obj));
+				}
 
-			tabRand.addTab(beschreibung, oberflaeche);
-			inhalte.put(obj, oberflaeche);
-			tabRand.setSelectedComponent(oberflaeche);
+				tabRand.addTab(beschreibung, oberflaeche);
+				inhalte.put(obj, oberflaeche);
+				tabRand.setSelectedComponent(oberflaeche);
+			}
 		}
 	}
 

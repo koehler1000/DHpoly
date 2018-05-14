@@ -6,6 +6,7 @@ import java.util.List;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldLosTest;
 import de.dhpoly.feld.control.FeldStrasseTest;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.utils.Spielansicht;
 
 public class SpielfeldUIVorschau
@@ -21,6 +22,6 @@ public class SpielfeldUIVorschau
 			felder.add(FeldStrasseTest.getDefaultStrasse("Test " + i));
 		}
 
-		Spielansicht.zeige(new SpielfeldUI(felder, Spielansicht.getSpielfeldAnsicht()));
+		Spielansicht.zeige(new SpielfeldUI(new SpielfeldDaten(felder), Spielansicht.getSpielfeldAnsicht()));
 	}
 }

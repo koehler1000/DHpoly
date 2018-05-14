@@ -74,7 +74,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(NachrichtLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
-		logikverwalter.add(SpielStarterLogik.class);
+		logikverwalter.add(SpielStartLogik.class);
 	}
 
 	public SpielImpl(Server server)

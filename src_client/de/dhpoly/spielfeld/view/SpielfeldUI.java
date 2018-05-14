@@ -3,7 +3,6 @@ package de.dhpoly.spielfeld.view;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -22,6 +21,7 @@ import de.dhpoly.feld.view.StrasseUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 
 public class SpielfeldUI extends Oberflaeche // NOSONAR
 {
@@ -31,7 +31,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 	private transient Map<FeldStrasse, StrasseUI> strassen = new HashMap<>();
 
-	public SpielfeldUI(List<Feld> spielfelder, SpielfeldAnsicht ansicht)
+	public SpielfeldUI(SpielfeldDaten spielfelder, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 

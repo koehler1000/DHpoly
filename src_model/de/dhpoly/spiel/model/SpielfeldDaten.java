@@ -5,6 +5,7 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.spielfeld.view.SpielfeldUI;
 
 public class SpielfeldDaten extends Datenobjekt
 {
@@ -25,7 +26,7 @@ public class SpielfeldDaten extends Datenobjekt
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		return null;
+		return SpielfeldUI.class;
 	}
 
 	public final List<Feld> getFelder()
