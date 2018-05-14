@@ -8,6 +8,7 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 
@@ -23,7 +24,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		// TODO Auto-generated constructor stub
 	}
 
-	public void connect(String ip, int port) throws ConnectException, UnknownHostException, IOException
+	public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
 	{
 		server = new Socket(ip, port);
 		try
@@ -40,7 +41,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	/** Attempt to close the connection, including input/output streams. */
-	public boolean disconnect()
+	public boolean verbindungTrennen()
 	{
 		try
 		{
@@ -65,6 +66,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	/** Attempt to read from the connection socket. */
+	@Deprecated
 	public String read()
 	{
 		String line = null;
@@ -80,23 +82,24 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		return line;
 	}
 
+	
 	public void sendQuitMessage()
 	{
 		sendeAnServer("QUIT");
 	}
 
-	@Override
-	public void sendeAnServer(Object ob)
+
+	@Deprecated
+	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
-	{
+	public void sendeAnServer(Datenobjekt obj) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

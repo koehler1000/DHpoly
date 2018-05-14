@@ -5,10 +5,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
+import de.dhpoly.spieler.model.Spieler;
 
 public class NetzwerkServerImpl implements NetzwerkServer
 {
@@ -115,14 +117,14 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		}
 	}
 
-	@Override
+	@Deprecated
 	public void sendeAnClients(Datenobjekt obj) throws IOException
 	{
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
+	@Deprecated
 	public void sendeAnClients(String string) throws IOException
 	{
 		// TODO Auto-generated method stub
@@ -150,11 +152,29 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	}
 
-	@Override
+	@Deprecated
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendeAnSpieler(Datenobjekt obj) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

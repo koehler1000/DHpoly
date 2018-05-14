@@ -2,6 +2,11 @@ package de.dhpoly.netzwerk;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 
+/**
+ * @deprecated Ab jetzt NetzwerkClient verwenden
+ */
+
+@Deprecated
 public interface Client extends NetzwerkTeilnehmer
 {
 	/**

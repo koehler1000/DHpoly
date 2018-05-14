@@ -3,10 +3,13 @@ package de.dhpoly.ai;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.spieler.model.Spieler;
@@ -44,7 +47,7 @@ public class AITest
 		{}
 
 		@Override
-		public void sendeAnServer(Object ob)
+		public void sendeAnServer(Datenobjekt ob)
 		{
 			objGesendet = ob;
 		}
@@ -61,6 +64,18 @@ public class AITest
 		public String read()
 		{
 			return null;
+		}
+
+		@Override
+		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean verbindungTrennen() {
+			// TODO Auto-generated method stub
+			return false;
 		}
 	};
 }

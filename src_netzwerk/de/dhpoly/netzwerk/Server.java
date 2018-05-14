@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.spieler.model.Spieler;
-
+@Deprecated
 public interface Server extends NetzwerkTeilnehmer
 {
 	/**
