@@ -23,6 +23,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
+import de.dhpoly.spiel.model.SpielStart;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
@@ -47,16 +48,21 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		ElementFactory.bearbeitePanel(this);
 		this.setLayout(new BorderLayout(10, 10));
 
-		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		tabRand = ElementFactory.getTabbedPane();
 		tabRand.setPreferredSize(new Dimension(500, 0));
 
+		butWeiter = ElementFactory.getButtonUeberschrift("Bitte warten...");
 		butWeiter.addActionListener(e -> weiter());
 
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
 		this.add(tabRand, BorderLayout.WEST);
-		this.add(ElementFactory.getButtonUeberschrift("Warten auf Spielfeld ..."), BorderLayout.CENTER);
+
+		JButton butSpielStarten = ElementFactory
+				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
+		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
+
+		this.add(butSpielStarten, BorderLayout.CENTER);
 	}
 
 	private void weiter()
