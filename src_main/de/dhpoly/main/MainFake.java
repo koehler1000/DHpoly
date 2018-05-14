@@ -34,8 +34,6 @@ public class MainFake
 		spiel.fuegeSpielerHinzu(spieler);
 		server.setDatenobjektverwalter(spiel);
 
-		spiel.starteSpiel();
-
 		server.sendeAnSpieler(new Nachricht("Fake läuft"));
 		server.sendeAnSpieler(spiel.getAktuellerSpieler());
 	}
