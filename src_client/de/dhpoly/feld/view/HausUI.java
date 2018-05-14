@@ -13,35 +13,28 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
-public class HausUI extends Oberflaeche
+public class HausUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
-
-	private JTextArea txtName;
-	private JTextArea txtAktuelleMiete;
-
-	private JButton butHausBauen;
-
-	private JButton butHausVerkaufen;
 
 	public HausUI(Strasse strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 		ElementFactory.bearbeitePanel(this);
 
-		txtName = ElementFactory.getTextFeldUeberschrift(strasse.getName());
-		txtAktuelleMiete = ElementFactory.getTextFeld("", false);
+		JTextArea txtName = ElementFactory.getTextFeldUeberschrift(strasse.getName());
+		JTextArea txtAktuelleMiete = ElementFactory.getTextFeld("", false);
 
 		JPanel pnlHaeuser = ElementFactory.erzeugePanel();
 		pnlHaeuser.setLayout(new GridLayout(1, 3, 10, 10));
 
 		pnlHaeuser.add(txtAktuelleMiete);
 
-		butHausBauen = ElementFactory.getButtonUeberschrift("+");
+		JButton butHausBauen = ElementFactory.getButtonUeberschrift("+");
 		butHausBauen.addActionListener(e -> super.sendeAnServer(new Hausbau(strasse, +1)));
 		pnlHaeuser.add(butHausBauen);
 
-		butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
+		JButton butHausVerkaufen = ElementFactory.getButtonUeberschrift("-");
 		butHausVerkaufen.addActionListener(e -> super.sendeAnServer(new Hausbau(strasse, -1)));
 
 		pnlHaeuser.add(butHausVerkaufen);
