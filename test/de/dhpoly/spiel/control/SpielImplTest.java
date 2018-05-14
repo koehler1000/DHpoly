@@ -2,8 +2,6 @@ package de.dhpoly.spiel.control;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +24,7 @@ import de.dhpoly.netzwerk.Server;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
@@ -56,10 +55,17 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
+	public void spielStartVersendetSpielfeld()
+	{
+		spiel.starteSpiel();
+		assertThat(isEmpfangen(SpielfeldDaten.class), Is.is(1L));
+	}
+
+	@Test
 	public void spielStartSendetDatenobjektAnSpieler()
 	{
 		spiel.starteSpiel();
-		assertTrue(empfangeneObjekte.get(0) instanceof Spieler);
+		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
 	}
 
 	@Test
@@ -69,13 +75,7 @@ public class SpielImplTest implements Datenobjektverwalter
 		empfangeneObjekte = new ArrayList<>();
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
-		if (empfangeneObjekte.size() < 2)
-		{
-			fail("Nicht genügend Objekte empfangen");
-		}
-
-		assertTrue(empfangeneObjekte.get(0) instanceof Spieler);
-		assertTrue(empfangeneObjekte.get(1) instanceof Spieler);
+		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		spiel.wuerfeln(spiel.getAktuellerSpieler());
 
-		assertTrue(empfangeneObjekte.get(empfangeneObjekte.size() - 1) instanceof WuerfelDaten);
+		assertThat(isEmpfangen(WuerfelDaten.class), Is.is(1L));
 	}
 
 	@Test
@@ -158,5 +158,10 @@ public class SpielImplTest implements Datenobjektverwalter
 	public void empfange(Datenobjekt datenobjekt)
 	{
 		empfangeneObjekte.add(datenobjekt);
+	}
+
+	public long isEmpfangen(Class<? extends Datenobjekt> c)
+	{
+		return empfangeneObjekte.stream().filter(e -> (c.isInstance(e))).count();
 	}
 }

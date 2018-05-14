@@ -31,6 +31,7 @@ import de.dhpoly.netzwerk.Server;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
@@ -43,7 +44,8 @@ import de.dhpoly.wuerfel.model.WuerfelDaten;
 
 public class SpielImpl implements Spiel
 {
-	private List<Feld> felder;
+	private SpielfeldDaten felder;
+
 	private List<Spieler> spieler = new ArrayList<>();
 	private List<Spieler> spielerImSpiel = new ArrayList<>();
 	private Wetter wetter = Wetter.BEWOELKT;
@@ -62,7 +64,7 @@ public class SpielImpl implements Spiel
 	public SpielImpl()
 	{
 		einstellungen = new Einstellungen();
-		felder = new Standardspielfeld().getStandardSpielfeld(einstellungen);
+		felder = new SpielfeldDaten(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 		spieler = new ArrayList<>();
 		wetter = Wetter.BEWOELKT;
 		wuerfelPaar = new WuerfelpaarImpl();
@@ -78,6 +80,7 @@ public class SpielImpl implements Spiel
 	{
 		this();
 		this.server = Optional.ofNullable(server);
+		this.felder = new SpielfeldDaten(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
 
 	@Override
@@ -214,7 +217,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public List<Feld> getFelder()
 	{
-		return felder;
+		return felder.getFelder();
 	}
 
 	@Override
@@ -288,11 +291,12 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
+	@Deprecated
 	public void setFelder(List<Feld> felder)
 	{
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
-			this.felder = felder;
+			this.felder = new SpielfeldDaten(felder);
 			aktualisiereGruppen(felder);
 		}
 	}
@@ -339,16 +343,17 @@ public class SpielImpl implements Spiel
 		for (Spieler sp : spieler)
 		{
 			sp.einzahlen(einstellungen.getSpielerStartVorraete());
+			server.ifPresent(s -> s.sendeAnSpieler(sp));
 		}
 
-		server.ifPresent(s -> s.sendeAnSpieler(getAktuellerSpieler()));
+		server.ifPresent(s -> s.sendeAnSpieler(felder));
 	}
 
 	@Override
 	public List<Feld> getFelder(Spieler spieler)
 	{
 		List<Feld> felderSpieler = new ArrayList<>();
-		for (Feld feld : felder)
+		for (Feld feld : felder.getFelder())
 		{
 			if (feld.gehoertSpieler(spieler))
 			{
