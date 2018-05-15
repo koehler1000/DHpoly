@@ -7,9 +7,8 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
-import observerpattern.Beobachter;
 
-public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSONAR
+public class StrassenbesitzeUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -20,12 +19,6 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 		super(ansicht);
 		this.spieler = spieler;
 
-		update();
-	}
-
-	@Override
-	public void update()
-	{
 		this.setLayout(new GridLayout(1, spieler.getStrassen().size()));
 
 		for (StrasseDaten feld : spieler.getStrassen())
