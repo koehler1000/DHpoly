@@ -14,7 +14,7 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
-public class FeldUI extends Oberflaeche // NOSONAR
+public abstract class FeldUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,10 +23,11 @@ public class FeldUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 
 		this.setLayout(new BorderLayout());
+		this.setBackground(getHintergrundfarbe());
 
 		JPanel pnlSpieler = new JPanel();
 		pnlSpieler.setLayout(new GridLayout(1, 1));
-		pnlSpieler.setBackground(this.getBackground());
+		pnlSpieler.setBackground(getHintergrundfarbe());
 
 		for (Spieler spieler : feld.getSpielerAufFeld())
 		{
@@ -41,12 +42,16 @@ public class FeldUI extends Oberflaeche // NOSONAR
 
 	private JPanel getPanel(Spieler spieler)
 	{
-		JLabel lblSp = new JLabel(spieler.getName());
 		JPanel pnlSp = new JPanel();
 		pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
-		pnlSp.add(lblSp);
+		pnlSp.add(new JLabel(spieler.getName()));
 		pnlSp.setBorder(new LineBorder(Color.BLACK));
 		return pnlSp;
+	}
+
+	public Color getHintergrundfarbe()
+	{
+		return Color.WHITE;
 	}
 
 	@Override
