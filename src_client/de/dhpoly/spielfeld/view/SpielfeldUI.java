@@ -126,6 +126,6 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isInvalideBeiSpielerWechsel()
 	{
-		return true;
+		return false;
 	}
 }

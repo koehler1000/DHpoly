@@ -86,6 +86,7 @@ public class SpielImpl implements Spiel
 	{
 		this();
 		this.server = Optional.ofNullable(server);
+		server.setDatenobjektverwalter(this);
 	}
 
 	@Override

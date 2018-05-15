@@ -3,7 +3,6 @@ package de.dhpoly.main;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
-import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
@@ -27,14 +26,9 @@ public class MainFake
 		Spieler spieler = new Spieler(SpielerTyp.NETZWERK, "Peter");
 
 		SpielfeldAnsicht verwalter = new SpielfeldAnsicht(spieler, client);
-		client.setDatenobjektverwalter(verwalter);
 		fenster.zeigeSpielansicht(verwalter, "Fake");
 
 		Spiel spiel = new SpielImpl(server);
 		spiel.fuegeSpielerHinzu(spieler);
-		server.setDatenobjektverwalter(spiel);
-
-		server.sendeAnSpieler(new Nachricht("Fake läuft"));
-		server.sendeAnSpieler(spiel.getAktuellerSpieler());
 	}
 }
