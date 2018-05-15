@@ -20,8 +20,6 @@ public class RessourcenfeldUI extends FeldUI // NOSONAR
 	{
 		super(feld2, ansicht);
 		this.feld = feld2;
-
-		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 
 		hintergrundfarbeSetzen();

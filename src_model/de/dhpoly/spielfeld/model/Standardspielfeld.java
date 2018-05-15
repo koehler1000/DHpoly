@@ -8,11 +8,6 @@ import de.dhpoly.feld.model.EreignisfeldDaten;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.karte.model.BezahlKarte;
-import de.dhpoly.karte.model.Karte;
-import de.dhpoly.kartenstapel.Kartenstapel;
-import de.dhpoly.kartenstapel.control.KartenstapelImpl;
-import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 
@@ -20,20 +15,6 @@ public class Standardspielfeld
 {
 	public List<FeldDaten> getStandardSpielfeld(Einstellungen einstellungen)
 	{
-		List<Karte> karten = new ArrayList<>();
-		List<Karte> superevent = new ArrayList<>();
-
-		Kartenstapel kartenstapel = new KartenstapelImpl(karten);
-		Kartenstapel kartenstapelSuperevents = new KartenstapelImpl(superevent);
-
-		karten.add(new BezahlKarte("Zahle Geld an deine Mitspieler", GeldTransfer.SPIELER_ANDERESPIELER,
-				new RessourcenDatensatz(Ressource.GELD, 100, "Ereigniskarte")));
-
-		superevent.add(new BezahlKarte("Du erhältst supermäßige 150 € von deinen Mitspielern",
-				GeldTransfer.ANDERESPIELER_SPIELER, new RessourcenDatensatz(Ressource.GELD, 150, "Superevent")));
-		superevent.add(new BezahlKarte("Ein Holz-LKW verunglückt auf deinem Gebiet. Du erhältst 100 Holz.",
-				GeldTransfer.BANK_SPIELER, new RessourcenDatensatz(Ressource.HOLZ, 100, "Holz-LKW")));
-
 		int seite = 1;
 		List<FeldDaten> standardfeld = new ArrayList<>();
 

@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.feld.model.StrasseKaufen;
+import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -22,8 +23,7 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		this.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
 
 		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
-		// TODO
-		// butKaufen.addActionListener(e -> kaufen(strasse, ansicht.getSpieler()));
+		butKaufen.addActionListener(e -> antworten(strasse));
 
 		JButton butAbbrechen = ElementFactory.getButtonUeberschrift("Abbrechen");
 		butAbbrechen.addActionListener(e -> abbrechen());
@@ -34,6 +34,13 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		pnlOptionen.add(butAbbrechen);
 
 		this.add(pnlOptionen);
+	}
+
+	private void antworten(StrasseKaufen strasse)
+	{
+		strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+		sendeAnServer(strasse);
+		schliessen();
 	}
 
 	private void abbrechen()

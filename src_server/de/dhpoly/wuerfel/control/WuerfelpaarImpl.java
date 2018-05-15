@@ -31,6 +31,7 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 		List<Wuerfel> wuerfel = new ArrayList<>();
 		wuerfel.add(new Wuerfel(1 + r.nextInt(6)));
 		wuerfel.add(new Wuerfel(1 + r.nextInt(6)));
+		wuerfelDaten = new WuerfelDaten(wuerfel);
 	}
 
 	@Override

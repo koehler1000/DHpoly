@@ -26,6 +26,8 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.RueckenKarte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.karte.model.WetterKarte;
+import de.dhpoly.kartenstapel.Kartenstapel;
+import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.control.NachrichtLogikImpl;
@@ -56,6 +58,8 @@ public class SpielImpl implements Spiel
 	private Einstellungen einstellungen;
 	private Wuerfelpaar wuerfelPaar;
 
+	private Kartenstapel kartenstapel;
+
 	private boolean aktuellerSpielerHatGewuerfelt = false;
 	private boolean aktuellerSpielerIstGerueckt = false;
 
@@ -72,6 +76,7 @@ public class SpielImpl implements Spiel
 		spieler = new ArrayList<>();
 		wetter = Wetter.BEWOELKT;
 		wuerfelPaar = new WuerfelpaarImpl();
+		kartenstapel = new KartenstapelImpl(einstellungen.getEreigniskarten());
 
 		logikverwalter.add(FehlerLogikImpl.class);
 		logikverwalter.add(HandelImpl.class);
@@ -122,7 +127,7 @@ public class SpielImpl implements Spiel
 		switch (aktuellesFeld.getTyp())
 		{
 			case EREIGNISFELD:
-				FeldEreignis feldEreignis = new FeldEreignis(einstellungen.getEreigniskarten());
+				FeldEreignis feldEreignis = new FeldEreignis(kartenstapel);
 				feldEreignis.betreteFeld(spieler, augensumme, this);
 				break;
 			case LOS:
@@ -142,9 +147,7 @@ public class SpielImpl implements Spiel
 		}
 
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
-
 		aktuellerSpielerIstGerueckt = true;
-
 		zeigeAllenSpielern(felder);
 	}
 
@@ -369,6 +372,7 @@ public class SpielImpl implements Spiel
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
 			this.einstellungen = einstellungen;
+			this.kartenstapel = new KartenstapelImpl(einstellungen.getEreigniskarten());
 		}
 	}
 
@@ -386,7 +390,6 @@ public class SpielImpl implements Spiel
 		server.ifPresent(s -> s.sendeAnSpieler(felder));
 	}
 
-	@Override
 	public List<FeldDaten> getFelder(Spieler spieler)
 	{
 		List<FeldDaten> felderSpieler = new ArrayList<>();
