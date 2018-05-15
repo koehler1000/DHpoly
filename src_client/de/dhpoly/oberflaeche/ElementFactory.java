@@ -174,6 +174,17 @@ public class ElementFactory
 		setzeRand(pnl, dicke, farbe);
 	}
 
+	public static JButton getSpielerButton(Spieler spieler)
+	{
+		JButton butSpieler = getButton(spieler.getName());
+		Color farbe = Optional.ofNullable(spieler).isPresent() ? SpielerFarben.getSpielerfarbe(spieler.getSpielerNr())
+				: FARBE_KONTRAST;
+		butSpieler.setBorder(new LineBorder(FARBE_KONTRAST));
+		butSpieler.setBackground(farbe);
+		butSpieler.setForeground(FARBE_KONTRAST);
+		return butSpieler;
+	}
+
 	public static Component erzeugeScrollPanel(JPanel panel)
 	{
 		JScrollPane pane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_NEVER,

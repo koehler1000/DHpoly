@@ -4,15 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.view.SpielerFarben;
 
 public abstract class FeldUI extends Oberflaeche // NOSONAR
 {
@@ -31,22 +31,15 @@ public abstract class FeldUI extends Oberflaeche // NOSONAR
 
 		for (Spieler spieler : feld.getSpielerAufFeld())
 		{
-			pnlSpieler.add(getPanel(spieler));
+			JButton butSpieler = ElementFactory.getSpielerButton(spieler);
+			butSpieler.addActionListener(e -> ansicht.empfange(spieler));
+			pnlSpieler.add(butSpieler);
 		}
 
 		int randBreite = feld.getSpielerAufFeld().isEmpty() ? 0 : 5;
 		pnlSpieler.setBorder(new LineBorder(this.getBackground(), randBreite));
 
 		this.add(pnlSpieler, BorderLayout.SOUTH);
-	}
-
-	private JPanel getPanel(Spieler spieler)
-	{
-		JPanel pnlSp = new JPanel();
-		pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
-		pnlSp.add(new JLabel(spieler.getName()));
-		pnlSp.setBorder(new LineBorder(Color.BLACK));
-		return pnlSp;
 	}
 
 	public Color getHintergrundfarbe()

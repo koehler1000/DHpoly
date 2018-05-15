@@ -1,6 +1,7 @@
 package de.dhpoly.wuerfel.view;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 		this.setLayout(new BorderLayout());
 
 		JPanel wu = ElementFactory.erzeugePanel();
+		wu.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1));
 
 		List<JLabel> lblsWuerfel = new ArrayList<>();
 
