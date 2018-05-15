@@ -80,16 +80,18 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 		butWuerfeln.setForeground(backcolor);
 		pnlSueden.add(butWuerfeln);
 
-		butWuerfeln = ElementFactory.getButton("Wuerfel weitergeben");
-		butWuerfeln.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
-		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
-		butWuerfeln.setForeground(backcolor);
-		pnlSueden.add(butWuerfeln);
+		butWuerfelWeitergeben = ElementFactory.getButton("Wuerfel weitergeben");
+		butWuerfelWeitergeben.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
+		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
+		butWuerfelWeitergeben.setForeground(backcolor);
+		pnlSueden.add(butWuerfelWeitergeben);
 
-		this.setLayout(new BorderLayout());
-		this.add(txtName, BorderLayout.NORTH);
-		this.add(txtKontostand, BorderLayout.CENTER);
-		this.add(pnlSueden, BorderLayout.SOUTH);
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new BorderLayout());
+		pnlInhalt.add(txtName, BorderLayout.NORTH);
+		pnlInhalt.add(txtKontostand, BorderLayout.CENTER);
+		pnlInhalt.add(pnlSueden, BorderLayout.SOUTH);
+		this.add(pnlInhalt);
 
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));

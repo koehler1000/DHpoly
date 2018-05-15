@@ -33,9 +33,9 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
+		JPanel pnlContent = ElementFactory.erzeugePanel();
 		felderProSeite = spielfelder.size() / 4;
-
-		this.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1, 1, 1));
+		pnlContent.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1, 1, 1));
 
 		Component[][] felder = new Component[felderProSeite + 1][felderProSeite + 1];
 		for (int i = 0; i < felderProSeite + 1; i++)
@@ -80,9 +80,12 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		{
 			for (int j = felderProSeite; j >= 0; j--)
 			{
-				this.add(felder[i][j]);
+				pnlContent.add(felder[i][j]);
 			}
 		}
+
+		this.add(pnlContent);
+		this.remove(getSchliessenButton());
 	}
 
 	private Component getFeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)

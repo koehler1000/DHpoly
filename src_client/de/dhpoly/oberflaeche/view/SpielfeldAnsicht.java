@@ -37,7 +37,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private transient Optional<Client> client;
 
-	private transient Map<Datenobjekt, Oberflaeche> inhalte = new HashMap<>();
+	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spieler spieler, Client client)
 	{
@@ -81,7 +81,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		inhalte.remove(obj);
 	}
 
-	public void hinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
+	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
 		if (obj instanceof SpielfeldDaten)
 		{
@@ -93,7 +93,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		}
 	}
 
-	private void fuegeInhaltHinzuRand(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
+	private void fuegeInhaltHinzuRand(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabRand;
 		if (inhalte.containsKey(obj))
@@ -104,7 +104,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}
 
-	private void fuegeInhaltHinzuMitte(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
+	private void fuegeInhaltHinzuMitte(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
 		tabCenter.removeAll();
 
@@ -112,7 +112,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}
 
-	private void fuegeInhaltHinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
+	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
 		inhalte.put(obj, oberflaeche);
@@ -121,9 +121,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void leereRand()
 	{
-		List<Datenobjekt> zuLoeschen = new ArrayList<>();
+		List<Object> zuLoeschen = new ArrayList<>();
 
-		for (Entry<Datenobjekt, Oberflaeche> obj : inhalte.entrySet())
+		for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
 		{
 			zuLoeschen.add(obj.getKey());
 			tabRand.remove(obj.getValue());
@@ -134,7 +134,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeHausbaumoeglichkeit(List<StrasseDaten> felder)
 	{
-		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
+		hinzu("Hausbau", felder, new HaeuserUI(felder, this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)
