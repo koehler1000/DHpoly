@@ -2,6 +2,8 @@ package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
 
+import javax.swing.JPanel;
+
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -12,19 +14,19 @@ public class StrassenbesitzeUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Spieler spieler;
-
 	public StrassenbesitzeUI(Spieler spieler, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
-		this.spieler = spieler;
 
-		this.setLayout(new GridLayout(1, spieler.getStrassen().size()));
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new GridLayout(1, spieler.getStrassen().size()));
 
 		for (StrasseDaten feld : spieler.getStrassen())
 		{
-			this.add(ElementFactory.getTextFeld(feld.getName(), false));
+			pnlInhalt.add(ElementFactory.getTextFeld(feld.getName(), false));
 		}
+
+		this.add(pnlInhalt);
 	}
 
 	@Override
