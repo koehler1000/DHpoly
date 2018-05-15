@@ -31,7 +31,6 @@ public class StrasseUI extends FeldUI // NOSONAR
 		super(feld2, ansicht);
 		this.feld = feld2;
 		butName.setText(feld2.getName());
-		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		Color strassengruppeFarbe = new Strassengruppe().getColor(feld2.getGruppe());
@@ -39,16 +38,18 @@ public class StrasseUI extends FeldUI // NOSONAR
 		butName.setFont(SCHRIFT_SPIELFELD_STRASSENNAME);
 		butName.setBackground(strassengruppeFarbe);
 		butName.setBorder(new LineBorder(Color.BLACK));
-		this.add(butName, BorderLayout.NORTH);
 
 		butBesitzer.setFont(SCHRIFT_SPIELFELD_BESITZER);
 		butBesitzer.setBackground(Color.WHITE);
-		this.add(butBesitzer, BorderLayout.CENTER);
 
 		butBesitzer.addActionListener(e -> zeigeDetails());
 		butName.addActionListener(e -> zeigeDetails());
 
-		update();
+		setFarbe(SpielerFarben.getSpielerfarbe(feld.getEigentuemer()));
+		setBeschriftung(feld.getEigentuemer());
+
+		this.add(butName, BorderLayout.NORTH);
+		this.add(butBesitzer, BorderLayout.CENTER);
 	}
 
 	private void zeigeDetails()
@@ -66,14 +67,4 @@ public class StrasseUI extends FeldUI // NOSONAR
 	{
 		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
 	}
-
-	@Override
-	public void update()
-	{
-		setFarbe(SpielerFarben.getSpielerfarbe(feld.getEigentuemer()));
-		setBeschriftung(feld.getEigentuemer());
-
-		super.update();
-	}
-
 }

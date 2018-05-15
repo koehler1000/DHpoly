@@ -9,9 +9,8 @@ import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
-import observerpattern.Beobachter;
 
-public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
+public class RessourcenfeldUI extends FeldUI // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 

@@ -3,8 +3,6 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,58 +13,20 @@ import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
-import observerpattern.Beobachter;
 
-public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
+public class FeldUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
-
-	private FeldDaten feld;
-	private JPanel pnlSpieler = new JPanel();
-	private Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
 	public FeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 
-		this.feld = feld;
-
 		this.setLayout(new BorderLayout());
 
+		JPanel pnlSpieler = new JPanel();
 		pnlSpieler.setLayout(new GridLayout(1, 1));
 		pnlSpieler.setBackground(this.getBackground());
-
-		this.add(pnlSpieler, BorderLayout.SOUTH);
-	}
-
-	private JPanel getPanel(Spieler spieler)
-	{
-		if (spielerMap.containsKey(spieler))
-		{
-			return spielerMap.get(spieler);
-		}
-		else
-		{
-			JLabel lblSp = new JLabel(spieler.getName());
-			JPanel pnlSp = new JPanel();
-			pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
-			pnlSp.add(lblSp);
-			pnlSp.setBorder(new LineBorder(Color.BLACK));
-			pnlSpieler.add(pnlSp);
-
-			spielerMap.put(spieler, pnlSp);
-
-			return getPanel(spieler);
-		}
-	}
-
-	@Override
-	public void update()
-	{
-		for (Spieler spieler : spielerMap.keySet())
-		{
-			pnlSpieler.remove(getPanel(spieler));
-		}
 
 		for (Spieler spieler : feld.getSpielerAufFeld())
 		{
@@ -77,7 +37,16 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 		pnlSpieler.setBorder(new LineBorder(this.getBackground(), randBreite));
 
 		this.add(pnlSpieler, BorderLayout.SOUTH);
-		this.revalidate();
+	}
+
+	private JPanel getPanel(Spieler spieler)
+	{
+		JLabel lblSp = new JLabel(spieler.getName());
+		JPanel pnlSp = new JPanel();
+		pnlSp.setBackground(SpielerFarben.getSpielerfarbe(spieler.getSpielerNr()));
+		pnlSp.add(lblSp);
+		pnlSp.setBorder(new LineBorder(Color.BLACK));
+		return pnlSp;
 	}
 
 	@Override

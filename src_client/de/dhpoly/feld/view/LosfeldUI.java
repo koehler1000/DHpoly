@@ -9,9 +9,8 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import observerpattern.Beobachter;
 
-public class LosfeldUI extends FeldUI implements Beobachter // NOSONAR
+public class LosfeldUI extends FeldUI // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +22,5 @@ public class LosfeldUI extends FeldUI implements Beobachter // NOSONAR
 		this.setBackground(Color.WHITE);
 
 		this.add(ElementFactory.getBild(Bilderverwalter.LOSFELD, Color.WHITE));
-
-		update();
 	}
 }

@@ -1,5 +1,6 @@
 package de.dhpoly.spiel.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
@@ -10,7 +11,7 @@ import de.dhpoly.spielfeld.view.SpielfeldUI;
 public class SpielfeldDaten extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
-	private List<FeldDaten> felder;
+	private List<FeldDaten> felder = new ArrayList<>();
 
 	public SpielfeldDaten(List<FeldDaten> felder)
 	{

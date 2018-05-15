@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.swing.JPanel;
 
@@ -109,17 +108,6 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		else
 		{
 			return ElementFactory.erzeugePanel();
-		}
-	}
-
-	public void aktualisiere(StrasseDaten objekt)
-	{
-		for (Entry<StrasseDaten, StrasseUI> st : strassen.entrySet())
-		{
-			if (st.getKey() == objekt)
-			{
-				st.getValue().update();
-			}
 		}
 	}
 

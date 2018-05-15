@@ -37,12 +37,13 @@ public abstract class Datenobjekt implements Serializable
 			o.zeige(getTitel(), this);
 		}
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
-				| SecurityException | NullPointerException ex)
+				| SecurityException ex)
 		{
-			Fehler fehler = new Fehler("Fehler beim Anzeigen von " + this.getTitel() + " über " + getClassUI()
-					+ " (FEHLER: " + ex.getMessage() + ")", FehlerTyp.FEHLER_ALLE);
-			fehler.anzeigen(ansicht);
+			Fehler fehler = new Fehler("Fehler beim Anzeigen von " + this.getTitel() + " (" + this.getClassName()
+					+ ") über " + getClassUI() + " (FEHLER: Class: " + ex.getClass() + " Nachricht: " + ex.getMessage()
+					+ ")", FehlerTyp.FEHLER_ALLE);
 			ansicht.sendeAnServer(fehler);
+			fehler.anzeigen(ansicht);
 		}
 	}
 }
