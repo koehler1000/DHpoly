@@ -3,6 +3,7 @@ package de.dhpoly.fehler.view;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -17,16 +18,19 @@ public class FehlerUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
-		this.setLayout(new BorderLayout(10, 10));
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new BorderLayout(10, 10));
 
 		JButton butUeberschrift = ElementFactory.getButtonUeberschrift(fehler.getTitel());
 		JButton butText = ElementFactory.getButton(fehler.getFehlertext());
 
-		this.add(butUeberschrift, BorderLayout.NORTH);
-		this.add(butText);
+		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
+		pnlInhalt.add(butText);
 
 		butUeberschrift.addActionListener(e -> super.schliessen());
 		butText.addActionListener(e -> super.schliessen());
+
+		this.add(pnlInhalt);
 	}
 
 	@Override
