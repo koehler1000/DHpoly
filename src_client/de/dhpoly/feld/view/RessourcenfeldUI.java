@@ -30,16 +30,6 @@ public class RessourcenfeldUI extends FeldUI // NOSONAR
 
 	private void hintergrundfarbeSetzen()
 	{
-		switch (feld.getRessource())
-		{
-			case HOLZ:
-				this.setBackground(Color.getHSBColor(33, 94, 78));
-				break;
-			case STEIN:
-				this.setBackground(new Color(220, 220, 220));
-				break;
-			default:
-				break;
-		}
+		this.setBackground(feld.getRessource().getFarbe());
 	}
 }
