@@ -59,7 +59,7 @@ public class FelderverwaltungTest
 		felder.add(s2);
 		felder.add(s3);
 
-		Spieler spieler = SpielerImplTest.getDefaultSpieler();
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(99999);
 
 		Spiel spiel = new SpielImpl();
 		spiel.fuegeSpielerHinzu(spieler);
@@ -76,9 +76,12 @@ public class FelderverwaltungTest
 	{
 		StrasseDaten s1 = new StrasseDaten();
 		s1.setGruppe(1);
+		StrasseDaten s2 = new StrasseDaten();
+		s2.setGruppe(1);
 
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(s1);
+		felder.add(s2);
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 

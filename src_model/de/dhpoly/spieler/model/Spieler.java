@@ -2,7 +2,6 @@ package de.dhpoly.spieler.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
@@ -174,17 +173,15 @@ public class Spieler extends Datenobjekt
 
 	public boolean hatAlleStrassenDerGruppe(int i)
 	{
-		long anz = strassen.stream().filter(e -> (e.getGruppe() == i)).count();
+		List<StrasseDaten> strassenDerGruppe = new ArrayList<>();
+		strassen.stream().filter(e -> (e.getGruppe() == i)).forEach(strassenDerGruppe::add);
 
-		Optional<StrasseDaten> strasse = strassen.stream().filter(e -> (e.getGruppe() == i)).findFirst();
-
-		if (strasse.isPresent())
+		int anz = strassenDerGruppe.size();
+		System.out.println("Gruppe " + i + " hat " + anz + " Strassen");
+		if (anz == 0)
 		{
-			StrasseDaten s = strasse.get();
-			int gesamtzahl = s.getStrassenAnzahlInGruppe();
-			return gesamtzahl == anz;
+			return false;
 		}
-
-		return false;
+		return strassenDerGruppe.get(0).getStrassenAnzahlInGruppe() == anz;
 	}
 }

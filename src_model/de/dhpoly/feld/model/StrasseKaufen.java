@@ -2,7 +2,6 @@ package de.dhpoly.feld.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.view.StrasseKaufenUI;
@@ -58,7 +57,7 @@ public class StrasseKaufen extends Datenobjekt
 
 	public void setEigentuemer(Spieler sp)
 	{
-		strasse.setEigentuemer(Optional.of(sp));
+		strasse.setEigentuemer(sp);
 	}
 
 	@Override

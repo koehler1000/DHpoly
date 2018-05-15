@@ -14,6 +14,8 @@ public abstract class FeldDaten extends Datenobjekt
 
 	private FeldTyp typ;
 
+	private List<Spieler> spielerAufFeld = new ArrayList<>();
+
 	public FeldDaten(FeldTyp typ)
 	{
 		this.typ = typ;
@@ -40,7 +42,16 @@ public abstract class FeldDaten extends Datenobjekt
 
 	public List<Spieler> getSpielerAufFeld()
 	{
-		// FIXME
-		return new ArrayList<>();
+		return spielerAufFeld;
+	}
+
+	public void spielerEntfernen(Spieler spieler)
+	{
+		spielerAufFeld.remove(spieler);
+	}
+
+	public void spielerHinzu(Spieler spieler)
+	{
+		spielerAufFeld.add(spieler);
 	}
 }

@@ -105,24 +105,24 @@ public class SpielImpl implements Spiel
 	public void ruecke(Spieler spieler, int augensumme)
 	{
 		FeldDaten aktuellesFeld = felder.get(spieler.getFeldNr());
-
-		// TODO refactoring
+		aktuellesFeld.spielerEntfernen(spieler);
 
 		for (int i = 1; i < augensumme; i++)
 		{
-			// TODO laufen
-			// aktuellesFeld.verlasseFeld(spieler);
-			// aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-			// aktuellesFeld.laufeUeberFeld(spieler);
+			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 		}
 
-		// FIXME Feld am Ende betreten
-		// aktuellesFeld.verlasseFeld(spieler);
-		// aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+		aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+		aktuellesFeld.spielerHinzu(spieler);
+
+		// FIXME Logik ausführen
 		// aktuellesFeld.betreteFeld(spieler, augensumme, this);
+
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
 
 		aktuellerSpielerIstGerueckt = true;
+
+		zeigeAllenSpielern(felder);
 	}
 
 	private FeldDaten getNaechstesFeld(FeldDaten feld)
@@ -466,9 +466,11 @@ public class SpielImpl implements Spiel
 	{
 		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
 		{
+			System.out.println("Kauf");
 			sp.auszahlen(strasse.getKaufpreis());
 			strasse.setEigentuemer(sp);
 			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+			sp.addStrasse(strasse.getStrasse());
 		}
 
 		zeigeAllenSpielern(strasse.getStrasse());
