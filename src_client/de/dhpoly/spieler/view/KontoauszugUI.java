@@ -21,7 +21,8 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
-		this.setLayout(new BorderLayout());
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new BorderLayout(10, 10));
 
 		JPanel pnl = ElementFactory.erzeugePanel();
 		pnl.setLayout(new GridLayout(1, 1));
@@ -42,8 +43,10 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 
 		pnl.add(new JScrollPane(pnlWerte));
 
-		this.add(pnl, BorderLayout.CENTER);
-		this.add(getSchliessenButton(), BorderLayout.SOUTH);
+		pnlInhalt.add(pnl, BorderLayout.CENTER);
+		pnlInhalt.add(getSchliessenButton(), BorderLayout.SOUTH);
+
+		this.add(pnlInhalt);
 	}
 
 	@Override
