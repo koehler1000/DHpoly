@@ -18,9 +18,11 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	public StrasseKaufenUI(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
-		this.setLayout(new GridLayout(1, 2, 10, 10));
 
-		this.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new GridLayout(1, 2, 10, 10));
+
+		pnlInhalt.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
 
 		JButton butKaufen = ElementFactory.getButtonUeberschrift("Kaufen");
 		butKaufen.addActionListener(e -> antworten(strasse));
@@ -33,7 +35,9 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		pnlOptionen.add(butKaufen);
 		pnlOptionen.add(butAbbrechen);
 
-		this.add(pnlOptionen);
+		pnlInhalt.add(pnlOptionen);
+
+		this.add(pnlInhalt);
 	}
 
 	private void antworten(StrasseKaufen strasse)
