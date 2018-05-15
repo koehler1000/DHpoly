@@ -5,6 +5,11 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.view.EinstellungenUI;
+import de.dhpoly.karte.model.BezahlKarte;
+import de.dhpoly.karte.model.Karte;
+import de.dhpoly.kartenstapel.Kartenstapel;
+import de.dhpoly.kartenstapel.control.KartenstapelImpl;
+import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -24,6 +29,14 @@ public class Einstellungen extends Datenobjekt
 	private int kostenHausHolz = 10;
 
 	private int ressourcenErtrag = 10;
+
+	private List<Karte> karten = new ArrayList<>();
+
+	public Einstellungen()
+	{
+		RessourcenDatensatz geld = new RessourcenDatensatz(Ressource.GELD, 10);
+		karten.add(new BezahlKarte("Zahle 10 an alle", GeldTransfer.SPIELER_ANDERESPIELER, geld));
+	}
 
 	public int getBetragBetretenLos()
 	{
@@ -121,5 +134,10 @@ public class Einstellungen extends Datenobjekt
 	public Class<? extends Oberflaeche> getClassUI()
 	{
 		return EinstellungenUI.class;
+	}
+
+	public Kartenstapel getEreigniskarten()
+	{
+		return new KartenstapelImpl(new ArrayList<>());
 	}
 }

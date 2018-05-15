@@ -5,6 +5,7 @@ import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
+import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 
 public class FeldRessource extends FeldImpl
 {
@@ -16,6 +17,13 @@ public class FeldRessource extends FeldImpl
 		super("Ressource");
 		this.einstellungen = einstellungen;
 		this.ressource = ressourcentyp;
+	}
+
+	public FeldRessource(RessourcenfeldDaten aktuellesFeld, Einstellungen einstellungen)
+	{
+		super("Ressource");
+		this.einstellungen = einstellungen;
+		this.ressource = aktuellesFeld.getRessource();
 	}
 
 	@Override

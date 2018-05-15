@@ -13,6 +13,10 @@ import de.dhpoly.fehler.control.FehlerLogikImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.control.FeldEreignis;
+import de.dhpoly.feld.control.FeldLos;
+import de.dhpoly.feld.control.FeldRessource;
+import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
@@ -35,6 +39,7 @@ import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.spieler.model.SpielerTyp;
+import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 import de.dhpoly.spielfeld.model.Standardspielfeld;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 import de.dhpoly.wuerfel.control.WuerfelAufrufLogik;
@@ -114,6 +119,28 @@ public class SpielImpl implements Spiel
 
 		aktuellesFeld = getNaechstesFeld(aktuellesFeld);
 		aktuellesFeld.spielerHinzu(spieler);
+
+		switch (aktuellesFeld.getTyp())
+		{
+			case EREIGNISFELD:
+				FeldEreignis feldEreignis = new FeldEreignis(einstellungen.getEreigniskarten());
+				feldEreignis.betreteFeld(spieler, augensumme, this);
+				break;
+			case LOS:
+				FeldLos feldLos = new FeldLos(einstellungen);
+				feldLos.betreteFeld(spieler, augensumme, this);
+				break;
+			case RESSOURCE:
+				FeldRessource feldRessource = new FeldRessource((RessourcenfeldDaten) aktuellesFeld, einstellungen);
+				feldRessource.betreteFeld(spieler, augensumme, this);
+				break;
+			case STRASSE:
+				FeldStrasse feldStrasse = new FeldStrasse((StrasseDaten) aktuellesFeld);
+				feldStrasse.betreteFeld(spieler, augensumme, this);
+				break;
+			default:
+				break;
+		}
 
 		// FIXME Logik ausführen
 		// aktuellesFeld.betreteFeld(spieler, augensumme, this);

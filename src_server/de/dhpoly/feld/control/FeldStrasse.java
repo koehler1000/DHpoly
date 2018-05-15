@@ -27,6 +27,12 @@ public class FeldStrasse extends FeldImpl
 		strasse.setKaufpreis(kaufpreis);
 	}
 
+	public FeldStrasse(StrasseDaten aktuellesFeld)
+	{
+		super(aktuellesFeld.getName());
+		this.strasse = aktuellesFeld;
+	}
+
 	@Override
 	public void spielerBetrittFeld(Spieler spieler, int augensumme, Spiel spiel)
 	{
