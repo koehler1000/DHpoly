@@ -35,6 +35,7 @@ public class FelderverwaltungTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 
 		Spiel spiel = new SpielImpl();
+		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
 
 		spiel.kaufe(new StrasseKaufen(s1), spieler);
@@ -61,6 +62,7 @@ public class FelderverwaltungTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 
 		Spiel spiel = new SpielImpl();
+		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
 
 		spiel.kaufe(new StrasseKaufen(s1), spieler);
@@ -81,6 +83,7 @@ public class FelderverwaltungTest
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 
 		Spiel spiel = new SpielImpl();
+		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
 		spiel.kaufe(new StrasseKaufen(s1), spieler);
 
