@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import de.dhpoly.feld.model.Hausbau;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -17,7 +17,7 @@ public class HausUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public HausUI(Strasse strasse, SpielfeldAnsicht ansicht)
+	public HausUI(StrasseDaten strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 		ElementFactory.bearbeitePanel(this);

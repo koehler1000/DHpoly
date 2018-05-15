@@ -3,7 +3,7 @@ package de.dhpoly.feld.control;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.ressource.model.Ressource;
@@ -13,13 +13,13 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class FeldStrasse extends FeldImpl
 {
-	private Strasse strasse;
+	private StrasseDaten strasse;
 
 	public FeldStrasse(int kaufpreis, int[] miete, List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
 	{
 		super(name);
 
-		strasse = new Strasse();
+		strasse = new StrasseDaten();
 		strasse.setMiete(miete);
 		strasse.setKostenHaus(kostenHaus);
 		strasse.setGruppe(gruppe);
@@ -188,7 +188,7 @@ public class FeldStrasse extends FeldImpl
 		strasse.setEigentuemer(Optional.empty());
 	}
 
-	public Strasse getStrasse()
+	public StrasseDaten getStrasse()
 	{
 		return strasse;
 	}

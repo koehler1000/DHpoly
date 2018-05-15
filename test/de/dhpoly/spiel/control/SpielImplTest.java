@@ -14,10 +14,9 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldLos;
-import de.dhpoly.feld.control.FeldLosTest;
-import de.dhpoly.feld.control.FeldStrasseTest;
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.LosfeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.Server;
@@ -45,9 +44,9 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		client.setDatenobjektverwalter(this);
 
-		List<Feld> felder = new ArrayList<>();
-		felder.add(FeldLosTest.getDefaultFeld());
-		felder.add(FeldStrasseTest.getDefaultStrasse());
+		List<FeldDaten> felder = new ArrayList<>();
+		felder.add(new LosfeldDaten());
+		felder.add(new StrasseDaten());
 		spiel = new SpielImpl(server);
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test1"));
@@ -118,8 +117,8 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Test
 	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat()
 	{
-		List<Feld> felder = new ArrayList<>();
-		felder.add(FeldStrasseTest.getDefaultStrasse());
+		List<FeldDaten> felder = new ArrayList<>();
+		felder.add(new StrasseDaten());
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
@@ -145,8 +144,8 @@ public class SpielImplTest implements Datenobjektverwalter
 
 	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)
 	{
-		List<Feld> felder = new ArrayList<>();
-		felder.add(new FeldLos(einstellungen));
+		List<FeldDaten> felder = new ArrayList<>();
+		felder.add(new LosfeldDaten());
 
 		SpielImpl spiel = new SpielImpl();
 		spiel.setFelder(felder);

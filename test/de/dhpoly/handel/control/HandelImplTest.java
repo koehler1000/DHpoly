@@ -15,6 +15,7 @@ import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.FeldStrasseTest;
+import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
@@ -135,7 +136,7 @@ public class HandelImplTest
 		{}
 
 		@Override
-		public void setFelder(List<Feld> felder)
+		public void setFelder(List<FeldDaten> felder)
 		{}
 
 		@Override
@@ -182,14 +183,14 @@ public class HandelImplTest
 		}
 
 		@Override
-		public List<Feld> getFelder(Spieler spieler)
+		public List<FeldDaten> getFelder(Spieler spieler)
 		{
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
-		public List<Feld> getFelder()
+		public List<FeldDaten> getFelder()
 		{
 			// TODO Auto-generated method stub
 			return null;

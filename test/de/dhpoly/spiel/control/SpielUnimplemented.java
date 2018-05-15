@@ -5,7 +5,7 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
@@ -33,7 +33,7 @@ public abstract class SpielUnimplemented implements Spiel
 	}
 
 	@Override
-	public List<Feld> getFelder()
+	public List<FeldDaten> getFelder()
 	{
 		return null;
 	}
@@ -91,7 +91,7 @@ public abstract class SpielUnimplemented implements Spiel
 	{}
 
 	@Override
-	public void setFelder(List<Feld> felder)
+	public void setFelder(List<FeldDaten> felder)
 	{}
 
 	@Override
@@ -103,7 +103,7 @@ public abstract class SpielUnimplemented implements Spiel
 	{}
 
 	@Override
-	public List<Feld> getFelder(Spieler spieler)
+	public List<FeldDaten> getFelder(Spieler spieler)
 	{
 		return null;
 	}

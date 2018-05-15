@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.Spieler;
 
-public class Strasse extends Datenobjekt
+public class StrasseDaten extends FeldDaten
 {
 	private static final long serialVersionUID = 2L;
 
@@ -24,6 +23,21 @@ public class Strasse extends Datenobjekt
 	private int strassenAnzahlInGruppe = 1;
 	private String name = "Teststraﬂe";
 	private int kaufpreis = 0;
+
+	public StrasseDaten(int i, int[] js, List<RessourcenDatensatz> list, int j, String string)
+	{
+		super(FeldTyp.STRASSE);
+		kaufpreis = i;
+		miete = js;
+		kostenHaus = list;
+		gruppe = j;
+		name = string;
+	}
+
+	public StrasseDaten()
+	{
+		super(FeldTyp.STRASSE);
+	}
 
 	public Optional<Spieler> getEigentuemer()
 	{
@@ -155,5 +169,11 @@ public class Strasse extends Datenobjekt
 	public Class<? extends Oberflaeche> getClassUI()
 	{
 		return StrasseInfoUI.class;
+	}
+
+	@Override
+	public boolean gehoertSpieler(Spieler spieler)
+	{
+		return spieler.equals(eigentuemer);
 	}
 }

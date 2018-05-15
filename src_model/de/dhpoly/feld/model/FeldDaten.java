@@ -1,10 +1,14 @@
 package de.dhpoly.feld.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.view.FeldUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
+import de.dhpoly.spieler.model.Spieler;
 
-public class FeldDaten extends Datenobjekt
+public abstract class FeldDaten extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
@@ -30,5 +34,13 @@ public class FeldDaten extends Datenobjekt
 	public FeldTyp getTyp()
 	{
 		return typ;
+	}
+
+	public abstract boolean gehoertSpieler(Spieler spieler);
+
+	public List<Spieler> getSpielerAufFeld()
+	{
+		// FIXME
+		return new ArrayList<>();
 	}
 }

@@ -8,7 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -19,17 +21,23 @@ public class FelderverwaltungTest
 	@Test
 	public void nichtEigentuemerAllerStrassenWennStrassenNochNichtVerkauft()
 	{
-		List<Feld> felder = new ArrayList<>();
-		felder.add(FelderTest.getDefaultFeld(1));
-		felder.add(FelderTest.getDefaultFeld(1));
+		List<FeldDaten> felder = new ArrayList<>();
+
+		StrasseDaten s1 = new StrasseDaten();
+		s1.setGruppe(1);
+
+		StrasseDaten s2 = new StrasseDaten();
+		s2.setGruppe(1);
+
+		felder.add(s1);
+		felder.add(s2);
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
 
-		FeldStrasse strasse = (FeldStrasse) felder.get(0);
-		strasse.kaufe(spieler);
-
 		Spiel spiel = new SpielImpl();
 		spiel.setFelder(felder);
+
+		spiel.kaufe(new StrasseKaufen(s1), spieler);
 
 		assertFalse(spieler.hatAlleStrassenDerGruppe(1));
 	}
@@ -37,11 +45,14 @@ public class FelderverwaltungTest
 	@Test
 	public void spielerBesitztAlleStrassenWennErAlleGekauftHat()
 	{
-		List<Feld> felder = new ArrayList<>();
+		List<FeldDaten> felder = new ArrayList<>();
 
-		FeldStrasse s1 = FelderTest.getDefaultFeld(1);
-		FeldStrasse s2 = FelderTest.getDefaultFeld(1);
-		FeldStrasse s3 = FelderTest.getDefaultFeld(2);
+		StrasseDaten s1 = new StrasseDaten();
+		s1.setGruppe(1);
+		StrasseDaten s2 = new StrasseDaten();
+		s2.setGruppe(1);
+		StrasseDaten s3 = new StrasseDaten();
+		s3.setGruppe(2);
 
 		felder.add(s1);
 		felder.add(s2);
@@ -52,8 +63,8 @@ public class FelderverwaltungTest
 		Spiel spiel = new SpielImpl();
 		spiel.setFelder(felder);
 
-		s1.kaufe(spieler);
-		s2.kaufe(spieler);
+		spiel.kaufe(new StrasseKaufen(s1), spieler);
+		spiel.kaufe(new StrasseKaufen(s2), spieler);
 
 		assertTrue(spieler.hatAlleStrassenDerGruppe(1));
 	}
@@ -61,16 +72,17 @@ public class FelderverwaltungTest
 	@Test
 	public void spielerBesitztNichtAlleStrassen()
 	{
-		List<Feld> felder = new ArrayList<>();
-		felder.add(FelderTest.getDefaultFeld(1));
-		felder.add(FelderTest.getDefaultFeld(1));
+		StrasseDaten s1 = new StrasseDaten();
+		s1.setGruppe(1);
+
+		List<FeldDaten> felder = new ArrayList<>();
+		felder.add(s1);
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler();
-		FeldStrasse strasse = (FeldStrasse) felder.get(0);
-		strasse.kaufe(spieler);
 
 		Spiel spiel = new SpielImpl();
 		spiel.setFelder(felder);
+		spiel.kaufe(new StrasseKaufen(s1), spieler);
 
 		assertFalse(spieler.hatAlleStrassenDerGruppe(1));
 	}

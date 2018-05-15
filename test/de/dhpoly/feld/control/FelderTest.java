@@ -7,7 +7,8 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -18,8 +19,7 @@ public class FelderTest
 	@Test
 	public void spielerStartetAufFeld0()
 	{
-		List<Feld> felder = new ArrayList<>();
-
+		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(getDefaultFeld());
 
 		Spieler sp1 = SpielerImplTest.getDefaultSpieler();
@@ -30,7 +30,7 @@ public class FelderTest
 	@Test
 	public void spielerKann2FelderLaufen() throws InterruptedException
 	{
-		List<Feld> felder = new ArrayList<>();
+		List<FeldDaten> felder = new ArrayList<>();
 
 		felder.add(getDefaultFeld());
 		felder.add(getDefaultFeld());
@@ -52,7 +52,7 @@ public class FelderTest
 	@Test
 	public void spielerKannUeberrunden()
 	{
-		List<Feld> felder = new ArrayList<>();
+		List<FeldDaten> felder = new ArrayList<>();
 
 		felder.add(getDefaultFeld());
 		felder.add(getDefaultFeld());
@@ -69,13 +69,13 @@ public class FelderTest
 		Assert.assertThat(sp1.getFeldNr(), Is.is(0));
 	}
 
-	public static Feld getDefaultFeld()
+	public static FeldDaten getDefaultFeld()
 	{
 		return getDefaultFeld(0);
 	}
 
-	public static FeldStrasse getDefaultFeld(int strassenGruppe)
+	public static StrasseDaten getDefaultFeld(int strassenGruppe)
 	{
-		return new FeldStrasse(100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe, "test");
+		return new StrasseDaten(100, new int[] { 10, 20, 30, 40, 50 }, new ArrayList<>(), strassenGruppe, "test");
 	}
 }

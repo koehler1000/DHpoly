@@ -1,15 +1,17 @@
-package de.dhpoly.feld.model;
+package de.dhpoly.spielfeld.model;
 
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.FeldTyp;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.model.Spieler;
 
-public class Ressourcenfeld extends FeldDaten
+public class RessourcenfeldDaten extends FeldDaten
 {
 	private static final long serialVersionUID = 1L;
 
 	private Ressource ressource;
 
-	public Ressourcenfeld(Ressource ressource)
+	public RessourcenfeldDaten(Ressource ressource)
 	{
 		super(FeldTyp.RESSOURCE);
 		this.ressource = ressource;
@@ -25,4 +27,5 @@ public class Ressourcenfeld extends FeldDaten
 	{
 		return false;
 	}
+
 }

@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
@@ -21,11 +21,11 @@ public class FeldUI extends Oberflaeche implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Feld feld;
+	private FeldDaten feld;
 	private JPanel pnlSpieler = new JPanel();
-	private transient Map<Spieler, JPanel> spielerMap = new HashMap<>();
+	private Map<Spieler, JPanel> spielerMap = new HashMap<>();
 
-	public FeldUI(Feld feld, SpielfeldAnsicht ansicht)
+	public FeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 

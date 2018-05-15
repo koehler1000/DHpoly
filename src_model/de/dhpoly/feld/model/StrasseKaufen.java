@@ -16,9 +16,9 @@ public class StrasseKaufen extends Datenobjekt
 	private static final long serialVersionUID = 1L;
 
 	private StrasseKaufenStatus status = StrasseKaufenStatus.ANGEBOTEN;
-	private Strasse strasse;
+	private StrasseDaten strasse;
 
-	public StrasseKaufen(Strasse strasse)
+	public StrasseKaufen(StrasseDaten strasse)
 	{
 		this.strasse = strasse;
 	}
@@ -33,7 +33,7 @@ public class StrasseKaufen extends Datenobjekt
 		this.status = status;
 	}
 
-	public Strasse getStrasse()
+	public StrasseDaten getStrasse()
 	{
 		return strasse;
 	}

@@ -2,7 +2,7 @@ package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
 
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -28,7 +28,7 @@ public class StrassenbesitzeUI extends Oberflaeche implements Beobachter // NOSO
 	{
 		this.setLayout(new GridLayout(1, spieler.getStrassen().size()));
 
-		for (Strasse feld : spieler.getStrassen())
+		for (StrasseDaten feld : spieler.getStrassen())
 		{
 			this.add(ElementFactory.getTextFeld(feld.getName(), false));
 		}

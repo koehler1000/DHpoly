@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -22,7 +22,7 @@ public class Spieler extends Datenobjekt
 	private SpielerStatus status;
 	private boolean anDerReihe = false;
 	private int feldNr;
-	private List<Strasse> strassen = new ArrayList<>();
+	private List<StrasseDaten> strassen = new ArrayList<>();
 
 	public Spieler(SpielerTyp typ, String name)
 	{
@@ -152,7 +152,7 @@ public class Spieler extends Datenobjekt
 		this.feldNr = feldNr;
 	}
 
-	public List<Strasse> getStrassen()
+	public List<StrasseDaten> getStrassen()
 	{
 		return strassen;
 	}
@@ -162,12 +162,12 @@ public class Spieler extends Datenobjekt
 		strassen = new ArrayList<>();
 	}
 
-	public void addStrasse(Strasse strasse)
+	public void addStrasse(StrasseDaten strasse)
 	{
 		strassen.add(strasse);
 	}
 
-	public void removeStrasse(Strasse strasse)
+	public void removeStrasse(StrasseDaten strasse)
 	{
 		strassen.remove(strasse);
 	}
@@ -176,11 +176,11 @@ public class Spieler extends Datenobjekt
 	{
 		long anz = strassen.stream().filter(e -> (e.getGruppe() == i)).count();
 
-		Optional<Strasse> strasse = strassen.stream().filter(e -> (e.getGruppe() == i)).findFirst();
+		Optional<StrasseDaten> strasse = strassen.stream().filter(e -> (e.getGruppe() == i)).findFirst();
 
 		if (strasse.isPresent())
 		{
-			Strasse s = strasse.get();
+			StrasseDaten s = strasse.get();
 			int gesamtzahl = s.getStrassenAnzahlInGruppe();
 			return gesamtzahl == anz;
 		}

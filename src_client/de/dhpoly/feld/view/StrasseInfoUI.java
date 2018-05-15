@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -26,7 +26,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseInfoUI(Strasse feld, SpielfeldAnsicht ansicht)
+	public StrasseInfoUI(StrasseDaten feld, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
 
@@ -62,7 +62,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		feld.getEigentuemer().ifPresent(this::farbeSetzen);
 	}
 
-	private String getEigentuemerString(Strasse feld)
+	private String getEigentuemerString(StrasseDaten feld)
 	{
 		Optional<Spieler> eigentuemer = feld.getEigentuemer();
 		return eigentuemer.isPresent() ? eigentuemer.get().getName() : "Zu kaufen";

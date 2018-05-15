@@ -5,7 +5,7 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
@@ -20,7 +20,7 @@ public interface Spiel extends Datenobjektverwalter
 
 	List<Spieler> getSpieler();
 
-	List<Feld> getFelder();
+	List<FeldDaten> getFelder();
 
 	double getFaktorMiete();
 
@@ -46,13 +46,13 @@ public interface Spiel extends Datenobjektverwalter
 
 	void setWuerfelPaar(Wuerfelpaar wuerfelPaar);
 
-	void setFelder(List<Feld> felder);
+	void setFelder(List<FeldDaten> felder);
 
 	void setWetter(Wetter wetter);
 
 	void setEinstellungen(Einstellungen einstellungen);
 
-	List<Feld> getFelder(Spieler spieler);
+	List<FeldDaten> getFelder(Spieler spieler);
 
 	boolean kannWuerfeln(Spieler spieler);
 

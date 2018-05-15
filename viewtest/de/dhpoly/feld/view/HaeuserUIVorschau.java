@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.control.SpielerImplTest;
@@ -15,10 +15,10 @@ public class HaeuserUIVorschau
 {
 	public static void main(String[] args)
 	{
-		Strasse strasse = new Strasse();
-		Strasse strasse2 = new Strasse();
+		StrasseDaten strasse = new StrasseDaten();
+		StrasseDaten strasse2 = new StrasseDaten();
 
-		List<Strasse> felder = new ArrayList<>();
+		List<StrasseDaten> felder = new ArrayList<>();
 		felder.add(strasse);
 		felder.add(strasse2);
 

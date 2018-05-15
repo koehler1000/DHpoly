@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
@@ -137,7 +137,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		zuLoeschen.forEach(e -> inhalte.remove(e));
 	}
 
-	public void zeigeHausbaumoeglichkeit(List<Strasse> felder)
+	public void zeigeHausbaumoeglichkeit(List<StrasseDaten> felder)
 	{
 		tabRand.addTab("H‰user", new HaeuserUI(felder, this));
 	}
@@ -164,7 +164,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabRand.remove(oberflaeche);
 	}
 
-	public void zeigeStrasseInfo(Strasse feld, SpielfeldAnsicht spielfeldAnsicht)
+	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
 		hinzu("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}

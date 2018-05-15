@@ -8,12 +8,10 @@ import java.util.Map.Entry;
 
 import javax.swing.JPanel;
 
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldEreignis;
-import de.dhpoly.feld.control.FeldLos;
-import de.dhpoly.feld.control.FeldRessource;
-import de.dhpoly.feld.control.FeldStrasse;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.EreignisfeldDaten;
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.LosfeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.EreignisfeldUI;
 import de.dhpoly.feld.view.LosfeldUI;
 import de.dhpoly.feld.view.RessourcenfeldUI;
@@ -22,6 +20,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.model.SpielfeldDaten;
+import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 
 public class SpielfeldUI extends Oberflaeche // NOSONAR
 {
@@ -29,7 +28,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 	private int felderProSeite;
 
-	private transient Map<FeldStrasse, StrasseUI> strassen = new HashMap<>();
+	private Map<StrasseDaten, StrasseUI> strassen = new HashMap<>();
 
 	public SpielfeldUI(SpielfeldDaten spielfelder, SpielfeldAnsicht ansicht)
 	{
@@ -52,28 +51,28 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		// Seite 1
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			Feld feld = spielfelder.get(i);
+			FeldDaten feld = spielfelder.get(i);
 			felder[0][i] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 2
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			Feld feld = spielfelder.get(i + felderProSeite);
+			FeldDaten feld = spielfelder.get(i + felderProSeite);
 			felder[i][felderProSeite] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 3
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			Feld feld = spielfelder.get(i + felderProSeite * 2);
+			FeldDaten feld = spielfelder.get(i + felderProSeite * 2);
 			felder[felderProSeite][felderProSeite - i] = getFeldUI(feld, ansicht);
 		}
 
 		// Seite 4
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			Feld feld = spielfelder.get(i + felderProSeite * 3);
+			FeldDaten feld = spielfelder.get(i + felderProSeite * 3);
 			felder[felderProSeite - i][0] = getFeldUI(feld, ansicht);
 		}
 
@@ -87,25 +86,25 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		}
 	}
 
-	private Component getFeldUI(Feld feld, SpielfeldAnsicht ansicht)
+	private Component getFeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)
 	{
-		if (feld instanceof FeldStrasse)
+		if (feld instanceof StrasseDaten)
 		{
-			StrasseUI ui = new StrasseUI((FeldStrasse) feld, ansicht);
-			strassen.put((FeldStrasse) feld, ui);
+			StrasseUI ui = new StrasseUI((StrasseDaten) feld, ansicht);
+			strassen.put((StrasseDaten) feld, ui);
 			return ui;
 		}
-		else if (feld instanceof FeldEreignis)
+		else if (feld instanceof EreignisfeldDaten)
 		{
-			return new EreignisfeldUI((FeldEreignis) feld, ansicht);
+			return new EreignisfeldUI((EreignisfeldDaten) feld, ansicht);
 		}
-		else if (feld instanceof FeldRessource)
+		else if (feld instanceof RessourcenfeldDaten)
 		{
-			return new RessourcenfeldUI((FeldRessource) feld, ansicht);
+			return new RessourcenfeldUI((RessourcenfeldDaten) feld, ansicht);
 		}
-		else if (feld instanceof FeldLos)
+		else if (feld instanceof LosfeldDaten)
 		{
-			return new LosfeldUI((FeldLos) feld, ansicht);
+			return new LosfeldUI((LosfeldDaten) feld, ansicht);
 		}
 		else
 		{
@@ -113,11 +112,11 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		}
 	}
 
-	public void aktualisiere(Strasse objekt)
+	public void aktualisiere(StrasseDaten objekt)
 	{
-		for (Entry<FeldStrasse, StrasseUI> st : strassen.entrySet())
+		for (Entry<StrasseDaten, StrasseUI> st : strassen.entrySet())
 		{
-			if (st.getKey().getStrasse() == objekt)
+			if (st.getKey() == objekt)
 			{
 				st.getValue().update();
 			}

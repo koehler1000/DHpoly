@@ -7,17 +7,17 @@ public class Hausbau extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
-	private Strasse strasse;
+	private StrasseDaten strasse;
 	private int anzahl;
 
-	public Hausbau(Strasse strasse, int anzahl)
+	public Hausbau(StrasseDaten strasse, int anzahl)
 	{
 		super();
 		this.strasse = strasse;
 		this.anzahl = anzahl;
 	}
 
-	public Strasse getStrasse()
+	public StrasseDaten getStrasse()
 	{
 		return strasse;
 	}

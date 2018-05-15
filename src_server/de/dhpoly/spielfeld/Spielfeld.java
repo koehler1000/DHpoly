@@ -3,9 +3,9 @@ package de.dhpoly.spielfeld;
 import java.util.List;
 
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.FeldDaten;
 
 public interface Spielfeld
 {
-	List<Feld> getStandardSpielfeld(Einstellungen einstellungen);
+	List<FeldDaten> getStandardSpielfeld(Einstellungen einstellungen);
 }

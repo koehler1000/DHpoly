@@ -6,27 +6,27 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.view.Bild;
-import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 import observerpattern.Beobachter;
 
 public class RessourcenfeldUI extends FeldUI implements Beobachter // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient FeldRessource feld;
+	private RessourcenfeldDaten feld;
 
-	public RessourcenfeldUI(FeldRessource feld, SpielfeldAnsicht ansicht)
+	public RessourcenfeldUI(RessourcenfeldDaten feld2, SpielfeldAnsicht ansicht)
 	{
-		super(feld, ansicht);
-		this.feld = feld;
+		super(feld2, ansicht);
+		this.feld = feld2;
 
 		this.setLayout(new BorderLayout());
 		this.setBorder(new LineBorder(Color.BLACK));
 
 		hintergrundfarbeSetzen();
-		Bild bild = ElementFactory.getBild(feld.getRessource());
+		Bild bild = ElementFactory.getBild(feld2.getRessource());
 		bild.setBackground(this.getBackground());
 		this.add(bild, BorderLayout.CENTER);
 	}

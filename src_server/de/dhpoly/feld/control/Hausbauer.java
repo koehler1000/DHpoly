@@ -2,7 +2,7 @@ package de.dhpoly.feld.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.Hausbau;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
@@ -22,7 +22,7 @@ public class Hausbauer implements Logik
 
 	private void fuehreHausbauDurch(Hausbau objekt, Spiel spiel)
 	{
-		Strasse strasse = objekt.getStrasse();
+		StrasseDaten strasse = objekt.getStrasse();
 		int anzahlZuBauen = objekt.getAnzahl();
 
 		if (anzahlZuBauen > 0)

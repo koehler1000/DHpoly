@@ -13,8 +13,8 @@ import de.dhpoly.fehler.control.FehlerLogikImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldStrasse;
-import de.dhpoly.feld.model.Strasse;
+import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.control.HandelImpl;
@@ -46,6 +46,8 @@ public class SpielImpl implements Spiel
 {
 	private SpielfeldDaten felder;
 
+	private Map<FeldDaten, Feld> felderMap;
+
 	private List<Spieler> spieler = new ArrayList<>();
 	private List<Spieler> spielerImSpiel = new ArrayList<>();
 	private Wetter wetter = Wetter.BEWOELKT;
@@ -64,7 +66,7 @@ public class SpielImpl implements Spiel
 	public SpielImpl()
 	{
 		einstellungen = new Einstellungen();
-		felder = new SpielfeldDaten(new Standardspielfeld().getStandardSpielfeld(einstellungen));
+		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 		spieler = new ArrayList<>();
 		wetter = Wetter.BEWOELKT;
 		wuerfelPaar = new WuerfelpaarImpl();
@@ -102,24 +104,28 @@ public class SpielImpl implements Spiel
 
 	public void ruecke(Spieler spieler, int augensumme)
 	{
-		Feld aktuellesFeld = felder.get(spieler.getFeldNr());
+		FeldDaten aktuellesFeld = felder.get(spieler.getFeldNr());
+
+		// TODO refactoring
 
 		for (int i = 1; i < augensumme; i++)
 		{
-			aktuellesFeld.verlasseFeld(spieler);
-			aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-			aktuellesFeld.laufeUeberFeld(spieler);
+			// TODO laufen
+			// aktuellesFeld.verlasseFeld(spieler);
+			// aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+			// aktuellesFeld.laufeUeberFeld(spieler);
 		}
 
-		aktuellesFeld.verlasseFeld(spieler);
-		aktuellesFeld = getNaechstesFeld(aktuellesFeld);
-		aktuellesFeld.betreteFeld(spieler, augensumme, this);
+		// FIXME Feld am Ende betreten
+		// aktuellesFeld.verlasseFeld(spieler);
+		// aktuellesFeld = getNaechstesFeld(aktuellesFeld);
+		// aktuellesFeld.betreteFeld(spieler, augensumme, this);
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
 
 		aktuellerSpielerIstGerueckt = true;
 	}
 
-	private Feld getNaechstesFeld(Feld feld)
+	private FeldDaten getNaechstesFeld(FeldDaten feld)
 	{
 		int feldNr = felder.indexOf(feld);
 
@@ -161,14 +167,15 @@ public class SpielImpl implements Spiel
 		this.spieler.remove(spieler);
 
 		// Felder zurueckgeben
-		List<Feld> felder = getFelder(spieler);
+		List<FeldDaten> felder = getFelder(spieler);
 		while (!felder.isEmpty())
 		{
-			Feld feld = felder.get(0);
-			if (feld instanceof FeldStrasse)
+			FeldDaten feld = felder.get(0);
+			if (feld instanceof StrasseDaten)
 			{
-				FeldStrasse strasse = (FeldStrasse) feld;
-				strasse.zurueckgeben();
+				// FIXME Strassen zurückgeben
+				// StrasseDaten strasse = (FeldStrasse) feld;
+				// strasse.zurueckgeben();
 			}
 		}
 
@@ -224,7 +231,7 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	public List<Feld> getFelder()
+	public List<FeldDaten> getFelder()
 	{
 		return felder.getFelder();
 	}
@@ -244,7 +251,10 @@ public class SpielImpl implements Spiel
 			spieler.setSpielerNr(this.spieler.size());
 			this.spieler.add(spieler);
 			this.spielerImSpiel.add(spieler);
-			felder.get(0).betreteFeld(spieler, 0, this);
+			FeldDaten feld = felder.get(0);
+
+			// TODO Typ unterscheiden + Aktion durchfuehren
+			// .betreteFeld(spieler, 0, this);
 		}
 	}
 
@@ -301,7 +311,7 @@ public class SpielImpl implements Spiel
 
 	@Override
 	@Deprecated
-	public void setFelder(List<Feld> felder)
+	public void setFelder(List<FeldDaten> felder)
 	{
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
@@ -310,15 +320,13 @@ public class SpielImpl implements Spiel
 		}
 	}
 
-	private void aktualisiereGruppen(List<Feld> felder2)
+	private void aktualisiereGruppen(List<FeldDaten> felder2)
 	{
 		Map<Integer, Integer> gruppenHaeufigkeit = new HashMap<>();
-		List<Strasse> strassen = new ArrayList<>();
-		// TODO Datenobjekt verwenden (Strasse statt FeldStrasse)
-		felder2.stream().filter(e -> (e instanceof FeldStrasse))
-				.forEach(e -> strassen.add(((FeldStrasse) e).getStrasse()));
+		List<StrasseDaten> strassen = new ArrayList<>();
+		felder2.stream().filter(e -> (e instanceof StrasseDaten)).forEach(s -> strassen.add((StrasseDaten) s));
 
-		for (Strasse strasse : strassen)
+		for (StrasseDaten strasse : strassen)
 		{
 			int gruppe = strasse.getGruppe();
 			int alterWert = Optional.ofNullable(gruppenHaeufigkeit.get(gruppe)).orElse(0);
@@ -359,10 +367,10 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	public List<Feld> getFelder(Spieler spieler)
+	public List<FeldDaten> getFelder(Spieler spieler)
 	{
-		List<Feld> felderSpieler = new ArrayList<>();
-		for (Feld feld : felder.getFelder())
+		List<FeldDaten> felderSpieler = new ArrayList<>();
+		for (FeldDaten feld : felder.getFelder())
 		{
 			if (feld.gehoertSpieler(spieler))
 			{
