@@ -33,7 +33,7 @@ import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.control.NachrichtLogikImpl;
 import de.dhpoly.nachricht.model.Nachricht;
-import de.dhpoly.netzwerk.Server;
+import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
@@ -68,7 +68,7 @@ public class SpielImpl implements Spiel
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
-	private Optional<Server> server = Optional.empty();
+	private Optional<NetzwerkServer> server = Optional.empty();
 
 	public SpielImpl()
 	{
@@ -90,7 +90,7 @@ public class SpielImpl implements Spiel
 		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
 
-	public SpielImpl(Server server)
+	public SpielImpl(NetzwerkServer server)
 	{
 		this();
 		this.server = Optional.ofNullable(server);

@@ -19,8 +19,8 @@ import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
+import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.model.SpielStart;
 import de.dhpoly.spiel.model.SpielfeldDaten;
@@ -35,11 +35,11 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private JTabbedPane tabCenter = new JTabbedPane();
 	private Spieler spieler;
 
-	private transient Optional<Client> client;
+	private transient Optional<NetzwerkClient> client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
-	public SpielfeldAnsicht(Spieler spieler, Client client)
+	public SpielfeldAnsicht(Spieler spieler, NetzwerkClient client)
 	{
 		this.spieler = spieler;
 		this.client = Optional.ofNullable(client);
@@ -69,7 +69,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		client.ifPresent(c -> sende(c, objekt));
 	}
 
-	public void sende(Client c, Datenobjekt obj)
+	public void sende(NetzwerkClient c, Datenobjekt obj)
 	{
 		c.sendeAnServer(obj);
 	}

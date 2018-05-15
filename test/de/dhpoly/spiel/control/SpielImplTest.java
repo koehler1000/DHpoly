@@ -17,9 +17,9 @@ import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
-import de.dhpoly.netzwerk.Server;
+import de.dhpoly.netzwerk.NetzwerkClient;
+import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -33,8 +33,8 @@ public class SpielImplTest implements Datenobjektverwalter
 {
 	private SpielImpl spiel;
 	private List<Datenobjekt> empfangeneObjekte = new ArrayList<>();
-	private Server server;
-	private Client client;
+	private NetzwerkServer server;
+	private NetzwerkClient client;
 
 	@Before
 	public void vorbereitung()
