@@ -86,6 +86,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
 		logikverwalter.add(SpielStartLogik.class);
 		logikverwalter.add(StrassenKaufLogik.class);
+
 		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
 

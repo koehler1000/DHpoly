@@ -1,10 +1,11 @@
 package de.dhpoly.wuerfel.view;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -24,7 +25,9 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 
 		ElementFactory.bearbeitePanel(this);
-		this.setLayout(new GridLayout(1, 1));
+		this.setLayout(new BorderLayout());
+
+		JPanel wu = ElementFactory.erzeugePanel();
 
 		List<JLabel> lblsWuerfel = new ArrayList<>();
 
@@ -35,7 +38,10 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 			lblsWuerfel.add(lblW);
 		}
 
-		lblsWuerfel.forEach(this::add);
+		lblsWuerfel.forEach(wu::add);
+		this.add(wu, BorderLayout.CENTER);
+
+		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
 
 	@Override
