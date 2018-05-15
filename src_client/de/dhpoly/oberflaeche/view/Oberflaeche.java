@@ -1,6 +1,7 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
+import java.awt.LayoutManager;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -20,12 +21,17 @@ public abstract class Oberflaeche extends JPanel
 	{
 		this.ansicht = Optional.ofNullable(ansicht);
 		ElementFactory.bearbeitePanel(this);
-		this.setLayout(new BorderLayout());
+		super.setLayout(new BorderLayout());
 
 		butSchliessen = ElementFactory.getButtonUeberschrift("Schließen");
 		butSchliessen.addActionListener(e -> schliessen());
 		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
+
+	@Override
+	@Deprecated
+	public void setLayout(LayoutManager mgr)
+	{}
 
 	protected JButton getSchliessenButton()
 	{
