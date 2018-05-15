@@ -83,22 +83,24 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void hinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
 	{
-		if (Optional.ofNullable(oberflaeche).isPresent())
+		if (obj instanceof SpielfeldDaten)
 		{
-			if (obj instanceof SpielfeldDaten)
-			{
-				fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
-			}
-			else
-			{
-				fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
-			}
+			fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
+		}
+		else
+		{
+			fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
 		}
 	}
 
 	private void fuegeInhaltHinzuRand(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabRand;
+		if (inhalte.containsKey(obj))
+		{
+			Container parent = inhalte.get(obj).getParent();
+			parent.remove(inhalte.get(obj));
+		}
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}
 
@@ -112,12 +114,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void fuegeInhaltHinzu(String beschreibung, Datenobjekt obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
-		if (inhalte.containsKey(obj))
-		{
-			Container parent = inhalte.get(obj).getParent();
-			parent.remove(inhalte.get(obj));
-		}
-
 		tabPane.addTab(beschreibung, oberflaeche);
 		inhalte.put(obj, oberflaeche);
 		tabPane.setSelectedComponent(oberflaeche);
