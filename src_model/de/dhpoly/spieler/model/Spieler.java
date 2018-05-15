@@ -176,12 +176,10 @@ public class Spieler extends Datenobjekt
 		List<StrasseDaten> strassenDerGruppe = new ArrayList<>();
 		strassen.stream().filter(e -> (e.getGruppe() == i)).forEach(strassenDerGruppe::add);
 
-		int anz = strassenDerGruppe.size();
-		System.out.println("Gruppe " + i + " hat " + anz + " Strassen");
-		if (anz == 0)
+		if (strassenDerGruppe.isEmpty())
 		{
 			return false;
 		}
-		return strassenDerGruppe.get(0).getStrassenAnzahlInGruppe() == anz;
+		return strassenDerGruppe.get(0).getStrassenAnzahlInGruppe() == strassenDerGruppe.size();
 	}
 }
