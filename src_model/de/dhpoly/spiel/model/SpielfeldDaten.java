@@ -29,7 +29,7 @@ public class SpielfeldDaten extends Datenobjekt
 		return SpielfeldUI.class;
 	}
 
-	public final List<FeldDaten> getFelder()
+	public List<FeldDaten> getFelder()
 	{
 		return felder;
 	}

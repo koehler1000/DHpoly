@@ -12,7 +12,6 @@ import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.control.FehlerLogikImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.fehler.model.FehlerTyp;
-import de.dhpoly.feld.Feld;
 import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldRessource;
@@ -51,8 +50,6 @@ public class SpielImpl implements Spiel
 {
 	private SpielfeldDaten felder;
 
-	private Map<FeldDaten, Feld> felderMap;
-
 	private List<Spieler> spieler = new ArrayList<>();
 	private List<Spieler> spielerImSpiel = new ArrayList<>();
 	private Wetter wetter = Wetter.BEWOELKT;
@@ -82,13 +79,13 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(WuerfelAufrufLogik.class);
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
 		logikverwalter.add(SpielStartLogik.class);
+		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
 
 	public SpielImpl(Server server)
 	{
 		this();
 		this.server = Optional.ofNullable(server);
-		this.felder = new SpielfeldDaten(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
 
 	@Override
@@ -99,6 +96,7 @@ public class SpielImpl implements Spiel
 			wuerfelPaar.wuerfeln();
 			setAktuellerSpielerHatGewuerfelt(true);
 			ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+			server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
 		}
 		else
 		{
@@ -141,9 +139,6 @@ public class SpielImpl implements Spiel
 			default:
 				break;
 		}
-
-		// FIXME Logik ausführen
-		// aktuellesFeld.betreteFeld(spieler, augensumme, this);
 
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
 
@@ -337,7 +332,6 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	@Deprecated
 	public void setFelder(List<FeldDaten> felder)
 	{
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
@@ -420,7 +414,6 @@ public class SpielImpl implements Spiel
 		if (spieler == getAktuellerSpieler())
 		{
 			ruecke();
-			server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
 		}
 	}
 
