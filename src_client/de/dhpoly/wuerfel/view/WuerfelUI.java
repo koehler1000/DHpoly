@@ -25,11 +25,8 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
-		ElementFactory.bearbeitePanel(this);
-		this.setLayout(new BorderLayout());
-
-		JPanel wu = ElementFactory.erzeugePanel();
-		wu.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1));
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1));
 
 		List<JLabel> lblsWuerfel = new ArrayList<>();
 
@@ -40,10 +37,8 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 			lblsWuerfel.add(lblW);
 		}
 
-		lblsWuerfel.forEach(wu::add);
-		this.add(wu, BorderLayout.CENTER);
-
-		this.add(getSchliessenButton(), BorderLayout.SOUTH);
+		lblsWuerfel.forEach(pnlInhalt::add);
+		this.add(pnlInhalt, BorderLayout.CENTER);
 	}
 
 	@Override
