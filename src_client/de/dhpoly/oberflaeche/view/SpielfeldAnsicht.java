@@ -149,6 +149,10 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void entferne(Oberflaeche oberflaeche)
 	{
+		if (inhalte.containsValue(oberflaeche))
+		{
+			inhalte.remove(inhalte.get(oberflaeche));
+		}
 		tabRand.remove(oberflaeche);
 	}
 
