@@ -16,9 +16,11 @@ public class StrasseKaufen extends Datenobjekt
 
 	private StrasseKaufenStatus status = StrasseKaufenStatus.ANGEBOTEN;
 	private StrasseDaten strasse;
+	private Spieler spieler;
 
-	public StrasseKaufen(StrasseDaten strasse)
+	public StrasseKaufen(StrasseDaten strasse, Spieler spieler)
 	{
+		this.spieler = spieler;
 		this.strasse = strasse;
 	}
 
@@ -64,5 +66,10 @@ public class StrasseKaufen extends Datenobjekt
 	public Class<? extends Oberflaeche> getClassUI()
 	{
 		return StrasseKaufenUI.class;
+	}
+
+	public Spieler getSender()
+	{
+		return spieler;
 	}
 }

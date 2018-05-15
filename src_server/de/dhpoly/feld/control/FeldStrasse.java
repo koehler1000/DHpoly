@@ -47,7 +47,7 @@ public class FeldStrasse extends FeldImpl
 		}
 		else
 		{
-			spiel.zeigeSpieler(spieler, new StrasseKaufen(strasse));
+			spiel.zeigeSpieler(spieler, new StrasseKaufen(strasse, spieler));
 		}
 	}
 

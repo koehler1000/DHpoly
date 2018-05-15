@@ -38,7 +38,7 @@ public class FelderverwaltungTest
 		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
 
-		spiel.kaufe(new StrasseKaufen(s1), spieler);
+		spiel.kaufe(new StrasseKaufen(s1, spieler), spieler);
 
 		assertFalse(spieler.hatAlleStrassenDerGruppe(1));
 	}
@@ -65,8 +65,8 @@ public class FelderverwaltungTest
 		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
 
-		spiel.kaufe(new StrasseKaufen(s1), spieler);
-		spiel.kaufe(new StrasseKaufen(s2), spieler);
+		spiel.kaufe(new StrasseKaufen(s1, spieler), spieler);
+		spiel.kaufe(new StrasseKaufen(s2, spieler), spieler);
 
 		assertTrue(spieler.hatAlleStrassenDerGruppe(1));
 	}
@@ -88,7 +88,7 @@ public class FelderverwaltungTest
 		Spiel spiel = new SpielImpl();
 		spiel.fuegeSpielerHinzu(spieler);
 		spiel.setFelder(felder);
-		spiel.kaufe(new StrasseKaufen(s1), spieler);
+		spiel.kaufe(new StrasseKaufen(s1, spieler), spieler);
 
 		assertFalse(spieler.hatAlleStrassenDerGruppe(1));
 	}
