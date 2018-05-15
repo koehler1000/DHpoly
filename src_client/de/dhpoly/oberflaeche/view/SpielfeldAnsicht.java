@@ -19,7 +19,6 @@ import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.karte.model.Karte;
 import de.dhpoly.netzwerk.Client;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -140,13 +139,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	public void zeigeHausbaumoeglichkeit(List<StrasseDaten> felder)
 	{
 		tabRand.addTab("Häuser", new HaeuserUI(felder, this));
-	}
-
-	@Deprecated
-	public void zeigeKarte(Karte karte)
-	{
-		// TODO
-		// hinzu(karte.getTitel(), karte, new KarteUI(karte, this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)
