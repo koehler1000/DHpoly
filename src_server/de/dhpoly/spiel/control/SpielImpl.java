@@ -274,9 +274,7 @@ public class SpielImpl implements Spiel
 			this.spieler.add(spieler);
 			this.spielerImSpiel.add(spieler);
 			FeldDaten feld = felder.get(0);
-
-			// TODO Typ unterscheiden + Aktion durchfuehren
-			// .betreteFeld(spieler, 0, this);
+			feld.spielerHinzu(spieler);
 		}
 	}
 
