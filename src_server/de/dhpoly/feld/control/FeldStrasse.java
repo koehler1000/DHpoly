@@ -195,7 +195,7 @@ public class FeldStrasse extends FeldImpl
 		return strasse;
 	}
 
-	public boolean kannBebautWerden(Spiel spiel)
+	public boolean kannBebautWerden()
 	{
 		if (strasse.isAlleHaeuserGebaut())
 		{
