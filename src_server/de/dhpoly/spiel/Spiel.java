@@ -52,9 +52,6 @@ public interface Spiel extends Datenobjektverwalter
 
 	void setEinstellungen(Einstellungen einstellungen);
 
-	@Deprecated
-	List<FeldDaten> getStrassen(Spieler spieler);
-
 	boolean kannWuerfeln(Spieler spieler);
 
 	boolean kannWuerfelWeitergeben(Spieler spieler);
