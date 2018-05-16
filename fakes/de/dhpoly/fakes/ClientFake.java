@@ -3,6 +3,7 @@ package de.dhpoly.fakes;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +17,7 @@ public class ClientFake implements NetzwerkClient
 	public static ClientFake clientFake = new ClientFake();
 	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
-	private List<Datenobjektverwalter> verwalter;
+	private List<Datenobjektverwalter> verwalter = new ArrayList<>();
 
 	@Override
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)

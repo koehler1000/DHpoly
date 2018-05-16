@@ -1,5 +1,8 @@
 package de.dhpoly.main;
 
+import java.io.IOException;
+
+import de.dhpoly.ai.AI;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
@@ -16,12 +19,12 @@ public class MainFake
 	private ClientFake client = ClientFake.clientFake;
 	private ServerFake server = ServerFake.serverfake;
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		new MainFake();
 	}
 
-	public MainFake()
+	public MainFake() throws IOException
 	{
 		Spieler spieler = new Spieler(SpielerTyp.NETZWERK, "Peter");
 
@@ -30,5 +33,7 @@ public class MainFake
 
 		Spiel spiel = new SpielImpl(server);
 		spiel.fuegeSpielerHinzu(spieler);
+
+		new AI().erzeugeComputerspieler(client, "PC1");
 	}
 }
