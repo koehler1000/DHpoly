@@ -11,6 +11,7 @@ import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
+import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class AI implements Datenobjektverwalter
 {
@@ -47,6 +48,9 @@ public class AI implements Datenobjektverwalter
 			{
 				WuerfelAufruf aufruf = new WuerfelAufruf(this.spieler);
 				client.sendeAnServer(aufruf);
+
+				WuerfelWeitergabe weitergabe = new WuerfelWeitergabe(this.spieler);
+				client.sendeAnServer(weitergabe);
 			}
 		}
 	}
