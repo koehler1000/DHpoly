@@ -1,8 +1,6 @@
 package de.dhpoly.fakes;
 
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,7 +12,7 @@ import de.dhpoly.netzwerk.NetzwerkClient;
 
 public class ClientFake implements NetzwerkClient
 {
-	public static ClientFake clientFake = new ClientFake();
+	public static final ClientFake CLIENT_FAKE = new ClientFake();
 	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
 	private List<Datenobjektverwalter> verwalter = new ArrayList<>();
@@ -29,7 +27,7 @@ public class ClientFake implements NetzwerkClient
 	public void sendeAnServer(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ServerFake.SERVERFAKE.empfange(obj);
+		ServerFake.SERVER_FAKE.empfange(obj);
 	}
 
 	public void empfange(Datenobjekt obj)
@@ -45,8 +43,10 @@ public class ClientFake implements NetzwerkClient
 	}
 
 	@Override
-	public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
-	{}
+	public void verbinden(String ip, int port) throws IOException
+	{
+		// fake -> Direktverbindung
+	}
 
 	@Override
 	public String read()
@@ -62,5 +62,7 @@ public class ClientFake implements NetzwerkClient
 
 	@Override
 	public void sendQuitMessage()
-	{}
+	{
+		// fake -> wird nicht benötigt
+	}
 }

@@ -13,7 +13,7 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class ServerFake implements NetzwerkServer
 {
-	public static final ServerFake SERVERFAKE = new ServerFake();
+	public static final ServerFake SERVER_FAKE = new ServerFake();
 	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
 	private Datenobjektverwalter verwalter;
@@ -28,21 +28,21 @@ public class ServerFake implements NetzwerkServer
 	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.clientFake.empfange(obj);
+		ClientFake.CLIENT_FAKE.empfange(obj);
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.clientFake.empfange(obj);
+		ClientFake.CLIENT_FAKE.empfange(obj);
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.clientFake.empfange(obj);
+		ClientFake.CLIENT_FAKE.empfange(obj);
 	}
 
 	public void empfange(Datenobjekt obj)
@@ -53,11 +53,15 @@ public class ServerFake implements NetzwerkServer
 
 	@Override
 	public void sendeAnClients(Datenobjekt obj) throws IOException
-	{}
+	{
+		// fake -> wird nicht benötigt
+	}
 
 	@Override
 	public void sendeAnClients(String string) throws IOException
-	{}
+	{
+		// fake -> wird nicht benötigt
+	}
 
 	@Override
 	public String getIp() throws UnknownHostException
@@ -67,9 +71,13 @@ public class ServerFake implements NetzwerkServer
 
 	@Override
 	public void verbindungAbbauen() throws IOException
-	{}
+	{
+		// fake -> wird nicht benötigt
+	}
 
 	@Override
 	public void run(String[] args) throws IOException
-	{}
+	{
+		// fake -> wird nicht benötigt
+	}
 }

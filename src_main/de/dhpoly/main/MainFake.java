@@ -16,8 +16,8 @@ import de.dhpoly.spieler.model.SpielerTyp;
 public class MainFake
 {
 	private Fenster fenster = new Fenster(new Bilderverwalter());
-	private ClientFake client = ClientFake.clientFake;
-	private ServerFake server = ServerFake.SERVERFAKE;
+	private ClientFake client = ClientFake.CLIENT_FAKE;
+	private ServerFake server = ServerFake.SERVER_FAKE;
 
 	public static void main(String[] args) throws IOException
 	{
