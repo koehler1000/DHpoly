@@ -3,9 +3,7 @@ package de.dhpoly.feld.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.Feld;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -66,18 +64,5 @@ public abstract class FeldImpl implements Feld
 	public void laufeUeberFeld(Spieler spieler)
 	{
 		spielerAufFeld.add(spieler);
-	}
-
-	@Override
-	public void verarbeite(Datenobjekt objekt, Spiel spiel)
-	{
-		if (objekt instanceof Transaktion)
-		{
-			Transaktion transaktion = (Transaktion) objekt;
-			if (transaktion.getFelderEigentumswechsel().contains(this))
-			{
-				// TODO Transaktion
-			}
-		}
 	}
 }

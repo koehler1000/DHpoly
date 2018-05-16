@@ -2,11 +2,10 @@ package de.dhpoly.feld;
 
 import java.util.List;
 
-import de.dhpoly.logik.Logik;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
-public interface Feld extends Logik
+public interface Feld
 {
 	public String getBeschriftung();
 
