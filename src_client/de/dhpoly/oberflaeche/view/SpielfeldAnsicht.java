@@ -2,6 +2,7 @@ package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,13 +26,15 @@ import de.dhpoly.spiel.model.SpielStart;
 import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
+import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
 public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private JTabbedPane tabRand = new JTabbedPane();
-	private JTabbedPane tabCenter = new JTabbedPane();
+	private JTabbedPane tabRandLinks = new JTabbedPane();
+	private JTabbedPane tabRandRechts = new JTabbedPane();
+	private JTabbedPane tabMitte = new JTabbedPane();
 	private Spieler spieler;
 
 	private transient Optional<NetzwerkClient> client;
@@ -46,21 +49,39 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		ElementFactory.bearbeitePanel(this);
 		this.setLayout(new BorderLayout(10, 10));
 
-		tabRand = ElementFactory.getTabbedPane();
-		tabRand.setPreferredSize(new Dimension(500, 0));
+		tabRandLinks = ElementFactory.getTabbedPane();
+		tabRandLinks.setPreferredSize(new Dimension(500, 0));
 
-		tabCenter = ElementFactory.getTabbedPane();
-		this.add(tabCenter, BorderLayout.CENTER);
+		initRandRechts();
+
+		tabMitte = ElementFactory.getTabbedPane();
+		this.add(tabMitte, BorderLayout.CENTER);
 
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
-		this.add(tabRand, BorderLayout.WEST);
+		this.add(tabRandLinks, BorderLayout.WEST);
 
 		JButton butSpielStarten = ElementFactory
 				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
 		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
 
-		tabCenter.addTab("Start", butSpielStarten);
+		tabMitte.addTab("Start", butSpielStarten);
+	}
+
+	private void initRandRechts()
+	{
+		tabRandRechts = ElementFactory.getTabbedPane();
+		tabRandRechts.setPreferredSize(new Dimension(200, 0));
+
+		JPanel pnlRandRechts = ElementFactory.erzeugePanel();
+		pnlRandRechts.setLayout(new GridLayout(10, 1));
+		JButton butWuerfeln = ElementFactory.getButtonUeberschrift("Würfeln");
+		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
+		pnlRandRechts.add(butWuerfeln);
+
+		tabRandRechts.addTab("Aktionen", pnlRandRechts);
+
+		this.add(tabRandRechts, BorderLayout.EAST);
 	}
 
 	public void sendeAnServer(Datenobjekt objekt)
@@ -76,7 +97,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private void loesche(Object obj)
 	{
 		Oberflaeche oberflaeche = inhalte.get(obj);
-		tabRand.remove(oberflaeche);
+		tabRandLinks.remove(oberflaeche);
 		inhalte.remove(obj);
 	}
 
@@ -94,7 +115,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void fuegeInhaltHinzuRand(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		JTabbedPane tabPane = tabRand;
+		JTabbedPane tabPane = tabRandLinks;
 		if (inhalte.containsKey(obj))
 		{
 			Optional.ofNullable(inhalte.get(obj).getParent()).ifPresent(e -> e.remove(inhalte.get(obj)));
@@ -105,9 +126,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void fuegeInhaltHinzuMitte(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		tabCenter.removeAll();
+		tabMitte.removeAll();
 
-		JTabbedPane tabPane = tabCenter;
+		JTabbedPane tabPane = tabMitte;
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}
 
@@ -125,7 +146,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
 		{
 			zuLoeschen.add(obj.getKey());
-			tabRand.remove(obj.getValue());
+			tabRandLinks.remove(obj.getValue());
 		}
 
 		zuLoeschen.forEach(e -> inhalte.remove(e));
@@ -152,7 +173,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		{
 			inhalte.remove(inhalte.get(oberflaeche));
 		}
-		tabRand.remove(oberflaeche);
+		tabRandLinks.remove(oberflaeche);
 	}
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
