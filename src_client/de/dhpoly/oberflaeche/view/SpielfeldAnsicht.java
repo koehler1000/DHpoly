@@ -34,7 +34,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private static final long serialVersionUID = 1L;
 
 	private JTabbedPane tabRandLinks = new JTabbedPane();
-	private JTabbedPane tabRandRechts = new JTabbedPane();
 	private JTabbedPane tabMitte = new JTabbedPane();
 	private Spieler spieler;
 
@@ -71,7 +70,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void initRandRechts()
 	{
-		tabRandRechts = ElementFactory.getTabbedPane();
+		JTabbedPane tabRandRechts = ElementFactory.getTabbedPane();
 		tabRandRechts.setPreferredSize(new Dimension(200, 0));
 
 		JPanel pnlRandRechts = ElementFactory.erzeugePanel();

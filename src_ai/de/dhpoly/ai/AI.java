@@ -23,7 +23,7 @@ public class AI implements Datenobjektverwalter
 		erzeugeComputerspieler(new NetzwerkClientImpl(ip), name);
 	}
 
-	public void erzeugeComputerspieler(NetzwerkClient client, String name) throws IOException
+	public void erzeugeComputerspieler(NetzwerkClient client, String name)
 	{
 		this.client = client;
 		spieler = new Spieler(SpielerTyp.COMPUTER, name);
