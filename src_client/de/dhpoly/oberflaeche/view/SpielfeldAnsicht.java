@@ -1,7 +1,6 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -98,8 +97,8 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		JTabbedPane tabPane = tabRand;
 		if (inhalte.containsKey(obj))
 		{
-			Container parent = inhalte.get(obj).getParent();
-			parent.remove(inhalte.get(obj));
+			Optional.ofNullable(inhalte.get(obj).getParent()).ifPresent(e -> e.remove(inhalte.get(obj)));
+			inhalte.remove(obj);
 		}
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}

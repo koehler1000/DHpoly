@@ -19,9 +19,8 @@ import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
-import observerpattern.Beobachter;
 
-public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
+public class SpielerUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -106,8 +105,7 @@ public class SpielerUI extends Oberflaeche implements Beobachter // NOSONAR
 				&& ansicht.get().getSpieler() == spieler; // Spieler gehört die Ansicht
 	}
 
-	@Override
-	public void update()
+	private void update()
 	{
 		if (spieler.getStatus() == SpielerStatus.VERLOREN)
 		{
