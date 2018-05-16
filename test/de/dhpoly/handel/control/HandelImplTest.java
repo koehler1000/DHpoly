@@ -14,7 +14,6 @@ import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
@@ -50,7 +49,8 @@ public class HandelImplTest
 		spiel.setFelder(felder);
 		spiel.starteSpiel();
 
-		spiel.kaufe(new StrasseKaufen(strasse, s1), s1);
+		strasse.setEigentuemer(s1);
+
 		assertThat(strasse.getEigentuemer().get(), Is.is(s1));
 
 		Handel handel = new HandelImpl();
