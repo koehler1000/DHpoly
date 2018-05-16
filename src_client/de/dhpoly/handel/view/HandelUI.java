@@ -54,8 +54,6 @@ public class HandelUI extends Oberflaeche // NOSONAR
 		this.add(butFertig, BorderLayout.SOUTH);
 
 		update();
-
-		butFertig.setText("Handel abschlieﬂen");
 	}
 
 	private void handelAbschliessen()

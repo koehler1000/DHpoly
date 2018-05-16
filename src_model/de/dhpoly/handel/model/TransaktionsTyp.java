@@ -2,7 +2,7 @@ package de.dhpoly.handel.model;
 
 public enum TransaktionsTyp
 {
-	NEU(false, false, "Schlieﬂen"), // Leerer Vorschlag NOSONAR
+	NEU(false, false, "Anbieten"), // Leerer Vorschlag NOSONAR
 	NEUER_VORSCHLAG(true, false, "Anbieten"), //
 	VORSCHLAG(false, true, "Annehmen"), // Vorgeschlagen
 	ANGENOMMEN(false, false, "Schlieﬂen"), //
