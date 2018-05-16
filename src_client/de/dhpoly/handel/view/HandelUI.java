@@ -59,7 +59,6 @@ public class HandelUI extends Oberflaeche // NOSONAR
 	private void handelAbschliessen()
 	{
 		super.schliessen();
-		// TODO Transaktionstypen prüfen
 		if (transaktion.getTransaktionsTyp().isHandelAnbieten())
 		{
 			transaktion.setTransaktionsTyp(TransaktionsTyp.ANGENOMMEN);

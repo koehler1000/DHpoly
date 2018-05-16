@@ -53,7 +53,6 @@ public class Bewegung extends Datenobjekt
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 

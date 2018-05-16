@@ -1,6 +1,7 @@
 package de.dhpoly.feld.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class Hausbau extends Datenobjekt
@@ -30,15 +31,13 @@ public class Hausbau extends Datenobjekt
 	@Override
 	public String getTitel()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return "Hausbau";
 	}
 
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return HaeuserUI.class;
 	}
 
 }

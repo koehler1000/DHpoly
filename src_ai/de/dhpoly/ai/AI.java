@@ -1,7 +1,5 @@
 package de.dhpoly.ai;
 
-import java.io.IOException;
-
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
@@ -18,7 +16,7 @@ public class AI implements Datenobjektverwalter
 	NetzwerkClient client;
 	Spieler spieler;
 
-	public void erzeugeComputerspieler(String ip, String name) throws IOException
+	public void erzeugeComputerspieler(String ip, String name)
 	{
 		erzeugeComputerspieler(new NetzwerkClientImpl(ip), name);
 	}
