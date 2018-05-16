@@ -196,21 +196,19 @@ public class SpielImpl implements Spiel
 	{
 		this.spieler.remove(spieler);
 
-		// Felder zurueckgeben
-		List<FeldDaten> felder = getFelder(spieler);
-		while (!felder.isEmpty())
+		List<StrasseDaten> strassen = spieler.getStrassen();
+		for (StrasseDaten strasse : strassen)
 		{
-			FeldDaten feld = felder.get(0);
-			if (feld instanceof StrasseDaten)
-			{
-				// FIXME Strassen zurückgeben
-				// StrasseDaten strasse = (FeldStrasse) feld;
-				// strasse.zurueckgeben();
-			}
+			strasseZurueckgeben(strasse);
 		}
 
 		// Spielerstatus setzen
 		spieler.setSpielerStatus(SpielerStatus.VERLOREN);
+	}
+
+	private void strasseZurueckgeben(StrasseDaten strasse)
+	{
+		strasse.setEigentuemer(Optional.empty());
 	}
 
 	@Override
@@ -394,7 +392,7 @@ public class SpielImpl implements Spiel
 		server.ifPresent(s -> s.sendeAnSpieler(felder));
 	}
 
-	public List<FeldDaten> getFelder(Spieler spieler)
+	public List<FeldDaten> getStrassen(Spieler spieler)
 	{
 		List<FeldDaten> felderSpieler = new ArrayList<>();
 		for (FeldDaten feld : felder.getFelder())

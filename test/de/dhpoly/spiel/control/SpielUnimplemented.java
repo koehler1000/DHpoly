@@ -103,7 +103,7 @@ public abstract class SpielUnimplemented implements Spiel
 	{}
 
 	@Override
-	public List<FeldDaten> getFelder(Spieler spieler)
+	public List<FeldDaten> getStrassen(Spieler spieler)
 	{
 		return null;
 	}

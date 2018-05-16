@@ -29,7 +29,7 @@ public class ClientFake implements NetzwerkClient
 	public void sendeAnServer(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ServerFake.serverfake.empfange(obj);
+		ServerFake.SERVERFAKE.empfange(obj);
 	}
 
 	public void empfange(Datenobjekt obj)

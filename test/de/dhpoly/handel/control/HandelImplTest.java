@@ -183,7 +183,7 @@ public class HandelImplTest
 		}
 
 		@Override
-		public List<FeldDaten> getFelder(Spieler spieler)
+		public List<FeldDaten> getStrassen(Spieler spieler)
 		{
 			// TODO Auto-generated method stub
 			return null;

@@ -43,7 +43,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Before
 	public void vorbereitung()
 	{
-		server = ServerFake.serverfake;
+		server = ServerFake.SERVERFAKE;
 		client = ClientFake.clientFake;
 
 		client.setDatenobjektverwalter(this);

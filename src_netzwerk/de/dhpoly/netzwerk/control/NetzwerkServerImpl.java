@@ -160,21 +160,24 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	}
 
 	@Override
-	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler) {
+	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler) {
+	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void sendeAnSpieler(Datenobjekt obj) {
+	public void sendeAnSpieler(Datenobjekt obj)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

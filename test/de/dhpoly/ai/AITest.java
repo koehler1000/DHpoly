@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +16,7 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
+import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class AITest
 {
@@ -24,9 +27,8 @@ public class AITest
 	public void startUp() throws IOException
 	{
 		ai = new AI();
-		ai.erzeugeComputerspieler("0.0.0.0", "doofer PC");
+		ai.erzeugeComputerspieler(client, "doofer PC");
 		spieler = ai.spieler;
-		ai.client = client;
 	}
 
 	@Test
@@ -35,10 +37,24 @@ public class AITest
 		spieler.setAktuellerSpieler(true);
 		ai.empfange(spieler);
 
-		assertTrue(objGesendet instanceof WuerfelAufruf);
+		assertTrue(hatElementEmpfangen(WuerfelAufruf.class));
+		assertTrue(hatElementEmpfangen(WuerfelWeitergabe.class));
 	}
 
-	private Object objGesendet;
+	private boolean hatElementEmpfangen(Class c)
+	{
+		for (Object object : objGesendet)
+		{
+			if (c.isInstance(object))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private List<Object> objGesendet = new ArrayList<>();
 
 	NetzwerkClient client = new NetzwerkClient()
 	{
@@ -49,7 +65,7 @@ public class AITest
 		@Override
 		public void sendeAnServer(Datenobjekt ob)
 		{
-			objGesendet = ob;
+			objGesendet.add(ob);
 		}
 
 		@Override
@@ -67,13 +83,15 @@ public class AITest
 		}
 
 		@Override
-		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException {
+		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
+		{
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
-		public boolean verbindungTrennen() {
+		public boolean verbindungTrennen()
+		{
 			// TODO Auto-generated method stub
 			return false;
 		}

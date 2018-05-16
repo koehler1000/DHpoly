@@ -3,7 +3,6 @@ package de.dhpoly.fakes;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +13,7 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class ServerFake implements NetzwerkServer
 {
-	public static ServerFake serverfake = new ServerFake();
+	public static final ServerFake SERVERFAKE = new ServerFake();
 	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
 	private Datenobjektverwalter verwalter;

@@ -17,7 +17,7 @@ public class MainFake
 {
 	private Fenster fenster = new Fenster(new Bilderverwalter());
 	private ClientFake client = ClientFake.clientFake;
-	private ServerFake server = ServerFake.serverfake;
+	private ServerFake server = ServerFake.SERVERFAKE;
 
 	public static void main(String[] args) throws IOException
 	{
