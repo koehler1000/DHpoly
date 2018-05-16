@@ -1,6 +1,8 @@
 package de.dhpoly.karte.model;
 
-public interface Karte
+import java.io.Serializable;
+
+public interface Karte extends Serializable
 {
 	public String getBeschreibung();
 
