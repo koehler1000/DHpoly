@@ -60,6 +60,7 @@ public interface Spiel extends Datenobjektverwalter
 
 	boolean kannWuerfelWeitergeben(Spieler spieler);
 
+	@Deprecated
 	void kaufe(StrasseKaufen strasse, Spieler spieler);
 
 	Wetter getWetter();

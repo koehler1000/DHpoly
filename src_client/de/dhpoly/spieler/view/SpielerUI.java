@@ -76,13 +76,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		update();
 	}
 
-	private boolean kannHaeuserBauen()
-	{
-		return spieler.isAnDerReihe() // an der Reihe
-				&& ansicht.isPresent() // Ansicht existiert
-				&& ansicht.get().getSpieler() == spieler; // Spieler gehört die Ansicht
-	}
-
 	private void update()
 	{
 		if (spieler.getStatus() != SpielerStatus.VERLOREN)
