@@ -131,11 +131,7 @@ public class FeldStrasse extends FeldImpl
 
 	private boolean isDoppelteMiete()
 	{
-		if (getEigentuemer().isPresent())
-		{
-			return getEigentuemer().get().hatAlleStrassenDerGruppe(getGruppe());
-		}
-		return false;
+		return getEigentuemer().filter(e -> e.hatAlleStrassenDerGruppe(getGruppe())).isPresent();
 	}
 
 	public void setEigentuemer(Spieler anbietender)
