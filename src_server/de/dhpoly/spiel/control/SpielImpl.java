@@ -495,9 +495,9 @@ public class SpielImpl implements Spiel
 			strasse.setEigentuemer(sp);
 			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
 			sp.addStrasse(strasse.getStrasse());
-		}
 
-		zeigeAllenSpielern(strasse.getStrasse());
+			zeigeAllenSpielern(felder);
+		}
 	}
 
 	@Override

@@ -17,6 +17,7 @@ import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
+import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
@@ -36,6 +37,9 @@ public class SpielImplTest implements Datenobjektverwalter
 	private NetzwerkServer server;
 	private NetzwerkClient client;
 
+	private StrasseDaten strasse = new StrasseDaten();
+	private Spieler spieler = new Spieler(SpielerTyp.COMPUTER, "Test1");
+
 	@Before
 	public void vorbereitung()
 	{
@@ -46,11 +50,22 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(new LosfeldDaten());
-		felder.add(new StrasseDaten());
+		felder.add(strasse);
 		spiel = new SpielImpl(server);
 		spiel.setFelder(felder);
-		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test1"));
+		spiel.fuegeSpielerHinzu(spieler);
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
+	}
+
+	@Test
+	public void strassenKaufSendetStrasseAnClient()
+	{
+		spiel.starteSpiel();
+		empfangeneObjekte = new ArrayList<>();
+
+		spiel.kaufe(new StrasseKaufen(strasse, spieler), spieler);
+
+		assertThat(isEmpfangen(SpielfeldDaten.class), Is.is(1L));
 	}
 
 	@Test
@@ -61,7 +76,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void spielStartSendetDatenobjektAnSpieler()
+	public void spielStartSendetSpielerAnSpieler()
 	{
 		spiel.starteSpiel();
 		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
@@ -91,6 +106,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Test
 	public void testaktuellerSpieler()
 	{
+		spiel.starteSpiel();
 		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
 	}
 
