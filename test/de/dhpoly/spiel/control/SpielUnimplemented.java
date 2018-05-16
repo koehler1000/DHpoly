@@ -11,6 +11,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
@@ -137,4 +138,10 @@ public abstract class SpielUnimplemented implements Spiel
 	@Override
 	public void zeigeSpieler(Spieler sp, Datenobjekt objekt)
 	{}
+
+	@Override
+	public SpielfeldDaten getSpielfeld()
+	{
+		return null;
+	}
 }

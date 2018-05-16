@@ -11,6 +11,7 @@ import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.spiel.model.SpielStatus;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.Wuerfelpaar;
 
@@ -66,4 +67,6 @@ public interface Spiel extends Datenobjektverwalter
 	void zeigeAllenSpielern(Datenobjekt objekt);
 
 	void zeigeSpieler(Spieler sp, Datenobjekt objekt);
+
+	SpielfeldDaten getSpielfeld();
 }
