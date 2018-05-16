@@ -19,8 +19,6 @@ import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.StrasseKaufenLogik;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.feld.model.StrasseKaufen;
-import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.control.HandelImpl;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
@@ -471,31 +469,6 @@ public class SpielImpl implements Spiel
 	public boolean kannWuerfelWeitergeben(Spieler spieler)
 	{
 		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerIstGerueckt;
-	}
-
-	private void kaufe(StrasseKaufen strasse, Spieler spieler)
-	{
-		if (getAktuellerSpieler() == spieler)
-		{
-			kaufAbwickeln(strasse, spieler);
-		}
-		else
-		{
-			zeigeSpieler(spieler, new Fehler("Kauf fehlgeschlagen: Nicht an der Reihe", FehlerTyp.FEHLER_SPIELER));
-		}
-	}
-
-	private void kaufAbwickeln(StrasseKaufen strasse, Spieler sp)
-	{
-		if (strasse.isKaufbar() && sp.kannBezahlen(strasse.getKaufpreis()))
-		{
-			sp.auszahlen(strasse.getKaufpreis());
-			strasse.setEigentuemer(sp);
-			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
-			sp.addStrasse(strasse.getStrasse());
-
-			zeigeAllenSpielern(felder);
-		}
 	}
 
 	@Override
