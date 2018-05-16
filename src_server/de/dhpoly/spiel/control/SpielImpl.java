@@ -473,8 +473,7 @@ public class SpielImpl implements Spiel
 		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerIstGerueckt;
 	}
 
-	@Override
-	public void kaufe(StrasseKaufen strasse, Spieler spieler)
+	private void kaufe(StrasseKaufen strasse, Spieler spieler)
 	{
 		if (getAktuellerSpieler() == spieler)
 		{

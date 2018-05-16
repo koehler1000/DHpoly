@@ -17,7 +17,6 @@ import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
@@ -55,17 +54,6 @@ public class SpielImplTest implements Datenobjektverwalter
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(spieler);
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
-	}
-
-	@Test
-	public void strassenKaufSendetStrasseAnClient()
-	{
-		spiel.starteSpiel();
-		empfangeneObjekte = new ArrayList<>();
-
-		spiel.kaufe(new StrasseKaufen(strasse, spieler), spieler);
-
-		assertThat(isEmpfangen(SpielfeldDaten.class), Is.is(1L));
 	}
 
 	@Test

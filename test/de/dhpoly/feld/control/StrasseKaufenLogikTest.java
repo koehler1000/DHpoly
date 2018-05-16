@@ -5,10 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielUnimplemented;
+import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerTyp;
 
@@ -24,6 +26,7 @@ public class StrasseKaufenLogikTest
 		StrasseDaten strasse = new StrasseDaten();
 		StrasseKaufen kauf = new StrasseKaufen(strasse, spieler);
 		aktuellerSpieler = spieler;
+
 		logik.verarbeite(kauf, spiel);
 
 		assertTrue(strasse.gehoertSpieler(spieler));
@@ -39,12 +42,37 @@ public class StrasseKaufenLogikTest
 		assertFalse(strasse.gehoertSpieler(spieler));
 	}
 
+	@Test
+	public void strassenKaufSendetStrasseAnClient()
+	{
+		StrasseDaten strasse = new StrasseDaten();
+		StrasseKaufen kauf = new StrasseKaufen(strasse, spieler);
+		aktuellerSpieler = spieler;
+
+		logik.verarbeite(kauf, spiel);
+
+		assertTrue(gesendetesObjekt instanceof SpielfeldDaten);
+	}
+
+	private Datenobjekt gesendetesObjekt;
 	private Spiel spiel = new SpielUnimplemented()
 	{
 		@Override
 		public Spieler getAktuellerSpieler()
 		{
 			return aktuellerSpieler;
+		}
+
+		@Override
+		public void zeigeAllenSpielern(Datenobjekt datenobjekt)
+		{
+			gesendetesObjekt = datenobjekt;
+		}
+
+		@Override
+		public SpielfeldDaten getSpielfeld()
+		{
+			return new SpielfeldDaten(null);
 		}
 	};
 }

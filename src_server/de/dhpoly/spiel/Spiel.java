@@ -6,7 +6,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.FeldDaten;
-import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
@@ -59,9 +58,6 @@ public interface Spiel extends Datenobjektverwalter
 	boolean kannWuerfeln(Spieler spieler);
 
 	boolean kannWuerfelWeitergeben(Spieler spieler);
-
-	@Deprecated
-	void kaufe(StrasseKaufen strasse, Spieler spieler);
 
 	Wetter getWetter();
 
