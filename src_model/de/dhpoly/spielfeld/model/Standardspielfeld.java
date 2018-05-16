@@ -13,8 +13,12 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 
 public class Standardspielfeld
 {
+	private Einstellungen einstellungen;
+
 	public List<FeldDaten> getStandardSpielfeld(Einstellungen einstellungen)
 	{
+		this.einstellungen = einstellungen;
+
 		int seite = 1;
 		List<FeldDaten> standardfeld = new ArrayList<>();
 
@@ -90,7 +94,6 @@ public class Standardspielfeld
 
 	private List<RessourcenDatensatz> getHauskosten(int seite)
 	{
-		Einstellungen einstellungen = new Einstellungen();
 		return einstellungen.getHauskosten(seite);
 	}
 }
