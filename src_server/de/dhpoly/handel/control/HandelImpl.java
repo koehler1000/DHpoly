@@ -3,8 +3,7 @@ package de.dhpoly.handel.control;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.Feld;
-import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
@@ -48,28 +47,23 @@ public class HandelImpl implements Handel
 		spiel.zeigeSpieler(handelspartner, transaktion);
 	}
 
-	private void eigentumUebertragen(List<Feld> felderEigentumswechsel, Spieler spielerDaten, Spieler spielerDaten2)
+	private void eigentumUebertragen(List<StrasseDaten> feld2, Spieler spielerDaten, Spieler spielerDaten2)
 	{
-		for (Feld feld : felderEigentumswechsel)
+		for (StrasseDaten feld : feld2)
 		{
 			eigentumUebertragen(feld, spielerDaten, spielerDaten2);
 		}
 	}
 
-	private void eigentumUebertragen(Feld feld, Spieler anbietender, Spieler handelspartner)
+	private void eigentumUebertragen(StrasseDaten feld, Spieler anbietender, Spieler handelspartner)
 	{
-		if (feld instanceof FeldStrasse)
+		if (feld.gehoertSpieler(anbietender))
 		{
-			FeldStrasse strasse = (FeldStrasse) feld;
-
-			if (strasse.gehoertSpieler(anbietender))
-			{
-				strasse.setEigentuemer(handelspartner);
-			}
-			else
-			{
-				strasse.setEigentuemer(anbietender);
-			}
+			feld.setEigentuemer(handelspartner);
+		}
+		else
+		{
+			feld.setEigentuemer(anbietender);
 		}
 	}
 

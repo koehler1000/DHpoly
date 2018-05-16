@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import de.dhpoly.datenobjekt.DatenobjektAnClient;
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.handel.view.HandelUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
@@ -18,8 +18,7 @@ public class Transaktion extends DatenobjektAnClient
 {
 	private static final long serialVersionUID = 1L;
 
-	// TODO Feld > FeldDaten
-	private transient List<Feld> felderEigentumswechsel = new ArrayList<>();
+	private List<StrasseDaten> felderEigentumswechsel = new ArrayList<>();
 
 	private Map<Spieler, Map<Ressource, Integer>> ressourcen = new HashMap<>();
 
@@ -73,15 +72,15 @@ public class Transaktion extends DatenobjektAnClient
 		}
 	}
 
-	public void addDatensatzFelderwechsel(Feld feld)
+	public void addDatensatzFelderwechsel(StrasseDaten strasse)
 	{
-		felderEigentumswechsel.add(feld);
+		felderEigentumswechsel.add(strasse);
 		typ = TransaktionsTyp.NEUER_VORSCHLAG;
 	}
 
-	public void removeDatensatzFelderwechsel(Feld feld)
+	public void removeDatensatzFelderwechsel(StrasseDaten strasse)
 	{
-		felderEigentumswechsel.remove(feld);
+		felderEigentumswechsel.remove(strasse);
 		typ = TransaktionsTyp.NEUER_VORSCHLAG;
 	}
 
@@ -90,13 +89,13 @@ public class Transaktion extends DatenobjektAnClient
 		return typ;
 	}
 
-	public List<Feld> getFelderEigentumswechsel(Spieler spielerDaten)
+	public List<StrasseDaten> getFelderEigentumswechsel(Spieler spielerDaten)
 	{
 		return getFelderEigentumswechsel().stream().filter(e -> e.gehoertSpieler(spielerDaten))
 				.collect(Collectors.toList());
 	}
 
-	public List<Feld> getFelderEigentumswechsel()
+	public List<StrasseDaten> getFelderEigentumswechsel()
 	{
 		return felderEigentumswechsel;
 	}

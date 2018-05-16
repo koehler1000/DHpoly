@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.feld.Feld;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -36,29 +36,25 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 		pnlStrassen.setBackground(Color.WHITE);
 
 		// TODO Felder der Spieler anzeigen
-		// for (Feld feld : spielerDaten.getFelder())
-		// {
-		// if (feld instanceof FeldStrasse)
-		// {
-		// pnlStrassen.add(new StrasseAnbietenUI((FeldStrasse) feld, this,
-		// transaktion.getFelderEigentumswechsel().contains(feld)));
-		// }
-		// }
+		for (StrasseDaten str : spielerDaten.getStrassen())
+		{
+			pnlStrassen.add(new StrasseAnbietenUI(str, this, transaktion.getFelderEigentumswechsel().contains(str)));
+		}
 
 		this.add(new JScrollPane(pnlStrassen));
 	}
 
-	void feldAuswaehlen(Feld feld)
+	void feldAuswaehlen(StrasseDaten strasse)
 	{
-		transaktion.addDatensatzFelderwechsel(feld);
+		transaktion.addDatensatzFelderwechsel(strasse);
 	}
 
-	void feldAuswaehlenRueckgaengig(Feld feld)
+	void feldAuswaehlenRueckgaengig(StrasseDaten strasse)
 	{
-		transaktion.removeDatensatzFelderwechsel(feld);
+		transaktion.removeDatensatzFelderwechsel(strasse);
 	}
 
-	public List<Feld> getStrassen()
+	public List<StrasseDaten> getStrassen()
 	{
 		return transaktion.getFelderEigentumswechsel();
 	}

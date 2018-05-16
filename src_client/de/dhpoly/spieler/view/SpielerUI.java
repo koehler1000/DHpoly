@@ -17,8 +17,6 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
-import de.dhpoly.wuerfel.model.WuerfelAufruf;
-import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class SpielerUI extends Oberflaeche // NOSONAR
 {
@@ -27,10 +25,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	private transient Spieler spieler;
 	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
-	private JButton butHausBau;
 	private JButton butHandel;
-	private JButton butWuerfeln;
-	private JButton butWuerfelWeitergeben;
 
 	public SpielerUI(Spieler spieler, SpielfeldAnsicht ansicht)
 	{
@@ -57,11 +52,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		pnlSueden.setBackground(backcolor);
 		pnlSueden.setBorder(new LineBorder(backcolor, 10));
 
-		butHausBau = ElementFactory.getButton("Häuser" + System.lineSeparator() + "anzeigen");
-		butHausBau.addActionListener(e -> ansicht.zeigeHausbaumoeglichkeit());
-		butHausBau.setForeground(backcolor);
-		pnlSueden.add(butHausBau);
-
 		JButton butKontoauszug = ElementFactory.getButton("Konto" + System.lineSeparator() + "anzeigen");
 		butKontoauszug.addActionListener(e -> ansicht.zeigeKontoauszug(spieler));
 		butKontoauszug.setForeground(backcolor);
@@ -72,18 +62,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		butHandel.addActionListener(e -> new Transaktion(ansicht.getSpieler(), spieler).anzeigen(ansicht));
 		butHandel.setForeground(backcolor);
 		pnlSueden.add(butHandel);
-
-		butWuerfeln = ElementFactory.getButton("Wuerfeln");
-		butWuerfeln.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
-		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
-		butWuerfeln.setForeground(backcolor);
-		pnlSueden.add(butWuerfeln);
-
-		butWuerfelWeitergeben = ElementFactory.getButton("Wuerfel weitergeben");
-		butWuerfelWeitergeben.setEnabled(spieler == ansicht.getSpieler() && spieler.isAnDerReihe());
-		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
-		butWuerfelWeitergeben.setForeground(backcolor);
-		pnlSueden.add(butWuerfelWeitergeben);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new BorderLayout());
@@ -107,11 +85,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 
 	private void update()
 	{
-		if (spieler.getStatus() == SpielerStatus.VERLOREN)
-		{
-			butHausBau.setEnabled(false);
-		}
-		else
+		if (spieler.getStatus() != SpielerStatus.VERLOREN)
 		{
 			StringBuilder builder = new StringBuilder();
 			for (Ressource res : Ressource.values())
@@ -121,8 +95,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 			txtKontostand.setText(builder.toString());
 
 			ElementFactory.setzeRand(this, 10, spieler.isAnDerReihe() ? spieler : null);
-
-			butHausBau.setEnabled(kannHaeuserBauen());
 		}
 	}
 
