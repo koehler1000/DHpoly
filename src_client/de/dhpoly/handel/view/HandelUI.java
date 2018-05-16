@@ -12,9 +12,8 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.ressource.model.Ressource;
-import observerpattern.Beobachter;
 
-public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
+public class HandelUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -49,11 +48,14 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 			this.add(ElementFactory.getButtonUeberschrift("Handel angenommen"));
 		}
 
-		butFertig = ElementFactory.getButtonUeberschrift("Fertig");
+		butFertig = getSchliessenButton();
+
 		butFertig.addActionListener(e -> handelAbschliessen());
 		this.add(butFertig, BorderLayout.SOUTH);
 
 		update();
+
+		butFertig.setText("Handel abschlieﬂen");
 	}
 
 	private void handelAbschliessen()
@@ -72,7 +74,6 @@ public class HandelUI extends Oberflaeche implements Beobachter // NOSONAR
 		}
 	}
 
-	@Override
 	public void update()
 	{
 		butFertig.setText(transaktion.getTransaktionsTyp().getBeschreibung());
