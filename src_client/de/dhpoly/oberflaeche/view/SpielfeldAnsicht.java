@@ -19,6 +19,7 @@ import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -74,10 +75,32 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabRandRechts.setPreferredSize(new Dimension(200, 0));
 
 		JPanel pnlRandRechts = ElementFactory.erzeugePanel();
-		pnlRandRechts.setLayout(new GridLayout(10, 1));
-		JButton butWuerfeln = ElementFactory.getButtonUeberschrift("Würfeln");
+		pnlRandRechts.setLayout(new GridLayout(10, 1, 10, 10));
+
+		JButton butWuerfeln = ElementFactory.getButton("Würfeln");
 		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
 		pnlRandRechts.add(butWuerfeln);
+
+		JButton butWuerfelWeitergeben = ElementFactory.getButton("Würfel weitergeben");
+		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
+		pnlRandRechts.add(butWuerfelWeitergeben);
+
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+
+		JButton butHausbau = ElementFactory.getButton("Häuser verwalten");
+		butHausbau.addActionListener(e -> zeigeHausbaumoeglichkeit());
+		pnlRandRechts.add(butHausbau);
+
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
+
+		JButton butKontakt = ElementFactory.getButton("Danke sagen");
+		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke")));
+		pnlRandRechts.add(butKontakt);
 
 		tabRandRechts.addTab("Aktionen", pnlRandRechts);
 
@@ -152,9 +175,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		zuLoeschen.forEach(e -> inhalte.remove(e));
 	}
 
-	public void zeigeHausbaumoeglichkeit(List<StrasseDaten> felder)
+	public void zeigeHausbaumoeglichkeit()
 	{
-		hinzu("Hausbau", felder, new HaeuserUI(felder, this));
+		hinzu("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)

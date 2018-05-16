@@ -41,7 +41,7 @@ public class AITest
 		assertTrue(hatElementEmpfangen(WuerfelWeitergabe.class));
 	}
 
-	private boolean hatElementEmpfangen(Class c)
+	private boolean hatElementEmpfangen(Class<? extends Object> c)
 	{
 		for (Object object : objGesendet)
 		{

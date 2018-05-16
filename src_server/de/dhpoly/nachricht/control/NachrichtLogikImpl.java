@@ -19,7 +19,6 @@ public class NachrichtLogikImpl implements NachrichtLogik
 	@Override
 	public void sendeNachricht(Nachricht nachricht, Spiel spiel)
 	{
-		System.out.println("Server empfangen: " + nachricht.getNachricht());
-
+		spiel.zeigeAllenSpielern(nachricht);
 	}
 }
