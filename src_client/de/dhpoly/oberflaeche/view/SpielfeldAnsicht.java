@@ -91,8 +91,10 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		butHausbau.addActionListener(e -> zeigeHausbaumoeglichkeit());
 		pnlRandRechts.add(butHausbau);
 
-		pnlRandRechts.add(ElementFactory.erzeugePanel());
-		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		JButton butKonto = ElementFactory.getButton("Kontoauszug öffnen");
+		butKonto.addActionListener(e -> zeigeKontoauszug(spieler));
+		pnlRandRechts.add(butKonto);
+
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
