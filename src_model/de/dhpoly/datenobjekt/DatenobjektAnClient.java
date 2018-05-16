@@ -13,6 +13,7 @@ public abstract class DatenobjektAnClient extends Datenobjekt
 
 	public abstract Class<? extends Oberflaeche> getClassUI();
 
+	@Override
 	public void anzeigen(SpielfeldAnsicht ansicht)
 	{
 		try
