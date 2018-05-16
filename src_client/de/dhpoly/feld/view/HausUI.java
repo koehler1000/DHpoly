@@ -20,7 +20,6 @@ public class HausUI extends Oberflaeche // NOSONAR
 	public HausUI(StrasseDaten strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
-		ElementFactory.bearbeitePanel(this);
 
 		JTextArea txtName = ElementFactory.getTextFeldUeberschrift(strasse.getName());
 		JTextArea txtAktuelleMiete = ElementFactory.getTextFeld("", false);
@@ -45,6 +44,8 @@ public class HausUI extends Oberflaeche // NOSONAR
 		butHausVerkaufen.setEnabled(strasse.getHaeuser() > 0);
 		txtAktuelleMiete.setText("Aktuelle Miete: " + strasse.getAkuelleMiete() + System.lineSeparator() + "Häuser: "
 				+ strasse.getHaeuser());
+
+		this.remove(getSchliessenButton());
 	}
 
 	@Override
