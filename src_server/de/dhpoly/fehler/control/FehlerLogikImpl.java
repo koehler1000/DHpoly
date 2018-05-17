@@ -16,12 +16,7 @@ public class FehlerLogikImpl implements FehlerLogik
 
 	public void sendTelegramMessage(String thema, String nachricht) throws IOException
 	{
-		String toSend = thema //
-				.replaceAll("[äÄ]", "ae") //
-				.replaceAll("[öÖ]", "oe") //
-				.replaceAll("[üÜ]", "ue") //
-				.replaceAll("ß", "ss") //
-				+ " - " + nachricht;
+		String toSend = ersetzeUmlaute(thema) + " - " + ersetzeUmlaute(nachricht);
 		String command = "https://api.telegram.org/bot444829640:AAEZSHnTqmqtRkLualeRH4JmvkV95t5o8b8/sendmessage?chat_id="
 				+ CHAT_ID + "&text=";
 		command += toSend;
@@ -29,6 +24,15 @@ public class FehlerLogikImpl implements FehlerLogik
 		URL url = new URL(command);
 		URLConnection connection = url.openConnection();
 		connection.getInputStream();
+	}
+
+	private String ersetzeUmlaute(String in)
+	{
+		return in //
+				.replaceAll("[äÄ]", "ae") //
+				.replaceAll("[öÖ]", "oe") //
+				.replaceAll("[üÜ]", "ue") //
+				.replaceAll("ß", "ss");
 	}
 
 	@Override
