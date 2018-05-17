@@ -119,20 +119,6 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		}
 	}
 
-	@Deprecated
-	public void sendeAnClients(Datenobjekt obj) throws IOException
-	{
-		// TODO Auto-generated method stub
-
-	}
-
-	@Deprecated
-	public void sendeAnClients(String string) throws IOException
-	{
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public String getIp() throws UnknownHostException
 	{
@@ -154,7 +140,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	}
 
-	@Deprecated
+	@Override
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
 		// TODO Auto-generated method stub
