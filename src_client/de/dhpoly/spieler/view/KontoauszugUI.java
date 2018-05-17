@@ -26,16 +26,19 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 		{
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			public int getColumnCount()
 			{
 				return Ressource.values().length + 1;
 			}
 
+			@Override
 			public int getRowCount()
 			{
 				return spieler.getKasse().size();
 			}
 
+			@Override
 			public Object getValueAt(int row, int col)
 			{
 				RessourcenDatensatz datensatz = spieler.getKasse().get(row);
