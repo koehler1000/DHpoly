@@ -4,16 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ConnectException;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 
 public class NetzwerkClientImpl implements NetzwerkClient
 {
+	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
+
 	private Socket server;
 	private PrintWriter outputWriter;
 	private BufferedReader inputBuffer;
@@ -24,7 +27,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		// TODO Auto-generated constructor stub
 	}
 
-	public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
+	public void verbinden(String ip, int port) throws IOException
 	{
 		server = new Socket(ip, port);
 		try
@@ -35,8 +38,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		}
 		catch (IOException e)
 		{
-			System.err.println(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -50,8 +52,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		}
 		catch (IOException e)
 		{
-			System.err.println(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 			return false;
 		}
 		outputWriter.close();
@@ -76,18 +77,15 @@ public class NetzwerkClientImpl implements NetzwerkClient
 		}
 		catch (IOException e)
 		{
-			System.err.println(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return line;
 	}
 
-	
 	public void sendQuitMessage()
 	{
 		sendeAnServer("QUIT");
 	}
-
 
 	@Deprecated
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
@@ -97,9 +95,10 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	}
 
 	@Override
-	public void sendeAnServer(Datenobjekt obj) {
+	public void sendeAnServer(Datenobjekt obj)
+	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
