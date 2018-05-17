@@ -13,8 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
+import javax.swing.table.TableModel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.bilderverwalter.view.Bild;
@@ -185,7 +187,7 @@ public class ElementFactory
 		return butSpieler;
 	}
 
-	public static Component erzeugeScrollPanel(JPanel panel)
+	public static Component erzeugeScrollPanel(Component panel)
 	{
 		JScrollPane pane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -221,5 +223,14 @@ public class ElementFactory
 
 			pane.getViewport().setViewPosition(new Point(0, position));
 		};
+	}
+
+	public static JTable getTable(TableModel dataModel)
+	{
+		JTable table = new JTable(dataModel);
+		table.setFont(SCHRIFT_NORMAL);
+		table.setBackground(FARBE_DESIGN);
+		table.setRowHeight(SCHRIFT_NORMAL.getSize() + 20);
+		return table;
 	}
 }

@@ -1,16 +1,14 @@
 package de.dhpoly.spieler.view;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.Component;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.Spieler;
 
 public class KontoauszugUI extends Oberflaeche // NOSONAR
@@ -21,32 +19,34 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
-		JPanel pnlInhalt = ElementFactory.erzeugePanel();
-		pnlInhalt.setLayout(new BorderLayout(10, 10));
-
-		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout(1, 1));
-
-		JTextArea txtText = ElementFactory.getTextFeld("", false);
-		JTextArea txtWert = ElementFactory.getTextFeld("", false);
-
-		for (RessourcenDatensatz transaktion : spieler.getKasse())
+		TableModel dataModel = new AbstractTableModel()
 		{
-			txtText.setText(txtText.getText() + transaktion.getBeschreibung() + System.lineSeparator());
-			txtWert.setText(txtWert.getText() + transaktion.getString() + System.lineSeparator());
-		}
+			public int getColumnCount()
+			{
+				return 2;
+			}
 
-		JPanel pnlWerte = new JPanel();
-		pnlWerte.setLayout(new GridLayout(1, 1));
-		pnlWerte.add(txtText);
-		pnlWerte.add(txtWert);
+			public int getRowCount()
+			{
+				return spieler.getKasse().size();
+			}
 
-		pnl.add(new JScrollPane(pnlWerte));
+			public Object getValueAt(int row, int col)
+			{
+				if (col == 0)
+				{
+					return spieler.getKasse().get(row).getBeschreibung();
+				}
+				else
+				{
+					return spieler.getKasse().get(row).getString();
+				}
+			}
+		};
 
-		pnlInhalt.add(pnl, BorderLayout.CENTER);
-		pnlInhalt.add(getSchliessenButton(), BorderLayout.SOUTH);
-
-		this.add(pnlInhalt);
+		JTable table = ElementFactory.getTable(dataModel);
+		Component pane = ElementFactory.erzeugeScrollPanel(table);
+		this.add(pane);
 	}
 
 	@Override
