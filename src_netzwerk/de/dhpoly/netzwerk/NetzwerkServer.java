@@ -9,12 +9,6 @@ import de.dhpoly.spieler.model.Spieler;
 
 public interface NetzwerkServer
 {
-	@Deprecated
-	void sendeAnClients(Datenobjekt obj) throws IOException;
-
-	@Deprecated
-	void sendeAnClients(String string) throws IOException;
-
 	String getIp() throws UnknownHostException;
 
 	@Deprecated

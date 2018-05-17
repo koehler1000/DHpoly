@@ -52,18 +52,6 @@ public class ServerFake implements NetzwerkServer
 	}
 
 	@Override
-	public void sendeAnClients(Datenobjekt obj) throws IOException
-	{
-		// fake -> wird nicht benötigt
-	}
-
-	@Override
-	public void sendeAnClients(String string) throws IOException
-	{
-		// fake -> wird nicht benötigt
-	}
-
-	@Override
 	public String getIp() throws UnknownHostException
 	{
 		return null;
