@@ -101,10 +101,18 @@ public class SpielImpl implements Spiel
 	{
 		if (status == SpielStatus.SPIEL_LAEUFT)
 		{
-			wuerfelPaar.wuerfeln();
-			setAktuellerSpielerHatGewuerfelt(true);
-			ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
-			server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
+			if (aktuellerSpielerHatGewuerfelt)
+			{
+				Fehler fehler = new Fehler("Spieler hat bereits gewürfelt", FehlerTyp.FEHLER_SPIELER);
+				verarbeiteFehler(fehler);
+			}
+			else
+			{
+				wuerfelPaar.wuerfeln();
+				setAktuellerSpielerHatGewuerfelt(true);
+				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+				server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
+			}
 		}
 		else
 		{
