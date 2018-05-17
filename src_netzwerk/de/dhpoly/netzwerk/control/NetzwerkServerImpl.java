@@ -52,12 +52,11 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		try
 		{
 			listener = new ServerSocket(i);
-			clientList = new ArrayList<Session>();
+			clientList = new ArrayList<>();
 		}
 		catch (IOException e)
 		{
-			System.err.println(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -77,7 +76,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	 */
 	public void run(String[] args) throws IOException
 	{
-		System.out.println("Log: Server started.. listening for connections");
+		LOGGER.log(Level.INFO, "Log: Server started.. listening for connections");
 
 		/** Continually loop and listen for connections while running */
 		while (sollServerLaufen)
@@ -116,8 +115,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		}
 		catch (IOException e)
 		{
-			System.err.print(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
