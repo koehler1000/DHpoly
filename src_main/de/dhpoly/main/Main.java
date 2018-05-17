@@ -38,15 +38,15 @@ public class Main implements Runnable
 	private void starteClient(String ipHost) throws IOException
 	{
 		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
-		
+
 		NetzwerkClientImpl client = new NetzwerkClientImpl(null);
-		client.verbinden("127.0.0.1", 3001);
+		client.verbinden(str, 3001);
 		client.sendeAnServer("Test");
 
 		NetzwerkClientImpl client2 = new NetzwerkClientImpl(null);
-		client2.verbinden("127.0.0.1", 3001);
+		client2.verbinden(str, 3001);
 		client2.sendeAnServer("Test2");
-		
+
 		// NetzwerkClientImpl client = new NetzwerkClientImpl(str); // TODO ClientName
 		// muss übergeben werden
 		// client.connect(ipHost, 3001);
@@ -59,7 +59,7 @@ public class Main implements Runnable
 		// fenster.zeigeSpielansicht(ansicht, spieler.getName());
 	}
 
-	private String starteServer() throws IOException
+	private String starteServer()
 	{
 		new Thread(new Main()).start();
 
