@@ -24,9 +24,8 @@ public interface NetzwerkServer
 
 	void run(String[] args) throws IOException;
 
-	@Deprecated
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
-	
+
 	/**
 	 * Sendet @param obj an den @param spieler
 	 */

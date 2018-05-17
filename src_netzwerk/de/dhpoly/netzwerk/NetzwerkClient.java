@@ -17,18 +17,18 @@ public interface NetzwerkClient
 	 * Sendet @param obj an den Server
 	 */
 	public void sendeAnServer(Datenobjekt obj);
-	
+
 	/**
-	 * Baut eine Verbindung mit dem Server mit der @param ip und dem @param port auf.
+	 * Baut eine Verbindung mit dem Server mit der @param ip und dem @param port
+	 * auf.
 	 */
 	void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException;
 
-	@Deprecated
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
-	
+
 	@Deprecated
 	String read();
-	
+
 	/**
 	 * Trennt die Verbindung zum Server
 	 */
