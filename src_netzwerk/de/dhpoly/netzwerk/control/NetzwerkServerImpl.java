@@ -17,6 +17,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	/** The number of current connections (not logged-in sessions) */
 	private int connections;
+	private boolean sollServerLaufen = false;
 
 	/**
 	 * Server's socket to listen for incoming connections on. ServerSocket objects
@@ -76,7 +77,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 		System.out.println("Log: Server started.. listening for connections");
 
 		/** Continually loop and listen for connections while running */
-		while (true)
+		while (sollServerLaufen)
 		{
 
 			/**
@@ -141,8 +142,8 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	@Override
 	public void verbindungAbbauen() throws IOException
 	{
+		sollServerLaufen = false;
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
