@@ -49,12 +49,6 @@ public class ClientFake implements NetzwerkClient
 	}
 
 	@Override
-	public String read()
-	{
-		return "Not implemented";
-	}
-
-	@Override
 	public boolean verbindungTrennen()
 	{
 		return false;

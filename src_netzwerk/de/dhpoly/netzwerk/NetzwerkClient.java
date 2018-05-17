@@ -26,9 +26,6 @@ public interface NetzwerkClient
 
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
 
-	@Deprecated
-	String read();
-
 	/**
 	 * Trennt die Verbindung zum Server
 	 */

@@ -77,12 +77,6 @@ public class AITest
 		{}
 
 		@Override
-		public String read()
-		{
-			return null;
-		}
-
-		@Override
 		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
 		{
 			// TODO Auto-generated method stub
