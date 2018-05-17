@@ -9,13 +9,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 
 public class NetzwerkClientImpl implements NetzwerkClient
 {
-	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(NetzwerkClientImpl.class.getName());
 
 	private Socket server;
 	private PrintWriter outputWriter;
