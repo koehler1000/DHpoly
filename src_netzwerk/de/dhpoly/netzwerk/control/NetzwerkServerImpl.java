@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
@@ -14,6 +16,7 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class NetzwerkServerImpl implements NetzwerkServer
 {
+	private static final Logger LOGGER = Logger.getLogger(NetzwerkServerImpl.class.getName());
 
 	/** The number of current connections (not logged-in sessions) */
 	private int connections;
@@ -196,6 +199,8 @@ public class NetzwerkServerImpl implements NetzwerkServer
  */
 class ClientHandler implements Runnable
 {
+	private static final Logger LOGGER = Logger.getLogger(ClientHandler.class.getName());
+
 	private Session client;
 
 	/**
@@ -222,7 +227,7 @@ class ClientHandler implements Runnable
 	{
 		client = new Session(socket);
 		this.clientList = cliList;
-		System.out.println("Log: Client connected, new thread created.");
+		LOGGER.log(Level.INFO, "Log: Client connected, new thread created.");
 	}
 
 	/**
@@ -233,7 +238,7 @@ class ClientHandler implements Runnable
 	 */
 	public void run()
 	{
-		System.out.println("Log: Got input/output streams for connected client.");
+		LOGGER.log(Level.INFO, "Log: Got input/output streams for connected client.");
 
 		/** Get the first message from the client, attempt communication */
 		String clientMsg = null;
@@ -290,8 +295,7 @@ class ClientHandler implements Runnable
 		}
 		catch (Exception e)
 		{
-			System.err.println(e);
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -324,7 +328,7 @@ class ClientHandler implements Runnable
 		/** Update each of the client's user lists */
 		updateClientUserList();
 
-		System.out.println("Log: Client socket closed, removed from client list");
+		LOGGER.log(Level.INFO, "Log: Client socket closed, removed from client list");
 	}
 
 	/**
@@ -339,7 +343,7 @@ class ClientHandler implements Runnable
 		{
 			clientList.get(i).write(msg);
 		}
-		System.out.println("Log: Message broadcast --> " + msg);
+		LOGGER.log(Level.INFO, msg);
 	}
 
 	/**
