@@ -28,6 +28,7 @@ import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
+import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
 {
@@ -81,7 +82,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		pnlRandRechts.add(butWuerfeln);
 
 		JButton butWuerfelWeitergeben = ElementFactory.getButton("Würfel weitergeben");
-		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
+		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
 		pnlRandRechts.add(butWuerfelWeitergeben);
 
 		pnlRandRechts.add(ElementFactory.erzeugePanel());

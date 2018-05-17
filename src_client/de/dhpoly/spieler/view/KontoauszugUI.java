@@ -1,6 +1,7 @@
 package de.dhpoly.spieler.view;
 
 import java.awt.Component;
+import java.util.Arrays;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -9,6 +10,8 @@ import javax.swing.table.TableModel;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.ressource.model.Ressource;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.Spieler;
 
 public class KontoauszugUI extends Oberflaeche // NOSONAR
@@ -21,9 +24,11 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 
 		TableModel dataModel = new AbstractTableModel()
 		{
+			private static final long serialVersionUID = 1L;
+
 			public int getColumnCount()
 			{
-				return 2;
+				return Ressource.values().length + 1;
 			}
 
 			public int getRowCount()
@@ -33,13 +38,20 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 
 			public Object getValueAt(int row, int col)
 			{
+				RessourcenDatensatz datensatz = spieler.getKasse().get(row);
+				int idx = Arrays.asList(Ressource.values()).indexOf(datensatz.getRessource());
+
 				if (col == 0)
 				{
-					return spieler.getKasse().get(row).getBeschreibung();
+					return datensatz.getBeschreibung();
+				}
+				else if (col == idx)
+				{
+					return spieler.getKasse().get(row).getString();
 				}
 				else
 				{
-					return spieler.getKasse().get(row).getString();
+					return "";
 				}
 			}
 		};
