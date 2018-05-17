@@ -20,6 +20,7 @@ import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.nachricht.model.Nachricht;
+import de.dhpoly.nachricht.view.NachrichtenErstellerUI;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -98,7 +99,10 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
-		pnlRandRechts.add(ElementFactory.erzeugePanel());
+
+		JButton butFeedback = ElementFactory.getButton("Entwickler kontaktieren");
+		butFeedback.addActionListener(e -> hinzu("Feedback", "Feedback", new NachrichtenErstellerUI(this)));
+		pnlRandRechts.add(butFeedback);
 
 		JButton butKontakt = ElementFactory.getButton("Danke sagen");
 		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke")));
