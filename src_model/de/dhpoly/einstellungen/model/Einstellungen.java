@@ -32,9 +32,9 @@ public class Einstellungen extends Datenobjekt
 
 	public Einstellungen()
 	{
-		RessourcenDatensatz geld = new RessourcenDatensatz(Ressource.GELD, 10);
-		karten.add(new BezahlKarte("Zahle 10 an alle", GeldTransfer.SPIELER_ANDERESPIELER, geld));
-		karten.add(new BezahlKarte("Erhalte 10 von Bank", GeldTransfer.BANK_SPIELER, geld));
+		RessourcenDatensatz geld = new RessourcenDatensatz(Ressource.GELD, 10, "Ereigniskarte");
+		karten.add(new BezahlKarte("Zahle 10€ an alle", GeldTransfer.SPIELER_ANDERESPIELER, geld));
+		karten.add(new BezahlKarte("Erhalte 10€ von der Bank", GeldTransfer.BANK_SPIELER, geld));
 	}
 
 	public int getBetragBetretenLos()
