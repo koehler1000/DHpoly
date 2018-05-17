@@ -3,6 +3,8 @@ package de.dhpoly.fehler.control;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.fehler.FehlerLogik;
@@ -12,6 +14,8 @@ import de.dhpoly.spiel.Spiel;
 
 public class FehlerLogikImpl implements FehlerLogik
 {
+	private static final Logger LOGGER = Logger.getLogger(FehlerLogikImpl.class.getName());
+
 	private static final String CHAT_ID = "-1001131918455";
 
 	public void sendTelegramMessage(String thema, String nachricht) throws IOException
@@ -32,7 +36,9 @@ public class FehlerLogikImpl implements FehlerLogik
 				.replaceAll("[äÄ]", "ae") //
 				.replaceAll("[öÖ]", "oe") //
 				.replaceAll("[üÜ]", "ue") //
-				.replaceAll("ß", "ss");
+				.replaceAll("ß", "ss")//
+				.replaceAll("\n", System.lineSeparator())//
+				.replaceAll(System.lineSeparator(), " - ");
 	}
 
 	@Override
@@ -53,7 +59,7 @@ public class FehlerLogikImpl implements FehlerLogik
 		}
 		catch (IOException ex)
 		{
-			// ignorieren
+			LOGGER.log(Level.INFO, ex.getMessage(), ex);
 		}
 	}
 }
