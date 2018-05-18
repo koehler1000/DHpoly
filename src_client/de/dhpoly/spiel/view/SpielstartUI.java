@@ -24,6 +24,7 @@ public class SpielstartUI extends Oberflaeche // NOSONAR
 		butStart.addActionListener(e -> this.sendeAnServer(new SpielStart(ansicht.getSpieler())));
 
 		this.add(butStart);
+		this.remove(getSchliessenButton());
 	}
 
 	@Override
