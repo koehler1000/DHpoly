@@ -51,6 +51,12 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
-		zeigeLinks(beschreibung, objekt);		
+		zeigeLinks(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

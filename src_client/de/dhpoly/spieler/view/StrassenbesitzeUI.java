@@ -1,6 +1,8 @@
 package de.dhpoly.spieler.view;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -40,5 +42,11 @@ public class StrassenbesitzeUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		// wird nicht direkt angezeigt
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

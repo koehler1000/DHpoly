@@ -2,7 +2,9 @@ package de.dhpoly.spielfeld.view;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JPanel;
@@ -125,5 +127,11 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		zeigeMitte(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

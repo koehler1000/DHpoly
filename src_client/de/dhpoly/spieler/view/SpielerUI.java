@@ -3,6 +3,8 @@ package de.dhpoly.spieler.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -102,5 +104,11 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		zeigeMitte(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

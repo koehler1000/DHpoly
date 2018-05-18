@@ -1,7 +1,9 @@
 package de.dhpoly.spieler.view;
 
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -75,5 +77,11 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		zeigeLinks(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

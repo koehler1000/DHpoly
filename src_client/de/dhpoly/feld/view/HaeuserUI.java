@@ -1,6 +1,7 @@
 package de.dhpoly.feld.view;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -40,5 +41,13 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		zeigeLinks(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		List<Oberflaeche> ret = new ArrayList<>();
+		oberflaechen.stream().filter(e -> (e instanceof HaeuserUI)).forEach((Oberflaeche e) -> ret.add(e));
+		return ret;
 	}
 }

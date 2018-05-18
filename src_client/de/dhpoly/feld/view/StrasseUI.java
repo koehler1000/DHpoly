@@ -3,6 +3,8 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.BorderFactory;
@@ -11,6 +13,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
+import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
@@ -73,5 +76,11 @@ public class StrasseUI extends FeldUI // NOSONAR
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
 		// wird nicht direkt angezeigt
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

@@ -1,5 +1,8 @@
 package de.dhpoly.ressource.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -25,4 +28,9 @@ public class RessourcenDatensatzUI extends Oberflaeche // NOSONAR
 		// wird nicht direkt angezeigt
 	}
 
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
+	}
 }

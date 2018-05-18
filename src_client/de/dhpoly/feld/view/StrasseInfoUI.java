@@ -3,6 +3,8 @@ package de.dhpoly.feld.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -105,6 +107,12 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
-		zeigeLinks(beschreibung, objekt);		
+		zeigeLinks(beschreibung, objekt);
+	}
+
+	@Override
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
+	{
+		return new ArrayList<>();
 	}
 }

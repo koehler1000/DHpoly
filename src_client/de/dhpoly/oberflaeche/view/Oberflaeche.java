@@ -1,6 +1,7 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -65,4 +66,6 @@ public abstract class Oberflaeche extends JPanel
 	}
 
 	public abstract boolean isInvalideBeiSpielerWechsel();
+
+	public abstract List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen);
 }
