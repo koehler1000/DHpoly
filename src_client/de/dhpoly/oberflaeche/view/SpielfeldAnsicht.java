@@ -130,6 +130,8 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 			oberflaeche.remove(e);
 		});
 
+		oberflaechen.add(oberflaeche);
+
 		tabPane.setSelectedComponent(oberflaeche);
 	}
 
