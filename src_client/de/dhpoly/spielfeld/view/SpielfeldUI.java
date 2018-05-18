@@ -124,6 +124,6 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
-		// wird nicht direkt angezeigt
+		zeigeMitte(beschreibung, objekt);
 	}
 }

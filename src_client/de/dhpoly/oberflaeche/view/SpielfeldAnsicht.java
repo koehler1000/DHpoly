@@ -39,7 +39,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private Spieler spieler;
 
 	private JButton butSpielStarten;
-	private Oberflaeche spielfeld;
 
 	private transient Optional<NetzwerkClient> client;
 
