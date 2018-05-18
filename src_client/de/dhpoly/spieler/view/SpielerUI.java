@@ -25,7 +25,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private transient Spieler spieler;
+	private Spieler spieler;
 	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
 	private JButton butHandel;
@@ -79,6 +79,11 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		update();
 	}
 
+	public Spieler getSpieler()
+	{
+		return spieler;
+	}
+
 	private void update()
 	{
 		if (spieler.getStatus() != SpielerStatus.VERLOREN)
@@ -110,8 +115,8 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
 	{
 		List<Oberflaeche> ret = new ArrayList<>();
-		// FIXME Bedingung um Spieler erweitern
-		oberflaechen.stream().filter(e -> (e instanceof SpielerUI)).forEach(ret::add);
+		oberflaechen.stream().filter(e -> (e instanceof SpielerUI && ((SpielerUI) e).getSpieler() == spieler))
+				.forEach(ret::add);
 		return ret;
 	}
 }
