@@ -1,5 +1,6 @@
 package de.dhpoly.einstellungen.view;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -18,4 +19,9 @@ public class EinstellungenUI extends Oberflaeche // NOSONAR
 		return false;
 	}
 
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		zeigeMitte(beschreibung, objekt);
+	}
 }

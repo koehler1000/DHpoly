@@ -3,6 +3,7 @@ package de.dhpoly.nachricht.view;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -33,5 +34,11 @@ public class NachrichtenErstellerUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return true;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		zeigeLinks(beschreibung, objekt);
 	}
 }

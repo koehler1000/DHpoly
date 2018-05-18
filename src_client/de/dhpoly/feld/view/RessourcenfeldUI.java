@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import de.dhpoly.bilderverwalter.view.Bild;
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
@@ -31,5 +32,11 @@ public class RessourcenfeldUI extends FeldUI // NOSONAR
 	private void hintergrundfarbeSetzen()
 	{
 		this.setBackground(feld.getRessource().getFarbe());
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		// wird nicht direkt angezeigt
 	}
 }

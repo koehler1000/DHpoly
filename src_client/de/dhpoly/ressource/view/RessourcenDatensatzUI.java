@@ -1,5 +1,6 @@
 package de.dhpoly.ressource.view;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -16,6 +17,12 @@ public class RessourcenDatensatzUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		// wird nicht direkt angezeigt
 	}
 
 }

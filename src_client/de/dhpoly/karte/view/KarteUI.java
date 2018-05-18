@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -37,5 +38,11 @@ public class KarteUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		zeigeLinks(beschreibung, objekt);
 	}
 }

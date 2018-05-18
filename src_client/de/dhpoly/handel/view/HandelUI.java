@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -80,5 +81,11 @@ public class HandelUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		zeigeLinks(beschreibung, objekt);
 	}
 }

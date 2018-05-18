@@ -19,7 +19,7 @@ public abstract class DatenobjektAnClient extends Datenobjekt
 		try
 		{
 			Oberflaeche o = (Oberflaeche) getClassUI().getConstructors()[0].newInstance(this, ansicht);
-			o.zeigeRechts(getTitel(), this);
+			o.zeige(getTitel(), this);
 		}
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| SecurityException ex)

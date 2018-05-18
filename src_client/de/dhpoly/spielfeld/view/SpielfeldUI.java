@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.EreignisfeldDaten;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
@@ -118,5 +119,11 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		// wird nicht direkt angezeigt
 	}
 }

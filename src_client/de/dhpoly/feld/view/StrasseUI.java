@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
@@ -66,5 +67,11 @@ public class StrasseUI extends FeldUI // NOSONAR
 	private void setBeschriftung(Optional<Spieler> spieler)
 	{
 		butBesitzer.setText(spieler.isPresent() ? spieler.get().getName() : feld.getKaufpreis() + "€");
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		// wird nicht direkt angezeigt
 	}
 }

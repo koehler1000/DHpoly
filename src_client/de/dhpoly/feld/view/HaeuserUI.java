@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -33,5 +34,11 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 	public boolean isInvalideBeiSpielerWechsel()
 	{
 		return false;
+	}
+
+	@Override
+	public void zeige(String beschreibung, Datenobjekt objekt)
+	{
+		zeigeLinks(beschreibung, objekt);
 	}
 }
