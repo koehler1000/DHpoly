@@ -25,7 +25,6 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.model.SpielStart;
-import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
@@ -104,7 +103,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 
 		JButton butFeedback = ElementFactory.getButton("Entwickler kontaktieren");
-		butFeedback.addActionListener(e -> hinzu("Feedback", "Feedback", new NachrichtenErstellerUI(this)));
+		butFeedback.addActionListener(e -> hinzuLinks("Feedback", "Feedback", new NachrichtenErstellerUI(this)));
 		pnlRandRechts.add(butFeedback);
 
 		JButton butKontakt = ElementFactory.getButton("Danke sagen");
@@ -133,41 +132,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		inhalte.remove(obj);
 	}
 
-	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
-	{
-		fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
-	}
-
-	public void hinzu(String beschreibung, SpielfeldDaten obj, Oberflaeche oberflaeche)
-	{
-		fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
-	}
-
-	public void hinzu(String beschreibung, Spieler obj, Oberflaeche oberflaeche)
-	{
-		fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
-	}
-
-	private void fuegeInhaltHinzuRand(String beschreibung, Object obj, Oberflaeche oberflaeche)
-	{
-		JTabbedPane tabPane = tabRandLinks;
-		if (inhalte.containsKey(obj))
-		{
-			Optional.ofNullable(inhalte.get(obj).getParent()).ifPresent(e -> e.remove(inhalte.get(obj)));
-			inhalte.remove(obj);
-		}
-		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
-	}
-
-	private void fuegeInhaltHinzuMitte(String beschreibung, Object obj, Oberflaeche oberflaeche)
-	{
-		JTabbedPane tabPane = tabMitte;
-
-		tabMitte.remove(butSpielStarten);
-
-		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
-	}
-
 	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
@@ -190,7 +154,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeHausbaumoeglichkeit()
 	{
-		hinzu("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
+		hinzuLinks("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
 	}
 
 	public void sperreOberflaeche(Transaktion transaktion)
@@ -200,7 +164,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeKontoauszug(Spieler spieler)
 	{
-		hinzu("Kontoauszug", spieler, new KontoauszugUI(spieler, this));
+		hinzuLinks("Kontoauszug", spieler, new KontoauszugUI(spieler, this));
 	}
 
 	public void entferne(Oberflaeche oberflaeche)
@@ -214,7 +178,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
-		hinzu("Straße", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
+		hinzuLinks("Straße", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
 	public Spieler getSpieler()
@@ -233,21 +197,27 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		}
 	}
 
-	public void hinzuRechts(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	public void hinzuRechts(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
-		// TODO Auto-generated method stub
-		hinzu(beschreibung, objekt, oberflaeche);
+		// FIXME
+		hinzuLinks(beschreibung, objekt, oberflaeche);
 	}
 
-	public void hinzuMitte(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	public void hinzuMitte(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
-		// TODO Auto-generated method stub
-		hinzu(beschreibung, objekt, oberflaeche);
+		JTabbedPane tabPane = tabMitte;
+		tabMitte.remove(butSpielStarten);
+		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
 	}
 
-	public void hinzuLinks(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	public void hinzuLinks(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
-		// TODO Auto-generated method stub
-		hinzu(beschreibung, objekt, oberflaeche);
+		JTabbedPane tabPane = tabRandLinks;
+		if (inhalte.containsKey(objekt))
+		{
+			Optional.ofNullable(inhalte.get(objekt).getParent()).ifPresent(e -> e.remove(inhalte.get(objekt)));
+			inhalte.remove(objekt);
+		}
+		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
 	}
 }
