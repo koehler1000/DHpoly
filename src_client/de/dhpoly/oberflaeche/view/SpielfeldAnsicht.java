@@ -39,6 +39,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private JTabbedPane tabMitte = new JTabbedPane();
 	private Spieler spieler;
 
+	private JButton butSpielStarten;
+	private Oberflaeche spielfeld;
+
 	private transient Optional<NetzwerkClient> client;
 
 	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
@@ -63,7 +66,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 		this.add(tabRandLinks, BorderLayout.WEST);
 
-		JButton butSpielStarten = ElementFactory
+		butSpielStarten = ElementFactory
 				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
 		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
 
@@ -132,14 +135,17 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void hinzu(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		if (obj instanceof SpielfeldDaten)
-		{
-			fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
-		}
-		else
-		{
-			fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
-		}
+		fuegeInhaltHinzuRand(beschreibung, obj, oberflaeche);
+	}
+
+	public void hinzu(String beschreibung, SpielfeldDaten obj, Oberflaeche oberflaeche)
+	{
+		fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
+	}
+
+	public void hinzu(String beschreibung, Spieler obj, Oberflaeche oberflaeche)
+	{
+		fuegeInhaltHinzuMitte(beschreibung, obj, oberflaeche);
 	}
 
 	private void fuegeInhaltHinzuRand(String beschreibung, Object obj, Oberflaeche oberflaeche)
@@ -155,9 +161,10 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void fuegeInhaltHinzuMitte(String beschreibung, Object obj, Oberflaeche oberflaeche)
 	{
-		tabMitte.removeAll();
-
 		JTabbedPane tabPane = tabMitte;
+
+		tabMitte.remove(butSpielStarten);
+
 		fuegeInhaltHinzu(beschreibung, obj, oberflaeche, tabPane);
 	}
 
@@ -224,5 +231,23 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		{
 			leereRand();
 		}
+	}
+
+	public void hinzuRechts(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	{
+		// TODO Auto-generated method stub
+		hinzu(beschreibung, objekt, oberflaeche);
+	}
+
+	public void hinzuMitte(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	{
+		// TODO Auto-generated method stub
+		hinzu(beschreibung, objekt, oberflaeche);
+	}
+
+	public void hinzuLinks(String beschreibung, Datenobjekt objekt, Oberflaeche oberflaeche)
+	{
+		// TODO Auto-generated method stub
+		hinzu(beschreibung, objekt, oberflaeche);
 	}
 }

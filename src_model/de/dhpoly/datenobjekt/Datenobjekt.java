@@ -34,7 +34,7 @@ public abstract class Datenobjekt implements Serializable
 		try
 		{
 			Oberflaeche o = (Oberflaeche) getClassUI().getConstructors()[0].newInstance(this, ansicht);
-			o.zeige(getTitel(), this);
+			o.zeigeRechts(getTitel(), this);
 		}
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| SecurityException ex)
