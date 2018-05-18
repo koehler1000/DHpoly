@@ -21,6 +21,7 @@ public class StrasseKaufenLogik implements Logik
 
 			if (spiel.getAktuellerSpieler() == strasseKaufen.getSender())
 			{
+				// FIXME Spieler soll nur kaufen können, wenn sie noch auf dem Feld stehen
 				kaufAbwickeln(strasseKaufen, strasseKaufen.getSender());
 				spiel.zeigeAllenSpielern(spiel.getSpielfeld());
 			}
