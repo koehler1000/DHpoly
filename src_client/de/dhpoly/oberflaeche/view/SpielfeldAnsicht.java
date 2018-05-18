@@ -1,14 +1,10 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -19,7 +15,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
-import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.nachricht.view.NachrichtenErstellerUI;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
@@ -42,8 +37,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private List<Oberflaeche> oberflaechen = new ArrayList<>();
 
 	private transient Optional<NetzwerkClient> client;
-
-	private transient Map<Object, Oberflaeche> inhalte = new HashMap<>();
 
 	public SpielfeldAnsicht(Spieler spieler, NetzwerkClient client)
 	{
@@ -121,40 +114,36 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		c.sendeAnServer(obj);
 	}
 
-	private void loesche(Object obj)
+	private void loesche(Oberflaeche obj)
 	{
-		Oberflaeche oberflaeche = inhalte.get(obj);
-		tabLinks.remove(oberflaeche);
-		inhalte.remove(obj);
+		tabLinks.remove(obj);
 	}
 
 	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
 
-		oberflaeche.durchHinzufuegenUngueltigWerdend(oberflaechen).forEach(e -> tabPane.remove(e));
+		List<Oberflaeche> oberflaechenAlt = oberflaeche.durchHinzufuegenUngueltigWerdend(oberflaechen);
 
-		if (inhalte.containsKey(obj))
-		{
-			Component component = inhalte.get(obj);
-			tabPane.remove(component);
-		}
+		oberflaechenAlt.forEach(e -> {
+			tabPane.remove(e);
+			oberflaeche.remove(e);
+		});
 
-		inhalte.put(obj, oberflaeche);
 		tabPane.setSelectedComponent(oberflaeche);
 	}
 
 	public void leereRand()
 	{
-		List<Object> zuLoeschen = new ArrayList<>();
-
-		for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
-		{
-			zuLoeschen.add(obj.getKey());
-			tabLinks.remove(obj.getValue());
-		}
-
-		zuLoeschen.forEach(e -> inhalte.remove(e));
+		// List<Object> zuLoeschen = new ArrayList<>();
+		//
+		// for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
+		// {
+		// zuLoeschen.add(obj.getKey());
+		// tabLinks.remove(obj.getValue());
+		// }
+		//
+		// zuLoeschen.forEach(e -> inhalte.remove(e));
 	}
 
 	public void zeigeHausbaumoeglichkeit()
@@ -162,9 +151,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		hinzuLinks("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
 	}
 
-	public void sperreOberflaeche(Transaktion transaktion)
+	public void sperreOberflaeche(Oberflaeche oberflaeche)
 	{
-		loesche(transaktion);
+		loesche(oberflaeche);
 	}
 
 	public void zeigeKontoauszug(Spieler spieler)
@@ -174,11 +163,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void entferne(Oberflaeche oberflaeche)
 	{
-		if (inhalte.containsValue(oberflaeche))
-		{
-			inhalte.remove(inhalte.get(oberflaeche));
-		}
 		tabLinks.remove(oberflaeche);
+		tabMitte.remove(oberflaeche);
+		tabRechts.remove(oberflaeche);
 	}
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
