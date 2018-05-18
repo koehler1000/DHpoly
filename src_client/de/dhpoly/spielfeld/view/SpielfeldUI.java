@@ -22,6 +22,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.model.SpielfeldDaten;
+import de.dhpoly.spiel.view.SpielstartUI;
 import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 
 public class SpielfeldUI extends Oberflaeche // NOSONAR
@@ -132,6 +133,8 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	@Override
 	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
 	{
-		return new ArrayList<>();
+		List<Oberflaeche> ret = new ArrayList<>();
+		oberflaechen.stream().filter(e -> (e instanceof SpielfeldUI || e instanceof SpielstartUI)).forEach(ret::add);
+		return ret;
 	}
 }

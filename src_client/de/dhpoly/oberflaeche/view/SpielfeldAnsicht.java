@@ -25,7 +25,7 @@ import de.dhpoly.nachricht.view.NachrichtenErstellerUI;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spiel.model.SpielStart;
+import de.dhpoly.spiel.view.SpielstartUI;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
@@ -39,8 +39,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private JTabbedPane tabMitte = new JTabbedPane();
 	private JTabbedPane tabRechts = new JTabbedPane();
 	private Spieler spieler;
-
-	private JButton butSpielStarten;
+	private List<Oberflaeche> oberflaechen = new ArrayList<>();
 
 	private transient Optional<NetzwerkClient> client;
 
@@ -66,11 +65,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 		this.add(tabLinks, BorderLayout.WEST);
 
-		butSpielStarten = ElementFactory
-				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
-		butSpielStarten.addActionListener(e -> this.sendeAnServer(new SpielStart(spieler)));
-
-		tabMitte.addTab("Start", butSpielStarten);
+		new SpielstartUI(this).zeige("Start", getSpieler());
 	}
 
 	private void initRandRechts()
@@ -136,6 +131,8 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
+
+		oberflaeche.durchHinzufuegenUngueltigWerdend(oberflaechen).forEach(e -> tabPane.remove(e));
 
 		if (inhalte.containsKey(obj))
 		{
