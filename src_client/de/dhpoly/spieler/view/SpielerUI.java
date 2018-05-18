@@ -109,6 +109,9 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	@Override
 	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
 	{
-		return new ArrayList<>();
+		List<Oberflaeche> ret = new ArrayList<>();
+		// FIXME Bedingung um Spieler erweitern
+		oberflaechen.stream().filter(e -> (e instanceof SpielerUI)).forEach(ret::add);
+		return ret;
 	}
 }
