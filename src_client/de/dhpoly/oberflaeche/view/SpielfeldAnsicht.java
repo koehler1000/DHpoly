@@ -1,6 +1,7 @@
 package de.dhpoly.oberflaeche.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -34,8 +35,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 {
 	private static final long serialVersionUID = 1L;
 
-	private JTabbedPane tabRandLinks = new JTabbedPane();
+	private JTabbedPane tabLinks = new JTabbedPane();
 	private JTabbedPane tabMitte = new JTabbedPane();
+	private JTabbedPane tabRechts = new JTabbedPane();
 	private Spieler spieler;
 
 	private JButton butSpielStarten;
@@ -52,8 +54,8 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		ElementFactory.bearbeitePanel(this);
 		this.setLayout(new BorderLayout(10, 10));
 
-		tabRandLinks = ElementFactory.getTabbedPane();
-		tabRandLinks.setPreferredSize(new Dimension(500, 0));
+		tabLinks = ElementFactory.getTabbedPane();
+		tabLinks.setPreferredSize(new Dimension(500, 0));
 
 		initRandRechts();
 
@@ -62,7 +64,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
-		this.add(tabRandLinks, BorderLayout.WEST);
+		this.add(tabLinks, BorderLayout.WEST);
 
 		butSpielStarten = ElementFactory
 				.getButtonUeberschrift("Warte auf weitere Spieler" + System.lineSeparator() + "Spiel starten");
@@ -73,8 +75,8 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private void initRandRechts()
 	{
-		JTabbedPane tabRandRechts = ElementFactory.getTabbedPane();
-		tabRandRechts.setPreferredSize(new Dimension(200, 0));
+		tabRechts = ElementFactory.getTabbedPane();
+		tabRechts.setPreferredSize(new Dimension(200, 0));
 
 		JPanel pnlRandRechts = ElementFactory.erzeugePanel();
 		pnlRandRechts.setLayout(new GridLayout(10, 1, 10, 10));
@@ -109,9 +111,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke")));
 		pnlRandRechts.add(butKontakt);
 
-		tabRandRechts.addTab("Aktionen", pnlRandRechts);
+		tabRechts.addTab("Aktionen", pnlRandRechts);
 
-		this.add(tabRandRechts, BorderLayout.EAST);
+		this.add(tabRechts, BorderLayout.EAST);
 	}
 
 	public void sendeAnServer(Datenobjekt objekt)
@@ -127,13 +129,20 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 	private void loesche(Object obj)
 	{
 		Oberflaeche oberflaeche = inhalte.get(obj);
-		tabRandLinks.remove(oberflaeche);
+		tabLinks.remove(oberflaeche);
 		inhalte.remove(obj);
 	}
 
 	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
+
+		if (inhalte.containsKey(obj))
+		{
+			Component component = inhalte.get(obj);
+			tabPane.remove(component);
+		}
+
 		inhalte.put(obj, oberflaeche);
 		tabPane.setSelectedComponent(oberflaeche);
 	}
@@ -145,7 +154,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
 		{
 			zuLoeschen.add(obj.getKey());
-			tabRandLinks.remove(obj.getValue());
+			tabLinks.remove(obj.getValue());
 		}
 
 		zuLoeschen.forEach(e -> inhalte.remove(e));
@@ -172,7 +181,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		{
 			inhalte.remove(inhalte.get(oberflaeche));
 		}
-		tabRandLinks.remove(oberflaeche);
+		tabLinks.remove(oberflaeche);
 	}
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
@@ -198,25 +207,19 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void hinzuRechts(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
-		// FIXME
-		hinzuLinks(beschreibung, objekt, oberflaeche);
+		JTabbedPane tabPane = tabRechts;
+		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
 	}
 
 	public void hinzuMitte(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabMitte;
-		tabMitte.remove(butSpielStarten);
 		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
 	}
 
 	public void hinzuLinks(String beschreibung, Object objekt, Oberflaeche oberflaeche)
 	{
-		JTabbedPane tabPane = tabRandLinks;
-		if (inhalte.containsKey(objekt))
-		{
-			Optional.ofNullable(inhalte.get(objekt).getParent()).ifPresent(e -> e.remove(inhalte.get(objekt)));
-			inhalte.remove(objekt);
-		}
+		JTabbedPane tabPane = tabLinks;
 		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
 	}
 }
