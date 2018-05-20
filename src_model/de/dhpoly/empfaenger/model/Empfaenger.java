@@ -1,18 +1,18 @@
-package de.dhpoly.fehler.model;
+package de.dhpoly.empfaenger.model;
 
-public enum FehlerTyp
+public enum Empfaenger
 {
-	FEHLER_ENTWICKLER(true, false, false), // Fehler nur an Entwickler
-	FEHLER_SPIELER(false, false, true), // Fehler nur an den aktuellen Spieler
-	FEHLER_ALLE_SPIELER(false, true, true), // Fehler an alle Spieler
-	FEHLER_ALLE(true, true, true) // Fehler an alle Spieler und Entwickler
+	ENTWICKLER(true, false, false), // Fehler nur an Entwickler
+	AKTUELLER_SPIELER(false, false, true), // Fehler nur an den aktuellen Spieler
+	ALLE_SPIELER(false, true, true), // Fehler an alle Spieler
+	ALLE(true, true, true) // Fehler an alle Spieler und Entwickler
 	;
 
 	private boolean entwicklerInformieren;
 	private boolean alleSpielerInformieren;
 	private boolean aktuellenSpielerInformieren;
 
-	private FehlerTyp(boolean entwicklerInformieren, boolean alleSpielerInformieren,
+	private Empfaenger(boolean entwicklerInformieren, boolean alleSpielerInformieren,
 			boolean aktuellenSpielerInformieren)
 	{
 		this.entwicklerInformieren = entwicklerInformieren;

@@ -1,6 +1,7 @@
 package de.dhpoly.fehler.model;
 
 import de.dhpoly.datenobjekt.DatenobjektAnClient;
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.fehler.view.FehlerUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 
@@ -9,9 +10,9 @@ public class Fehler extends DatenobjektAnClient
 	private static final long serialVersionUID = 1L;
 
 	private String fehlertext;
-	private FehlerTyp fehlertyp;
+	private Empfaenger fehlertyp;
 
-	public Fehler(String fehlertext, FehlerTyp fehlertyp)
+	public Fehler(String fehlertext, Empfaenger fehlertyp)
 	{
 		this.fehlertext = fehlertext;
 		this.fehlertyp = fehlertyp;
@@ -28,7 +29,7 @@ public class Fehler extends DatenobjektAnClient
 		return fehlertext;
 	}
 
-	public FehlerTyp getFehlertyp()
+	public Empfaenger getFehlertyp()
 	{
 		return fehlertyp;
 	}

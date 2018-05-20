@@ -5,8 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.fehler.model.Fehler;
-import de.dhpoly.fehler.model.FehlerTyp;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
@@ -41,7 +41,7 @@ public abstract class Datenobjekt implements Serializable
 		{
 			Fehler fehler = new Fehler("Fehler beim Anzeigen von " + this.getTitel() + " (" + this.getClassName()
 					+ ") über " + getClassUI() + " (FEHLER: Class: " + ex.getClass() + " Nachricht: " + ex.getMessage()
-					+ ")", FehlerTyp.FEHLER_ALLE);
+					+ ")", Empfaenger.ALLE);
 			ansicht.sendeAnServer(fehler);
 			fehler.anzeigen(ansicht);
 		}
