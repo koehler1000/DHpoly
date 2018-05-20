@@ -135,19 +135,6 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabPane.setSelectedComponent(oberflaeche);
 	}
 
-	public void leereRand()
-	{
-		// List<Object> zuLoeschen = new ArrayList<>();
-		//
-		// for (Entry<Object, Oberflaeche> obj : inhalte.entrySet())
-		// {
-		// zuLoeschen.add(obj.getKey());
-		// tabLinks.remove(obj.getValue());
-		// }
-		//
-		// zuLoeschen.forEach(e -> inhalte.remove(e));
-	}
-
 	public void zeigeHausbaumoeglichkeit()
 	{
 		hinzuLinks("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
@@ -187,7 +174,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 		if (spieler.equals(datenobjekt) && !((Spieler) datenobjekt).isAnDerReihe())
 		{
-			leereRand();
+			oberflaechen.stream().filter(Oberflaeche::isInvalideBeiSpielerWechsel).forEach(Oberflaeche::schliessen);
 		}
 	}
 
