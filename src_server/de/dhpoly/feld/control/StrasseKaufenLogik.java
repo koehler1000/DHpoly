@@ -2,10 +2,10 @@ package de.dhpoly.feld.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.logik.Logik;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -25,8 +25,8 @@ public class StrasseKaufenLogik implements Logik
 			}
 			else
 			{
-				spiel.zeigeSpieler(strasseKaufen.getSender(),
-						new Fehler("Kauf fehlgeschlagen: Das Kaufangebot ist veraltet", Empfaenger.AKTUELLER_SPIELER));
+				spiel.zeigeSpieler(strasseKaufen.getSender(), new Nachricht(
+						"Kauf fehlgeschlagen: Das Kaufangebot ist veraltet", Empfaenger.AKTUELLER_SPIELER));
 			}
 		}
 	}

@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.fehler.FehlerLogik;
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
@@ -55,19 +54,11 @@ public class EntwicklerInformierenLogikImpl implements FehlerLogik
 					sendTelegramMessage(nachricht.getTitel(), nachricht.getText());
 				}
 			}
-			else if (objekt instanceof Fehler)
-			{
-				Fehler fehler = (Fehler) objekt;
-				if (fehler.getFehlertyp().isEntwicklerInformieren())
-				{
-					sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
-				}
-			}
 		}
 		catch (IOException ex)
 		{
 			LOGGER.log(Level.INFO, ex.getMessage(), ex);
-			Fehler fehler = new Fehler("Fehler beim Senden der Nachricht", Empfaenger.ALLE_SPIELER);
+			Nachricht fehler = new Nachricht("Fehler beim Senden der Nachricht", Empfaenger.ALLE_SPIELER);
 			spiel.zeigeAllenSpielern(fehler);
 		}
 	}

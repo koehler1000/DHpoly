@@ -3,7 +3,7 @@ package de.dhpoly.datenobjekt;
 import java.lang.reflect.InvocationTargetException;
 
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -24,7 +24,7 @@ public abstract class DatenobjektAnClient extends Datenobjekt
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| SecurityException ex)
 		{
-			Fehler fehler = new Fehler("Fehler beim Anzeigen (" + ex.getMessage() + ")", Empfaenger.ALLE);
+			Nachricht fehler = new Nachricht("Fehler beim Anzeigen (" + ex.getMessage() + ")", Empfaenger.ALLE);
 			fehler.anzeigen(ansicht);
 		}
 	}

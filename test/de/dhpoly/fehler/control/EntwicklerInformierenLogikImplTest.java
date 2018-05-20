@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 
@@ -35,7 +35,7 @@ public class EntwicklerInformierenLogikImplTest
 	@Ignore
 	public void spielEmpfangen() throws Exception // NOSONAR
 	{
-		Datenobjekt fehler = new Fehler("Fehler aus Junit. Neuer fehler", Empfaenger.ENTWICKLER);
+		Datenobjekt fehler = new Nachricht("Fehler aus Junit. Neuer fehler", Empfaenger.ENTWICKLER);
 		Spiel spiel = new SpielImpl();
 		spiel.empfange(fehler);
 	}

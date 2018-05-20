@@ -11,7 +11,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.fehler.control.EntwicklerInformierenLogikImpl;
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldRessource;
@@ -104,7 +103,7 @@ public class SpielImpl implements Spiel
 		{
 			if (aktuellerSpielerHatGewuerfelt)
 			{
-				Fehler fehler = new Fehler("Spieler hat bereits gewürfelt", Empfaenger.AKTUELLER_SPIELER);
+				Nachricht fehler = new Nachricht("Spieler hat bereits gewürfelt", Empfaenger.AKTUELLER_SPIELER);
 				verarbeiteFehler(fehler);
 			}
 			else
@@ -117,7 +116,7 @@ public class SpielImpl implements Spiel
 		}
 		else
 		{
-			Fehler fehler = new Fehler("Spiel noch nicht gestartet", Empfaenger.AKTUELLER_SPIELER);
+			Nachricht fehler = new Nachricht("Spiel noch nicht gestartet", Empfaenger.AKTUELLER_SPIELER);
 			verarbeiteFehler(fehler);
 		}
 	}
@@ -298,28 +297,28 @@ public class SpielImpl implements Spiel
 	}
 
 	@Override
-	public void verarbeiteFehler(Fehler fehler)
+	public void verarbeiteFehler(Nachricht fehler)
 	{
-		if (fehler.getFehlertyp().isAlleSpielerInformieren())
+		if (fehler.getEmpfaenger().isAlleSpielerInformieren())
 		{
 			zeigeAllenSpielern(fehler);
 		}
-		else if (fehler.getFehlertyp().isAktuellenSpielerInformieren())
+		else if (fehler.getEmpfaenger().isAktuellenSpielerInformieren())
 		{
 			zeigeSpieler(getAktuellerSpieler(), fehler);
 		}
 
-		if (fehler.getFehlertyp().isEntwicklerInformieren())
+		if (fehler.getEmpfaenger().isEntwicklerInformieren())
 		{
 			informiereEntwickler(fehler);
 		}
 	}
 
-	private void informiereEntwickler(Fehler fehler)
+	private void informiereEntwickler(Nachricht fehler)
 	{
 		try
 		{
-			new EntwicklerInformierenLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			new EntwicklerInformierenLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getText());
 		}
 		catch (IOException ex)
 		{

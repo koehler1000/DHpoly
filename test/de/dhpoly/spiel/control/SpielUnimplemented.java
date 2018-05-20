@@ -4,11 +4,11 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spiel.model.SpielfeldDaten;
@@ -74,7 +74,7 @@ public abstract class SpielUnimplemented implements Spiel
 	{}
 
 	@Override
-	public void verarbeiteFehler(Fehler fehler)
+	public void verarbeiteFehler(Nachricht fehler)
 	{}
 
 	@Override

@@ -4,11 +4,11 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.spiel.model.SpielStatus;
 import de.dhpoly.spiel.model.SpielfeldDaten;
@@ -39,7 +39,7 @@ public interface Spiel extends Datenobjektverwalter
 
 	void wuerfelWeitergeben(Spieler spieler);
 
-	void verarbeiteFehler(Fehler fehler);
+	void verarbeiteFehler(Nachricht fehler);
 
 	SpielStatus getStatus();
 

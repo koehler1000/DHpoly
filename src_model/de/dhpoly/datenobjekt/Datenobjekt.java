@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.model.Fehler;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
@@ -39,7 +39,7 @@ public abstract class Datenobjekt implements Serializable
 		catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| SecurityException ex)
 		{
-			Fehler fehler = new Fehler("Fehler beim Anzeigen von " + this.getTitel() + " (" + this.getClassName()
+			Nachricht fehler = new Nachricht("Fehler beim Anzeigen von " + this.getTitel() + " (" + this.getClassName()
 					+ ") über " + getClassUI() + " (FEHLER: Class: " + ex.getClass() + " Nachricht: " + ex.getMessage()
 					+ ")", Empfaenger.ALLE);
 			ansicht.sendeAnServer(fehler);
