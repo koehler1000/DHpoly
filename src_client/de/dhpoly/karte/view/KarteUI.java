@@ -18,7 +18,7 @@ public class KarteUI extends Oberflaeche // NOSONAR
 
 	public KarteUI(Karte karte, SpielfeldAnsicht ansicht)
 	{
-		super(ansicht);
+		super(ansicht, 5);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new BorderLayout(10, 10));
