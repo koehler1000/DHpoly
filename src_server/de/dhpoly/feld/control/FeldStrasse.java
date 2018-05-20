@@ -18,13 +18,7 @@ public class FeldStrasse extends FeldImpl
 	public FeldStrasse(int kaufpreis, int[] miete, List<RessourcenDatensatz> kostenHaus, int gruppe, String name)
 	{
 		super(name);
-
-		strasse = new StrasseDaten();
-		strasse.setMiete(miete);
-		strasse.setKostenHaus(kostenHaus);
-		strasse.setGruppe(gruppe);
-		strasse.setName(name);
-		strasse.setKaufpreis(kaufpreis);
+		strasse = new StrasseDaten(kaufpreis, miete, kostenHaus, gruppe, name);
 	}
 
 	public FeldStrasse(StrasseDaten aktuellesFeld)
@@ -47,6 +41,7 @@ public class FeldStrasse extends FeldImpl
 		}
 		else
 		{
+			spiel.fuegeStrassenKaufHinzu(strasse);
 			spiel.zeigeSpieler(spieler, new StrasseKaufen(strasse, spieler));
 		}
 	}

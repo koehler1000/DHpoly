@@ -11,7 +11,6 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class StrasseKaufenLogik implements Logik
 {
-
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
@@ -19,16 +18,15 @@ public class StrasseKaufenLogik implements Logik
 		{
 			StrasseKaufen strasseKaufen = (StrasseKaufen) objekt;
 
-			if (spiel.getAktuellerSpieler() == strasseKaufen.getSender())
+			if (spiel.kannSpielerStrasseKaufen(strasseKaufen.getSender(), strasseKaufen.getStrasse()))
 			{
-				// FIXME Spieler soll nur kaufen können, wenn sie noch auf dem Feld stehen
 				kaufAbwickeln(strasseKaufen, strasseKaufen.getSender());
 				spiel.zeigeAllenSpielern(spiel.getSpielfeld());
 			}
 			else
 			{
 				spiel.zeigeSpieler(strasseKaufen.getSender(),
-						new Fehler("Kauf fehlgeschlagen: Nicht an der Reihe", FehlerTyp.FEHLER_SPIELER));
+						new Fehler("Kauf fehlgeschlagen: Das Kaufangebot ist veraltet", FehlerTyp.FEHLER_SPIELER));
 			}
 		}
 	}
