@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.dhpoly.feld.model.StrasseDaten;
@@ -20,13 +21,22 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
-		pnlInhalt.setLayout(new GridLayout(felder.size(), 1, 10, 10));
 
-		for (StrasseDaten strasse : felder)
+		if (felder.isEmpty())
 		{
-			pnlInhalt.add(new HausUI(strasse, ansicht));
+			JButton butKeineStrassen = ElementFactory.getButton("Noch keine Straßen im Besitz");
+			butKeineStrassen.addActionListener(e -> schliessen());
+			pnlInhalt.add(butKeineStrassen);
 		}
+		else
+		{
+			pnlInhalt.setLayout(new GridLayout(felder.size(), 1, 10, 10));
 
+			for (StrasseDaten strasse : felder)
+			{
+				pnlInhalt.add(new HausUI(strasse, ansicht));
+			}
+		}
 		this.add(pnlInhalt);
 	}
 
