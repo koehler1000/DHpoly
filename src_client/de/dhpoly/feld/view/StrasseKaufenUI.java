@@ -22,6 +22,28 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	{
 		super(ansicht);
 
+		if (strasse.getSender() == ansicht.getSpieler())
+		{
+			initStrasseKaufen(strasse, ansicht);
+		}
+		else
+		{
+			initStrasseKaufenInfo(strasse, ansicht);
+		}
+	}
+
+	private void initStrasseKaufenInfo(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
+	{
+		JPanel pnlInhalt = ElementFactory.erzeugePanel();
+		pnlInhalt.setLayout(new GridLayout(1, 2, 10, 10));
+
+		pnlInhalt.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
+
+		this.add(pnlInhalt);
+	}
+
+	private void initStrasseKaufen(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
+	{
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new GridLayout(1, 2, 10, 10));
 
