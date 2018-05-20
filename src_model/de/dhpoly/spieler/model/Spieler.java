@@ -14,7 +14,6 @@ public class Spieler extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
-	private SpielerTyp typ;
 	private String name;
 	private List<RessourcenDatensatz> kasse = new ArrayList<>();
 	private int spielerNr;
@@ -23,17 +22,11 @@ public class Spieler extends Datenobjekt
 	private int feldNr;
 	private List<StrasseDaten> strassen = new ArrayList<>();
 
-	public Spieler(SpielerTyp typ, String name)
+	public Spieler(String name)
 	{
 		super();
-		this.typ = typ;
 		this.name = name;
 		this.status = SpielerStatus.IM_SPIEL;
-	}
-
-	public SpielerTyp getTyp()
-	{
-		return typ;
 	}
 
 	public String getName()

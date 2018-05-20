@@ -12,7 +12,6 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class SpielerImplTest
 {
@@ -85,7 +84,7 @@ public class SpielerImplTest
 
 	public static Spieler getDefaultSpieler(String name, int geld)
 	{
-		Spieler spieler = new Spieler(SpielerTyp.LOKAL, name);
+		Spieler spieler = new Spieler(name);
 		spieler.einzahlen(new RessourcenDatensatz(Ressource.GELD, geld));
 		return spieler;
 	}

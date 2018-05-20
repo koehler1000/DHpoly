@@ -11,7 +11,6 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class MainFake
 {
@@ -26,7 +25,7 @@ public class MainFake
 
 	public MainFake() throws IOException
 	{
-		Spieler spieler = new Spieler(SpielerTyp.NETZWERK, "Peter");
+		Spieler spieler = new Spieler("Peter");
 
 		SpielfeldAnsicht verwalter = new SpielfeldAnsicht(spieler, client);
 		fenster.zeigeSpielansicht(verwalter, "Fake");

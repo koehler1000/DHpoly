@@ -28,7 +28,6 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
-import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 
 public class SpielImplTest implements Datenobjektverwalter
@@ -39,7 +38,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	private NetzwerkClient client;
 
 	private StrasseDaten strasse = new StrasseDaten();
-	private Spieler spieler = new Spieler(SpielerTyp.COMPUTER, "Test1");
+	private Spieler spieler = new Spieler("Test1");
 
 	@Before
 	public void vorbereitung()
@@ -55,7 +54,7 @@ public class SpielImplTest implements Datenobjektverwalter
 		spiel = new SpielImpl(server);
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(spieler);
-		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
+		spiel.fuegeSpielerHinzu(new Spieler("Test2"));
 	}
 
 	@Test
@@ -140,8 +139,8 @@ public class SpielImplTest implements Datenobjektverwalter
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
 		spiel.setFelder(felder);
 
-		Spieler s1 = new Spieler(SpielerTyp.LOKAL, "Peter");
-		Spieler s2 = new Spieler(SpielerTyp.LOKAL, "Peter");
+		Spieler s1 = new Spieler("Peter");
+		Spieler s2 = new Spieler("Peter");
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);

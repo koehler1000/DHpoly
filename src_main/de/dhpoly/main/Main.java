@@ -15,7 +15,6 @@ import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.model.SpielDaten;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class Main implements Runnable
 {
@@ -64,9 +63,9 @@ public class Main implements Runnable
 		new Thread(new Main()).start();
 
 		List<Spieler> spieler = new ArrayList<>();
-		spieler.add(new Spieler(SpielerTyp.LOKAL, "Rico"));
-		spieler.add(new Spieler(SpielerTyp.LOKAL, "Sven"));
-		spieler.add(new Spieler(SpielerTyp.COMPUTER, "Alex"));
+		spieler.add(new Spieler("Rico"));
+		spieler.add(new Spieler("Sven"));
+		spieler.add(new Spieler("Alex"));
 
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
 		// server.sendeAnClients(daten);

@@ -12,13 +12,12 @@ import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielUnimplemented;
 import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class StrasseKaufenLogikTest
 {
 	private StrasseKaufenLogik logik = new StrasseKaufenLogik();
-	private Spieler spieler = new Spieler(SpielerTyp.COMPUTER, "Peter");
-	private Spieler aktuellerSpieler = new Spieler(SpielerTyp.COMPUTER, "ba");
+	private Spieler spieler = new Spieler("Peter");
+	private Spieler aktuellerSpieler = new Spieler("ba");
 
 	@Test
 	public void testPositiv()

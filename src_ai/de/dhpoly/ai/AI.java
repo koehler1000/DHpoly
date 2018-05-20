@@ -7,14 +7,13 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class AI implements Datenobjektverwalter
 {
-	NetzwerkClient client;
-	Spieler spieler;
+	private NetzwerkClient client;
+	protected Spieler spieler;
 
 	public void erzeugeComputerspieler(String ip, String name)
 	{
@@ -24,7 +23,7 @@ public class AI implements Datenobjektverwalter
 	public void erzeugeComputerspieler(NetzwerkClient client, String name)
 	{
 		this.client = client;
-		spieler = new Spieler(SpielerTyp.COMPUTER, name);
+		spieler = new Spieler(name);
 		client.sendeAnServer(spieler);
 		client.setDatenobjektverwalter(this);
 	}

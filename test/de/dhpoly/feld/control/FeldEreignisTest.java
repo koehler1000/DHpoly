@@ -17,7 +17,6 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielUnimplemented;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class FeldEreignisTest
 {
@@ -28,7 +27,7 @@ public class FeldEreignisTest
 	{
 		// TODO fixen
 		ereigniskarteGezeigt = false;
-		Spieler spieler = new Spieler(SpielerTyp.LOKAL, "Armes Würstchen");
+		Spieler spieler = new Spieler("Armes Würstchen");
 
 		Spiel spiel = new SpielUnimplemented()
 		{

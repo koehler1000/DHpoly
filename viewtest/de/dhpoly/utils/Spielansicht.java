@@ -5,7 +5,6 @@ import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 
 public class Spielansicht
 {
@@ -14,7 +13,7 @@ public class Spielansicht
 
 	public static SpielfeldAnsicht getSpielfeldAnsicht()
 	{
-		Spieler spieler = new Spieler(SpielerTyp.LOKAL, "foo");
+		Spieler spieler = new Spieler("foo");
 		return new SpielfeldAnsicht(spieler, null);
 	}
 

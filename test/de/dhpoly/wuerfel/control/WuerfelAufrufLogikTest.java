@@ -7,7 +7,6 @@ import org.junit.Test;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielUnimplemented;
 import de.dhpoly.spieler.model.Spieler;
-import de.dhpoly.spieler.model.SpielerTyp;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
 public class WuerfelAufrufLogikTest
@@ -25,7 +24,7 @@ public class WuerfelAufrufLogikTest
 	@Test
 	public void naechsterSpielerWirdAufgerufenBeiWuerfelAufruf()
 	{
-		Spieler spieler = new Spieler(SpielerTyp.COMPUTER, "Testa");
+		Spieler spieler = new Spieler("Testa");
 
 		WuerfelAufrufLogik logik = new WuerfelAufrufLogik();
 		WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
