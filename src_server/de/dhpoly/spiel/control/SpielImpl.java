@@ -10,7 +10,6 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.control.EntwicklerInformierenLogikImpl;
 import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldRessource;
@@ -29,6 +28,7 @@ import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
 import de.dhpoly.nachricht.control.SpielerInformierenLogikImpl;
+import de.dhpoly.nachricht.control.TelegramNachrichtLogikImpl;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.ressource.model.Ressource;
@@ -77,7 +77,7 @@ public class SpielImpl implements Spiel
 		wuerfelPaar = new WuerfelpaarImpl();
 		kartenstapel = new KartenstapelImpl(einstellungen.getEreigniskarten());
 
-		logikverwalter.add(EntwicklerInformierenLogikImpl.class);
+		logikverwalter.add(TelegramNachrichtLogikImpl.class);
 		logikverwalter.add(HandelImpl.class);
 		logikverwalter.add(SpielerInformierenLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
@@ -318,7 +318,7 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			new EntwicklerInformierenLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getText());
+			new TelegramNachrichtLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getText());
 		}
 		catch (IOException ex)
 		{
@@ -495,7 +495,7 @@ public class SpielImpl implements Spiel
 		}
 		catch (InstantiationException | IllegalAccessException ex)
 		{
-			EntwicklerInformierenLogikImpl benachrichtiger = new EntwicklerInformierenLogikImpl();
+			TelegramNachrichtLogikImpl benachrichtiger = new TelegramNachrichtLogikImpl();
 			try
 			{
 				benachrichtiger.sendTelegramMessage("Fehler", ex.getMessage());

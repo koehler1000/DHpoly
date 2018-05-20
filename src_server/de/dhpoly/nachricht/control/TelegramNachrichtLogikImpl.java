@@ -1,4 +1,4 @@
-package de.dhpoly.fehler.control;
+package de.dhpoly.nachricht.control;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.FehlerLogik;
+import de.dhpoly.nachricht.TelegramNachrichtLogik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class EntwicklerInformierenLogikImpl implements FehlerLogik
+public class TelegramNachrichtLogikImpl implements TelegramNachrichtLogik
 {
-	private static final Logger LOGGER = Logger.getLogger(EntwicklerInformierenLogikImpl.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(TelegramNachrichtLogikImpl.class.getName());
 
 	private static final String CHAT_ID = "-1001131918455";
 
