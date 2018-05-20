@@ -50,9 +50,9 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 				{
 					return datensatz.getBeschreibung();
 				}
-				else if (col == idx)
+				else if (col == idx + 1)
 				{
-					return spieler.getKasse().get(row).getString();
+					return datensatz.getString();
 				}
 				else
 				{
