@@ -9,24 +9,31 @@ public class Nachricht extends Datenobjekt
 {
 	private static final long serialVersionUID = 1L;
 
-	private String nachrichtentext = "Keine Nachricht angegeben";
+	private String text = "Keine Nachricht angegeben";
+	private String titel = "Nachricht";
 	private Empfaenger empfaenger = Empfaenger.ALLE;
 
-	public Nachricht(String nachrichtentext, Empfaenger empfaenger)
+	public Nachricht(String text, Empfaenger empfaenger)
 	{
-		this.nachrichtentext = nachrichtentext;
+		this.text = text;
 		this.empfaenger = empfaenger;
 	}
 
-	public String getNachricht()
+	public Nachricht(String text, Empfaenger empfaenger, String titel)
 	{
-		return nachrichtentext;
+		this(text, empfaenger);
+		this.titel = titel;
+	}
+
+	public String getText()
+	{
+		return text;
 	}
 
 	@Override
 	public String getTitel()
 	{
-		return "Nachricht";
+		return titel;
 	}
 
 	public Empfaenger getEmpfaenger()

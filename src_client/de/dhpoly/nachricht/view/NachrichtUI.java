@@ -24,7 +24,7 @@ public class NachrichtUI extends Oberflaeche // NOSONAR
 		pnlInhalt.setLayout(new BorderLayout(10, 10));
 
 		JButton butUeberschrift = ElementFactory.getButtonUeberschrift(nachricht.getTitel());
-		JButton butText = ElementFactory.getButton(nachricht.getNachricht());
+		JButton butText = ElementFactory.getButton(nachricht.getText());
 
 		pnlInhalt.add(butUeberschrift, BorderLayout.NORTH);
 		pnlInhalt.add(butText);

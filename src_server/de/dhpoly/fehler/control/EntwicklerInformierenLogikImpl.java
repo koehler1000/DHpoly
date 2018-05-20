@@ -52,7 +52,7 @@ public class EntwicklerInformierenLogikImpl implements FehlerLogik
 				Nachricht nachricht = (Nachricht) objekt;
 				if (nachricht.getEmpfaenger().isEntwicklerInformieren())
 				{
-					sendTelegramMessage(nachricht.getTitel(), nachricht.getNachricht());
+					sendTelegramMessage(nachricht.getTitel(), nachricht.getText());
 				}
 			}
 			else if (objekt instanceof Fehler)
