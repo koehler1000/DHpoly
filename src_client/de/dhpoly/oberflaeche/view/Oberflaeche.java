@@ -28,6 +28,22 @@ public abstract class Oberflaeche extends JPanel
 		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
 
+	public Oberflaeche(SpielfeldAnsicht ansicht, int milliSekunden)
+	{
+		this(ansicht);
+		new Thread(() -> {
+			try
+			{
+				Thread.sleep(milliSekunden);
+			}
+			catch (InterruptedException ex) // NOSONAR
+			{
+				// ignorieren
+			}
+			schliessen();
+		});
+	}
+
 	protected JButton getSchliessenButton()
 	{
 		return butSchliessen;
