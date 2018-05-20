@@ -16,29 +16,14 @@ import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
+	private boolean anzeigen = true;
 
 	public StrasseKaufenUI(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
 	{
 		super(ansicht);
+		initStrasseKaufen(strasse, ansicht);
 
-		if (strasse.getSender() == ansicht.getSpieler())
-		{
-			initStrasseKaufen(strasse, ansicht);
-		}
-		else
-		{
-			initStrasseKaufenInfo(strasse, ansicht);
-		}
-	}
-
-	private void initStrasseKaufenInfo(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
-	{
-		JPanel pnlInhalt = ElementFactory.erzeugePanel();
-		pnlInhalt.setLayout(new GridLayout(1, 2, 10, 10));
-
-		pnlInhalt.add(new StrasseInfoUI(strasse.getStrasse(), ansicht));
-
-		this.add(pnlInhalt);
+		anzeigen = (strasse.getSender() == ansicht.getSpieler());
 	}
 
 	private void initStrasseKaufen(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
@@ -85,7 +70,10 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung);
+		if (anzeigen)
+		{
+			zeigeLinks(beschreibung);
+		}
 	}
 
 	@Override
