@@ -6,6 +6,7 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
@@ -63,4 +64,8 @@ public interface Spiel extends Datenobjektverwalter
 	void zeigeSpieler(Spieler sp, Datenobjekt objekt);
 
 	SpielfeldDaten getSpielfeld();
+
+	boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse);
+
+	void fuegeStrassenKaufHinzu(StrasseDaten strasse);
 }

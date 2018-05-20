@@ -6,6 +6,7 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.model.FeldDaten;
+import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.Wetter;
 import de.dhpoly.spiel.Spiel;
@@ -133,4 +134,14 @@ public abstract class SpielUnimplemented implements Spiel
 	{
 		return null;
 	}
+
+	@Override
+	public boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse)
+	{
+		return true;
+	}
+
+	@Override
+	public void fuegeStrassenKaufHinzu(StrasseDaten strasse)
+	{}
 }

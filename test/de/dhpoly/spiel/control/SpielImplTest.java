@@ -1,7 +1,9 @@
 package de.dhpoly.spiel.control;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +56,18 @@ public class SpielImplTest implements Datenobjektverwalter
 		spiel.setFelder(felder);
 		spiel.fuegeSpielerHinzu(spieler);
 		spiel.fuegeSpielerHinzu(new Spieler(SpielerTyp.COMPUTER, "Test2"));
+	}
+
+	@Test
+	public void kaufmoeglichkeit()
+	{
+		spiel.starteSpiel();
+
+		spiel.fuegeStrassenKaufHinzu(strasse);
+		assertTrue(spiel.kannSpielerStrasseKaufen(spieler, strasse));
+
+		spiel.wuerfelWeitergeben(spieler);
+		assertFalse(spiel.kannSpielerStrasseKaufen(spieler, strasse));
 	}
 
 	@Test

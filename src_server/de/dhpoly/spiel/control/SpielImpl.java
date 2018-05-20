@@ -68,6 +68,8 @@ public class SpielImpl implements Spiel
 
 	private Optional<NetzwerkServer> server = Optional.empty();
 
+	private List<StrasseDaten> aktuelleKaufangebote = new ArrayList<>();
+
 	public SpielImpl()
 	{
 		einstellungen = new Einstellungen();
@@ -460,6 +462,7 @@ public class SpielImpl implements Spiel
 		if (spieler == getAktuellerSpieler())
 		{
 			naechsterSpieler();
+			aktuelleKaufangebote = new ArrayList<>();
 		}
 	}
 
@@ -528,5 +531,22 @@ public class SpielImpl implements Spiel
 	public SpielfeldDaten getSpielfeld()
 	{
 		return felder;
+	}
+
+	@Override
+	public boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse)
+	{
+		if (spieler != getAktuellerSpieler())
+		{
+			return false;
+		}
+
+		return aktuelleKaufangebote.contains(strasse);
+	}
+
+	@Override
+	public void fuegeStrassenKaufHinzu(StrasseDaten strasse)
+	{
+		aktuelleKaufangebote.add(strasse);
 	}
 }
