@@ -92,7 +92,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 
 		JButton butFeedback = ElementFactory.getButton("Entwickler kontaktieren");
-		butFeedback.addActionListener(e -> hinzuLinks("Feedback", "Feedback", new NachrichtenErstellerUI(this)));
+		butFeedback.addActionListener(e -> hinzuLinks("Feedback", new NachrichtenErstellerUI(this)));
 		pnlRandRechts.add(butFeedback);
 
 		JButton butKontakt = ElementFactory.getButton("Danke sagen");
@@ -119,7 +119,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabLinks.remove(obj);
 	}
 
-	private void fuegeInhaltHinzu(String beschreibung, Object obj, Oberflaeche oberflaeche, JTabbedPane tabPane)
+	private void fuegeInhaltHinzu(String beschreibung, Oberflaeche oberflaeche, JTabbedPane tabPane)
 	{
 		tabPane.addTab(beschreibung, oberflaeche);
 
@@ -137,7 +137,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeHausbaumoeglichkeit()
 	{
-		hinzuLinks("Hausbau", spieler.getStrassen(), new HaeuserUI(spieler.getStrassen(), this));
+		hinzuLinks("Hausbau", new HaeuserUI(spieler.getStrassen(), this));
 	}
 
 	public void sperreOberflaeche(Oberflaeche oberflaeche)
@@ -147,7 +147,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeKontoauszug(Spieler spieler)
 	{
-		hinzuLinks("Kontoauszug", spieler, new KontoauszugUI(spieler, this));
+		hinzuLinks("Kontoauszug", new KontoauszugUI(spieler, this));
 	}
 
 	public void entferne(Oberflaeche oberflaeche)
@@ -159,7 +159,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
 	{
-		hinzuLinks("Straﬂe", feld, new StrasseInfoUI(feld, spielfeldAnsicht));
+		hinzuLinks("Straﬂe", new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
 
 	public Spieler getSpieler()
@@ -178,21 +178,21 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		}
 	}
 
-	public void hinzuRechts(String beschreibung, Object objekt, Oberflaeche oberflaeche)
+	public void hinzuRechts(String beschreibung, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabRechts;
-		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
+		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
 	}
 
-	public void hinzuMitte(String beschreibung, Object objekt, Oberflaeche oberflaeche)
+	public void hinzuMitte(String beschreibung, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabMitte;
-		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
+		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
 	}
 
-	public void hinzuLinks(String beschreibung, Object objekt, Oberflaeche oberflaeche)
+	public void hinzuLinks(String beschreibung, Oberflaeche oberflaeche)
 	{
 		JTabbedPane tabPane = tabLinks;
-		fuegeInhaltHinzu(beschreibung, objekt, oberflaeche, tabPane);
+		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
 	}
 }
