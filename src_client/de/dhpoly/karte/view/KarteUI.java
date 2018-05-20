@@ -38,7 +38,7 @@ public class KarteUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isInvalideBeiSpielerWechsel()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
