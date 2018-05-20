@@ -1,4 +1,4 @@
-package de.dhpoly.fehler.control;
+package de.dhpoly.nachricht.control;
 
 import static org.junit.Assert.fail;
 
@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.empfaenger.model.Empfaenger;
+import de.dhpoly.fehler.control.EntwicklerInformierenLogikImpl;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
