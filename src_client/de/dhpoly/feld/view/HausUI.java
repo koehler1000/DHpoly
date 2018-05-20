@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.Hausbau;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -58,9 +57,9 @@ public class HausUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung, objekt);
+		zeigeLinks(beschreibung);
 	}
 
 	@Override

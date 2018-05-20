@@ -3,7 +3,6 @@ package de.dhpoly.einstellungen.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -23,9 +22,9 @@ public class EinstellungenUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeMitte(beschreibung, objekt);
+		zeigeMitte(beschreibung);
 	}
 
 	@Override

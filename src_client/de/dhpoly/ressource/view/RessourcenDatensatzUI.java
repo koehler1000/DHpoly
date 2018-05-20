@@ -3,7 +3,6 @@ package de.dhpoly.ressource.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
 
@@ -23,7 +22,7 @@ public class RessourcenDatensatzUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
 		// wird nicht direkt angezeigt
 	}

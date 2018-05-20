@@ -11,7 +11,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -73,7 +72,7 @@ public class StrasseUI extends FeldUI // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
 		// wird nicht direkt angezeigt
 	}

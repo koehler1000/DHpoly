@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -28,9 +27,9 @@ public class SpielstartUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeMitte(beschreibung, objekt);
+		zeigeMitte(beschreibung);
 	}
 
 	@Override

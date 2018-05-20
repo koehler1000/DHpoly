@@ -8,7 +8,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -86,9 +85,9 @@ public class HandelUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung, objekt);
+		zeigeLinks(beschreibung);
 	}
 
 	@Override

@@ -43,19 +43,19 @@ public abstract class Oberflaeche extends JPanel
 		this.setEnabled(false);
 	}
 
-	public abstract void zeige(String beschreibung, Datenobjekt objekt);
+	public abstract void zeige(String beschreibung);
 
-	protected void zeigeLinks(String beschreibung, Datenobjekt objekt)
+	protected void zeigeLinks(String beschreibung)
 	{
 		ansicht.ifPresent(ui -> ui.hinzuLinks(beschreibung, this));
 	}
 
-	protected void zeigeMitte(String beschreibung, Datenobjekt objekt)
+	protected void zeigeMitte(String beschreibung)
 	{
 		ansicht.ifPresent(ui -> ui.hinzuMitte(beschreibung, this));
 	}
 
-	protected void zeigeRechts(String beschreibung, Datenobjekt objekt)
+	protected void zeigeRechts(String beschreibung)
 	{
 		ansicht.ifPresent(ui -> ui.hinzuRechts(beschreibung, this));
 	}

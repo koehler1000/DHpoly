@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
@@ -49,9 +48,9 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung, objekt);
+		zeigeLinks(beschreibung);
 	}
 
 	@Override

@@ -58,7 +58,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 		this.add(tabLinks, BorderLayout.WEST);
 
-		new SpielstartUI(this).zeige("Start", getSpieler());
+		new SpielstartUI(this).zeige("Start");
 	}
 
 	private void initRandRechts()

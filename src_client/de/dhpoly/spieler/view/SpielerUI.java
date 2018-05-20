@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -106,9 +105,9 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung, objekt);
+		zeigeLinks(beschreibung);
 	}
 
 	@Override

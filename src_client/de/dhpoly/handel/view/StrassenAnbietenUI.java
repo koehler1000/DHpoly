@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
-import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -68,7 +67,7 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 	}
 
 	@Override
-	public void zeige(String beschreibung, Datenobjekt objekt)
+	public void zeige(String beschreibung)
 	{
 		// wird nicht direkt angezeigt
 	}
