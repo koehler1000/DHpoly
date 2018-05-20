@@ -56,7 +56,7 @@ public class HaeuserUI extends Oberflaeche // NOSONAR
 	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
 	{
 		List<Oberflaeche> ret = new ArrayList<>();
-		oberflaechen.stream().filter(e -> (e instanceof HaeuserUI)).forEach((Oberflaeche e) -> ret.add(e));
+		oberflaechen.stream().filter(e -> (e instanceof HaeuserUI)).forEach(ret::add);
 		return ret;
 	}
 }
