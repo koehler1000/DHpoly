@@ -107,7 +107,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung);
+		zeigeLinks(spieler.getName());
 	}
 
 	@Override
