@@ -73,5 +73,11 @@ public class StrasseKaufenLogikTest
 		{
 			return new SpielfeldDaten(null);
 		}
+
+		@Override
+		public boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse)
+		{
+			return aktuellerSpieler == spieler;
+		}
 	};
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
@@ -27,7 +28,7 @@ public class NachrichtenErstellerUI extends Oberflaeche // NOSONAR
 
 		getSchliessenButton().setText("Absenden");
 		getSchliessenButton().addActionListener(e -> {
-			sendeAnServer(new Nachricht(c.getText()));
+			sendeAnServer(new Nachricht(c.getText(), Empfaenger.ENTWICKLER));
 			schliessen();
 		});
 	}

@@ -10,7 +10,7 @@ import java.util.Optional;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.empfaenger.model.Empfaenger;
-import de.dhpoly.fehler.control.FehlerLogikImpl;
+import de.dhpoly.fehler.control.EntwicklerInformierenLogikImpl;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
@@ -29,7 +29,7 @@ import de.dhpoly.kartenstapel.Kartenstapel;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
 import de.dhpoly.kartenverbucher.control.KartenverbucherImpl;
 import de.dhpoly.logik.Logik;
-import de.dhpoly.nachricht.control.NachrichtLogikImpl;
+import de.dhpoly.nachricht.control.SpielerInformierenLogikImpl;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.ressource.model.Ressource;
@@ -78,9 +78,9 @@ public class SpielImpl implements Spiel
 		wuerfelPaar = new WuerfelpaarImpl();
 		kartenstapel = new KartenstapelImpl(einstellungen.getEreigniskarten());
 
-		logikverwalter.add(FehlerLogikImpl.class);
+		logikverwalter.add(EntwicklerInformierenLogikImpl.class);
 		logikverwalter.add(HandelImpl.class);
-		logikverwalter.add(NachrichtLogikImpl.class);
+		logikverwalter.add(SpielerInformierenLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
 		logikverwalter.add(SpielStartLogik.class);
@@ -185,7 +185,7 @@ public class SpielImpl implements Spiel
 		{
 			spielerAusscheidenLassen(spielerAktuell);
 
-			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren");
+			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren", Empfaenger.ALLE);
 			zeigeAllenSpielern(nachricht);
 
 			if (spieler.size() == 1)
@@ -193,7 +193,7 @@ public class SpielImpl implements Spiel
 				Spieler sieger = spieler.get(0);
 				sieger.setSpielerStatus(SpielerStatus.GEWONNEN);
 
-				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen");
+				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen", Empfaenger.ALLE);
 				zeigeAllenSpielern(nachrichtGewonnen);
 			}
 		}
@@ -319,7 +319,7 @@ public class SpielImpl implements Spiel
 	{
 		try
 		{
-			new FehlerLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+			new EntwicklerInformierenLogikImpl().sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
 		}
 		catch (IOException ex)
 		{
@@ -496,7 +496,7 @@ public class SpielImpl implements Spiel
 		}
 		catch (InstantiationException | IllegalAccessException ex)
 		{
-			FehlerLogikImpl benachrichtiger = new FehlerLogikImpl();
+			EntwicklerInformierenLogikImpl benachrichtiger = new EntwicklerInformierenLogikImpl();
 			try
 			{
 				benachrichtiger.sendTelegramMessage("Fehler", ex.getMessage());

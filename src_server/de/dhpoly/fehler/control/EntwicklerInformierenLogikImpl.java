@@ -7,14 +7,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.fehler.FehlerLogik;
 import de.dhpoly.fehler.model.Fehler;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class FehlerLogikImpl implements FehlerLogik
+public class EntwicklerInformierenLogikImpl implements FehlerLogik
 {
-	private static final Logger LOGGER = Logger.getLogger(FehlerLogikImpl.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(EntwicklerInformierenLogikImpl.class.getName());
 
 	private static final String CHAT_ID = "-1001131918455";
 
@@ -49,17 +50,25 @@ public class FehlerLogikImpl implements FehlerLogik
 			if (objekt instanceof Nachricht)
 			{
 				Nachricht nachricht = (Nachricht) objekt;
-				sendTelegramMessage(nachricht.getTitel(), nachricht.getNachricht());
+				if (nachricht.getEmpfaenger().isEntwicklerInformieren())
+				{
+					sendTelegramMessage(nachricht.getTitel(), nachricht.getNachricht());
+				}
 			}
 			else if (objekt instanceof Fehler)
 			{
 				Fehler fehler = (Fehler) objekt;
-				sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+				if (fehler.getFehlertyp().isEntwicklerInformieren())
+				{
+					sendTelegramMessage(fehler.getTitel(), fehler.getFehlertext());
+				}
 			}
 		}
 		catch (IOException ex)
 		{
 			LOGGER.log(Level.INFO, ex.getMessage(), ex);
+			Fehler fehler = new Fehler("Fehler beim Senden der Nachricht", Empfaenger.ALLE_SPIELER);
+			spiel.zeigeAllenSpielern(fehler);
 		}
 	}
 }

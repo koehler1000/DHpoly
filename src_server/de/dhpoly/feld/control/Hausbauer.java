@@ -1,6 +1,7 @@
 package de.dhpoly.feld.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.feld.model.Hausbau;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.logik.Logik;
@@ -36,7 +37,7 @@ public class Hausbauer implements Logik
 						strasse.setHaueser(strasse.getHaeuser() + 1);
 
 						Nachricht nachricht = new Nachricht(
-								anzahlZuBauen + " Häuser auf " + strasse.getName() + " gebaut.");
+								anzahlZuBauen + " Häuser auf " + strasse.getName() + " gebaut.", Empfaenger.ALLE);
 						spiel.zeigeAllenSpielern(nachricht);
 					}
 				});
@@ -51,7 +52,8 @@ public class Hausbauer implements Logik
 						.forEach(e -> strasse.getEigentuemer().ifPresent(s -> s.einzahlen(e)));
 			}
 
-			Nachricht nachricht = new Nachricht(anzahlZuBauen + " Häuser auf " + strasse.getName() + " abgerissen.");
+			Nachricht nachricht = new Nachricht(anzahlZuBauen + " Häuser auf " + strasse.getName() + " abgerissen.",
+					Empfaenger.ALLE);
 			spiel.zeigeAllenSpielern(nachricht);
 		}
 	}

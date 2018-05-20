@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
@@ -96,7 +97,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		pnlRandRechts.add(butFeedback);
 
 		JButton butKontakt = ElementFactory.getButton("Danke sagen");
-		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke")));
+		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke", Empfaenger.ENTWICKLER)));
 		pnlRandRechts.add(butKontakt);
 
 		tabRechts.addTab("Aktionen", pnlRandRechts);

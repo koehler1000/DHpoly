@@ -1,11 +1,11 @@
 package de.dhpoly.nachricht.control;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.nachricht.NachrichtLogik;
+import de.dhpoly.nachricht.SpielerInformierenLogik;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.spiel.Spiel;
 
-public class NachrichtLogikImpl implements NachrichtLogik
+public class SpielerInformierenLogikImpl implements SpielerInformierenLogik
 {
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
@@ -19,6 +19,13 @@ public class NachrichtLogikImpl implements NachrichtLogik
 	@Override
 	public void sendeNachricht(Nachricht nachricht, Spiel spiel)
 	{
-		spiel.zeigeAllenSpielern(nachricht);
+		if (nachricht.getEmpfaenger().isAlleSpielerInformieren())
+		{
+			spiel.zeigeAllenSpielern(nachricht);
+		}
+		else if (nachricht.getEmpfaenger().isAktuellenSpielerInformieren())
+		{
+			spiel.zeigeSpieler(spiel.getAktuellerSpieler(), nachricht);
+		}
 	}
 }
