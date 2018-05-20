@@ -108,7 +108,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung, Datenobjekt objekt)
 	{
-		zeigeMitte(beschreibung, objekt);
+		zeigeLinks(beschreibung, objekt);
 	}
 
 	@Override
