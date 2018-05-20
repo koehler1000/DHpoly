@@ -23,7 +23,7 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 
 	public WuerfelUI(WuerfelDaten wuerfel, SpielfeldAnsicht ansicht)
 	{
-		super(ansicht);
+		super(ansicht, 3);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1));
@@ -44,7 +44,7 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isInvalideBeiSpielerWechsel()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
