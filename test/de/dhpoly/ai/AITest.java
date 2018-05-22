@@ -15,8 +15,8 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.spieler.model.Spieler;
+import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
-import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
 public class AITest
 {
@@ -35,10 +35,10 @@ public class AITest
 	public void wuerfelnSobaldMoeglich() throws Exception
 	{
 		spieler.setAktuellerSpieler(true);
+		spieler.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
 		ai.empfange(spieler);
 
 		assertTrue(hatElementEmpfangen(WuerfelAufruf.class));
-		assertTrue(hatElementEmpfangen(WuerfelWeitergabe.class));
 	}
 
 	private boolean hatElementEmpfangen(Class<? extends Object> c)
