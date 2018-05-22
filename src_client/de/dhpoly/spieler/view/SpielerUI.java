@@ -75,6 +75,9 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+		ansicht.setWuerfelnEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFELN);
+		ansicht.setWuerfelWeitergabeEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+
 		update();
 	}
 
@@ -107,8 +110,8 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung)
 	{
-		//zunaechst nicht anzeigen
-		//zeigeLinks(spieler.getName());
+		// zunaechst nicht anzeigen
+		// zeigeLinks(spieler.getName());
 	}
 
 	@Override

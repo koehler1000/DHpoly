@@ -57,9 +57,6 @@ public class SpielImpl implements Spiel
 
 	private Kartenstapel kartenstapel;
 
-	private boolean aktuellerSpielerHatGewuerfelt = false;
-	private boolean aktuellerSpielerIstGerueckt = false;
-
 	List<Class<? extends Logik>> logikverwalter = new ArrayList<>();
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
@@ -101,18 +98,19 @@ public class SpielImpl implements Spiel
 	{
 		if (status == SpielStatus.SPIEL_LAEUFT)
 		{
-			if (aktuellerSpielerHatGewuerfelt)
-			{
-				Nachricht fehler = new Nachricht("Spieler hat bereits gewürfelt", Empfaenger.AKTUELLER_SPIELER);
-				verarbeiteFehler(fehler);
-			}
-			else
+			if (getAktuellerSpieler().getStatus() == SpielerStatus.MUSS_WUERFELN)
 			{
 				wuerfelPaar.wuerfeln();
 				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
-				setAktuellerSpielerHatGewuerfelt(true);
+
+				zeigeSpieler(getAktuellerSpieler(), getAktuellerSpieler());
 				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
-				server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
+				zeigeAllenSpielern(new WuerfelDaten(wuerfelPaar.getWuerfel()));
+			}
+			else
+			{
+				Nachricht fehler = new Nachricht("Spieler hat bereits gewürfelt", Empfaenger.AKTUELLER_SPIELER);
+				zeigeSpieler(getAktuellerSpieler(), fehler);
 			}
 		}
 		else
@@ -158,7 +156,8 @@ public class SpielImpl implements Spiel
 		}
 
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
-		aktuellerSpielerIstGerueckt = true;
+		spieler.setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+		zeigeSpieler(spieler, spieler);
 		zeigeAllenSpielern(felder);
 	}
 
@@ -440,27 +439,28 @@ public class SpielImpl implements Spiel
 		if (spielerAktuellAlt.getStatus() != SpielerStatus.VERLOREN)
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
+			spielerAktuellAlt.setSpielerStatus(SpielerStatus.WARTET);
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
-		spielerAktuellNeu.setAktuellerSpieler(true);
+		if (spielerImSpiel.size() > 1)
+		{
+			spielerAktuellNeu.setAktuellerSpieler(true);
+			spielerAktuellNeu.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
+		}
+		else
+		{
+			spielerAktuellNeu.setSpielerStatus(SpielerStatus.GEWONNEN);
+		}
 
-		setAktuellerSpielerHatGewuerfelt(false);
-		setAktuellerSpielerIstGerueckt(false);
-
-		server.ifPresent(s -> s.sendeAnSpieler(spielerAktuellAlt));
-		server.ifPresent(s -> s.sendeAnSpieler(spielerAktuellNeu));
-	}
-
-	private void setAktuellerSpielerIstGerueckt(boolean b)
-	{
-		aktuellerSpielerIstGerueckt = b;
+		zeigeAllenSpielern(spielerAktuellAlt);
+		zeigeAllenSpielern(spielerAktuellNeu);
 	}
 
 	@Override
 	public void wuerfelWeitergeben(Spieler spieler)
 	{
-		if (aktuellerSpielerHatGewuerfelt)
+		if (spieler.getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN)
 		{
 			if (spieler == getAktuellerSpieler())
 			{
@@ -475,21 +475,17 @@ public class SpielImpl implements Spiel
 		}
 	}
 
-	private void setAktuellerSpielerHatGewuerfelt(boolean wert)
-	{
-		aktuellerSpielerHatGewuerfelt = wert;
-	}
-
 	@Override
 	public boolean kannWuerfeln(Spieler spieler)
 	{
-		return status == SpielStatus.SPIEL_LAEUFT && !aktuellerSpielerHatGewuerfelt;
+		return status == SpielStatus.SPIEL_LAEUFT && getAktuellerSpieler().getStatus() == SpielerStatus.MUSS_WUERFELN;
 	}
 
 	@Override
 	public boolean kannWuerfelWeitergeben(Spieler spieler)
 	{
-		return status == SpielStatus.SPIEL_LAEUFT && aktuellerSpielerIstGerueckt;
+		return status == SpielStatus.SPIEL_LAEUFT
+				&& getAktuellerSpieler().getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN;
 	}
 
 	@Override

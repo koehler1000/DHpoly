@@ -88,8 +88,8 @@ public class SpielImplTest implements Datenobjektverwalter
 	public void spielerWechselSendetDatenobjektAnSpieler()
 	{
 		spiel.starteSpiel();
-		empfangeneObjekte = new ArrayList<>();
 		spiel.wuerfeln(spiel.getAktuellerSpieler());
+		empfangeneObjekte = new ArrayList<>();
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
 		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
