@@ -101,10 +101,10 @@ public class SpielImpl implements Spiel
 			if (getAktuellerSpieler().getStatus() == SpielerStatus.MUSS_WUERFELN)
 			{
 				wuerfelPaar.wuerfeln();
+				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
+
 				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
 				zeigeSpieler(getAktuellerSpieler(), getAktuellerSpieler());
-
-				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 				zeigeAllenSpielern(new WuerfelDaten(wuerfelPaar.getWuerfel()));
 			}
 			else
