@@ -9,14 +9,14 @@ import javax.swing.JPanel;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spieler.model.Spieler;
 
 public class StrassenbesitzeUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public StrassenbesitzeUI(Spieler spieler, SpielfeldAnsicht ansicht)
+	public StrassenbesitzeUI(Spieler spieler, SpielUI ansicht)
 	{
 		super(ansicht);
 

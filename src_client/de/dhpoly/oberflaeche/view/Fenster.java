@@ -30,7 +30,7 @@ public class Fenster
 		frame.setVisible(true);
 	}
 
-	public void zeigeSpielansicht(SpielfeldAnsicht ansicht, String titel)
+	public void zeigeSpielansicht(SpielUI ansicht, String titel)
 	{
 		spielansichten.addTab(titel, ansicht);
 	}

@@ -13,13 +13,13 @@ import de.dhpoly.feld.model.Hausbau;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class HausUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public HausUI(StrasseDaten strasse, SpielfeldAnsicht ansicht)
+	public HausUI(StrasseDaten strasse, SpielUI ansicht)
 	{
 		super(ansicht);
 

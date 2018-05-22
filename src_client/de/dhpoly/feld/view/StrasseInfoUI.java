@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.Spieler;
@@ -28,7 +28,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseInfoUI(StrasseDaten feld, SpielfeldAnsicht ansicht)
+	public StrasseInfoUI(StrasseDaten feld, SpielUI ansicht)
 	{
 		super(ansicht);
 

@@ -7,7 +7,7 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.oberflaeche.view.Fenster;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.model.Spieler;
@@ -27,7 +27,7 @@ public class MainFake
 	{
 		Spieler spieler = new Spieler("Peter");
 
-		SpielfeldAnsicht verwalter = new SpielfeldAnsicht(spieler, client);
+		SpielUI verwalter = new SpielUI(spieler, client);
 		fenster.zeigeSpielansicht(verwalter, "Fake");
 
 		Spiel spiel = new SpielImpl(server);

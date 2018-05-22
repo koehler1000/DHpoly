@@ -11,7 +11,7 @@ import javax.swing.table.TableModel;
 
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spieler.model.Spieler;
@@ -20,7 +20,7 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public KontoauszugUI(Spieler spieler, SpielfeldAnsicht ansicht)
+	public KontoauszugUI(Spieler spieler, SpielUI ansicht)
 	{
 		super(ansicht);
 

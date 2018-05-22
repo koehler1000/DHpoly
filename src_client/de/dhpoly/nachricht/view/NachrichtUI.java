@@ -10,13 +10,13 @@ import javax.swing.JPanel;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class NachrichtUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public NachrichtUI(Nachricht nachricht, SpielfeldAnsicht ansicht)
+	public NachrichtUI(Nachricht nachricht, SpielUI ansicht)
 	{
 		super(ansicht);
 

@@ -12,7 +12,7 @@ import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.ressource.model.Ressource;
 
 public class HandelUI extends Oberflaeche // NOSONAR
@@ -23,7 +23,7 @@ public class HandelUI extends Oberflaeche // NOSONAR
 
 	private JButton butFertig;
 
-	public HandelUI(Transaktion transaktion, SpielfeldAnsicht ansicht)
+	public HandelUI(Transaktion transaktion, SpielUI ansicht)
 	{
 		super(ansicht);
 		this.transaktion = transaktion;

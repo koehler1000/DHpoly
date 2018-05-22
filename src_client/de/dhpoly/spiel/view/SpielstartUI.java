@@ -7,14 +7,14 @@ import javax.swing.JButton;
 
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.model.SpielStart;
 
 public class SpielstartUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public SpielstartUI(SpielfeldAnsicht ansicht)
+	public SpielstartUI(SpielUI ansicht)
 	{
 		super(ansicht);
 

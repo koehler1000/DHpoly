@@ -11,14 +11,14 @@ import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 	private boolean anzeigen = true;
 
-	public StrasseKaufenUI(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
+	public StrasseKaufenUI(StrasseKaufen strasse, SpielUI ansicht)
 	{
 		super(ansicht);
 		initStrasseKaufen(strasse, ansicht);
@@ -26,7 +26,7 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 		anzeigen = (strasse.getSender() == ansicht.getSpieler());
 	}
 
-	private void initStrasseKaufen(StrasseKaufen strasse, SpielfeldAnsicht ansicht)
+	private void initStrasseKaufen(StrasseKaufen strasse, SpielUI ansicht)
 	{
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new GridLayout(1, 2, 10, 10));

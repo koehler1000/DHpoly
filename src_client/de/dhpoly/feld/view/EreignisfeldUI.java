@@ -10,13 +10,13 @@ import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.feld.model.EreignisfeldDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class EreignisfeldUI extends FeldUI // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public EreignisfeldUI(EreignisfeldDaten feld, SpielfeldAnsicht ansicht)
+	public EreignisfeldUI(EreignisfeldDaten feld, SpielUI ansicht)
 	{
 		super(feld, ansicht);
 		this.setBorder(new LineBorder(Color.BLACK));

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
@@ -18,11 +18,11 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 {
 	private static final long serialVersionUID = 1L;
 	private transient Spiel spiel;
-	private transient SpielfeldAnsicht ansicht;
+	private transient SpielUI ansicht;
 
 	private transient List<Spieler> cacheSpieler = new ArrayList<>();
 
-	public SpielerUebersichtUI(Spiel spiel, SpielfeldAnsicht ansicht)
+	public SpielerUebersichtUI(Spiel spiel, SpielUI ansicht)
 	{
 		this.spiel = spiel;
 		this.ansicht = ansicht;

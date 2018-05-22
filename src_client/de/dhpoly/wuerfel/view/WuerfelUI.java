@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.wuerfel.model.Wuerfel;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 
@@ -21,7 +21,7 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 
 	private transient Bilderverwalter bilderverwalter = new Bilderverwalter();
 
-	public WuerfelUI(WuerfelDaten wuerfel, SpielfeldAnsicht ansicht)
+	public WuerfelUI(WuerfelDaten wuerfel, SpielUI ansicht)
 	{
 		super(ansicht, 3);
 

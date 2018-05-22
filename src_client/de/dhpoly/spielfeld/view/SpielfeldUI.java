@@ -19,7 +19,7 @@ import de.dhpoly.feld.view.RessourcenfeldUI;
 import de.dhpoly.feld.view.StrasseUI;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.model.SpielfeldDaten;
 import de.dhpoly.spiel.view.SpielstartUI;
 import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
@@ -32,7 +32,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 	private Map<StrasseDaten, StrasseUI> strassen = new HashMap<>();
 
-	public SpielfeldUI(SpielfeldDaten spielfelder, SpielfeldAnsicht ansicht)
+	public SpielfeldUI(SpielfeldDaten spielfelder, SpielUI ansicht)
 	{
 		super(ansicht);
 
@@ -91,7 +91,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		this.remove(getSchliessenButton());
 	}
 
-	private Component getFeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)
+	private Component getFeldUI(FeldDaten feld, SpielUI ansicht)
 	{
 		if (feld instanceof StrasseDaten)
 		{

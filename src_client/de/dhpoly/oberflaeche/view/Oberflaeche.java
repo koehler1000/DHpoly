@@ -13,11 +13,11 @@ import de.dhpoly.oberflaeche.ElementFactory;
 public abstract class Oberflaeche extends JPanel
 {
 	private static final long serialVersionUID = 1L;
-	protected transient Optional<SpielfeldAnsicht> ansicht;
+	protected transient Optional<SpielUI> ansicht;
 
 	private JButton butSchliessen;
 
-	public Oberflaeche(SpielfeldAnsicht ansicht)
+	public Oberflaeche(SpielUI ansicht)
 	{
 		this.ansicht = Optional.ofNullable(ansicht);
 		ElementFactory.bearbeitePanel(this);
@@ -28,7 +28,7 @@ public abstract class Oberflaeche extends JPanel
 		this.add(getSchliessenButton(), BorderLayout.SOUTH);
 	}
 
-	public Oberflaeche(SpielfeldAnsicht ansicht, int sekunden)
+	public Oberflaeche(SpielUI ansicht, int sekunden)
 	{
 		this(ansicht);
 		new Thread(() -> {

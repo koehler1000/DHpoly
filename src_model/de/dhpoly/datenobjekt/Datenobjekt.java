@@ -8,7 +8,7 @@ import java.util.List;
 import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spieler.model.Spieler;
 
 public abstract class Datenobjekt implements Serializable
@@ -29,7 +29,7 @@ public abstract class Datenobjekt implements Serializable
 
 	public abstract Class<? extends Oberflaeche> getClassUI();
 
-	public void anzeigen(SpielfeldAnsicht ansicht)
+	public void anzeigen(SpielUI ansicht)
 	{
 		try
 		{

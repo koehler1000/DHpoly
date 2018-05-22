@@ -10,13 +10,13 @@ import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class NachrichtenErstellerUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public NachrichtenErstellerUI(SpielfeldAnsicht ansicht)
+	public NachrichtenErstellerUI(SpielUI ansicht)
 	{
 		super(ansicht);
 

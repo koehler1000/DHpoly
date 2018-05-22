@@ -13,7 +13,7 @@ import javax.swing.border.LineBorder;
 
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerFarben;
 
@@ -29,7 +29,7 @@ public class StrasseUI extends FeldUI // NOSONAR
 	private JButton butName = new JButton();
 	private JButton butBesitzer = new JButton();
 
-	public StrasseUI(StrasseDaten feld2, SpielfeldAnsicht ansicht)
+	public StrasseUI(StrasseDaten feld2, SpielUI ansicht)
 	{
 		super(feld2, ansicht);
 		this.feld = feld2;

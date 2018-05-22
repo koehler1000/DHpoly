@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class EinstellungenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public EinstellungenUI(SpielfeldAnsicht ansicht)
+	public EinstellungenUI(SpielUI ansicht)
 	{
 		super(ansicht);
 	}

@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public abstract class DatenobjektAnClient extends Datenobjekt
 {
@@ -14,7 +14,7 @@ public abstract class DatenobjektAnClient extends Datenobjekt
 	public abstract Class<? extends Oberflaeche> getClassUI();
 
 	@Override
-	public void anzeigen(SpielfeldAnsicht ansicht)
+	public void anzeigen(SpielUI ansicht)
 	{
 		try
 		{

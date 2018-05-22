@@ -10,13 +10,13 @@ import javax.swing.JPanel;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 
 public class HaeuserUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public HaeuserUI(List<StrasseDaten> felder, SpielfeldAnsicht ansicht)
+	public HaeuserUI(List<StrasseDaten> felder, SpielUI ansicht)
 	{
 		super(ansicht);
 

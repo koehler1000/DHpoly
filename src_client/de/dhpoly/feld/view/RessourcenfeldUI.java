@@ -10,7 +10,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.bilderverwalter.view.Bild;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spielfeld.model.RessourcenfeldDaten;
 
 public class RessourcenfeldUI extends FeldUI // NOSONAR
@@ -19,7 +19,7 @@ public class RessourcenfeldUI extends FeldUI // NOSONAR
 
 	private RessourcenfeldDaten feld;
 
-	public RessourcenfeldUI(RessourcenfeldDaten feld2, SpielfeldAnsicht ansicht)
+	public RessourcenfeldUI(RessourcenfeldDaten feld2, SpielUI ansicht)
 	{
 		super(feld2, ansicht);
 		this.feld = feld2;

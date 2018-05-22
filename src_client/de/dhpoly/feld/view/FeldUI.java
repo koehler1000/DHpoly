@@ -11,14 +11,14 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spieler.model.Spieler;
 
 public abstract class FeldUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public FeldUI(FeldDaten feld, SpielfeldAnsicht ansicht)
+	public FeldUI(FeldDaten feld, SpielUI ansicht)
 	{
 		super(ansicht);
 

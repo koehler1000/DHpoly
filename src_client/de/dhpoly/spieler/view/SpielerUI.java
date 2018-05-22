@@ -15,7 +15,7 @@ import javax.swing.border.LineBorder;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.oberflaeche.view.SpielfeldAnsicht;
+import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
@@ -29,7 +29,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	private JTextArea txtName;
 	private JButton butHandel;
 
-	public SpielerUI(Spieler spieler, SpielfeldAnsicht ansicht)
+	public SpielerUI(Spieler spieler, SpielUI ansicht)
 	{
 		super(ansicht);
 

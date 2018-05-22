@@ -27,7 +27,7 @@ import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
-public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// NOSONAR
+public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 
 	private transient Optional<NetzwerkClient> client;
 
-	public SpielfeldAnsicht(Spieler spieler, NetzwerkClient client)
+	public SpielUI(Spieler spieler, NetzwerkClient client)
 	{
 		this.spieler = spieler;
 		this.client = Optional.ofNullable(client);
@@ -158,7 +158,7 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		tabRechts.remove(oberflaeche);
 	}
 
-	public void zeigeStrasseInfo(StrasseDaten feld, SpielfeldAnsicht spielfeldAnsicht)
+	public void zeigeStrasseInfo(StrasseDaten feld, SpielUI spielfeldAnsicht)
 	{
 		hinzuLinks("Straﬂe", new StrasseInfoUI(feld, spielfeldAnsicht));
 	}
