@@ -8,7 +8,6 @@ import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielUI;
-import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -25,13 +24,17 @@ public class MainFake
 
 	public MainFake() throws IOException
 	{
-		Spieler spieler = new Spieler("Peter");
+		new SpielImpl(server);
 
+		Spieler spieler = new Spieler("Peter");
 		SpielUI verwalter = new SpielUI(spieler, client);
 		fenster.zeigeSpielansicht(verwalter, "Fake");
+		verwalter.sendeAnServer(spieler);
 
-		Spiel spiel = new SpielImpl(server);
-		spiel.fuegeSpielerHinzu(spieler);
+		Spieler spieler2 = new Spieler("Peter2");
+		SpielUI verwalter2 = new SpielUI(spieler2, client);
+		fenster.zeigeSpielansicht(verwalter2, "Fake2");
+		verwalter.sendeAnServer(spieler2);
 
 		new AI().erzeugeComputerspieler(client, "PC1");
 	}

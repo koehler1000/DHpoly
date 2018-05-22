@@ -27,24 +27,40 @@ public class AI implements Datenobjektverwalter
 	{
 		this.client = client;
 		spieler = new Spieler(name);
-		client.sendeAnServer(spieler);
 		client.setDatenobjektverwalter(this);
+		client.sendeAnServer(spieler);
 	}
 
 	@Override
 	public void empfange(Datenobjekt datenobjekt)
 	{
-		if (datenobjekt instanceof Transaktion)
+		new Thread(() -> {
+			warte();
+
+			if (datenobjekt instanceof Transaktion)
+			{
+				verarbeiteTransaktion((Transaktion) datenobjekt);
+			}
+			else if (datenobjekt instanceof StrasseKaufen)
+			{
+				verarbeiteStrasseKaufen((StrasseKaufen) datenobjekt);
+			}
+			else if (datenobjekt instanceof Spieler && datenobjekt == spieler)
+			{
+				verarbeiteSpieler((Spieler) datenobjekt);
+			}
+		}).start();
+	}
+
+	private void warte()
+	{
+		try
 		{
-			verarbeiteTransaktion((Transaktion) datenobjekt);
+			Thread.sleep(1000);
 		}
-		else if (datenobjekt instanceof Spieler && datenobjekt == spieler)
+		catch (InterruptedException ex) // NOSONAR
 		{
-			verarbeiteSpieler((Spieler) datenobjekt);
-		}
-		else if (datenobjekt instanceof StrasseKaufen)
-		{
-			verarbeiteStrasseKaufen((StrasseKaufen) datenobjekt);
+			// ignorieren
 		}
 	}
 

@@ -18,7 +18,6 @@ public class Spieler extends Datenobjekt
 	private List<RessourcenDatensatz> kasse = new ArrayList<>();
 	private int spielerNr;
 	private SpielerStatus status;
-	private boolean anDerReihe = false;
 	private int feldNr;
 	private List<StrasseDaten> strassen = new ArrayList<>();
 
@@ -107,16 +106,6 @@ public class Spieler extends Datenobjekt
 		return status;
 	}
 
-	public boolean isAnDerReihe()
-	{
-		return anDerReihe;
-	}
-
-	public void setAktuellerSpieler(boolean isAktuell)
-	{
-		anDerReihe = isAktuell;
-	}
-
 	public void setSpielerStatus(SpielerStatus status)
 	{
 		this.status = status;
@@ -174,5 +163,10 @@ public class Spieler extends Datenobjekt
 			return false;
 		}
 		return strassenDerGruppe.get(0).getStrassenAnzahlInGruppe() == strassenDerGruppe.size();
+	}
+
+	public boolean isAnDerReihe()
+	{
+		return status == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN || status == SpielerStatus.MUSS_WUERFELN;
 	}
 }

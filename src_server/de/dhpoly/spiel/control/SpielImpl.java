@@ -102,8 +102,8 @@ public class SpielImpl implements Spiel
 			{
 				wuerfelPaar.wuerfeln();
 				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
-
 				zeigeSpieler(getAktuellerSpieler(), getAktuellerSpieler());
+
 				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 				zeigeAllenSpielern(new WuerfelDaten(wuerfelPaar.getWuerfel()));
 			}
@@ -281,7 +281,6 @@ public class SpielImpl implements Spiel
 	{
 		if (status == SpielStatus.SPIEL_VORBEREITUNG)
 		{
-			spieler.setAktuellerSpieler(this.spieler.isEmpty());
 			spieler.setSpielerNr(this.spieler.size());
 			this.spieler.add(spieler);
 			this.spielerImSpiel.add(spieler);
@@ -432,20 +431,18 @@ public class SpielImpl implements Spiel
 	private void naechsterSpieler()
 	{
 		Spieler spielerAktuellAlt = getAktuellerSpieler();
-		spielerAktuellAlt.setAktuellerSpieler(false);
+		spielerAktuellAlt.setSpielerStatus(SpielerStatus.WARTET);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
 		pruefeVerloren(spielerAktuellAlt);
 		if (spielerAktuellAlt.getStatus() != SpielerStatus.VERLOREN)
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
-			spielerAktuellAlt.setSpielerStatus(SpielerStatus.WARTET);
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
 		if (spielerImSpiel.size() > 1)
 		{
-			spielerAktuellNeu.setAktuellerSpieler(true);
 			spielerAktuellNeu.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
 		}
 		else
@@ -464,8 +461,13 @@ public class SpielImpl implements Spiel
 		{
 			if (spieler == getAktuellerSpieler())
 			{
-				naechsterSpieler();
 				aktuelleKaufangebote = new ArrayList<>();
+				naechsterSpieler();
+			}
+			else
+			{
+				Nachricht nachricht = new Nachricht("Sie sind nicht an der Reihe", Empfaenger.AKTUELLER_SPIELER);
+				empfange(nachricht);
 			}
 		}
 		else
