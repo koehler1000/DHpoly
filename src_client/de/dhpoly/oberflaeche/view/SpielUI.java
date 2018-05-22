@@ -37,6 +37,9 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	private Spieler spieler;
 	private List<Oberflaeche> oberflaechen = new ArrayList<>();
 
+	private JButton butWuerfeln = ElementFactory.getButton("...");
+	private JButton butWuerfelWeitergeben = ElementFactory.getButton("...");
+
 	private transient Optional<NetzwerkClient> client;
 
 	public SpielUI(Spieler spieler, NetzwerkClient client)
@@ -70,11 +73,11 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		JPanel pnlRandRechts = ElementFactory.erzeugePanel();
 		pnlRandRechts.setLayout(new GridLayout(10, 1, 10, 10));
 
-		JButton butWuerfeln = ElementFactory.getButton("Würfeln");
+		butWuerfeln = ElementFactory.getButton("Würfeln");
 		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
 		pnlRandRechts.add(butWuerfeln);
 
-		JButton butWuerfelWeitergeben = ElementFactory.getButton("Würfel weitergeben");
+		butWuerfelWeitergeben = ElementFactory.getButton("Würfel weitergeben");
 		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
 		pnlRandRechts.add(butWuerfelWeitergeben);
 
@@ -200,5 +203,15 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	public boolean isSpielerInhaberDerAnsicht(Spieler spieler)
 	{
 		return spieler == this.spieler;
+	}
+
+	public void setWuerfelnEnabled(boolean value)
+	{
+		butWuerfeln.setEnabled(value);
+	}
+
+	public void setWuerfelWeitergabeEnabled(boolean value)
+	{
+		butWuerfelWeitergeben.setEnabled(value);
 	}
 }
