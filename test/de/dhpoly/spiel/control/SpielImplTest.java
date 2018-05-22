@@ -65,6 +65,7 @@ public class SpielImplTest implements Datenobjektverwalter
 		spiel.fuegeStrassenKaufHinzu(strasse);
 		assertTrue(spiel.kannSpielerStrasseKaufen(spieler, strasse));
 
+		spiel.wuerfeln(spieler);
 		spiel.wuerfelWeitergeben(spieler);
 		assertFalse(spiel.kannSpielerStrasseKaufen(spieler, strasse));
 	}
@@ -88,6 +89,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	{
 		spiel.starteSpiel();
 		empfangeneObjekte = new ArrayList<>();
+		spiel.wuerfeln(spiel.getAktuellerSpieler());
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
 		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
@@ -114,6 +116,8 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Test
 	public void testnaechsterSpieler()
 	{
+		spiel.starteSpiel();
+		spiel.wuerfeln(spiel.getAktuellerSpieler());
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
 	}
@@ -147,7 +151,11 @@ public class SpielImplTest implements Datenobjektverwalter
 
 		s1.auszahlen(new RessourcenDatensatz(Ressource.GELD, 9999999));
 
-		assertThat(s1.getStatus(), Is.is(SpielerStatus.IM_SPIEL));
+		spiel.starteSpiel();
+
+		assertThat(s1.getStatus(), Is.is(SpielerStatus.MUSS_WUERFELN));
+		spiel.wuerfeln(s1);
+		assertThat(s1.getStatus(), Is.is(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN));
 		spiel.wuerfelWeitergeben(s1);
 
 		assertThat(s1.getStatus(), Is.is(SpielerStatus.VERLOREN));

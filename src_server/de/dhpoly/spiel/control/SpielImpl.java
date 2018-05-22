@@ -109,6 +109,7 @@ public class SpielImpl implements Spiel
 			else
 			{
 				wuerfelPaar.wuerfeln();
+				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
 				setAktuellerSpielerHatGewuerfelt(true);
 				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 				server.ifPresent(s -> s.sendeAnSpieler(new WuerfelDaten(wuerfelPaar.getWuerfel())));
@@ -388,6 +389,8 @@ public class SpielImpl implements Spiel
 	public void starteSpiel()
 	{
 		status = SpielStatus.SPIEL_LAEUFT;
+
+		getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
 
 		for (Spieler sp : spieler)
 		{

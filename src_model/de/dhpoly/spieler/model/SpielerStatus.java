@@ -2,5 +2,5 @@ package de.dhpoly.spieler.model;
 
 public enum SpielerStatus
 {
-	IM_SPIEL, VERLOREN, GEWONNEN
+	WARTET, MUSS_WUERFELN, MUSS_WUERFEL_WEITERGEBEN, VERLOREN, GEWONNEN
 }

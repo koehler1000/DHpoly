@@ -26,7 +26,7 @@ public class Spieler extends Datenobjekt
 	{
 		super();
 		this.name = name;
-		this.status = SpielerStatus.IM_SPIEL;
+		this.status = SpielerStatus.WARTET;
 	}
 
 	public String getName()
