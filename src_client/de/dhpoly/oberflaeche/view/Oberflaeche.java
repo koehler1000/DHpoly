@@ -34,7 +34,11 @@ public abstract class Oberflaeche extends JPanel
 		new Thread(() -> {
 			try
 			{
-				Thread.sleep(1000 * sekunden);
+				for (int i = sekunden; i > 0; i--)
+				{
+					setSchliessenButtonText(i);
+					Thread.sleep(1000); // NOSONAR
+				}
 			}
 			catch (InterruptedException ex) // NOSONAR
 			{
@@ -42,6 +46,16 @@ public abstract class Oberflaeche extends JPanel
 			}
 			schliessen();
 		}).start();
+	}
+
+	public void setSchliessenButtonText(String text)
+	{
+		butSchliessen.setText(text);
+	}
+
+	public void setSchliessenButtonText(int sekunden)
+	{
+		setSchliessenButtonText("Schlieﬂen (" + sekunden + ")");
 	}
 
 	protected JButton getSchliessenButton()
