@@ -35,7 +35,7 @@ public class AITest
 	public void wuerfelnSobaldMoeglich() throws Exception
 	{
 		spieler.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
-		ai.empfange(spieler);
+		ai.verarbeite(spieler);
 
 		assertTrue(hatElementEmpfangen(WuerfelAufruf.class));
 	}

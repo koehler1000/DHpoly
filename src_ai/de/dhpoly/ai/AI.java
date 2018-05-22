@@ -34,6 +34,22 @@ public class AI implements Datenobjektverwalter
 	@Override
 	public void empfange(Datenobjekt datenobjekt)
 	{
+		new Thread(() -> {
+			// TODO sollte asynchron ausgeführt werden können ohne Warten zu müssen
+			try
+			{
+				Thread.sleep(1000);
+			}
+			catch (InterruptedException ex) // NOSONAR
+			{
+				// ignorieren
+			}
+			verarbeite(datenobjekt);
+		}).start();
+	}
+
+	protected void verarbeite(Datenobjekt datenobjekt)
+	{
 		if (datenobjekt instanceof Transaktion)
 		{
 			verarbeiteTransaktion((Transaktion) datenobjekt);
