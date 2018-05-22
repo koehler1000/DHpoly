@@ -196,4 +196,9 @@ public class SpielfeldAnsicht extends JPanel implements Datenobjektverwalter// N
 		JTabbedPane tabPane = tabLinks;
 		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
 	}
+
+	public boolean isSpielerInhaberDerAnsicht(Spieler spieler)
+	{
+		return spieler == this.spieler;
+	}
 }
