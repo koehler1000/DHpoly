@@ -457,10 +457,18 @@ public class SpielImpl implements Spiel
 	@Override
 	public void wuerfelWeitergeben(Spieler spieler)
 	{
-		if (spieler == getAktuellerSpieler())
+		if (aktuellerSpielerHatGewuerfelt)
 		{
-			naechsterSpieler();
-			aktuelleKaufangebote = new ArrayList<>();
+			if (spieler == getAktuellerSpieler())
+			{
+				naechsterSpieler();
+				aktuelleKaufangebote = new ArrayList<>();
+			}
+		}
+		else
+		{
+			Nachricht nachricht = new Nachricht("Sie müssen zuerst würfeln", Empfaenger.AKTUELLER_SPIELER);
+			empfange(nachricht);
 		}
 	}
 
