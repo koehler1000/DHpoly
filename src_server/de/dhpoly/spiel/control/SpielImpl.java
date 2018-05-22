@@ -394,10 +394,10 @@ public class SpielImpl implements Spiel
 		for (Spieler sp : spieler)
 		{
 			sp.einzahlen(einstellungen.getSpielerStartVorraete());
-			server.ifPresent(s -> s.sendeAnSpieler(sp));
+			zeigeAllenSpielern(sp);
 		}
 
-		server.ifPresent(s -> s.sendeAnSpieler(felder));
+		zeigeAllenSpielern(felder);
 	}
 
 	public List<FeldDaten> getStrassen(Spieler spieler)

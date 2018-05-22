@@ -75,8 +75,11 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		this.setBackground(backcolor);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		ansicht.setWuerfelnEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFELN);
-		ansicht.setWuerfelWeitergabeEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+		if (ansicht.isSpielerInhaberDerAnsicht(spieler))
+		{
+			ansicht.setWuerfelnEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFELN);
+			ansicht.setWuerfelWeitergabeEnabled(spieler.getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+		}
 
 		update();
 	}
