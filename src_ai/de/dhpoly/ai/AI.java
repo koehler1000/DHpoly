@@ -34,33 +34,17 @@ public class AI implements Datenobjektverwalter
 	@Override
 	public void empfange(Datenobjekt datenobjekt)
 	{
-		new Thread(() -> {
-			warte();
-
-			if (datenobjekt instanceof Transaktion)
-			{
-				verarbeiteTransaktion((Transaktion) datenobjekt);
-			}
-			else if (datenobjekt instanceof StrasseKaufen)
-			{
-				verarbeiteStrasseKaufen((StrasseKaufen) datenobjekt);
-			}
-			else if (datenobjekt instanceof Spieler && datenobjekt == spieler)
-			{
-				verarbeiteSpieler((Spieler) datenobjekt);
-			}
-		}).start();
-	}
-
-	private void warte()
-	{
-		try
+		if (datenobjekt instanceof Transaktion)
 		{
-			Thread.sleep(1000);
+			verarbeiteTransaktion((Transaktion) datenobjekt);
 		}
-		catch (InterruptedException ex) // NOSONAR
+		else if (datenobjekt instanceof StrasseKaufen)
 		{
-			// ignorieren
+			verarbeiteStrasseKaufen((StrasseKaufen) datenobjekt);
+		}
+		else if (datenobjekt instanceof Spieler && datenobjekt == spieler)
+		{
+			verarbeiteSpieler((Spieler) datenobjekt);
 		}
 	}
 
