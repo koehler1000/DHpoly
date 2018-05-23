@@ -26,16 +26,17 @@ public class MainFake
 	{
 		new SpielImpl(server);
 
-		Spieler spieler = new Spieler("Peter");
-		SpielUI verwalter = new SpielUI(spieler, client);
-		fenster.zeigeSpielansicht(verwalter, "Fake");
-		verwalter.sendeAnServer(spieler);
-
-		Spieler spieler2 = new Spieler("Peter2");
-		SpielUI verwalter2 = new SpielUI(spieler2, client);
-		fenster.zeigeSpielansicht(verwalter2, "Fake2");
-		verwalter.sendeAnServer(spieler2);
+		spielerHinzu("Hans");
+		spielerHinzu("Peter");
 
 		new AI().erzeugeComputerspieler(client, "PC1");
+	}
+
+	private void spielerHinzu(String name)
+	{
+		Spieler spieler = new Spieler(name);
+		SpielUI verwalter2 = new SpielUI(spieler, client);
+		fenster.zeigeSpielansicht(verwalter2, name);
+		verwalter2.sendeAnServer(spieler);
 	}
 }
