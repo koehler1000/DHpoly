@@ -27,7 +27,7 @@ public class Main implements Runnable
 		main.starteClient(ip);
 
 		String name;
-		while ((name = JOptionPane.showInputDialog("Name für Computerspieler")) != "")
+		while ((name = JOptionPane.showInputDialog("Name für Computerspieler")) != null)
 		{
 			AI ai = new AI();
 			ai.erzeugeComputerspieler(ip, name);
