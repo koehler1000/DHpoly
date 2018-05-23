@@ -45,17 +45,6 @@ public class Main implements Runnable
 		NetzwerkClientImpl client2 = new NetzwerkClientImpl(null);
 		client2.verbinden(str, 3001);
 		client2.sendeAnServer("Test2");
-
-		// NetzwerkClientImpl client = new NetzwerkClientImpl(str); // TODO ClientName
-		// muss übergeben werden
-		// client.connect(ipHost, 3001);
-		//
-		// Spieler spieler = new Spieler(SpielerTyp.LOKAL, "Netzwerkspieler");
-		// client.sendeAnServer(spieler.toString()); // TODO spieler muss noch
-		// serialisiert werden
-		//
-		// SpielfeldAnsicht ansicht = new SpielfeldAnsicht(spieler, client);
-		// fenster.zeigeSpielansicht(ansicht, spieler.getName());
 	}
 
 	private String starteServer()
@@ -68,11 +57,6 @@ public class Main implements Runnable
 		spieler.add(new Spieler("Alex"));
 
 		SpielDaten daten = new SpielDaten(spieler, new Einstellungen());
-		// server.sendeAnClients(daten);
-		//
-		// String ip = server.getIp();
-		// JOptionPane.showMessageDialog(null, "Lade deine Freunde ein, mit auf " + ip +
-		// " zu spielen");
 		return "127.0.0.1"; // TODO richtige IP muss zurückgegeben werden
 	}
 

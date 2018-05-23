@@ -263,9 +263,6 @@ class ClientHandler implements Runnable
 
 		/** Extract the username and password from the client message */
 		clientMsg = clientMsg.split(" ")[1];
-		String username = clientMsg.split(",")[0];
-		String password = clientMsg.split(",")[1];
-
 		/**
 		 * Attempt to create the account in the database, send appropriate message if
 		 * the username is taken.
