@@ -176,7 +176,7 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	{
 		datenobjekt.anzeigen(this);
 
-		if (spieler.equals(datenobjekt) && !((Spieler) datenobjekt).isAnDerReihe())
+		if (spieler.equals(datenobjekt) && !spieler.isAnDerReihe())
 		{
 			oberflaechen.stream().filter(Oberflaeche::isInvalideBeiSpielerWechsel).forEach(Oberflaeche::schliessen);
 		}
