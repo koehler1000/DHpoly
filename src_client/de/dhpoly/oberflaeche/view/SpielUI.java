@@ -12,11 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.feld.model.StrasseDaten;
 import de.dhpoly.feld.view.HaeuserUI;
 import de.dhpoly.feld.view.StrasseInfoUI;
-import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.nachricht.view.NachrichtenErstellerUI;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
@@ -94,14 +92,11 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
 
 		JButton butFeedback = ElementFactory.getButton("Entwickler kontaktieren");
 		butFeedback.addActionListener(e -> hinzuLinks("Feedback", new NachrichtenErstellerUI(this)));
 		pnlRandRechts.add(butFeedback);
-
-		JButton butKontakt = ElementFactory.getButton("Danke sagen");
-		butKontakt.addActionListener(e -> sendeAnServer(new Nachricht("Danke", Empfaenger.ENTWICKLER)));
-		pnlRandRechts.add(butKontakt);
 
 		tabRechts.addTab("Aktionen", pnlRandRechts);
 
