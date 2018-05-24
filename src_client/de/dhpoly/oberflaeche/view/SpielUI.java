@@ -72,10 +72,12 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		pnlRandRechts.setLayout(new GridLayout(10, 1, 10, 10));
 
 		butWuerfeln = ElementFactory.getButton("Würfeln");
+		butWuerfeln.setEnabled(false);
 		butWuerfeln.addActionListener(e -> sendeAnServer(new WuerfelAufruf(spieler)));
 		pnlRandRechts.add(butWuerfeln);
 
 		butWuerfelWeitergeben = ElementFactory.getButton("Würfel weitergeben");
+		butWuerfelWeitergeben.setEnabled(false);
 		butWuerfelWeitergeben.addActionListener(e -> sendeAnServer(new WuerfelWeitergabe(spieler)));
 		pnlRandRechts.add(butWuerfelWeitergeben);
 
