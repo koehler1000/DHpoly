@@ -169,4 +169,18 @@ public class Spieler extends Datenobjekt
 	{
 		return status == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN || status == SpielerStatus.MUSS_WUERFELN;
 	}
+
+	@Override
+	public boolean equals(Object o) // NOSONAR
+	{
+		if (o instanceof Spieler)
+		{
+			if (((Spieler) o).getSpielerNr() == -1)
+			{
+				return false;
+			}
+			return ((Spieler) o).getSpielerNr() == this.getSpielerNr();
+		}
+		return false;
+	}
 }
