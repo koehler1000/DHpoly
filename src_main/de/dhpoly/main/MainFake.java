@@ -2,10 +2,13 @@ package de.dhpoly.main;
 
 import java.io.IOException;
 
+import javax.swing.JButton;
+
 import de.dhpoly.ai.AI;
 import de.dhpoly.bilderverwalter.Bilderverwalter;
 import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
+import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.control.SpielImpl;
@@ -24,11 +27,15 @@ public class MainFake
 
 	public MainFake() throws IOException
 	{
+		JButton butSpielHosten = ElementFactory.getButtonUeberschrift("Spiel hosten");
+		butSpielHosten.addActionListener(e -> spielHosten());
+		fenster.zeigeComponente(butSpielHosten, "+");
+	}
+
+	private void spielHosten()
+	{
 		new SpielImpl(server);
-
 		spielerHinzu("Hans");
-		spielerHinzu("Peter");
-
 		new AI().erzeugeComputerspieler(client, "PC1");
 	}
 
