@@ -1,5 +1,6 @@
 package de.dhpoly.main;
 
+import java.awt.Component;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -28,12 +29,13 @@ public class MainFake
 	public MainFake() throws IOException
 	{
 		JButton butSpielHosten = ElementFactory.getButtonUeberschrift("Spiel hosten");
-		butSpielHosten.addActionListener(e -> spielHosten());
+		butSpielHosten.addActionListener(e -> spielHosten(butSpielHosten));
 		fenster.zeigeComponente(butSpielHosten, "+");
 	}
 
-	private void spielHosten()
+	private void spielHosten(Component c)
 	{
+		fenster.loescheKomponente(c);
 		new SpielImpl(server);
 		spielerHinzu("Hans");
 		new AI().erzeugeComputerspieler(client, "PC1");
