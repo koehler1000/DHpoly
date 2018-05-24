@@ -16,7 +16,7 @@ public class TelegramNachrichtLogikImpl implements TelegramNachrichtLogik
 {
 	private static final Logger LOGGER = Logger.getLogger(TelegramNachrichtLogikImpl.class.getName());
 
-	private static final String CHAT_ID = "-1001131918455";
+	private static final String CHAT_ID = "-1001290532140";
 
 	public void sendTelegramMessage(String thema, String nachricht) throws IOException
 	{
