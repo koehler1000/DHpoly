@@ -37,6 +37,7 @@ public class TelegramNachrichtLogikImpl implements TelegramNachrichtLogik
 				.replaceAll("[öÖ]", "oe") //
 				.replaceAll("[üÜ]", "ue") //
 				.replaceAll("ß", "ss")//
+				.replaceAll("H", "h")//
 				.replaceAll("\n", System.lineSeparator())//
 				.replaceAll(System.lineSeparator(), " - ");
 	}
