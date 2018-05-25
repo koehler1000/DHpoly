@@ -58,7 +58,7 @@ public class AI implements Datenobjektverwalter
 		{
 			verarbeiteStrasseKaufen((StrasseKaufen) datenobjekt);
 		}
-		else if (datenobjekt instanceof Spieler && datenobjekt == spieler)
+		else if (datenobjekt instanceof Spieler && spieler.equals(datenobjekt))
 		{
 			verarbeiteSpieler((Spieler) datenobjekt);
 		}
@@ -74,11 +74,20 @@ public class AI implements Datenobjektverwalter
 	{
 		if (spieler.getStatus() == SpielerStatus.MUSS_WUERFELN)
 		{
-			WuerfelAufruf aufruf = new WuerfelAufruf(this.spieler);
+			WuerfelAufruf aufruf = new WuerfelAufruf(spieler);
 			client.sendeAnServer(aufruf);
 		}
 		else if (spieler.getStatus() == SpielerStatus.MUSS_WUERFEL_WEITERGEBEN)
 		{
+			// TODO sollte asynchron ausgeführt werden können ohne Warten zu müssen
+			try
+			{
+				Thread.sleep(1000);
+			}
+			catch (InterruptedException ex) // NOSONAR
+			{
+				// ignorieren
+			}
 			WuerfelWeitergabe weitergabe = new WuerfelWeitergabe(this.spieler);
 			client.sendeAnServer(weitergabe);
 		}
