@@ -106,6 +106,7 @@ public class SpielImpl implements Spiel
 				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
 				zeigeSpieler(getAktuellerSpieler(), getAktuellerSpieler());
 				zeigeAllenSpielern(new WuerfelDaten(wuerfelPaar.getWuerfel()));
+				zeigeAllenSpielern(felder);
 			}
 			else
 			{
@@ -156,9 +157,6 @@ public class SpielImpl implements Spiel
 		}
 
 		spieler.setFeldNr(felder.indexOf(aktuellesFeld));
-		spieler.setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
-		zeigeSpieler(spieler, spieler);
-		zeigeAllenSpielern(felder);
 	}
 
 	private FeldDaten getNaechstesFeld(FeldDaten feld)
