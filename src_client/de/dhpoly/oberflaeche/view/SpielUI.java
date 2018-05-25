@@ -127,8 +127,8 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		List<Oberflaeche> oberflaechenAlt = oberflaeche.durchHinzufuegenUngueltigWerdend(oberflaechen);
 
 		oberflaechenAlt.forEach(e -> {
-			tabPane.remove(e);
 			oberflaeche.remove(e);
+			tabPane.remove(e);
 		});
 
 		oberflaechen.add(oberflaeche);
