@@ -64,7 +64,7 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isInvalideBeiSpielerWechsel()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
