@@ -177,24 +177,26 @@ public class SpielImpl implements Spiel
 		}
 	}
 
-	private void pruefeVerloren(Spieler spielerAktuell)
+	private boolean hatVerloren(Spieler spielerAktuell)
 	{
-		if (spielerAktuell.getRessourcenWert(Ressource.GELD) < 0
-				|| spielerAktuell.getStatus() == SpielerStatus.VERLOREN)
+		return (spielerAktuell.getRessourcenWert(Ressource.GELD) < 0
+				|| spielerAktuell.getStatus() == SpielerStatus.VERLOREN);
+	}
+
+	private void lasseSpielerVerlieren(Spieler spielerAktuell)
+	{
+		spielerAusscheidenLassen(spielerAktuell);
+
+		Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren", Empfaenger.ALLE);
+		zeigeAllenSpielern(nachricht);
+
+		if (spieler.size() == 1)
 		{
-			spielerAusscheidenLassen(spielerAktuell);
+			Spieler sieger = spieler.get(0);
+			sieger.setSpielerStatus(SpielerStatus.GEWONNEN);
 
-			Nachricht nachricht = new Nachricht(spielerAktuell.getName() + " hat verloren", Empfaenger.ALLE);
-			zeigeAllenSpielern(nachricht);
-
-			if (spieler.size() == 1)
-			{
-				Spieler sieger = spieler.get(0);
-				sieger.setSpielerStatus(SpielerStatus.GEWONNEN);
-
-				Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen", Empfaenger.ALLE);
-				zeigeAllenSpielern(nachrichtGewonnen);
-			}
+			Nachricht nachrichtGewonnen = new Nachricht(sieger.getName() + " hat gewonnen", Empfaenger.ALLE);
+			zeigeAllenSpielern(nachrichtGewonnen);
 		}
 	}
 
@@ -434,24 +436,33 @@ public class SpielImpl implements Spiel
 		spielerAktuellAlt.setSpielerStatus(SpielerStatus.WARTET);
 
 		spielerImSpiel.remove(spielerAktuellAlt);
-		pruefeVerloren(spielerAktuellAlt);
-		if (spielerAktuellAlt.getStatus() != SpielerStatus.VERLOREN)
+
+		if (hatVerloren(spielerAktuellAlt))
+		{
+			lasseSpielerVerlieren(spielerAktuellAlt);
+		}
+		else
 		{
 			spielerImSpiel.add(spielerAktuellAlt);
 		}
 
 		Spieler spielerAktuellNeu = spielerImSpiel.get(0);
-		if (spielerImSpiel.size() > 1)
+		if (spieler.size() == 1)
 		{
-			spielerAktuellNeu.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
+			lasseSpielerGewinnen(spielerAktuellNeu);
 		}
 		else
 		{
-			spielerAktuellNeu.setSpielerStatus(SpielerStatus.GEWONNEN);
+			spielerAktuellNeu.setSpielerStatus(SpielerStatus.MUSS_WUERFELN);
 		}
 
 		zeigeAllenSpielern(spielerAktuellAlt);
 		zeigeAllenSpielern(spielerAktuellNeu);
+	}
+
+	private void lasseSpielerGewinnen(Spieler sp)
+	{
+		sp.setSpielerStatus(SpielerStatus.GEWONNEN);
 	}
 
 	@Override
