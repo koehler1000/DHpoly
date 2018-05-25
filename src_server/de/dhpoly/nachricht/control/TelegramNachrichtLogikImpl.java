@@ -20,7 +20,7 @@ public class TelegramNachrichtLogikImpl implements TelegramNachrichtLogik
 
 	public void sendTelegramMessage(String thema, String nachricht) throws IOException
 	{
-		String toSend = ersetzeUmlaute(thema) + " - " + ersetzeUmlaute(nachricht);
+		String toSend = ersetzeUmlaute(nachricht);
 		String command = "https://api.telegram.org/bot444829640:AAEZSHnTqmqtRkLualeRH4JmvkV95t5o8b8/sendmessage?chat_id="
 				+ CHAT_ID + "&text=";
 		command += toSend;
@@ -37,7 +37,8 @@ public class TelegramNachrichtLogikImpl implements TelegramNachrichtLogik
 				.replaceAll("[öÖ]", "oe") //
 				.replaceAll("[üÜ]", "ue") //
 				.replaceAll("ß", "ss")//
-				.replaceAll("H", "h")//
+				.replaceAll(" H", " h")//
+				.replaceAll("&", "-AND-")//
 				.replaceAll("\n", System.lineSeparator())//
 				.replaceAll(System.lineSeparator(), " - ");
 	}
