@@ -4,7 +4,6 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 
-import de.dhpoly.ai.AI;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -34,7 +33,6 @@ public class SpielerstellerUI
 		fenster.loescheKomponente(c);
 		new SpielImpl(server);
 		spielerHinzu("Hans");
-		new AI().erzeugeComputerspieler(client, "PC1");
 	}
 
 	private void spielerHinzu(String name)
