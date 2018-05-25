@@ -461,6 +461,8 @@ public class SpielImpl implements Spiel
 	private void lasseSpielerGewinnen(Spieler sp)
 	{
 		sp.setSpielerStatus(SpielerStatus.GEWONNEN);
+		Nachricht nachricht = new Nachricht(sp.getName() + " hat gewonnen.", Empfaenger.ALLE_SPIELER);
+		empfange(nachricht);
 	}
 
 	@Override
