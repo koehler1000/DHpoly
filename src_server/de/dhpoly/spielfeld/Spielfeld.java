@@ -7,5 +7,7 @@ import de.dhpoly.feld.model.FeldDaten;
 
 public interface Spielfeld
 {
+	// TODO ausbauen
+
 	List<FeldDaten> getStandardSpielfeld(Einstellungen einstellungen);
 }
