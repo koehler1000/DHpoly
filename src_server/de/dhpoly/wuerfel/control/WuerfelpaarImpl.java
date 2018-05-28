@@ -24,6 +24,11 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 		wuerfelDaten = new WuerfelDaten(wuerfel);
 	}
 
+	public WuerfelpaarImpl(WuerfelDaten wuerfelDaten)
+	{
+		this.wuerfelDaten = wuerfelDaten;
+	}
+
 	@Override
 	public void wuerfeln()
 	{
