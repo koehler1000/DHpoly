@@ -36,7 +36,6 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 		JPanel pnlStrassen = new JPanel(new GridLayout(transaktion.getFelderEigentumswechsel(spielerDaten).size(), 1));
 		pnlStrassen.setBackground(Color.WHITE);
 
-		// TODO Felder der Spieler anzeigen
 		for (StrasseDaten str : spielerDaten.getStrassen())
 		{
 			pnlStrassen.add(new StrasseAnbietenUI(str, this, transaktion.getFelderEigentumswechsel().contains(str)));
@@ -45,12 +44,12 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 		this.add(new JScrollPane(pnlStrassen));
 	}
 
-	void feldAuswaehlen(StrasseDaten strasse)
+	protected void feldAuswaehlen(StrasseDaten strasse)
 	{
 		transaktion.addDatensatzFelderwechsel(strasse);
 	}
 
-	void feldAuswaehlenRueckgaengig(StrasseDaten strasse)
+	protected void feldAuswaehlenRueckgaengig(StrasseDaten strasse)
 	{
 		transaktion.removeDatensatzFelderwechsel(strasse);
 	}
