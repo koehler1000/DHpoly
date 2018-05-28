@@ -39,11 +39,11 @@ public class Main implements Runnable
 		String str = JOptionPane.showInputDialog("IP Adresse", ipHost);
 
 		NetzwerkClientImpl client = new NetzwerkClientImpl(null);
-		client.verbinden(str, 3001);
+		client.verbinden("127.0.0.1", 3001);
 		client.sendeAnServer("Test");
 
 		NetzwerkClientImpl client2 = new NetzwerkClientImpl(null);
-		client2.verbinden(str, 3001);
+		client2.verbinden("127.0.0.1", 3001);
 		client2.sendeAnServer("Test2");
 	}
 

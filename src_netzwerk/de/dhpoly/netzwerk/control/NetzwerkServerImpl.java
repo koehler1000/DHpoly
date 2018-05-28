@@ -20,7 +20,7 @@ public class NetzwerkServerImpl implements NetzwerkServer
 
 	/** The number of current connections (not logged-in sessions) */
 	private int connections;
-	private boolean sollServerLaufen = false;
+	private boolean sollServerLaufen = true;
 
 	/**
 	 * Server's socket to listen for incoming connections on. ServerSocket objects
