@@ -9,14 +9,14 @@ public enum Wetter
 	GEWITTER(-5, "Kaum einer will bei einem solchen Gewitter Urlaub machen. Die Mieten fallen."), //
 	;
 
+	private int mietbeeinflussung;
+	private String beschreibung;
+	
 	private Wetter(int mietbeeinflussung, String beschreibung)
 	{
 		this.mietbeeinflussung = mietbeeinflussung;
 		this.beschreibung = beschreibung;
 	}
-
-	private int mietbeeinflussung;
-	private String beschreibung;
 
 	public String getBeschreibung()
 	{
