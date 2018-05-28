@@ -12,9 +12,8 @@ import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.SpielerUI;
-import observerpattern.Beobachter;
 
-public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
+public class SpielerUebersichtUI extends JTabbedPane
 {
 	private static final long serialVersionUID = 1L;
 	private transient Spiel spiel;
@@ -29,7 +28,6 @@ public class SpielerUebersichtUI extends JTabbedPane implements Beobachter
 		update();
 	}
 
-	@Override
 	public void update()
 	{
 		if (cacheSpieler.size() != spiel.getSpieler().size())
