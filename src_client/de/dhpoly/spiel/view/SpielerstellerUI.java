@@ -1,8 +1,11 @@
 package de.dhpoly.spiel.view;
 
 import java.awt.Component;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
@@ -18,21 +21,33 @@ public class SpielerstellerUI
 	private NetzwerkServer server;
 	private NetzwerkClient client;
 
+	private JTextArea txtName;
+
 	public SpielerstellerUI(Fenster fenster, NetzwerkServer server, NetzwerkClient client)
 	{
 		this.fenster = fenster;
 		this.server = server;
 		this.client = client;
+
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setLayout(new GridLayout(2, 1, 10, 10));
+
+		txtName = ElementFactory.getTextFeld("Host", true);
+		pnl.add(txtName);
+
 		JButton butSpielHosten = ElementFactory.getButtonUeberschrift("Spiel hosten");
-		butSpielHosten.addActionListener(e -> spielHosten(butSpielHosten));
-		fenster.zeigeComponente(butSpielHosten, "+");
+		butSpielHosten.addActionListener(e -> spielHosten(pnl));
+		pnl.add(butSpielHosten);
+
+		fenster.zeigeComponente(pnl, "+");
 	}
 
 	private void spielHosten(Component c)
 	{
 		fenster.loescheKomponente(c);
 		new SpielImpl(server);
-		spielerHinzu("Hans");
+
+		spielerHinzu(txtName.getText());
 	}
 
 	private void spielerHinzu(String name)
