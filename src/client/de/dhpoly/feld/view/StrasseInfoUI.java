@@ -25,11 +25,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private JButton butName = new JButton();
-	private JButton butBesitzer = new JButton();
-
-	public StrasseInfoUI(StrasseDaten feld, SpielUI ansicht)
-	{
+	public StrasseInfoUI(StrasseDaten feld, SpielUI ansicht) {
 		super(ansicht);
 
 		JPanel frameMieten = ElementFactory.erzeugePanel();
@@ -38,8 +34,7 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		StringBuilder sb = new StringBuilder();
 		sb.append("Aktuelle Miete: " + feld.getAkuelleMiete() + System.lineSeparator());
 		sb.append("Ein Haus kostet: " + System.lineSeparator());
-		for (RessourcenDatensatz datensatz : feld.getKostenHaus())
-		{
+		for (RessourcenDatensatz datensatz : feld.getKostenHaus()) {
 			sb.append(datensatz.getString() + System.lineSeparator());
 		}
 
@@ -53,36 +48,30 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 
 		Color backcolor = new Strassengruppe().getColor(feld.getGruppe());
 
-		butName = ElementFactory.getButtonUeberschrift(feld.getName(), backcolor);
+		JButton butName = ElementFactory.getButtonUeberschrift(feld.getName(), backcolor);
 		butName.addActionListener(e -> schliessen());
 		this.add(butName, BorderLayout.NORTH);
 
-		butBesitzer = ElementFactory.getButtonUeberschrift(getEigentuemerString(feld));
+		JButton butBesitzer = ElementFactory.getButtonUeberschrift(getEigentuemerString(feld));
 		butBesitzer.addActionListener(e -> schliessen());
 		this.add(butBesitzer, BorderLayout.SOUTH);
 
 		feld.getEigentuemer().ifPresent(this::farbeSetzen);
 	}
 
-	private String getEigentuemerString(StrasseDaten feld)
-	{
+	private String getEigentuemerString(StrasseDaten feld) {
 		Optional<Spieler> eigentuemer = feld.getEigentuemer();
 		return eigentuemer.isPresent() ? eigentuemer.get().getName() : "Zu kaufen";
 	}
 
-	private String getMietenText(int[] miete)
-	{
+	private String getMietenText(int[] miete) {
 		StringBuilder sb = new StringBuilder();
 		int z = 0;
-		for (int i : miete)
-		{
+		for (int i : miete) {
 			String text = "Miete mit " + z + " Häusern: ";
-			if (z == 0)
-			{
+			if (z == 0) {
 				text = "Miete ohne Häuser: ";
-			}
-			else if (z == 1)
-			{
+			} else if (z == 1) {
 				text = "Miete mit einem Haus: ";
 			}
 			sb.append(text + Ressource.GELD.getString(i) + System.lineSeparator());
@@ -91,27 +80,23 @@ public class StrasseInfoUI extends Oberflaeche // NOSONAR
 		return sb.toString();
 	}
 
-	private void farbeSetzen(Spieler spieler)
-	{
+	private void farbeSetzen(Spieler spieler) {
 		Color farbe = SpielerFarben.getSpielerfarbe(spieler.getSpielerNr());
 		this.setBorder(new LineBorder(farbe, 10));
 	}
 
 	@Override
-	public boolean isInvalideBeiSpielerWechsel()
-	{
+	public boolean isInvalideBeiSpielerWechsel() {
 		return false;
 	}
 
 	@Override
-	public void zeige(String beschreibung)
-	{
+	public void zeige(String beschreibung) {
 		zeigeLinks(beschreibung);
 	}
 
 	@Override
-	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen)
-	{
+	public List<Oberflaeche> durchHinzufuegenUngueltigWerdend(List<Oberflaeche> oberflaechen) {
 		return new ArrayList<>();
 	}
 }
