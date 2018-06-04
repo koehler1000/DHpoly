@@ -26,7 +26,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 
 	private Spieler spieler;
 	private JTextArea txtKontostand = new JTextArea();
-	private JTextArea txtName;
 
 	public SpielerUI(Spieler spieler, SpielUI ansicht)
 	{
@@ -45,7 +44,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		txtKontostand.setBackground(backcolor);
 		txtKontostand.setBorder(new LineBorder(backcolor, 10));
 
-		txtName = ElementFactory.getTextFeldUeberschrift(spieler.getName() + ": ");
+		JTextArea txtName = ElementFactory.getTextFeldUeberschrift(spieler.getName() + ": ");
 		txtName.setBackground(backcolor);
 		txtName.setBorder(new LineBorder(backcolor, 10));
 
