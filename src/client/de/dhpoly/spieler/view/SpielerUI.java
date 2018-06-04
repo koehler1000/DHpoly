@@ -27,7 +27,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	private Spieler spieler;
 	private JTextArea txtKontostand = new JTextArea();
 	private JTextArea txtName;
-	private JButton butHandel;
 
 	public SpielerUI(Spieler spieler, SpielUI ansicht)
 	{
@@ -59,7 +58,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 		butKontoauszug.setForeground(backcolor);
 		pnlSueden.add(butKontoauszug);
 
-		butHandel = ElementFactory.getButton("Handeln");
+		JButton butHandel = ElementFactory.getButton("Handeln");
 		butHandel.setEnabled(spieler != ansicht.getSpieler());
 		butHandel.addActionListener(e -> new Transaktion(ansicht.getSpieler(), spieler).anzeigen(ansicht));
 		butHandel.setForeground(backcolor);
