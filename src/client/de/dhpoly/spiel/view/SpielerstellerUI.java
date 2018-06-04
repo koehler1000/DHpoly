@@ -30,16 +30,34 @@ public class SpielerstellerUI
 		this.client = client;
 
 		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout(2, 1, 10, 10));
+		pnl.setLayout(new GridLayout(3, 2, 10, 10));
 
-		txtName = ElementFactory.getTextFeld("Host", true);
+		// Spielername
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Name:"));
+		String name = System.getProperties().getProperty("user.name");
+		txtName = ElementFactory.getTextFeld(name, true);
 		pnl.add(txtName);
 
+		// Spiel beitreten
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Spiel auf einem fremden Rechner:"));
+		JButton butSpielBeitreten = ElementFactory.getButtonUeberschrift("Spiel beitreten");
+		butSpielBeitreten.addActionListener(e -> spielBeitreten(pnl));
+		pnl.add(butSpielBeitreten);
+
+		// Spiel hosten
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Spiel auf diesem Rechner:"));
 		JButton butSpielHosten = ElementFactory.getButtonUeberschrift("Spiel hosten");
 		butSpielHosten.addActionListener(e -> spielHosten(pnl));
 		pnl.add(butSpielHosten);
 
 		fenster.zeigeComponente(pnl, "+");
+	}
+
+	private void spielBeitreten(JPanel pnl)
+	{
+		fenster.loescheKomponente(pnl);
+
+		// TODO Spiel beitreten
 	}
 
 	private void spielHosten(Component c)
