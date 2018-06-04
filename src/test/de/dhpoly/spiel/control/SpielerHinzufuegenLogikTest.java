@@ -10,6 +10,7 @@ import de.dhpoly.spieler.model.Spieler;
 public class SpielerHinzufuegenLogikTest
 {
 	private SpielerHinzufuegenLogik logik = new SpielerHinzufuegenLogik();
+	private boolean spielerHinzugefuegt = false;
 
 	@Test
 	public void spielWirdGestartet() throws Exception
@@ -20,7 +21,6 @@ public class SpielerHinzufuegenLogikTest
 		assertTrue(spielerHinzugefuegt);
 	}
 
-	private boolean spielerHinzugefuegt = false;
 	private SpielUnimplemented spiel = new SpielUnimplemented()
 	{
 		@Override
