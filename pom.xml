@@ -3,18 +3,22 @@
   <groupId>DHpoly</groupId>
   <artifactId>DHpoly</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+    	<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>4.8.1</version>
+    		<scope>test</scope>
+		</dependency>
+    </dependencies>
+  
   <build>
-    <sourceDirectory>pics</sourceDirectory>
-    <testSourceDirectory>test</testSourceDirectory>
+    <sourceDirectory>DHpoly</sourceDirectory>
     <resources>
       <resource>
         <directory>pics</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-      <resource>
-        <directory>fakes</directory>
         <excludes>
           <exclude>**/*.java</exclude>
         </excludes>
@@ -26,7 +30,7 @@
         <version>3.7.0</version>
         <configuration>
           <source>1.8</source>
-          <target>1.8</target>
+          <target>1.8</target>                       
         </configuration>
       </plugin>
     </plugins>
