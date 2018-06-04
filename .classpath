@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src/fakes"/>
 	<classpathentry kind="src" path="src/pics"/>
-	<classpathentry kind="src" path="src/src_ai"/>
-	<classpathentry kind="src" path="src/src_client"/>
-	<classpathentry kind="src" path="src/src_main"/>
-	<classpathentry kind="src" path="src/src_model"/>
-	<classpathentry kind="src" path="src/src_netzwerk"/>
-	<classpathentry kind="src" path="src/src_netzwerk_fakes"/>
-	<classpathentry kind="src" path="src/src_server"/>
+	<classpathentry kind="src" path="src/ai"/>
+	<classpathentry kind="src" path="src/client"/>
+	<classpathentry kind="src" path="src/main"/>
+	<classpathentry kind="src" path="src/model"/>
+	<classpathentry kind="src" path="src/netzwerk"/>
+	<classpathentry kind="src" path="src/netzwerk_fakes"/>
+	<classpathentry kind="src" path="src/server"/>
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/tools"/>
 	<classpathentry kind="src" path="src/viewtest"/>
