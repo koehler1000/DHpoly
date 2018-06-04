@@ -30,21 +30,17 @@ import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 
-public class SpielImplTest implements Datenobjektverwalter
-{
+public class SpielImplTest implements Datenobjektverwalter {
 	private SpielImpl spiel;
 	private List<Datenobjekt> empfangeneObjekte = new ArrayList<>();
-	private NetzwerkServer server;
-	private NetzwerkClient client;
 
 	private StrasseDaten strasse = new StrasseDaten();
 	private Spieler spieler = new Spieler("Test1");
 
 	@Before
-	public void vorbereitung()
-	{
-		server = ServerFake.SERVER_FAKE;
-		client = ClientFake.CLIENT_FAKE;
+	public void vorbereitung() {
+		NetzwerkServer server = ServerFake.SERVER_FAKE;
+		NetzwerkClient client = ClientFake.CLIENT_FAKE;
 
 		client.setDatenobjektverwalter(this);
 
@@ -58,8 +54,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void kaufmoeglichkeit()
-	{
+	public void kaufmoeglichkeit() {
 		spiel.starteSpiel();
 
 		spiel.fuegeStrassenKaufHinzu(strasse);
@@ -71,22 +66,19 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void spielStartVersendetSpielfeld()
-	{
+	public void spielStartVersendetSpielfeld() {
 		spiel.starteSpiel();
 		assertThat(isEmpfangen(SpielfeldDaten.class), Is.is(1L));
 	}
 
 	@Test
-	public void spielStartSendetSpielerAnSpieler()
-	{
+	public void spielStartSendetSpielerAnSpieler() {
 		spiel.starteSpiel();
 		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
 	}
 
 	@Test
-	public void spielerWechselSendetDatenobjektAnSpieler()
-	{
+	public void spielerWechselSendetDatenobjektAnSpieler() {
 		spiel.starteSpiel();
 		spiel.wuerfeln(spiel.getAktuellerSpieler());
 		empfangeneObjekte = new ArrayList<>();
@@ -96,8 +88,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void wuerfelnSendetDatenobjekt()
-	{
+	public void wuerfelnSendetDatenobjekt() {
 		spiel.starteSpiel();
 		empfangeneObjekte = new ArrayList<>();
 
@@ -107,15 +98,13 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void testaktuellerSpieler()
-	{
+	public void testaktuellerSpieler() {
 		spiel.starteSpiel();
 		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
 	}
 
 	@Test
-	public void testnaechsterSpieler()
-	{
+	public void testnaechsterSpieler() {
 		spiel.starteSpiel();
 		spiel.wuerfeln(spiel.getAktuellerSpieler());
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
@@ -123,8 +112,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Test
-	public void geldBeiUeberLos() throws InterruptedException
-	{
+	public void geldBeiUeberLos() throws InterruptedException {
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD);
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
@@ -133,11 +121,8 @@ public class SpielImplTest implements Datenobjektverwalter
 				Is.is(geldVorDemLaufen + new Einstellungen().getBetragPassierenLos()));
 	}
 
-	boolean hatVerloren = false;
-
 	@Test
-	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat()
-	{
+	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat() {
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(new StrasseDaten());
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
@@ -162,13 +147,11 @@ public class SpielImplTest implements Datenobjektverwalter
 		assertThat(s2.getStatus(), Is.is(SpielerStatus.GEWONNEN));
 	}
 
-	public static SpielImpl getDefaultSpiel()
-	{
+	public static SpielImpl getDefaultSpiel() {
 		return getDefaultSpiel(new Einstellungen());
 	}
 
-	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)
-	{
+	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen) {
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(new LosfeldDaten());
 
@@ -179,13 +162,11 @@ public class SpielImplTest implements Datenobjektverwalter
 	}
 
 	@Override
-	public void empfange(Datenobjekt datenobjekt)
-	{
+	public void empfange(Datenobjekt datenobjekt) {
 		empfangeneObjekte.add(datenobjekt);
 	}
 
-	public long isEmpfangen(Class<? extends Datenobjekt> c)
-	{
+	public long isEmpfangen(Class<? extends Datenobjekt> c) {
 		return empfangeneObjekte.stream().filter(e -> (c.isInstance(e))).count();
 	}
 }
