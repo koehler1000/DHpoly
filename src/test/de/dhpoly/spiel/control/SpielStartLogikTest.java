@@ -11,6 +11,7 @@ import de.dhpoly.spieler.model.Spieler;
 public class SpielStartLogikTest
 {
 	private SpielStartLogik logik = new SpielStartLogik();
+	private boolean spielStartAufgerufen = false;
 
 	@Test
 	public void spielWirdGestartet() throws Exception
@@ -21,7 +22,6 @@ public class SpielStartLogikTest
 		assertTrue(spielStartAufgerufen);
 	}
 
-	private boolean spielStartAufgerufen = false;
 	private SpielUnimplemented spiel = new SpielUnimplemented()
 	{
 		@Override
