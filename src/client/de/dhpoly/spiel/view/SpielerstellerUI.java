@@ -7,8 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import de.dhpoly.fakes.ClientFake;
+import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
+import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielUI;
@@ -18,16 +21,12 @@ import de.dhpoly.spieler.model.Spieler;
 public class SpielerstellerUI
 {
 	private Fenster fenster;
-	private NetzwerkServer server;
-	private NetzwerkClient client;
 
 	private JTextArea txtName;
 
-	public SpielerstellerUI(Fenster fenster, NetzwerkServer server, NetzwerkClient client)
+	public SpielerstellerUI(Fenster fenster)
 	{
 		this.fenster = fenster;
-		this.server = server;
-		this.client = client;
 
 		JPanel pnl = ElementFactory.erzeugePanel();
 		pnl.setLayout(new GridLayout(3, 2, 10, 10));
@@ -58,11 +57,14 @@ public class SpielerstellerUI
 		fenster.loescheKomponente(pnl);
 
 		// TODO Spiel beitreten
+		// new SpielBeitretenUI mit IP und OK-Button
 	}
 
 	private void spielHosten(Component c)
 	{
 		fenster.loescheKomponente(c);
+		NetzwerkServer server = new NetzwerkServerImpl(0);
+
 		new SpielImpl(server);
 
 		spielerHinzu(txtName.getText());
@@ -71,8 +73,20 @@ public class SpielerstellerUI
 	private void spielerHinzu(String name)
 	{
 		Spieler spieler = new Spieler(name);
-		SpielUI verwalter2 = new SpielUI(spieler, client);
+		SpielUI verwalter2 = new SpielUI(spieler, getClient());
 		fenster.zeigeSpielansicht(verwalter2, name);
 		verwalter2.sendeAnServer(spieler);
+	}
+
+	private NetzwerkServer getServer()
+	{
+		// TODO Server erzeugen
+		return ServerFake.SERVER_FAKE;
+	}
+
+	private NetzwerkClient getClient()
+	{
+		// TODO Client erzeugen
+		return ClientFake.CLIENT_FAKE;
 	}
 }
