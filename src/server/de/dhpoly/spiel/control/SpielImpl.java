@@ -57,7 +57,7 @@ public class SpielImpl implements Spiel
 
 	private Kartenstapel kartenstapel;
 
-	List<Class<? extends Logik>> logikverwalter = new ArrayList<>();
+	private List<Class<? extends Logik>> logikverwalter = new ArrayList<>();
 
 	private SpielStatus status = SpielStatus.SPIEL_VORBEREITUNG;
 
