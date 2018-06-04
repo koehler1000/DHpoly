@@ -28,8 +28,6 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	private int felderProSeite;
-
 	private Map<StrasseDaten, StrasseUI> strassen = new HashMap<>();
 
 	public SpielfeldUI(SpielfeldDaten spielfelder, SpielUI ansicht)
@@ -37,7 +35,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 
 		JPanel pnlContent = ElementFactory.erzeugePanel();
-		felderProSeite = spielfelder.size() / 4;
+		int felderProSeite = spielfelder.size() / 4;
 		pnlContent.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1, 1, 1));
 
 		Component[][] felder = new Component[felderProSeite + 1][felderProSeite + 1];
