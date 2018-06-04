@@ -9,21 +9,17 @@ import de.dhpoly.spiel.control.SpielUnimplemented;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
-public class WuerfelAufrufLogikTest
-{
+public class WuerfelAufrufLogikTest {
 	public boolean gewuerfelt = false;
-	Spiel spiel = new SpielUnimplemented()
-	{
+	private Spiel spiel = new SpielUnimplemented() {
 		@Override
-		public void wuerfeln(Spieler spieler)
-		{
+		public void wuerfeln(Spieler spieler) {
 			gewuerfelt = true;
 		}
 	};
 
 	@Test
-	public void naechsterSpielerWirdAufgerufenBeiWuerfelAufruf()
-	{
+	public void naechsterSpielerWirdAufgerufenBeiWuerfelAufruf() {
 		Spieler spieler = new Spieler("Testa");
 
 		WuerfelAufrufLogik logik = new WuerfelAufrufLogik();
