@@ -26,9 +26,6 @@ import de.dhpoly.spieler.view.SpielerFarben;
 
 public class ElementFactory
 {
-	private ElementFactory()
-	{}
-
 	private static final String ARIAL = "arial";
 
 	private static final Color FARBE_DESIGN = new Color(225, 225, 225);
@@ -41,6 +38,9 @@ public class ElementFactory
 
 	private static Bilderverwalter bilderverwalter = new Bilderverwalter();
 
+	private ElementFactory()
+	{}
+	
 	public static JTextArea getTextFeldUeberschrift(String text)
 	{
 		JTextArea txtArea = getTextFeld(text, false);
