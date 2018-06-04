@@ -23,16 +23,14 @@ import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.model.Spieler;
 
-public class HandelImplTest
-{
-	Spieler s1 = SpielerImplTest.getDefaultSpieler(150);
-	Spieler s2 = SpielerImplTest.getDefaultSpieler(250);
+public class HandelImplTest {
+	private Spieler s1 = SpielerImplTest.getDefaultSpieler(150);
+	private Spieler s2 = SpielerImplTest.getDefaultSpieler(250);
 
 	private Spiel spiel = new SpielImpl();
 
 	@Test
-	public void felderVerbuchenStrassenGeben()
-	{
+	public void felderVerbuchenStrassenGeben() {
 		s1 = SpielerImplTest.getDefaultSpieler();
 		s2 = SpielerImplTest.getDefaultSpieler();
 
@@ -65,8 +63,7 @@ public class HandelImplTest
 	}
 
 	@Test
-	public void felderVerbuchenStrassenBekommen()
-	{
+	public void felderVerbuchenStrassenBekommen() {
 		s1 = SpielerImplTest.getDefaultSpieler();
 		s2 = SpielerImplTest.getDefaultSpieler();
 
@@ -94,8 +91,7 @@ public class HandelImplTest
 	}
 
 	@Test
-	public void felderVerbuchenGeldtransfer()
-	{
+	public void felderVerbuchenGeldtransfer() {
 		Handel handel = new HandelImpl();
 
 		spiel.fuegeSpielerHinzu(s1);
