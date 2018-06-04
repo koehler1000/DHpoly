@@ -15,6 +15,7 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class StrasseKaufenLogikTest
 {
+	private Datenobjekt gesendetesObjekt;
 	private StrasseKaufenLogik logik = new StrasseKaufenLogik();
 	private Spieler spieler = new Spieler("Peter");
 	private Spieler aktuellerSpieler = new Spieler("ba");
@@ -53,7 +54,6 @@ public class StrasseKaufenLogikTest
 		assertTrue(gesendetesObjekt instanceof SpielfeldDaten);
 	}
 
-	private Datenobjekt gesendetesObjekt;
 	private Spiel spiel = new SpielUnimplemented()
 	{
 		@Override
@@ -77,7 +77,7 @@ public class StrasseKaufenLogikTest
 		@Override
 		public boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse)
 		{
-			return aktuellerSpieler == spieler;
+			return aktuellerSpieler.equals(spieler);
 		}
 	};
 }
