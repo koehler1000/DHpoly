@@ -11,7 +11,6 @@ import de.dhpoly.fakes.ClientFake;
 import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.netzwerk.NetzwerkServer;
-import de.dhpoly.netzwerk.control.NetzwerkServerImpl;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.oberflaeche.view.SpielUI;
@@ -63,9 +62,7 @@ public class SpielerstellerUI
 	private void spielHosten(Component c)
 	{
 		fenster.loescheKomponente(c);
-		NetzwerkServer server = new NetzwerkServerImpl(0);
-
-		new SpielImpl(server);
+		new SpielImpl(getServer());
 
 		spielerHinzu(txtName.getText());
 	}
