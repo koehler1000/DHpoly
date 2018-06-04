@@ -12,18 +12,21 @@ import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielUI;
+import de.dhpoly.spieler.model.Spieler;
 
 public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 	private boolean anzeigen = true;
+	private Spieler spieler;
 
 	public StrasseKaufenUI(StrasseKaufen strasse, SpielUI ansicht)
 	{
 		super(ansicht);
+		this.spieler = ansicht.getSpieler();
 		initStrasseKaufen(strasse, ansicht);
 
-		anzeigen = (strasse.getSender() == ansicht.getSpieler());
+		anzeigen = (strasse.getSender() == spieler);
 	}
 
 	private void initStrasseKaufen(StrasseKaufen strasse, SpielUI ansicht)
@@ -51,7 +54,7 @@ public class StrasseKaufenUI extends Oberflaeche // NOSONAR
 
 	private void antworten(StrasseKaufen strasse)
 	{
-		strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+		strasse.setAntwortDaten(StrasseKaufenStatus.ANGENOMMEN, spieler);
 		sendeAnServer(strasse);
 		schliessen();
 	}
