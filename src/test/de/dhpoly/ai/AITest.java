@@ -23,6 +23,39 @@ public class AITest
 	private AI ai;
 	private Spieler spieler;
 
+	private List<Object> objGesendet = new ArrayList<>();
+
+	private NetzwerkClient client = new NetzwerkClient()
+	{
+		@Override
+		public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
+		{}
+
+		@Override
+		public void sendeAnServer(Datenobjekt ob)
+		{
+			objGesendet.add(ob);
+		}
+
+		@Override
+		public void sendeAnServer(String text) throws IOException
+		{}
+
+		@Override
+		public void sendQuitMessage()
+		{}
+
+		@Override
+		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
+		{}
+
+		@Override
+		public boolean verbindungTrennen()
+		{
+			return false;
+		}
+	};
+
 	@Before
 	public void startUp() throws IOException
 	{
@@ -52,41 +85,4 @@ public class AITest
 
 		return false;
 	}
-
-	private List<Object> objGesendet = new ArrayList<>();
-
-	NetzwerkClient client = new NetzwerkClient()
-	{
-		@Override
-		public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
-		{}
-
-		@Override
-		public void sendeAnServer(Datenobjekt ob)
-		{
-			objGesendet.add(ob);
-		}
-
-		@Override
-		public void sendeAnServer(String text) throws IOException
-		{}
-
-		@Override
-		public void sendQuitMessage()
-		{}
-
-		@Override
-		public void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException
-		{
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public boolean verbindungTrennen()
-		{
-			// TODO Auto-generated method stub
-			return false;
-		}
-	};
 }
