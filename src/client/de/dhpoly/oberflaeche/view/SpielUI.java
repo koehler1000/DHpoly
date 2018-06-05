@@ -149,7 +149,7 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 
 	public void zeigeKontoauszug(Spieler spieler)
 	{
-		hinzuLinks("Kontoauszug", new KontoauszugUI(spieler, this));
+		new KontoauszugUI(spieler, this).zeige("Kontoauszug");
 	}
 
 	public void entferne(Oberflaeche oberflaeche)

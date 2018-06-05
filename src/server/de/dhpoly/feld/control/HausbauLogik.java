@@ -9,7 +9,7 @@ import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.spiel.Spiel;
 
-public class Hausbauer implements Logik
+public class HausbauLogik implements Logik
 {
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
@@ -25,7 +25,6 @@ public class Hausbauer implements Logik
 	{
 		StrasseDaten strasse = objekt.getStrasse();
 		int anzahlZuBauen = objekt.getAnzahl();
-
 		if (anzahlZuBauen > 0)
 		{
 			if (!strasse.isAlleHaeuserGebaut())
@@ -39,6 +38,12 @@ public class Hausbauer implements Logik
 						Nachricht nachricht = new Nachricht(
 								anzahlZuBauen + " Häuser auf " + strasse.getName() + " gebaut.", Empfaenger.ALLE);
 						spiel.zeigeAllenSpielern(nachricht);
+					}
+					else
+					{
+						Nachricht nachricht = new Nachricht("Sie haben nicht genügend Rohstoffe",
+								Empfaenger.AKTUELLER_SPIELER);
+						spiel.zeigeSpieler(s, nachricht);
 					}
 				});
 			}
