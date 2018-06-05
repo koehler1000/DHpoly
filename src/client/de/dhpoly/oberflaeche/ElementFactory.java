@@ -40,7 +40,7 @@ public class ElementFactory
 
 	private ElementFactory()
 	{}
-	
+
 	public static JTextArea getTextFeldUeberschrift(String text)
 	{
 		JTextArea txtArea = getTextFeld(text, false);
@@ -50,11 +50,12 @@ public class ElementFactory
 
 	public static JTextArea getTextFeld(String text, boolean aenderbar)
 	{
+		Color farbe = aenderbar ? Color.WHITE : FARBE_DESIGN;
 		JTextArea txtArea = new JTextArea(text);
 		txtArea.setEditable(aenderbar);
 		txtArea.setFont(SCHRIFT_NORMAL);
-		txtArea.setBackground(FARBE_DESIGN);
-		txtArea.setBorder(new LineBorder(FARBE_DESIGN, 10));
+		txtArea.setBackground(farbe);
+		txtArea.setBorder(new LineBorder(farbe, 10));
 		txtArea.setLineWrap(true);
 		txtArea.setForeground(FARBE_KONTRAST);
 		return txtArea;
