@@ -3,6 +3,7 @@ package de.dhpoly.fakes;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,12 +17,12 @@ public class ServerFake implements NetzwerkServer
 	public static final ServerFake SERVER_FAKE = new ServerFake();
 	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
 
-	private Datenobjektverwalter verwalter;
+	private Optional<Datenobjektverwalter> verwalter = Optional.empty();
 
 	@Override
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
 	{
-		this.verwalter = verwalter;
+		this.verwalter = Optional.ofNullable(verwalter);
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class ServerFake implements NetzwerkServer
 	public void empfange(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		verwalter.empfange(obj);
+		verwalter.ifPresent(e -> e.empfange(obj));
 	}
 
 	@Override

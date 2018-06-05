@@ -29,8 +29,9 @@ public class StrasseKaufen extends Datenobjekt
 		return status;
 	}
 
-	public void setStatus(StrasseKaufenStatus status)
+	public void setAntwortDaten(StrasseKaufenStatus status, Spieler spieler)
 	{
+		this.spieler = spieler;
 		this.status = status;
 	}
 

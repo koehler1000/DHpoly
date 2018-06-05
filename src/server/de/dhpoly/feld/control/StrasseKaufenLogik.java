@@ -37,7 +37,7 @@ public class StrasseKaufenLogik implements Logik
 		{
 			sp.auszahlen(strasse.getKaufpreis());
 			strasse.setEigentuemer(sp);
-			strasse.setStatus(StrasseKaufenStatus.ANGENOMMEN);
+			strasse.setAntwortDaten(StrasseKaufenStatus.ANGENOMMEN, sp);
 			sp.addStrasse(strasse.getStrasse());
 		}
 	}

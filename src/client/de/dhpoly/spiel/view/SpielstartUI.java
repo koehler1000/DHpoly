@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import de.dhpoly.ai.AI;
 import de.dhpoly.fakes.ClientFake;
-import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielUI;
@@ -26,6 +25,7 @@ public class SpielstartUI extends Oberflaeche // NOSONAR
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
 		pnlInhalt.setLayout(new GridLayout(3, 1, 10, 10));
 
+		//TODO IP Adresse von Server anzeigen
 		JButton butHallo = ElementFactory.getButtonUeberschrift("Hallo " + ansicht.getSpieler().getName());
 		pnlInhalt.add(butHallo);
 
@@ -43,8 +43,8 @@ public class SpielstartUI extends Oberflaeche // NOSONAR
 
 	private void computerSpielerHinzu()
 	{
-		NetzwerkClient client = ClientFake.CLIENT_FAKE;
-		new AI().erzeugeComputerspieler(client, "PC");
+		// TODO Fake ausbauen
+		new AI().erzeugeComputerspieler(ClientFake.CLIENT_FAKE, "PC");
 	}
 
 	@Override
@@ -64,5 +64,4 @@ public class SpielstartUI extends Oberflaeche // NOSONAR
 	{
 		return new ArrayList<>();
 	}
-
 }

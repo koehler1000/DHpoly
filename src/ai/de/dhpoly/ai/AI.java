@@ -66,8 +66,11 @@ public class AI implements Datenobjektverwalter
 
 	private void verarbeiteStrasseKaufen(StrasseKaufen strasseKaufen)
 	{
-		strasseKaufen.setStatus(StrasseKaufenStatus.ANGENOMMEN);
-		client.sendeAnServer(strasseKaufen);
+		if (strasseKaufen.getSender().equals(spieler))
+		{
+			strasseKaufen.setAntwortDaten(StrasseKaufenStatus.ANGENOMMEN, spieler);
+			client.sendeAnServer(strasseKaufen);
+		}
 	}
 
 	private void verarbeiteSpieler(Spieler spieler)

@@ -14,6 +14,11 @@ public class Fenster
 	private JFrame frame = new JFrame("");
 	private JTabbedPane spielansichten;
 
+	public Fenster()
+	{
+		this(new Bilderverwalter());
+	}
+
 	public Fenster(Bilderverwalter bilderverwalter)
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
