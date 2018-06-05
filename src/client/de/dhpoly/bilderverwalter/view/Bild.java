@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.JPanel;
 
 import de.dhpoly.bilderverwalter.Bilderverwalter;
+import de.dhpoly.oberflaeche.ElementFactory;
 
 public class Bild extends JPanel
 {
@@ -15,6 +16,7 @@ public class Bild extends JPanel
 
 	public Bild(String pfad, Bilderverwalter bilderverwalter)
 	{
+		ElementFactory.bearbeitePanel(this);
 		bildPfad = pfad;
 		this.bilderverwalter = bilderverwalter;
 	}
