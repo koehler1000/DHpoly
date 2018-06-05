@@ -12,7 +12,7 @@ import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
-public class HandelImpl implements Handel
+public class HandelLogik implements Handel
 {
 	@Override
 	public void vorschlagAnbieten(Transaktion transaktion, Spiel spiel)
@@ -34,11 +34,13 @@ public class HandelImpl implements Handel
 
 		for (Ressource res : Ressource.values())
 		{
-			RessourcenDatensatz geben = new RessourcenDatensatz(res, transaktion.getRessource(anbietender, res));
+			RessourcenDatensatz geben = new RessourcenDatensatz(res, transaktion.getRessource(anbietender, res),
+					"Handel");
 			anbietender.auszahlen(geben);
 			handelspartner.einzahlen(geben);
 
-			RessourcenDatensatz bekommen = new RessourcenDatensatz(res, transaktion.getRessource(handelspartner, res));
+			RessourcenDatensatz bekommen = new RessourcenDatensatz(res, transaktion.getRessource(handelspartner, res),
+					"Handel");
 			anbietender.einzahlen(bekommen);
 			handelspartner.auszahlen(bekommen);
 		}

@@ -105,7 +105,7 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	@Override
 	public boolean isInvalideBeiSpielerWechsel()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
@@ -113,6 +113,11 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	{
 		// zunaechst nicht anzeigen
 		// zeigeLinks(spieler.getName());
+	}
+
+	public void zeigeManuell()
+	{
+		zeigeLinks(spieler.getName());
 	}
 
 	@Override

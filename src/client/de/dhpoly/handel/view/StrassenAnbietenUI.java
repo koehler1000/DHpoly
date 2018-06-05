@@ -42,6 +42,7 @@ public class StrassenAnbietenUI extends Oberflaeche // NOSONAR
 		}
 
 		this.add(new JScrollPane(pnlStrassen));
+		this.remove(getSchliessenButton());
 	}
 
 	protected void feldAuswaehlen(StrasseDaten strasse)

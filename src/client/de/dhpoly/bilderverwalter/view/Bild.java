@@ -17,6 +17,7 @@ public class Bild extends JPanel
 	public Bild(String pfad, Bilderverwalter bilderverwalter)
 	{
 		ElementFactory.bearbeitePanel(this);
+		this.setBorder(null);
 		bildPfad = pfad;
 		this.bilderverwalter = bilderverwalter;
 	}

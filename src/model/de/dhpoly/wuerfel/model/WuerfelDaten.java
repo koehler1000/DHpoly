@@ -25,7 +25,7 @@ public class WuerfelDaten extends Datenobjekt
 	@Override
 	public String getTitel()
 	{
-		return "Wuerfel";
+		return "Würfel";
 	}
 
 	@Override
