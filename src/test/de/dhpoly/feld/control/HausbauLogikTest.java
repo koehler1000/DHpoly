@@ -17,7 +17,7 @@ import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.model.Spieler;
 
-public class HausbauerTest
+public class HausbauLogikTest
 {
 	private final int kostenHausGeld = 100;
 	private final int kostenHausHolz = 100;
@@ -26,7 +26,7 @@ public class HausbauerTest
 	private Spieler spieler = SpielerImplTest.getDefaultSpieler(0);
 	private FeldStrasse strasse;
 	private Spiel spiel = SpielImplTest.getDefaultSpiel();
-	private Hausbauer hausbauer = new Hausbauer();
+	private HausbauLogik hausbauer = new HausbauLogik();
 
 	@Before
 	public void startUp()

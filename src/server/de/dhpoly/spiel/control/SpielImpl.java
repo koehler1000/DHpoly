@@ -14,6 +14,7 @@ import de.dhpoly.feld.control.FeldEreignis;
 import de.dhpoly.feld.control.FeldLos;
 import de.dhpoly.feld.control.FeldRessource;
 import de.dhpoly.feld.control.FeldStrasse;
+import de.dhpoly.feld.control.HausbauLogik;
 import de.dhpoly.feld.control.StrasseKaufenLogik;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
@@ -82,6 +83,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(SpielStartLogik.class);
 		logikverwalter.add(StrasseKaufenLogik.class);
 		logikverwalter.add(SpielerHinzufuegenLogik.class);
+		logikverwalter.add(HausbauLogik.class);
 
 		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
