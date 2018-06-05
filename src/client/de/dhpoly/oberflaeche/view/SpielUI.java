@@ -158,7 +158,7 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 
 	public void zeigeSpieler(Spieler spieler)
 	{
-		new SpielerUI(spieler, this).zeigeLinks("Ich");
+		new SpielerUI(spieler, this).zeigeManuell();
 	}
 
 	public void entferne(Oberflaeche oberflaeche)

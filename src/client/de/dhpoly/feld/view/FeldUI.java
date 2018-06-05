@@ -13,6 +13,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.oberflaeche.view.SpielUI;
 import de.dhpoly.spieler.model.Spieler;
+import de.dhpoly.spieler.view.SpielerUI;
 
 public abstract class FeldUI extends Oberflaeche // NOSONAR
 {
@@ -32,7 +33,7 @@ public abstract class FeldUI extends Oberflaeche // NOSONAR
 		for (Spieler spieler : feld.getSpielerAufFeld())
 		{
 			JButton butSpieler = ElementFactory.getSpielerButton(spieler);
-			butSpieler.addActionListener(e -> ansicht.empfange(spieler));
+			butSpieler.addActionListener(e -> new SpielerUI(spieler, ansicht).zeigeManuell());
 			pnlSpieler.add(butSpieler);
 		}
 
