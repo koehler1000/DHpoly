@@ -28,6 +28,9 @@ public class HandelUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 		this.transaktion = transaktion;
 
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setLayout(new BorderLayout());
+
 		if (transaktion.getTransaktionsTyp() != TransaktionsTyp.ANGENOMMEN)
 		{
 			JPanel pnlRessourcen = ElementFactory.erzeugePanel();
@@ -37,23 +40,25 @@ public class HandelUI extends Oberflaeche // NOSONAR
 				pnlRessourcen.add(new RessourceAnbietenUI(transaktion, res, transaktion.getAnbietender()));
 				pnlRessourcen.add(new RessourceAnbietenUI(transaktion, res, transaktion.getHandelspartner()));
 			}
-			this.add(pnlRessourcen, BorderLayout.NORTH);
+
+			pnl.add(pnlRessourcen, BorderLayout.NORTH);
 
 			JPanel pnlStrassen = ElementFactory.erzeugePanel();
 			pnlStrassen.setLayout(new GridLayout(1, 2, 10, 10));
 			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getAnbietender(), transaktion, ansicht));
 			pnlStrassen.add(new StrassenAnbietenUI(transaktion.getHandelspartner(), transaktion, ansicht));
-			this.add(pnlStrassen, BorderLayout.CENTER);
+			pnl.add(pnlStrassen, BorderLayout.CENTER);
 		}
 		else
 		{
-			this.add(ElementFactory.getButtonUeberschrift("Handel angenommen"));
+			JButton but = ElementFactory.getButtonUeberschrift("Handel angenommen");
+			but.addActionListener(e -> schliessen());
+			pnl.add(but);
 		}
+		this.add(pnl);
 
 		butFertig = getSchliessenButton();
-
 		butFertig.addActionListener(e -> handelAbschliessen());
-		this.add(butFertig, BorderLayout.SOUTH);
 
 		update();
 	}
