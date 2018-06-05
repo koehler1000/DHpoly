@@ -22,6 +22,7 @@ import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.spiel.view.SpielstartUI;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
+import de.dhpoly.spieler.view.SpielerUI;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
 import de.dhpoly.wuerfel.model.WuerfelWeitergabe;
 
@@ -82,6 +83,7 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		pnlRandRechts.add(butWuerfelWeitergeben);
 
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		pnlRandRechts.add(ElementFactory.erzeugePanel());
 
 		JButton butHausbau = ElementFactory.getButton("Häuser verwalten");
 		butHausbau.addActionListener(e -> zeigeHausbaumoeglichkeit());
@@ -91,8 +93,10 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		butKonto.addActionListener(e -> zeigeKontoauszug(spieler));
 		pnlRandRechts.add(butKonto);
 
-		pnlRandRechts.add(ElementFactory.erzeugePanel());
-		pnlRandRechts.add(ElementFactory.erzeugePanel());
+		JButton butSpieler = ElementFactory.getButton("Spieler öffnen");
+		butSpieler.addActionListener(e -> zeigeSpieler(spieler));
+		pnlRandRechts.add(butSpieler);
+
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 		pnlRandRechts.add(ElementFactory.erzeugePanel());
 
@@ -150,6 +154,11 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	public void zeigeKontoauszug(Spieler spieler)
 	{
 		new KontoauszugUI(spieler, this).zeige("Kontoauszug");
+	}
+
+	public void zeigeSpieler(Spieler spieler)
+	{
+		new SpielerUI(spieler, this).zeigeLinks("Ich");
 	}
 
 	public void entferne(Oberflaeche oberflaeche)
