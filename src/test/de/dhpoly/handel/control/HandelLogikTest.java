@@ -23,7 +23,7 @@ import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.model.Spieler;
 
-public class HandelImplTest
+public class HandelLogikTest
 {
 	Spieler s1 = SpielerImplTest.getDefaultSpieler(150);
 	Spieler s2 = SpielerImplTest.getDefaultSpieler(250);
@@ -53,7 +53,7 @@ public class HandelImplTest
 
 		assertThat(strasse.getEigentuemer().get(), Is.is(s1));
 
-		Handel handel = new HandelImpl();
+		Handel handel = new HandelLogik();
 
 		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(strasse);
@@ -83,7 +83,7 @@ public class HandelImplTest
 		RessourcenDatensatz datensatz = new RessourcenDatensatz(Ressource.GELD, 50);
 		datensaetze.add(datensatz);
 
-		Handel handel = new HandelImpl();
+		Handel handel = new HandelLogik();
 
 		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(strasse);
@@ -96,7 +96,7 @@ public class HandelImplTest
 	@Test
 	public void felderVerbuchenGeldtransfer()
 	{
-		Handel handel = new HandelImpl();
+		Handel handel = new HandelLogik();
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);

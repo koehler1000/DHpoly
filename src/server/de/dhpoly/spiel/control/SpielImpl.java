@@ -18,7 +18,7 @@ import de.dhpoly.feld.control.HausbauLogik;
 import de.dhpoly.feld.control.StrasseKaufenLogik;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.handel.control.HandelImpl;
+import de.dhpoly.handel.control.HandelLogik;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.karte.model.RueckenKarte;
@@ -76,7 +76,7 @@ public class SpielImpl implements Spiel
 		kartenstapel = new KartenstapelImpl(einstellungen.getEreigniskarten());
 
 		logikverwalter.add(TelegramNachrichtLogikImpl.class);
-		logikverwalter.add(HandelImpl.class);
+		logikverwalter.add(HandelLogik.class);
 		logikverwalter.add(SpielerInformierenLogikImpl.class);
 		logikverwalter.add(WuerfelAufrufLogik.class);
 		logikverwalter.add(WuerfelWeitergabeLogik.class);
