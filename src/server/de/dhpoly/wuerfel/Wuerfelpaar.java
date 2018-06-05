@@ -12,4 +12,6 @@ public interface Wuerfelpaar extends Logik
 	int berechneWuerfelSumme();
 
 	List<Wuerfel> getWuerfel();
+
+	boolean isPasch();
 }

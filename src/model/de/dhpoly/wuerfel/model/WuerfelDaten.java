@@ -33,4 +33,10 @@ public class WuerfelDaten extends Datenobjekt
 	{
 		return WuerfelUI.class;
 	}
+
+	public boolean isPasch()
+	{
+		int wert = wuerfel.get(0).getZahl();
+		return wuerfel.stream().filter(w -> w.getZahl() == wert).count() == wuerfel.stream().count();
+	}
 }

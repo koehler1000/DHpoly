@@ -69,4 +69,10 @@ public class WuerfelpaarImpl implements Wuerfelpaar
 			}
 		}
 	}
+
+	@Override
+	public boolean isPasch()
+	{
+		return wuerfelDaten.isPasch();
+	}
 }

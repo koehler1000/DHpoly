@@ -105,7 +105,10 @@ public class SpielImpl implements Spiel
 				wuerfelPaar.wuerfeln();
 				ruecke(getAktuellerSpieler(), wuerfelPaar.berechneWuerfelSumme());
 
-				getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+				if (!wuerfelPaar.isPasch())
+				{
+					getAktuellerSpieler().setSpielerStatus(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN);
+				}
 				zeigeSpieler(getAktuellerSpieler(), getAktuellerSpieler());
 				zeigeAllenSpielern(new WuerfelDaten(wuerfelPaar.getWuerfel()));
 				zeigeAllenSpielern(felder);
