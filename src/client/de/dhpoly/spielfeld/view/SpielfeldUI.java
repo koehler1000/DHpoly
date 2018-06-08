@@ -1,7 +1,9 @@
 package de.dhpoly.spielfeld.view;
 
+import java.awt.Color;
 import java.awt.Component;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,54 +38,54 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 
 		JPanel pnlContent = ElementFactory.erzeugePanel();
 		int felderProSeite = spielfelder.size() / 4;
-		pnlContent.setLayout(new GridLayout(felderProSeite + 1, felderProSeite + 1, 1, 1));
+		pnlContent.setLayout(new GridBagLayout());
 
-		Component[][] felder = new Component[felderProSeite + 1][felderProSeite + 1];
-		for (int i = 0; i < felderProSeite + 1; i++)
-		{
-			for (int j = 0; j < felderProSeite + 1; j++)
-			{
-				JPanel pnlLeer = ElementFactory.erzeugePanel();
-				felder[i][j] = pnlLeer;
-			}
-		}
+		GridBagConstraints c = new GridBagConstraints();
+		c.weightx = 1;
+		c.weighty = 1;
+		c.gridheight = 1;
+		c.gridwidth = 1;
+		c.fill = GridBagConstraints.BOTH;
 
-		// Seite 1
+		// 1. Seite
+		c.gridy = felderProSeite;
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			FeldDaten feld = spielfelder.get(i);
-			felder[0][i] = getFeldUI(feld, ansicht);
+			c.gridx = felderProSeite - i;
+			pnlContent.add(getFeldUI(spielfelder.get(i), ansicht), c);
 		}
 
-		// Seite 2
+		// 2. Seite
+		c.gridx = 0;
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			FeldDaten feld = spielfelder.get(i + felderProSeite);
-			felder[i][felderProSeite] = getFeldUI(feld, ansicht);
+			c.gridy = felderProSeite - i;
+			pnlContent.add(getFeldUI(spielfelder.get(i + felderProSeite), ansicht), c);
 		}
 
-		// Seite 3
+		// 3. Seite
+		c.gridy = 0;
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			FeldDaten feld = spielfelder.get(i + felderProSeite * 2);
-			felder[felderProSeite][felderProSeite - i] = getFeldUI(feld, ansicht);
+			c.gridx = i;
+			pnlContent.add(getFeldUI(spielfelder.get(i + 2 * felderProSeite), ansicht), c);
 		}
 
-		// Seite 4
+		// 4. Seite
+		c.gridx = felderProSeite;
 		for (int i = 0; i < felderProSeite; i++)
 		{
-			FeldDaten feld = spielfelder.get(i + felderProSeite * 3);
-			felder[felderProSeite - i][0] = getFeldUI(feld, ansicht);
+			c.gridy = i;
+			pnlContent.add(getFeldUI(spielfelder.get(i + 3 * felderProSeite), ansicht), c);
 		}
 
-		// auf Panel malen
-		for (int i = felderProSeite; i >= 0; i--)
-		{
-			for (int j = felderProSeite; j >= 0; j--)
-			{
-				pnlContent.add(felder[i][j]);
-			}
-		}
+		c.gridheight = felderProSeite - 1;
+		c.gridwidth = felderProSeite - 1;
+		c.gridx = 1;
+		c.gridy = 1;
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setBackground(Color.GREEN);
+		pnlContent.add(pnl, c);
 
 		this.add(pnlContent);
 		this.remove(getSchliessenButton());
