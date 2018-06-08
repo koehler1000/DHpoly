@@ -9,6 +9,6 @@ public class WuerfelUIVorschau
 	public static void main(String[] args)
 	{
 		WuerfelpaarImpl wuerfel = new WuerfelpaarImpl();
-		Spielansicht.zeige(new WuerfelUI(new WuerfelDaten(wuerfel.getWuerfel()), Spielansicht.getSpielfeldAnsicht()));
+		Spielansicht.zeige(new WuerfelDatenUI(new WuerfelDaten(wuerfel.getWuerfel()), Spielansicht.getSpielfeldAnsicht()));
 	}
 }

@@ -2,7 +2,7 @@ package de.dhpoly.wuerfel.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
-import de.dhpoly.wuerfel.view.WuerfelUI;
+import de.dhpoly.wuerfel.view.WuerfelDatenUI;
 
 public class Wuerfel extends Datenobjekt
 {
@@ -33,6 +33,6 @@ public class Wuerfel extends Datenobjekt
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
-		return WuerfelUI.class;
+		return WuerfelDatenUI.class;
 	}
 }
