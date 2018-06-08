@@ -22,7 +22,7 @@ public class WuerfelDatenUI extends Oberflaeche // NOSONAR
 		super(ansicht, 3);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
-		pnlInhalt.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1));
+		pnlInhalt.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1, 10, 10));
 
 		List<WuerfelUI> lblsWuerfel = new ArrayList<>();
 
