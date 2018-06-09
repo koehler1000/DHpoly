@@ -250,35 +250,7 @@ class ClientHandler implements Runnable
 		exit();
 	}
 
-	/**
-	 * Given a message from the client containing a desired username and a password,
-	 * extract the data and create the user with the database if it does not exist
-	 * there already.
-	 * 
-	 * @param clientMsg
-	 *            Message from client requesting a new account.
-	 */
-	private synchronized void createUser(String clientMsg)
-	{
-
-		/** Extract the username and password from the client message */
-		clientMsg = clientMsg.split(" ")[1];
-		/**
-		 * Attempt to create the account in the database, send appropriate message if
-		 * the username is taken.
-		 */
-		try
-		{
-			client.write("TAKEN");
-
-			client.write("USERCREATED");
-
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.SEVERE, e.getMessage(), e);
-		}
-	}
+	
 
 	/**
 	 * Attempts to log the client in given a message from the client containing
