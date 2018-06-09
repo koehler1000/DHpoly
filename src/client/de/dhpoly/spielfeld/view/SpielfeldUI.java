@@ -57,10 +57,11 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 			pnlContent.add(component, c);
 		}
 
-		c.gridheight = felderProSeite - 1;
-		c.gridwidth = felderProSeite - 1;
-		c.gridx = 1;
-		c.gridy = 1;
+		int abstandZumRand = 1; // Achtung: Felder werden bei 0 überschrieben
+		c.gridheight = felderProSeite + 1 - abstandZumRand * 2;
+		c.gridwidth = felderProSeite + 1 - abstandZumRand * 2;
+		c.gridx = abstandZumRand;
+		c.gridy = abstandZumRand;
 
 		pnlContent.add(ansicht.getTabPaneSpielfeldMitte(), c);
 
