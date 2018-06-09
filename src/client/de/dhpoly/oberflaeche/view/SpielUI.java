@@ -33,6 +33,8 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	private JTabbedPane tabLinks = new JTabbedPane();
 	private JTabbedPane tabMitte = new JTabbedPane();
 	private JTabbedPane tabRechts = new JTabbedPane();
+	private JTabbedPane tabSpielfeldMitte = new JTabbedPane();
+
 	private Spieler spieler;
 	private List<Oberflaeche> oberflaechen = new ArrayList<>();
 
@@ -56,6 +58,8 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 
 		tabMitte = ElementFactory.getTabbedPane();
 		this.add(tabMitte, BorderLayout.CENTER);
+
+		tabSpielfeldMitte = ElementFactory.getTabbedPane();
 
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
@@ -166,6 +170,7 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		tabLinks.remove(oberflaeche);
 		tabMitte.remove(oberflaeche);
 		tabRechts.remove(oberflaeche);
+		tabSpielfeldMitte.remove(oberflaeche);
 	}
 
 	public void zeigeStrasseInfo(StrasseDaten feld, SpielUI spielfeldAnsicht)
@@ -207,6 +212,12 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
 	}
 
+	public void hinzuSpielfeldMitte(String beschreibung, Oberflaeche oberflaeche)
+	{
+		JTabbedPane tabPane = tabSpielfeldMitte;
+		fuegeInhaltHinzu(beschreibung, oberflaeche, tabPane);
+	}
+
 	public boolean isSpielerInhaberDerAnsicht(Spieler spieler)
 	{
 		return spieler == this.spieler;
@@ -220,5 +231,10 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 	public void setWuerfelWeitergabeEnabled(boolean value)
 	{
 		butWuerfelWeitergeben.setEnabled(value);
+	}
+
+	public JTabbedPane getTabPaneSpielfeldMitte()
+	{
+		return tabSpielfeldMitte;
 	}
 }

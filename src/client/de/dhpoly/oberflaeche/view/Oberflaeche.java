@@ -90,6 +90,11 @@ public abstract class Oberflaeche extends JPanel
 		ansicht.ifPresent(ui -> ui.hinzuRechts(beschreibung, this));
 	}
 
+	protected void zeigeSpielfeldMitte(String beschreibung)
+	{
+		ansicht.ifPresent(ui -> ui.hinzuSpielfeldMitte(beschreibung, this));
+	}
+
 	public void sendeAnServer(Datenobjekt antwort)
 	{
 		ansicht.ifPresent(ui -> ui.sendeAnServer(antwort));

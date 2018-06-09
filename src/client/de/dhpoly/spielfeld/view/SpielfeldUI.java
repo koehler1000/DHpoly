@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 import de.dhpoly.feld.model.EreignisfeldDaten;
 import de.dhpoly.feld.model.FeldDaten;
@@ -31,8 +30,6 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 	private static final long serialVersionUID = 1L;
 
 	private Map<StrasseDaten, StrasseUI> strassen = new HashMap<>();
-
-	private JTabbedPane tabPane;
 
 	public SpielfeldUI(SpielfeldDaten spielfelder, SpielUI ansicht)
 	{
@@ -61,8 +58,7 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		c.gridx = 1;
 		c.gridy = 1;
 
-		tabPane = ElementFactory.getTabbedPane();
-		pnlContent.add(tabPane, c);
+		pnlContent.add(ansicht.getTabPaneSpielfeldMitte(), c);
 
 		this.add(pnlContent);
 		this.remove(getSchliessenButton());
@@ -109,15 +105,5 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		List<Oberflaeche> ret = new ArrayList<>();
 		oberflaechen.stream().filter(e -> (e instanceof SpielfeldUI || e instanceof SpielstartUI)).forEach(ret::add);
 		return ret;
-	}
-
-	public void addTab(String titel, Component inhalt)
-	{
-		tabPane.add(titel, inhalt);
-	}
-
-	public void removeTab(Component inhalt)
-	{
-		tabPane.remove(inhalt);
 	}
 }
