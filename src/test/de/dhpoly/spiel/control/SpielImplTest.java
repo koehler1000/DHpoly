@@ -30,7 +30,8 @@ import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelDaten;
 
-public class SpielImplTest implements Datenobjektverwalter {
+public class SpielImplTest implements Datenobjektverwalter
+{
 	private SpielImpl spiel;
 	private List<Datenobjekt> empfangeneObjekte = new ArrayList<>();
 
@@ -38,7 +39,8 @@ public class SpielImplTest implements Datenobjektverwalter {
 	private Spieler spieler = new Spieler("Test1");
 
 	@Before
-	public void vorbereitung() {
+	public void vorbereitung()
+	{
 		NetzwerkServer server = ServerFake.SERVER_FAKE;
 		NetzwerkClient client = ClientFake.CLIENT_FAKE;
 
@@ -54,41 +56,52 @@ public class SpielImplTest implements Datenobjektverwalter {
 	}
 
 	@Test
-	public void kaufmoeglichkeit() {
+	public void kaufmoeglichkeit()
+	{
 		spiel.starteSpiel();
 
 		spiel.fuegeStrassenKaufHinzu(strasse);
 		assertTrue(spiel.kannSpielerStrasseKaufen(spieler, strasse));
 
-		spiel.wuerfeln(spieler);
+		while (spieler.getStatus() == SpielerStatus.MUSS_WUERFELN)
+		{
+			spiel.wuerfeln(spieler);
+		}
 		spiel.wuerfelWeitergeben(spieler);
 		assertFalse(spiel.kannSpielerStrasseKaufen(spieler, strasse));
 	}
 
 	@Test
-	public void spielStartVersendetSpielfeld() {
+	public void spielStartVersendetSpielfeld()
+	{
 		spiel.starteSpiel();
 		assertThat(isEmpfangen(SpielfeldDaten.class), Is.is(1L));
 	}
 
 	@Test
-	public void spielStartSendetSpielerAnSpieler() {
+	public void spielStartSendetSpielerAnSpieler()
+	{
 		spiel.starteSpiel();
 		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
 	}
 
 	@Test
-	public void spielerWechselSendetDatenobjektAnSpieler() {
+	public void spielerWechselSendetDatenobjektAnSpieler()
+	{
 		spiel.starteSpiel();
-		spiel.wuerfeln(spiel.getAktuellerSpieler());
+		while (spieler.getStatus() == SpielerStatus.MUSS_WUERFELN)
+		{
+			spiel.wuerfeln(spiel.getAktuellerSpieler());
+		}
 		empfangeneObjekte = new ArrayList<>();
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 
-		assertThat(isEmpfangen(Spieler.class), Is.is(2L));
+		assertTrue(isEmpfangen(Spieler.class) >= 2l);
 	}
 
 	@Test
-	public void wuerfelnSendetDatenobjekt() {
+	public void wuerfelnSendetDatenobjekt()
+	{
 		spiel.starteSpiel();
 		empfangeneObjekte = new ArrayList<>();
 
@@ -98,21 +111,27 @@ public class SpielImplTest implements Datenobjektverwalter {
 	}
 
 	@Test
-	public void testaktuellerSpieler() {
+	public void testaktuellerSpieler()
+	{
 		spiel.starteSpiel();
 		assertEquals("Test1", spiel.getAktuellerSpieler().getName());
 	}
 
 	@Test
-	public void testnaechsterSpieler() {
+	public void testnaechsterSpieler()
+	{
 		spiel.starteSpiel();
-		spiel.wuerfeln(spiel.getAktuellerSpieler());
+		while (spiel.getAktuellerSpieler().getStatus() == SpielerStatus.MUSS_WUERFELN)
+		{
+			spiel.wuerfeln(spiel.getAktuellerSpieler());
+		}
 		spiel.wuerfelWeitergeben(spiel.getAktuellerSpieler());
 		assertEquals("Test2", spiel.getAktuellerSpieler().getName());
 	}
 
 	@Test
-	public void geldBeiUeberLos() throws InterruptedException {
+	public void geldBeiUeberLos() throws InterruptedException
+	{
 		int geldVorDemLaufen = spiel.getAktuellerSpieler().getRessourcenWert(Ressource.GELD);
 
 		spiel.ruecke(spiel.getAktuellerSpieler(), 2);
@@ -122,7 +141,8 @@ public class SpielImplTest implements Datenobjektverwalter {
 	}
 
 	@Test
-	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat() {
+	public void spielerVerliertWennErAmEndeDesZugesKeinGeldMehrHat()
+	{
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(new StrasseDaten());
 		Spiel spiel = SpielImplTest.getDefaultSpiel();
@@ -139,7 +159,10 @@ public class SpielImplTest implements Datenobjektverwalter {
 		spiel.starteSpiel();
 
 		assertThat(s1.getStatus(), Is.is(SpielerStatus.MUSS_WUERFELN));
-		spiel.wuerfeln(s1);
+		while (s1.getStatus() == SpielerStatus.MUSS_WUERFELN)
+		{
+			spiel.wuerfeln(s1);
+		}
 		assertThat(s1.getStatus(), Is.is(SpielerStatus.MUSS_WUERFEL_WEITERGEBEN));
 		spiel.wuerfelWeitergeben(s1);
 
@@ -147,11 +170,13 @@ public class SpielImplTest implements Datenobjektverwalter {
 		assertThat(s2.getStatus(), Is.is(SpielerStatus.GEWONNEN));
 	}
 
-	public static SpielImpl getDefaultSpiel() {
+	public static SpielImpl getDefaultSpiel()
+	{
 		return getDefaultSpiel(new Einstellungen());
 	}
 
-	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen) {
+	public static SpielImpl getDefaultSpiel(Einstellungen einstellungen)
+	{
 		List<FeldDaten> felder = new ArrayList<>();
 		felder.add(new LosfeldDaten());
 
@@ -162,11 +187,13 @@ public class SpielImplTest implements Datenobjektverwalter {
 	}
 
 	@Override
-	public void empfange(Datenobjekt datenobjekt) {
+	public void empfange(Datenobjekt datenobjekt)
+	{
 		empfangeneObjekte.add(datenobjekt);
 	}
 
-	public long isEmpfangen(Class<? extends Datenobjekt> c) {
+	public long isEmpfangen(Class<? extends Datenobjekt> c)
+	{
 		return empfangeneObjekte.stream().filter(e -> (c.isInstance(e))).count();
 	}
 }
