@@ -44,7 +44,7 @@ public class WuerfelDatenUI extends Oberflaeche // NOSONAR
 	@Override
 	public void zeige(String beschreibung)
 	{
-		zeigeLinks(beschreibung);
+		zeigeSpielfeldMitte(beschreibung);
 	}
 
 	@Override
