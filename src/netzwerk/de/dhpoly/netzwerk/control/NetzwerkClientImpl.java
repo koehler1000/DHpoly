@@ -19,7 +19,6 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	private Socket server;
 	private PrintWriter outputWriter;
 	private BufferedReader inputBuffer;
-	private String username;
 
 	public NetzwerkClientImpl(String string)
 	{
@@ -96,7 +95,14 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	@Override
 	public void sendeAnServer(Datenobjekt obj)
 	{
-		// TODO Auto-generated method stub
+		String erg;
+		try {
+			erg = Serialisierer.toString(obj);
+		} catch (IOException e) {
+			erg = "FEHLER";
+		}
+		
+		sendeAnServer(erg);
 
 	}
 
