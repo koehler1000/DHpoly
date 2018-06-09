@@ -3,6 +3,7 @@ package de.dhpoly.feld.control;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
@@ -19,6 +20,13 @@ public class StrasseKaufenLogikTest
 	private StrasseKaufenLogik logik = new StrasseKaufenLogik();
 	private Spieler spieler = new Spieler("Peter");
 	private Spieler aktuellerSpieler = new Spieler("ba");
+
+	@Before
+	public void setUp()
+	{
+		spieler.setSpielerNr(1);
+		aktuellerSpieler.setSpielerNr(2);
+	}
 
 	@Test
 	public void testPositiv()
