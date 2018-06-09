@@ -1,6 +1,7 @@
 package de.dhpoly.spielfeld.view;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -40,8 +41,8 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		pnlContent.setLayout(new GridBagLayout());
 
 		GridBagConstraints c = new GridBagConstraints();
-		c.weightx = 1;
-		c.weighty = 1;
+		c.weightx = 1d / (felderProSeite + 1);
+		c.weighty = 1d / (felderProSeite + 1);
 		c.gridheight = 1;
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.BOTH;
@@ -50,7 +51,10 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		{
 			c.gridx = spielfelder.getX(feld);
 			c.gridy = spielfelder.getY(feld);
-			pnlContent.add(getFeldUI(feld, ansicht), c);
+
+			Component component = getFeldUI(feld, ansicht);
+			component.setPreferredSize(new Dimension(10, 10));
+			pnlContent.add(component, c);
 		}
 
 		c.gridheight = felderProSeite - 1;
