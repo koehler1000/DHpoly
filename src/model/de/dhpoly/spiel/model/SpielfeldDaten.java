@@ -49,4 +49,50 @@ public class SpielfeldDaten extends Datenobjekt
 	{
 		return felder.size();
 	}
+
+	public int getX(FeldDaten feld)
+	{
+		int felderProSeite = felder.size() / 4;
+		int feldIndex = felder.indexOf(feld);
+		int feldSeite = feldIndex / felderProSeite;
+		int feldAufSeite = feldIndex % felderProSeite;
+
+		if (feldSeite == 0) // unten
+		{
+			return felderProSeite - feldAufSeite;
+		}
+		if (feldSeite == 1) // links
+		{
+			return 0;
+		}
+		if (feldSeite == 2) // oben
+		{
+			return feldAufSeite;
+		}
+		// rechte
+		return felderProSeite;
+	}
+
+	public int getY(FeldDaten feld)
+	{
+		int felderProSeite = felder.size() / 4;
+		int feldIndex = felder.indexOf(feld);
+		int feldSeite = feldIndex / felderProSeite;
+		int feldAufSeite = feldIndex % felderProSeite;
+
+		if (feldSeite == 0) // unten
+		{
+			return felderProSeite;
+		}
+		if (feldSeite == 1) // links
+		{
+			return felderProSeite - feldAufSeite;
+		}
+		if (feldSeite == 2) // oben
+		{
+			return 0;
+		}
+		// rechte
+		return feldAufSeite;
+	}
 }

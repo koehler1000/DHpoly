@@ -47,36 +47,11 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		c.gridwidth = 1;
 		c.fill = GridBagConstraints.BOTH;
 
-		// 1. Seite
-		c.gridy = felderProSeite;
-		for (int i = 0; i < felderProSeite; i++)
+		for (FeldDaten feld : spielfelder.getFelder())
 		{
-			c.gridx = felderProSeite - i;
-			pnlContent.add(getFeldUI(spielfelder.get(i), ansicht), c);
-		}
-
-		// 2. Seite
-		c.gridx = 0;
-		for (int i = 0; i < felderProSeite; i++)
-		{
-			c.gridy = felderProSeite - i;
-			pnlContent.add(getFeldUI(spielfelder.get(i + felderProSeite), ansicht), c);
-		}
-
-		// 3. Seite
-		c.gridy = 0;
-		for (int i = 0; i < felderProSeite; i++)
-		{
-			c.gridx = i;
-			pnlContent.add(getFeldUI(spielfelder.get(i + 2 * felderProSeite), ansicht), c);
-		}
-
-		// 4. Seite
-		c.gridx = felderProSeite;
-		for (int i = 0; i < felderProSeite; i++)
-		{
-			c.gridy = i;
-			pnlContent.add(getFeldUI(spielfelder.get(i + 3 * felderProSeite), ansicht), c);
+			c.gridx = spielfelder.getX(feld);
+			c.gridy = spielfelder.getY(feld);
+			pnlContent.add(getFeldUI(feld, ansicht), c);
 		}
 
 		c.gridheight = felderProSeite - 1;
@@ -99,22 +74,19 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 			strassen.put((StrasseDaten) feld, ui);
 			return ui;
 		}
-		else if (feld instanceof EreignisfeldDaten)
+		if (feld instanceof EreignisfeldDaten)
 		{
 			return new EreignisfeldUI((EreignisfeldDaten) feld, ansicht);
 		}
-		else if (feld instanceof RessourcenfeldDaten)
+		if (feld instanceof RessourcenfeldDaten)
 		{
 			return new RessourcenfeldUI((RessourcenfeldDaten) feld, ansicht);
 		}
-		else if (feld instanceof LosfeldDaten)
+		if (feld instanceof LosfeldDaten)
 		{
 			return new LosfeldUI((LosfeldDaten) feld, ansicht);
 		}
-		else
-		{
-			return ElementFactory.erzeugePanel();
-		}
+		return ElementFactory.erzeugePanel();
 	}
 
 	@Override
