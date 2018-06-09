@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import de.dhpoly.feld.model.EreignisfeldDaten;
 import de.dhpoly.feld.model.FeldDaten;
@@ -58,12 +59,15 @@ public class SpielfeldUI extends Oberflaeche // NOSONAR
 		}
 
 		int abstandZumRand = 1; // Achtung: Felder werden bei 0 überschrieben
-		c.gridheight = felderProSeite + 1 - abstandZumRand * 2;
-		c.gridwidth = felderProSeite + 1 - abstandZumRand * 2;
+		int breite = felderProSeite + 1 - abstandZumRand * 2;
+		c.gridheight = breite;
+		c.gridwidth = breite;
 		c.gridx = abstandZumRand;
 		c.gridy = abstandZumRand;
 
-		pnlContent.add(ansicht.getTabPaneSpielfeldMitte(), c);
+		JTabbedPane tabPaneSpielfeldMitte = ansicht.getTabPaneSpielfeldMitte();
+		tabPaneSpielfeldMitte.setPreferredSize(new Dimension(100, 100));
+		pnlContent.add(tabPaneSpielfeldMitte, c);
 
 		this.add(pnlContent);
 		this.remove(getSchliessenButton());
