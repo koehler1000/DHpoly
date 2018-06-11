@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
+import de.dhpoly.netzwerk.control.Serialisierer;
 import de.dhpoly.spieler.model.Spieler;
 
 public class ServerFake implements NetzwerkServer
@@ -28,20 +29,27 @@ public class ServerFake implements NetzwerkServer
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler)
 	{
-		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.CLIENT_FAKE.empfange(obj);
+		sendeAnSpieler(obj);
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler)
 	{
-		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.CLIENT_FAKE.empfange(obj);
+		sendeAnSpieler(obj);
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj)
 	{
+		try
+		{
+			Serialisierer.toString(obj);
+		}
+		catch (IOException ex)
+		{
+			LOGGER.log(Level.WARNING, "obj nicht serialisierbar");
+		}
+
 		LOGGER.log(Level.INFO, obj.getClassName());
 		ClientFake.CLIENT_FAKE.empfange(obj);
 	}
