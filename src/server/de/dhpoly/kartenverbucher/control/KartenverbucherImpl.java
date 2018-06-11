@@ -6,7 +6,9 @@ import java.util.List;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.RueckenKarte;
+import de.dhpoly.kartenstapel.model.BezahlZiel;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
+import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -18,34 +20,74 @@ public class KartenverbucherImpl implements Kartenverbucher
 		alleSpieler.forEach(andereSpieler::add);
 		andereSpieler.remove(ziehenderSpieler);
 
+		List<Spieler> bezahlQuelle = new ArrayList<>();
+		List<Spieler> bezahlZiel = new ArrayList<>();
+
 		switch (karte.getGeldQuelle())
 		{
 			case SPIELER_ANDERE:
-				andereSpieler.forEach(e -> e.auszahlen(karte.getRessourcenDatensaetze()));
+				bezahlQuelle = andereSpieler;
 				break;
 			case SPIELER_ZIEHER:
-				ziehenderSpieler.auszahlen(karte.getRessourcenDatensaetze());
+				bezahlQuelle.add(ziehenderSpieler);
 				break;
 			case ALLE_SPIELER:
-				alleSpieler.forEach(e -> e.auszahlen(karte.getRessourcenDatensaetze()));
+				bezahlQuelle = alleSpieler;
 				break;
-			default:
+			case BANK:
 				break;
 		}
 
 		switch (karte.getGeldZiel())
 		{
 			case SPIELER_ANDERE:
-				andereSpieler.forEach(e -> e.einzahlen(karte.getRessourcenDatensaetze()));
+				bezahlZiel = andereSpieler;
 				break;
 			case SPIELER_ZIEHER:
-				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
+				bezahlZiel.add(ziehenderSpieler);
 				break;
 			case ALLE_SPIELER:
-				alleSpieler.forEach(e -> e.einzahlen(karte.getRessourcenDatensaetze()));
+				bezahlZiel = alleSpieler;
 				break;
 			default:
 				break;
+		}
+		if(karte.getGeldQuelle() != BezahlZiel.BANK) {
+		ueberweise(bezahlQuelle, bezahlZiel, karte.getRessourcenDatensaetze());
+		}
+		else
+		{
+			ueberweiseVonBank(bezahlZiel, karte.getRessourcenDatensaetze());
+		}
+			
+	}
+
+	private void ueberweise(List<Spieler> spielerQuelle, List<Spieler> spielerZiel, List<RessourcenDatensatz> ressource)
+	{
+		for (Spieler spielerQ : spielerQuelle)
+		{
+			for (Spieler spielerZ : spielerZiel)
+			{
+
+				spielerQ.auszahlen(ressource);
+				spielerZ.einzahlen(ressource);
+			}
+		}
+	}
+
+	private void ueberweiseAnBank(List<Spieler> spieler, List<RessourcenDatensatz> ressource)
+	{
+		for (Spieler spielerQ : spieler)
+		{
+			spielerQ.auszahlen(ressource);
+		}
+	}
+
+	private void ueberweiseVonBank(List<Spieler> spieler, List<RessourcenDatensatz> ressource)
+	{
+		for (Spieler spielerZ : spieler)
+		{
+			spielerZ.einzahlen(ressource);
 		}
 	}
 
@@ -69,4 +111,5 @@ public class KartenverbucherImpl implements Kartenverbucher
 			bewegeSpieler(karte, spiel.getAktuellerSpieler(), spiel);
 		}
 	}
+
 }
