@@ -1,7 +1,6 @@
 package de.dhpoly.fakes;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -10,7 +9,6 @@ import java.util.logging.Logger;
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
-import de.dhpoly.netzwerk.control.Serialisierer;
 
 public class ClientFake implements NetzwerkClient
 {
@@ -26,38 +24,15 @@ public class ClientFake implements NetzwerkClient
 	}
 
 	@Override
-	public void sendeAnServer(Datenobjekt obj)
-	{
-		LOGGER.log(Level.INFO, obj.getClassName());
-		ServerFake.SERVER_FAKE.empfange(Serialisierer.toString(obj));
-	}
-
-	@Override
 	public void sendeAnServer(String text) throws IOException
 	{
 		LOGGER.log(Level.INFO, text);
 	}
 
-	private void empfange(Datenobjekt obj)
+	public void empfange(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
 		verwalter.forEach(v -> v.empfange(obj));
-	}
-
-	public void empfange(String string)
-	{
-		try
-		{
-			Serializable object = Serialisierer.toObject(string);
-			if (object instanceof Datenobjekt)
-			{
-				empfange((Datenobjekt) object);
-			}
-		}
-		catch (Exception ex)
-		{
-			LOGGER.log(Level.WARNING, ex.getMessage());
-		}
 	}
 
 	@Override
@@ -76,5 +51,12 @@ public class ClientFake implements NetzwerkClient
 	public void sendQuitMessage()
 	{
 		// fake -> wird nicht benötigt
+	}
+
+	@Override
+	public void sendeAnServer(Datenobjekt obj)
+	{
+		LOGGER.log(Level.INFO, obj.getClassName());
+		ServerFake.SERVER_FAKE.empfange(obj);
 	}
 }

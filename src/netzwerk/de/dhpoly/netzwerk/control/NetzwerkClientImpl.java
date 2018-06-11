@@ -95,11 +95,7 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	@Override
 	public void sendeAnServer(Datenobjekt obj)
 	{
-		String erg;
-		erg = Serialisierer.toString(obj);
-
-		sendeAnServer(erg);
-
+		LOGGER.log(Level.INFO, obj.getClassName());
+		sendeAnServer(obj);
 	}
-
 }
