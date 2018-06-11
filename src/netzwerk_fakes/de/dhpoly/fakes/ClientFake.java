@@ -28,15 +28,8 @@ public class ClientFake implements NetzwerkClient
 	@Override
 	public void sendeAnServer(Datenobjekt obj)
 	{
-		try
-		{
-			ServerFake.SERVER_FAKE.empfange(Serialisierer.toString(obj));
-			LOGGER.log(Level.INFO, obj.getClassName());
-		}
-		catch (IOException ex)
-		{
-			LOGGER.log(Level.WARNING, "obj nicht serialisierbar");
-		}
+		LOGGER.log(Level.INFO, obj.getClassName());
+		ServerFake.SERVER_FAKE.empfange(Serialisierer.toString(obj));
 	}
 
 	@Override

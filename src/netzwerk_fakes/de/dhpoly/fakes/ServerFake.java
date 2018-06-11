@@ -42,15 +42,8 @@ public class ServerFake implements NetzwerkServer
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj)
 	{
-		try
-		{
-			ClientFake.CLIENT_FAKE.empfange(Serialisierer.toString(obj));
-			LOGGER.log(Level.INFO, obj.getClassName());
-		}
-		catch (IOException ex)
-		{
-			LOGGER.log(Level.WARNING, "obj nicht serialisierbar");
-		}
+		ClientFake.CLIENT_FAKE.empfange(Serialisierer.toString(obj));
+		LOGGER.log(Level.INFO, obj.getClassName());
 	}
 
 	public void empfange(Datenobjekt obj)

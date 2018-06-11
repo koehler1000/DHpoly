@@ -1,33 +1,37 @@
 package de.dhpoly.netzwerk.control;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Base64;
+
+import com.google.gson.Gson;
+
+import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.datenobjekt.netzwerk.NetzwerkObjekt;
 
 public class Serialisierer
 {
+	private static Gson gson = new Gson();
+
 	private Serialisierer()
 	{}
 
-	public static String toString(Serializable o) throws IOException
+	public static String toString(NetzwerkObjekt o)
 	{
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(baos);
-		oos.writeObject(o);
-		oos.close();
-		return Base64.getEncoder().encodeToString(baos.toByteArray());
+		String str = gson.toJson(o);
+		System.out.println(str);
+		return str;
 	}
-	
-	public static Serializable toObject(String s) throws IOException, ClassNotFoundException {
-		FileInputStream fileIn = new FileInputStream(s);
-		ObjectInputStream in = new ObjectInputStream(fileIn);
-		Serializable s1 = (Serializable) in.readObject();
-		in.close();
-		fileIn.close();
-		return s1;
+
+	public static String toString(Datenobjekt o)
+	{
+		String str = gson.toJson(o);
+		System.out.println(str);
+		return str;
+	}
+
+	public static Serializable toObject(String s)
+	{
+		NetzwerkObjekt obj = gson.fromJson(s, NetzwerkObjekt.class);
+		System.out.println(obj.getKlasse());
+		return obj.getDatenobjekt();
 	}
 }

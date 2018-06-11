@@ -96,12 +96,8 @@ public class NetzwerkClientImpl implements NetzwerkClient
 	public void sendeAnServer(Datenobjekt obj)
 	{
 		String erg;
-		try {
-			erg = Serialisierer.toString(obj);
-		} catch (IOException e) {
-			erg = "FEHLER";
-		}
-		
+		erg = Serialisierer.toString(obj);
+
 		sendeAnServer(erg);
 
 	}
