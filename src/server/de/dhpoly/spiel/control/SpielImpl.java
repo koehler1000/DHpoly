@@ -576,7 +576,6 @@ public class SpielImpl implements Spiel
 	@Override
 	public void bewege(int anzahl, Spieler spieler)
 	{
-		// TODO Auto-generated method stub
-
+		ruecke(spieler, anzahl);
 	}
 }
