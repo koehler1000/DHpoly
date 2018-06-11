@@ -5,7 +5,7 @@ import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.view.KarteUI;
-import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenstapel.model.BezahlZiel;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 
@@ -14,20 +14,25 @@ public class BezahlKarte extends Datenobjekt implements Karte
 	private static final long serialVersionUID = 1L;
 
 	private String beschreibung;
-	private GeldTransfer transfer;
-	private transient List<RessourcenDatensatz> ressourcenDatensaetze;
+	private List<RessourcenDatensatz> ressourcenDatensaetze;
 
-	public BezahlKarte(String beschreibung, GeldTransfer transfer, List<RessourcenDatensatz> ressourcenDatensaetze)
+	private BezahlZiel geldQuelle;
+
+	private BezahlZiel geldZiel;
+
+	public BezahlKarte(String beschreibung, BezahlZiel quelle, BezahlZiel ziel,
+			List<RessourcenDatensatz> ressourcenDatensaetze)
 	{
 		super();
 		this.beschreibung = beschreibung;
-		this.transfer = transfer;
+		this.geldQuelle = quelle;
+		this.geldZiel = ziel;
 		this.ressourcenDatensaetze = ressourcenDatensaetze;
 	}
 
-	public BezahlKarte(String beschreibung, GeldTransfer transfer, RessourcenDatensatz datensatz)
+	public BezahlKarte(String beschreibung, BezahlZiel quelle, BezahlZiel ziel, RessourcenDatensatz datensatz)
 	{
-		this(beschreibung, transfer, new ArrayList<>());
+		this(beschreibung, quelle, ziel, new ArrayList<>());
 		ressourcenDatensaetze.add(datensatz);
 	}
 
@@ -36,9 +41,14 @@ public class BezahlKarte extends Datenobjekt implements Karte
 		return beschreibung;
 	}
 
-	public GeldTransfer getTransfer()
+	public BezahlZiel getGeldQuelle()
 	{
-		return transfer;
+		return geldQuelle;
+	}
+
+	public BezahlZiel getGeldZiel()
+	{
+		return geldZiel;
 	}
 
 	public List<RessourcenDatensatz> getRessourcenDatensaetze()
