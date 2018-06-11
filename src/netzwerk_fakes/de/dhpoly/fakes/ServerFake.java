@@ -1,6 +1,7 @@
 package de.dhpoly.fakes;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Optional;
@@ -43,21 +44,35 @@ public class ServerFake implements NetzwerkServer
 	{
 		try
 		{
-			Serialisierer.toString(obj);
+			ClientFake.CLIENT_FAKE.empfange(Serialisierer.toString(obj));
+			LOGGER.log(Level.INFO, obj.getClassName());
 		}
 		catch (IOException ex)
 		{
 			LOGGER.log(Level.WARNING, "obj nicht serialisierbar");
 		}
-
-		LOGGER.log(Level.INFO, obj.getClassName());
-		ClientFake.CLIENT_FAKE.empfange(obj);
 	}
 
 	public void empfange(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
 		verwalter.ifPresent(e -> e.empfange(obj));
+	}
+
+	public void empfange(String string)
+	{
+		try
+		{
+			Serializable object = Serialisierer.toObject(string);
+			if (object instanceof Datenobjekt)
+			{
+				empfange((Datenobjekt) object);
+			}
+		}
+		catch (Exception ex)
+		{
+			LOGGER.log(Level.WARNING, ex.getMessage());
+		}
 	}
 
 	@Override
