@@ -49,17 +49,19 @@ public class KartenverbucherImpl implements Kartenverbucher
 			case ALLE_SPIELER:
 				bezahlZiel = alleSpieler;
 				break;
-			default:
+			case BANK:
+				ueberweiseAnBank(bezahlQuelle, karte.getRessourcenDatensaetze());
 				break;
 		}
-		if(karte.getGeldQuelle() != BezahlZiel.BANK) {
-		ueberweise(bezahlQuelle, bezahlZiel, karte.getRessourcenDatensaetze());
+		if (karte.getGeldQuelle() != BezahlZiel.BANK)
+		{
+			ueberweise(bezahlQuelle, bezahlZiel, karte.getRessourcenDatensaetze());
 		}
 		else
 		{
 			ueberweiseVonBank(bezahlZiel, karte.getRessourcenDatensaetze());
 		}
-			
+
 	}
 
 	private void ueberweise(List<Spieler> spielerQuelle, List<Spieler> spielerZiel, List<RessourcenDatensatz> ressource)
