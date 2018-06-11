@@ -2,8 +2,10 @@ package de.dhpoly.main;
 
 import java.io.IOException;
 
+import de.dhpoly.fakes.ServerFake;
 import de.dhpoly.oberflaeche.view.Fenster;
-import de.dhpoly.spiel.view.SpielerstellerUI;
+import de.dhpoly.spiel.control.SpielImpl;
+import de.dhpoly.spiel.view.SpielerErstellerUI;
 
 public class MainFake
 {
@@ -14,6 +16,7 @@ public class MainFake
 
 	public MainFake() throws IOException
 	{
-		new SpielerstellerUI(new Fenster());
+		new SpielImpl(ServerFake.SERVER_FAKE);
+		new SpielerErstellerUI(new Fenster());
 	}
 }
