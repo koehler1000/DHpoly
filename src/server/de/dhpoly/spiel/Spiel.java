@@ -68,4 +68,6 @@ public interface Spiel extends Datenobjektverwalter
 	boolean kannSpielerStrasseKaufen(Spieler spieler, StrasseDaten strasse);
 
 	void fuegeStrassenKaufHinzu(StrasseDaten strasse);
+
+	void bewege(int anzahl, Spieler spieler);
 }

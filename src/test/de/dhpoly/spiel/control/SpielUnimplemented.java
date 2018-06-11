@@ -144,4 +144,8 @@ public abstract class SpielUnimplemented implements Spiel
 	@Override
 	public void fuegeStrassenKaufHinzu(StrasseDaten strasse)
 	{}
+
+	@Override
+	public void bewege(int anzahl, Spieler spieler)
+	{}
 }

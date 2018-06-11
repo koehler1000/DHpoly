@@ -49,7 +49,7 @@ public class KartenverbucherImpl implements Kartenverbucher
 	@Override
 	public void bewegeSpieler(RueckenKarte karte, Spieler spieler, Spiel spiel)
 	{
-		karte.getZiel().betreteFeld(spieler, 0, spiel);
+		spiel.bewege(karte.getFelder(), spieler);
 	}
 
 	@Override

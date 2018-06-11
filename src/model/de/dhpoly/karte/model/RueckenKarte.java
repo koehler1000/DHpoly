@@ -1,24 +1,23 @@
 package de.dhpoly.karte.model;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
-import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.view.KarteUI;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 
 public class RueckenKarte extends Datenobjekt implements Karte
 {
 	private static final long serialVersionUID = 1L;
-	private transient Feld zielFeld;
+	private int felder = 0;
 
-	public RueckenKarte(Feld zielFeld)
+	public RueckenKarte(int felder)
 	{
-		this.zielFeld = zielFeld;
+		this.felder = felder;
 	}
 
 	@Override
 	public String getBeschreibung()
 	{
-		return "Rücken Sie auf das Feld: " + System.lineSeparator() + zielFeld.getBeschriftung();
+		return "Rücken Sie " + felder + " Felder";
 	}
 
 	@Override
@@ -27,9 +26,9 @@ public class RueckenKarte extends Datenobjekt implements Karte
 		return "Sie werden verschoben...";
 	}
 
-	public Feld getZiel()
+	public int getFelder()
 	{
-		return zielFeld;
+		return felder;
 	}
 
 	@Override
@@ -37,5 +36,4 @@ public class RueckenKarte extends Datenobjekt implements Karte
 	{
 		return KarteUI.class;
 	}
-
 }

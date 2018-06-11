@@ -572,4 +572,11 @@ public class SpielImpl implements Spiel
 	{
 		aktuelleKaufangebote.add(strasse);
 	}
+
+	@Override
+	public void bewege(int anzahl, Spieler spieler)
+	{
+		// TODO Auto-generated method stub
+
+	}
 }
