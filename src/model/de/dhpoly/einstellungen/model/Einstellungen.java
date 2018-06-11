@@ -37,8 +37,7 @@ public class Einstellungen extends Datenobjekt {
 		karten.add(new BezahlKarte("Zahle 10€ an alle", BezahlZiel.SPIELER_ZIEHER, BezahlZiel.SPIELER_ANDERE, geld));
 		karten.add(new BezahlKarte("Erhalte 10€ von der Bank", BezahlZiel.BANK, BezahlZiel.SPIELER_ZIEHER, geld));
 		karten.add(new BezahlKarte("Sammle Spenden", BezahlZiel.SPIELER_ANDERE, BezahlZiel.SPIELER_ZIEHER, geld));
-		// karten.add(new BezahlKarte("Erdbeben, alle Spieler verlieren 10€",
-		// BezahlZiel.))
+		karten.add(new BezahlKarte("Erdbeben, alle Spieler verlieren 10€", BezahlZiel.ALLE_SPIELER, BezahlZiel.BANK, geld));
 		karten.add(new WetterKarte(Wetter.SONNE));
 		karten.add(new WetterKarte(Wetter.BEWOELKT));
 		karten.add(new WetterKarte(Wetter.GEWITTER));
