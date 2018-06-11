@@ -9,7 +9,7 @@ import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import de.dhpoly.karte.model.BezahlKarte;
-import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenstapel.model.BezahlZiel;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -25,7 +25,7 @@ public class KartenverbucherImplTest
 		final int transferbetrag = 50;
 
 		Spieler spieler = SpielerImplTest.getDefaultSpieler(startgeld);
-		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.BANK_SPIELER,
+		BezahlKarte karte = new BezahlKarte("bla", BezahlZiel.BANK, BezahlZiel.ALLE_SPIELER,
 				new RessourcenDatensatz(Ressource.GELD, transferbetrag));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();

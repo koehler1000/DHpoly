@@ -11,7 +11,7 @@ import de.dhpoly.feld.Feld;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
 import de.dhpoly.kartenstapel.control.KartenstapelImpl;
-import de.dhpoly.kartenstapel.model.GeldTransfer;
+import de.dhpoly.kartenstapel.model.BezahlZiel;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
@@ -39,7 +39,7 @@ public class FeldEreignisTest
 		};
 
 		List<Karte> kartenstapel = new ArrayList<>();
-		kartenstapel.add(new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
+		kartenstapel.add(new BezahlKarte("bla", BezahlZiel.SPIELER_ANDERE, BezahlZiel.SPIELER_ZIEHER,
 				new RessourcenDatensatz(Ressource.GELD, 1000)));
 
 		Feld ereignisfeld = new FeldEreignis(new KartenstapelImpl(kartenstapel));

@@ -7,7 +7,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.RueckenKarte;
 import de.dhpoly.kartenverbucher.Kartenverbucher;
-import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
@@ -15,34 +14,38 @@ public class KartenverbucherImpl implements Kartenverbucher
 {
 	public void bewegeGeld(BezahlKarte karte, List<Spieler> alleSpieler, Spieler ziehenderSpieler)
 	{
-		List<Spieler> ziehenderSpielerAlsListe = new ArrayList<>();
-		ziehenderSpielerAlsListe.add(ziehenderSpieler);
+		List<Spieler> andereSpieler = new ArrayList<>();
+		alleSpieler.forEach(andereSpieler::add);
+		andereSpieler.remove(ziehenderSpieler);
 
-		switch (karte.getTransfer())
+		switch (karte.getGeldQuelle())
 		{
-			case ANDERESPIELER_SPIELER:
-				umbuchen(alleSpieler, ziehenderSpielerAlsListe, karte.getRessourcenDatensaetze());
+			case SPIELER_ANDERE:
+				andereSpieler.forEach(e -> e.auszahlen(karte.getRessourcenDatensaetze()));
 				break;
-			case BANK_SPIELER:
-				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
+			case SPIELER_ZIEHER:
+				ziehenderSpieler.auszahlen(karte.getRessourcenDatensaetze());
 				break;
-			case SPIELER_ANDERESPIELER:
-				umbuchen(ziehenderSpielerAlsListe, alleSpieler, karte.getRessourcenDatensaetze());
+			case ALLE_SPIELER:
+				alleSpieler.forEach(e -> e.auszahlen(karte.getRessourcenDatensaetze()));
 				break;
 			default:
 				break;
 		}
-	}
 
-	private void umbuchen(List<Spieler> sender, List<Spieler> empfaenger, List<RessourcenDatensatz> datensaetze)
-	{
-		for (Spieler spielerSender : sender)
+		switch (karte.getGeldZiel())
 		{
-			for (Spieler spielerEmpfaenger : empfaenger)
-			{
-				spielerEmpfaenger.einzahlen(datensaetze);
-				spielerSender.auszahlen(datensaetze);
-			}
+			case SPIELER_ANDERE:
+				andereSpieler.forEach(e -> e.einzahlen(karte.getRessourcenDatensaetze()));
+				break;
+			case SPIELER_ZIEHER:
+				ziehenderSpieler.einzahlen(karte.getRessourcenDatensaetze());
+				break;
+			case ALLE_SPIELER:
+				alleSpieler.forEach(e -> e.einzahlen(karte.getRessourcenDatensaetze()));
+				break;
+			default:
+				break;
 		}
 	}
 

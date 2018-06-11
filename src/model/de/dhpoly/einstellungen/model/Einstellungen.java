@@ -7,7 +7,6 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.view.EinstellungenUI;
 import de.dhpoly.karte.model.BezahlKarte;
 import de.dhpoly.karte.model.Karte;
-import de.dhpoly.kartenstapel.model.GeldTransfer;
 import de.dhpoly.oberflaeche.view.Oberflaeche;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
