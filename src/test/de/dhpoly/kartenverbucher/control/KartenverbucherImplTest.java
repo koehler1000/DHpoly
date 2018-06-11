@@ -37,6 +37,24 @@ public class KartenverbucherImplTest
 	}
 
 	@Test
+	public void geldAnBank()
+	{
+		final int startgeld = 500;
+		final int transferbetrag = 50;
+
+		Spieler spieler = SpielerImplTest.getDefaultSpieler(startgeld);
+		BezahlKarte karte = new BezahlKarte("bla", BezahlZiel.ALLE_SPIELER, BezahlZiel.BANK,
+				new RessourcenDatensatz(Ressource.GELD, transferbetrag));
+
+		List<Spieler> alleSpieler = new ArrayList<>();
+		alleSpieler.add(spieler);
+		Kartenverbucher verbucher = new KartenverbucherImpl();
+		verbucher.bewegeGeld(karte, alleSpieler, spieler);
+
+		assertThat(spieler.getRessourcenWert(Ressource.GELD), Is.is(startgeld - transferbetrag));
+	}
+
+	@Test
 	public void geldVonAnderenSpielern()
 	{
 		Spieler ziehenderSpieler = SpielerImplTest.getDefaultSpieler(500);
