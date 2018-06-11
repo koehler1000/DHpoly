@@ -18,7 +18,8 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 		super(ansicht);
 
 		this.add(ElementFactory.getBild(w.getZahl()));
-		this.setMaximumSize(new Dimension(100, 100));
+		this.setMaximumSize(new Dimension(200, 200));
+		this.setPreferredSize(new Dimension(200, 200));
 
 		this.remove(getSchliessenButton());
 	}
@@ -40,5 +41,4 @@ public class WuerfelUI extends Oberflaeche // NOSONAR
 	{
 		return new ArrayList<>();
 	}
-
 }

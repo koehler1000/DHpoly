@@ -1,6 +1,7 @@
 package de.dhpoly.wuerfel.view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +18,26 @@ public class WuerfelDatenUI extends Oberflaeche // NOSONAR
 {
 	private static final long serialVersionUID = 1L;
 
-	public WuerfelDatenUI(WuerfelDaten wuerfel, SpielUI ansicht)
+	public WuerfelDatenUI(WuerfelDaten wuerfelDaten, SpielUI ansicht)
 	{
 		super(ansicht, 3);
 
 		JPanel pnlInhalt = ElementFactory.erzeugePanel();
-		pnlInhalt.setLayout(new GridLayout(wuerfel.getWuerfel().size(), 1, 10, 10));
+		pnlInhalt.setLayout(new GridLayout(1, wuerfelDaten.getWuerfel().size(), 10, 10));
 
-		List<WuerfelUI> lblsWuerfel = new ArrayList<>();
+		List<WuerfelUI> wuerfel = new ArrayList<>();
 
-		for (Wuerfel w : wuerfel.getWuerfel())
+		for (Wuerfel w : wuerfelDaten.getWuerfel())
 		{
-			lblsWuerfel.add(new WuerfelUI(ansicht, w));
+			wuerfel.add(new WuerfelUI(ansicht, w));
 		}
 
-		lblsWuerfel.forEach(pnlInhalt::add);
-		this.add(pnlInhalt, BorderLayout.CENTER);
+		wuerfel.forEach(pnlInhalt::add);
+
+		JPanel pnl = ElementFactory.erzeugePanel();
+		pnl.setLayout(new FlowLayout());
+		pnl.add(pnlInhalt);
+		this.add(pnl, BorderLayout.CENTER);
 	}
 
 	@Override
