@@ -28,8 +28,10 @@ public class KartenverbucherImplTest
 		BezahlKarte karte = new BezahlKarte("bla", BezahlZiel.BANK, BezahlZiel.ALLE_SPIELER,
 				new RessourcenDatensatz(Ressource.GELD, transferbetrag));
 
+		List<Spieler> alleSpieler = new ArrayList<>();
+		alleSpieler.add(spieler);
 		Kartenverbucher verbucher = new KartenverbucherImpl();
-		verbucher.bewegeGeld(karte, null, spieler);
+		verbucher.bewegeGeld(karte, alleSpieler, spieler);
 
 		assertThat(spieler.getRessourcenWert(Ressource.GELD), Is.is(startgeld + transferbetrag));
 	}
