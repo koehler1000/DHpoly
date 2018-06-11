@@ -44,7 +44,7 @@ public class KartenverbucherImplTest
 		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 
-		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.ANDERESPIELER_SPIELER,
+		BezahlKarte karte = new BezahlKarte("bla", BezahlZiel.SPIELER_ANDERE, BezahlZiel.SPIELER_ZIEHER,
 				new RessourcenDatensatz(Ressource.GELD, 50));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
@@ -66,7 +66,7 @@ public class KartenverbucherImplTest
 		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 		spieler.add(SpielerImplTest.getDefaultSpieler(100));
 
-		BezahlKarte karte = new BezahlKarte("bla", GeldTransfer.SPIELER_ANDERESPIELER,
+		BezahlKarte karte = new BezahlKarte("bla", BezahlZiel.SPIELER_ZIEHER, BezahlZiel.SPIELER_ANDERE,
 				new RessourcenDatensatz(Ressource.GELD, 50));
 
 		Kartenverbucher verbucher = new KartenverbucherImpl();
