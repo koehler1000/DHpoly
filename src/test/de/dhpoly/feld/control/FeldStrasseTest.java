@@ -16,9 +16,11 @@ import de.dhpoly.spiel.control.SpielImplTest;
 import de.dhpoly.spieler.control.SpielerImplTest;
 import de.dhpoly.spieler.model.Spieler;
 
-public class FeldStrasseTest {
+public class FeldStrasseTest
+{
 	@Test
-	public void spielerKauftStrasse() {
+	public void spielerKauftStrasse()
+	{
 		final int startbetrag = 500;
 		final int kosten = 50;
 
@@ -36,7 +38,8 @@ public class FeldStrasseTest {
 	}
 
 	@Test
-	public void spielerGeldAendertSichNichtWennErAufDieEigeneStrasseKommt() {
+	public void spielerGeldAendertSichNichtWennErAufDieEigeneStrasseKommt()
+	{
 		final int startbetrag = 500;
 		final int kosten = 50;
 
@@ -57,33 +60,40 @@ public class FeldStrasseTest {
 		assertThat(spieler.getRessourcenWert(Ressource.GELD), Is.is(startbetrag - kosten));
 	}
 
-	private static FeldStrasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus) {
+	public static FeldStrasse getDefaultStrasse(List<RessourcenDatensatz> kostenHaus)
+	{
 		return new FeldStrasse(0, new int[] { 1, 2, 3 }, kostenHaus, 1, "test");
 	}
 
-	public static FeldStrasse getDefaultStrasse() {
+	public static FeldStrasse getDefaultStrasse()
+	{
 		return getDefaultStrasse("test");
 	}
 
-	public static FeldStrasse getDefaultStrasse(String name) {
+	public static FeldStrasse getDefaultStrasse(String name)
+	{
 		return getDefaultStrasse(name, 0);
 	}
 
-	public static FeldStrasse getDefaultStrasse(String name, int preis) {
+	public static FeldStrasse getDefaultStrasse(String name, int preis)
+	{
 		return getDefaultStrasse(name, preis, new int[1]);
 	}
 
-	public static FeldStrasse getDefaultStrasse(String name, int preis, int[] mieten) {
+	public static FeldStrasse getDefaultStrasse(String name, int preis, int[] mieten)
+	{
 		return new FeldStrasse(preis, mieten, new Einstellungen().getHauskosten(1), 1, name);
 	}
 
-	public static FeldStrasse getDefaultStrasse(Spieler s1) {
+	public static FeldStrasse getDefaultStrasse(Spieler s1)
+	{
 		FeldStrasse strasse = new FeldStrasse(0, new int[1], new Einstellungen().getHauskosten(1), 1, "Strasse");
 		strasse.setEigentuemer(s1);
 		return strasse;
 	}
 
-	public static FeldStrasse getDefaultStrasse(int[] miete) {
+	public static FeldStrasse getDefaultStrasse(int[] miete)
+	{
 		return getDefaultStrasse("Teststrasse", 1000, miete);
 	}
 }
