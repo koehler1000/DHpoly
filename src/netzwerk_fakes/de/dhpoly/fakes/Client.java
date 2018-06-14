@@ -10,10 +10,9 @@ import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 
-public class ClientFactory implements NetzwerkClient
+public class Client implements NetzwerkClient
 {
-	public static final ClientFactory CLIENT = new ClientFactory();
-	private static final Logger LOGGER = Logger.getLogger(ServerFactory.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
 
 	private List<Datenobjektverwalter> verwalter = new ArrayList<>();
 
@@ -57,6 +56,6 @@ public class ClientFactory implements NetzwerkClient
 	public void sendeAnServer(Datenobjekt obj)
 	{
 		LOGGER.log(Level.INFO, obj.getClassName());
-		ServerFactory.SERVER.empfange(obj);
+		ServerVerwalter.getServer().empfange(obj);
 	}
 }

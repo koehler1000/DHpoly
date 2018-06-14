@@ -7,8 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import de.dhpoly.ai.AI;
-import de.dhpoly.fakes.ClientFactory;
-import de.dhpoly.netzwerk.NetzwerkClient;
+import de.dhpoly.fakes.ClientVerwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.oberflaeche.ElementFactory;
 import de.dhpoly.oberflaeche.view.Fenster;
@@ -60,7 +59,7 @@ public class SpielerErstellerUI
 	private void spielerHinzuLokal()
 	{
 		Spieler spieler = new Spieler(txtName.getText());
-		SpielUI verwalter2 = new SpielUI(spieler, getClient());
+		SpielUI verwalter2 = new SpielUI(spieler, ClientVerwalter.erzeugeClient(spieler));
 		fenster.zeigeSpielansicht(verwalter2, txtName.getText());
 		verwalter2.sendeAnServer(spieler);
 
@@ -71,7 +70,7 @@ public class SpielerErstellerUI
 	private void spielerHinzuPC()
 	{
 		AI ai = new AI();
-		ai.erzeugeComputerspieler(getClient(), txtName.getText());
+		ai.erzeugeComputerspieler(txtName.getText());
 
 		spielerAnz++;
 		nameAendern();
@@ -80,10 +79,5 @@ public class SpielerErstellerUI
 	private void nameAendern()
 	{
 		txtName.setText("Spieler " + spielerAnz);
-	}
-
-	private NetzwerkClient getClient()
-	{
-		return ClientFactory.CLIENT;
 	}
 }

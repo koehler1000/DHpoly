@@ -12,12 +12,21 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.spieler.model.Spieler;
 
-public class ServerFactory implements NetzwerkServer
+public class Server implements NetzwerkServer
 {
-	public static final ServerFactory SERVER = new ServerFactory();
-	private static final Logger LOGGER = Logger.getLogger(ServerFactory.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
 
 	private Optional<Datenobjektverwalter> verwalter = Optional.empty();
+
+	private static Server server = new Server();
+
+	private Server()
+	{}
+
+	public static NetzwerkServer erzeugeServer()
+	{
+		return server;
+	}
 
 	@Override
 	public void setDatenobjektverwalter(Datenobjektverwalter verwalter)
@@ -28,26 +37,29 @@ public class ServerFactory implements NetzwerkServer
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj, Spieler spieler)
 	{
-		sendeAnSpieler(obj);
+		ClientVerwalter.getClient(spieler).empfange(obj);
+		LOGGER.log(Level.INFO, obj.getClassName());
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj, List<Spieler> spieler)
 	{
-		sendeAnSpieler(obj);
+		spieler.forEach(s -> sendeAnSpieler(obj, s));
 	}
 
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj)
 	{
-		ClientFactory.CLIENT.empfange(obj);
+		ClientVerwalter.getClients().forEach(e -> e.empfange(obj));
 		LOGGER.log(Level.INFO, obj.getClassName());
 	}
 
 	public void empfange(Datenobjekt obj)
 	{
-		LOGGER.log(Level.INFO, obj.getClassName());
+		System.out.println("Empfange ...");
+		System.out.println(verwalter);
 		verwalter.ifPresent(e -> e.empfange(obj));
+		LOGGER.log(Level.INFO, obj.getClassName());
 	}
 
 	@Override

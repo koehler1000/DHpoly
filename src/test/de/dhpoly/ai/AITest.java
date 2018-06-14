@@ -60,7 +60,7 @@ public class AITest
 	public void startUp() throws IOException
 	{
 		ai = new AI();
-		ai.erzeugeComputerspieler(client, "doofer PC");
+		ai.erzeugeComputerspieler("doofer PC");
 		spieler = ai.spieler;
 	}
 

@@ -1,13 +1,13 @@
 package de.dhpoly.ai;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.fakes.ClientVerwalter;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
-import de.dhpoly.netzwerk.control.NetzwerkClientImpl;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.model.SpielerStatus;
 import de.dhpoly.wuerfel.model.WuerfelAufruf;
@@ -20,13 +20,13 @@ public class AI implements Datenobjektverwalter
 
 	public void erzeugeComputerspieler(String ip, String name)
 	{
-		erzeugeComputerspieler(new NetzwerkClientImpl(ip), name);
+		erzeugeComputerspieler(name);
 	}
 
-	public void erzeugeComputerspieler(NetzwerkClient client, String name)
+	public void erzeugeComputerspieler(String name)
 	{
-		this.client = client;
 		spieler = new Spieler(name);
+		this.client = ClientVerwalter.erzeugeClient(spieler);
 		client.setDatenobjektverwalter(this);
 		client.sendeAnServer(spieler);
 	}

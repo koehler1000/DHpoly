@@ -91,8 +91,8 @@ public class SpielImpl implements Spiel
 	public SpielImpl(NetzwerkServer server)
 	{
 		this();
-		this.server = Optional.ofNullable(server);
 		server.setDatenobjektverwalter(this);
+		this.server = Optional.ofNullable(server);
 	}
 
 	@Override
@@ -509,6 +509,7 @@ public class SpielImpl implements Spiel
 	@Override
 	public void empfange(Datenobjekt objekt)
 	{
+		System.out.println("Z 512: Nachricht bei Spiel angekommen");
 		logikverwalter.forEach(c -> empfange(c, objekt));
 	}
 

@@ -1,6 +1,6 @@
 package de.dhpoly.main;
 
-import de.dhpoly.fakes.ServerFactory;
+import de.dhpoly.fakes.Server;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.control.SpielImpl;
@@ -15,7 +15,7 @@ public class Main
 
 	public Main()
 	{
-		NetzwerkServer server = ServerFactory.SERVER;
+		NetzwerkServer server = Server.erzeugeServer();
 		new SpielImpl(server);
 		new SpielerErstellerUI(new Fenster(), server);
 	}
