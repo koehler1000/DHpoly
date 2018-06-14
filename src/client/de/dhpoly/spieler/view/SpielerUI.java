@@ -112,7 +112,6 @@ public class SpielerUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung)
 	{
 		// zunaechst nicht anzeigen
-		// zeigeLinks(spieler.getName());
 	}
 
 	public void zeigeManuell()

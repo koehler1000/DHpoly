@@ -56,8 +56,6 @@ public class Server implements NetzwerkServer
 
 	public void empfange(Datenobjekt obj)
 	{
-		System.out.println("Empfange ...");
-		System.out.println(verwalter);
 		verwalter.ifPresent(e -> e.empfange(obj));
 		LOGGER.log(Level.INFO, obj.getClassName());
 	}

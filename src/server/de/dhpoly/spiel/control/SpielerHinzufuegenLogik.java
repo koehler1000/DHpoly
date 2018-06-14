@@ -7,7 +7,6 @@ import de.dhpoly.spieler.model.Spieler;
 
 public class SpielerHinzufuegenLogik implements Logik
 {
-
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
@@ -16,5 +15,4 @@ public class SpielerHinzufuegenLogik implements Logik
 			spiel.fuegeSpielerHinzu((Spieler) objekt);
 		}
 	}
-
 }

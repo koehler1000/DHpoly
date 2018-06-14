@@ -76,7 +76,6 @@ public class KontoauszugUI extends Oberflaeche // NOSONAR
 	public void zeige(String beschreibung)
 	{
 		zeigeMitte(beschreibung);
-		//zeigeLinks(beschreibung);
 	}
 
 	@Override

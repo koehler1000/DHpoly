@@ -1,8 +1,6 @@
 package de.dhpoly.netzwerk;
 
 import java.io.IOException;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 
@@ -22,7 +20,7 @@ public interface NetzwerkClient
 	 * Baut eine Verbindung mit dem Server mit der @param ip und dem @param port
 	 * auf.
 	 */
-	void verbinden(String ip, int port) throws ConnectException, UnknownHostException, IOException;
+	void verbinden(String ip, int port) throws IOException;
 
 	void setDatenobjektverwalter(Datenobjektverwalter verwalter);
 
