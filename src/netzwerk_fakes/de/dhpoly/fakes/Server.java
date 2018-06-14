@@ -69,12 +69,6 @@ public class Server implements NetzwerkServer
 	}
 
 	@Override
-	public void verbindungAbbauen() throws IOException
-	{
-		// fake -> wird nicht benötigt
-	}
-
-	@Override
 	public void run(String[] args) throws IOException
 	{
 		// fake -> wird nicht benötigt

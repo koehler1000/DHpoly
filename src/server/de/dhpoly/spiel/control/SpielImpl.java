@@ -509,7 +509,6 @@ public class SpielImpl implements Spiel
 	@Override
 	public void empfange(Datenobjekt objekt)
 	{
-		System.out.println("Z 512: Nachricht bei Spiel angekommen");
 		logikverwalter.forEach(c -> empfange(c, objekt));
 	}
 

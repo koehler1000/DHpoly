@@ -127,13 +127,6 @@ public class NetzwerkServerImpl implements NetzwerkServer
 	}
 
 	@Override
-	public void verbindungAbbauen() throws IOException
-	{
-		sollServerLaufen = false;
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void empfange(Datenobjekt objekt)
 	{
 		// TODO Auto-generated method stub
@@ -249,8 +242,6 @@ class ClientHandler implements Runnable
 		 */
 		exit();
 	}
-
-	
 
 	/**
 	 * Attempts to log the client in given a message from the client containing

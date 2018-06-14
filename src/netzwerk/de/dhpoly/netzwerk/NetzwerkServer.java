@@ -11,9 +11,6 @@ public interface NetzwerkServer
 {
 	String getIp() throws UnknownHostException;
 
-	@Deprecated
-	void verbindungAbbauen() throws IOException;
-
 	void empfange(Datenobjekt objekt);
 
 	void run(String[] args) throws IOException;
