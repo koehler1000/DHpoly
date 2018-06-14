@@ -4,9 +4,11 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 
 import de.dhpoly.ai.AI;
+import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.fakes.ClientVerwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.oberflaeche.ElementFactory;
@@ -21,6 +23,8 @@ public class SpielerErstellerUI
 
 	private JTextArea txtName;
 
+	private JSpinner sliderStartgeld;
+
 	private int spielerAnz = 1;
 
 	public SpielerErstellerUI(Fenster fenster, NetzwerkServer server)
@@ -28,7 +32,7 @@ public class SpielerErstellerUI
 		this.fenster = fenster;
 
 		JPanel pnl = ElementFactory.erzeugePanel();
-		pnl.setLayout(new GridLayout(4, 2, 10, 10));
+		pnl.setLayout(new GridLayout(5, 2, 10, 10));
 
 		pnl.add(ElementFactory.getTextFeldUeberschrift("Name:"));
 		String name = System.getProperties().getProperty("user.name");
@@ -45,9 +49,16 @@ public class SpielerErstellerUI
 		butSpielPC.addActionListener(e -> spielerHinzuPC());
 		pnl.add(butSpielPC);
 
+		pnl.add(ElementFactory.getTextFeldUeberschrift("Einstellungen anpassen:"));
+		sliderStartgeld = ElementFactory.erzeugeSpinner(new Einstellungen().getStartguthaben());
+		pnl.add(sliderStartgeld);
+
 		pnl.add(ElementFactory.getTextFeldUeberschrift("Spiel beginnen:"));
 		JButton butStart = ElementFactory.getButtonUeberschrift("Spiel starten");
 		butStart.addActionListener(e -> {
+			Einstellungen einstellungen = new Einstellungen();
+			einstellungen.setStartguthaben((int) sliderStartgeld.getValue());
+			server.empfange(einstellungen);
 			server.empfange(new SpielStart(new Spieler("default")));
 			fenster.loescheKomponente(pnl);
 		});

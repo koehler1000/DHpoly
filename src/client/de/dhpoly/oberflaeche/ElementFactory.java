@@ -12,9 +12,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.LineBorder;
 import javax.swing.table.TableModel;
 
@@ -233,5 +235,13 @@ public class ElementFactory
 		table.setBackground(FARBE_DESIGN);
 		table.setRowHeight(SCHRIFT_NORMAL.getSize() + 20);
 		return table;
+	}
+
+	public static JSpinner erzeugeSpinner(int startguthaben)
+	{
+		JSpinner spinner = new JSpinner(new SpinnerNumberModel(startguthaben, 1000, 100000, 100));
+		spinner.setBackground(FARBE_DESIGN);
+		spinner.setFont(SCHRIFT_UEBERSCHRIFT);
+		return spinner;
 	}
 }
