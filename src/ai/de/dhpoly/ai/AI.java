@@ -5,7 +5,6 @@ import de.dhpoly.fakes.ClientVerwalter;
 import de.dhpoly.feld.model.StrasseKaufen;
 import de.dhpoly.feld.model.StrasseKaufenStatus;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.handel.model.TransaktionsTyp;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.spieler.model.Spieler;
@@ -100,7 +99,6 @@ public class AI implements Datenobjektverwalter
 
 	private void verarbeiteTransaktion(Transaktion transaktion)
 	{
-		transaktion.setTransaktionsTyp(TransaktionsTyp.ABGELEHNT);
-		client.sendeAnServer(transaktion);
+		// TODO entscheiden
 	}
 }

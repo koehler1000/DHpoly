@@ -14,7 +14,6 @@ import de.dhpoly.feld.control.FeldStrasse;
 import de.dhpoly.feld.control.FeldStrasseTest;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
@@ -53,7 +52,7 @@ public class HandelLogikTest
 
 		assertThat(strasse.getEigentuemer().get(), Is.is(s1));
 
-		Handel handel = new HandelLogik();
+		HandelLogik handel = new HandelLogik();
 
 		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(strasse);
@@ -83,7 +82,7 @@ public class HandelLogikTest
 		RessourcenDatensatz datensatz = new RessourcenDatensatz(Ressource.GELD, 50);
 		datensaetze.add(datensatz);
 
-		Handel handel = new HandelLogik();
+		HandelLogik handel = new HandelLogik();
 
 		Transaktion transaktion = new Transaktion(s1, s2);
 		transaktion.addDatensatzFelderwechsel(strasse);
@@ -96,7 +95,7 @@ public class HandelLogikTest
 	@Test
 	public void felderVerbuchenGeldtransfer()
 	{
-		Handel handel = new HandelLogik();
+		HandelLogik handel = new HandelLogik();
 
 		spiel.fuegeSpielerHinzu(s1);
 		spiel.fuegeSpielerHinzu(s2);

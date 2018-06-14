@@ -25,22 +25,15 @@ public class Transaktion extends DatenobjektAnClient
 	private Spieler anbietender;
 	private Spieler handelspartner;
 
-	private TransaktionsTyp typ = TransaktionsTyp.NEU;
+	private boolean isAnbietenderOK = true;
+	private boolean isHandelspartnerOK = true;
+
+	private boolean veraendert = false;
 
 	public Transaktion(Spieler anbietender, Spieler handelspartner)
 	{
 		this.anbietender = anbietender;
 		this.handelspartner = handelspartner;
-		this.typ = TransaktionsTyp.NEU;
-	}
-
-	public Transaktion getTransaktionsGegenangebot()
-	{
-		Transaktion t = new Transaktion(handelspartner, anbietender);
-		t.felderEigentumswechsel = felderEigentumswechsel;
-		t.ressourcen = ressourcen;
-		t.typ = TransaktionsTyp.VORSCHLAG;
-		return t;
 	}
 
 	public int getRessource(Spieler abgebenderSpieler, Ressource ressource)
@@ -62,7 +55,7 @@ public class Transaktion extends DatenobjektAnClient
 		{
 			Map<Ressource, Integer> res = ressourcen.get(abgebenderSpieler);
 			res.put(ressource, value);
-			typ = TransaktionsTyp.NEUER_VORSCHLAG;
+			veraendert();
 		}
 		else
 		{
@@ -72,21 +65,23 @@ public class Transaktion extends DatenobjektAnClient
 		}
 	}
 
+	private void veraendert()
+	{
+		veraendert = true;
+		isAnbietenderOK = false;
+		isHandelspartnerOK = false;
+	}
+
 	public void addDatensatzFelderwechsel(StrasseDaten strasse)
 	{
 		felderEigentumswechsel.add(strasse);
-		typ = TransaktionsTyp.NEUER_VORSCHLAG;
+		veraendert();
 	}
 
 	public void removeDatensatzFelderwechsel(StrasseDaten strasse)
 	{
 		felderEigentumswechsel.remove(strasse);
-		typ = TransaktionsTyp.NEUER_VORSCHLAG;
-	}
-
-	public TransaktionsTyp getTransaktionsTyp()
-	{
-		return typ;
+		veraendert();
 	}
 
 	public List<StrasseDaten> getFelderEigentumswechsel(Spieler spielerDaten)
@@ -116,14 +111,40 @@ public class Transaktion extends DatenobjektAnClient
 		return "Handel";
 	}
 
-	public void setTransaktionsTyp(TransaktionsTyp typ)
+	public List<Spieler> nichtEinverstandeneSpieler()
 	{
-		this.typ = typ;
+		List<Spieler> spieler = new ArrayList<>();
+		if (!isAnbietenderOK)
+		{
+			spieler.add(getAnbietender());
+		}
+		if (!isHandelspartnerOK)
+		{
+			spieler.add(getHandelspartner());
+		}
+		return spieler;
+	}
+
+	public boolean isVeraendert()
+	{
+		return veraendert;
 	}
 
 	@Override
 	public Class<? extends Oberflaeche> getClassUI()
 	{
 		return HandelUI.class;
+	}
+
+	public void setEinverstanden(Spieler spieler)
+	{
+		if (spieler == handelspartner)
+		{
+			isHandelspartnerOK = true;
+		}
+		if (spieler == anbietender)
+		{
+			isAnbietenderOK = true;
+		}
 	}
 }

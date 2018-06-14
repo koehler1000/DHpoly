@@ -3,29 +3,20 @@ package de.dhpoly.handel.control;
 import java.util.List;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.feld.model.StrasseDaten;
-import de.dhpoly.handel.Handel;
 import de.dhpoly.handel.model.Transaktion;
-import de.dhpoly.handel.model.TransaktionsTyp;
+import de.dhpoly.logik.Logik;
+import de.dhpoly.nachricht.model.Nachricht;
 import de.dhpoly.ressource.model.Ressource;
 import de.dhpoly.ressource.model.RessourcenDatensatz;
 import de.dhpoly.spiel.Spiel;
 import de.dhpoly.spieler.model.Spieler;
 
-public class HandelLogik implements Handel
+public class HandelLogik implements Logik
 {
-	@Override
-	public void vorschlagAnbieten(Transaktion transaktion, Spiel spiel)
-	{
-		Spieler anbietender = transaktion.getAnbietender();
-		spiel.zeigeSpieler(anbietender, transaktion);
-	}
-
-	@Override
 	public void vorschlagAnnehmen(Transaktion transaktion, Spiel spiel)
 	{
-		transaktion.setTransaktionsTyp(TransaktionsTyp.ANGENOMMEN);
-
 		Spieler anbietender = transaktion.getAnbietender();
 		Spieler handelspartner = transaktion.getHandelspartner();
 
@@ -44,9 +35,6 @@ public class HandelLogik implements Handel
 			anbietender.einzahlen(bekommen);
 			handelspartner.auszahlen(bekommen);
 		}
-
-		spiel.zeigeSpieler(anbietender, transaktion);
-		spiel.zeigeSpieler(handelspartner, transaktion);
 	}
 
 	private void eigentumUebertragen(List<StrasseDaten> feld2, Spieler spielerDaten, Spieler spielerDaten2)
@@ -70,36 +58,18 @@ public class HandelLogik implements Handel
 	}
 
 	@Override
-	public void vorschlagAblehnen(Transaktion transaktion, Spiel spiel)
-	{
-		transaktion.setTransaktionsTyp(TransaktionsTyp.ABGELEHNT);
-	}
-
-	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
 		if (objekt instanceof Transaktion)
 		{
 			Transaktion transaktion = (Transaktion) objekt;
-			switch (transaktion.getTransaktionsTyp())
+			transaktion.nichtEinverstandeneSpieler().forEach(s -> spiel.zeigeSpieler(s, transaktion));
+
+			if (transaktion.nichtEinverstandeneSpieler().isEmpty())
 			{
-				case ABGELEHNT:
-					vorschlagAblehnen(transaktion, spiel);
-					break;
-				case ANGENOMMEN:
-					vorschlagAnnehmen(transaktion, spiel);
-					break;
-				case NEU:
-					vorschlagAnbieten(transaktion, spiel);
-					break;
-				case NEUER_VORSCHLAG:
-					vorschlagAnbieten(transaktion, spiel);
-					break;
-				case VORSCHLAG:
-					vorschlagAnbieten(transaktion, spiel);
-					break;
-				default:
-					break;
+				vorschlagAnnehmen(transaktion, spiel);
+				Nachricht nachricht = new Nachricht("Handel angenommen", Empfaenger.ALLE_SPIELER);
+				spiel.empfange(nachricht);
 			}
 		}
 	}
