@@ -1,22 +1,22 @@
 package de.dhpoly.main;
 
-import java.io.IOException;
-
-import de.dhpoly.fakes.ServerFake;
+import de.dhpoly.fakes.ServerFactory;
+import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.oberflaeche.view.Fenster;
 import de.dhpoly.spiel.control.SpielImpl;
 import de.dhpoly.spiel.view.SpielerErstellerUI;
 
 public class Main
 {
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args)
 	{
 		new Main();
 	}
 
-	public Main() throws IOException
+	public Main()
 	{
-		new SpielImpl(ServerFake.SERVER_FAKE);
-		new SpielerErstellerUI(new Fenster());
+		NetzwerkServer server = ServerFactory.SERVER;
+		new SpielImpl(server);
+		new SpielerErstellerUI(new Fenster(), server);
 	}
 }

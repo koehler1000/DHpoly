@@ -19,7 +19,6 @@ import de.dhpoly.nachricht.view.NachrichtenErstellerUI;
 import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkClient;
 import de.dhpoly.oberflaeche.ElementFactory;
-import de.dhpoly.spiel.view.SpielstartUI;
 import de.dhpoly.spieler.model.Spieler;
 import de.dhpoly.spieler.view.KontoauszugUI;
 import de.dhpoly.spieler.view.SpielerUI;
@@ -64,8 +63,6 @@ public class SpielUI extends JPanel implements Datenobjektverwalter// NOSONAR
 		this.client.ifPresent(c -> c.setDatenobjektverwalter(this));
 
 		this.add(tabLinks, BorderLayout.WEST);
-
-		new SpielstartUI(this).zeige("Start");
 	}
 
 	private void initRandRechts()

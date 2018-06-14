@@ -14,8 +14,8 @@ import org.junit.Test;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
 import de.dhpoly.einstellungen.model.Einstellungen;
-import de.dhpoly.fakes.ClientFake;
-import de.dhpoly.fakes.ServerFake;
+import de.dhpoly.fakes.ClientFactory;
+import de.dhpoly.fakes.ServerFactory;
 import de.dhpoly.feld.model.FeldDaten;
 import de.dhpoly.feld.model.LosfeldDaten;
 import de.dhpoly.feld.model.StrasseDaten;
@@ -41,8 +41,8 @@ public class SpielImplTest implements Datenobjektverwalter
 	@Before
 	public void vorbereitung()
 	{
-		NetzwerkServer server = ServerFake.SERVER_FAKE;
-		NetzwerkClient client = ClientFake.CLIENT_FAKE;
+		NetzwerkServer server = ServerFactory.SERVER;
+		NetzwerkClient client = ClientFactory.CLIENT;
 
 		client.setDatenobjektverwalter(this);
 

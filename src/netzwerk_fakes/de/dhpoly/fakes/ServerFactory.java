@@ -12,10 +12,10 @@ import de.dhpoly.netzwerk.Datenobjektverwalter;
 import de.dhpoly.netzwerk.NetzwerkServer;
 import de.dhpoly.spieler.model.Spieler;
 
-public class ServerFake implements NetzwerkServer
+public class ServerFactory implements NetzwerkServer
 {
-	public static final ServerFake SERVER_FAKE = new ServerFake();
-	private static final Logger LOGGER = Logger.getLogger(ServerFake.class.getName());
+	public static final ServerFactory SERVER = new ServerFactory();
+	private static final Logger LOGGER = Logger.getLogger(ServerFactory.class.getName());
 
 	private Optional<Datenobjektverwalter> verwalter = Optional.empty();
 
@@ -40,7 +40,7 @@ public class ServerFake implements NetzwerkServer
 	@Override
 	public void sendeAnSpieler(Datenobjekt obj)
 	{
-		ClientFake.CLIENT_FAKE.empfange(obj);
+		ClientFactory.CLIENT.empfange(obj);
 		LOGGER.log(Level.INFO, obj.getClassName());
 	}
 
