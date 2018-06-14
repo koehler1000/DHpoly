@@ -13,7 +13,8 @@ public class SpielStartLogik implements Logik
 	@Override
 	public void verarbeite(Datenobjekt objekt, Spiel spiel)
 	{
-		if (objekt instanceof SpielStart && spiel.getStatus() == SpielStatus.SPIEL_VORBEREITUNG)
+		if (objekt instanceof SpielStart && spiel.getStatus() == SpielStatus.SPIEL_VORBEREITUNG
+				&& spiel.getSpieler().size() > 2)
 		{
 			spiel.starteSpiel();
 			Nachricht nachricht = new Nachricht("Das DHPoly-Team wünscht viel Spaß", Empfaenger.ALLE_SPIELER);

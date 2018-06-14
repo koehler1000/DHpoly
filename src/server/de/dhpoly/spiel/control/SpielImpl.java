@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import de.dhpoly.datenobjekt.Datenobjekt;
+import de.dhpoly.einstellungen.EinstellungenLogik;
 import de.dhpoly.einstellungen.model.Einstellungen;
 import de.dhpoly.empfaenger.model.Empfaenger;
 import de.dhpoly.feld.control.FeldEreignis;
@@ -84,6 +85,7 @@ public class SpielImpl implements Spiel
 		logikverwalter.add(StrasseKaufenLogik.class);
 		logikverwalter.add(SpielerHinzufuegenLogik.class);
 		logikverwalter.add(HausbauLogik.class);
+		logikverwalter.add(EinstellungenLogik.class);
 
 		setFelder(new Standardspielfeld().getStandardSpielfeld(einstellungen));
 	}
