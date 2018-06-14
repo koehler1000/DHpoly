@@ -42,7 +42,7 @@ public class SpielImplTest implements Datenobjektverwalter
 	public void vorbereitung()
 	{
 		NetzwerkServer server = ServerVerwalter.getServer();
-		NetzwerkClient client = ClientVerwalter.getClient(spieler);
+		NetzwerkClient client = ClientVerwalter.erzeugeClient(spieler);
 
 		client.setDatenobjektverwalter(this);
 

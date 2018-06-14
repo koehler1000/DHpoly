@@ -20,7 +20,7 @@ import de.dhpoly.wuerfel.model.WuerfelAufruf;
 
 public class AITest
 {
-	private AI ai;
+	private AI ai = new AI();
 	private Spieler spieler;
 
 	private List<Object> objGesendet = new ArrayList<>();
@@ -59,8 +59,7 @@ public class AITest
 	@Before
 	public void startUp() throws IOException
 	{
-		ai = new AI();
-		ai.erzeugeComputerspieler("doofer PC");
+		ai.erzeugeComputerspieler(client, "doofer PC");
 		spieler = ai.spieler;
 	}
 

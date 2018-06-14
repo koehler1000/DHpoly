@@ -18,9 +18,11 @@ public class AI implements Datenobjektverwalter
 	private NetzwerkClient client;
 	protected Spieler spieler;
 
-	public void erzeugeComputerspieler(String ip, String name)
+	public void erzeugeComputerspieler(NetzwerkClient client, String name)
 	{
 		erzeugeComputerspieler(name);
+		this.client = client;
+		client.setDatenobjektverwalter(this);
 	}
 
 	public void erzeugeComputerspieler(String name)
