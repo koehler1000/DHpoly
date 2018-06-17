@@ -55,7 +55,7 @@ public class Bilderverwalter
 
 		try
 		{
-			ImageIcon icon = new ImageIcon(ImageIO.read(new File(".\\src\\pics\\default\\" + pfad)));
+			ImageIcon icon = new ImageIcon(ImageIO.read(new File(pfad)));
 			bilder.put(pfad, icon);
 			return icon;
 		}
