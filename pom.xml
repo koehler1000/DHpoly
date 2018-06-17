@@ -11,6 +11,12 @@
     		<artifactId>junit</artifactId>
     		<version>4.8.1</version>
 		</dependency>
+		<dependency>
+ 		 <groupId>org.apache.maven.plugins</groupId>
+ 			 <artifactId>maven-shade-plugin</artifactId>
+ 			 <version>3.0.0</version>
+ 			 <type>maven-plugin</type>
+		</dependency>
     </dependencies>
   
   <build>
@@ -31,6 +37,16 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>                       
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>de.dhpoly.main.Main</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
